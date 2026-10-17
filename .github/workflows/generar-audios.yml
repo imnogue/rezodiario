@@ -52,11 +52,13 @@ jobs:
           if [ "${{ github.event.inputs.sobrescribir }}" = "true" ]; then ARGS="$ARGS --sobrescribir"; fi
           if [ "${{ github.event.inputs.prueba }}" = "true" ]; then ARGS="$ARGS --prueba --sin-subir"; fi
           if [ "${{ github.event.inputs.solo_historial }}" = "true" ]; then ARGS="$ARGS --solo-historial --max 120"; fi
-          eval python3 scripts/generar_audios.py $ARGS
+          set -o pipefail
+          eval python3 -u scripts/generar_audios.py $ARGS 2>&1 | tee registro-audios.txt
       - name: Guardar los enlaces de los audios
         if: ${{ always() }}
         run: |
-          if git diff --quiet -- content/dias; then echo "No hay audios nuevos que guardar."; exit 0; fi
+          git add registro-audios.txt 2>/dev/null || true
+          if git diff --quiet -- content/dias && git diff --cached --quiet; then echo "No hay audios nuevos que guardar."; exit 0; fi
           git config user.name "Rezo Diario (audios)"
           git config user.email "audios@rezodiario.com"
           git add content/dias
