@@ -197,7 +197,7 @@ def player():
         <button class="play" id="pPlay" aria-label="Reproducir">{ICON["play"]}</button>
         <button class="ctl" id="pNext" aria-label="Parte siguiente"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
       </div>
-      <div class="p-foot"><button class="tog" id="tSpeed">Velocidad 1×</button><button class="tog" id="tMusic" aria-pressed="true">Música de fondo</button><button class="tog" id="tVoice" aria-pressed="true">Voz guía</button></div>
+      <div class="p-foot"><button class="tog" id="tSpeed">Velocidad 1×</button><div class="mus"><button class="tog" id="tMusic" aria-haspopup="menu" aria-expanded="false">🎵 <span id="tMusicL">Calma</span> ▾</button><div class="mus-menu" id="musMenu" role="menu" hidden></div></div><button class="tog" id="tVoice" aria-pressed="true">🗣️ Voz guía</button></div>
     </article>'''
 
 def week_section(r, mode="select", title="Esta semana, día a día", sub="Desliza para volver a un rezo que te perdiste o adelantar el de mañana."):
@@ -658,7 +658,7 @@ os.makedirs(OUT + "/assets", exist_ok=True)
 css = open(ROOT + "/assets/base.css", encoding="utf-8").read() + open(ROOT + "/assets/extra.css", encoding="utf-8").read()
 open(OUT + "/assets/site.css", "w", encoding="utf-8").write(css)
 shutil.copy(ROOT + "/assets/site.js", OUT + "/assets/site.js")
-data = {"week": [{k: w[k] for k in ("date", "wd", "n", "mes", "color", "lit", "ref", "refL", "title", "set", "ex", "sum", "refl", "qs", "fin", "audio", "duracion")} | ({"marcas": w["marcas"]} if w.get("marcas") else {}) for w in DAYS], "LITC": LITC, "SETS": SETS, **O, "via": VIA, "VIA_ANT": VIAJ["antifona"],
+data = {"week": [{k: w[k] for k in ("date", "wd", "n", "mes", "color", "lit", "ref", "refL", "title", "set", "ex", "sum", "refl", "qs", "fin", "audio", "duracion")} | ({"marcas": w["marcas"]} if w.get("marcas") else {}) | ({"audioVoz": w["audioVoz"]} if w.get("audioVoz") else {}) for w in DAYS], "LITC": LITC, "SETS": SETS, **O, "via": VIA, "VIA_ANT": VIAJ["antifona"],
         "prayers": [{"slug": p["slug"], "t": p["t"], "cat": p["cat"], "min": p["min"]} for p in PRAYERS], "CATS": {k: {"name": c["name"], "color": c["color"]} for k, c in CATS.items()},
         "novenas": [{"slug": n["slug"], "t": n["t"], "start": n["start"], "end": n["end"], "open": n["open"], "close": n["close"], "days": [[d["t"], d["x"]] for d in n["days"]]} for n in NOVENAS]}
 open(OUT + "/assets/versos.js", "w", encoding="utf-8").write("window.RDV=" + json.dumps({t["slug"]: {"t": t["t"], "v": [[v["ref"], v["x"], v["e"]] for v in t["versos"]]} for t in VTOP}, ensure_ascii=False) + ";")

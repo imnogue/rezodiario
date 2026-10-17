@@ -23,6 +23,10 @@ on:
         description: "Prueba sin gastar créditos (tonos en vez de voz, no publica)"
         type: boolean
         default: false
+      solo_historial:
+        description: "Solo reutilizar voces ya generadas (no gasta créditos)"
+        type: boolean
+        default: false
   schedule:
     - cron: "0 16 * * 0"   # cada domingo por la tarde: prepara los 7 días siguientes
 permissions:
@@ -47,6 +51,7 @@ jobs:
           ARGS="--desde '${{ github.event.inputs.desde }}' --hasta '${{ github.event.inputs.hasta }}'"
           if [ "${{ github.event.inputs.sobrescribir }}" = "true" ]; then ARGS="$ARGS --sobrescribir"; fi
           if [ "${{ github.event.inputs.prueba }}" = "true" ]; then ARGS="$ARGS --prueba --sin-subir"; fi
+          if [ "${{ github.event.inputs.solo_historial }}" = "true" ]; then ARGS="$ARGS --solo-historial --max 120"; fi
           eval python3 scripts/generar_audios.py $ARGS
       - name: Guardar los enlaces de los audios
         if: ${{ always() }}

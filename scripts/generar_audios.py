@@ -12,6 +12,12 @@ Opciones:
   --max N             Máximo de días por ejecución (por defecto 31), para no gastar créditos de más
   --prueba            No llama a ElevenLabs: usa tonos en lugar de voz (para probar el montaje)
   --sin-subir         No sube a Supabase: deja los MP3 en la carpeta audios-generados/
+  --solo-historial    Reutiliza las voces ya generadas (historial de ElevenLabs) y no gasta créditos;
+                      si a un día le falta alguna voz, lo salta
+
+Cada día se sube dos veces: AAAA-MM-DD.mp3 (voz + música, para el pódcast) y AAAA-MM-DD-voz.mp3
+(solo voz, para la web, que pone encima la música que elija cada persona).
+Antes de gastar créditos, el programa busca la misma frase en tu historial de ElevenLabs y la descarga gratis.
 """
 import argparse, datetime, glob, json, os, re, shutil, subprocess, sys, tempfile, time, urllib.request, urllib.error
 from zoneinfo import ZoneInfo
@@ -48,12 +54,45 @@ def run(cmd):
     if r.returncode != 0: fail("ffmpeg ha fallado:\n" + r.stderr[-1500:])
     return r
 
+HIST = None
+class SinHistorial(Exception): pass
+def norm(t): return re.sub(r"\s+", " ", t).strip()
+def historial():
+    """Mapa texto → id del historial de ElevenLabs (lo más reciente gana). Descargarlo no gasta créditos."""
+    global HIST
+    if HIST is not None: return HIST
+    HIST = {}; key, voice = os.environ.get("ELEVENLABS_API_KEY", "").strip(), os.environ.get("ELEVENLABS_VOICE_ID", "").strip()
+    after = None
+    for _ in range(40):
+        q = f"https://api.elevenlabs.io/v1/history?page_size=1000&voice_id={voice}" + (f"&start_after_history_item_id={after}" if after else "")
+        try:
+            with urllib.request.urlopen(urllib.request.Request(q, headers={"xi-api-key": key}), timeout=60) as r: j = json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            log(f"  No puedo leer el historial de ElevenLabs (error {e.code}). Si la clave no tiene permiso de «History», actívalo. {e.read()[:200]!r}"); break
+        except Exception as e:
+            log(f"  No puedo leer el historial de ElevenLabs: {e}"); break
+        for it in j.get("history", []):
+            k = norm(it.get("text", ""))
+            if k and (k not in HIST or it.get("date_unix", 0) > HIST[k][1]): HIST[k] = (it["history_item_id"], it.get("date_unix", 0))
+        if not j.get("has_more"): break
+        after = j.get("last_history_item_id")
+    log(f"  Historial de ElevenLabs: {len(HIST)} frases ya generadas que puedo reutilizar gratis.")
+    return HIST
+
 def tts(text, path, a):
     if a.prueba:  # tono en lugar de voz, con duración parecida a la real
         secs = max(2.0, len(re.sub(r"<[^>]+>", "", text)) / 14 + text.count("<break") * 2)
         run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", f"sine=frequency=330:sample_rate={SR}", "-t", f"{secs:.2f}", "-af", "volume=0.3", "-ac", "1", path])
         return
     key, voice = os.environ.get("ELEVENLABS_API_KEY", "").strip(), os.environ.get("ELEVENLABS_VOICE_ID", "").strip()
+    h = historial().get(norm(text))
+    if h and not a.sin_historial:
+        try:
+            with urllib.request.urlopen(urllib.request.Request(f"https://api.elevenlabs.io/v1/history/{h[0]}/audio", headers={"xi-api-key": key}), timeout=120) as r:
+                open(path, "wb").write(r.read()); a.reusados += 1; return
+        except Exception as e: log(f"  No he podido descargar una voz del historial ({e}); la genero de nuevo.")
+    if a.solo_historial: raise SinHistorial(text[:60])
+    a.nuevos += 1
     model = os.environ.get("ELEVENLABS_MODEL", "").strip() or "eleven_multilingual_v2"
     body = json.dumps({"text": text, "model_id": model, "language_code": "es",
                        "voice_settings": {"stability": 0.7, "similarity_boost": 0.75, "style": 0.1, "use_speaker_boost": True, "speed": float(os.environ.get("ELEVENLABS_SPEED", "") or 1.1)}}).encode()
@@ -123,6 +162,8 @@ def montar(d, out_mp3, a):
         lista = os.path.join(tmp, "lista.txt"); open(lista, "w").write("".join(f"file '{p}'\n" for p in partes))
         voz = os.path.join(tmp, "voz.wav"); run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lista, "-c", "copy", voz])
         T = dur(voz)
+        run(["ffmpeg", "-y", "-loglevel", "error", "-i", voz, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", str(SR), "-ac", "1", "-c:a", "libmp3lame", "-b:a", "64k",
+             "-metadata", f"title={d['title']} · {d['date']} (voz)", "-metadata", "artist=Rezo Diario", out_mp3[:-4] + "-voz.mp3"])
         fondo = os.path.join(tmp, "fondo.wav")
         if os.path.exists(MUSICA):  # tu música (libre de derechos) en static/musica/fondo.mp3
             run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "-1", "-i", MUSICA, "-t", f"{T:.2f}", "-ar", str(SR), "-ac", "1",
@@ -169,8 +210,9 @@ def subir(path, nombre, a):
 
 def main():
     p = argparse.ArgumentParser(); p.add_argument("--desde"); p.add_argument("--hasta"); p.add_argument("--sobrescribir", action="store_true")
+    p.add_argument("--solo-historial", action="store_true"); p.add_argument("--sin-historial", action="store_true")
     p.add_argument("--max", type=int, default=31); p.add_argument("--prueba", action="store_true"); p.add_argument("--sin-subir", action="store_true")
-    a = p.parse_args()
+    a = p.parse_args(); a.reusados = 0; a.nuevos = 0
     hoy = datetime.datetime.now(ZoneInfo("Europe/Madrid")).date()
     desde = (a.desde or "").strip() or hoy.isoformat(); hasta = (a.hasta or "").strip() or (hoy + datetime.timedelta(days=7)).isoformat()
     if not a.prueba:
@@ -180,7 +222,7 @@ def main():
     todo = []
     for f in files:
         d = json.load(open(f, encoding="utf-8"))
-        if d.get("audio") and not a.sobrescribir: log(f"{d['date']}: ya tiene audio, lo salto."); continue
+        if d.get("audio") and d.get("audioVoz") and not a.sobrescribir: log(f"{d['date']}: ya tiene audio, lo salto."); continue
         todo.append((f, d))
     if not todo: log("No hay días pendientes de audio en ese periodo."); return
     if len(todo) > a.max: log(f"Hay {len(todo)} días pendientes; genero solo los primeros {a.max}."); todo = todo[:a.max]
@@ -189,15 +231,17 @@ def main():
     outdir = os.path.join(ROOT, "audios-generados"); os.makedirs(outdir, exist_ok=True)
     for f, d in todo:
         log(f"{d['date']} · {d['title']}")
-        mp3 = os.path.join(outdir, f"{d['date']}.mp3"); secs, marcas = montar(d, mp3, a)
+        mp3 = os.path.join(outdir, f"{d['date']}.mp3")
+        try: secs, marcas = montar(d, mp3, a)
+        except SinHistorial as e: log(f"  Falta una voz en el historial («{e}…»); salto este día para no gastar créditos."); continue
         dd = f"{int(secs // 60)}:{int(round(secs % 60)):02d}"
         log(f"  Montado: {dd} min, {os.path.getsize(mp3) // 1024} KB, {len(marcas)} frases sincronizadas")
         if a.sin_subir: json.dump(marcas, open(mp3[:-4] + ".json", "w"), ensure_ascii=False)
         if a.sin_subir: continue
-        url = subir(mp3, f"{d['date']}.mp3", a)
-        d["audio"] = f"{url}?v={int(time.time())}"; d["duracion"] = dd; d["marcas"] = marcas
+        url = subir(mp3, f"{d['date']}.mp3", a); uv = subir(mp3[:-4] + "-voz.mp3", f"{d['date']}-voz.mp3", a)
+        v = int(time.time()); d["audio"] = f"{url}?v={v}"; d["audioVoz"] = f"{uv}?v={v}"; d["duracion"] = dd; d["marcas"] = marcas
         json.dump(d, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         log(f"  Subido y enlazado: {url}")
-    log("Terminado.")
+    log(f"Terminado. Voces reutilizadas del historial: {a.reusados} · generadas nuevas: {a.nuevos}.")
 
 if __name__ == "__main__": main()

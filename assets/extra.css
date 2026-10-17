@@ -269,3 +269,12 @@ img,video,canvas,svg,iframe{max-width:100%}
 @media (max-width:900px){.vhub{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.vcard{padding:20px 18px 18px}.vnum{position:static;margin-bottom:8px}.vday,.vnow{padding:22px 18px 18px}.mood{padding:9px 13px;font-size:14px}}
 @media(max-width:480px){.top-in{gap:10px}.brand{font-size:19.5px;gap:7px}.brand svg{width:26px;height:26px}.top-actions{gap:5px}.top-actions .icon-btn{width:36px;height:36px}#langCode{display:none}.lang-btn{width:36px!important;padding:0!important}}
+
+/* ---------- Reproductor: elegir música y voz ---------- */
+.p-foot{flex-wrap:wrap;justify-content:center}
+.mus{position:relative}
+.mus-menu{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);z-index:20;min-width:190px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:6px;box-shadow:0 18px 40px -16px rgba(0,0,0,.5);display:flex;flex-direction:column}
+.mus-menu button{background:none;border:0;text-align:left;padding:10px 14px;border-radius:12px;font-weight:600;font-size:14.5px;cursor:pointer}
+.mus-menu button:hover,.mus-menu button[aria-checked="true"]{background:var(--surface-2)}
+.mus-menu button[aria-checked="true"]{color:var(--accent);font-weight:800}
+#tVoice[aria-pressed="false"]{opacity:.75}
