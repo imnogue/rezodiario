@@ -5,6 +5,15 @@
 const J = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
 export async function onRequest({ request, env }) {
   try {
+    if (request.method === "GET" && new URL(request.url).searchParams.has("comprobar")) {
+      // Diagnóstico sin datos personales: ¿hay clave? ¿la acepta Resend? ¿puede crear contactos?
+      const key = String(env.RESEND_API_KEY || "").trim();
+      if (!key) return J({ clave: "falta RESEND_API_KEY en Cloudflare (o falta volver a desplegar)" });
+      const d = await fetch("https://api.resend.com/domains", { headers: { authorization: "Bearer " + key } });
+      const c = await fetch("https://api.resend.com/contacts?limit=1", { headers: { authorization: "Bearer " + key } });
+      let cm = ""; try { cm = (await c.json()).message || ""; } catch (e) {}
+      return J({ clave: "puesta (" + key.slice(0, 3) + "…)", dominios: d.status, contactos: c.status, mensaje: cm });
+    }
     if (request.method !== "POST") return J({ ok: false, error: "Usa POST" }, 405);
     let body = {};
     try { body = await request.json(); } catch (e) { return J({ ok: false, error: "Petición no válida" }, 400); }
