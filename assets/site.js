@@ -1,0 +1,523 @@
+/* Rezo Diario · JS compartido por todas las páginas */
+(function(){
+"use strict";
+const RD=window.RD||{};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ROOT=document.body.dataset.root||"";
+const SYNC_KEYS=/^rd-(rezado|favs|nov-|reto-|mycandles)/;
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}if(SYNC_KEYS.test(k)&&window.__rdSync)window.__rdSync()}};
+function toast(t){let h=$("#toastHost");if(!h){h=document.createElement("div");h.id="toastHost";document.body.appendChild(h)}h.innerHTML="";const d=document.createElement("div");d.className="toast";d.setAttribute("role","status");d.textContent=t;h.appendChild(d);setTimeout(()=>d.remove(),3000)}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function norm(s){return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")}
+function splitS(t){return t.split(/(?<=[.!?»])\s+/).filter(Boolean)}
+const now=new Date();
+const ISO=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+const WEEK=RD.week||[];
+const CFG=window.RD_CONFIG||{};
+let todayIdx=WEEK.findIndex(d=>d.date===ISO);const isReal=todayIdx>=0;if(todayIdx<0){todayIdx=WEEK.findIndex(d=>d.date===CFG.today);if(todayIdx<0)todayIdx=Math.max(0,WEEK.length-1)}
+
+/* ---------- Tema ---------- */
+const root=document.documentElement;
+const savedT=store.get("rd-tema",null);if(savedT)root.setAttribute("data-theme",savedT);
+function isDark(){const t=root.getAttribute("data-theme");return t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches}
+const tb=$("#btnTheme");if(tb)tb.onclick=()=>{const t=isDark()?"light":"dark";root.setAttribute("data-theme",t);store.set("rd-tema",t);document.dispatchEvent(new Event("rd-theme"))};
+
+/* ---------- Idiomas ---------- */
+const LANGS=[["es","Español","ES"],["ca","Català","CA"],["gl","Galego","GL"],["eu","Euskara","EU"],["en","English","EN"],["pt","Português","PT"],["it","Italiano","IT"],["fr","Français","FR"],["de","Deutsch","DE"],["pl","Polski","PL"]];
+const I18N={
+ es:{today:"Hoy",prayers:"Oraciones",rosary:"Rosario",gospel:"Evangelio",saints:"Santos",novenas:"Novenas",candles:"Velas",donate:"Donar",listen:"Escuchar el rezo de hoy",light:"Enciende una vela",more:"Más",note:""},
+ ca:{today:"Avui",prayers:"Oracions",rosary:"Rosari",gospel:"Evangeli",saints:"Sants",novenas:"Novenes",candles:"Espelmes",donate:"Donar",listen:"Escolta la pregària d'avui",light:"Encén una espelma",more:"Més",note:"Les oracions en català arribaran aviat. De moment, el contingut és en castellà."},
+ gl:{today:"Hoxe",prayers:"Oracións",rosary:"Rosario",gospel:"Evanxeo",saints:"Santos",novenas:"Novenas",candles:"Velas",donate:"Doar",listen:"Escoita a oración de hoxe",light:"Acende unha vela",more:"Máis",note:"As oracións en galego chegarán pronto. Polo de agora, o contido está en castelán."},
+ eu:{today:"Gaur",prayers:"Otoitzak",rosary:"Arrosarioa",gospel:"Ebanjelioa",saints:"Santuak",novenas:"Bederatziurrenak",candles:"Kandelak",donate:"Dohaintza",listen:"Entzun gaurko otoitza",light:"Piztu kandela bat",more:"Gehiago",note:"Euskarazko otoitzak laster iritsiko dira. Oraingoz, edukia gaztelaniaz dago."},
+ en:{today:"Today",prayers:"Prayers",rosary:"Rosary",gospel:"Gospel",saints:"Saints",novenas:"Novenas",candles:"Candles",donate:"Donate",listen:"Listen to today's prayer",light:"Light a candle",more:"More",note:"Prayers in English are coming soon. For now, the content is in Spanish."},
+ pt:{today:"Hoje",prayers:"Orações",rosary:"Terço",gospel:"Evangelho",saints:"Santos",novenas:"Novenas",candles:"Velas",donate:"Doar",listen:"Ouça a oração de hoje",light:"Acenda uma vela",more:"Mais",note:"As orações em português chegam em breve. Por enquanto, o conteúdo está em espanhol."},
+ it:{today:"Oggi",prayers:"Preghiere",rosary:"Rosario",gospel:"Vangelo",saints:"Santi",novenas:"Novene",candles:"Candele",donate:"Dona",listen:"Ascolta la preghiera di oggi",light:"Accendi una candela",more:"Altro",note:"Le preghiere in italiano arriveranno presto. Per ora i contenuti sono in spagnolo."},
+ fr:{today:"Aujourd'hui",prayers:"Prières",rosary:"Chapelet",gospel:"Évangile",saints:"Saints",novenas:"Neuvaines",candles:"Bougies",donate:"Faire un don",listen:"Écouter la prière du jour",light:"Allumer une bougie",more:"Plus",note:"Les prières en français arrivent bientôt. Pour l'instant, le contenu est en espagnol."},
+ de:{today:"Heute",prayers:"Gebete",rosary:"Rosenkranz",gospel:"Evangelium",saints:"Heilige",novenas:"Novenen",candles:"Kerzen",donate:"Spenden",listen:"Gebet des Tages anhören",light:"Eine Kerze anzünden",more:"Mehr",note:"Gebete auf Deutsch folgen bald. Derzeit sind die Inhalte auf Spanisch."},
+ pl:{today:"Dziś",prayers:"Modlitwy",rosary:"Różaniec",gospel:"Ewangelia",saints:"Święci",novenas:"Nowenny",candles:"Świece",donate:"Wesprzyj",listen:"Posłuchaj dzisiejszej modlitwy",light:"Zapal świecę",more:"Więcej",note:"Modlitwy po polsku już wkrótce. Na razie treści są po hiszpańsku."}
+};
+let lang=store.get("rd-lang","es");if(!I18N[lang])lang="es";
+function applyLang(){
+ const d=I18N[lang];root.lang=lang;
+ $$("[data-i18n]").forEach(el=>{const v=d[el.dataset.i18n];if(v)el.textContent=v});
+ const lb=$("#langCode");if(lb)lb.textContent=lang.toUpperCase();
+ $$("#langMenu button").forEach(b=>b.setAttribute("aria-checked",b.dataset.l===lang));
+ let n=$("#langNote");
+ if(lang!=="es"&&!store.get("rd-langnote-"+lang,false)){
+  if(!n){n=document.createElement("div");n.id="langNote";n.className="lang-note";n.setAttribute("role","status");document.querySelector(".top").after(n)}
+  n.innerHTML=`<div class="wrap"><span>${esc(d.note)}</span><button aria-label="Cerrar aviso">✕</button></div>`;
+  n.querySelector("button").onclick=()=>{store.set("rd-langnote-"+lang,true);n.remove()};
+ }else if(n)n.remove();
+}
+const lm=$("#langMenu"),lbtn=$("#btnLang");
+if(lm&&lbtn){
+ lm.innerHTML=LANGS.map(([c,n,code])=>`<button role="menuitemradio" data-l="${c}" aria-checked="false"><span>${n}</span><small>${code}</small></button>`).join("");
+ lbtn.onclick=e=>{e.stopPropagation();lm.hidden=!lm.hidden;lbtn.setAttribute("aria-expanded",!lm.hidden)};
+ lm.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;lang=b.dataset.l;store.set("rd-lang",lang);applyLang();lm.hidden=true;lbtn.setAttribute("aria-expanded","false")});
+ document.addEventListener("click",e=>{if(!lm.hidden&&!e.target.closest(".lang"))lm.hidden=true});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")lm.hidden=true});
+}
+applyLang();
+
+/* ---------- Menú lateral ---------- */
+const dr=$("#drawer");
+function openDrawer(){dr.hidden=false;document.body.style.overflow="hidden";setTimeout(()=>{const a=dr.querySelector("a");a&&a.focus({preventScroll:true})},60)}
+function closeDrawer(){dr.hidden=true;document.body.style.overflow=""}
+$$("[data-drawer]").forEach(b=>b.addEventListener("click",e=>{e.preventDefault();openDrawer()}));
+if(dr){dr.querySelectorAll("[data-close]").forEach(b=>b.onclick=closeDrawer);document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!dr.hidden)closeDrawer()});
+ dr.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeDrawer))}
+
+/* ---------- Animaciones al entrar ---------- */
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("rise");rv.unobserve(e.target)}}),{threshold:.1});
+$$(".reveal").forEach(el=>rv.observe(el));
+function dragRail(el){if(!el)return;let down=false,x0=0,s0=0;
+ el.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse")return;down=true;x0=e.clientX;s0=el.scrollLeft;el.dataset.moved="0"});
+ window.addEventListener("pointermove",e=>{if(!down)return;const dx=e.clientX-x0;if(Math.abs(dx)>6){el.dataset.moved="1";el.classList.add("drag")}el.scrollLeft=s0-dx});
+ window.addEventListener("pointerup",()=>{if(!down)return;down=false;el.classList.remove("drag");setTimeout(()=>el.dataset.moved="0",30)});
+ el.addEventListener("click",e=>{if(el.dataset.moved==="1"){e.preventDefault();e.stopPropagation()}},true);
+}
+$$(".rail").forEach(dragRail);
+$$("[data-scroll]").forEach(b=>b.onclick=()=>{const r=document.getElementById(b.dataset.scroll);r.scrollBy({left:+b.dataset.dir*r.clientWidth*.8,behavior:"smooth"})});
+function swipe(el,onX){let x0=null,y0=0,t0=0;
+ el.addEventListener("pointerdown",e=>{x0=e.clientX;y0=e.clientY;t0=Date.now()});
+ el.addEventListener("pointerup",e=>{if(x0===null)return;const dx=e.clientX-x0,dy=e.clientY-y0;x0=null;if(Date.now()-t0>900)return;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.4)onX(dx<0?1:-1)});
+ el.addEventListener("pointercancel",()=>x0=null);
+}
+
+/* ---------- Voz ---------- */
+const synth=("speechSynthesis" in window)?window.speechSynthesis:null;let voice=null;
+function pickVoice(){if(!synth)return;const v=synth.getVoices();voice=v.find(x=>/es[-_]ES/i.test(x.lang))||v.find(x=>/^es/i.test(x.lang))||null}
+if(synth){pickVoice();try{synth.onvoiceschanged=pickVoice}catch(e){}}
+const sp={on:false,token:0};
+function speakText(text,onEnd){
+ if(!synth){toast("Tu navegador no puede leer en voz alta.");return false}
+ if(P.playing)pauseP();
+ const my=++sp.token;synth.cancel();const parts=splitS(text.replace(/\n+/g," "));let i=0;
+ const next=()=>{if(my!==sp.token)return;if(i>=parts.length){sp.on=false;onEnd&&onEnd();return}const u=new SpeechSynthesisUtterance(parts[i++]);u.lang="es-ES";if(voice)u.voice=voice;u.rate=.92;u.onend=next;u.onerror=()=>{sp.on=false;onEnd&&onEnd()};synth.speak(u)};
+ sp.on=true;next();return true;
+}
+function stopSpeech(){sp.token++;if(sp.on&&synth)try{synth.cancel()}catch(e){};sp.on=false}
+
+/* ---------- Racha ---------- */
+function doneDays(){return store.get("rd-rezado",[])}
+function markDone(dt){const s=doneDays();if(!s.includes(dt)){s.push(dt);store.set("rd-rezado",s)}renderWeek()}
+
+/* ---------- Reproductor del rezo diario ---------- */
+const P={items:[],segs:[],k:0,playing:false,token:0,timer:null,dog:null,rate:1,music:true,voiceOn:!!synth,done:false,day:null};
+function est(t){return t.split(/\s+/).length*0.43/P.rate+1.2}
+function isQ(t){return /\?$/.test(t)}
+function segmentsFor(d){return [
+ {name:"Entrar en silencio",text:"Busca un lugar tranquilo y ponte cómodo. Respira despacio: inspira… y suelta el aire. Estás en la presencia de Dios. Él te mira con cariño."},
+ {name:"Evangelio · "+d.ref,text:d.sum+" «"+d.ex+"»"},
+ {name:"Reflexión",text:d.refl+" "+d.qs.join(" ")},
+ {name:"Oración final",text:d.fin+" "+RD.GL}]}
+function totalMin(){return Math.max(1,Math.round(P.items.reduce((a,it)=>a+est(it.t)+(isQ(it.t)?25:1.6),0)/60+.6))}
+function remaining(){let s=0;for(let i=P.k;i<P.items.length;i++)s+=est(P.items[i].t)+(isQ(P.items[i].t)?25:1.6);return Math.max(1,Math.round(s/60))}
+function loadPlayer(d){
+ stopPlayer();P.day=d;P.segs=segmentsFor(d);P.items=[];P.done=false;
+ P.segs.forEach((s,si)=>splitS(s.text).forEach(t=>P.items.push({si,t})));P.k=0;
+ $("#pills").innerHTML=P.segs.map((s,i)=>`<button class="pill" data-seg="${i}"><b></b><span>${s.name.split(" · ")[0]}</span></button>`).join("");
+ $$("#pills .pill").forEach(b=>b.onclick=()=>jumpSeg(+b.dataset.seg));
+ $("#pTitle").textContent=d.title;const fd=$("#fDur");if(fd)fd.textContent=(d.audio&&d.duracion)?d.duracion:totalMin()+" min";
+ const tm=$("#tMusic"),tv=$("#tVoice");if(tm&&tv){tm.hidden=!!d.audio;tv.hidden=!!d.audio}
+ renderP(true);
+}
+function renderP(first){
+ if(!$("#player"))return;const it=P.items[P.k];
+ $("#player").classList.toggle("playing",P.playing);
+ $("#pSeg").textContent=P.segs[it.si].name;
+ const el=$("#pText");const txt=P.done?"Amén. Gracias por rezar hoy.":(first&&!P.playing&&P.k===0?"Pulsa el botón y respira. Te acompañamos.":it.t);
+ if(el.textContent!==txt){el.classList.add("fade");setTimeout(()=>{el.textContent=txt;el.classList.remove("fade")},220)}
+ $$("#pills .pill").forEach((b,i)=>{const its=P.items.filter(x=>x.si===i);const idx=P.items.indexOf(its[0]);let w=P.k>idx?Math.min(1,(P.k-idx)/its.length):0;if(P.done)w=1;b.style.setProperty("--w",w*100+"%");b.classList.toggle("on",i===it.si)});
+ $("#pTime").textContent=P.done?"Completado":(P.k===0&&!P.playing?totalMin()+" min":"Quedan "+remaining()+" min");
+ $("#pPlay").innerHTML=P.playing?'<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>':'<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg>';
+ $("#pPlay").setAttribute("aria-label",P.playing?"Pausar":"Reproducir");
+ const cta=$("#ctaPlay");if(cta)cta.lastChild.textContent=P.playing?"Pausar el rezo":(I18N[lang].listen||"Escuchar el rezo de hoy");
+ const mt=$("#miniT");if(mt){mt.textContent=P.day.title;$("#miniS").textContent=P.segs[it.si].name}
+ updateMini();
+}
+function clearT(){clearTimeout(P.timer);clearTimeout(P.dog)}
+function speakCur(){
+ clearT();const my=++P.token;const it=P.items[P.k];renderP();const dur=est(it.t)*1000;
+ if(P.voiceOn&&synth){try{synth.cancel();const u=new SpeechSynthesisUtterance(it.t);u.lang="es-ES";if(voice)u.voice=voice;u.rate=P.rate*.92;u.pitch=.95;const t0=Date.now();
+   u.onend=()=>{if(my!==P.token)return;if(Date.now()-t0<Math.min(600,dur/4)){P.timer=setTimeout(()=>advance(my),dur);return}advance(my)};
+   u.onerror=()=>{if(my!==P.token)return;P.timer=setTimeout(()=>advance(my),dur)};
+   synth.speak(u);P.dog=setTimeout(()=>{if(my===P.token)advance(my)},dur*2.4+4000)}catch(e){P.timer=setTimeout(()=>advance(my),dur)}}
+ else P.timer=setTimeout(()=>advance(my),dur);
+}
+function advance(my){if(my!==P.token||!P.playing)return;clearT();const prev=P.items[P.k].si;if(P.k>=P.items.length-1){finishP();return}
+ const q=isQ(P.items[P.k].t);P.k++;const gap=P.items[P.k].si!==prev?10000:(q?25000:1600);renderP();P.timer=setTimeout(()=>{if(my===P.token&&P.playing)speakCur()},gap)}
+let AU=null;
+function playP(){if(P.day&&P.day.audio){playAudio();return}if(P.done){P.k=0;P.done=false}stopSpeech();P.playing=true;amb(true);speakCur()}
+function playAudio(){stopSpeech();if(!AU||AU.dataset.d!==P.day.date){if(AU)AU.pause();AU=new Audio((/^https?:/.test(P.day.audio)?"":"/")+P.day.audio.replace(/^\//,""));AU.dataset.d=P.day.date;AU.preload="auto";
+  AU.addEventListener("timeupdate",()=>{if(!AU.duration)return;const f=AU.currentTime/AU.duration;P.k=Math.min(P.items.length-1,Math.floor(f*P.items.length));renderP();$("#pTime").textContent="Quedan "+Math.max(1,Math.round((AU.duration-AU.currentTime)/60))+" min"});
+  AU.addEventListener("ended",()=>{P.playing=false;finishP()});AU.addEventListener("error",()=>{toast("No se ha podido cargar el audio. Usamos la voz del navegador.");P.day=Object.assign({},P.day,{audio:""});playP()})}
+ AU.playbackRate=P.rate;P.playing=true;AU.play().catch(()=>{P.playing=false;renderP()});renderP()}
+function stopPlayer(){P.playing=false;P.token++;clearT();if(synth)try{synth.cancel()}catch(e){};amb(false);if(AU)AU.pause()}
+function pauseP(){stopPlayer();renderP()}
+function finishP(){P.playing=false;P.done=true;P.token++;amb(false);markDone(P.day.date);renderP();toast("Rezo completado. Que tengas un buen día.")}
+function jumpSeg(si){const idx=P.items.findIndex(x=>x.si===si);if(idx<0)return;P.done=false;P.k=idx;if(AU&&P.day.audio&&AU.duration){AU.currentTime=AU.duration*idx/P.items.length;renderP();return}if(P.playing)speakCur();else{P.token++;renderP()}}
+let ac=null,master=null;
+function amb(on){try{if(on&&!P.music)on=false;
+ if(on&&!ac){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ac=new AC();master=ac.createGain();master.gain.value=0;const lp=ac.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1000;lp.connect(master);master.connect(ac.destination);
+  [146.83,220,293.66,440].forEach((f,i)=>{const o=ac.createOscillator();o.type=i%2?"triangle":"sine";o.frequency.value=f;o.detune.value=(i-1.5)*5;const g=ac.createGain();g.gain.value=[.5,.26,.2,.06][i];const l=ac.createOscillator();l.frequency.value=.05+i*.031;const lg=ac.createGain();lg.gain.value=[.18,.12,.1,.04][i];l.connect(lg);lg.connect(g.gain);l.start();o.connect(g);g.connect(lp);o.start()})}
+ if(!ac)return;if(on)ac.resume();master.gain.cancelScheduledValues(ac.currentTime);master.gain.setTargetAtTime(on?.055:0,ac.currentTime,on?1.4:.5)}catch(e){}}
+let playerVisible=true;
+function updateMini(){const m=$("#mini");if(m)m.hidden=!(P.playing&&!playerVisible)}
+if($("#player")){
+ const dayAttr=document.body.dataset.day;let di=dayAttr?WEEK.findIndex(d=>d.date===dayAttr):todayIdx;if(di<0)di=todayIdx;
+ window.__rdDay=di;
+ $("#pPlay").onclick=()=>P.playing?pauseP():playP();
+ const cta=$("#ctaPlay");if(cta)cta.onclick=()=>{if(P.playing){pauseP();return}$("#player").scrollIntoView({behavior:"smooth",block:"center"});playP()};
+ $("#pNext").onclick=()=>{const si=P.items[P.k].si;if(si<P.segs.length-1)jumpSeg(si+1)};
+ $("#pPrev").onclick=()=>{const si=P.items[P.k].si;jumpSeg(Math.max(0,si-(P.items.findIndex(x=>x.si===si)===P.k?1:0)))};
+ const RATES=[1,1.15,.85];let ri=0;
+ $("#tSpeed").onclick=e=>{ri=(ri+1)%RATES.length;P.rate=RATES[ri];if(AU)AU.playbackRate=P.rate;e.currentTarget.textContent="Velocidad "+String(P.rate).replace(".",",")+"×"};
+ $("#tMusic").onclick=e=>{P.music=!P.music;e.currentTarget.setAttribute("aria-pressed",P.music);if(P.playing)amb(P.music)};
+ $("#tVoice").onclick=e=>{P.voiceOn=!P.voiceOn&&!!synth;e.currentTarget.setAttribute("aria-pressed",P.voiceOn);if(!synth)toast("Tu navegador no tiene voz: el texto avanza solo.");if(P.playing)speakCur()};
+ if(!synth){$("#tVoice").setAttribute("aria-pressed","false");$("#tVoice").textContent="Modo lectura"}
+ new IntersectionObserver(es=>{playerVisible=es[0].isIntersecting;updateMini()},{threshold:.15}).observe($("#player"));
+ const mb=$("#miniBtn");if(mb)mb.onclick=pauseP;
+ selectDay(di);
+}
+function selectDay(i){
+ const d=WEEK[i];if(!d)return;window.__rdDay=i;
+ const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
+ set("hDate",`${d.wd}, ${d.n} de ${d.mes} de ${d.date.slice(0,4)}`);
+ const hl=$("#hLit");if(hl)hl.innerHTML=`<i class="dot" style="background:${RD.LITC[d.color][0]}"></i><span>${esc(d.lit)}</span>`;
+ set("fRef",d.ref);set("fSet","Misterios "+RD.SETS[d.set].name.toLowerCase());
+ const gl=$("#gLink");if(gl)gl.href=ROOT+"evangelio/"+d.date+".html";
+ set("gTitle",d.title);set("gQuote",d.ex);set("gRefL",d.refL);
+ loadPlayer(d);renderWeek();
+}
+
+/* ---------- Semana ---------- */
+function renderWeek(){
+ const w=$("#week");if(!w)return;const s=doneDays();const sel=window.__rdDay;
+ const link=w.dataset.mode==="link";
+ const lo=Math.max(0,todayIdx-6),hi=Math.min(WEEK.length,todayIdx+8);
+ w.innerHTML=WEEK.map((d,i)=>{if(i<lo||i>=hi)return"";const inner=`<span class="wd">${d.wd}<i class="dot" style="background:${RD.LITC[d.color][0]}" title="${RD.LITC[d.color][1]}"></i></span><span class="num">${d.n} <small style="font-size:14px;font-family:var(--f-ui);color:var(--muted)">${d.mes.slice(0,3)}</small></span><span class="t">${esc(d.title)}</span><span class="r">${d.ref}</span><span class="tags">${i===todayIdx&&isReal?'<span class="tag today">Hoy</span>':""}${s.includes(d.date)?'<span class="tag">✓ Rezado</span>':""}</span>`;
+  return link?`<a class="day${i===sel?" sel":""}" role="listitem" href="${ROOT}evangelio/${d.date}.html" style="text-decoration:none;color:inherit">${inner}</a>`:`<button class="day${i===sel?" sel":""}" role="listitem" data-i="${i}" aria-pressed="${i===sel}">${inner}</button>`}).join("");
+ if(!link)$$("#week .day").forEach(b=>b.onclick=()=>selectDay(+b.dataset.i));
+ const st=$("#streak");if(st){let n=0;for(let i=todayIdx;i>=0;i--){if(s.includes(WEEK[i].date))n++;else if(i<todayIdx)break}st.innerHTML=n?`Llevas <b>${n} ${n===1?"día":"días"}</b> seguidos rezando`:"Empieza tu racha de oración hoy"}
+}
+if($("#week")&&!$("#player")){window.__rdDay=WEEK.findIndex(d=>d.date===document.body.dataset.day);renderWeek()}
+setTimeout(()=>{const w=$("#week"),c=w&&w.querySelector(".day.sel");if(c)w.scrollLeft=Math.max(0,c.offsetLeft-w.offsetLeft-40)},80);
+
+/* ---------- Para este momento ---------- */
+if($("#askForm")){
+ const PR=RD.prayers;const byS=s=>PR.find(p=>p.slug===s);
+ const FEEL=[["Nervios por un examen",["oracion-antes-de-un-examen","oracion-para-aprobar","oracion-a-san-jose-de-cupertino"]],["Alguien está enfermo",["oracion-por-un-enfermo","oracion-antes-de-una-operacion","oracion-por-un-enfermo-de-cancer"]],["Ansiedad",["oracion-para-la-ansiedad","nada-te-turbe","oracion-de-confianza"]],["He perdido a alguien",["oracion-por-un-difunto","oracion-para-el-duelo","oracion-por-mi-madre-fallecida"]],["Busco trabajo",["oracion-para-encontrar-trabajo","oracion-antes-de-una-entrevista"]],["Tengo que decidir",["oracion-ante-una-decision","ven-espiritu-santo"]],["Quiero dar gracias",["oracion-de-accion-de-gracias","el-angelus"]],["No puedo dormir",["oracion-para-dormir","examen-del-dia"]],["Algo urgente o imposible",["oracion-a-san-judas-tadeo","oracion-a-san-expedito","oracion-a-santa-rita"]]];
+ $("#feel").innerHTML=FEEL.map((f,i)=>`<button class="chip" data-i="${i}">${f[0]}</button>`).join("");
+ $$("#feel .chip").forEach(b=>b.onclick=()=>{$$("#feel .chip").forEach(x=>x.classList.toggle("on",x===b));const f=FEEL[+b.dataset.i];suggest(f[0],f[1])});
+ const KEYW={"oracion-antes-de-un-examen":["examen","prueba","oposic","selectividad","ebau","evau"],"oracion-para-aprobar":["aprob","suspend","nota"],"oracion-para-estudiar":["estudi","concentr","memoria","universidad","clase"],"oracion-por-un-enfermo":["enferm","hospital","salud","medico","ingresad"],"oracion-antes-de-una-operacion":["opera","quirofano","cirug","interven"],"oracion-por-un-enfermo-de-cancer":["cancer","quimio","tumor","oncolog"],"oracion-para-la-ansiedad":["ansied","angust","agobi","estres","panico","nervio","miedo","preocup"],"oracion-en-la-tristeza":["triste","solo","sola","soledad","llor","deprim"],"oracion-para-dormir":["dormir","insomn","noche","descans"],"oracion-por-un-difunto":["muert","murio","fallec","difunt","luto"],"oracion-para-el-duelo":["perdi","duelo","echo de menos","ausencia"],"oracion-por-mi-madre-fallecida":["mi madre","mama"],"oracion-por-mi-padre-fallecido":["mi padre","papa"],"oracion-para-encontrar-trabajo":["trabajo","paro","empleo","despid"],"oracion-antes-de-una-entrevista":["entrevista"],"oracion-por-mi-negocio":["negocio","empresa","tienda","clientes","autonomo"],"oracion-ante-una-decision":["decid","decision","dudas","elegir","futuro","cambio"],"oracion-por-la-familia":["familia","herman","discut","casa"],"oracion-por-los-hijos":["hijo","hija","niño","niña","adolescen"],"oracion-por-mi-matrimonio":["pareja","matrimonio","marido","mujer","esposo","esposa","novio","novia"],"oracion-de-accion-de-gracias":["gracias","alegr","feliz","contento","celebr","logr"],"oracion-para-perdonar":["perdon","rencor","ofend","traicion"],"oracion-a-san-antonio":["perdido","perdida","encontrar"],"oracion-a-san-judas-tadeo":["imposible","desesper","dificil","urgente"],"oracion-por-una-embarazada":["embaraz","bebe","parto"],"oracion-antes-de-un-viaje":["viaje","viajar","avion","carretera"]};
+ function suggest(label,slugs){const list=slugs.map(byS).filter(Boolean);const A=$("#answers");
+  if(!list.length){A.innerHTML=`<div class="empty">No hemos encontrado un rezo concreto para «${esc(label)}». Prueba con otras palabras o mira <a href="${ROOT}oraciones/index.html">todas las oraciones</a>.</div>`;return}
+  A.innerHTML=`<p class="hint" style="margin:0 0 4px">Para «${esc(label)}» te proponemos:</p>`+list.slice(0,4).map((p,i)=>`<a class="ans" href="${ROOT}oraciones/${p.slug}.html" style="animation-delay:${i*.07}s;text-decoration:none;color:inherit"><span class="ic" style="background:${RD.CATS[p.cat].color}">${esc(p.t.replace(/^Oración (a |por |para |antes de |en |de )?/,"")[0].toUpperCase())}</span><div><strong>${esc(p.t)}</strong><small>${RD.CATS[p.cat].name} · ${p.min} min</small></div><span>›</span></a>`).join("")+`<a class="ans" href="${ROOT}muro-de-intenciones.html" style="text-decoration:none;color:inherit"><span class="ic" style="background:#2A1A05;color:var(--flame)">✦</span><div><strong>Enciende una vela por esta intención</strong><small>Otras personas rezarán contigo</small></div><span>›</span></a>`}
+ $("#askForm").onsubmit=e=>{e.preventDefault();const v=$("#askIn").value.trim();if(!v){$("#askIn").focus();return}const n=norm(v);
+  const sc=Object.entries(KEYW).map(([id,ks])=>[id,ks.filter(k=>n.includes(norm(k))).length]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
+  $$("#feel .chip").forEach(x=>x.classList.remove("on"));suggest(v,sc)};
+ $("#answers").innerHTML=`<div class="empty">Elige una opción o escribe cómo te sientes. Por ejemplo: «mi madre está en el hospital» o «estoy agobiado con el trabajo».</div>`;
+}
+
+/* ---------- Biblioteca ---------- */
+if($("#libGrid")){
+ let cat=document.body.dataset.cat||"todos",q="";
+ const cards=$$("#libGrid .card");
+ function apply(){const n=norm(q.trim());let shown=0;cards.forEach(c=>{const ok=(cat==="todos"||c.dataset.cat===cat)&&(!n||norm(c.dataset.k).includes(n));c.hidden=!ok;if(ok)shown++});
+  $("#libEmpty").hidden=shown>0;$("#libEmpty").textContent=`No hay oraciones con «${q}». Prueba con otra palabra, por ejemplo «familia» o «noche».`;const lc=$("#libCount");if(lc)lc.textContent=shown+" oraciones"}
+ $$("#chips .chip").forEach(b=>b.addEventListener("click",e=>{if(b.tagName==="A"&&document.body.dataset.cat===undefined){}if(b.dataset.c){e.preventDefault();cat=b.dataset.c;$$("#chips .chip").forEach(x=>x.classList.toggle("on",x===b));apply()}}));
+ const qi=$("#q");if(qi){qi.addEventListener("input",e=>{q=e.target.value;apply()});const u=new URLSearchParams(location.search).get("q");if(u){qi.value=u;q=u}}
+ apply();
+}
+const sb=$("#btnSearch");if(sb)sb.onclick=()=>{const qi=$("#q");if(qi){qi.scrollIntoView({behavior:"smooth",block:"center"});setTimeout(()=>qi.focus({preventScroll:true}),400)}else location.href=ROOT+"oraciones/index.html#buscar"};
+if(location.hash==="#buscar"&&$("#q"))setTimeout(()=>$("#q").focus(),300);
+
+/* ---------- Página de oración ---------- */
+const pt=$("#prayText");
+if(pt){
+ const title=document.querySelector("h1").textContent;
+ const bs=$("#btnSpeak");bs.onclick=()=>{if(sp.on){stopSpeech();bs.textContent="Escuchar";pt.classList.remove("speaking");return}if(speakText(title+". "+pt.textContent,()=>{bs.textContent="Escuchar";pt.classList.remove("speaking")})){bs.textContent="Detener";}};
+ $("#btnCopy").onclick=()=>{const t=title+"\n\n"+pt.textContent+"\n\n"+(document.querySelector('link[rel=canonical]')||{}).href;
+  const sel=()=>{const r=document.createRange();r.selectNodeContents(pt);const s=getSelection();s.removeAllRanges();s.addRange(r);toast("Texto seleccionado: cópialo con tu teclado")};
+  navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t).then(()=>toast("Oración copiada"),sel):sel()};
+ const fav=$("#btnFav");if(fav){const id=document.body.dataset.slug;const f=()=>store.get("rd-favs",[]);const r=()=>{const on=f().includes(id);fav.setAttribute("aria-pressed",on);fav.textContent=on?"★ En favoritos":"☆ Guardar"};r();
+  fav.onclick=()=>{let a=f();a=a.includes(id)?a.filter(x=>x!==id):[...a,id];store.set("rd-favs",a);r();toast(a.includes(id)?"Guardada en favoritos":"Quitada de favoritos")}}
+}
+const favBox=$("#favList");if(favBox){const a=store.get("rd-favs",[]).map(s=>RD.prayers.find(p=>p.slug===s)).filter(Boolean);if(a.length){favBox.hidden=false;favBox.querySelector("ul").innerHTML=a.map(p=>`<li><a href="${ROOT}oraciones/${p.slug}.html">${esc(p.t)}<small>${p.min} min</small></a></li>`).join("")}}
+
+/* ---------- Rosario ---------- */
+if($("#beads")){
+ const R={steps:[],cur:0,voice:false,dir:1};const ORD=["Primer","Segundo","Tercer","Cuarto","Quinto"];const T=RD;
+ function build(set){const S=T.SETS[set],st=[];
+  st.push({b:"cross",k:"Inicio",t:"Señal de la cruz y Credo",x:T.SENAL+"\n\n"+T.CREDO});st.push({b:"p0",k:"Inicio",t:"Padre Nuestro",x:T.PN});
+  ["Por la fe","Por la esperanza","Por la caridad"].forEach((s,i)=>st.push({b:"p"+(i+1),k:"Inicio · Ave María "+(i+1)+" de 3",t:"Ave María",m:[s],x:T.AM}));
+  st.push({b:"p4",k:"Inicio",t:"Gloria",x:T.GL});
+  S.list.forEach((my,m)=>{const big=m===0?"p4":"b"+(m-1);
+   st.push({b:big,k:`Misterio ${m+1} de 5`,t:my[0],m:[ORD[m]+" misterio "+S.adj,my[1],"Fruto: "+my[2]],x:"Contempla en silencio este misterio.\n\n"+T.PN,ann:`${ORD[m]} misterio ${S.adj}: ${my[0]}.`});
+   for(let j=0;j<10;j++)st.push({b:`d${m}-${j}`,k:`Misterio ${m+1} de 5 · Ave María ${j+1} de 10`,t:my[0],m:["Fruto: "+my[2]],x:T.AM,dec:[m,j]});
+   st.push({b:m<4?"b"+m:"medal",k:`Misterio ${m+1} de 5`,t:"Gloria y Oh Jesús mío",x:T.GL+"\n\n"+T.OJ})});
+  st.push({b:"medal",k:"Final",t:"Salve",x:T.SALVE+"\n\n"+T.SENAL});return st}
+ function draw(){const svg=$("#beads"),NS="http://www.w3.org/2000/svg",cx=160,cy=150,Rr=126;svg.innerHTML="";
+  const add=(tag,at)=>{const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);svg.appendChild(e);return e};
+  add("circle",{cx,cy,r:Rr,class:"cord"});add("path",{d:`M${cx} ${cy+Rr} V ${cy+Rr+150}`,class:"cord"});
+  const seq=[];for(let m=0;m<5;m++){for(let j=0;j<10;j++)seq.push({t:"s",id:`d${m}-${j}`});if(m<4)seq.push({t:"b",id:"b"+m})}
+  const w=s=>s.t==="b"?1.8:1;let pos=[0];for(let i=1;i<seq.length;i++)pos.push(pos[i-1]+(w(seq[i-1])+w(seq[i]))/2);const tot=pos[pos.length-1],a0=101,a1=439;
+  seq.forEach((s,i)=>{const a=(a0+(a1-a0)*pos[i]/tot)*Math.PI/180;add("circle",{cx:(cx+Rr*Math.cos(a)).toFixed(1),cy:(cy+Rr*Math.sin(a)).toFixed(1),r:s.t==="b"?8:5.3,class:"bead "+s.t,"data-b":s.id})});
+  add("path",{d:`M${cx} ${cy+Rr-9} l9 9 -9 11 -9 -11z`,class:"bead b","data-b":"medal"});
+  [["p4",cy+Rr+40,"b"],["p3",cy+Rr+60,"s"],["p2",cy+Rr+77,"s"],["p1",cy+Rr+94,"s"],["p0",cy+Rr+120,"b"]].forEach(([id,y,t])=>add("circle",{cx,cy:y,r:t==="b"?8:5.3,class:"bead "+t,"data-b":id}));
+  const y=cy+Rr+142;add("path",{d:`M${cx-4} ${y} h8 v14 h12 v8 h-12 v26 h-8 v-26 h-12 v-8 h12z`,class:"cross bead","data-b":"cross",style:"stroke:none"});
+  svg.querySelectorAll("[data-b]").forEach(el=>el.addEventListener("click",()=>{const i=R.steps.findIndex(s=>s.b===el.dataset.b);if(i>=0)go(i)}))}
+ const todaySet=(WEEK[todayIdx]||{}).set||"gozosos";
+ function setSet(set){R.steps=build(set);R.cur=0;
+  $("#sets").innerHTML=Object.entries(T.SETS).map(([k,s])=>`<button class="set${k===set?" on":""}" data-s="${k}"><b>${s.name}${k===todaySet?" · hoy":""}</b><small>${s.days}</small></button>`).join("");
+  $$("#sets .set").forEach(b=>b.onclick=()=>setSet(b.dataset.s));render()}
+ function render(){const s=R.steps[R.cur],el=$("#step");
+  $("#stK").textContent=s.k;$("#stT").textContent=s.t;$("#stX").textContent=s.x;$("#stM").innerHTML=(s.m||[]).map(x=>`<span>${esc(x)}</span>`).join("");
+  $("#tens").innerHTML=s.dec?Array.from({length:10},(_,j)=>`<i class="${j<s.dec[1]?"done":j===s.dec[1]?"act":""}"></i>`).join(""):"";
+  el.classList.remove("in-r","in-l");void el.offsetWidth;el.classList.add(R.dir>0?"in-r":"in-l");
+  const doneB=new Set(R.steps.slice(0,R.cur).map(x=>x.b));$$("#beads [data-b]").forEach(b=>{const id=b.dataset.b;b.classList.toggle("act",id===s.b);b.classList.toggle("done",doneB.has(id)&&id!==s.b)});
+  $("#rBar").style.width=(R.cur/(R.steps.length-1)*100)+"%";$("#rCount").textContent=`Paso ${R.cur+1} de ${R.steps.length}`;
+  $("#rPrev").disabled=R.cur===0;$("#rNext").textContent=R.cur===R.steps.length-1?"Terminar":"Siguiente";
+  if(R.voice)speakText((s.ann?s.ann+" ":"")+s.x)}
+ function go(i){if(i<0||i>=R.steps.length)return;R.dir=i>=R.cur?1:-1;R.cur=i;render()}
+ function next(){if(R.cur===R.steps.length-1){markDone(ISO);toast("Rosario completado. Que la Virgen te acompañe.");R.cur=0;R.dir=1;render();return}go(R.cur+1)}
+ $("#rNext").onclick=next;$("#rPrev").onclick=()=>go(R.cur-1);$("#rReset").onclick=()=>go(0);
+ $("#rVoice").onclick=e=>{R.voice=!R.voice;e.currentTarget.setAttribute("aria-pressed",R.voice);if(R.voice)render();else stopSpeech()};
+ $("#step").addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key===" "){e.preventDefault();next()}if(e.key==="ArrowLeft"){e.preventDefault();go(R.cur-1)}});
+ swipe($("#step"),d=>d>0?next():go(R.cur-1));
+ draw();setSet(todaySet);
+}
+
+/* ---------- Vía Crucis ---------- */
+if($("#vc")){
+ const V=RD.via;let i=0,dir=1;const seen=new Set();
+ const path=$("#vcPath");path.innerHTML=V.map((s,k)=>(k?'<span class="vc-line"></span>':"")+`<button class="vc-dot" data-k="${k}" aria-label="Estación ${k+1}">${k+1}</button>`).join("");
+ $$("#vcPath .vc-dot").forEach(b=>b.onclick=()=>go(+b.dataset.k));
+ const ROM=["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV"];
+ function render(){const s=V[i];seen.add(i);$("#vcNum").textContent=ROM[i];$("#vcT").textContent=s[0];$("#vcX").textContent=s[1];
+  $$("#vcPath .vc-dot").forEach((b,k)=>{b.classList.toggle("on",k===i);b.classList.toggle("done",seen.has(k)&&k!==i)});
+  const c=$("#vc");c.classList.remove("in-r","in-l");void c.offsetWidth;c.classList.add(dir>0?"in-r":"in-l");
+  const on=$("#vcPath .vc-dot.on");if(on)on.scrollIntoView({block:"nearest",inline:"center",behavior:"smooth"});
+  $("#vcPrev").disabled=i===0;$("#vcNext").textContent=i===V.length-1?"Terminar":"Siguiente estación"}
+ function go(k){if(k<0||k>=V.length)return;dir=k>=i?1:-1;i=k;render()}
+ $("#vcPrev").onclick=()=>go(i-1);$("#vcNext").onclick=()=>{if(i===V.length-1){markDone(ISO);toast("Vía Crucis completado.");return}go(i+1)};
+ $("#vcSpeak").onclick=e=>{const b=e.currentTarget;if(sp.on){stopSpeech();b.textContent="Escuchar";return}if(speakText(`Estación ${i+1}. ${V[i][0]}. ${RD.VIA_ANT} ${V[i][1]}`,()=>b.textContent="Escuchar"))b.textContent="Detener"};
+ $("#vc").addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();go(i+1)}if(e.key==="ArrowLeft"){e.preventDefault();go(i-1)}});
+ swipe($("#vc"),d=>go(i+d));render();
+}
+
+/* ---------- Novena ---------- */
+const nv=$("#novena");
+if(nv){
+ const N=RD.novenas.find(x=>x.slug===nv.dataset.slug);const key="rd-nov-"+N.slug;
+ const start=new Date(N.start+"T00:00:00");const dayN=Math.floor((new Date(ISO+"T00:00:00")-start)/864e5);
+ const todayK=dayN>=0&&dayN<9?dayN:-1;let cur=todayK>=0?todayK:0;
+ const fmt=k=>{const d=new Date(start.getTime()+k*864e5);return d.getDate()+" "+["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"][d.getMonth()]};
+ function render(){const done=store.get(key,[]);
+  $("#novDays").innerHTML=N.days.map((d,k)=>`<button class="nov-day${k===cur?" on":""}${done.includes(k)?" done":""}${k===todayK?" today":""}" data-k="${k}" aria-label="Día ${k+1}"><small>Día</small><b>${k+1}</b><small>${k===todayK?"hoy":fmt(k)}</small></button>`).join("");
+  $$("#novDays .nov-day").forEach(b=>b.onclick=()=>{cur=+b.dataset.k;render()});
+  const d=N.days[cur];$("#novK").textContent=`Día ${cur+1} · ${fmt(cur)}`;$("#novT").textContent=d[0];$("#novX").textContent=d[1];
+  const c=2*Math.PI*36,pct=done.length/9;$("#novRing").innerHTML=`<circle class="bg" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct)}"/><text x="42" y="48" text-anchor="middle">${done.length}/9</text>`;
+  const b=$("#novDone");b.textContent=done.includes(cur)?"✓ Día rezado":"Marcar este día como rezado";b.setAttribute("aria-pressed",done.includes(cur));
+  $("#novStatus").textContent=todayK>=0?`Hoy toca el día ${todayK+1}.`:(dayN<0?`Empieza el ${fmt(0)}. Puedes rezarla en cualquier momento del año.`:"La novena de este año ya ha terminado. Puedes rezarla en cualquier momento.")}
+ $("#novDone").onclick=()=>{let d=store.get(key,[]);d=d.includes(cur)?d.filter(x=>x!==cur):[...d,cur];store.set(key,d);if(d.length===9)toast("¡Novena completada!");else if(d.includes(cur)&&cur<8){cur++;}render()};
+ $("#novSpeak").onclick=e=>{const b=e.currentTarget;if(sp.on){stopSpeech();b.textContent="Escuchar";return}const d=N.days[cur];if(speakText(`${N.open} Día ${cur+1}. ${d[0]}. ${d[1]} ${N.close}`,()=>b.textContent="Escuchar"))b.textContent="Detener"};
+ render();
+}
+
+/* ---------- Supabase (REST, sin librerías) ---------- */
+const SB=CFG.supabaseUrl&&CFG.supabaseAnonKey?{u:CFG.supabaseUrl.replace(/\/$/,""),k:CFG.supabaseAnonKey}:null;
+const AUTH={get token(){return (store.get("rd-auth",null)||{}).access_token||null}};
+async function sbf(path,opt={}){const h={apikey:SB.k,Authorization:"Bearer "+((opt.auth&&AUTH.token)||SB.k),"Content-Type":"application/json",...(opt.headers||{})};
+ const r=await fetch(SB.u+path,{method:opt.method||"GET",headers:h,body:opt.body?JSON.stringify(opt.body):undefined});const t=await r.text();if(!r.ok)throw new Error(r.status+" "+t);return t?JSON.parse(t):null}
+
+/* ---------- Muro de velas ---------- */
+const chapel=$("#chapel");
+if(chapel){
+ const LIMIT=+chapel.dataset.limit||36, FULL=chapel.dataset.full==="1";
+ const VC={salud:["Salud","#2F8C84"],familia:["Familia","#C98A43"],difuntos:["Difuntos","#6B4E8C"],estudios:["Estudios","#3C6FA8"],trabajo:["Trabajo","#9A5470"],gracias:["Gracias","#C9A13A"],otra:["Otra intención","#B23A31"]};
+ const WEEKMS=7*864e5;const cutoff=Date.now()-WEEKMS;
+ let candles=[],prays=new Map(),flags=new Map(),myPrays=new Set(store.get("rd-myprays",[])),myFlags=new Set(store.get("rd-myflags",[])),mine=new Set(store.get("rd-mycandles",[]));
+ let uid=store.get("rd-uid",null);if(!uid){uid="v"+Math.random().toString(36).slice(2,12);store.set("rd-uid",uid)}
+ let db=null,mode="local",sel=null,auto=true,cat="otra",seenChecked=false;
+ const setMode=t=>{const m=$("#vMode");if(m)m.textContent=t};
+ setMode("Las velas se guardan en este dispositivo hasta que se conecte la capilla compartida.");
+ const CC=$("#vCats");CC.innerHTML=Object.entries(VC).map(([k,[n,c]])=>`<button type="button" role="radio" data-c="${k}" aria-checked="${k===cat}" style="--cc:${c}"><i></i>${n}</button>`).join("");
+ $$("#vCats button").forEach(b=>b.onclick=()=>{cat=b.dataset.c;$$("#vCats button").forEach(x=>x.setAttribute("aria-checked",x===b))});
+ const h=(location.hash||"").slice(1);if(VC[h]){cat=h;$$("#vCats button").forEach(x=>x.setAttribute("aria-checked",x.dataset.c===h))}
+ const ta=$("#vText");ta.addEventListener("input",()=>$("#vCount").textContent=`${ta.value.length}/160`);
+ function clean(s,max){return String(s||"").replace(/https?:\/\/\S+|www\.\S+/gi,"").replace(/\S+@\S+\.\S+/g,"").replace(/(\+?\d[\d\s.-]{7,}\d)/g,"").replace(/\s+/g," ").trim().slice(0,max)}
+ function ago(t){const m=Math.round((Date.now()-t)/6e4);if(m<1)return"ahora mismo";if(m<60)return`hace ${m} min`;const hh=Math.round(m/60);if(hh<24)return`hace ${hh} h`;const d=Math.round(hh/24);return d===1?"hace 1 día":`hace ${d} días`}
+ function local(){candles=store.get("rd-velas-local",[]).filter(c=>c.at>cutoff);prays=new Map();store.get("rd-rezos-local",[]).forEach(p=>prays.set(p.c,(prays.get(p.c)||0)+1));render()}
+ const visible=()=>candles.filter(c=>(flags.get(c.id)||0)<3&&!myFlags.has(c.id));
+ function render(){
+  const list=visible().sort((a,b)=>b.at-a.at);
+  const lit=list.slice(0,LIMIT);const slots=Math.max(FULL?24:12,Math.ceil(lit.length/6)*6);
+  $("#candles").innerHTML=lit.map(c=>{const age=Math.min(1,(Date.now()-c.at)/WEEKMS);const wh=Math.round(8+30*(1-age));const col=(VC[c.cat]||VC.otra)[1];
+   return `<button class="candle${c.id===sel?" sel":""}${c._new?" new":""}" data-id="${esc(c.id)}" style="--cc:${col}" aria-label="Vela: ${esc(c.priv?"intención privada":c.text||"sin texto")}"><span class="halo"></span><span class="cup"><span class="wax" style="--wh:${wh}px"><span class="wick"></span><span class="flame"></span></span></span>${mine.has(c.id)?'<span class="mine">Tuya</span>':""}</button>`}).join("")
+   +Array.from({length:Math.max(0,slots-lit.length)},()=>`<span class="candle unlit" aria-hidden="true" style="--cc:#6b5a45"><span class="cup"><span class="wax" style="--wh:36px"><span class="wick"></span></span></span></span>`).join("");
+  lit.forEach(c=>delete c._new);
+  $$("#candles .candle[data-id]").forEach(b=>{b.onclick=()=>{auto=false;select(b.dataset.id)};b.onmouseenter=()=>{if(matchMedia("(hover:hover)").matches){auto=false;select(b.dataset.id)}}});
+  let pr=0;list.forEach(c=>pr+=prays.get(c.id)||0);
+  $("#vStat1").textContent=list.length;$("#vStat2").textContent=pr;
+  chapel.style.setProperty("--warm",Math.min(.32,.08+list.length*.006).toFixed(3));
+  if(!sel||!list.find(c=>c.id===sel)){const pub=list.find(c=>!c.priv&&c.text);sel=pub?pub.id:(list[0]&&list[0].id)||null}
+  showReader();
+  const feed=$("#vFeed");if(feed){const pub=list.filter(c=>!c.priv&&c.text);feed.innerHTML=pub.slice(0,60).map(c=>`<li data-id="${esc(c.id)}"><q>${esc(c.text)}</q><small>${esc(c.name||"Anónimo")} · ${(VC[c.cat]||VC.otra)[0]} · ${ago(c.at)} · ${prays.get(c.id)||0} oraciones</small></li>`).join("");
+   feed.querySelectorAll("li").forEach(li=>li.onclick=()=>{auto=false;select(li.dataset.id);$("#vReader").scrollIntoView({behavior:"smooth",block:"center"})})}
+  if(!seenChecked&&mode!=="local"){seenChecked=true;let tot=0;candles.forEach(c=>{if(mine.has(c.id))tot+=prays.get(c.id)||0});const before=store.get("rd-myprays-seen",null);
+   if(before!==null&&tot>before)setTimeout(()=>toast(`Desde tu última visita, ${tot-before} ${tot-before===1?"persona ha":"personas han"} rezado por tus velas.`),900);store.set("rd-myprays-seen",tot)}
+ }
+ function select(id){sel=id;$$("#candles .candle").forEach(b=>b.classList.toggle("sel",b.dataset.id===id));showReader()}
+ function showReader(){const c=candles.find(x=>x.id===sel),R=$("#vReader");
+  if(!c){R.innerHTML=`<span class="cat"><i style="background:var(--flame)"></i>La capilla está esperando</span><blockquote>Aún no hay velas encendidas esta semana. Enciende la primera y deja tu intención: otras personas rezarán por ti.</blockquote><div class="row"><a class="btn btn-flame sm" href="#vForm">Encender la primera vela</a></div>`;return}
+  const n=prays.get(c.id)||0,pressed=myPrays.has(c.id),col=(VC[c.cat]||VC.otra);
+  R.innerHTML=`<span class="cat"><i style="background:${col[1]}"></i>${col[0]}${mine.has(c.id)?" · tu vela":""}</span><blockquote>${c.priv||!c.text?"Intención privada. Solo Dios la conoce.":"«"+esc(c.text)+"»"}</blockquote><span class="who">${esc(c.name||"Anónimo")} · encendida ${ago(c.at)} · arde ${Math.max(0,Math.ceil((c.at+WEEKMS-Date.now())/864e5))} días más</span><div class="row"><button class="btn btn-wax sm" id="vPray" aria-pressed="${pressed}">${pressed?"✓ Has rezado por esta intención":"He rezado por ti"}</button><span class="who" id="vPrayN">${n===1?"1 persona ha rezado":n+" personas han rezado"}</span>${mine.has(c.id)||c.priv?"":'<button class="flag" id="vFlag" aria-label="Avisar de una intención inadecuada">Avisar</button>'}</div>`;
+  $("#vPray").onclick=()=>pray(c.id);const fl=$("#vFlag");if(fl)fl.onclick=()=>flag(c.id)}
+ async function pray(id){if(myPrays.has(id))return;myPrays.add(id);store.set("rd-myprays",[...myPrays]);prays.set(id,(prays.get(id)||0)+1);showReader();sparks($(`#candles .candle[data-id="${CSS.escape(id)}"]`),8);
+  try{if(mode==="claude")await db.collection("rezos").doc(id+"--"+uid).set({c:id,at:Date.now()});else if(mode==="supabase")await sbf("/rest/v1/rezos",{method:"POST",headers:{Prefer:"return=minimal,resolution=ignore-duplicates"},body:{vela_id:id,visitante:uid}});else{const a=store.get("rd-rezos-local",[]);a.push({c:id});store.set("rd-rezos-local",a)}}catch(e){}}
+ async function flag(id){if(myFlags.has(id))return;myFlags.add(id);store.set("rd-myflags",[...myFlags]);sel=null;render();toast("Gracias por avisar. Hemos ocultado esta vela para ti y la revisaremos.");
+  try{if(mode==="claude")await db.collection("avisos").doc(id+"--"+uid).set({c:id,at:Date.now()});else if(mode==="supabase")await sbf("/rest/v1/rpc/reportar_vela",{method:"POST",body:{p_vela:id,p_visitante:uid}})}catch(e){}}
+ function sparks(el,n){if(!el)return;const f=el.querySelector(".flame");if(!f)return;const r=f.getBoundingClientRect(),pr=chapel.getBoundingClientRect();
+  for(let i=0;i<n;i++){const s=document.createElement("span");s.className="spark";s.style.left=(r.left-pr.left+r.width/2)+"px";s.style.top=(r.top-pr.top+r.height/2)+"px";const a=Math.random()*Math.PI*2,d=20+Math.random()*40;s.style.setProperty("--dx",Math.cos(a)*d+"px");s.style.setProperty("--dy",(Math.sin(a)*d-30)+"px");chapel.appendChild(s);setTimeout(()=>s.remove(),1000)}}
+ const newId=()=>(crypto.randomUUID?crypto.randomUUID():"l"+Date.now().toString(36)+Math.random().toString(36).slice(2,8));
+ $("#vForm").onsubmit=async e=>{e.preventDefault();
+  const text=clean(ta.value,160),name=clean($("#vName").value,30),priv=$("#vPriv").checked;
+  if(!text&&!priv){ta.focus();toast("Escribe tu intención o marca que sea privada.");return}
+  const btn=$("#vSubmit");btn.disabled=true;
+  const c={text:priv?"":text,name,cat,priv,at:Date.now(),by:uid};let id=newId();
+  try{if(mode==="claude"){const ref=db.collection("velas").doc();id=ref.id;await ref.set(c)}
+   else if(mode==="supabase"){await sbf("/rest/v1/velas",{method:"POST",headers:{Prefer:"return=minimal"},body:{id,texto:c.text,nombre:name,cat,privada:priv,visitante:uid}})}
+   else{const a=store.get("rd-velas-local",[]);a.push({...c,id});store.set("rd-velas-local",a)}}
+  catch(err){const a=store.get("rd-velas-local",[]);a.push({...c,id});store.set("rd-velas-local",a);toast(/40[0-9]|limite|límite/i.test(String(err))?"Has encendido muchas velas seguidas. Espera unos minutos.":"No se ha podido guardar en la capilla compartida. Tu vela se queda en este dispositivo.")}
+  mine.add(id);store.set("rd-mycandles",[...mine]);
+  const ex=candles.find(x=>x.id===id);if(!ex)candles.push({...c,id,_new:true});else ex._new=true;
+  sel=id;auto=false;render();
+  const el=$(`#candles .candle[data-id="${CSS.escape(id)}"]`);if(el){el.scrollIntoView({behavior:"smooth",block:"center"});setTimeout(()=>sparks(el,14),350)}
+  ta.value="";$("#vCount").textContent="0/160";btn.disabled=false;toast("Tu vela está encendida. Arderá durante 7 días.")};
+ setInterval(()=>{if(!auto||document.hidden)return;const pub=visible().filter(c=>!c.priv&&c.text).sort((a,b)=>b.at-a.at);if(pub.length<2)return;const i=pub.findIndex(c=>c.id===sel);select(pub[(i+1)%pub.length].id)},7000);
+ local();
+ async function sbLoad(){const rows=await sbf("/rest/v1/velas_semana?select=*&order=created_at.desc&limit=300");const keepNew=new Set(candles.filter(c=>c._new).map(c=>c.id));
+  candles=rows.map(r=>({id:r.id,text:r.texto,name:r.nombre,cat:r.cat,priv:r.privada,at:Date.parse(r.created_at),_new:keepNew.has(r.id)}));prays=new Map(rows.map(r=>[r.id,r.rezos]));render()}
+ (async()=>{
+  try{if(window.claude&&window.claude.use){const d=await window.claude.use("db");if(d){db=d;mode="claude";
+   try{const u=await window.claude.use("user");const real=u&&u.id?await u.id():null;if(real)uid=real}catch(e){}
+   candles=[];
+   db.collection("velas").where("at",">",cutoff).orderBy("at","desc").limit(300).onSnapshot(s=>{const keepNew=new Set(candles.filter(c=>c._new).map(c=>c.id));candles=s.docs.map(d=>({...d.data(),id:d.id,_new:keepNew.has(d.id)}));render()},()=>{});
+   db.collection("rezos").limit(1000).onSnapshot(s=>{prays=new Map();s.docs.forEach(d=>{const x=d.data();prays.set(x.c,(prays.get(x.c)||0)+1)});render()},()=>{});
+   db.collection("avisos").limit(1000).onSnapshot(s=>{flags=new Map();s.docs.forEach(d=>{const x=d.data();flags.set(x.c,(flags.get(x.c)||0)+1)});render()},()=>{});
+   setMode("Capilla compartida: todos ven las velas encendidas esta semana.");return}}}catch(e){}
+  if(SB){try{mode="supabase";await sbLoad();setMode("Capilla compartida: todos ven las velas encendidas esta semana.");setInterval(()=>{if(!document.hidden)sbLoad().catch(()=>{})},30000)}catch(e){mode="local";local()}}
+ })();
+}
+
+/* ---------- Cuenta y sincronización ---------- */
+(function(){
+ const btn=$("#btnUser"),acc=$("#account");if(!SB||!btn||!acc)return;btn.hidden=false;
+ const open=()=>{acc.hidden=false;renderAcc()},close=()=>{acc.hidden=true};btn.onclick=open;acc.querySelectorAll("[data-close]").forEach(b=>b.onclick=close);
+ const msg=t=>{$("#accMsg").textContent=t};
+ // vuelta desde el enlace mágico: #access_token=...&refresh_token=...
+ const hp=new URLSearchParams(location.hash.slice(1));
+ if(hp.get("access_token")){store.set("rd-auth",{access_token:hp.get("access_token"),refresh_token:hp.get("refresh_token"),exp:Date.now()+(+hp.get("expires_in")||3600)*1000});history.replaceState(null,"",location.pathname+location.search);setTimeout(()=>{toast("Has entrado en tu cuenta. Sincronizando…");pull()},300)}
+ async function refresh(){const a=store.get("rd-auth",null);if(!a||!a.refresh_token)return null;if(a.exp>Date.now()+60000)return a;
+  try{const r=await sbf("/auth/v1/token?grant_type=refresh_token",{method:"POST",body:{refresh_token:a.refresh_token}});const n={access_token:r.access_token,refresh_token:r.refresh_token,exp:Date.now()+r.expires_in*1000,email:r.user&&r.user.email};store.set("rd-auth",n);return n}catch(e){store.set("rd-auth",null);return null}}
+ async function me(){const a=await refresh();if(!a)return null;try{const u=await sbf("/auth/v1/user",{auth:true});return u}catch(e){return null}}
+ function snapshot(){const o={};try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(SYNC_KEYS.test(k))o[k]=JSON.parse(localStorage.getItem(k))}}catch(e){}return o}
+ function merge(a,b){if(Array.isArray(a)&&Array.isArray(b))return[...new Set([...a,...b])];return b!==undefined?b:a}
+ let busy=false,timer=null;
+ async function pull(){const u=await me();if(!u)return;try{const rows=await sbf(`/rest/v1/progreso?select=datos&user_id=eq.${u.id}`,{auth:true});const remote=(rows[0]||{}).datos||{};const loc=snapshot();
+  Object.keys(remote).forEach(k=>{if(SYNC_KEYS.test(k))try{localStorage.setItem(k,JSON.stringify(merge(remote[k],loc[k])))}catch(e){}});await push(true);renderWeek();toast("Tu progreso está sincronizado.")}catch(e){}}
+ async function push(now){if(!now){clearTimeout(timer);timer=setTimeout(()=>push(true),2500);return}if(busy)return;busy=true;const u=await me();if(u){try{await sbf("/rest/v1/progreso",{method:"POST",auth:true,headers:{Prefer:"resolution=merge-duplicates,return=minimal"},body:{user_id:u.id,datos:snapshot(),updated_at:new Date().toISOString()}})}catch(e){}}busy=false}
+ window.__rdSync=()=>{if(store.get("rd-auth",null))push(false)};
+ async function renderAcc(){const u=await me();$("#accOut").hidden=!!u;$("#accIn").hidden=!u;msg("");
+  if(u){$("#accWho").textContent=u.email;const s=store.get("rd-rezado",[]).length,f=store.get("rd-favs",[]).length;$("#accStats").innerHTML=`<li><a>Días rezados<small>${s}</small></a></li><li><a>Oraciones guardadas<small>${f}</small></a></li>`}}
+ $("#accForm").onsubmit=async e=>{e.preventDefault();const em=$("#accEmail").value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg("Revisa el correo: falta la @ o el dominio.");return}
+  try{await sbf("/auth/v1/otp",{method:"POST",body:{email:em,create_user:true,options:{emailRedirectTo:location.origin+location.pathname}}});msg("Te hemos enviado un enlace. Ábrelo desde este dispositivo para entrar.")}catch(err){msg("No se ha podido enviar el enlace. Inténtalo de nuevo en unos minutos.")}};
+ $("#accLogout").onclick=()=>{store.set("rd-auth",null);renderAcc();toast("Has cerrado sesión. Tu progreso sigue guardado en tu cuenta.")};
+ if(store.get("rd-auth",null))refresh();
+})();
+
+/* ---------- Reto de Adviento ---------- */
+const reto=$("#reto");
+if(reto){const key=reto.dataset.key;const items=$$("#reto .reto-d");
+ function r(){const done=store.get(key,[]);items.forEach(li=>{const k=+li.dataset.k,cb=li.querySelector("input");cb.checked=done.includes(k);li.classList.toggle("done",cb.checked);li.classList.toggle("today",li.dataset.date===ISO)});
+  const c=2*Math.PI*36,pct=done.length/items.length;$("#retoRing").innerHTML=`<circle class="bg" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct)}"/><text x="42" y="48" text-anchor="middle">${done.length}</text>`;
+  const t=items.find(li=>li.dataset.date===ISO);$("#retoStatus").textContent=t?`Hoy: ${t.querySelector("span").lastChild.textContent}`:(ISO<items[0].dataset.date?`Empieza el 29 de noviembre. Llevas ${done.length} de ${items.length}.`:`Llevas ${done.length} de ${items.length} gestos.`)}
+ reto.addEventListener("change",e=>{const k=+e.target.dataset.k;let d=store.get(key,[]);d=e.target.checked?[...new Set([...d,k])]:d.filter(x=>x!==k);store.set(key,d);r();if(e.target.checked)toast(d.length===items.length?"¡Reto completado! Feliz Navidad.":"Gesto marcado. ¡Sigue así!")});
+ r();const t=items.find(li=>li.dataset.date===ISO);if(t)setTimeout(()=>t.scrollIntoView({block:"center",behavior:"smooth"}),400)}
+
+/* ---------- Página del widget ---------- */
+if($("#wPreview")){let dark=false;const render=()=>{const w=WEEK[todayIdx];$("#wPreview").innerHTML=`<div style="max-width:420px;border-radius:18px;padding:20px;font-family:Georgia,serif;${dark?"background:#14302A;color:#EEF2EC":"background:#fff;color:#17211C;border:1px solid #CDD6CB"}"><div style="font:700 11px/1.3 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:${dark?"#D6B266":"#2C5D47"}">Evangelio de hoy · ${esc(w.wd)} ${w.n} de ${esc(w.mes)}</div><div style="font-size:20px;margin:8px 0">${esc(w.title)}</div><div style="font-style:italic;font-size:16px;line-height:1.5;opacity:.9">«${esc(w.ex)}»</div><div style="font:13px system-ui,sans-serif;margin-top:12px;opacity:.75">${esc(w.refL)} · Escuchar en Rezo Diario ›</div></div>`};render();
+ $("#wDark").onclick=e=>{dark=!dark;e.currentTarget.setAttribute("aria-pressed",dark);const c=$("#wCode");c.textContent=c.textContent.replace(/<div id="rezodiario-evangelio"( data-tema="oscuro")?>/,dark?'<div id="rezodiario-evangelio" data-tema="oscuro">':'<div id="rezodiario-evangelio">');render()};
+ $("#wCopy").onclick=()=>{const t=$("#wCode").textContent;const sel=()=>{const r=document.createRange();r.selectNodeContents($("#wCode"));const s=getSelection();s.removeAllRanges();s.addRange(r);toast("Código seleccionado: cópialo con tu teclado")};navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t).then(()=>toast("Código copiado"),sel):sel()}}
+
+/* ---------- Donaciones ---------- */
+if($("#give")){
+ const AMTS=[5,10,25,50],IMP={5:"Cubre el alojamiento de los audios durante una semana.",10:"Hace posible grabar y editar un rezo diario completo.",25:"Financia la música y la edición de una semana de audios.",50:"Ayuda a traducir un mes de rezos a otro idioma."};
+ let freq="once",amount=10;
+ $("#amts").innerHTML=AMTS.map(a=>`<button class="amt${a===10?" on":""}" data-a="${a}">${a} €</button>`).join("");
+ $$("#amts .amt").forEach(b=>b.onclick=()=>{amount=+b.dataset.a;$("#otherAmt").value="";r()});
+ $("#otherAmt").addEventListener("input",e=>{const v=Math.round(+e.target.value);if(v>0){amount=v;r()}});
+ $$("#give .seg button").forEach(b=>b.onclick=()=>{freq=b.dataset.f;$$("#give .seg button").forEach(x=>x.classList.toggle("on",x===b));r()});
+ function r(){$$("#amts .amt").forEach(b=>b.classList.toggle("on",+b.dataset.a===amount&&!$("#otherAmt").value));const tier=[...AMTS].reverse().find(a=>amount>=a)||5;
+  $("#impact").textContent=(freq==="month"?"Cada mes: ":"")+IMP[tier];$("#donBtn").textContent=`Donar ${amount} €${freq==="month"?" al mes":""}`;$("#thanks").hidden=true}
+ $("#donBtn").onclick=()=>{const pay=$("#give").dataset.pay;if(pay){const a=document.createElement("a");a.href=pay+(pay.includes("?")?"&":"?")+"amount="+amount+"&frecuencia="+freq;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();return}const t=$("#thanks");t.hidden=false;t.innerHTML=`<strong>Gracias por querer aportar ${amount} €${freq==="month"?" al mes":""}.</strong><br>Este botón abrirá la pasarela de pago segura (Stripe, PayPal o Bizum) cuando la conectéis. Ahora mismo no se realiza ningún cobro.`};r();
+}
+
+/* ---------- Boletín ---------- */
+const nf=$("#newsForm");if(nf)nf.onsubmit=e=>{e.preventDefault();const v=$("#email").value.trim(),m=$("#newsMsg");m.hidden=false;
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){m.textContent="Revisa el correo: falta la @ o el dominio.";$("#email").focus();return}
+ m.textContent="Apuntado. Recibirás el primer rezo a las 7:00 cuando el boletín esté conectado.";$("#email").value=""};
+
+/* ---------- Vidriera gótica con cruz, rayos de luz y polvo ---------- */
+const cv=$("#rose");
+if(cv){const cx=cv.getContext("2d");let C={},W=0,H=0,on=true,motes=[];const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ const rc=()=>{const cs=getComputedStyle(root);C={gold:cs.getPropertyValue("--gold").trim(),ink:cs.getPropertyValue("--hero-ink").trim(),g:cs.getPropertyValue("--lit-green").trim(),r:cs.getPropertyValue("--lit-red").trim(),v:cs.getPropertyValue("--c-peace").trim(),b:cs.getPropertyValue("--c-study").trim(),hero:cs.getPropertyValue("--hero").trim()}};
+ const size=()=>{const r=cv.getBoundingClientRect(),dpr=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
+  motes=Array.from({length:W>700?46:22},()=>({x:Math.random(),y:Math.random(),s:.6+Math.random()*1.6,v:.2+Math.random()*.6,p:Math.random()*6.28}))};
+ // geometría de la ventana
+ const geo=()=>{const wide=W>940;if(!wide){const ww=Math.min(150,W*.36),wh=ww*2.1;return{X:W-ww*.75,top:-wh*.28,ww,wh}}
+  const cr=cv.getBoundingClientRect(),st=cv.parentElement.querySelector(".stag"),pl=cv.parentElement.querySelector(".player");let a=W*.45,b=W*.6;
+  if(st&&pl){a=Math.max(...[...st.children].map(e=>e.getBoundingClientRect().right))-cr.left;b=pl.getBoundingClientRect().left-cr.left}
+  const ww=Math.max(110,Math.min(190,(b-a)*.8)),wh=Math.min(H*.78,ww*2.1);return{X:(a+b)/2,top:H*.5-wh*.5,ww,wh}};
+ function arch(X,top,ww,wh){const l=X-ww/2,r=X+ww/2,spring=top+ww*.86,bot=top+wh;cx.beginPath();cx.moveTo(l,bot);cx.lineTo(l,spring);
+  cx.arcTo(l,top+ww*.2,X,top,ww*.95);cx.lineTo(X,top);cx.arcTo(r,top+ww*.2,r,spring,ww*.95);cx.lineTo(r,bot);cx.closePath()}
+ const draw=t=>{cx.clearRect(0,0,W,H);const {X,top,ww,wh}=geo();const tt=reduce?0:t;
+  // rayos de luz que entran en diagonal
+  const flick=.85+.15*Math.sin(tt*.0006);
+  for(let k=0;k<3;k++){const off=(k-1)*ww*.32;const g=cx.createLinearGradient(X,top+wh*.3,X-W*.55,H*1.05);g.addColorStop(0,C.gold+Math.round((k===1?40:24)*flick).toString(16).padStart(2,"0"));g.addColorStop(1,"transparent");
+   cx.fillStyle=g;cx.beginPath();cx.moveTo(X+off-ww*.16,top+wh*.25);cx.lineTo(X+off+ww*.16,top+wh*.3);cx.lineTo(X+off-W*.42+ww*.5,H*1.1);cx.lineTo(X+off-W*.62,H*1.1);cx.closePath();cx.fill()}
+  // resplandor detrás de la ventana
+  const halo=cx.createRadialGradient(X,top+wh*.45,0,X,top+wh*.45,ww*1.6);halo.addColorStop(0,C.gold+"26");halo.addColorStop(1,"transparent");cx.fillStyle=halo;cx.fillRect(0,0,W,H);
+  // vidrios de colores
+  cx.save();arch(X,top,ww,wh);cx.clip();
+  const tints=[C.b,C.r,C.g,C.v,C.gold];const cols=4,rows=9,cw=ww/cols,ch=wh/rows;
+  for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){const k=(i*3+j*2)%5;const a=.10+.05*Math.sin(tt*.0008+i+j);cx.fillStyle=tints[k]+Math.round(a*255).toString(16).padStart(2,"0");cx.fillRect(X-ww/2+i*cw,top+j*ch,cw,ch)}
+  // cruz luminosa
+  const cxm=X,cyc=top+wh*.42,cl=wh*.5,cwid=ww*.13,arm=ww*.62;
+  const cg=cx.createRadialGradient(cxm,cyc,0,cxm,cyc,wh*.45);cg.addColorStop(0,C.gold+"cc");cg.addColorStop(.6,C.gold+"66");cg.addColorStop(1,C.gold+"22");cx.fillStyle=cg;
+  cx.fillRect(cxm-cwid/2,cyc-cl*.42,cwid,cl);cx.fillRect(cxm-arm/2,cyc-cl*.2,arm,cwid);
+  // emplomado
+  cx.strokeStyle=C.hero+"cc";cx.lineWidth=2;
+  for(let i=1;i<cols;i++){cx.beginPath();cx.moveTo(X-ww/2+i*cw,top);cx.lineTo(X-ww/2+i*cw,top+wh);cx.stroke()}
+  for(let j=1;j<rows;j++){cx.beginPath();cx.moveTo(X-ww/2,top+j*ch);cx.lineTo(X+ww/2,top+j*ch);cx.stroke()}
+  cx.strokeStyle=C.gold+"55";cx.lineWidth=1.2;cx.strokeRect(cxm-cwid/2,cyc-cl*.42,cwid,cl);cx.strokeRect(cxm-arm/2,cyc-cl*.2,arm,cwid);
+  // pequeño rosetón en la punta
+  cx.beginPath();cx.arc(X,top+ww*.42,ww*.2,0,6.283);cx.strokeStyle=C.hero+"dd";cx.lineWidth=3;cx.stroke();
+  for(let i=0;i<6;i++){const a=i*Math.PI/3+tt*.00004;cx.beginPath();cx.arc(X+Math.cos(a)*ww*.1,top+ww*.42+Math.sin(a)*ww*.1,ww*.07,0,6.283);cx.strokeStyle=C.gold+"66";cx.lineWidth=1.2;cx.stroke()}
+  cx.restore();
+  // marco de piedra
+  arch(X,top,ww,wh);cx.strokeStyle=C.ink+"30";cx.lineWidth=6;cx.stroke();arch(X,top,ww,wh);cx.strokeStyle=C.gold+"55";cx.lineWidth=1.2;cx.stroke();
+  // mainel central y alféizar
+  cx.fillStyle=C.ink+"22";cx.fillRect(X-ww/2-14,top+wh,ww+28,7);
+  // motas de polvo dentro de la luz
+  motes.forEach(m=>{const y=((m.y+tt*.000015*m.v)%1);const px=X-ww*.2-(y*H*.9)*.62+m.x*ww*1.4-ww*.5;const py=top+wh*.35+y*(H-top-wh*.35);const a=.25+.35*Math.sin(tt*.002+m.p);
+   cx.beginPath();cx.arc(px+Math.sin(tt*.0005+m.p)*6,py,m.s,0,6.283);cx.fillStyle=C.gold+Math.round(Math.max(0,a)*255).toString(16).padStart(2,"0");cx.fill()})};
+ const loop=t=>{if(on)draw(t);if(!reduce)requestAnimationFrame(loop)};
+ rc();size();addEventListener("resize",()=>{size();draw(performance.now())});document.addEventListener("rd-theme",()=>{rc();draw(performance.now())});
+ matchMedia("(prefers-color-scheme: dark)").addEventListener("change",rc);new IntersectionObserver(e=>on=e[0].isIntersecting).observe(cv);requestAnimationFrame(loop);if(reduce)draw(0)}
+
+/* ---------- Web instalable (solo en el dominio real) ---------- */
+if("serviceWorker" in navigator&&location.protocol==="https:"&&/rezodiario\.com$/.test(location.hostname)){navigator.serviceWorker.register("/sw.js").catch(()=>{})}
+})();

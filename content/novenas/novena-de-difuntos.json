@@ -1,0 +1,48 @@
+{
+  "slug": "novena-de-difuntos",
+  "t": "Novena de difuntos",
+  "start": "2026-10-24",
+  "end": "2026-11-01",
+  "feast": "2 de noviembre",
+  "intro": "Del 24 de octubre al 1 de noviembre, para preparar el día de los Fieles Difuntos. También se reza en los nueve días siguientes a un fallecimiento.",
+  "open": "En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.\n\nSeñor, Dios de vivos y no de muertos, te presentamos a nuestros seres queridos que ya han partido. Recíbelos en tu casa.",
+  "close": "Dale, Señor, el descanso eterno, y brille para él la luz perpetua. Descanse en paz. Amén.\n\nPadre Nuestro, Ave María y Gloria. Que las almas de los fieles difuntos, por la misericordia de Dios, descansen en paz. Amén.",
+  "days": [
+    {
+      "t": "Por nuestros padres",
+      "x": "Recuerda a tu padre y a tu madre, vivos o difuntos, y da gracias por la vida que te dieron."
+    },
+    {
+      "t": "Por los abuelos",
+      "x": "Reza por tus abuelos y por todos los mayores que ya han partido."
+    },
+    {
+      "t": "Por los hermanos y amigos",
+      "x": "Pon nombre a los amigos y familiares que echas de menos."
+    },
+    {
+      "t": "Por los que murieron solos",
+      "x": "Reza por quienes murieron sin nadie a su lado."
+    },
+    {
+      "t": "Por los que nadie recuerda",
+      "x": "Pide por las almas que ya no tienen quien rece por ellas."
+    },
+    {
+      "t": "Por los que murieron de repente",
+      "x": "Pide por quienes murieron en accidentes o sin poder despedirse."
+    },
+    {
+      "t": "Por los niños",
+      "x": "Encomienda a Dios a los niños y bebés que han fallecido, y a sus padres."
+    },
+    {
+      "t": "Por los que sufren el duelo",
+      "x": "Reza por quienes lloran una pérdida reciente."
+    },
+    {
+      "t": "Por todos los santos",
+      "x": "Mañana es Todos los Santos. Da gracias por la esperanza de volver a encontrarnos."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# Vuelve a generar la web cada noche para que «hoy» cambie solo.
+# Guarda el «build hook» de Netlify como secreto NETLIFY_BUILD_HOOK en GitHub.
+name: Publicar el rezo de cada día
+on:
+  schedule:
+    - cron: "1 23 * * *"   # 00:01 en invierno y 01:01 en verano (hora de Madrid)
+  workflow_dispatch:
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Avisar a Netlify
+        run: curl -fsS -X POST -d '{}' "${{ secrets.NETLIFY_BUILD_HOOK }}"

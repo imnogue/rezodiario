@@ -1,0 +1,48 @@
+{
+  "slug": "novena-a-la-inmaculada",
+  "t": "Novena a la Inmaculada Concepción",
+  "start": "2026-11-29",
+  "end": "2026-12-07",
+  "feast": "8 de diciembre",
+  "intro": "Del 29 de noviembre al 7 de diciembre, para preparar la solemnidad de la Inmaculada, patrona de España.",
+  "open": "En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.\n\nVirgen Inmaculada, llena de gracia, durante estos nueve días quiero prepararme para tu fiesta. Enséñame a decir sí a Dios como tú.",
+  "close": "Tres Avemarías.\n\nBendita sea tu pureza, y eternamente lo sea, pues todo un Dios se recrea en tan graciosa belleza. A ti, celestial princesa, Virgen sagrada María, te ofrezco en este día alma, vida y corazón. Mírame con compasión, no me dejes, Madre mía. Amén.",
+  "days": [
+    {
+      "t": "Llena de gracia",
+      "x": "Dios miró a María desde el primer instante. Da gracias porque también te mira a ti con cariño."
+    },
+    {
+      "t": "La escucha",
+      "x": "María escuchó al ángel antes de responder. Pide un corazón que escuche."
+    },
+    {
+      "t": "El sí",
+      "x": "Hágase en mí según tu palabra. ¿Qué sí te pide Dios hoy?"
+    },
+    {
+      "t": "La humildad",
+      "x": "María se llamó a sí misma esclava del Señor. Pide sencillez."
+    },
+    {
+      "t": "El servicio",
+      "x": "María fue deprisa a ayudar a Isabel. ¿A quién puedes ayudar hoy?"
+    },
+    {
+      "t": "La alegría",
+      "x": "Proclama mi alma la grandeza del Señor. Haz tu propio Magníficat."
+    },
+    {
+      "t": "La pureza",
+      "x": "Pide un corazón limpio, que mire a los demás sin juzgar."
+    },
+    {
+      "t": "La fe en la oscuridad",
+      "x": "María no lo entendía todo, pero guardaba las cosas en su corazón. Confíale lo que no entiendes."
+    },
+    {
+      "t": "Madre nuestra",
+      "x": "Mañana es su fiesta. Ponte bajo su manto con toda tu familia."
+    }
+  ]
+}

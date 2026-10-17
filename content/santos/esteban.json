@@ -1,0 +1,15 @@
+{
+  "slug": "esteban",
+  "name": "San Esteban",
+  "date": "26 de diciembre",
+  "md": "12-26",
+  "short": "Protomártir",
+  "bio": [
+    "Fue uno de los siete diáconos elegidos por los apóstoles para servir a los pobres de Jerusalén.",
+    "Los Hechos de los Apóstoles cuentan que fue apedreado por su fe y que murió perdonando a quienes le mataban.",
+    "Es el primer mártir cristiano."
+  ],
+  "patron": "los diáconos",
+  "prayer": "oracion-para-perdonar",
+  "oracion": "San Esteban, que moriste perdonando, enséñanos a perdonar. Amén."
+}

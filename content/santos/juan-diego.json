@@ -1,0 +1,15 @@
+{
+  "slug": "juan-diego",
+  "name": "San Juan Diego",
+  "date": "9 de diciembre",
+  "md": "12-09",
+  "short": "Vidente de Guadalupe",
+  "bio": [
+    "Juan Diego Cuauhtlatoatzin era un indígena sencillo de México. En diciembre de 1531 la Virgen se le apareció en el cerro del Tepeyac.",
+    "Llevó al obispo su tilma con rosas, en la que apareció la imagen de la Virgen de Guadalupe.",
+    "Fue canonizado en 2002. Es el primer santo indígena de América."
+  ],
+  "patron": "los indígenas de América",
+  "prayer": "oracion-de-confianza",
+  "oracion": "San Juan Diego, mensajero humilde, enséñanos a confiar en la Virgen. Amén."
+}

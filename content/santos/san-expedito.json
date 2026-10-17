@@ -1,0 +1,15 @@
+{
+  "slug": "san-expedito",
+  "name": "San Expedito",
+  "date": "19 de abril",
+  "md": "04-19",
+  "short": "Patrón de las causas urgentes",
+  "bio": [
+    "Según la tradición fue un soldado romano, comandante de una legión en Melitene (Armenia), martirizado hacia el año 303.",
+    "Una leyenda cuenta que, cuando decidió convertirse, un cuervo le gritó «cras» («mañana», en latín) para que lo dejara para otro día; él lo pisó diciendo «hodie»: hoy.",
+    "Por eso se le invoca para los asuntos que no pueden esperar."
+  ],
+  "patron": "las causas urgentes",
+  "prayer": "oracion-a-san-expedito",
+  "oracion": "San Expedito, enséñame a no dejar para mañana el bien que puedo hacer hoy, e intercede por mi necesidad urgente. Amén."
+}

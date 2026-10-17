@@ -1,0 +1,36 @@
+GUION PARA ELEVENLABS · Sábado 21 de noviembre de 2026
+Dios de vivos (Lucas 20, 27-40)
+
+Ajustes recomendados: voz calmada en español de España, estabilidad alta (60-75 %), estilo bajo (0-15 %), velocidad 0,9.
+Pega cada bloque por separado en ElevenLabs. Las etiquetas <break> crean pausas cortas (máximo 3 segundos).
+Los silencios largos añádelos al montar el audio con la música.
+
+============================================================
+BLOQUE 1 · Entrar en silencio
+============================================================
+Busca un lugar tranquilo y ponte cómodo. <break time="1.5s" /> Respira despacio. <break time="2s" /> Inspira… <break time="2.5s" /> y suelta el aire. <break time="2.5s" /> Estás en la presencia de Dios. <break time="1.5s" /> Él te mira con cariño.
+
+[MONTAJE] Deja 10 segundos solo de música.
+
+============================================================
+BLOQUE 2 · Evangelio
+============================================================
+Evangelio según san Lucas, capítulo 20. <break time="1.5s" /> Unos saduceos, que niegan la resurrección, plantean a Jesús un caso enrevesado. Jesús responde que la vida después de la muerte es una vida nueva. <break time="2s" /> Escucha estas palabras de Jesús: <break time="1.5s" /> No es Dios de muertos, sino de vivos: porque para él todos están vivos.
+
+[MONTAJE] Deja 15 segundos de silencio con música suave.
+
+============================================================
+BLOQUE 3 · Reflexión
+============================================================
+Nuestros seres queridos difuntos viven en Dios. Para él no hay muertos. Hoy, día de las monjas y monjes contemplativos, recemos por quienes rezan por nosotros. <break time="2.5s" /> Ahora, en silencio, piensa en estas preguntas. <break time="1.5s" /> ¿Cómo imagino la vida eterna? <break time="3s" /> ¿Rezo por quienes rezan por mí sin conocerme?
+
+[MONTAJE] Deja 25 segundos de silencio después de cada pregunta (puedes partir el bloque en las pausas largas).
+
+============================================================
+BLOQUE 4 · Oración final
+============================================================
+Dios de vivos, gracias por la esperanza de la resurrección. Bendice a los que rezan en clausura. <break time="2s" /> Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.
+
+[MONTAJE] Termina con 8 segundos de música que se apaga.
+
+Cuando tengas el audio final: súbelo al panel (Días → este día → Audio) y escribe la duración, por ejemplo 9:30.

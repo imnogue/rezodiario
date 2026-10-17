@@ -1,0 +1,15 @@
+{
+  "slug": "catalina-de-alejandria",
+  "name": "Santa Catalina de Alejandría",
+  "date": "25 de noviembre",
+  "md": "11-25",
+  "short": "Virgen y mártir",
+  "bio": [
+    "Según la tradición, fue una joven sabia de Alejandría, en Egipto, que defendió su fe ante filósofos y ante el emperador.",
+    "Murió mártir a comienzos del siglo IV.",
+    "Es muy venerada en Oriente, donde un monasterio del Sinaí lleva su nombre."
+  ],
+  "patron": "los estudiantes, los filósofos y los bibliotecarios",
+  "prayer": "oracion-para-estudiar",
+  "oracion": "Santa Catalina, sabia y valiente, ayúdanos a unir fe y razón. Amén."
+}

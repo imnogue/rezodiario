@@ -1,0 +1,142 @@
+{
+  "temas": [
+    {
+      "key": "estudios",
+      "name": "Estudios",
+      "h1": "Oraciones para estudiantes y exámenes",
+      "color": "var(--c-study)",
+      "intro": "Oraciones para antes de un examen, para estudiar con concentración, para aprobar y para esperar los resultados con calma. Para estudiantes de colegio, universidad, selectividad u oposiciones."
+    },
+    {
+      "key": "salud",
+      "name": "Salud",
+      "h1": "Oraciones por la salud y por los enfermos",
+      "color": "var(--c-health)",
+      "intro": "Oraciones por un enfermo, antes de una operación, por los médicos y por tu propia salud. Para rezar en el hospital, en casa o a distancia por alguien que quieres."
+    },
+    {
+      "key": "familia",
+      "name": "Familia",
+      "h1": "Oraciones por la familia, los hijos y el matrimonio",
+      "color": "var(--c-family)",
+      "intro": "Oraciones para pedir por tu familia, tus hijos, tu matrimonio y tus abuelos, y para rezar con los niños antes de dormir."
+    },
+    {
+      "key": "paz",
+      "name": "Paz interior",
+      "h1": "Oraciones para la ansiedad, la tristeza y la paz interior",
+      "color": "var(--c-peace)",
+      "intro": "Oraciones breves para los momentos de ansiedad, tristeza o insomnio. Para respirar, ponerse en manos de Dios y encontrar paz."
+    },
+    {
+      "key": "diaria",
+      "name": "Vida diaria",
+      "h1": "Oraciones para cada momento del día",
+      "color": "var(--c-day)",
+      "intro": "Oraciones de la mañana y de la noche, bendición de la mesa, acción de gracias y oraciones para viajar. Pequeños momentos para rezar a lo largo del día."
+    },
+    {
+      "key": "devociones",
+      "name": "Devociones",
+      "h1": "Oraciones tradicionales y devociones católicas",
+      "color": "var(--c-dev)",
+      "intro": "Las oraciones de siempre: el Ángelus, el Acordaos, Bajo tu amparo, Alma de Cristo, San Miguel Arcángel y oraciones a los santos más queridos."
+    },
+    {
+      "key": "duelo",
+      "name": "Duelo",
+      "h1": "Oraciones por los difuntos y para el duelo",
+      "color": "var(--c-grief)",
+      "intro": "Oraciones por un ser querido que ha fallecido, por tu madre o tu padre difuntos y para encontrar consuelo en el duelo."
+    },
+    {
+      "key": "trabajo",
+      "name": "Trabajo",
+      "h1": "Oraciones por el trabajo y las decisiones",
+      "color": "var(--c-work)",
+      "intro": "Oraciones para encontrar trabajo, antes de una entrevista, por tu negocio y para discernir ante una decisión importante."
+    }
+  ],
+  "faq": {
+    "estudios": [
+      {
+        "q": "¿Qué santo es patrón de los estudiantes?",
+        "a": "Santo Tomás de Aquino es patrón de los estudiantes y de las universidades. Para los exámenes se pide también la intercesión de san José de Cupertino."
+      },
+      {
+        "q": "¿Cuándo rezar antes de un examen?",
+        "a": "Justo antes de empezar, en silencio, durante uno o dos minutos. Ayuda a calmar los nervios y a ponerse en manos de Dios."
+      }
+    ],
+    "salud": [
+      {
+        "q": "¿Qué santo es patrón de los enfermos?",
+        "a": "San Camilo de Lelis y san Juan de Dios son patronos de los enfermos y de los hospitales. Muchos fieles acuden también a la Virgen de Lourdes."
+      },
+      {
+        "q": "¿Puedo rezar por un enfermo a distancia?",
+        "a": "Sí. La oración no depende de la distancia. Puedes rezar por él cada día y decirle que lo haces: suele ser un gran consuelo."
+      }
+    ],
+    "familia": [
+      {
+        "q": "¿Qué oración rezar en familia?",
+        "a": "El Padre Nuestro, la bendición de la mesa y una breve oración antes de dormir son una buena forma de empezar. El Rosario en familia es una tradición muy querida."
+      },
+      {
+        "q": "¿A quién se reza por la familia?",
+        "a": "A la Sagrada Familia de Nazaret: Jesús, María y José."
+      }
+    ],
+    "paz": [
+      {
+        "q": "¿Rezar ayuda con la ansiedad?",
+        "a": "Rezar puede dar calma y sentido, sobre todo unido a una respiración lenta. Si la ansiedad es intensa o frecuente, busca también ayuda profesional."
+      },
+      {
+        "q": "¿Qué oración es buena para dormir?",
+        "a": "Una oración breve de acción de gracias y entrega, como la oración para dormir en paz o el examen del día."
+      }
+    ],
+    "diaria": [
+      {
+        "q": "¿Cuál es la oración de la mañana?",
+        "a": "No hay una única. Lo habitual es ofrecer el día a Dios nada más despertar con una oración breve de ofrecimiento."
+      },
+      {
+        "q": "¿Cómo se bendice la mesa?",
+        "a": "Con una oración breve antes de comer, como «Bendícenos, Señor, y bendice estos alimentos…»."
+      }
+    ],
+    "devociones": [
+      {
+        "q": "¿Cuál es la oración a la Virgen más antigua?",
+        "a": "«Bajo tu amparo» (Sub tuum praesidium), conservada en un papiro del siglo III."
+      },
+      {
+        "q": "¿A qué hora se reza el Ángelus?",
+        "a": "Tradicionalmente a las 6:00, a las 12:00 y a las 18:00. Hoy es habitual rezarlo al mediodía."
+      }
+    ],
+    "duelo": [
+      {
+        "q": "¿Qué oración se reza por los difuntos?",
+        "a": "«Dale, Señor, el descanso eterno, y brille para él la luz perpetua. Descanse en paz. Amén.» También se ofrece la misa y el Rosario por su alma."
+      },
+      {
+        "q": "¿Cuándo es el día de los difuntos?",
+        "a": "El 2 de noviembre, el día siguiente a Todos los Santos. Muchas familias rezan una novena del 24 de octubre al 1 de noviembre."
+      }
+    ],
+    "trabajo": [
+      {
+        "q": "¿Qué santo ayuda a encontrar trabajo?",
+        "a": "San José obrero, patrón de los trabajadores. Su fiesta es el 1 de mayo."
+      },
+      {
+        "q": "¿Cómo discernir una decisión importante?",
+        "a": "San Ignacio propone fijarse en qué opción deja paz y alegría profunda al rezarla durante varios días."
+      }
+    ]
+  }
+}

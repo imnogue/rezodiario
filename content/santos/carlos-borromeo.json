@@ -1,0 +1,15 @@
+{
+  "slug": "carlos-borromeo",
+  "name": "San Carlos Borromeo",
+  "date": "4 de noviembre",
+  "md": "11-04",
+  "short": "Obispo reformador",
+  "bio": [
+    "Nació en Italia en 1538. Fue arzobispo de Milán y uno de los grandes impulsores del Concilio de Trento.",
+    "Creó seminarios para formar a los sacerdotes y atendió en persona a los enfermos durante una epidemia de peste.",
+    "Murió en 1584."
+  ],
+  "patron": "los seminaristas y los catequistas",
+  "prayer": "oracion-por-un-enfermo",
+  "oracion": "San Carlos Borromeo, pastor entregado, ruega por nuestros sacerdotes y seminaristas. Amén."
+}

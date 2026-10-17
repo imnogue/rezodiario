@@ -1,0 +1,143 @@
+# Panel de contenidos de Rezo Diario (Decap CMS)
+# 1) Repositorio: imnogue/rezodiario
+# 2) En Netlify: Site configuration → Access & security → OAuth → instala el proveedor de GitHub.
+backend:
+  name: github
+  repo: imnogue/rezodiario
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+  commit_messages:
+    create: "Nuevo: {{collection}} «{{slug}}»"
+    update: "Actualizado: {{collection}} «{{slug}}»"
+
+locale: es
+site_url: https://rezodiario.com
+display_url: https://rezodiario.com
+media_folder: static/audio
+public_folder: /audio
+
+collections:
+  - name: dias
+    label: "Rezo de cada día"
+    label_singular: "Día"
+    description: "El Evangelio, la reflexión y el audio de cada día. Un archivo por fecha."
+    folder: content/dias
+    extension: json
+    format: json
+    create: true
+    slug: "{{fields.date}}"
+    identifier_field: title
+    summary: "{{date}} · {{title}} ({{ref}})"
+    sortable_fields: ["date", "title"]
+    fields:
+      - {label: "Fecha", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, picker_utc: true}
+      - {label: "Color litúrgico", name: color, widget: select, options: [{label: Verde, value: green}, {label: Blanco, value: white}, {label: Rojo, value: red}, {label: Morado, value: violet}, {label: Rosa, value: rose}, {label: "Azul (Inmaculada en España)", value: blue}]}
+      - {label: "Día litúrgico", name: lit, widget: string, hint: "Ej.: Lunes de la XXIX semana del Tiempo Ordinario"}
+      - {label: "Cita corta", name: ref, widget: string, hint: "Ej.: Lc 12, 13-21"}
+      - {label: "Cita larga", name: refL, widget: string, hint: "Ej.: Lucas 12, 13-21"}
+      - {label: "Título del rezo", name: title, widget: string}
+      - {label: "Frase del Evangelio", name: ex, widget: text, hint: "Una o dos frases. Revisa que coincida con la traducción oficial."}
+      - {label: "Resumen del Evangelio", name: sum, widget: text}
+      - {label: "Reflexión", name: refl, widget: text}
+      - {label: "Preguntas para rezar", name: qs, widget: list, field: {label: Pregunta, name: q, widget: string}}
+      - {label: "Oración final", name: fin, widget: text}
+      - {label: "Santo del día (identificador)", name: saint, widget: relation, collection: santos, value_field: slug, search_fields: ["name"], display_fields: ["name"], required: false}
+      - {label: "Audio (MP3)", name: audio, widget: file, required: false, hint: "Sube aquí el MP3 generado con ElevenLabs."}
+      - {label: "Duración del audio", name: duracion, widget: string, required: false, hint: "Ej.: 9:30"}
+
+  - name: oraciones
+    label: "Oraciones"
+    label_singular: "Oración"
+    folder: content/oraciones
+    extension: json
+    format: json
+    create: true
+    slug: "{{fields.slug}}"
+    identifier_field: t
+    summary: "{{t}} · {{cat}}"
+    fields:
+      - {label: "Dirección (sin tildes, con guiones)", name: slug, widget: string, hint: "Ej.: oracion-por-mi-hijo-enfermo"}
+      - {label: "Tema", name: cat, widget: select, options: [{label: Estudios, value: estudios}, {label: Salud, value: salud}, {label: Familia, value: familia}, {label: "Paz interior", value: paz}, {label: "Vida diaria", value: diaria}, {label: Devociones, value: devociones}, {label: Duelo, value: duelo}, {label: Trabajo, value: trabajo}]}
+      - {label: "Título", name: t, widget: string}
+      - {label: "Minutos", name: min, widget: number, value_type: int, min: 1}
+      - {label: "Palabras clave (para el buscador)", name: k, widget: string}
+      - {label: "Texto de la oración", name: x, widget: text}
+      - {label: "Cuándo rezarla", name: when, widget: text}
+
+  - name: santos
+    label: "Santos"
+    label_singular: "Santo"
+    folder: content/santos
+    extension: json
+    format: json
+    create: true
+    slug: "{{fields.slug}}"
+    identifier_field: name
+    summary: "{{date}} · {{name}}"
+    fields:
+      - {label: "Dirección (sin tildes, con guiones)", name: slug, widget: string}
+      - {label: "Nombre", name: name, widget: string}
+      - {label: "Fecha (texto)", name: date, widget: string, hint: "Ej.: 28 de octubre"}
+      - {label: "Mes-día", name: md, widget: string, hint: "Ej.: 10-28"}
+      - {label: "Descripción corta", name: short, widget: string}
+      - {label: "Vida (párrafos)", name: bio, widget: list, field: {label: Párrafo, name: p, widget: text}}
+      - {label: "Patrón de", name: patron, widget: string}
+      - {label: "Oración relacionada (identificador)", name: prayer, widget: relation, collection: oraciones, value_field: slug, search_fields: ["t"], display_fields: ["t"]}
+      - {label: "Oración al santo", name: oracion, widget: text}
+
+  - name: novenas
+    label: "Novenas"
+    label_singular: "Novena"
+    folder: content/novenas
+    extension: json
+    format: json
+    create: true
+    slug: "{{fields.slug}}"
+    identifier_field: t
+    fields:
+      - {label: "Dirección", name: slug, widget: string}
+      - {label: "Título", name: t, widget: string}
+      - {label: "Empieza", name: start, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, picker_utc: true}
+      - {label: "Termina", name: end, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, picker_utc: true}
+      - {label: "Fiesta", name: feast, widget: string}
+      - {label: "Introducción", name: intro, widget: text}
+      - {label: "Oración inicial", name: open, widget: text}
+      - {label: "Oración final", name: close, widget: text}
+      - {label: "Los nueve días", name: days, widget: list, fields: [{label: Tema, name: t, widget: string}, {label: Meditación, name: x, widget: text}]}
+
+  - name: ajustes
+    label: "Ajustes de la web"
+    files:
+      - name: ajustes
+        label: "Ajustes generales"
+        file: content/ajustes.json
+        fields:
+          - {label: "Dirección de la web", name: sitio, widget: string}
+          - {label: "Supabase: URL del proyecto", name: supabaseUrl, widget: string, required: false}
+          - {label: "Supabase: clave pública (anon)", name: supabaseAnonKey, widget: string, required: false}
+          - {label: "Canal de WhatsApp", name: whatsappCanal, widget: string, required: false}
+          - {label: "Canal de Telegram", name: telegramCanal, widget: string, required: false}
+          - {label: "Spotify", name: spotify, widget: string, required: false}
+          - {label: "Apple Podcasts", name: applePodcasts, widget: string, required: false}
+          - {label: "iVoox", name: ivoox, widget: string, required: false}
+          - {label: "YouTube", name: youtube, widget: string, required: false}
+          - {label: "Instagram", name: instagram, widget: string, required: false}
+          - {label: "Correo de contacto", name: emailContacto, widget: string}
+          - label: "Pódcast"
+            name: podcast
+            widget: object
+            fields:
+              - {label: Título, name: titulo, widget: string}
+              - {label: Autor, name: autor, widget: string}
+              - {label: Correo, name: email, widget: string}
+              - {label: Descripción, name: descripcion, widget: text}
+              - {label: "Portada (URL, 3000×3000)", name: imagen, widget: string}
+              - {label: Categoría, name: categoria, widget: string}
+          - label: "Donaciones"
+            name: donaciones
+            widget: object
+            fields:
+              - {label: "Enlace de pago (Stripe, PayPal…)", name: enlacePago, widget: string, required: false}
+              - {label: "Objetivo de donantes al mes", name: objetivoMensual, widget: number}
+              - {label: "Donantes este mes", name: donantesMes, widget: number}

@@ -1,0 +1,15 @@
+{
+  "slug": "francisco-javier",
+  "name": "San Francisco Javier",
+  "date": "3 de diciembre",
+  "md": "12-03",
+  "short": "Misionero, patrón de las misiones",
+  "bio": [
+    "Nació en el castillo de Javier (Navarra) en 1506. En París conoció a san Ignacio de Loyola y fue uno de los primeros jesuitas.",
+    "Viajó como misionero a la India, a las islas Molucas y a Japón, y bautizó a miles de personas.",
+    "Murió en 1552 en una isla frente a la costa de China, a la que deseaba llegar. Es patrón de las misiones y de Navarra."
+  ],
+  "patron": "las misiones y Navarra",
+  "prayer": "oracion-antes-de-un-viaje",
+  "oracion": "San Francisco Javier, misionero valiente, haznos testigos del Evangelio allí donde estemos. Amén."
+}

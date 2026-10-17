@@ -1,0 +1,48 @@
+{
+  "slug": "novena-a-la-virgen-de-guadalupe",
+  "t": "Novena a la Virgen de Guadalupe",
+  "start": "2026-12-03",
+  "end": "2026-12-11",
+  "feast": "12 de diciembre",
+  "intro": "Del 3 al 11 de diciembre, para preparar la fiesta de Nuestra Señora de Guadalupe, patrona de México y de América.",
+  "open": "En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.\n\nVirgen de Guadalupe, Madre cercana, que te apareciste a san Juan Diego en el Tepeyac: escucha mi oración en estos nueve días.",
+  "close": "Padre Nuestro, Ave María y Gloria.\n\n¿No estoy yo aquí, que soy tu madre? Virgen de Guadalupe, ruega por nosotros. Amén.",
+  "days": [
+    {
+      "t": "La visita",
+      "x": "María salió al encuentro de Juan Diego en el camino. Sale también a tu encuentro hoy."
+    },
+    {
+      "t": "El mensajero sencillo",
+      "x": "María eligió a un indígena humilde. Dios cuenta contigo tal como eres."
+    },
+    {
+      "t": "La petición",
+      "x": "María pidió un templo. ¿Qué quiere construir Dios en tu vida?"
+    },
+    {
+      "t": "La duda",
+      "x": "El obispo no creyó a la primera. No te desanimes si no te entienden."
+    },
+    {
+      "t": "El tío enfermo",
+      "x": "Juan Diego estaba preocupado por su tío enfermo. Encomienda a tus enfermos."
+    },
+    {
+      "t": "¿No estoy yo aquí?",
+      "x": "María consuela a Juan Diego. Deja que te consuele a ti."
+    },
+    {
+      "t": "Las rosas",
+      "x": "Rosas en pleno invierno. Pide esperanza donde hoy todo parece frío."
+    },
+    {
+      "t": "La tilma",
+      "x": "La imagen quedó en la tilma de Juan Diego. Pide que Dios deje su huella en tu vida."
+    },
+    {
+      "t": "Madre de América",
+      "x": "Reza por México, por toda América y por los migrantes."
+    }
+  ]
+}

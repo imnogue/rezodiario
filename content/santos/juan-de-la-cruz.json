@@ -1,0 +1,15 @@
+{
+  "slug": "juan-de-la-cruz",
+  "name": "San Juan de la Cruz",
+  "date": "14 de diciembre",
+  "md": "12-14",
+  "short": "Místico y doctor de la Iglesia",
+  "bio": [
+    "Nació en Fontiveros (Ávila) en 1542. Con santa Teresa de Jesús reformó la orden del Carmelo.",
+    "Fue encarcelado en Toledo por sus propios hermanos y en la prisión escribió parte del Cántico espiritual. Es autor de la Noche oscura y de la Llama de amor viva.",
+    "Murió en Úbeda en 1591 y es doctor de la Iglesia y patrón de los poetas en lengua española."
+  ],
+  "patron": "los poetas en lengua española",
+  "prayer": "oracion-en-la-tristeza",
+  "oracion": "San Juan de la Cruz, que encontraste a Dios en la noche oscura, acompaña a quienes están en tinieblas. Amén."
+}

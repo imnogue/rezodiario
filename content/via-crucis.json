@@ -1,0 +1,61 @@
+{
+  "antifona": "Te adoramos, oh Cristo, y te bendecimos.\n— Que por tu santa cruz redimiste al mundo.",
+  "estaciones": [
+    {
+      "t": "Jesús es condenado a muerte",
+      "x": "Pilato se lava las manos y entrega a Jesús. Él calla. Piensa en las veces que juzgas deprisa a los demás."
+    },
+    {
+      "t": "Jesús carga con la cruz",
+      "x": "Jesús abraza el madero que le dan. ¿Qué cruz te toca llevar hoy? No la cargas solo."
+    },
+    {
+      "t": "Jesús cae por primera vez",
+      "x": "El peso le vence y cae. Pero se levanta. Pide fuerza para levantarte de tu primera caída."
+    },
+    {
+      "t": "Jesús encuentra a su Madre",
+      "x": "María no puede quitarle el dolor, pero está ahí. Reza por las madres que acompañan el sufrimiento de sus hijos."
+    },
+    {
+      "t": "El Cireneo ayuda a Jesús a llevar la cruz",
+      "x": "Simón no lo eligió, pero ayudó. ¿A quién puedes echar hoy una mano, aunque no te venga bien?"
+    },
+    {
+      "t": "La Verónica enjuga el rostro de Jesús",
+      "x": "Un gesto pequeño de ternura en medio de la violencia. El rostro de Jesús queda grabado en su paño."
+    },
+    {
+      "t": "Jesús cae por segunda vez",
+      "x": "Volver a caer cansa más que la primera vez. Jesús sigue. Pide constancia en lo que te cuesta."
+    },
+    {
+      "t": "Jesús consuela a las mujeres de Jerusalén",
+      "x": "Aun destrozado, Jesús piensa en los demás. Reza por quienes lloran hoy en el mundo."
+    },
+    {
+      "t": "Jesús cae por tercera vez",
+      "x": "Ya casi no puede más. Cuando sientas que no puedes, recuerda que él también estuvo en el suelo."
+    },
+    {
+      "t": "Jesús es despojado de sus vestiduras",
+      "x": "Le quitan todo, hasta la dignidad. Reza por quienes son humillados y por quienes lo han perdido todo."
+    },
+    {
+      "t": "Jesús es clavado en la cruz",
+      "x": "Las manos que curaron quedan clavadas. Jesús perdona a quienes le crucifican. ¿A quién te cuesta perdonar?"
+    },
+    {
+      "t": "Jesús muere en la cruz",
+      "x": "«Padre, en tus manos encomiendo mi espíritu». Quédate un momento en silencio ante la cruz."
+    },
+    {
+      "t": "Jesús es bajado de la cruz",
+      "x": "María recibe en sus brazos el cuerpo de su Hijo. Reza por quienes han perdido a alguien querido."
+    },
+    {
+      "t": "Jesús es sepultado",
+      "x": "Todo parece terminado. Pero el sepulcro no tendrá la última palabra. Espera con María la mañana de Pascua."
+    }
+  ]
+}

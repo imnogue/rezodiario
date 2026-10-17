@@ -1,0 +1,15 @@
+{
+  "slug": "pedro-canisio",
+  "name": "San Pedro Canisio",
+  "date": "21 de diciembre",
+  "md": "12-21",
+  "short": "Jesuita y doctor",
+  "bio": [
+    "Nació en los Países Bajos en 1521 y fue uno de los primeros jesuitas.",
+    "Escribió catecismos sencillos que se usaron durante siglos en toda Europa.",
+    "Murió en 1597 y es doctor de la Iglesia."
+  ],
+  "patron": "los catequistas",
+  "prayer": "oracion-para-estudiar",
+  "oracion": "San Pedro Canisio, catequista incansable, ayúdanos a transmitir la fe con sencillez. Amén."
+}

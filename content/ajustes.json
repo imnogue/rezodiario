@@ -1,0 +1,26 @@
+{
+  "sitio": "https://rezodiario.com/",
+  "supabaseUrl": "",
+  "supabaseAnonKey": "",
+  "whatsappCanal": "",
+  "telegramCanal": "",
+  "spotify": "",
+  "applePodcasts": "",
+  "ivoox": "",
+  "youtube": "",
+  "instagram": "",
+  "emailContacto": "hola@rezodiario.com",
+  "podcast": {
+    "titulo": "Rezo Diario",
+    "autor": "Rezo Diario",
+    "email": "hola@rezodiario.com",
+    "descripcion": "Un momento con Dios cada día: el Evangelio del día con música, silencio y una reflexión breve.",
+    "imagen": "https://rezodiario.com/podcast-portada.jpg",
+    "categoria": "Religion & Spirituality"
+  },
+  "donaciones": {
+    "enlacePago": "",
+    "objetivoMensual": 500,
+    "donantesMes": 0
+  }
+}

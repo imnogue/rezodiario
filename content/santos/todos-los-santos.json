@@ -1,0 +1,15 @@
+{
+  "slug": "todos-los-santos",
+  "name": "Todos los Santos",
+  "date": "1 de noviembre",
+  "md": "11-01",
+  "short": "Solemnidad",
+  "bio": [
+    "El 1 de noviembre la Iglesia celebra a todos los santos: los que están en los altares y los que nadie conoce, pero viven ya junto a Dios.",
+    "Es una fiesta de esperanza: la santidad es posible para todos, en la vida corriente.",
+    "Al día siguiente, el 2 de noviembre, se reza por todos los fieles difuntos."
+  ],
+  "patron": "todos",
+  "prayer": "oracion-por-un-difunto",
+  "oracion": "Todos los santos de Dios, rogad por nosotros. Que un día nos encontremos con vosotros en el cielo. Amén."
+}

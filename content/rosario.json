@@ -1,0 +1,142 @@
+{
+  "sets": {
+    "gozosos": {
+      "name": "Gozosos",
+      "adj": "gozoso",
+      "days": "Lunes y sábado",
+      "list": [
+        [
+          "La Encarnación del Hijo de Dios",
+          "Lc 1, 26-38",
+          "La humildad"
+        ],
+        [
+          "La Visitación de María a su prima Isabel",
+          "Lc 1, 39-56",
+          "El amor al prójimo"
+        ],
+        [
+          "El Nacimiento de Jesús en Belén",
+          "Lc 2, 1-20",
+          "El desprendimiento"
+        ],
+        [
+          "La Presentación de Jesús en el Templo",
+          "Lc 2, 22-38",
+          "La obediencia"
+        ],
+        [
+          "El Niño Jesús perdido y hallado en el Templo",
+          "Lc 2, 41-52",
+          "La búsqueda de Dios"
+        ]
+      ]
+    },
+    "dolorosos": {
+      "name": "Dolorosos",
+      "adj": "doloroso",
+      "days": "Martes y viernes",
+      "list": [
+        [
+          "La Oración de Jesús en el Huerto",
+          "Mt 26, 36-46",
+          "Unirnos a la voluntad de Dios"
+        ],
+        [
+          "La Flagelación del Señor",
+          "Mt 27, 26",
+          "La pureza y el dominio de sí"
+        ],
+        [
+          "La Coronación de espinas",
+          "Mt 27, 27-31",
+          "El valor y la humildad"
+        ],
+        [
+          "Jesús con la cruz a cuestas",
+          "Jn 19, 17",
+          "La paciencia"
+        ],
+        [
+          "La Crucifixión y muerte de Jesús",
+          "Lc 23, 33-46",
+          "La perseverancia"
+        ]
+      ]
+    },
+    "gloriosos": {
+      "name": "Gloriosos",
+      "adj": "glorioso",
+      "days": "Miércoles y domingo",
+      "list": [
+        [
+          "La Resurrección del Señor",
+          "Mt 28, 1-10",
+          "La fe"
+        ],
+        [
+          "La Ascensión del Señor a los cielos",
+          "Hch 1, 6-11",
+          "La esperanza"
+        ],
+        [
+          "La Venida del Espíritu Santo",
+          "Hch 2, 1-13",
+          "El amor y la sabiduría"
+        ],
+        [
+          "La Asunción de María a los cielos",
+          "Lc 1, 48-49",
+          "La gracia de una buena muerte"
+        ],
+        [
+          "La Coronación de María como Reina",
+          "Ap 12, 1",
+          "La confianza en María"
+        ]
+      ]
+    },
+    "luminosos": {
+      "name": "Luminosos",
+      "adj": "luminoso",
+      "days": "Jueves",
+      "list": [
+        [
+          "El Bautismo de Jesús en el Jordán",
+          "Mt 3, 13-17",
+          "La apertura al Espíritu Santo"
+        ],
+        [
+          "Las bodas de Caná",
+          "Jn 2, 1-11",
+          "Ir a Jesús por María"
+        ],
+        [
+          "El anuncio del Reino y la llamada a la conversión",
+          "Mc 1, 14-15",
+          "La conversión"
+        ],
+        [
+          "La Transfiguración del Señor",
+          "Lc 9, 28-36",
+          "El deseo de santidad"
+        ],
+        [
+          "La institución de la Eucaristía",
+          "Mt 26, 26-29",
+          "La adoración"
+        ]
+      ]
+    }
+  },
+  "oraciones": {
+    "PN": "Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal. Amén.",
+    "AM": "Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús.\nSanta María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.",
+    "GL": "Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.",
+    "OJ": "Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia.",
+    "SENAL": "Por la señal de la santa cruz, de nuestros enemigos líbranos, Señor, Dios nuestro. En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.",
+    "CREDO": "Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra. Creo en Jesucristo, su único Hijo, nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado, descendió a los infiernos, al tercer día resucitó de entre los muertos, subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.",
+    "SALVE": "Dios te salve, Reina y Madre de misericordia, vida, dulzura y esperanza nuestra; Dios te salve. A ti llamamos los desterrados hijos de Eva; a ti suspiramos, gimiendo y llorando, en este valle de lágrimas. Ea, pues, Señora, abogada nuestra, vuelve a nosotros esos tus ojos misericordiosos; y después de este destierro muéstranos a Jesús, fruto bendito de tu vientre. ¡Oh clementísima, oh piadosa, oh dulce Virgen María!\nRuega por nosotros, santa Madre de Dios, para que seamos dignos de alcanzar las promesas de nuestro Señor Jesucristo. Amén.",
+    "DALE": "Dale, Señor, el descanso eterno, y brille para él la luz perpetua. Descanse en paz. Amén."
+  }
+}

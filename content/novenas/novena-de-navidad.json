@@ -1,0 +1,48 @@
+{
+  "slug": "novena-de-navidad",
+  "t": "Novena de Navidad (novena de aguinaldos)",
+  "start": "2026-12-16",
+  "end": "2026-12-24",
+  "feast": "25 de diciembre",
+  "intro": "Del 16 al 24 de diciembre, la tradición de rezar en familia los nueve días antes de Navidad, muy querida en Colombia, Ecuador y Venezuela. Esta versión está inspirada en la tradicional.",
+  "open": "En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.\n\nPadre bueno, que tanto amaste al mundo que nos diste a tu Hijo: prepara nuestra familia para recibirlo. Que estos nueve días nos encuentren unidos.",
+  "close": "Ven, ven, ven, ven a nuestras almas, Jesús, ven, no tardes tanto.\n\nNiño Jesús, que vienes a nosotros, bendice esta casa y a todos los que la habitan. Amén.",
+  "days": [
+    {
+      "t": "El anuncio",
+      "x": "El ángel anuncia a María. Pide un corazón disponible."
+    },
+    {
+      "t": "José",
+      "x": "José acoge a María sin entenderlo todo. Reza por los padres de familia."
+    },
+    {
+      "t": "El camino a Belén",
+      "x": "María y José viajan cansados. Reza por los que viajan y por los migrantes."
+    },
+    {
+      "t": "No había sitio",
+      "x": "No había sitio en la posada. ¿Hay sitio en tu casa para Dios y para los demás?"
+    },
+    {
+      "t": "El pesebre",
+      "x": "Dios nace entre animales y paja. Busca lo sencillo esta Navidad."
+    },
+    {
+      "t": "Los pastores",
+      "x": "Los primeros en saberlo fueron los pobres. Reza por los que no tienen nada."
+    },
+    {
+      "t": "Los ángeles",
+      "x": "Gloria a Dios y paz en la tierra. Pide la paz para el mundo."
+    },
+    {
+      "t": "María guardaba todo",
+      "x": "María guardaba todo en su corazón. Haz silencio en medio de las fiestas."
+    },
+    {
+      "t": "Nochebuena",
+      "x": "Esta noche nace Jesús. Reza en familia ante el belén."
+    }
+  ]
+}

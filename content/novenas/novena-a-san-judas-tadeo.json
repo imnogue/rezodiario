@@ -1,0 +1,48 @@
+{
+  "slug": "novena-a-san-judas-tadeo",
+  "t": "Novena a San Judas Tadeo",
+  "start": "2026-10-19",
+  "end": "2026-10-27",
+  "feast": "28 de octubre",
+  "intro": "Del 19 al 27 de octubre, para preparar la fiesta de san Judas Tadeo el día 28. Se reza también en cualquier época del año ante una situación difícil.",
+  "open": "En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.\n\nGlorioso apóstol san Judas Tadeo, amigo de Jesús, acudo a ti con confianza. Presenta al Señor mi necesidad y alcánzame la gracia que hoy te pido.",
+  "close": "Padre Nuestro, Ave María y Gloria.\n\nSan Judas Tadeo, ruega por nosotros y por todos los que te invocan en sus necesidades. Amén.",
+  "days": [
+    {
+      "t": "La fe",
+      "x": "Judas Tadeo dejó todo para seguir a Jesús. Pide una fe sencilla que confíe aunque no vea."
+    },
+    {
+      "t": "La pregunta sincera",
+      "x": "En la Última Cena, Judas preguntó a Jesús: «Señor, ¿por qué te vas a revelar a nosotros y no al mundo?». Lleva a Dios tus preguntas sin miedo."
+    },
+    {
+      "t": "La esperanza",
+      "x": "Las causas difíciles parecen cerradas. Pide la esperanza de quien sabe que para Dios nada es imposible."
+    },
+    {
+      "t": "La paciencia",
+      "x": "Las respuestas de Dios llegan a su tiempo. Pide paciencia en la espera."
+    },
+    {
+      "t": "La familia",
+      "x": "San Judas era pariente de Jesús. Pon hoy en sus manos a tu familia."
+    },
+    {
+      "t": "Los enfermos",
+      "x": "Reza por quienes están enfermos y por quienes los cuidan."
+    },
+    {
+      "t": "El trabajo",
+      "x": "Pide por quienes no tienen trabajo o viven con miedo a perderlo."
+    },
+    {
+      "t": "La misión",
+      "x": "Judas Tadeo llevó el Evangelio lejos. Pide valentía para hablar de Dios con tu vida."
+    },
+    {
+      "t": "La gratitud",
+      "x": "Último día. Da gracias por lo recibido y por lo que todavía esperas."
+    }
+  ]
+}
