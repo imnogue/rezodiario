@@ -93,7 +93,7 @@ a.card{text-decoration:none;color:var(--ink)}
 .chapel-stats b{font-family:var(--f-display);font-weight:400;font-size:34px;line-height:1;color:var(--flame);font-variant-numeric:tabular-nums}
 .chapel-stats span{font-size:12.5px;color:var(--chapel-muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .altar{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);gap:30px;align-items:start;margin-top:30px}
-@media(max-width:900px){.altar{grid-template-columns:1fr}}
+@media(max-width:900px){.altar{display:flex;flex-direction:column;gap:18px}.altar>div{display:contents}.altar .light-form{order:1;margin-top:0}.altar .rack{order:2;width:100%;align-self:stretch}.altar .light-form,.altar .reader,.altar .feed{width:100%}.altar .reader{order:3;min-height:0}.altar .feed,.altar>div>p{order:4;margin-top:6px}}
 .rack{position:relative;padding:26px 18px 0;border-radius:26px;background:linear-gradient(to bottom,rgba(255,255,255,.02),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.07);min-width:0}
 .candles{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:14px 8px;align-items:end;min-height:200px}
 .shelf{height:14px;margin:0 -18px;border-radius:0 0 26px 26px;background:linear-gradient(#3a2a18,#21170c);box-shadow:0 -1px 0 rgba(255,210,150,.15) inset}
