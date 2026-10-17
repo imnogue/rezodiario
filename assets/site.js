@@ -3,7 +3,7 @@
 "use strict";
 const RD=window.RD||{};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const ROOT=document.body.dataset.root||"";
+const ROOT=document.body.dataset.root||"";const X=document.body.dataset.clean==="1"?"":".html";const IDX=X?"index.html":"";
 const SYNC_KEYS=/^rd-(rezado|favs|nov-|reto-|mycandles)/;
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}if(SYNC_KEYS.test(k)&&window.__rdSync)window.__rdSync()}};
 function toast(t){let h=$("#toastHost");if(!h){h=document.createElement("div");h.id="toastHost";document.body.appendChild(h)}h.innerHTML="";const d=document.createElement("div");d.className="toast";d.setAttribute("role","status");d.textContent=t;h.appendChild(d);setTimeout(()=>d.remove(),3000)}
@@ -186,7 +186,7 @@ function selectDay(i){
  set("hDate",`${d.wd}, ${d.n} de ${d.mes} de ${d.date.slice(0,4)}`);
  const hl=$("#hLit");if(hl)hl.innerHTML=`<i class="dot" style="background:${RD.LITC[d.color][0]}"></i><span>${esc(d.lit)}</span>`;
  set("fRef",d.ref);set("fSet","Misterios "+RD.SETS[d.set].name.toLowerCase());
- const gl=$("#gLink");if(gl)gl.href=ROOT+"evangelio/"+d.date+".html";
+ const gl=$("#gLink");if(gl)gl.href=ROOT+"evangelio/"+d.date+X;
  set("gTitle",d.title);set("gQuote",d.ex);set("gRefL",d.refL);
  loadPlayer(d);renderWeek();
 }
@@ -197,7 +197,7 @@ function renderWeek(){
  const link=w.dataset.mode==="link";
  const lo=Math.max(0,todayIdx-6),hi=Math.min(WEEK.length,todayIdx+8);
  w.innerHTML=WEEK.map((d,i)=>{if(i<lo||i>=hi)return"";const inner=`<span class="wd">${d.wd}<i class="dot" style="background:${RD.LITC[d.color][0]}" title="${RD.LITC[d.color][1]}"></i></span><span class="num">${d.n} <small style="font-size:14px;font-family:var(--f-ui);color:var(--muted)">${d.mes.slice(0,3)}</small></span><span class="t">${esc(d.title)}</span><span class="r">${d.ref}</span><span class="tags">${i===todayIdx&&isReal?'<span class="tag today">Hoy</span>':""}${s.includes(d.date)?'<span class="tag">✓ Rezado</span>':""}</span>`;
-  return link?`<a class="day${i===sel?" sel":""}" role="listitem" href="${ROOT}evangelio/${d.date}.html" style="text-decoration:none;color:inherit">${inner}</a>`:`<button class="day${i===sel?" sel":""}" role="listitem" data-i="${i}" aria-pressed="${i===sel}">${inner}</button>`}).join("");
+  return link?`<a class="day${i===sel?" sel":""}" role="listitem" href="${ROOT}evangelio/${d.date}${X}" style="text-decoration:none;color:inherit">${inner}</a>`:`<button class="day${i===sel?" sel":""}" role="listitem" data-i="${i}" aria-pressed="${i===sel}">${inner}</button>`}).join("");
  if(!link)$$("#week .day").forEach(b=>b.onclick=()=>selectDay(+b.dataset.i));
  const st=$("#streak");if(st){let n=0;for(let i=todayIdx;i>=0;i--){if(s.includes(WEEK[i].date))n++;else if(i<todayIdx)break}st.innerHTML=n?`Llevas <b>${n} ${n===1?"día":"días"}</b> seguidos rezando`:"Empieza tu racha de oración hoy"}
 }
@@ -212,8 +212,8 @@ if($("#askForm")){
  $$("#feel .chip").forEach(b=>b.onclick=()=>{$$("#feel .chip").forEach(x=>x.classList.toggle("on",x===b));const f=FEEL[+b.dataset.i];suggest(f[0],f[1])});
  const KEYW={"oracion-antes-de-un-examen":["examen","prueba","oposic","selectividad","ebau","evau"],"oracion-para-aprobar":["aprob","suspend","nota"],"oracion-para-estudiar":["estudi","concentr","memoria","universidad","clase"],"oracion-por-un-enfermo":["enferm","hospital","salud","medico","ingresad"],"oracion-antes-de-una-operacion":["opera","quirofano","cirug","interven"],"oracion-por-un-enfermo-de-cancer":["cancer","quimio","tumor","oncolog"],"oracion-para-la-ansiedad":["ansied","angust","agobi","estres","panico","nervio","miedo","preocup"],"oracion-en-la-tristeza":["triste","solo","sola","soledad","llor","deprim"],"oracion-para-dormir":["dormir","insomn","noche","descans"],"oracion-por-un-difunto":["muert","murio","fallec","difunt","luto"],"oracion-para-el-duelo":["perdi","duelo","echo de menos","ausencia"],"oracion-por-mi-madre-fallecida":["mi madre","mama"],"oracion-por-mi-padre-fallecido":["mi padre","papa"],"oracion-para-encontrar-trabajo":["trabajo","paro","empleo","despid"],"oracion-antes-de-una-entrevista":["entrevista"],"oracion-por-mi-negocio":["negocio","empresa","tienda","clientes","autonomo"],"oracion-ante-una-decision":["decid","decision","dudas","elegir","futuro","cambio"],"oracion-por-la-familia":["familia","herman","discut","casa"],"oracion-por-los-hijos":["hijo","hija","niño","niña","adolescen"],"oracion-por-mi-matrimonio":["pareja","matrimonio","marido","mujer","esposo","esposa","novio","novia"],"oracion-de-accion-de-gracias":["gracias","alegr","feliz","contento","celebr","logr"],"oracion-para-perdonar":["perdon","rencor","ofend","traicion"],"oracion-a-san-antonio":["perdido","perdida","encontrar"],"oracion-a-san-judas-tadeo":["imposible","desesper","dificil","urgente"],"oracion-por-una-embarazada":["embaraz","bebe","parto"],"oracion-antes-de-un-viaje":["viaje","viajar","avion","carretera"]};
  function suggest(label,slugs){const list=slugs.map(byS).filter(Boolean);const A=$("#answers");
-  if(!list.length){A.innerHTML=`<div class="empty">No hemos encontrado un rezo concreto para «${esc(label)}». Prueba con otras palabras o mira <a href="${ROOT}oraciones/index.html">todas las oraciones</a>.</div>`;return}
-  A.innerHTML=`<p class="hint" style="margin:0 0 4px">Para «${esc(label)}» te proponemos:</p>`+list.slice(0,4).map((p,i)=>`<a class="ans" href="${ROOT}oraciones/${p.slug}.html" style="animation-delay:${i*.07}s;text-decoration:none;color:inherit"><span class="ic" style="background:${RD.CATS[p.cat].color}">${esc(p.t.replace(/^Oración (a |por |para |antes de |en |de )?/,"")[0].toUpperCase())}</span><div><strong>${esc(p.t)}</strong><small>${RD.CATS[p.cat].name} · ${p.min} min</small></div><span>›</span></a>`).join("")+`<a class="ans" href="${ROOT}muro-de-intenciones.html" style="text-decoration:none;color:inherit"><span class="ic" style="background:#2A1A05;color:var(--flame)">✦</span><div><strong>Enciende una vela por esta intención</strong><small>Otras personas rezarán contigo</small></div><span>›</span></a>`}
+  if(!list.length){A.innerHTML=`<div class="empty">No hemos encontrado un rezo concreto para «${esc(label)}». Prueba con otras palabras o mira <a href="${ROOT}oraciones/${IDX}">todas las oraciones</a>.</div>`;return}
+  A.innerHTML=`<p class="hint" style="margin:0 0 4px">Para «${esc(label)}» te proponemos:</p>`+list.slice(0,4).map((p,i)=>`<a class="ans" href="${ROOT}oraciones/${p.slug}${X}" style="animation-delay:${i*.07}s;text-decoration:none;color:inherit"><span class="ic" style="background:${RD.CATS[p.cat].color}">${esc(p.t.replace(/^Oración (a |por |para |antes de |en |de )?/,"")[0].toUpperCase())}</span><div><strong>${esc(p.t)}</strong><small>${RD.CATS[p.cat].name} · ${p.min} min</small></div><span>›</span></a>`).join("")+`<a class="ans" href="${ROOT}muro-de-intenciones${X}" style="text-decoration:none;color:inherit"><span class="ic" style="background:#2A1A05;color:var(--flame)">✦</span><div><strong>Enciende una vela por esta intención</strong><small>Otras personas rezarán contigo</small></div><span>›</span></a>`}
  $("#askForm").onsubmit=e=>{e.preventDefault();const v=$("#askIn").value.trim();if(!v){$("#askIn").focus();return}const n=norm(v);
   const sc=Object.entries(KEYW).map(([id,ks])=>[id,ks.filter(k=>n.includes(norm(k))).length]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
   $$("#feel .chip").forEach(x=>x.classList.remove("on"));suggest(v,sc)};
@@ -230,7 +230,7 @@ if($("#libGrid")){
  const qi=$("#q");if(qi){qi.addEventListener("input",e=>{q=e.target.value;apply()});const u=new URLSearchParams(location.search).get("q");if(u){qi.value=u;q=u}}
  apply();
 }
-const sb=$("#btnSearch");if(sb)sb.onclick=()=>{const qi=$("#q");if(qi){qi.scrollIntoView({behavior:"smooth",block:"center"});setTimeout(()=>qi.focus({preventScroll:true}),400)}else location.href=ROOT+"oraciones/index.html#buscar"};
+const sb=$("#btnSearch");if(sb)sb.onclick=()=>{const qi=$("#q");if(qi){qi.scrollIntoView({behavior:"smooth",block:"center"});setTimeout(()=>qi.focus({preventScroll:true}),400)}else location.href=ROOT+"oraciones/"+IDX+"#buscar"};
 if(location.hash==="#buscar"&&$("#q"))setTimeout(()=>$("#q").focus(),300);
 
 /* ---------- Página de oración ---------- */
@@ -244,7 +244,7 @@ if(pt){
  const fav=$("#btnFav");if(fav){const id=document.body.dataset.slug;const f=()=>store.get("rd-favs",[]);const r=()=>{const on=f().includes(id);fav.setAttribute("aria-pressed",on);fav.textContent=on?"★ En favoritos":"☆ Guardar"};r();
   fav.onclick=()=>{let a=f();a=a.includes(id)?a.filter(x=>x!==id):[...a,id];store.set("rd-favs",a);r();toast(a.includes(id)?"Guardada en favoritos":"Quitada de favoritos")}}
 }
-const favBox=$("#favList");if(favBox){const a=store.get("rd-favs",[]).map(s=>RD.prayers.find(p=>p.slug===s)).filter(Boolean);if(a.length){favBox.hidden=false;favBox.querySelector("ul").innerHTML=a.map(p=>`<li><a href="${ROOT}oraciones/${p.slug}.html">${esc(p.t)}<small>${p.min} min</small></a></li>`).join("")}}
+const favBox=$("#favList");if(favBox){const a=store.get("rd-favs",[]).map(s=>RD.prayers.find(p=>p.slug===s)).filter(Boolean);if(a.length){favBox.hidden=false;favBox.querySelector("ul").innerHTML=a.map(p=>`<li><a href="${ROOT}oraciones/${p.slug}${X}">${esc(p.t)}<small>${p.min} min</small></a></li>`).join("")}}
 
 /* ---------- Rosario ---------- */
 if($("#beads")){

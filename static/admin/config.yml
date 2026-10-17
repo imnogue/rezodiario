@@ -1,12 +1,11 @@
 # Panel de contenidos de Rezo Diario (Decap CMS)
-# 1) Repositorio: imnogue/rezodiario
-# 2) En Netlify: Site configuration → Access & security → OAuth → instala el proveedor de GitHub.
+# Repositorio: imnogue/rezodiario. El inicio de sesión lo hacen functions/api/auth.js y callback.js (Cloudflare Pages).
 backend:
   name: github
   repo: imnogue/rezodiario
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
+  base_url: https://rezodiario.com
+  auth_endpoint: api/auth
   commit_messages:
     create: "Nuevo: {{collection}} «{{slug}}»"
     update: "Actualizado: {{collection}} «{{slug}}»"

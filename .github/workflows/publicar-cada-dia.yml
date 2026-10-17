@@ -1,5 +1,5 @@
 # Vuelve a generar la web cada noche para que «hoy» cambie solo.
-# Guarda el «build hook» de Netlify como secreto NETLIFY_BUILD_HOOK en GitHub.
+# Guarda el «deploy hook» de Cloudflare Pages (o el «build hook» de Netlify) como secreto NETLIFY_BUILD_HOOK en GitHub.
 name: Publicar el rezo de cada día
 on:
   schedule:
@@ -9,5 +9,5 @@ jobs:
   publicar:
     runs-on: ubuntu-latest
     steps:
-      - name: Avisar a Netlify
+      - name: Avisar al alojamiento
         run: curl -fsS -X POST -d '{}' "${{ secrets.NETLIFY_BUILD_HOOK }}"

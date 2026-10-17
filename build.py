@@ -58,7 +58,13 @@ TAB_ICONS = {
  "more": '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg>',
 }
 NAV = [("index.html", "today", "Hoy"), ("oraciones/index.html", "prayers", "Oraciones"), ("rosario.html", "rosary", "Rosario"), ("evangelio-de-hoy.html", "gospel", "Evangelio"), ("santos/index.html", "saints", "Santos"), ("novenas/index.html", "novenas", "Novenas"), ("muro-de-intenciones.html", "candles", "Velas")]
-def canon(path): return SITE + ("" if path == "index.html" else path)
+# En Cloudflare Pages (variable CF_PAGES=1) las direcciones van sin «.html»: /oraciones/acordaos
+CLEAN = os.environ.get("CF_PAGES") == "1" or "--limpias" in sys.argv
+def cleanp(path):
+    if not CLEAN: return path
+    if path.endswith("index.html"): return path[:-10]
+    return path[:-5] if path.endswith(".html") else path
+def canon(path): return SITE + ("" if path == "index.html" else cleanp(path))
 ORG = {"@type": "Organization", "name": "Rezo Diario", "url": SITE, "logo": SITE + "icon.svg"}
 
 def header(r, active):
@@ -162,7 +168,7 @@ def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="web
 <div id="toastHost"></div>
 <script src="{r}assets/data.js"></script>
 <script src="{r}assets/site.js"></script>'''
-    pages.append((path, head, body, body_attrs + f' data-root="{r}"'))
+    pages.append((path, head, body, body_attrs + f' data-root="{r}"' + (" data-clean=\"1\"" if CLEAN else "")))
 
 # ---------- componentes ----------
 def player():
@@ -544,7 +550,7 @@ page("muro-de-intenciones.html", "Muro de intenciones: enciende una vela virtual
  f'<div class="chapel" style="padding-top:20px"><div class="wrap">{crumbs_html(r, [("Inicio", "index.html"), ("Muro de intenciones", "muro-de-intenciones.html")])}</div></div>' + chapel(r, True) + sec(head2("Preguntas frecuentes", "Sobre el muro de velas") + faq_html(muro_faq)), "candles", [crumbs_ld([("Inicio", "index.html"), ("Muro de intenciones", "muro-de-intenciones.html")]), faq_ld(muro_faq)])
 
 # ================= WIDGET =================
-wcode = f'<div id="rezodiario-evangelio"><a href="{SITE}evangelio-de-hoy.html">Evangelio de hoy en Rezo Diario</a></div>\n<script src="{SITE}widget/evangelio.js" async></script>'
+wcode = f'<div id="rezodiario-evangelio"><a href="{canon("evangelio-de-hoy.html")}">Evangelio de hoy en Rezo Diario</a></div>\n<script src="{SITE}widget/evangelio.js" async></script>'
 wid = phero(r, [("Inicio", "index.html"), ("Widget para parroquias", "widget.html")], "Gratis para parroquias, colegios y blogs", "Pon el Evangelio del día en tu web", "Un recuadro que se actualiza solo cada día con el Evangelio, una frase y un enlace al audio. Copia el código y pégalo en tu web: no necesitas saber programar.") + \
  sec(f'''<div class="art"><div style="min-width:0"><h2>Así se verá</h2><div id="wPreview" style="margin:16px 0 28px"></div>
  <h2>Código para copiar</h2><p style="color:var(--muted)">Pégalo en tu página donde quieras que aparezca (en WordPress, en un bloque «HTML personalizado»).</p>
@@ -564,7 +570,7 @@ page("sobre-nosotros.html", "Quiénes somos | Rezo Diario", "Rezo Diario es un p
  <h2>Equipo y revisión</h2><p class="hint" style="font-size:15px">Pendiente de completar: nombres del equipo, sacerdote o institución que revisa los contenidos y datos legales de la entidad.</p>
  <h2>Contacto</h2><p>{E(AJ.get("emailContacto", ""))}</p></div>'''), "", [crumbs_ld([("Inicio", "index.html"), ("Quiénes somos", "sobre-nosotros.html")])])
 LEGAL = {"aviso-legal": ("Aviso legal", "Titular del sitio: [nombre de la persona o entidad]. NIF: [número]. Domicilio: [dirección]. Correo: " + AJ.get("emailContacto", "") + ".\n\nEl contenido original de Rezo Diario (reflexiones, oraciones nuevas, diseño) es propiedad de su titular. Las oraciones tradicionales son de dominio público. Las citas bíblicas breves se usan con fines de comentario.\n\nEste texto es una plantilla: revísalo con un profesional antes de publicar."),
-         "privacidad": ("Política de privacidad", "Responsable: [nombre]. Datos que tratamos: el correo electrónico si te suscribes al boletín o creas una cuenta; el texto y el nombre de pila que escribas al encender una vela; y un identificador anónimo de tu navegador para evitar abusos en el muro.\n\nFinalidad: enviarte el rezo diario, guardar tu progreso y mostrar tu vela durante siete días. Base legal: tu consentimiento. Encargados: Supabase (base de datos), Netlify (alojamiento) y el proveedor de correo que elijáis.\n\nPuedes pedir acceso, rectificación o borrado escribiendo a " + AJ.get("emailContacto", "") + ".\n\nEste texto es una plantilla: revísalo con un profesional antes de publicar."),
+         "privacidad": ("Política de privacidad", "Responsable: [nombre]. Datos que tratamos: el correo electrónico si te suscribes al boletín o creas una cuenta; el texto y el nombre de pila que escribas al encender una vela; y un identificador anónimo de tu navegador para evitar abusos en el muro.\n\nFinalidad: enviarte el rezo diario, guardar tu progreso y mostrar tu vela durante siete días. Base legal: tu consentimiento. Encargados: Supabase (base de datos), Cloudflare (alojamiento) y el proveedor de correo que elijáis.\n\nPuedes pedir acceso, rectificación o borrado escribiendo a " + AJ.get("emailContacto", "") + ".\n\nEste texto es una plantilla: revísalo con un profesional antes de publicar."),
          "cookies": ("Política de cookies", "Rezo Diario no usa cookies publicitarias. Guardamos en tu navegador (almacenamiento local) tus preferencias: tema claro u oscuro, idioma, favoritos, racha y progreso de novenas. Si añadís herramientas de analítica, actualizad este texto y mostrad un aviso de consentimiento.\n\nEste texto es una plantilla: revísalo con un profesional antes de publicar.")}
 r = "../"
 for k, (t, x) in LEGAL.items():
@@ -584,14 +590,18 @@ data = {"week": [{k: w[k] for k in ("date", "wd", "n", "mes", "color", "lit", "r
 open(OUT + "/assets/data.js", "w", encoding="utf-8").write("window.RD=" + json.dumps(data, ensure_ascii=False) + ";")
 for path, head, body, battrs in pages:
     full = f'<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n{head}\n</head>\n<body{battrs}>\n{body}\n</body>\n</html>\n'
+    if CLEAN:
+        full = re.sub(r'href="([^"#:?]*?)index\.html', lambda m: f'href="{m.group(1) or "./"}', full)
+        full = re.sub(r'href="([^"#:?]+?)\.html', r'href="\1', full)
+        full = full.replace('"evangelio/"+d.date+".html"', '"evangelio/"+d.date')
     os.makedirs(os.path.dirname(OUT + "/" + path) or OUT, exist_ok=True); open(OUT + "/" + path, "w", encoding="utf-8").write(full)
     if path == "index.html": open(ROOT + "/.preview-index.html", "w", encoding="utf-8").write(head.replace(E("Rezo Diario · Oración diaria, Evangelio de hoy, Rosario y velas"), "Rezo Diario", 1) + "\n" + body)
 # API del widget: un JSON por día
 os.makedirs(OUT + "/api/evangelio", exist_ok=True)
 for w in DAYS:
-    json.dump({"fecha": w["date"], "dia": f'{w["wd"]} {w["n"]} de {w["mes"]}', "liturgia": w["lit"], "color": w["color"], "cita": w["refL"], "titulo": w["title"], "frase": w["ex"], "url": f'{SITE}evangelio/{w["date"]}.html'}, open(f'{OUT}/api/evangelio/{w["date"]}.json', "w", encoding="utf-8"), ensure_ascii=False)
+    json.dump({"fecha": w["date"], "dia": f'{w["wd"]} {w["n"]} de {w["mes"]}', "liturgia": w["lit"], "color": w["color"], "cita": w["refL"], "titulo": w["title"], "frase": w["ex"], "url": canon(f'evangelio/{w["date"]}.html')}, open(f'{OUT}/api/evangelio/{w["date"]}.json', "w", encoding="utf-8"), ensure_ascii=False)
 # Pódcast
-items = "".join(f'''<item><title>{E(w["title"])} · {w["n"]} de {w["mes"]}</title><description>{E(w["refL"] + ". " + w["sum"])}</description><link>{SITE}evangelio/{w["date"]}.html</link><guid isPermaLink="false">rezodiario-{w["date"]}</guid><pubDate>{datetime.datetime.fromisoformat(w["date"] + "T06:00:00+01:00").strftime("%a, %d %b %Y %H:%M:%S +0100")}</pubDate><enclosure url="{SITE}{w["audio"].lstrip("/")}" type="audio/mpeg" length="0"/>{f'<itunes:duration>{w["duracion"]}</itunes:duration>' if w.get("duracion") else ""}</item>\n''' for w in reversed(DAYS) if w.get("audio") and w["date"] <= TODAY)
+items = "".join(f'''<item><title>{E(w["title"])} · {w["n"]} de {w["mes"]}</title><description>{E(w["refL"] + ". " + w["sum"])}</description><link>{canon("evangelio/" + w["date"] + ".html")}</link><guid isPermaLink="false">rezodiario-{w["date"]}</guid><pubDate>{datetime.datetime.fromisoformat(w["date"] + "T06:00:00+01:00").strftime("%a, %d %b %Y %H:%M:%S +0100")}</pubDate><enclosure url="{SITE}{w["audio"].lstrip("/")}" type="audio/mpeg" length="0"/>{f'<itunes:duration>{w["duracion"]}</itunes:duration>' if w.get("duracion") else ""}</item>\n''' for w in reversed(DAYS) if w.get("audio") and w["date"] <= TODAY)
 pc = AJ["podcast"]
 open(OUT + "/podcast.xml", "w", encoding="utf-8").write(f'''<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"><channel>

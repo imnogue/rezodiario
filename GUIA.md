@@ -1,6 +1,6 @@
 # Rezo Diario · Guía de puesta en marcha
 
-Esta carpeta es toda la web. No necesitas instalar nada en tu ordenador: Netlify la genera sola cada vez que cambias algo.
+Esta carpeta es toda la web. No necesitas instalar nada en tu ordenador: Cloudflare Pages la genera sola cada vez que cambias algo.
 
 ## Qué hay en la carpeta
 
@@ -11,8 +11,9 @@ Esta carpeta es toda la web. No necesitas instalar nada en tu ordenador: Netlify
 | `static/` | Panel de contenidos (`admin/`), widget para parroquias, imágenes y audios. |
 | `assets/` | Diseño (`.css`) y funcionamiento (`site.js`) de la web. |
 | `supabase/schema.sql` | La base de datos del muro de velas y de las cuentas. |
-| `build.py` | El programa que genera la web. Netlify lo ejecuta solo. |
-| `netlify.toml` | Instrucciones para Netlify. |
+| `build.py` | El programa que genera la web. Cloudflare lo ejecuta solo. |
+| `functions/api/` | El inicio de sesión del panel con GitHub. |
+| `netlify.toml` | Por si algún día prefieres Netlify. |
 | `.github/workflows/` | Publica la web cada noche para que «hoy» cambie solo. |
 
 ---
@@ -23,22 +24,32 @@ Esta carpeta es toda la web. No necesitas instalar nada en tu ordenador: Netlify
 2. Instala **GitHub Desktop** (desktop.github.com). Es más fácil que la web porque la carpeta tiene muchos archivos.
 3. En GitHub Desktop: *File → Add local repository* → elige esta carpeta → *Create a repository* → nombre `rezodiario` → *Publish repository*. Puedes dejarlo **privado**.
 
-## Paso 2 · Publicar en Netlify (10 min)
+## Paso 2 · Publicar en Cloudflare Pages (10 min, gratis)
 
-1. Crea una cuenta en netlify.com entrando con tu cuenta de GitHub.
-2. *Add new site → Import an existing project → GitHub* → elige `rezodiario`.
-3. Netlify lee `netlify.toml` y ya sabe qué hacer. Pulsa **Deploy**.
-4. En *Domain management* añade **rezodiario.com** y sigue las instrucciones para cambiar los DNS en la empresa donde compraste el dominio. El certificado HTTPS se activa solo.
+1. Crea una cuenta en **dash.cloudflare.com**.
+2. Menú izquierdo: **Workers & Pages → Create → Pages → Connect to Git**. Conecta tu GitHub y elige **rezodiario**.
+3. En la configuración:
+   - Framework preset: **None**
+   - Build command: `python3 build.py`
+   - Build output directory: `site`
+   - En *Environment variables* añade `PYTHON_VERSION` = `3.11`
+4. Pulsa **Save and Deploy**. En 1–2 minutos tendrás la web en `rezodiario.pages.dev` (o un nombre parecido).
+5. En el proyecto: **Custom domains → Set up a custom domain** → `rezodiario.com`. Si el dominio no está en Cloudflare, te dirá qué registros DNS poner donde lo compraste (o puedes pasar el dominio a Cloudflare, que es lo más sencillo).
 
-## Paso 3 · Activar el panel de contenidos (15 min)
+## Paso 3 · Activar el panel de contenidos (10 min)
 
-1. El panel ya está configurado para tu repositorio `imnogue/rezodiario`.
-2. En GitHub: *Settings → Developer settings → OAuth Apps → New OAuth App*.
+1. En GitHub: foto de perfil → **Settings → Developer settings → OAuth Apps → New OAuth App**.
+   - Application name: `Panel Rezo Diario`
    - Homepage URL: `https://rezodiario.com`
-   - Authorization callback URL: `https://api.netlify.com/auth/done`
-   - Copia el **Client ID** y genera un **Client secret**.
-3. En Netlify: *Site configuration → Access & security → OAuth → Install provider → GitHub* y pega los dos datos.
-4. Entra en **rezodiario.com/admin** y pulsa *Login with GitHub*. Ya puedes editar días, oraciones, santos, novenas y ajustes. Cada vez que guardas, la web se actualiza en 1–2 minutos.
+   - Authorization callback URL: `https://rezodiario.com/api/callback`
+   - Pulsa *Register*, copia el **Client ID** y pulsa *Generate a new client secret* para copiar el **secret**.
+2. En Cloudflare, en tu proyecto: **Settings → Variables and Secrets → Add** (en *Production*):
+   - `GITHUB_CLIENT_ID` = el Client ID
+   - `GITHUB_CLIENT_SECRET` = el secret (márcalo como *Encrypt*)
+3. Vuelve a publicar: **Deployments → … → Retry deployment**.
+4. Entra en **rezodiario.com/admin** y pulsa *Login with GitHub*. Cada vez que guardes algo, la web se actualiza en 1–2 minutos.
+
+> Mientras el dominio no esté conectado, puedes probar el panel en la dirección `.pages.dev`: crea una segunda OAuth App igual pero con esa dirección en la *callback URL*, y usa sus datos.
 
 ## Paso 4 · Muro de velas y cuentas con Supabase (20 min)
 
@@ -55,9 +66,9 @@ Esta carpeta es toda la web. No necesitas instalar nada en tu ordenador: Netlify
 
 ## Paso 5 · Que «hoy» cambie solo cada día (5 min)
 
-1. En Netlify: *Site configuration → Build & deploy → Build hooks → Add build hook* → nombre «cada día» → copia la URL.
-2. En GitHub, en tu repositorio: *Settings → Secrets and variables → Actions → New repository secret*.
-   - Nombre: `NETLIFY_BUILD_HOOK`
+1. En Cloudflare, en tu proyecto: **Settings → Builds → Deploy hooks → Add deploy hook** → nombre «cada día», rama `main` → copia la URL.
+2. En GitHub, en tu repositorio: **Settings → Secrets and variables → Actions → New repository secret**.
+   - Nombre: `NETLIFY_BUILD_HOOK` (se llama así aunque uses Cloudflare)
    - Valor: la URL del paso anterior.
 3. Listo: cada noche, a las 00:01, la web se regenera con el Evangelio y el santo del nuevo día.
 

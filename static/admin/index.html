@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Panel · Rezo Diario</title>
+  <script>window.CMS_MANUAL_INIT = true;</script>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // El inicio de sesión funciona en la dirección donde abras el panel (rezodiario.com o la de Cloudflare)
+    CMS.init({ config: { backend: { name: "github", repo: "imnogue/rezodiario", branch: "main", base_url: location.origin, auth_endpoint: "api/auth" } } });
+  </script>
 </body>
 </html>
