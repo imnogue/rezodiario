@@ -215,7 +215,7 @@ function renderWeek(){
  const st=$("#streak");if(st){let n=0;for(let i=todayIdx;i>=0;i--){if(s.includes(WEEK[i].date))n++;else if(i<todayIdx)break}st.innerHTML=n?`Llevas <b>${n} ${n===1?"día":"días"}</b> seguidos rezando`:"Empieza tu racha de oración hoy"}
 }
 if($("#week")&&!$("#player")){window.__rdDay=WEEK.findIndex(d=>d.date===document.body.dataset.day);renderWeek()}
-setTimeout(()=>{const w=$("#week"),c=w&&w.querySelector(".day.sel");if(c)w.scrollLeft=Math.max(0,c.offsetLeft-w.offsetLeft-40)},80);
+setTimeout(()=>{const w=$("#week"),c=w&&w.querySelector(".day.sel");if(c)w.scrollLeft=Math.max(0,c.offsetLeft-w.offsetLeft-(w.clientWidth-c.offsetWidth)/2)},80);
 
 /* ---------- Para este momento ---------- */
 if($("#askForm")){
@@ -446,7 +446,12 @@ if(chapel){
  async function renderAcc(){const u=await me();$("#accOut").hidden=!!u;$("#accIn").hidden=!u;msg("");
   if(u){$("#accWho").textContent=u.email;const s=store.get("rd-rezado",[]).length,f=store.get("rd-favs",[]).length;$("#accStats").innerHTML=`<li><a>Días rezados<small>${s}</small></a></li><li><a>Oraciones guardadas<small>${f}</small></a></li>`}}
  $("#accForm").onsubmit=async e=>{e.preventDefault();const em=$("#accEmail").value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg("Revisa el correo: falta la @ o el dominio.");return}
-  try{await sbf("/auth/v1/otp",{method:"POST",body:{email:em,create_user:true,options:{emailRedirectTo:location.origin+location.pathname}}});msg("Te hemos enviado un enlace. Ábrelo desde este dispositivo para entrar.")}catch(err){msg("No se ha podido enviar el enlace. Inténtalo de nuevo en unos minutos.")}};
+  try{await sbf("/auth/v1/otp?redirect_to="+encodeURIComponent(location.origin+location.pathname),{method:"POST",body:{email:em,create_user:true}});msg("Te hemos enviado un enlace. Ábrelo desde este dispositivo para entrar.")}
+  catch(err){const t=String(err&&err.message||err);let m="No se ha podido enviar el enlace.";
+   if(/rate|limit|429/i.test(t))m+=" Se han enviado demasiados correos en poco tiempo: espera un rato y vuelve a intentarlo.";
+   else if(/not authorized|Email address not authorized/i.test(t))m+=" El servidor de correo de prueba de Supabase solo envía a direcciones autorizadas: hay que conectar un servicio de correo propio.";
+   else if(/signups? (are )?(not allowed|disabled)/i.test(t))m+=" Los registros nuevos están desactivados en Supabase.";
+   msg(m+" (Detalle: "+t.slice(0,160)+")")}};
  $("#accLogout").onclick=()=>{store.set("rd-auth",null);renderAcc();toast("Has cerrado sesión. Tu progreso sigue guardado en tu cuenta.")};
  if(store.get("rd-auth",null))refresh();
 })();
