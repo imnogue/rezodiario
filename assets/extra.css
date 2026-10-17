@@ -347,3 +347,4 @@ img,video,canvas,svg,iframe{max-width:100%}
 /* iPhone hace zoom al escribir si la letra del campo es menor de 16 px: en pantallas táctiles todos los campos usan 16 px o más */
 @media (pointer:coarse),(max-width:900px){input,textarea,select,.field,.ask input,.ask.heart textarea,#vText{font-size:16px!important}}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media(max-width:900px){.top .menu-btn{display:none!important}}
