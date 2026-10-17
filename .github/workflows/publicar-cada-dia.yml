@@ -1,5 +1,5 @@
 # Vuelve a generar la web cada noche para que «hoy» cambie solo.
-# Guarda el «deploy hook» de Cloudflare Pages (o el «build hook» de Netlify) como secreto NETLIFY_BUILD_HOOK en GitHub.
+# Guarda el «deploy hook» de Cloudflare Pages como secreto del repositorio NETLIFY_BUILD_HOOK.
 name: Publicar el rezo de cada día
 on:
   schedule:
@@ -10,4 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Avisar al alojamiento
-        run: curl -fsS -X POST -d '{}' "${{ secrets.NETLIFY_BUILD_HOOK }}"
+        env:
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          HOOK="$(printf '%s' "$HOOK" | tr -d '[:space:]"'"'"'')"
+          if [ -z "$HOOK" ]; then echo "::error::El secreto NETLIFY_BUILD_HOOK está vacío o no existe en Repository secrets."; exit 1; fi
+          case "$HOOK" in
+            https://*) ;;
+            *) echo "::error::El secreto NETLIFY_BUILD_HOOK no empieza por https://. Pega la URL completa del deploy hook de Cloudflare (empieza por https://api.cloudflare.com/...)."; exit 1;;
+          esac
+          echo "Llamando al deploy hook (${#HOOK} caracteres)…"
+          curl -fsS -X POST "$HOOK"
+          echo
+          echo "Listo: la web se está publicando de nuevo."
