@@ -329,7 +329,7 @@ if(nv){
 /* ---------- Supabase (REST, sin librerías) ---------- */
 const SB=CFG.supabaseUrl&&CFG.supabaseAnonKey?{u:CFG.supabaseUrl.replace(/\/$/,""),k:CFG.supabaseAnonKey}:null;
 const AUTH={get token(){return (store.get("rd-auth",null)||{}).access_token||null}};
-async function sbf(path,opt={}){const h={apikey:SB.k,Authorization:"Bearer "+((opt.auth&&AUTH.token)||SB.k),"Content-Type":"application/json",...(opt.headers||{})};
+async function sbf(path,opt={}){const tok=(opt.auth&&AUTH.token)||(/^eyJ/.test(SB.k)?SB.k:null);const h={apikey:SB.k,"Content-Type":"application/json",...(tok?{Authorization:"Bearer "+tok}:{}),...(opt.headers||{})};
  const r=await fetch(SB.u+path,{method:opt.method||"GET",headers:h,body:opt.body?JSON.stringify(opt.body):undefined});const t=await r.text();if(!r.ok)throw new Error(r.status+" "+t);return t?JSON.parse(t):null}
 
 /* ---------- Muro de velas ---------- */
