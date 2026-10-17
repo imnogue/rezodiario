@@ -11,7 +11,7 @@ window.addEventListener('message',recv,false);window.opener.postMessage('authori
   if (!code || !cookie || cookie[1] !== state) return page("error", { message: "La sesión ha caducado. Vuelve a intentarlo." });
   const r = await fetch("https://github.com/login/oauth/access_token", {
     method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json", "User-Agent": "rezodiario-cms" },
-    body: JSON.stringify({ client_id: env.GITHUB_CLIENT_ID, client_secret: env.GITHUB_CLIENT_SECRET, code, redirect_uri: `${url.origin}/api/callback` })
+    body: JSON.stringify({ client_id: String(env.GITHUB_CLIENT_ID || "").replace(/[\s"']/g, ""), client_secret: String(env.GITHUB_CLIENT_SECRET || "").replace(/[\s"']/g, ""), code, redirect_uri: `${url.origin}/api/callback` })
   });
   const j = await r.json();
   if (!j.access_token) return page("error", { message: j.error_description || "GitHub no ha devuelto el acceso." });
