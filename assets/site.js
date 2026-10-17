@@ -115,7 +115,8 @@ function totalMin(){return Math.max(1,Math.round(P.items.reduce((a,it)=>a+est(it
 function remaining(){let s=0;for(let i=P.k;i<P.items.length;i++)s+=est(P.items[i].t)+(isQ(P.items[i].t)?25:1.6);return Math.max(1,Math.round(s/60))}
 function loadPlayer(d){
  stopPlayer();P.day=d;P.segs=segmentsFor(d);P.items=[];P.done=false;
- P.segs.forEach((s,si)=>splitS(s.text).forEach(t=>P.items.push({si,t})));P.k=0;
+ if(d.audio&&d.marcas&&d.marcas.length){d.marcas.forEach(m=>P.items.push({si:m[1],t:m[2],at:m[0]}))}else P.segs.forEach((s,si)=>splitS(s.text).forEach(t=>P.items.push({si,t})));P.k=0;
+ if(AU&&AU.dataset.d!==d.date){AU.pause();AU=null}const pl=$("#player");if(pl)pl.classList.toggle("live",!!d.audio);
  $("#pills").innerHTML=P.segs.map((s,i)=>`<button class="pill" data-seg="${i}"><b></b><span>${s.name.split(" · ")[0]}</span></button>`).join("");
  $$("#pills .pill").forEach(b=>b.onclick=()=>jumpSeg(+b.dataset.seg));
  $("#pTitle").textContent=d.title;const fd=$("#fDur");if(fd)fd.textContent=(d.audio&&d.duracion)?d.duracion:totalMin()+" min";
@@ -127,8 +128,8 @@ function renderP(first){
  $("#player").classList.toggle("playing",P.playing);
  $("#pSeg").textContent=P.segs[it.si].name;
  const el=$("#pText");const txt=P.done?"Amén. Gracias por rezar hoy.":(first&&!P.playing&&P.k===0?"Pulsa el botón y respira. Te acompañamos.":it.t);
- if(el.textContent!==txt){el.classList.add("fade");setTimeout(()=>{el.textContent=txt;el.classList.remove("fade")},220)}
- $$("#pills .pill").forEach((b,i)=>{const its=P.items.filter(x=>x.si===i);const idx=P.items.indexOf(its[0]);let w=P.k>idx?Math.min(1,(P.k-idx)/its.length):0;if(P.done)w=1;b.style.setProperty("--w",w*100+"%");b.classList.toggle("on",i===it.si)});
+ if(el.textContent!==txt){if(P.day&&P.day.audio){setText(el,txt)}else{el.classList.add("fade");setTimeout(()=>{el.textContent=txt;el.classList.remove("fade")},220)}}
+ if(!(P.day&&P.day.audio&&AU))$$("#pills .pill").forEach((b,i)=>{const its=P.items.filter(x=>x.si===i);const idx=P.items.indexOf(its[0]);let w=P.k>idx?Math.min(1,(P.k-idx)/its.length):0;if(P.done)w=1;b.style.setProperty("--w",w*100+"%");b.classList.toggle("on",i===it.si)});
  $("#pTime").textContent=P.done?"Completado":(P.k===0&&!P.playing?totalMin()+" min":"Quedan "+remaining()+" min");
  $("#pPlay").innerHTML=P.playing?'<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>':'<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg>';
  $("#pPlay").setAttribute("aria-label",P.playing?"Pausar":"Reproducir");
@@ -147,16 +148,28 @@ function speakCur(){
 }
 function advance(my){if(my!==P.token||!P.playing)return;clearT();const prev=P.items[P.k].si;if(P.k>=P.items.length-1){finishP();return}
  const q=isQ(P.items[P.k].t);P.k++;const gap=P.items[P.k].si!==prev?10000:(q?25000:1600);renderP();P.timer=setTimeout(()=>{if(my===P.token&&P.playing)speakCur()},gap)}
-let AU=null;
+let AU=null,raf=0;
+function setText(el,txt){el.textContent=txt;el.classList.remove("txtin");void el.offsetWidth;el.classList.add("txtin")}
+function segBounds(){const D=AU&&AU.duration||0;const st=[0,0,0,0];for(let i=1;i<4;i++){const f=P.items.find(x=>x.si===i&&x.at!=null);st[i]=f?Math.max(0,f.at-1.5):D*i/4}return st.map((a,i)=>[a,i<3?st[i+1]:D])}
+function tickAudio(){if(!AU||!AU.duration)return;const t=AU.currentTime,D=AU.duration;const hasM=P.items.length&&P.items[0].at!=null;
+ let k=0;if(hasM){for(let i=0;i<P.items.length;i++){if(P.items[i].at<=t+0.15)k=i;else break}}else k=Math.min(P.items.length-1,Math.floor(t/D*P.items.length));
+ const B=segBounds();let curSeg=0;$$("#pills .pill").forEach((b,i)=>{const[a,e]=B[i];const w=Math.max(0,Math.min(1,(t-a)/Math.max(.1,e-a)));b.style.setProperty("--w",(w*100).toFixed(2)+"%");if(t>=a)curSeg=i});
+ $$("#pills .pill").forEach((b,i)=>b.classList.toggle("on",i===curSeg));
+ const seg=$("#pSeg");if(seg&&P.segs[curSeg])seg.textContent=P.segs[curSeg].name;
+ const before=hasM&&t+0.15<P.items[0].at;
+ if(k!==P.k||P.__first){P.k=k;P.__first=false}const el=$("#pText");const txt=before?"Respira despacio…":P.items[k].t;if(el.textContent!==txt)setText(el,txt);
+ $("#pTime").textContent="Quedan "+Math.max(1,Math.round((D-t)/60))+" min";
+ const ms=$("#miniS");if(ms&&P.segs[curSeg])ms.textContent=P.segs[curSeg].name}
+function loopAudio(){tickAudio();if(AU&&!AU.paused)raf=requestAnimationFrame(loopAudio)}
 function playP(){if(P.day&&P.day.audio){playAudio();return}if(P.done){P.k=0;P.done=false}stopSpeech();P.playing=true;amb(true);speakCur()}
 function playAudio(){stopSpeech();if(!AU||AU.dataset.d!==P.day.date){if(AU)AU.pause();AU=new Audio((/^https?:/.test(P.day.audio)?"":"/")+P.day.audio.replace(/^\//,""));AU.dataset.d=P.day.date;AU.preload="auto";
-  AU.addEventListener("timeupdate",()=>{if(!AU.duration)return;const f=AU.currentTime/AU.duration;P.k=Math.min(P.items.length-1,Math.floor(f*P.items.length));renderP();$("#pTime").textContent="Quedan "+Math.max(1,Math.round((AU.duration-AU.currentTime)/60))+" min"});
+  AU.addEventListener("play",()=>{cancelAnimationFrame(raf);loopAudio()});AU.addEventListener("seeked",tickAudio);AU.addEventListener("loadedmetadata",tickAudio);
   AU.addEventListener("ended",()=>{P.playing=false;finishP()});AU.addEventListener("error",()=>{toast("No se ha podido cargar el audio. Usamos la voz del navegador.");P.day=Object.assign({},P.day,{audio:""});playP()})}
  AU.playbackRate=P.rate;P.playing=true;AU.play().catch(()=>{P.playing=false;renderP()});renderP()}
 function stopPlayer(){P.playing=false;P.token++;clearT();if(synth)try{synth.cancel()}catch(e){};amb(false);if(AU)AU.pause()}
 function pauseP(){stopPlayer();renderP()}
 function finishP(){P.playing=false;P.done=true;P.token++;amb(false);markDone(P.day.date);renderP();toast("Rezo completado. Que tengas un buen día.")}
-function jumpSeg(si){const idx=P.items.findIndex(x=>x.si===si);if(idx<0)return;P.done=false;P.k=idx;if(AU&&P.day.audio&&AU.duration){AU.currentTime=AU.duration*idx/P.items.length;renderP();return}if(P.playing)speakCur();else{P.token++;renderP()}}
+function jumpSeg(si){const idx=P.items.findIndex(x=>x.si===si);if(idx<0)return;P.done=false;P.k=idx;if(AU&&P.day.audio&&AU.duration){AU.currentTime=segBounds()[si][0];tickAudio();return}if(P.playing)speakCur();else{P.token++;renderP()}}
 let ac=null,master=null;
 function amb(on){try{if(on&&!P.music)on=false;
  if(on&&!ac){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ac=new AC();master=ac.createGain();master.gain.value=0;const lp=ac.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1000;lp.connect(master);master.connect(ac.destination);

@@ -28,18 +28,19 @@ def log(*a): print(*a, flush=True)
 def fail(msg): print(f"::error::{msg}", flush=True); sys.exit(1)
 def br(s): return f' <break time="{s}s" /> '
 
+SEGS = {0: 0, 1: 1, 2: 2, 3: 3}
 def clips(d):
-    """Lista de piezas del audio: ('voz', texto) o ('silencio', segundos)."""
+    """Lista de piezas del audio: ('voz', texto, parte) o ('silencio', segundos). Parte: 0 silencio, 1 Evangelio, 2 reflexión, 3 oración final."""
     libro, cap = d["refL"].split(" ")[0], d["refL"].split(" ")[1].rstrip(",")
     out = [("silencio", 4),
-           ("voz", "Busca un lugar tranquilo y ponte cómodo." + br(1.5) + "Respira despacio." + br(2) + "Inspira…" + br(2.5) + "y suelta el aire." + br(2.5) + "Estás en la presencia de Dios." + br(1.5) + "Él te mira con cariño."),
+           ("voz0", "Busca un lugar tranquilo y ponte cómodo." + br(1.5) + "Respira despacio." + br(2) + "Inspira…" + br(2.5) + "y suelta el aire." + br(2.5) + "Estás en la presencia de Dios." + br(1.5) + "Él te mira con cariño."),
            ("silencio", 8),
-           ("voz", f"Evangelio según san {libro}, capítulo {cap}." + br(1.5) + d["sum"] + br(2) + "Escucha estas palabras de Jesús:" + br(1.5) + d["ex"]),
+           ("voz1", f"Evangelio según san {libro}, capítulo {cap}." + br(1.5) + d["sum"] + br(2) + "Escucha estas palabras de Jesús:" + br(1.5) + d["ex"]),
            ("silencio", 12),
-           ("voz", d["refl"] + br(2) + "Ahora, en silencio, piensa en estas preguntas."),
+           ("voz2", d["refl"] + br(2) + "Ahora, en silencio, piensa en estas preguntas."),
            ("silencio", 3)]
-    for q in d["qs"]: out += [("voz", q), ("silencio", 20)]
-    out += [("voz", d["fin"] + br(2) + GL), ("silencio", 7)]
+    for q in d["qs"]: out += [("voz2", q), ("silencio", 20)]
+    out += [("voz3", d["fin"] + br(2) + GL), ("silencio", 7)]
     return out
 
 def run(cmd):
@@ -55,7 +56,7 @@ def tts(text, path, a):
     key, voice = os.environ.get("ELEVENLABS_API_KEY", "").strip(), os.environ.get("ELEVENLABS_VOICE_ID", "").strip()
     model = os.environ.get("ELEVENLABS_MODEL", "").strip() or "eleven_multilingual_v2"
     body = json.dumps({"text": text, "model_id": model, "language_code": "es",
-                       "voice_settings": {"stability": 0.7, "similarity_boost": 0.75, "style": 0.1, "use_speaker_boost": True, "speed": 0.9}}).encode()
+                       "voice_settings": {"stability": 0.7, "similarity_boost": 0.75, "style": 0.1, "use_speaker_boost": True, "speed": float(os.environ.get("ELEVENLABS_SPEED", "") or 1.0)}}).encode()
     req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128", data=body, method="POST",
                                  headers={"xi-api-key": key, "Content-Type": "application/json", "Accept": "audio/mpeg"})
     for intento in range(3):
@@ -77,9 +78,39 @@ def dur(path):
     r = run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", path])
     return float(r.stdout.strip())
 
+def frases(t):
+    return [x for x in re.split(r"(?<=[.!?»…])\s+", t.strip()) if x]
+
+def marcas_clip(wav, text, offset, seg):
+    """Calcula en qué segundo empieza cada frase dentro de un trozo de voz."""
+    trozos = [re.sub(r"\s+", " ", x).strip() for x in re.split(r"<break[^>]*>", text)]
+    pausas = [float(x) for x in re.findall(r'time="([\d.]+)s"', text)]
+    trozos = [x for x in trozos if x]
+    D = dur(wav)
+    r = subprocess.run(["ffmpeg", "-i", wav, "-af", "silencedetect=noise=-38dB:d=0.7", "-f", "null", "-"], capture_output=True, text=True)
+    sil = [(float(a), float(b)) for a, b in zip(re.findall(r"silence_start: ([\d.]+)", r.stderr), re.findall(r"silence_end: ([\d.]+)", r.stderr))]
+    # tramos con voz entre silencios
+    tramos, cur = [], 0.0
+    for a_, b_ in sil:
+        if a_ - cur > 0.25: tramos.append((cur, a_))
+        cur = b_
+    if D - cur > 0.25: tramos.append((cur, D))
+    if len(tramos) != len(trozos):  # reparto proporcional si no coinciden
+        hablado = max(1.0, D - sum(pausas[:len(trozos) - 1]))
+        tot = sum(len(x) for x in trozos) or 1; t0 = 0.0; tramos = []
+        for k, x in enumerate(trozos):
+            l = hablado * len(x) / tot; tramos.append((t0, t0 + l)); t0 += l + (pausas[k] if k < len(pausas) else 0)
+    out = []
+    for (a_, b_), x in zip(tramos, trozos):
+        fs = frases(x); tot = sum(len(f) for f in fs) or 1; t0 = a_
+        for f in fs:
+            out.append([round(offset + t0, 2), seg, f]); t0 += (b_ - a_) * len(f) / tot
+    return out
+
 def montar(d, out_mp3, a):
+    marcas = []
     with tempfile.TemporaryDirectory() as tmp:
-        partes = []
+        partes = []; offset = 0.0
         for i, (kind, val) in enumerate(clips(d)):
             wav = os.path.join(tmp, f"{i:02d}.wav")
             if kind == "silencio":
@@ -87,7 +118,8 @@ def montar(d, out_mp3, a):
             else:
                 mp3 = os.path.join(tmp, f"{i:02d}.mp3"); tts(val, mp3, a)
                 run(["ffmpeg", "-y", "-loglevel", "error", "-i", mp3, "-ar", str(SR), "-ac", "1", wav])
-            partes.append(wav)
+                marcas += marcas_clip(wav, val, offset, int(kind[-1]))
+            partes.append(wav); offset += dur(wav)
         lista = os.path.join(tmp, "lista.txt"); open(lista, "w").write("".join(f"file '{p}'\n" for p in partes))
         voz = os.path.join(tmp, "voz.wav"); run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lista, "-c", "copy", voz])
         T = dur(voz)
@@ -104,7 +136,7 @@ def montar(d, out_mp3, a):
         run(["ffmpeg", "-y", "-loglevel", "error", "-i", voz, "-i", fondo, "-filter_complex",
              "[0][1]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", str(SR), "-ac", "1", "-c:a", "libmp3lame", "-b:a", "96k",
              "-metadata", f"title={d['title']} · {d['date']}", "-metadata", "artist=Rezo Diario", "-metadata", "album=Rezo Diario", out_mp3])
-    return dur(out_mp3)
+    return dur(out_mp3), marcas
 
 def sb_headers(key, extra=None):
     h = {"apikey": key}
@@ -152,17 +184,18 @@ def main():
         todo.append((f, d))
     if not todo: log("No hay días pendientes de audio en ese periodo."); return
     if len(todo) > a.max: log(f"Hay {len(todo)} días pendientes; genero solo los primeros {a.max}."); todo = todo[:a.max]
-    chars = sum(len(re.sub(r"<[^>]+>", "", v)) for _, d in todo for k, v in clips(d) if k == "voz")
+    chars = sum(len(re.sub(r"<[^>]+>", "", v)) for _, d in todo for k, v in clips(d) if k.startswith("voz"))
     log(f"Voy a generar {len(todo)} audios (unos {chars} caracteres de ElevenLabs).")
     outdir = os.path.join(ROOT, "audios-generados"); os.makedirs(outdir, exist_ok=True)
     for f, d in todo:
         log(f"{d['date']} · {d['title']}")
-        mp3 = os.path.join(outdir, f"{d['date']}.mp3"); secs = montar(d, mp3, a)
+        mp3 = os.path.join(outdir, f"{d['date']}.mp3"); secs, marcas = montar(d, mp3, a)
         dd = f"{int(secs // 60)}:{int(round(secs % 60)):02d}"
-        log(f"  Montado: {dd} min, {os.path.getsize(mp3) // 1024} KB")
+        log(f"  Montado: {dd} min, {os.path.getsize(mp3) // 1024} KB, {len(marcas)} frases sincronizadas")
+        if a.sin_subir: json.dump(marcas, open(mp3[:-4] + ".json", "w"), ensure_ascii=False)
         if a.sin_subir: continue
         url = subir(mp3, f"{d['date']}.mp3", a)
-        d["audio"] = f"{url}?v={int(time.time())}"; d["duracion"] = dd
+        d["audio"] = f"{url}?v={int(time.time())}"; d["duracion"] = dd; d["marcas"] = marcas
         json.dump(d, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         log(f"  Subido y enlazado: {url}")
     log("Terminado.")

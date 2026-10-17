@@ -206,3 +206,7 @@ a.card{text-decoration:none;color:var(--ink)}
 .reto-d.today{border-color:var(--gold);box-shadow:0 0 0 1.5px var(--gold)}
 #account .drawer-p h2{font-family:var(--f-display);font-weight:400;margin:10px 0}
 .phero .ring text{fill:var(--hero-ink)}.phero .ring .bg{stroke:color-mix(in srgb,var(--hero-ink) 18%,transparent)}
+
+#player.live .pill b::after{transition:none}
+.p-text.txtin{animation:txtin .28s ease-out}
+@keyframes txtin{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:none}}
