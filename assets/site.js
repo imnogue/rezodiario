@@ -452,6 +452,8 @@ if(chapel){
    else if(/not authorized|Email address not authorized/i.test(t))m+=" El servidor de correo de prueba de Supabase solo envía a direcciones autorizadas: hay que conectar un servicio de correo propio.";
    else if(/signups? (are )?(not allowed|disabled)/i.test(t))m+=" Los registros nuevos están desactivados en Supabase.";
    msg(m+" (Detalle: "+t.slice(0,160)+")")}};
+ const gb=$("#accGoogle");if(gb)gb.onclick=()=>{location.href=SB.u+"/auth/v1/authorize?provider=google&redirect_to="+encodeURIComponent(location.origin+location.pathname)};
+ const he=new URLSearchParams(location.hash.slice(1));if(he.get("error_description")){setTimeout(()=>{open();msg("No se ha podido entrar: "+he.get("error_description"))},300);history.replaceState(null,"",location.pathname+location.search)}
  $("#accLogout").onclick=()=>{store.set("rd-auth",null);renderAcc();toast("Has cerrado sesión. Tu progreso sigue guardado en tu cuenta.")};
  if(store.get("rd-auth",null))refresh();
 })();
