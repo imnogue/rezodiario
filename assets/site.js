@@ -444,7 +444,7 @@ if(chapel){
  async function push(now){if(!now){clearTimeout(timer);timer=setTimeout(()=>push(true),2500);return}if(busy)return;busy=true;const u=await me();if(u){try{await sbf("/rest/v1/progreso",{method:"POST",auth:true,headers:{Prefer:"resolution=merge-duplicates,return=minimal"},body:{user_id:u.id,datos:snapshot(),updated_at:new Date().toISOString()}})}catch(e){}}busy=false}
  window.__rdSync=()=>{if(store.get("rd-auth",null))push(false)};
  async function renderAcc(){const u=await me();$("#accOut").hidden=!!u;$("#accIn").hidden=!u;msg("");
-  if(u){$("#accWho").textContent=u.email;const s=store.get("rd-rezado",[]).length,f=store.get("rd-favs",[]).length;$("#accStats").innerHTML=`<li><a>Días rezados<small>${s}</small></a></li><li><a>Oraciones guardadas<small>${f}</small></a></li>`}}
+  if(u){$("#accWho").textContent=u.email||u.phone||"tu cuenta";const s=store.get("rd-rezado",[]).length,f=store.get("rd-favs",[]).length;$("#accStats").innerHTML=`<li><a>Días rezados<small>${s}</small></a></li><li><a>Oraciones guardadas<small>${f}</small></a></li>`}}
  $("#accForm").onsubmit=async e=>{e.preventDefault();const em=$("#accEmail").value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg("Revisa el correo: falta la @ o el dominio.");return}
   try{await sbf("/auth/v1/otp?redirect_to="+encodeURIComponent(location.origin+location.pathname),{method:"POST",body:{email:em,create_user:true}});msg("Te hemos enviado un enlace. Ábrelo desde este dispositivo para entrar.")}
   catch(err){const t=String(err&&err.message||err);let m="No se ha podido enviar el enlace.";
@@ -452,7 +452,23 @@ if(chapel){
    else if(/not authorized|Email address not authorized/i.test(t))m+=" El servidor de correo de prueba de Supabase solo envía a direcciones autorizadas: hay que conectar un servicio de correo propio.";
    else if(/signups? (are )?(not allowed|disabled)/i.test(t))m+=" Los registros nuevos están desactivados en Supabase.";
    msg(m+" (Detalle: "+t.slice(0,160)+")")}};
- const gb=$("#accGoogle");if(gb)gb.onclick=()=>{location.href=SB.u+"/auth/v1/authorize?provider=google&redirect_to="+encodeURIComponent(location.origin+location.pathname)};
+ const back=()=>encodeURIComponent(location.origin+location.pathname);
+ [["accGoogle","google"],["accApple","apple"],["accFacebook","facebook"]].forEach(([id,pv])=>{const b=$("#"+id);if(b)b.onclick=()=>{location.href=SB.u+"/auth/v1/authorize?provider="+pv+"&redirect_to="+back()}});
+ // Solo mostramos los métodos que están activados en Supabase
+ sbf("/auth/v1/settings").then(st=>{const ex=st.external||{};let any=false;
+  [["accGoogle","google"],["accApple","apple"],["accFacebook","facebook"]].forEach(([id,pv])=>{const b=$("#"+id);if(b&&ex[pv]){b.hidden=false;any=true}});
+  if(ex.phone){$("#accPhoneBtn").hidden=false;any=true}
+  if(st.disable_signup)msg("Ahora mismo no se admiten cuentas nuevas.");
+  if(ex.email===false){$("#accForm").hidden=true}else if(any)$("#accOr").hidden=false}).catch(()=>{});
+ let tel="";const normTel=v=>{v=v.replace(/[^\d+]/g,"");if(!v.startsWith("+"))v="+34"+v.replace(/^0+/,"");return v};
+ $("#accPhoneBtn").onclick=()=>{$("#accPhone").hidden=false;$("#accPhoneBtn").hidden=true;$("#accTel").focus()};
+ $("#accPhone").onsubmit=async e=>{e.preventDefault();tel=normTel($("#accTel").value);if(tel.length<10){msg("Escribe tu número con prefijo, por ejemplo +34 600 000 000.");return}
+  try{await sbf("/auth/v1/otp",{method:"POST",body:{phone:tel,create_user:true}});$("#accPhone").hidden=true;$("#accCode").hidden=false;$("#accOtp").focus();msg("Te hemos enviado un SMS con un código de 6 cifras.")}
+  catch(err){msg("No se ha podido enviar el SMS. (Detalle: "+String(err.message||err).slice(0,160)+")")}};
+ $("#accCode").onsubmit=async e=>{e.preventDefault();const code=$("#accOtp").value.replace(/\D/g,"");if(code.length<6){msg("El código tiene 6 cifras.");return}
+  try{const r=await sbf("/auth/v1/verify",{method:"POST",body:{type:"sms",phone:tel,token:code}});
+   store.set("rd-auth",{access_token:r.access_token,refresh_token:r.refresh_token,exp:Date.now()+(r.expires_in||3600)*1000});$("#accCode").hidden=true;toast("Has entrado en tu cuenta. Sincronizando…");pull();renderAcc()}
+  catch(err){msg("El código no es correcto o ha caducado. Pide uno nuevo.")}};
  const he=new URLSearchParams(location.hash.slice(1));if(he.get("error_description")){setTimeout(()=>{open();msg("No se ha podido entrar: "+he.get("error_description"))},300);history.replaceState(null,"",location.pathname+location.search)}
  $("#accLogout").onclick=()=>{store.set("rd-auth",null);renderAcc();toast("Has cerrado sesión. Tu progreso sigue guardado en tu cuenta.")};
  if(store.get("rd-auth",null))refresh();
