@@ -25,16 +25,16 @@ const tb=$("#btnTheme");if(tb)tb.onclick=()=>{const t=isDark()?"light":"dark";ro
 /* ---------- Idiomas ---------- */
 const LANGS=[["es","Español","ES"],["ca","Català","CA"],["gl","Galego","GL"],["eu","Euskara","EU"],["en","English","EN"],["pt","Português","PT"],["it","Italiano","IT"],["fr","Français","FR"],["de","Deutsch","DE"],["pl","Polski","PL"]];
 const I18N={
- es:{today:"Hoy",prayers:"Oraciones",rosary:"Rosario",gospel:"Evangelio",saints:"Santos",novenas:"Novenas",candles:"Velas",donate:"Donar",listen:"Escuchar el rezo de hoy",light:"Enciende una vela",more:"Más",note:""},
- ca:{today:"Avui",prayers:"Oracions",rosary:"Rosari",gospel:"Evangeli",saints:"Sants",novenas:"Novenes",candles:"Espelmes",donate:"Donar",listen:"Escolta la pregària d'avui",light:"Encén una espelma",more:"Més",note:"Les oracions en català arribaran aviat. De moment, el contingut és en castellà."},
- gl:{today:"Hoxe",prayers:"Oracións",rosary:"Rosario",gospel:"Evanxeo",saints:"Santos",novenas:"Novenas",candles:"Velas",donate:"Doar",listen:"Escoita a oración de hoxe",light:"Acende unha vela",more:"Máis",note:"As oracións en galego chegarán pronto. Polo de agora, o contido está en castelán."},
- eu:{today:"Gaur",prayers:"Otoitzak",rosary:"Arrosarioa",gospel:"Ebanjelioa",saints:"Santuak",novenas:"Bederatziurrenak",candles:"Kandelak",donate:"Dohaintza",listen:"Entzun gaurko otoitza",light:"Piztu kandela bat",more:"Gehiago",note:"Euskarazko otoitzak laster iritsiko dira. Oraingoz, edukia gaztelaniaz dago."},
- en:{today:"Today",prayers:"Prayers",rosary:"Rosary",gospel:"Gospel",saints:"Saints",novenas:"Novenas",candles:"Candles",donate:"Donate",listen:"Listen to today's prayer",light:"Light a candle",more:"More",note:"Prayers in English are coming soon. For now, the content is in Spanish."},
- pt:{today:"Hoje",prayers:"Orações",rosary:"Terço",gospel:"Evangelho",saints:"Santos",novenas:"Novenas",candles:"Velas",donate:"Doar",listen:"Ouça a oração de hoje",light:"Acenda uma vela",more:"Mais",note:"As orações em português chegam em breve. Por enquanto, o conteúdo está em espanhol."},
- it:{today:"Oggi",prayers:"Preghiere",rosary:"Rosario",gospel:"Vangelo",saints:"Santi",novenas:"Novene",candles:"Candele",donate:"Dona",listen:"Ascolta la preghiera di oggi",light:"Accendi una candela",more:"Altro",note:"Le preghiere in italiano arriveranno presto. Per ora i contenuti sono in spagnolo."},
- fr:{today:"Aujourd'hui",prayers:"Prières",rosary:"Chapelet",gospel:"Évangile",saints:"Saints",novenas:"Neuvaines",candles:"Bougies",donate:"Faire un don",listen:"Écouter la prière du jour",light:"Allumer une bougie",more:"Plus",note:"Les prières en français arrivent bientôt. Pour l'instant, le contenu est en espagnol."},
- de:{today:"Heute",prayers:"Gebete",rosary:"Rosenkranz",gospel:"Evangelium",saints:"Heilige",novenas:"Novenen",candles:"Kerzen",donate:"Spenden",listen:"Gebet des Tages anhören",light:"Eine Kerze anzünden",more:"Mehr",note:"Gebete auf Deutsch folgen bald. Derzeit sind die Inhalte auf Spanisch."},
- pl:{today:"Dziś",prayers:"Modlitwy",rosary:"Różaniec",gospel:"Ewangelia",saints:"Święci",novenas:"Nowenny",candles:"Świece",donate:"Wesprzyj",listen:"Posłuchaj dzisiejszej modlitwy",light:"Zapal świecę",more:"Więcej",note:"Modlitwy po polsku już wkrótce. Na razie treści są po hiszpańsku."}
+ es:{today:"Hoy",verses:"Versículos",prayers:"Oraciones",rosary:"Rosario",gospel:"Evangelio",saints:"Santos",novenas:"Novenas",candles:"Velas",donate:"Donar",listen:"Escuchar el rezo de hoy",light:"Enciende una vela",more:"Más",note:""},
+ ca:{today:"Avui",verses:"Versicles",prayers:"Oracions",rosary:"Rosari",gospel:"Evangeli",saints:"Sants",novenas:"Novenes",candles:"Espelmes",donate:"Donar",listen:"Escolta la pregària d'avui",light:"Encén una espelma",more:"Més",note:"Les oracions en català arribaran aviat. De moment, el contingut és en castellà."},
+ gl:{today:"Hoxe",verses:"Versículos",prayers:"Oracións",rosary:"Rosario",gospel:"Evanxeo",saints:"Santos",novenas:"Novenas",candles:"Velas",donate:"Doar",listen:"Escoita a oración de hoxe",light:"Acende unha vela",more:"Máis",note:"As oracións en galego chegarán pronto. Polo de agora, o contido está en castelán."},
+ eu:{today:"Gaur",verses:"Bertsetak",prayers:"Otoitzak",rosary:"Arrosarioa",gospel:"Ebanjelioa",saints:"Santuak",novenas:"Bederatziurrenak",candles:"Kandelak",donate:"Dohaintza",listen:"Entzun gaurko otoitza",light:"Piztu kandela bat",more:"Gehiago",note:"Euskarazko otoitzak laster iritsiko dira. Oraingoz, edukia gaztelaniaz dago."},
+ en:{today:"Today",verses:"Verses",prayers:"Prayers",rosary:"Rosary",gospel:"Gospel",saints:"Saints",novenas:"Novenas",candles:"Candles",donate:"Donate",listen:"Listen to today's prayer",light:"Light a candle",more:"More",note:"Prayers in English are coming soon. For now, the content is in Spanish."},
+ pt:{today:"Hoje",verses:"Versículos",prayers:"Orações",rosary:"Terço",gospel:"Evangelho",saints:"Santos",novenas:"Novenas",candles:"Velas",donate:"Doar",listen:"Ouça a oração de hoje",light:"Acenda uma vela",more:"Mais",note:"As orações em português chegam em breve. Por enquanto, o conteúdo está em espanhol."},
+ it:{today:"Oggi",verses:"Versetti",prayers:"Preghiere",rosary:"Rosario",gospel:"Vangelo",saints:"Santi",novenas:"Novene",candles:"Candele",donate:"Dona",listen:"Ascolta la preghiera di oggi",light:"Accendi una candela",more:"Altro",note:"Le preghiere in italiano arriveranno presto. Per ora i contenuti sono in spagnolo."},
+ fr:{today:"Aujourd'hui",verses:"Versets",prayers:"Prières",rosary:"Chapelet",gospel:"Évangile",saints:"Saints",novenas:"Neuvaines",candles:"Bougies",donate:"Faire un don",listen:"Écouter la prière du jour",light:"Allumer une bougie",more:"Plus",note:"Les prières en français arrivent bientôt. Pour l'instant, le contenu est en espagnol."},
+ de:{today:"Heute",verses:"Bibelverse",prayers:"Gebete",rosary:"Rosenkranz",gospel:"Evangelium",saints:"Heilige",novenas:"Novenen",candles:"Kerzen",donate:"Spenden",listen:"Gebet des Tages anhören",light:"Eine Kerze anzünden",more:"Mehr",note:"Gebete auf Deutsch folgen bald. Derzeit sind die Inhalte auf Spanisch."},
+ pl:{today:"Dziś",verses:"Wersety",prayers:"Modlitwy",rosary:"Różaniec",gospel:"Ewangelia",saints:"Święci",novenas:"Nowenny",candles:"Świece",donate:"Wesprzyj",listen:"Posłuchaj dzisiejszej modlitwy",light:"Zapal świecę",more:"Więcej",note:"Modlitwy po polsku już wkrótce. Na razie treści są po hiszpańsku."}
 };
 let lang=store.get("rd-lang","es");if(!I18N[lang])lang="es";
 function applyLang(){
@@ -553,6 +553,70 @@ if(cv){const cx=cv.getContext("2d");let C={},W=0,H=0,on=true,motes=[];const redu
  const loop=t=>{if(on)draw(t);if(!reduce)requestAnimationFrame(loop)};
  rc();size();addEventListener("resize",()=>{size();draw(performance.now())});document.addEventListener("rd-theme",()=>{rc();draw(performance.now())});
  matchMedia("(prefers-color-scheme: dark)").addEventListener("change",rc);new IntersectionObserver(e=>on=e[0].isIntersecting).observe(cv);requestAnimationFrame(loop);if(reduce)draw(0)}
+
+/* ---------- Versículos: escuchar, compartir en imagen y «Necesito un versículo ahora» ---------- */
+{
+const MARK=[["#D9A441","M6.1 12.6A10 10 0 0 1 14.8 4.07V12.6Z"],["#E07A4F","M17.2 4.07A10 10 0 0 1 25.9 12.6H17.2Z"],["#2E8B67","M6 15H14.8V28H8a2 2 0 0 1-2-2Z"],["#3E72B0","M17.2 15H26V26a2 2 0 0 1-2 2H17.2Z"]];
+const vOf=el=>{const c=el.closest("[data-ref]");return c?{ref:c.dataset.ref,x:c.dataset.x,tag:c.dataset.tag||""}:null};
+function vSay(text,onend){if(!synth){toast("Tu navegador no puede leer en voz alta");return}synth.cancel();pickVoice();const u=new SpeechSynthesisUtterance(text);u.lang="es-ES";u.rate=.95;if(voice)u.voice=voice;if(onend)u.onend=onend;synth.speak(u)}
+function wrap(ctx,text,maxW){const words=text.split(/\s+/),lines=[];let line="";for(const w of words){const t=line?line+" "+w:w;if(ctx.measureText(t).width>maxW&&line){lines.push(line);line=w}else line=t}if(line)lines.push(line);return lines}
+async function vImage(v){
+ const W=1080,H=1920,cv=document.createElement("canvas");cv.width=W;cv.height=H;const g=cv.getContext("2d");
+ try{await Promise.all(["italic 400 60px Literata","400 40px Marcellus","800 40px Manrope","500 40px Manrope"].map(f=>document.fonts.load(f)))}catch(e){}
+ const bg=g.createLinearGradient(0,0,0,H);bg.addColorStop(0,"#1B3D34");bg.addColorStop(1,"#0A1714");g.fillStyle=bg;g.fillRect(0,0,W,H);
+ const gl=g.createRadialGradient(W/2,1010,0,W/2,1010,900);gl.addColorStop(0,"rgba(214,178,102,.28)");gl.addColorStop(1,"rgba(214,178,102,0)");g.fillStyle=gl;g.fillRect(0,0,W,H);
+ g.strokeStyle="rgba(214,178,102,.22)";g.lineWidth=2;[440,600].forEach(r=>{g.beginPath();g.arc(W/2,1010,r,0,Math.PI*2);g.stroke()});
+ const drawMark=(x,y,s)=>{g.save();g.translate(x,y);g.scale(s/32,s/32);MARK.forEach(([c,d])=>{g.fillStyle=c;g.fill(new Path2D(d))});g.restore()};
+ drawMark(W/2-70,170,140);
+ g.textAlign="center";g.fillStyle="rgba(238,242,236,.72)";g.font="800 30px Manrope";const tag=(v.tag||"Versículo de la Biblia").toUpperCase();
+ g.save();g.letterSpacing="6px";g.fillText(tag,W/2,400);g.restore();
+ let fs=78,lines;const maxW=W-200;
+ do{g.font=`italic 400 ${fs}px Literata, Georgia, serif`;lines=wrap(g,"«"+v.x+"»",maxW);fs-=4}while(lines.length*fs*1.38>880&&fs>36);
+ fs+=4;const lh=fs*1.38,blk=lines.length*lh+120,top=470+(1080-blk)/2+fs;g.fillStyle="#F3F1E8";
+ lines.forEach((l,i)=>g.fillText(l,W/2,top+i*lh));
+ const yRef=top+(lines.length-1)*lh+140;g.fillStyle="#D6B266";g.fillRect(W/2-40,yRef-50,80,3);g.font="800 46px Manrope";g.fillText(v.ref,W/2,yRef+20);
+ g.font="800 44px Manrope";const a="rezo",b="diario",wa=g.measureText(a).width;g.font="500 44px Manrope";const wb=g.measureText(b).width;const tot=58+18+wa+wb,x0=W/2-tot/2;
+ drawMark(x0,H-232,58);g.textAlign="left";g.fillStyle="#EEF2EC";g.font="800 44px Manrope";g.fillText(a,x0+76,H-186);g.fillStyle="#D6B266";g.font="500 44px Manrope";g.fillText(b,x0+76+wa,H-186);
+ g.textAlign="center";g.fillStyle="rgba(238,242,236,.6)";g.font="600 28px Manrope";g.fillText("rezodiario.com · un momento con Dios cada día",W/2,H-120);
+ return new Promise(r=>cv.toBlob(r,"image/png"));
+}
+let vModal=null;
+function vPreview(blob,v){
+ if(!vModal){vModal=document.createElement("div");vModal.className="vmodal";vModal.innerHTML='<div class="vmodal-bg" data-x></div><div class="vmodal-p" role="dialog" aria-modal="true" aria-label="Imagen del versículo"><img alt=""><div class="vacts"><a class="vbtn gold" download="versiculo-rezodiario.png">⬇️ Descargar imagen</a><button class="vbtn" type="button" data-share>Compartir</button><button class="vbtn" type="button" data-x>Cerrar</button></div><p class="note">Guárdala y súbela a tus Stories de Instagram, WhatsApp, TikTok o Pinterest.</p></div>';document.body.appendChild(vModal);
+  vModal.addEventListener("click",e=>{if(e.target.closest("[data-x]")){vModal.hidden=true}});addEventListener("keydown",e=>{if(e.key==="Escape"&&vModal)vModal.hidden=true})}
+ const u=URL.createObjectURL(blob);vModal.querySelector("img").src=u;vModal.querySelector("img").alt="«"+v.x+"» "+v.ref;vModal.querySelector("a[download]").href=u;
+ const sb=vModal.querySelector("[data-share]");sb.hidden=!navigator.share;sb.onclick=()=>navigator.share({title:v.ref,text:"«"+v.x+"» "+v.ref+" · rezodiario.com",url:location.href.split("#")[0]}).catch(()=>{});
+ vModal.hidden=false;
+}
+async function vShare(v,btn){
+ if(btn){btn.disabled=true}const blob=await vImage(v);if(btn){btn.disabled=false}if(!blob)return;
+ const f=new File([blob],"versiculo-rezodiario.png",{type:"image/png"});
+ if(navigator.canShare&&navigator.canShare({files:[f]})&&matchMedia("(pointer:coarse)").matches){try{await navigator.share({files:[f],text:"«"+v.x+"» "+v.ref+" · rezodiario.com"});return}catch(e){if(e.name==="AbortError")return}}
+ vPreview(blob,v);
+}
+document.addEventListener("click",e=>{
+ const s=e.target.closest("[data-vspeak]"),i=e.target.closest("[data-vimg]"),c=e.target.closest("[data-vcopy]");if(!s&&!i&&!c)return;
+ const v=vOf(e.target);if(!v)return;
+ if(s)vSay(v.x+". "+v.ref.replace(/,/g," "));
+ if(i)vShare(v,i);
+ if(c)navigator.clipboard.writeText("«"+v.x+"» "+v.ref+" · "+location.href.split("#")[0]).then(()=>toast("Versículo copiado")).catch(()=>{});
+});
+const vl=$("#vListen");
+if(vl){let on=false;const cards=$$(".vcard");vl.addEventListener("click",()=>{
+ if(on){on=false;synth&&synth.cancel();vl.querySelector("span").textContent="Escuchar los versículos";$$(".vcard.reading").forEach(x=>x.classList.remove("reading"));return}
+ on=true;vl.querySelector("span").textContent="Parar";let k=0;
+ const next=()=>{if(!on||k>=cards.length){on=false;vl.querySelector("span").textContent="Escuchar los versículos";$$(".vcard.reading").forEach(x=>x.classList.remove("reading"));return}
+  $$(".vcard.reading").forEach(x=>x.classList.remove("reading"));const cd=cards[k++];cd.classList.add("reading");cd.scrollIntoView({behavior:"smooth",block:"center"});
+  vSay(cd.dataset.x+". "+cd.dataset.ref.replace(/,/g," "),()=>setTimeout(next,1200))};next()})}
+const vn=$("#vNow");
+if(vn&&window.RDV){let cur=null,last="";const show=slug=>{const t=RDV[slug];if(!t)return;cur=slug;let v;do{v=t.v[Math.floor(Math.random()*t.v.length)]}while(t.v.length>1&&v[0]===last);last=v[0];
+  vn.dataset.ref=v[0];vn.dataset.x=v[1];vn.dataset.tag=t.t;$("#vNowTag").textContent=t.t;$("#vNowX").textContent="«"+v[1]+"»";$("#vNowR").textContent=v[0];$("#vNowE").textContent=v[2];
+  $("#vNowWa").href="https://wa.me/?text="+encodeURIComponent("«"+v[1]+"» "+v[0]+" · https://rezodiario.com/"+slug);$("#vNowMore").href=ROOT+slug+X;$("#vNowMore").textContent="Ver los "+t.v.length+" "+t.t.toLowerCase()+" →";
+  vn.hidden=false;vn.classList.remove("pop");void vn.offsetWidth;vn.classList.add("pop");
+  $$(".mood").forEach(b=>b.classList.toggle("on",b.dataset.m===slug))};
+ $$(".mood").forEach(b=>b.addEventListener("click",()=>{show(b.dataset.m);if(innerWidth<900)vn.scrollIntoView({behavior:"smooth",block:"nearest"})}));
+ $("#vNowAgain").addEventListener("click",()=>cur&&show(cur));}
+}
 
 /* ---------- Web instalable (solo en el dominio real) ---------- */
 if("serviceWorker" in navigator&&location.protocol==="https:"&&/rezodiario\.com$/.test(location.hostname)){navigator.serviceWorker.register("/sw.js").catch(()=>{})}

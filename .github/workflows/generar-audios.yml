@@ -56,7 +56,7 @@ jobs:
           git config user.email "audios@rezodiario.com"
           git add content/dias
           git commit -m "Audios nuevos generados con ElevenLabs"
-          git push
+          git pull --rebase --autostash && git push
       - name: Guardar los MP3 de prueba para escucharlos
         if: ${{ github.event.inputs.prueba == 'true' }}
         uses: actions/upload-artifact@v5

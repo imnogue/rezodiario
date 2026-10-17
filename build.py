@@ -21,6 +21,8 @@ DAYS = sorted(JD("dias"), key=lambda d: d["date"]); DBY = {d["date"]: d for d in
 PRAYERS = JD("oraciones"); PBY = {p["slug"]: p for p in PRAYERS}
 SAINTS = sorted(JD("santos"), key=lambda s: s["md"]); SBY = {s["slug"]: s for s in SAINTS}
 NOVENAS = sorted(JD("novenas"), key=lambda n: n["start"])
+VTOP = JD("versiculos"); VORDER = ["versiculos-para-la-ansiedad", "versiculos-para-cuando-estas-triste", "versiculos-para-dormir", "versiculos-para-el-miedo", "versiculos-para-momentos-dificiles", "versiculos-para-la-fe", "versiculos-sobre-el-amor", "versiculos-para-la-familia", "versiculos-sobre-el-dinero", "versiculos-para-empezar-el-dia", "versiculos-para-dar-gracias", "versiculos-sobre-la-proteccion", "versiculos-para-superar-una-ruptura", "versiculos-para-el-enfado"]
+VTOP.sort(key=lambda t: VORDER.index(t["slug"]) if t["slug"] in VORDER else 99); VBY = {t["slug"]: t for t in VTOP}
 WDN = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
 MES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 SETDAY = ["gozosos", "dolorosos", "gloriosos", "luminosos", "dolorosos", "gozosos", "gloriosos"]
@@ -48,7 +50,7 @@ ICON = {
  "moon": '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>',
  "menu": '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>',
  "user": '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
- "logo": '<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.6" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="10" fill="none" stroke="currentColor" stroke-width=".8" stroke-dasharray="1.6 2.2"/><path d="M16 7.5v17M11 13h10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
+ "logo": '<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path fill="#D9A441" d="M6.1 12.6A10 10 0 0 1 14.8 4.07V12.6Z"/><path fill="#E07A4F" d="M17.2 4.07A10 10 0 0 1 25.9 12.6H17.2Z"/><path fill="#2E8B67" d="M6 15H14.8V28H8a2 2 0 0 1-2-2Z"/><path fill="#3E72B0" d="M17.2 15H26V26a2 2 0 0 1-2 2H17.2Z"/></svg>',
  "arrow": '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
  "play": '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>',
 }
@@ -59,7 +61,7 @@ TAB_ICONS = {
  "candles": '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c1.8 2 2.5 3.4 2.5 4.6A2.5 2.5 0 0 1 12 10a2.5 2.5 0 0 1-2.5-2.4C9.5 6.4 10.2 5 12 3zM8.5 12h7v9h-7z"/></svg>',
  "more": '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg>',
 }
-NAV = [("index.html", "today", "Hoy"), ("oraciones/index.html", "prayers", "Oraciones"), ("rosario.html", "rosary", "Rosario"), ("evangelio-de-hoy.html", "gospel", "Evangelio"), ("santos/index.html", "saints", "Santos"), ("novenas/index.html", "novenas", "Novenas"), ("muro-de-intenciones.html", "candles", "Velas")]
+NAV = [("index.html", "today", "Hoy"), ("oraciones/index.html", "prayers", "Oraciones"), ("rosario.html", "rosary", "Rosario"), ("evangelio-de-hoy.html", "gospel", "Evangelio"), ("versiculos.html", "verses", "Versículos"), ("santos/index.html", "saints", "Santos"), ("muro-de-intenciones.html", "candles", "Velas")]
 # En Cloudflare Pages (variable CF_PAGES=1) las direcciones van sin «.html»: /oraciones/acordaos
 CLEAN = os.environ.get("CF_PAGES") == "1" or "--limpias" in sys.argv
 def cleanp(path):
@@ -67,13 +69,13 @@ def cleanp(path):
     if path.endswith("index.html"): return path[:-10]
     return path[:-5] if path.endswith(".html") else path
 def canon(path): return SITE + ("" if path == "index.html" else cleanp(path))
-ORG = {"@type": "Organization", "name": "Rezo Diario", "url": SITE, "logo": SITE + "icon.svg"}
+ORG = {"@type": "Organization", "name": "Rezo Diario", "url": SITE, "logo": SITE + "logo-512.png"}
 
 def header(r, active):
     nav = "".join(f'<a href="{r}{h}"{" class=\"on\" aria-current=\"page\"" if k == active else ""} data-i18n="{k}">{t}</a>' for h, k, t in NAV)
     return f'''<header class="top">
   <div class="wrap top-in">
-    <a class="brand" href="{r}index.html" aria-label="Rezo Diario, inicio">{ICON["logo"]}<span>Rezo<b>Diario</b></span></a>
+    <a class="brand" href="{r}index.html" aria-label="Rezo Diario, inicio">{ICON["logo"]}<span>rezo<b>diario</b></span></a>
     <nav class="nav" aria-label="Principal">{nav}</nav>
     <div class="top-actions">
       <button class="icon-btn" id="btnSearch" aria-label="Buscar una oración">{ICON["search"]}</button>
@@ -88,6 +90,7 @@ def header(r, active):
 
 def drawer(r):
     groups = [("Rezar", [("index.html", "Rezo de hoy"), ("evangelio-de-hoy.html", "Evangelio de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("santo-de-hoy.html", "Santo de hoy"), ("rosario.html", "Santo Rosario"), ("via-crucis.html", "Vía Crucis"), ("novenas/index.html", "Novenas"), ("muro-de-intenciones.html", "Muro de velas")]),
+              ("Versículos", [("versiculos.html", "Versículo del día")] + [(t["slug"] + ".html", t["t"]) for t in VTOP]),
               ("Tiempos litúrgicos", [("adviento.html", "Adviento 2026"), ("retos/adviento.html", "Reto de Adviento"), ("navidad.html", "Navidad 2026")]),
               ("Oraciones por tema", [(f"oraciones/tema-{k}.html", c["name"]) for k, c in CATS.items()]),
               ("Rezo Diario", [("santos/index.html", "Santoral"), ("evangelio/index.html", "Archivo del Evangelio"), ("widget.html", "Widget para parroquias"), ("donar.html", "Donar"), ("sobre-nosotros.html", "Quiénes somos")])]
@@ -124,12 +127,13 @@ def footer(r):
     return f'''<footer class="foot">
   <div class="wrap foot-in">
     <div class="foot-brand">
-      <a class="brand" href="{r}index.html">{ICON["logo"]}<span>Rezo<b>Diario</b></span></a>
+      <a class="brand" href="{r}index.html">{ICON["logo"]}<span>rezo<b>diario</b></span></a>
       <p>Oración guiada cada día con el Evangelio, el Santo Rosario y más de {len(PRAYERS)} oraciones para todos los momentos de la vida. Gratis y sin registro.</p>
       <p class="verse">«Venid a mí todos los que estáis cansados y agobiados, y yo os aliviaré.» Mt 11, 28</p>
     </div>
     {col("Rezar", [("evangelio-de-hoy.html", "Evangelio de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("santo-de-hoy.html", "Santo de hoy"), ("rosario.html", "Misterios del Rosario de hoy"), ("via-crucis.html", "Vía Crucis"), ("novenas/index.html", "Novenas"), ("adviento.html", "Adviento 2026")])}
     {col("Oraciones", [(f"oraciones/{s}.html", l) for s, l in pop])}
+    {col("Versículos", [("versiculos.html", "Versículo del día")] + [(t["slug"] + ".html", t["t"]) for t in VTOP[:6]])}
     {col("Síguenos", social)}
   </div>
   <div class="wrap foot-bot">
@@ -146,7 +150,7 @@ def crumbs_html(r, items):
 def faq_ld(qs): return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qs]}
 def faq_html(qs): return '<div class="faq">' + "".join(f'<details{" open" if i == 0 else ""}><summary>{E(q)}</summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(qs)) + '</div>'
 
-def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="website", mini=False, robots="index, follow, max-image-preview:large"):
+def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="website", mini=False, robots="index, follow, max-image-preview:large", js=()):
     depth = path.count("/"); r = "../" * depth
     cfg = {"supabaseUrl": AJ.get("supabaseUrl", ""), "supabaseAnonKey": AJ.get("supabaseAnonKey", ""), "today": TODAY}
     head = f'''<title>{E(title)}</title>
@@ -158,7 +162,7 @@ def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="web
 <meta property="og:type" content="{og_type}"><meta property="og:site_name" content="Rezo Diario"><meta property="og:locale" content="es_ES">
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{canon(path)}"><meta property="og:image" content="{SITE}og-rezodiario.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="{r}icon.svg" type="image/svg+xml"><link rel="manifest" href="{r}manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Rezo Diario (pódcast)" href="{SITE}podcast.xml">
+<link rel="icon" href="{r}icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{r}apple-touch-icon.png"><link rel="manifest" href="{r}manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Rezo Diario (pódcast)" href="{SITE}podcast.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap">
 <link rel="stylesheet" href="{r}assets/site.css?v={VER}">
@@ -176,7 +180,7 @@ def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="web
 {minihtml}
 <div id="toastHost"></div>
 <script src="{r}assets/data.js?v={VER}"></script>
-<script src="{r}assets/site.js?v={VER}"></script>'''
+''' + "".join(f'<script src="{r}assets/{j}?v={VER}"></script>' for j in js) + f'<script src="{r}assets/site.js?v={VER}"></script>'
     pages.append((path, head, body, body_attrs + f' data-root="{r}"' + (" data-clean=\"1\"" if CLEAN else "")))
 
 # ---------- componentes ----------
@@ -290,6 +294,33 @@ def novena_now():
     if up: return up[0], f'Empieza el {fdate(up[0]["start"])}'
     return NOVENAS[0], "Para rezar en cualquier momento"
 
+# ================= VERSÍCULOS =================
+MOODS = [("😔", "Triste", "versiculos-para-cuando-estas-triste"), ("😰", "Ansioso", "versiculos-para-la-ansiedad"), ("❤️", "Enamorado", "versiculos-sobre-el-amor"), ("💰", "Preocupado por dinero", "versiculos-sobre-el-dinero"), ("🙏", "Sin fe", "versiculos-para-la-fe"), ("😴", "No puedo dormir", "versiculos-para-dormir"), ("😡", "Enfadado", "versiculos-para-el-enfado"), ("😨", "Con miedo", "versiculos-para-el-miedo"), ("🙌", "Agradecido", "versiculos-para-dar-gracias")]
+_seen = set(); VALL = []
+for _t in VTOP:
+    for _v in _t["versos"]:
+        if _v["ref"] not in _seen: _seen.add(_v["ref"]); VALL.append((_t, _v))
+_ord = datetime.date.fromisoformat(now).toordinal()
+VDAY_T, VDAY = VALL[(_ord * 37) % len(VALL)]
+def vacts(ref, x, path):
+    wa = "https://wa.me/?text=" + E(("«" + x + "» " + ref + " · " + canon(path)).replace(" ", "%20"))
+    return f'<div class="vacts"><button class="vbtn" data-vspeak type="button">🔊 Escuchar</button><button class="vbtn gold" data-vimg type="button">📲 Crear imagen</button><a class="vbtn" href="{wa}" target="_blank" rel="noopener">WhatsApp</a><button class="vbtn" data-vcopy type="button">Copiar</button></div>'
+def vday_card(r):
+    path = VDAY_T["slug"] + ".html"
+    return (f'<article class="vday reveal" data-ref="{E(VDAY["ref"])}" data-x="{E(VDAY["x"])}" data-tag="Versículo del día">'
+            f'<span class="eyebrow">Versículo del día · {int(now[8:])} de {MES[int(now[5:7]) - 1]}</span>'
+            f'<blockquote>«{E(VDAY["x"])}»</blockquote><cite>{E(VDAY["ref"])}</cite><p>{E(VDAY["e"])}</p>'
+            f'{vacts(VDAY["ref"], VDAY["x"], "versiculos.html")}<a class="vmore" href="{r}{path}">Más {VDAY_T["t"].lower()} →</a></article>')
+def mood_picker(r, h="h2"):
+    b = "".join(f'<button type="button" class="mood" data-m="{s}"><span>{e}</span>{m}</button>' for e, m, s in MOODS)
+    return (f'<div class="vnow-wrap" id="ahora"><div><span class="eyebrow">¿Cómo te sientes ahora?</span><{h} class="vnow-h">Necesito un versículo <em>ahora</em></{h}>'
+            f'<p style="color:var(--muted);margin:8px 0 0">Toca cómo te sientes y te damos un versículo de la Biblia para este momento.</p>'
+            f'<div class="moods" role="group" aria-label="Cómo te sientes">{b}</div></div>'
+            '<article class="vnow" id="vNow" aria-live="polite" hidden><span class="eyebrow" id="vNowTag"></span><blockquote id="vNowX"></blockquote><cite id="vNowR"></cite><p id="vNowE"></p>'
+            '<div class="vacts"><button class="vbtn" id="vNowAgain" type="button">🔄 Otro versículo</button><button class="vbtn" data-vspeak type="button">🔊 Escuchar</button><button class="vbtn gold" data-vimg type="button">📲 Crear imagen</button><a class="vbtn" id="vNowWa" target="_blank" rel="noopener">WhatsApp</a></div>'
+            '<a class="vmore" id="vNowMore" href="#">Ver los 20 versículos →</a></article></div>')
+def vtiles(r, skip=""):
+    return '<div class="vtiles">' + "".join(f'<a class="vtile reveal" href="{r}{t["slug"]}.html"><span>{t["emoji"]}</span><b>{t["t"]}</b><small>{len(t["versos"])} versículos</small></a>' for t in VTOP if t["slug"] != skip) + '</div>'
 # ================= PORTADA =================
 r = ""
 home_faq = [("¿Rezo Diario es gratis?", "Sí. Todos los rezos, audios, el Rosario y el muro de velas son gratuitos y no necesitas registrarte. El proyecto se sostiene con donaciones voluntarias."),
@@ -314,6 +345,7 @@ home_main = f'''<section class="hero" aria-labelledby="h1">
   </div>
 </section>
 {week_section(r)}
+<section class="sec"><div class="wrap"><div class="vhub">{vday_card(r)}{mood_picker(r)}</div></div></section>
 <section class="sec band" id="momento" aria-labelledby="hMom"><div class="wrap assist">
   <div class="reveal"><span class="eyebrow">Para este momento</span><h2 id="hMom">¿Qué llevas hoy en el corazón?</h2>
     <p style="color:var(--muted);margin:10px 0 0">Cuéntanos con tus palabras o toca una opción. Te proponemos las oraciones que mejor encajan.</p>
@@ -341,7 +373,7 @@ home_main = f'''<section class="hero" aria-labelledby="h1">
 page("index.html", "Rezo Diario · Oración diaria, Evangelio de hoy, Rosario y velas",
  f"Reza cada día con Rezo Diario: audio con el Evangelio de hoy, Santo Rosario guiado, muro de velas por tus intenciones y {len(PRAYERS)} oraciones para estudios, salud, familia y trabajo.",
  home_main, "today", [{"@context": "https://schema.org", "@type": "WebSite", "url": SITE, "name": "Rezo Diario", "inLanguage": "es", "publisher": ORG, "potentialAction": {"@type": "SearchAction", "target": SITE + "oraciones/index.html?q={search_term_string}", "query-input": "required name=search_term_string"}},
- {"@context": "https://schema.org", **ORG}, faq_ld(home_faq)], mini=True)
+ {"@context": "https://schema.org", **ORG}, faq_ld(home_faq)], mini=True, js=("versos.js",))
 
 # ================= BIBLIOTECA =================
 r = "../"
@@ -552,6 +584,39 @@ reto = phero(r, [("Inicio", "index.html"), ("Adviento", "adviento.html"), ("Reto
  '<div style="display:flex;align-items:center;gap:16px;margin-top:22px"><svg class="ring" id="retoRing" viewBox="0 0 84 84" aria-hidden="true"></svg><b id="retoStatus" style="font-size:17px"></b></div>') + sec(f'<ol class="reto" id="reto" data-key="rd-reto-adviento">{reto_items}</ol>')
 page("retos/adviento.html", "Reto de Adviento 2026: un gesto cada día | Rezo Diario", "Reto de Adviento 2026: 26 gestos sencillos, uno para cada día del 29 de noviembre al 24 de diciembre, con el Evangelio del día. Guarda tu progreso.", reto, "", [crumbs_ld([("Inicio", "index.html"), ("Adviento", "adviento.html"), ("Reto de Adviento", "retos/adviento.html")])])
 
+r = ""
+hub_faq = [("¿Qué versículo leer hoy?", "Cada día proponemos un versículo del día. Si buscas algo concreto, toca cómo te sientes en «Necesito un versículo ahora»."),
+ ("¿Qué traducción de la Biblia usáis?", "Citamos los versículos en español siguiendo la Biblia de la Conferencia Episcopal Española. Te recomendamos leer siempre el pasaje completo en tu Biblia."),
+ ("¿Puedo compartir los versículos?", "Sí. Pulsa «Crear imagen» y te preparamos una imagen vertical para WhatsApp, Instagram Stories, TikTok o Pinterest.")]
+hub = phero(r, [("Inicio", "index.html"), ("Versículos", "versiculos.html")], f"{len(VALL)} versículos para cada momento", "Versículos de la Biblia para cada momento",
+ "El versículo del día y versículos para la ansiedad, para dormir, para cuando estás triste, sobre el amor o para dar gracias. Léelos, escúchalos y compártelos.") + \
+ sec(f'<div class="vhub">{vday_card(r)}{mood_picker(r)}</div>') + sec(head2("Por situación", "Versículos para lo que estás viviendo") + vtiles(r), "sec band") + sec(head2("Preguntas frecuentes", "Sobre los versículos") + faq_html(hub_faq))
+page("versiculos.html", "Versículo del día y versículos de la Biblia para cada momento | Rezo Diario", "Versículo del día y versículos de la Biblia para la ansiedad, para dormir, para cuando estás triste, sobre el amor, la familia o el dinero. Escúchalos y compártelos.",
+ hub, "verses", [crumbs_ld([("Inicio", "index.html"), ("Versículos", "versiculos.html")]), faq_ld(hub_faq), {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Versículos de la Biblia para cada momento", "url": canon("versiculos.html"), "inLanguage": "es"}], js=("versos.js",))
+for t in VTOP:
+    path = t["slug"] + ".html"; cr = [("Inicio", "index.html"), ("Versículos", "versiculos.html"), (t["t"], path)]
+    pr = PBY.get(t["prayer"]); faq = [(f["q"], f["a"]) for f in t["faq"]]
+    cards = "".join(f'<article class="vcard reveal" id="v{i + 1}" data-ref="{E(v["ref"])}" data-x="{E(v["x"])}" data-tag="{E(t["t"])}"><span class="vnum">{i + 1}</span>'
+                    f'<blockquote>«{E(v["x"])}»</blockquote><cite>{E(v["ref"])}</cite><p>{E(v["e"])}</p>{vacts(v["ref"], v["x"], path + "#v" + str(i + 1))}</article>' for i, v in enumerate(t["versos"]))
+    rel = [VBY[x] for x in t["rel"] if x in VBY]
+    prbtn = f'<a class="btn btn-accent sm" href="oraciones/{pr["slug"]}.html">Rezar: {E(pr["t"])}</a> ' if pr else ""
+    rel_html = "".join(f'<li><a href="{x["slug"]}.html">{x["emoji"]} {E(x["t"])}<small>{len(x["versos"])}</small></a></li>' for x in rel)
+    m = phero(r, cr, f'{t["emoji"]} {len(t["versos"])} versículos', t["h1"], E(t["intro"]),
+      '<div class="hero-cta" style="margin-top:18px"><button class="btn btn-gold" id="vListen" type="button">' + ICON["play"] + '<span>Escuchar los versículos</span></button><a class="btn btn-ghost" href="versiculos.html#ahora">Necesito un versículo ahora</a></div>') + \
+      ('<section class="sec"><div class="wrap art"><div style="min-width:0">'
+       f'<div class="vlist">{cards}</div>'
+       f'<div class="box vpray reveal"><span class="eyebrow">Oración</span><h2>Reza con estos versículos</h2><p class="pray-text">{E(t["oracion"])}</p><div class="hero-cta">{prbtn}<a class="btn btn-ghost sm" href="muro-de-intenciones.html">Encender una vela</a></div></div>'
+       f'<div class="prose" style="margin-top:34px"><h2>Preguntas frecuentes</h2>{faq_html(faq)}</div></div>'
+       f'<aside class="side"><div class="box"><h3>Versículos relacionados</h3><ul class="links">{rel_html}</ul></div>'
+       '<div class="box candle-cta"><h3>¿Rezamos contigo?</h3><p>Deja tu intención en el muro y otras personas rezarán por ti durante siete días.</p><a class="btn btn-flame sm" href="muro-de-intenciones.html">Encender una vela</a></div>'
+       f'<div class="box"><h3>Rezo de hoy</h3><p style="margin:0 0 12px;color:var(--muted);font-size:14.5px">{E(TW["title"])} · {TW["ref"]}</p><a class="btn btn-accent sm" href="evangelio-de-hoy.html">Escuchar el rezo</a></div></aside>'
+       '</div></section>') + sec(head2("Más versículos", "Para otros momentos") + vtiles(r, t["slug"]), "sec band")
+    d = f'{len(t["versos"])} {t["t"].lower()}: {t["versos"][0]["ref"]}, {t["versos"][1]["ref"]} y más, con explicación, oración y audio para escuchar y compartir.'
+    page(path, f'{t["h1"]} ({len(t["versos"])} citas) | Rezo Diario', d[:160], m, "verses",
+     [crumbs_ld(cr), faq_ld(faq), {"@context": "https://schema.org", "@type": "Article", "headline": t["h1"], "description": d[:160], "inLanguage": "es", "author": ORG, "publisher": ORG, "datePublished": "2026-10-17", "dateModified": TODAY, "mainEntityOfPage": canon(path), "image": SITE + "og-rezodiario.jpg"},
+      {"@context": "https://schema.org", "@type": "ItemList", "name": t["h1"], "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": v["ref"], "url": canon(path) + f"#v{i + 1}"} for i, v in enumerate(t["versos"])]}],
+     body_attrs=f' data-vtopic="{t["slug"]}"', og_type="article")
+
 # ================= MURO DE VELAS =================
 r = ""
 muro_faq = [("¿Cuánto tiempo arde una vela?", "Siete días. Cada día la vela se consume un poco, hasta apagarse."), ("¿Quién puede ver mi intención?", "Si es pública, cualquiera que visite el muro. Si marcas «privada», solo se ve la vela encendida, nunca el texto."), ("¿Puedo encender una vela por un difunto?", "Sí. Elige «Difuntos» y escribe su nombre de pila. Muchas personas rezarán por su descanso."), ("¿Qué pasa si veo una intención ofensiva?", "Pulsa «Avisar». Cuando una vela recibe varios avisos se oculta automáticamente y se revisa.")]
@@ -596,6 +661,7 @@ shutil.copy(ROOT + "/assets/site.js", OUT + "/assets/site.js")
 data = {"week": [{k: w[k] for k in ("date", "wd", "n", "mes", "color", "lit", "ref", "refL", "title", "set", "ex", "sum", "refl", "qs", "fin", "audio", "duracion")} | ({"marcas": w["marcas"]} if w.get("marcas") else {}) for w in DAYS], "LITC": LITC, "SETS": SETS, **O, "via": VIA, "VIA_ANT": VIAJ["antifona"],
         "prayers": [{"slug": p["slug"], "t": p["t"], "cat": p["cat"], "min": p["min"]} for p in PRAYERS], "CATS": {k: {"name": c["name"], "color": c["color"]} for k, c in CATS.items()},
         "novenas": [{"slug": n["slug"], "t": n["t"], "start": n["start"], "end": n["end"], "open": n["open"], "close": n["close"], "days": [[d["t"], d["x"]] for d in n["days"]]} for n in NOVENAS]}
+open(OUT + "/assets/versos.js", "w", encoding="utf-8").write("window.RDV=" + json.dumps({t["slug"]: {"t": t["t"], "v": [[v["ref"], v["x"], v["e"]] for v in t["versos"]]} for t in VTOP}, ensure_ascii=False) + ";")
 open(OUT + "/assets/data.js", "w", encoding="utf-8").write("window.RD=" + json.dumps(data, ensure_ascii=False) + ";")
 for path, head, body, battrs in pages:
     full = f'<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n{head}\n</head>\n<body{battrs}>\n{body}\n</body>\n</html>\n'
@@ -618,12 +684,12 @@ open(OUT + "/podcast.xml", "w", encoding="utf-8").write(f'''<?xml version="1.0" 
 <itunes:author>{E(pc["autor"])}</itunes:author><itunes:owner><itunes:name>{E(pc["autor"])}</itunes:name><itunes:email>{E(pc["email"])}</itunes:email></itunes:owner>
 <itunes:image href="{E(pc["imagen"])}"/><itunes:category text="Religion &amp; Spirituality"><itunes:category text="Christianity"/></itunes:category><itunes:explicit>false</itunes:explicit>
 {items}</channel></rss>''')
-icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#14302A"/><circle cx="32" cy="32" r="22" fill="none" stroke="#D6B266" stroke-width="2.4"/><path d="M32 16v32M23 27h18" stroke="#D6B266" stroke-width="4.4" stroke-linecap="round"/></svg>'
+icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#14302A"/><g transform="translate(8 8) scale(1.5)"><path fill="#D9A441" d="M6.1 12.6A10 10 0 0 1 14.8 4.07V12.6Z"/><path fill="#E07A4F" d="M17.2 4.07A10 10 0 0 1 25.9 12.6H17.2Z"/><path fill="#2E8B67" d="M6 15H14.8V28H8a2 2 0 0 1-2-2Z"/><path fill="#3E72B0" d="M17.2 15H26V26a2 2 0 0 1-2 2H17.2Z"/></g></svg>'
 open(OUT + "/icon.svg", "w").write(icon)
 open(OUT + "/manifest.webmanifest", "w").write(json.dumps({"name": "Rezo Diario", "short_name": "Rezo Diario", "lang": "es", "start_url": "/", "display": "standalone", "background_color": "#14302A", "theme_color": "#14302A", "icons": [{"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]}, ensure_ascii=False))
 open(OUT + "/sw.js", "w").write("const C='rd-v2';const PRE=['/','/assets/site.css','/assets/site.js','/assets/data.js','/rosario.html','/oraciones/index.html'];\nself.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(PRE))));\nself.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x))))));\nself.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==location.origin)return;e.respondWith(fetch(e.request).then(r=>{const cp=r.clone();caches.open(C).then(c=>c.put(e.request,cp));return r}).catch(()=>caches.match(e.request)))});\n")
 open(OUT + "/robots.txt", "w").write(f"User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: {SITE}sitemap.xml\n")
-daily = ("index.html", "evangelio-de-hoy.html", "evangelio-de-manana.html", "santo-de-hoy.html", "rosario.html", "muro-de-intenciones.html")
+daily = ("index.html", "evangelio-de-hoy.html", "evangelio-de-manana.html", "santo-de-hoy.html", "rosario.html", "muro-de-intenciones.html", "versiculos.html")
 idx = [p for p, h, _, _ in pages if "noindex" not in h]
 open(OUT + "/sitemap.xml", "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f'  <url><loc>{canon(p)}</loc><lastmod>{TODAY}</lastmod><changefreq>{"daily" if p in daily else "monthly"}</changefreq><priority>{"1.0" if p == "index.html" else "0.9" if p in daily else "0.7"}</priority></url>\n' for p in idx) + '</urlset>\n')
 
