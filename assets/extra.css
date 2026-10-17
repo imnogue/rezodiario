@@ -348,3 +348,5 @@ img,video,canvas,svg,iframe{max-width:100%}
 @media (pointer:coarse),(max-width:900px){input,textarea,select,.field,.ask input,.ask.heart textarea,#vText{font-size:16px!important}}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media(max-width:900px){.top .menu-btn{display:none!important}}
+@media(max-width:900px){#btnSearch{display:none!important}.top-actions{gap:8px}}
+@media(max-width:480px){.brand{font-size:21px}.brand svg{width:28px;height:28px}.top-actions .icon-btn{width:38px;height:38px}.lang-btn{width:38px!important}}
