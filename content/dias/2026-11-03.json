@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, no quiero excusarme más. Aquí estoy, voy a tu banquete.",
   "saint": "martin-de-porres",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-03.mp3?v=1792244313",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-03.mp3?v=1792250382",
   "duracion": "2:47",
   "marcas": [
     [
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.8,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.47,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.09,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.03,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.12,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.87,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 14."
     ],
     [
-      37.94,
+      37.62,
       1,
       "Un hombre prepara un gran banquete, pero los invitados se excusan uno tras otro."
     ],
     [
-      43.25,
+      42.92,
       1,
       "Entonces manda llamar a los pobres, a los lisiados, a los ciegos y a los cojos."
     ],
     [
-      50.48,
+      50.16,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.09,
+      53.77,
       1,
       "Sal por los caminos y senderos e insísteles en que entren, para que se llene mi casa."
     ],
     [
-      71.69,
+      71.37,
       2,
       "Siempre tenemos excusas para no ir a la fiesta de Dios: trabajo, compromisos, cansancio."
     ],
     [
-      79.73,
+      79.4,
       2,
       "Pero la mesa sigue puesta y la invitación sigue en pie."
     ],
     [
-      86.75,
+      86.42,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      93.92,
+      93.59,
       2,
       "¿Qué excusa pongo para no acercarme a Dios?"
     ],
     [
-      116.85,
+      116.52,
       2,
       "¿A quién podría invitar yo a la mesa?"
     ],
     [
-      139.35,
+      139.03,
       3,
       "Señor, no quiero excusarme más."
     ],
     [
-      142.46,
+      142.13,
       3,
       "Aquí estoy, voy a tu banquete."
     ],
     [
-      147.46,
+      147.14,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      152.27,
+      151.94,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      159.47,
+      159.15,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-03-voz.mp3?v=1792250382"
 }

@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, que no me falte el aceite de la oración. Quiero estar despierto cuando llegues.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-08.mp3?v=1792244434",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-08.mp3?v=1792250463",
   "duracion": "2:48",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.43,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.11,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.67,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.76,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.65,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.5,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 25."
     ],
     [
-      38.35,
+      38.4,
       1,
       "Diez muchachas esperan al novio con sus lámparas."
     ],
     [
-      41.49,
+      41.54,
       1,
       "Cinco han llevado aceite de reserva; las otras cinco no."
     ],
     [
-      45.08,
+      45.12,
       1,
       "El novio tarda, y cuando llega, solo entran a la boda las que estaban preparadas."
     ],
     [
-      52.28,
+      52.33,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      55.94,
+      55.99,
       1,
       "Velad, porque no sabéis el día ni la hora."
     ],
     [
-      71.97,
+      72.02,
       2,
       "El aceite no se puede prestar a última hora: es la vida interior que vamos cuidando cada día."
     ],
     [
-      80.47,
+      80.51,
       2,
       "Unos minutos de oración diaria son aceite para tu lámpara."
     ],
     [
-      87.77,
+      87.81,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      94.94,
+      94.99,
       2,
       "¿Cómo está mi reserva de aceite?"
     ],
     [
-      117.45,
+      117.5,
       2,
       "¿Qué alimenta hoy mi vida interior?"
     ],
     [
-      140.0,
+      140.05,
       3,
       "Señor, que no me falte el aceite de la oración."
     ],
     [
-      144.17,
+      144.22,
       3,
       "Quiero estar despierto cuando llegues."
     ],
     [
-      149.54,
+      149.59,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      153.81,
+      153.86,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      160.22,
+      160.27,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-08-voz.mp3?v=1792250463"
 }

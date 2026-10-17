@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, haz de mis pequeños gestos levadura de tu reino.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-27.mp3?v=1792244149",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-27.mp3?v=1792250267",
   "duracion": "2:41",
   "marcas": [
     [
@@ -23,94 +23,95 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.44,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.11,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.72,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.66,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.37,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.18,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 13."
     ],
     [
-      37.77,
+      38.14,
       1,
       "Jesús compara el reino de Dios con una semilla diminuta que se hace árbol y con un poco de levadura que hace fermentar toda la masa."
     ],
     [
-      48.51,
+      48.89,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      51.93,
+      52.3,
       1,
       "El reino de Dios se parece a un grano de mostaza que un hombre echó en su huerto."
     ],
     [
-      68.86,
+      69.23,
       2,
       "Dios trabaja en lo pequeño y en lo escondido."
     ],
     [
-      72.65,
+      73.02,
       2,
       "Un gesto de bondad hoy puede ser la semilla de algo que no verás crecer, pero crecerá."
     ],
     [
-      81.88,
+      82.25,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      88.72,
+      89.09,
       2,
       "¿Qué pequeña semilla puedo sembrar hoy?"
     ],
     [
-      111.09,
+      111.46,
       2,
       "¿Desprecio lo pequeño esperando cosas grandes?"
     ],
     [
-      134.24,
+      134.62,
       3,
       "Señor, haz de mis pequeños gestos levadura de tu reino."
     ],
     [
-      141.53,
+      141.91,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      146.23,
+      146.6,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      153.26,
+      153.63,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-27-voz.mp3?v=1792250267"
 }

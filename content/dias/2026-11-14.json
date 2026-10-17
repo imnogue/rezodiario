@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, dame la constancia de la viuda. Sé que me escuchas.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-14.mp3?v=1792244569",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-14.mp3?v=1792250562",
   "duracion": "2:41",
   "marcas": [
     [
@@ -23,22 +23,22 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.67,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.33,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.9,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.85,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
@@ -48,84 +48,85 @@
       "Él te mira con cariño."
     ],
     [
-      33.5,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 18."
     ],
     [
-      38.04,
+      38.09,
       1,
       "Jesús cuenta la historia de una viuda que insiste día tras día ante un juez injusto hasta que este le hace justicia."
     ],
     [
-      46.24,
+      46.29,
       1,
       "Si un juez así cede, ¡cuánto más Dios!"
     ],
     [
-      50.84,
+      50.89,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.23,
+      54.28,
       1,
       "Es necesario orar siempre, sin desfallecer."
     ],
     [
-      69.19,
+      69.23,
       2,
       "Hay oraciones que llevamos años rezando."
     ],
     [
-      72.75,
+      72.79,
       2,
       "Jesús te dice: no te canses."
     ],
     [
-      75.24,
+      75.29,
       2,
       "Dios escucha, aunque su respuesta no llegue a tu ritmo."
     ],
     [
-      82.43,
+      82.47,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      89.93,
+      89.97,
       2,
       "¿Qué oración llevo tiempo repitiendo?"
     ],
     [
-      112.34,
+      112.39,
       2,
       "¿Me he cansado de pedir?"
     ],
     [
-      134.11,
+      134.15,
       3,
       "Señor, dame la constancia de la viuda."
     ],
     [
-      137.78,
+      137.83,
       3,
       "Sé que me escuchas."
     ],
     [
-      141.62,
+      141.67,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      146.26,
+      146.31,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      153.22,
+      153.27,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-14-voz.mp3?v=1792250562"
 }

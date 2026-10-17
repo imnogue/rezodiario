@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, gracias por todo lo que me has confiado. Que sea un administrador fiel.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-21.mp3?v=1792244004",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-21.mp3?v=1792250169",
   "duracion": "2:42",
   "marcas": [
     [
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.61,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.25,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.85,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.8,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.89,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.64,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 12."
     ],
     [
-      37.86,
+      37.77,
       1,
       "Jesús habla del administrador fiel que cuida de la casa mientras su señor está fuera, y del que se aprovecha de su ausencia para maltratar a los demás."
     ],
     [
-      50.39,
+      50.29,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.12,
+      54.03,
       1,
       "Al que mucho se le dio, mucho se le reclamará."
     ],
     [
-      69.33,
+      69.23,
       2,
       "Todo lo que tienes es un encargo: tu tiempo, tus talentos, las personas que te rodean."
     ],
     [
-      76.42,
+      76.33,
       2,
       "Dios confía en ti y te deja la casa."
     ],
     [
-      81.4,
+      81.3,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      88.16,
+      88.07,
       2,
       "¿Qué me ha confiado Dios que estoy descuidando?"
     ],
     [
-      111.37,
+      111.27,
       2,
       "¿A quién tengo a mi cargo y cómo lo cuido?"
     ],
     [
-      133.83,
+      133.73,
       3,
       "Señor, gracias por todo lo que me has confiado."
     ],
     [
-      138.32,
+      138.23,
       3,
       "Que sea un administrador fiel."
     ],
     [
-      143.19,
+      143.1,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      147.8,
+      147.71,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      154.71,
+      154.62,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-21-voz.mp3?v=1792250169"
 }

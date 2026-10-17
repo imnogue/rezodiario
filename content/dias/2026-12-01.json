@@ -14,7 +14,7 @@
   ],
   "fin": "Padre, hazme pequeño para entenderte.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-01.mp3?v=1792245276",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-01.mp3?v=1792250841",
   "duracion": "2:38",
   "marcas": [
     [
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.79,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.43,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.0,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.04,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.84,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.59,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 10."
     ],
     [
-      37.63,
+      37.59,
       1,
       "Lleno de alegría, Jesús da gracias al Padre porque se revela a la gente sencilla."
     ],
     [
-      42.94,
+      42.9,
       1,
       "Y dice a sus discípulos que son dichosos por ver lo que están viendo."
     ],
     [
-      49.47,
+      49.42,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.05,
+      53.0,
       1,
       "Te doy gracias, Padre, porque has escondido estas cosas a los sabios y entendidos, y las has revelado a los pequeños."
     ],
     [
-      72.67,
+      72.62,
       2,
       "Para entender a Dios no hace falta ser listo, hace falta ser sencillo."
     ],
     [
-      78.25,
+      78.21,
       2,
       "El Adviento es tiempo de hacerse pequeño."
     ],
     [
-      83.52,
+      83.48,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.16,
+      90.11,
       2,
       "¿Complico demasiado mi fe?"
     ],
     [
-      112.11,
+      112.06,
       2,
       "¿Qué me está mostrando Dios en lo sencillo?"
     ],
     [
-      134.71,
+      134.66,
       3,
       "Padre, hazme pequeño para entenderte."
     ],
     [
-      140.03,
+      139.98,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      144.41,
+      144.36,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      150.97,
+      150.93,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-01-voz.mp3?v=1792250841"
 }

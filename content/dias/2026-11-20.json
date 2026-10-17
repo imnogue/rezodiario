@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, haz de mi corazón una casa de oración.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-20.mp3?v=1792244992",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-20.mp3?v=1792250658",
   "duracion": "2:36",
   "marcas": [
     [
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.33,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      11.95,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.59,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.62,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.57,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.27,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 19."
     ],
     [
-      38.01,
+      38.29,
       1,
       "Jesús entra en el templo y expulsa a los vendedores."
     ],
     [
-      42.36,
+      42.64,
       1,
       "Cada día enseña allí, y el pueblo entero está pendiente de sus palabras."
     ],
     [
-      50.39,
+      50.67,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.55,
+      54.82,
       1,
       "Mi casa será casa de oración."
     ],
     [
-      68.95,
+      69.23,
       2,
       "Tu corazón también puede llenarse de ruido y de negocios."
     ],
     [
-      73.5,
+      73.78,
       2,
       "Hoy deja que Jesús haga sitio para la oración."
     ],
     [
-      79.16,
+      79.44,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      85.79,
+      86.07,
       2,
       "¿Qué ruido ocupa mi interior?"
     ],
     [
-      107.79,
+      108.07,
       2,
       "¿Tengo un momento al día solo para Dios?"
     ],
     [
-      130.48,
+      130.76,
       3,
       "Señor, haz de mi corazón una casa de oración."
     ],
     [
-      136.76,
+      137.04,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      141.39,
+      141.67,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      148.34,
+      148.62,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-20-voz.mp3?v=1792250658"
 }

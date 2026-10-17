@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, que no guarde tus dones por miedo. Quiero multiplicarlos.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-18.mp3?v=1792244664",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-18.mp3?v=1792250627",
   "duracion": "2:47",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.66,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.34,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.99,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.92,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.77,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.59,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 19."
     ],
     [
-      37.84,
+      37.79,
       1,
       "Un noble reparte una onza de oro a cada uno de sus diez criados antes de partir."
     ],
     [
-      43.5,
+      43.45,
       1,
       "A su vuelta pide cuentas: unos la han multiplicado, otro la guardó en un pañuelo."
     ],
     [
-      51.23,
+      51.18,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.98,
+      54.93,
       1,
       "Al que tiene se le dará; pero al que no tiene se le quitará hasta lo que tiene."
     ],
     [
-      72.53,
+      72.48,
       2,
       "Todos recibimos la misma onza: la vida, la fe, el tiempo."
     ],
     [
-      78.25,
+      78.2,
       2,
       "Lo que cambia es lo que hacemos con ella."
     ],
     [
-      82.36,
+      82.31,
       2,
       "Lo que no se usa, se pierde."
     ],
     [
-      87.17,
+      87.12,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      94.71,
+      94.66,
       2,
       "¿Qué guardo en un pañuelo?"
     ],
     [
-      116.47,
+      116.43,
       2,
       "¿Cómo puedo invertir hoy mi tiempo en algo bueno?"
     ],
     [
-      139.59,
+      139.54,
       3,
       "Señor, que no guarde tus dones por miedo."
     ],
     [
-      143.63,
+      143.58,
       3,
       "Quiero multiplicarlos."
     ],
     [
-      147.79,
+      147.75,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      152.52,
+      152.48,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      159.62,
+      159.57,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-18-voz.mp3?v=1792250627"
 }

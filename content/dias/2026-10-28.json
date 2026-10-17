@@ -14,8 +14,8 @@
   ],
   "fin": "San Simón y san Judas, apóstoles fieles, rogad por nosotros. Señor, enséñame a decidir rezando.",
   "saint": "san-judas-tadeo",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-28.mp3?v=1792244171",
-  "duracion": "2:53",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-28.mp3?v=1792250283",
+  "duracion": "2:52",
   "marcas": [
     [
       4.0,
@@ -23,114 +23,115 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.93,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.73,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.37,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.41,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.5,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.34,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 6."
     ],
     [
-      38.44,
+      37.65,
       1,
       "Antes de elegir a los Doce, Jesús pasa la noche entera rezando."
     ],
     [
-      42.79,
+      42.0,
       1,
       "Al amanecer llama a sus apóstoles por su nombre, entre ellos a Simón el Zelote y a Judas Tadeo."
     ],
     [
-      51.35,
+      50.56,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      55.04,
+      54.25,
       1,
       "Se retiró al monte a orar y pasó la noche orando a Dios."
     ],
     [
-      58.92,
+      58.13,
       1,
       "Cuando se hizo de día, llamó a sus discípulos."
     ],
     [
-      74.11,
+      73.32,
       2,
       "Jesús no decide sin rezar."
     ],
     [
-      76.57,
+      75.78,
       2,
       "Y te llama por tu nombre, como a Simón y a Judas."
     ],
     [
-      81.2,
+      80.41,
       2,
       "Hoy es buen día para encomendar a san Judas Tadeo esa causa que parece imposible."
     ],
     [
-      90.85,
+      90.06,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      98.15,
+      97.36,
       2,
       "¿Rezo antes de tomar decisiones?"
     ],
     [
-      120.56,
+      119.77,
       2,
       "¿Para qué me llama Jesús hoy por mi nombre?"
     ],
     [
-      143.16,
+      142.37,
       3,
       "San Simón y san Judas, apóstoles fieles, rogad por nosotros."
     ],
     [
-      148.77,
+      147.98,
       3,
       "Señor, enséñame a decidir rezando."
     ],
     [
-      153.94,
+      153.15,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      158.45,
+      157.66,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      165.22,
+      164.43,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-28-voz.mp3?v=1792250283"
 }

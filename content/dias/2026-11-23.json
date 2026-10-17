@@ -14,8 +14,8 @@
   ],
   "fin": "Señor, enséñame a darlo todo con confianza.",
   "saint": "clemente-i",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-23.mp3?v=1792245071",
-  "duracion": "2:37",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-23.mp3?v=1792250709",
+  "duracion": "2:36",
   "marcas": [
     [
       4.0,
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.74,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.46,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.14,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.16,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.03,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.78,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 21."
     ],
     [
-      37.88,
+      37.65,
       1,
       "Jesús observa a los ricos echar donativos en el templo."
     ],
     [
-      41.6,
+      41.36,
       1,
       "Una viuda pobre echa dos monedillas."
     ],
     [
-      44.03,
+      43.8,
       1,
       "Jesús dice que ella ha dado más que todos, porque ha dado todo lo que tenía."
     ],
     [
-      51.16,
+      50.93,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.8,
+      54.56,
       1,
       "Esa viuda pobre ha echado más que nadie."
     ],
     [
-      69.46,
+      69.23,
       2,
       "Dios no mide la cantidad, sino el corazón."
     ],
     [
-      73.23,
+      72.99,
       2,
       "Puedes dar poco y dar mucho a la vez."
     ],
     [
-      78.54,
+      78.31,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      85.61,
+      85.37,
       2,
       "¿Doy de lo que me sobra o de lo que soy?"
     ],
     [
-      108.39,
+      108.16,
       2,
       "¿Qué puedo entregar hoy de verdad?"
     ],
     [
-      130.67,
+      130.44,
       3,
       "Señor, enséñame a darlo todo con confianza."
     ],
     [
-      136.96,
+      136.72,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      141.82,
+      141.59,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      149.11,
+      148.88,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-23-voz.mp3?v=1792250709"
 }

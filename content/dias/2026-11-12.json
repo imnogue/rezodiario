@@ -14,8 +14,8 @@
   ],
   "fin": "Señor, abre mis ojos para descubrirte en medio de mi día.",
   "saint": "josafat",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-12.mp3?v=1792244524",
-  "duracion": "2:42",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-12.mp3?v=1792250528",
+  "duracion": "2:43",
   "marcas": [
     [
       4.0,
@@ -23,7 +23,7 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.51,
+      8.65,
       0,
       "Respira despacio."
     ],
@@ -33,89 +33,90 @@
       "Inspira…"
     ],
     [
-      15.78,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.73,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.51,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.22,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 17."
     ],
     [
-      37.66,
+      37.99,
       1,
       "Los fariseos preguntan cuándo llegará el reino de Dios."
     ],
     [
-      41.84,
+      42.16,
       1,
       "Jesús responde que no vendrá de forma espectacular: ya está en medio de ellos."
     ],
     [
-      49.76,
+      50.08,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.67,
+      53.99,
       1,
       "El reino de Dios está en medio de vosotros."
     ],
     [
-      68.91,
+      69.23,
       2,
       "No hace falta buscar a Dios en lo extraordinario."
     ],
     [
-      72.99,
+      73.31,
       2,
       "Está aquí: en la mesa de casa, en el compañero de trabajo, en este momento de oración."
     ],
     [
-      82.41,
+      82.73,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.02,
+      90.34,
       2,
       "¿Dónde está hoy el reino de Dios en mi vida?"
     ],
     [
-      112.94,
+      113.27,
       2,
       "¿Busco a Dios solo en lo extraordinario?"
     ],
     [
-      135.45,
+      135.78,
       3,
       "Señor, abre mis ojos para descubrirte en medio de mi día."
     ],
     [
-      143.0,
+      143.33,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      147.75,
+      148.08,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      154.88,
+      155.21,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-12-voz.mp3?v=1792250528"
 }

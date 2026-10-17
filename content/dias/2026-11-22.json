@@ -14,7 +14,7 @@
   ],
   "fin": "Cristo Rey, que te reconozca en el hambriento, el enfermo y el solo.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-22.mp3?v=1792245047",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-22.mp3?v=1792250693",
   "duracion": "2:49",
   "marcas": [
     [
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.71,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.39,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.03,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.04,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.03,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.73,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 25."
     ],
     [
-      37.87,
+      37.69,
       1,
       "Jesús describe el juicio final: el Rey separa a unos de otros según cómo trataron a los hambrientos, a los forasteros, a los enfermos y a los presos."
     ],
     [
-      49.95,
+      49.76,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.61,
+      53.43,
       1,
       "Cada vez que lo hicisteis con uno de estos, mis hermanos más pequeños, conmigo lo hicisteis."
     ],
     [
-      71.83,
+      71.65,
       2,
       "Al final de la vida nos examinarán del amor."
     ],
     [
-      76.31,
+      76.12,
       2,
       "Cristo es rey, pero su trono está en el que sufre."
     ],
     [
-      81.4,
+      81.21,
       2,
       "Cada gesto con el pequeño es un gesto con él."
     ],
     [
-      87.98,
+      87.79,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      95.59,
+      95.41,
       2,
       "¿Dónde está hoy Cristo esperándome?"
     ],
     [
-      117.96,
+      117.77,
       2,
       "¿Qué obra de misericordia puedo hacer esta semana?"
     ],
     [
-      141.26,
+      141.07,
       3,
       "Cristo Rey, que te reconozca en el hambriento, el enfermo y el solo."
     ],
     [
-      149.94,
+      149.76,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      154.74,
+      154.55,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      161.93,
+      161.75,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-22-voz.mp3?v=1792250693"
 }

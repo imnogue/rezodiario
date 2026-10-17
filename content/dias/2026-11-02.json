@@ -14,7 +14,7 @@
   ],
   "fin": "Dale, Señor, el descanso eterno a todos nuestros difuntos, y brille para ellos la luz perpetua. Descansen en paz. Amén.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-02.mp3?v=1792244289",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-02.mp3?v=1792250366",
   "duracion": "2:47",
   "marcas": [
     [
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.5,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.33,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.98,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.99,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.99,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.92,
+      33.55,
       1,
       "Evangelio según san Juan, capítulo 6."
     ],
     [
-      38.32,
+      37.95,
       1,
       "Jesús asegura que no rechazará a nadie que vaya a él, y que la voluntad del Padre es que todo el que cree tenga vida eterna."
     ],
     [
-      48.3,
+      47.93,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      51.87,
+      51.5,
       1,
       "Esta es la voluntad del que me ha enviado: que no pierda nada de lo que me dio, sino que lo resucite en el último día."
     ],
     [
-      71.04,
+      70.67,
       2,
       "Hoy recordamos a quienes ya no están."
     ],
     [
-      74.55,
+      74.18,
       2,
       "El dolor es real, pero la promesa también: Dios no pierde a ninguno de los suyos."
     ],
     [
-      84.23,
+      83.86,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      91.55,
+      91.18,
       2,
       "¿A quién recuerdo hoy especialmente?"
     ],
     [
-      114.11,
+      113.73,
       2,
       "¿Qué le diría si pudiera hablarle?"
     ],
     [
-      136.24,
+      135.87,
       3,
       "Dale, Señor, el descanso eterno a todos nuestros difuntos, y brille para ellos la luz perpetua."
     ],
     [
-      144.76,
+      144.39,
       3,
       "Descansen en paz."
     ],
     [
-      146.28,
+      145.91,
       3,
       "Amén."
     ],
     [
-      148.73,
+      148.36,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      153.03,
+      152.66,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      159.48,
+      159.11,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-02-voz.mp3?v=1792250366"
 }

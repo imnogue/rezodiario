@@ -14,7 +14,7 @@
   ],
   "fin": "Jesús, quédate hoy en mi casa. Bajo enseguida.",
   "saint": "isabel-de-hungria",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-17.mp3?v=1792244640",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-17.mp3?v=1792250611",
   "duracion": "2:43",
   "marcas": [
     [
@@ -23,114 +23,115 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.42,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.11,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.69,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.71,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.65,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.41,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 19."
     ],
     [
-      37.65,
+      37.79,
       1,
       "Zaqueo, jefe de recaudadores y rico, se sube a un árbol para ver a Jesús."
     ],
     [
-      42.67,
+      42.8,
       1,
       "Jesús se para, lo llama por su nombre y se invita a su casa."
     ],
     [
-      46.79,
+      46.93,
       1,
       "Zaqueo cambia de vida."
     ],
     [
-      50.2,
+      50.34,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.35,
+      53.49,
       1,
       "Zaqueo, date prisa y baja, porque es necesario que hoy me quede en tu casa."
     ],
     [
-      70.44,
+      70.58,
       2,
       "Jesús no espera a que Zaqueo cambie para entrar en su casa."
     ],
     [
-      75.66,
+      75.8,
       2,
       "Entra primero, y el cambio llega solo."
     ],
     [
-      79.03,
+      79.17,
       2,
       "Hoy Jesús quiere quedarse en tu casa."
     ],
     [
-      84.31,
+      84.45,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      91.32,
+      91.46,
       2,
       "¿A qué árbol me subo para ver a Jesús?"
     ],
     [
-      113.87,
+      114.01,
       2,
       "¿Qué cambiaría si le dejo entrar en mi casa?"
     ],
     [
-      136.85,
+      136.98,
       3,
       "Jesús, quédate hoy en mi casa."
     ],
     [
-      139.83,
+      139.96,
       3,
       "Bajo enseguida."
     ],
     [
-      143.31,
+      143.45,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      148.05,
+      148.19,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      155.16,
+      155.3,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-17-voz.mp3?v=1792250611"
 }

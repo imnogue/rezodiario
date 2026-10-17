@@ -14,7 +14,7 @@
   ],
   "fin": "Jesús, toma lo poco que tengo y multiplícalo.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-02.mp3?v=1792245303",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-02.mp3?v=1792250857",
   "duracion": "2:41",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      9.04,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.83,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.51,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.5,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.36,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.2,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 15."
     ],
     [
-      38.57,
+      37.92,
       1,
       "Jesús cura a muchos enfermos junto al lago."
     ],
     [
-      41.62,
+      40.97,
       1,
       "Después, con siete panes y unos peces, da de comer a una multitud."
     ],
     [
-      46.32,
+      45.67,
       1,
       "Y sobran siete cestos."
     ],
     [
-      49.85,
+      49.2,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.14,
+      52.49,
       1,
       "Siento compasión de la gente, porque ya llevan tres días conmigo y no tienen qué comer."
     ],
     [
-      71.04,
+      70.39,
       2,
       "Jesús se fija en el hambre de la gente."
     ],
     [
-      74.88,
+      74.23,
       2,
       "Con lo poco que le das, hace mucho."
     ],
     [
-      78.33,
+      77.67,
       2,
       "Pon hoy en sus manos tus siete panes."
     ],
     [
-      83.97,
+      83.32,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      91.41,
+      90.76,
       2,
       "¿Qué poco tengo que pueda ofrecer?"
     ],
     [
-      113.78,
+      113.13,
       2,
       "¿De qué tengo hambre?"
     ],
     [
-      135.13,
+      134.48,
       3,
       "Jesús, toma lo poco que tengo y multiplícalo."
     ],
     [
-      141.65,
+      141.0,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      146.54,
+      145.89,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      153.89,
+      153.24,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-02-voz.mp3?v=1792250857"
 }

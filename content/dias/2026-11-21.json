@@ -14,7 +14,7 @@
   ],
   "fin": "Dios de vivos, gracias por la esperanza de la resurrección. Bendice a los que rezan en clausura.",
   "saint": "presentacion-de-la-virgen",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-21.mp3?v=1792245019",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-21.mp3?v=1792250674",
   "duracion": "2:47",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.7,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.42,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.0,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.07,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.08,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.01,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 20."
     ],
     [
-      38.04,
+      37.58,
       1,
       "Unos saduceos, que niegan la resurrección, plantean a Jesús un caso enrevesado."
     ],
     [
-      43.2,
+      42.74,
       1,
       "Jesús responde que la vida después de la muerte es una vida nueva."
     ],
     [
-      49.51,
+      49.05,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.09,
+      52.63,
       1,
       "No es Dios de muertos, sino de vivos: porque para él todos están vivos."
     ],
     [
-      69.7,
+      69.23,
       2,
       "Nuestros seres queridos difuntos viven en Dios."
     ],
     [
-      74.16,
+      73.7,
       2,
       "Para él no hay muertos."
     ],
     [
-      76.34,
+      75.88,
       2,
       "Hoy, día de las monjas y monjes contemplativos, recemos por quienes rezan por nosotros."
     ],
     [
-      86.61,
+      86.14,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      93.92,
+      93.46,
       2,
       "¿Cómo imagino la vida eterna?"
     ],
     [
-      116.2,
+      115.73,
       2,
       "¿Rezo por quienes rezan por mí sin conocerme?"
     ],
     [
-      138.94,
+      138.47,
       3,
       "Dios de vivos, gracias por la esperanza de la resurrección."
     ],
     [
-      144.1,
+      143.64,
       3,
       "Bendice a los que rezan en clausura."
     ],
     [
-      149.25,
+      148.79,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      153.48,
+      153.01,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      159.81,
+      159.35,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-21-voz.mp3?v=1792250674"
 }

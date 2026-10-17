@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, en medio del ruido del mundo, mantenme en tu paz.",
   "saint": "andres-dung-lac",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-24.mp3?v=1792245098",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-24.mp3?v=1792250726",
   "duracion": "2:43",
   "marcas": [
     [
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.5,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.2,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.79,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.77,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.61,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.32,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 21."
     ],
     [
-      38.04,
+      38.27,
       1,
       "Algunos admiran la belleza del templo."
     ],
     [
-      40.44,
+      40.67,
       1,
       "Jesús anuncia que no quedará piedra sobre piedra y advierte que habrá guerras y catástrofes, pero que no hay que dejarse llevar por el pánico."
     ],
     [
-      51.45,
+      51.68,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.96,
+      55.19,
       1,
       "Mirad que nadie os engañe."
     ],
     [
-      69.0,
+      69.23,
       2,
       "Las noticias a veces dan miedo."
     ],
     [
-      71.92,
+      72.15,
       2,
       "Jesús no lo niega, pero te pide no perder la calma ni dejarte engañar."
     ],
     [
-      78.51,
+      78.74,
       2,
       "Él sigue siendo el Señor de la historia."
     ],
     [
-      84.28,
+      84.51,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      91.55,
+      91.78,
       2,
       "¿Qué me quita la paz al ver las noticias?"
     ],
     [
-      114.11,
+      114.34,
       2,
       "¿En quién pongo mi confianza?"
     ],
     [
-      136.2,
+      136.43,
       3,
       "Señor, en medio del ruido del mundo, mantenme en tu paz."
     ],
     [
-      143.62,
+      143.86,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      148.35,
+      148.58,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      155.44,
+      155.67,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-24-voz.mp3?v=1792250726"
 }

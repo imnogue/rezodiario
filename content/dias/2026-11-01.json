@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, gracias por todos los santos que he conocido. Hazme santo en lo de cada día.",
   "saint": "todos-los-santos",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-01.mp3?v=1792244265",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-01.mp3?v=1792250349",
   "duracion": "2:55",
   "marcas": [
     [
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.5,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.12,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.7,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.62,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.39,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.13,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 5."
     ],
     [
-      37.51,
+      37.93,
       1,
       "Jesús sube al monte y proclama las bienaventuranzas: dichosos los pobres en el espíritu, los que lloran, los mansos, los que tienen hambre de justicia, los misericordiosos, los limpios de corazón, los que trabajan por la paz."
     ],
     [
-      56.55,
+      56.97,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      60.47,
+      60.89,
       1,
       "Dichosos los limpios de corazón, porque ellos verán a Dios."
     ],
     [
-      76.94,
+      77.36,
       2,
       "Los santos no son solo los de los altares."
     ],
     [
-      80.99,
+      81.41,
       2,
       "Son también tu abuela, aquel profesor, aquella vecina."
     ],
     [
-      86.2,
+      86.62,
       2,
       "Las bienaventuranzas son el retrato de una vida feliz según Dios."
     ],
     [
-      94.48,
+      94.89,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      101.86,
+      102.28,
       2,
       "¿Qué santo anónimo ha marcado mi vida?"
     ],
     [
-      124.28,
+      124.69,
       2,
       "¿Qué bienaventuranza necesito hoy?"
     ],
     [
-      146.78,
+      147.2,
       3,
       "Señor, gracias por todos los santos que he conocido."
     ],
     [
-      151.56,
+      151.97,
       3,
       "Hazme santo en lo de cada día."
     ],
     [
-      156.31,
+      156.73,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      160.73,
+      161.15,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      167.36,
+      167.78,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-01-voz.mp3?v=1792250349"
 }

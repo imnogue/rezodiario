@@ -14,7 +14,7 @@
   ],
   "fin": "Buen Pastor, gracias por buscarme siempre. Llévame a casa sobre tus hombros.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-05.mp3?v=1792244360",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-05.mp3?v=1792250415",
   "duracion": "2:46",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.58,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.36,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.96,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.99,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.86,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.59,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 15."
     ],
     [
-      38.0,
+      37.95,
       1,
       "Los fariseos murmuran porque Jesús come con pecadores."
     ],
     [
-      41.65,
+      41.6,
       1,
       "Él responde con dos parábolas: el pastor que deja noventa y nueve ovejas para buscar la perdida y la mujer que barre toda la casa hasta encontrar su moneda."
     ],
     [
-      54.1,
+      54.06,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      57.77,
+      57.73,
       1,
       "Habrá más alegría en el cielo por un solo pecador que se convierta."
     ],
     [
-      74.16,
+      74.11,
       2,
       "Dios no espera sentado a que vuelvas."
     ],
     [
-      77.31,
+      77.26,
       2,
       "Sale a buscarte."
     ],
     [
-      78.67,
+      78.62,
       2,
       "Y cuando te encuentra, no te riñe: hace fiesta."
     ],
     [
-      84.95,
+      84.9,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      92.43,
+      92.39,
       2,
       "¿Me he sentido alguna vez oveja perdida?"
     ],
     [
-      115.08,
+      115.03,
       2,
       "¿A quién estoy dejando por perdido?"
     ],
     [
-      137.59,
+      137.54,
       3,
       "Buen Pastor, gracias por buscarme siempre."
     ],
     [
-      141.69,
+      141.64,
       3,
       "Llévame a casa sobre tus hombros."
     ],
     [
-      146.91,
+      146.86,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      151.6,
+      151.56,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      158.65,
+      158.6,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-05-voz.mp3?v=1792250415"
 }

@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, que no llene graneros mientras se vacía mi corazón. Hazme rico en lo que de verdad importa.",
   "saint": "pedro-de-alcantara",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-19.mp3?v=1792243750",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-19.mp3?v=1792250134",
   "duracion": "2:48",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.69,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.39,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.0,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.04,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.98,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.87,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 12."
     ],
     [
-      37.94,
+      37.62,
       1,
       "Alguien pide a Jesús que medie en una herencia."
     ],
     [
-      41.06,
+      40.73,
       1,
       "Jesús cuenta la parábola de un rico que llena sus graneros y planea descansar, sin saber que esa misma noche morirá."
     ],
     [
-      50.75,
+      50.42,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.36,
+      54.03,
       1,
       "Guardaos de toda clase de codicia: aunque uno ande sobrado, su vida no depende de sus bienes."
     ],
     [
-      72.48,
+      72.16,
       2,
       "Acumular da una falsa seguridad."
     ],
     [
-      75.52,
+      75.19,
       2,
       "Jesús no condena tener, sino olvidar para qué tenemos."
     ],
     [
-      80.63,
+      80.31,
       2,
       "Ser rico ante Dios es tener las manos abiertas."
     ],
     [
-      87.09,
+      86.76,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      94.38,
+      94.06,
       2,
       "¿En qué estoy poniendo mi seguridad?"
     ],
     [
-      116.85,
+      116.52,
       2,
       "¿Qué podría compartir hoy de lo que me sobra?"
     ],
     [
-      139.59,
+      139.26,
       3,
       "Señor, que no llene graneros mientras se vacía mi corazón."
     ],
     [
-      144.65,
+      144.33,
       3,
       "Hazme rico en lo que de verdad importa."
     ],
     [
-      150.06,
+      149.73,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      154.28,
+      153.95,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      160.6,
+      160.28,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-19-voz.mp3?v=1792250134"
 }

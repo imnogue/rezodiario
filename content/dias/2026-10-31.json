@@ -14,8 +14,8 @@
   ],
   "fin": "Señor, dame un corazón humilde que no necesite aplausos.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-31.mp3?v=1792244241",
-  "duracion": "2:40",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-31.mp3?v=1792250331",
+  "duracion": "2:39",
   "marcas": [
     [
       4.0,
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.56,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.29,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.98,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.04,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.03,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.11,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 14."
     ],
     [
-      38.23,
+      37.67,
       1,
       "Jesús observa cómo los invitados a un banquete eligen los primeros puestos."
     ],
     [
-      43.29,
+      42.74,
       1,
       "Les aconseja sentarse en el último lugar y esperar a que el anfitrión les invite a subir."
     ],
     [
-      51.31,
+      50.75,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.96,
+      54.4,
       1,
       "Todo el que se enaltece será humillado, y el que se humilla será enaltecido."
     ],
     [
-      72.07,
+      71.51,
       2,
       "Buscar siempre el primer puesto cansa."
     ],
     [
-      75.14,
+      74.58,
       2,
       "La humildad es descansar en lo que eres, sin necesidad de demostrar nada."
     ],
     [
-      83.05,
+      82.49,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      89.74,
+      89.18,
       2,
       "¿Dónde busco el primer puesto?"
     ],
     [
-      111.78,
+      111.23,
       2,
       "¿Qué me daría paz soltar?"
     ],
     [
-      133.46,
+      132.9,
       3,
       "Señor, dame un corazón humilde que no necesite aplausos."
     ],
     [
-      140.67,
+      140.11,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      145.21,
+      144.65,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      152.02,
+      151.47,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-31-voz.mp3?v=1792250331"
 }

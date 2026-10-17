@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, abre mis ojos para reconocerte en lo de cada día. Dame valor para dar el primer paso hacia la paz.",
   "saint": "juan-de-capistrano",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-23.mp3?v=1792244054",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-23.mp3?v=1792250202",
   "duracion": "2:52",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.43,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.1,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.64,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.57,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.38,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.08,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 12."
     ],
     [
-      37.14,
+      37.6,
       1,
       "Jesús reprocha a la gente que sabe prever la lluvia y el calor, pero no reconoce lo que Dios está haciendo delante de sus ojos."
     ],
     [
-      45.49,
+      45.96,
       1,
       "Y anima a reconciliarse con el adversario por el camino."
     ],
     [
-      51.18,
+      51.64,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.77,
+      55.24,
       1,
       "Sabéis interpretar el aspecto de la tierra y del cielo, ¿cómo es que no sabéis interpretar el tiempo presente?"
     ],
     [
-      73.97,
+      74.43,
       2,
       "Miramos la previsión del tiempo cada día."
     ],
     [
-      77.29,
+      77.75,
       2,
       "¿Y la de nuestro corazón?"
     ],
     [
-      79.31,
+      79.77,
       2,
       "Hoy es buen día para leer lo que Dios está haciendo en tu vida y para hacer las paces con alguien."
     ],
     [
-      89.24,
+      89.7,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      95.92,
+      96.38,
       2,
       "¿Qué signo de Dios he pasado por alto esta semana?"
     ],
     [
-      119.26,
+      119.72,
       2,
       "¿Con quién necesito reconciliarme por el camino?"
     ],
     [
-      142.37,
+      142.84,
       3,
       "Señor, abre mis ojos para reconocerte en lo de cada día."
     ],
     [
-      147.33,
+      147.79,
       3,
       "Dame valor para dar el primer paso hacia la paz."
     ],
     [
-      153.58,
+      154.04,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      157.85,
+      158.32,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      164.26,
+      164.73,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-23-voz.mp3?v=1792250202"
 }

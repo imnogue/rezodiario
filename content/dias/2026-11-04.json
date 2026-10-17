@@ -14,7 +14,7 @@
   ],
   "fin": "Jesús, quiero seguirte de verdad. Dame fuerza para no quedarme a mitad de la torre.",
   "saint": "carlos-borromeo",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-04.mp3?v=1792244336",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-04.mp3?v=1792250398",
   "duracion": "2:46",
   "marcas": [
     [
@@ -23,22 +23,22 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.48,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.24,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.87,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.9,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
@@ -132,5 +132,6 @@
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-04-voz.mp3?v=1792250398"
 }

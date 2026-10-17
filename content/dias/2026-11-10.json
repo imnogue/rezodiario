@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, que sirva con alegría, sin pedir nada a cambio.",
   "saint": "leon-magno",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-10.mp3?v=1792244480",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-10.mp3?v=1792250495",
   "duracion": "2:39",
   "marcas": [
     [
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.54,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.19,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.77,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.76,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.75,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.64,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 17."
     ],
     [
-      37.68,
+      37.59,
       1,
       "Jesús pone el ejemplo de un criado que vuelve del campo y sigue sirviendo a su amo."
     ],
     [
-      43.12,
+      43.03,
       1,
       "Pide a sus discípulos que hagan lo mismo, sin esperar agradecimientos."
     ],
     [
-      49.71,
+      49.61,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.29,
+      53.2,
       1,
       "Somos siervos inútiles, hemos hecho lo que teníamos que hacer."
     ],
     [
-      69.33,
+      69.23,
       2,
       "Servir sin llevar la cuenta."
     ],
     [
-      71.65,
+      71.55,
       2,
       "Sin esperar medallas."
     ],
     [
-      73.39,
+      73.29,
       2,
       "Hay una libertad enorme en hacer el bien porque sí."
     ],
     [
-      79.61,
+      79.52,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      86.35,
+      86.26,
       2,
       "¿Espero reconocimiento cuando ayudo?"
     ],
     [
-      108.86,
+      108.77,
       2,
       "¿Qué puedo hacer hoy sin que nadie lo sepa?"
     ],
     [
-      131.74,
+      131.64,
       3,
       "Señor, que sirva con alegría, sin pedir nada a cambio."
     ],
     [
-      139.25,
+      139.16,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      144.23,
+      144.14,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      151.7,
+      151.61,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-10-voz.mp3?v=1792250495"
 }

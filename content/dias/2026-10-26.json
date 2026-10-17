@@ -14,7 +14,7 @@
   ],
   "fin": "Jesús, ponme tus manos encima. Endereza lo que en mí está doblado.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-26.mp3?v=1792244126",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-26.mp3?v=1792250251",
   "duracion": "2:42",
   "marcas": [
     [
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.6,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.33,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.91,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.9,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.8,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.64,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 13."
     ],
     [
-      38.22,
+      38.13,
       1,
       "Un sábado, en la sinagoga, Jesús ve a una mujer encorvada desde hacía dieciocho años."
     ],
     [
-      44.23,
+      44.14,
       1,
       "La llama, le impone las manos y ella se endereza y da gloria a Dios."
     ],
     [
-      51.07,
+      50.98,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.56,
+      54.47,
       1,
       "Mujer, quedas libre de tu enfermedad."
     ],
     [
-      69.33,
+      69.23,
       2,
       "Hay cargas que nos encorvan durante años: culpas, miedos, heridas."
     ],
     [
-      75.54,
+      75.44,
       2,
       "Jesús te ve, te llama y quiere que vuelvas a mirar hacia arriba."
     ],
     [
-      83.56,
+      83.47,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.85,
+      90.76,
       2,
       "¿Qué me mantiene encorvado?"
     ],
     [
-      112.62,
+      112.53,
       2,
       "¿Me dejo mirar por Jesús tal como estoy?"
     ],
     [
-      135.08,
+      134.99,
       3,
       "Jesús, ponme tus manos encima."
     ],
     [
-      137.98,
+      137.88,
       3,
       "Endereza lo que en mí está doblado."
     ],
     [
-      143.35,
+      143.26,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      147.99,
+      147.89,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      154.94,
+      154.85,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-26-voz.mp3?v=1792250251"
 }

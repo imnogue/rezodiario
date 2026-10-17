@@ -14,7 +14,7 @@
   ],
   "fin": "Ven, Señor Jesús. Que este Adviento me encuentre despierto.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-29.mp3?v=1792245226",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-29.mp3?v=1792250808",
   "duracion": "2:44",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.86,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.47,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.11,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.09,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.03,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.97,
+      33.55,
       1,
       "Evangelio según san Marcos, capítulo 13."
     ],
     [
-      38.83,
+      38.41,
       1,
       "Jesús compara su venida con la de un hombre que se va de viaje y encarga al portero que vele."
     ],
     [
-      45.58,
+      45.16,
       1,
       "Nadie sabe cuándo volverá el dueño."
     ],
     [
-      50.21,
+      49.79,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.74,
+      53.32,
       1,
       "Lo que os digo a vosotros lo digo a todos: ¡Velad!"
     ],
     [
-      69.65,
+      69.23,
       2,
       "Empieza el Adviento: cuatro semanas para esperar a Dios que viene."
     ],
     [
-      76.21,
+      75.79,
       2,
       "Hoy enciende la primera vela de la corona."
     ],
     [
-      80.38,
+      79.96,
       2,
       "Velar es esperar con el corazón despierto."
     ],
     [
-      86.55,
+      86.13,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      94.06,
+      93.64,
       2,
       "¿Qué espero de este Adviento?"
     ],
     [
-      116.24,
+      115.82,
       2,
       "¿Cómo puedo velar esta semana?"
     ],
     [
-      138.33,
+      137.91,
       3,
       "Ven, Señor Jesús."
     ],
     [
-      139.9,
+      139.49,
       3,
       "Que este Adviento me encuentre despierto."
     ],
     [
-      145.69,
+      145.27,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      150.12,
+      149.71,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      156.77,
+      156.35,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-29-voz.mp3?v=1792250808"
 }

@@ -14,8 +14,8 @@
   ],
   "fin": "Jesús, mantén encendida mi lámpara. Que cuando llames, te abra enseguida.",
   "saint": "pablo-de-la-cruz",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-20.mp3?v=1792243981",
-  "duracion": "2:44",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-20.mp3?v=1792250152",
+  "duracion": "2:43",
   "marcas": [
     [
       4.0,
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.55,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.33,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.98,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.96,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.93,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.69,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 12."
     ],
     [
-      37.71,
+      37.57,
       1,
       "Jesús pide a sus discípulos que estén como criados que esperan a su señor de vuelta de una boda, listos para abrirle en cuanto llame."
     ],
     [
-      46.37,
+      46.23,
       1,
       "Y promete algo sorprendente: el señor se pondrá a servirles."
     ],
     [
-      52.28,
+      52.14,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      55.85,
+      55.71,
       1,
       "Tened ceñida la cintura y encendidas las lámparas."
     ],
     [
-      71.09,
+      70.95,
       2,
       "Velar no es vivir con miedo, sino con el corazón despierto."
     ],
     [
-      75.72,
+      75.58,
       2,
       "Y el premio es inesperado: Dios mismo se pone el delantal para servirnos."
     ],
     [
-      83.73,
+      83.59,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.85,
+      90.72,
       2,
       "¿Qué me tiene dormido por dentro?"
     ],
     [
-      113.04,
+      112.9,
       2,
       "¿Dónde puedo estar hoy más atento a Dios?"
     ],
     [
-      135.59,
+      135.45,
       3,
       "Jesús, mantén encendida mi lámpara."
     ],
     [
-      138.94,
+      138.81,
       3,
       "Que cuando llames, te abra enseguida."
     ],
     [
-      144.49,
+      144.35,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      149.1,
+      148.96,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      156.01,
+      155.87,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-20-voz.mp3?v=1792250152"
 }

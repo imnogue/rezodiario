@@ -14,7 +14,7 @@
   ],
   "fin": "Jesús, levanta mi cabeza. Tú eres mi liberación.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-26.mp3?v=1792245146",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-26.mp3?v=1792250758",
   "duracion": "2:38",
   "marcas": [
     [
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.7,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.43,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.05,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.04,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.99,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.69,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 21."
     ],
     [
-      38.11,
+      37.97,
       1,
       "Jesús habla de tiempos difíciles para Jerusalén y de señales en el cielo."
     ],
     [
-      43.64,
+      43.5,
       1,
       "Pero termina con una invitación a la esperanza."
     ],
     [
-      49.19,
+      49.05,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.09,
+      52.96,
       1,
       "Levantaos, alzad la cabeza; se acerca vuestra liberación."
     ],
     [
-      69.37,
+      69.23,
       2,
       "Cuando todo parece hundirse, Jesús te dice: levanta la cabeza."
     ],
     [
-      75.11,
+      74.97,
       2,
       "La última palabra no es el miedo, es la liberación."
     ],
     [
-      81.83,
+      81.69,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      89.04,
+      88.9,
       2,
       "¿Qué me hace bajar la cabeza?"
     ],
     [
-      110.99,
+      110.85,
       2,
       "¿Dónde necesito esperanza?"
     ],
     [
-      132.71,
+      132.57,
       3,
       "Jesús, levanta mi cabeza."
     ],
     [
-      135.12,
+      134.98,
       3,
       "Tú eres mi liberación."
     ],
     [
-      139.25,
+      139.11,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      143.85,
+      143.71,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      150.76,
+      150.62,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-26-voz.mp3?v=1792250758"
 }
