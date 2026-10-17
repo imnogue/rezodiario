@@ -14,8 +14,8 @@
   ],
   "fin": "Señor, que sea testigo de tu luz. Llena de alegría mi espera.",
   "saint": "lucia",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-13.mp3?v=1792245586",
-  "duracion": "2:43",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-13.mp3?v=1792251075",
+  "duracion": "2:42",
   "marcas": [
     [
       4.0,
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.87,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.52,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.13,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.18,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.08,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.87,
+      33.55,
       1,
       "Evangelio según san Juan, capítulo 1."
     ],
     [
-      38.17,
+      37.85,
       1,
       "Juan el Bautista viene como testigo de la luz."
     ],
     [
-      41.68,
+      41.35,
       1,
       "Le preguntan si es el Mesías y responde que no: él es la voz que grita en el desierto."
     ],
     [
-      50.23,
+      49.91,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.15,
+      53.83,
       1,
       "En medio de vosotros hay uno que no conocéis."
     ],
     [
-      69.56,
+      69.23,
       2,
       "Domingo de la alegría: se enciende la vela rosa."
     ],
     [
-      73.96,
+      73.63,
       2,
       "Juan no se pone en el centro, señala a Jesús."
     ],
     [
-      78.08,
+      77.76,
       2,
       "Tú también puedes ser testigo de la luz."
     ],
     [
-      83.75,
+      83.42,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.9,
+      90.58,
       2,
       "¿Dónde pongo el foco: en mí o en Jesús?"
     ],
     [
-      113.64,
+      113.32,
       2,
       "¿Qué me alegra de verdad?"
     ],
     [
-      135.22,
+      134.9,
       3,
       "Señor, que sea testigo de tu luz."
     ],
     [
-      138.52,
+      138.19,
       3,
       "Llena de alegría mi espera."
     ],
     [
-      143.22,
+      142.89,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      148.01,
+      147.69,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      155.2,
+      154.88,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-13-voz.mp3?v=1792251075"
 }

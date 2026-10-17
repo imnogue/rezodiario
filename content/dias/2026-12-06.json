@@ -14,8 +14,8 @@
   ],
   "fin": "Señor, ayúdame a preparar el camino para que llegues a mí.",
   "saint": "nicolas-de-bari",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-06.mp3?v=1792245407",
-  "duracion": "2:42",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-06.mp3?v=1792250987",
+  "duracion": "2:41",
   "marcas": [
     [
       4.0,
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.99,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.67,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.25,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.32,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.31,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.11,
+      33.55,
       1,
       "Evangelio según san Marcos, capítulo 1."
     ],
     [
-      38.19,
+      37.63,
       1,
       "Juan el Bautista aparece en el desierto vestido con piel de camello."
     ],
     [
-      42.71,
+      42.16,
       1,
       "Invita a la conversión y anuncia que detrás de él viene uno más fuerte que bautizará con Espíritu Santo."
     ],
     [
-      51.64,
+      51.08,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      55.26,
+      54.7,
       1,
       "Preparad el camino del Señor, enderezad sus senderos."
     ],
     [
-      70.76,
+      70.21,
       2,
       "Enciende la segunda vela."
     ],
     [
-      73.01,
+      72.45,
       2,
       "Preparar el camino es quitar piedras: un rencor, un mal hábito, una conversación pendiente."
     ],
     [
-      83.16,
+      82.61,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.25,
+      89.69,
       2,
       "¿Qué piedra hay en mi camino hacia Dios?"
     ],
     [
-      112.94,
+      112.39,
       2,
       "¿Qué puedo enderezar esta semana?"
     ],
     [
-      135.27,
+      134.71,
       3,
       "Señor, ayúdame a preparar el camino para que llegues a mí."
     ],
     [
-      142.7,
+      142.14,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      147.26,
+      146.7,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      154.11,
+      153.55,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-06-voz.mp3?v=1792250987"
 }

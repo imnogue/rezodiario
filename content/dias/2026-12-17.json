@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, entra en mi historia tal como es.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-17.mp3?v=1792245690",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-17.mp3?v=1792251125",
   "duracion": "2:41",
   "marcas": [
     [
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.71,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.44,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.11,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.12,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.04,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.97,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 1."
     ],
     [
-      37.92,
+      37.5,
       1,
       "Mateo abre su Evangelio con la genealogía de Jesús: desde Abrahán, pasando por David, hasta José."
     ],
     [
-      44.24,
+      43.82,
       1,
       "Una larga lista con santos y pecadores."
     ],
     [
-      48.78,
+      48.36,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      52.35,
+      51.93,
       1,
       "Jacob engendró a José, el esposo de María, de la cual nació Jesús, llamado Cristo."
     ],
     [
-      69.65,
+      69.23,
       2,
       "Dios entra en una familia real, con luces y sombras."
     ],
     [
-      74.14,
+      73.73,
       2,
       "Tu historia, con todo lo que tiene, también puede ser lugar para Dios."
     ],
     [
-      82.48,
+      82.06,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.11,
+      89.69,
       2,
       "¿Qué hay en mi historia familiar que necesito poner en manos de Dios?"
     ],
     [
-      114.76,
+      114.34,
       2,
       "¿Doy gracias por mis raíces?"
     ],
     [
-      136.8,
+      136.38,
       3,
       "Señor, entra en mi historia tal como es."
     ],
     [
-      142.54,
+      142.12,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      147.09,
+      146.67,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      153.93,
+      153.51,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-17-voz.mp3?v=1792251125"
 }

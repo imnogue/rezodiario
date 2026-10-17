@@ -14,7 +14,7 @@
   ],
   "fin": "Jesús, voy a ti cansado. Alivia mi carga.",
   "saint": "juan-diego",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-09.mp3?v=1792245482",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-09.mp3?v=1792251025",
   "duracion": "2:39",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.83,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.51,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.14,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.17,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.31,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.2,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 11."
     ],
     [
-      38.87,
+      38.22,
       1,
       "Jesús invita a los que están cansados a ir a él."
     ],
     [
-      42.81,
+      42.16,
       1,
       "Su yugo es llevadero y su carga ligera."
     ],
     [
-      48.02,
+      47.37,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      52.11,
+      51.46,
       1,
       "Venid a mí todos los que estáis cansados y agobiados, y yo os aliviaré."
     ],
     [
-      69.88,
+      69.23,
       2,
       "Diciembre puede agobiar: compras, cenas, prisas."
     ],
     [
-      74.35,
+      73.7,
       2,
       "Jesús te invita a descansar en él."
     ],
     [
-      77.52,
+      76.87,
       2,
       "No te pide más, te ofrece alivio."
     ],
     [
-      82.86,
+      82.21,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.02,
+      89.37,
       2,
       "¿Qué me tiene agotado?"
     ],
     [
-      111.51,
+      110.85,
       2,
       "¿Qué carga puedo dejar hoy en sus manos?"
     ],
     [
-      134.06,
+      133.41,
       3,
       "Jesús, voy a ti cansado."
     ],
     [
-      136.44,
+      135.79,
       3,
       "Alivia mi carga."
     ],
     [
-      140.03,
+      139.38,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      144.74,
+      144.09,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      151.82,
+      151.17,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-09-voz.mp3?v=1792251025"
 }

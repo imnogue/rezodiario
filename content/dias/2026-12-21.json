@@ -14,8 +14,8 @@
   ],
   "fin": "María, llévame contigo al encuentro de los que me necesitan.",
   "saint": "pedro-canisio",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-21.mp3?v=1792245845",
-  "duracion": "2:39",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-21.mp3?v=1792251174",
+  "duracion": "2:38",
   "marcas": [
     [
       4.0,
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.66,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.41,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.02,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.03,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.08,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.92,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 1."
     ],
     [
-      38.49,
+      38.12,
       1,
       "María va deprisa a la montaña a visitar a su prima Isabel."
     ],
     [
-      43.21,
+      42.84,
       1,
       "Al oír su saludo, el niño salta de alegría en el vientre de Isabel."
     ],
     [
-      50.66,
+      50.29,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.74,
+      54.37,
       1,
       "Bienaventurada la que ha creído."
     ],
     [
-      69.33,
+      68.95,
       2,
       "Quien lleva a Dios dentro no se queda quieto: sale al encuentro de los demás."
     ],
     [
-      75.06,
+      74.69,
       2,
       "¿A quién puedes visitar o llamar estos días?"
     ],
     [
-      80.55,
+      80.18,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      87.79,
+      87.42,
       2,
       "¿A quién puedo visitar antes de Navidad?"
     ],
     [
-      110.2,
+      109.83,
       2,
       "¿Qué alegría llevo a los demás?"
     ],
     [
-      132.43,
+      132.06,
       3,
       "María, llévame contigo al encuentro de los que me necesitan."
     ],
     [
-      139.95,
+      139.57,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      144.43,
+      144.05,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      151.15,
+      150.78,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-21-voz.mp3?v=1792251174"
 }

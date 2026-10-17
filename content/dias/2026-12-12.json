@@ -14,7 +14,7 @@
   ],
   "fin": "Virgen de Guadalupe, madre cercana, ruega por nosotros.",
   "saint": "virgen-de-guadalupe",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-12.mp3?v=1792245560",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-12.mp3?v=1792251062",
   "duracion": "2:42",
   "marcas": [
     [
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.57,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.24,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.83,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.87,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.86,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.73,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 17."
     ],
     [
-      38.04,
+      37.85,
       1,
       "Bajando del monte, los discípulos preguntan por Elías."
     ],
     [
-      41.94,
+      41.76,
       1,
       "Jesús les explica que ya ha venido en la persona de Juan el Bautista, pero no lo reconocieron."
     ],
     [
-      50.74,
+      50.56,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.54,
+      54.36,
       1,
       "Elías ya ha venido y no lo reconocieron."
     ],
     [
-      69.42,
+      69.23,
       2,
       "Dios nos manda mensajeros que a menudo no reconocemos."
     ],
     [
-      73.87,
+      73.69,
       2,
       "Hoy, fiesta de la Virgen de Guadalupe, recordamos cómo María se hizo cercana a un indígena sencillo, Juan Diego."
     ],
     [
-      85.11,
+      84.92,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      91.88,
+      91.69,
       2,
       "¿Qué mensajero de Dios he ignorado?"
     ],
     [
-      114.43,
+      114.24,
       2,
       "¿Cómo me habla María?"
     ],
     [
-      136.01,
+      135.82,
       3,
       "Virgen de Guadalupe, madre cercana, ruega por nosotros."
     ],
     [
-      143.12,
+      142.93,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      147.65,
+      147.46,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      154.44,
+      154.25,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-12-voz.mp3?v=1792251062"
 }

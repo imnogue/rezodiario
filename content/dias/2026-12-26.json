@@ -14,7 +14,7 @@
   ],
   "fin": "San Esteban, enséñame a perdonar.",
   "saint": "esteban",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-26.mp3?v=1792245965",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-26.mp3?v=1792251237",
   "duracion": "2:38",
   "marcas": [
     [
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.79,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.52,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.18,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.27,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.22,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.06,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 10."
     ],
     [
-      39.4,
+      38.89,
       1,
       "Jesús advierte a sus discípulos que serán perseguidos, pero les promete que el Espíritu del Padre hablará por ellos."
     ],
     [
-      50.7,
+      50.19,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.75,
+      54.24,
       1,
       "El que persevere hasta el final se salvará."
     ],
     [
-      69.6,
+      69.09,
       2,
       "El día después de Navidad celebramos al primer mártir."
     ],
     [
-      74.26,
+      73.75,
       2,
       "El pesebre y la cruz van juntos."
     ],
     [
-      77.02,
+      76.51,
       2,
       "Esteban murió perdonando a quienes le apedreaban."
     ],
     [
-      83.52,
+      83.01,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.58,
+      90.07,
       2,
       "¿A quién me cuesta perdonar?"
     ],
     [
-      112.39,
+      111.88,
       2,
       "¿Qué me pide perseverar?"
     ],
     [
-      133.92,
+      133.41,
       3,
       "San Esteban, enséñame a perdonar."
     ],
     [
-      139.05,
+      138.54,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      143.68,
+      143.17,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      150.62,
+      150.11,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-26-voz.mp3?v=1792251237"
 }

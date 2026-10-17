@@ -14,8 +14,8 @@
   ],
   "fin": "Señor, que pueda decir como Simeón: mis ojos han visto tu salvación.",
   "saint": "tomas-becket",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-29.mp3?v=1792246038",
-  "duracion": "2:40",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-29.mp3?v=1792251274",
+  "duracion": "2:39",
   "marcas": [
     [
       4.0,
@@ -28,94 +28,95 @@
       "Respira despacio."
     ],
     [
-      12.52,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.18,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.26,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.26,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.15,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 2."
     ],
     [
-      38.37,
+      37.77,
       1,
       "Simeón, un anciano justo que esperaba al Mesías, toma a Jesús en brazos en el templo."
     ],
     [
-      43.84,
+      43.24,
       1,
       "Siente que ya puede morir en paz porque ha visto al Salvador."
     ],
     [
-      49.71,
+      49.1,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      52.88,
+      52.28,
       1,
       "Ahora, Señor, según tu promesa, puedes dejar a tu siervo irse en paz."
     ],
     [
-      69.84,
+      69.23,
       2,
       "Simeón esperó toda la vida y no se desanimó."
     ],
     [
-      73.35,
+      72.75,
       2,
       "Su paz es la de quien ha visto cumplida la promesa."
     ],
     [
-      79.73,
+      79.13,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      87.14,
+      86.54,
       2,
       "¿Qué promesa de Dios espero?"
     ],
     [
-      109.18,
+      108.58,
       2,
       "¿Qué me da paz al final de este año?"
     ],
     [
-      131.74,
+      131.13,
       3,
       "Señor, que pueda decir como Simeón: mis ojos han visto tu salvación."
     ],
     [
-      140.31,
+      139.71,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      145.03,
+      144.42,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      152.1,
+      151.49,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-29-voz.mp3?v=1792251274"
 }

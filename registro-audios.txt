@@ -1,140 +1,90 @@
-Voy a generar 74 audios (unos 64483 caracteres de ElevenLabs).
-2026-10-19 · Rico ante Dios
-  Historial de ElevenLabs: 381 frases ya generadas que puedo reutilizar gratis.
-  Montado: 2:48 min, 1966 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-19.mp3
-2026-10-20 · Con las lámparas encendidas
-  Montado: 2:43 min, 1915 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-20.mp3
-2026-10-21 · A quien mucho se le dio
-  Montado: 2:42 min, 1900 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-21.mp3
-2026-10-22 · Fuego en la tierra
-  Montado: 2:46 min, 1947 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-22.mp3
-2026-10-23 · Los signos de los tiempos
-  Montado: 2:52 min, 2018 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-23.mp3
-2026-10-24 · La higuera sin fruto
-  Montado: 2:46 min, 1946 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-24.mp3
-2026-10-25 · El mandamiento principal
-  Montado: 2:48 min, 1970 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-25.mp3
-2026-10-26 · Mujer, quedas libre
-  Montado: 2:42 min, 1903 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-26.mp3
-2026-10-27 · Un grano de mostaza
-  Montado: 2:41 min, 1888 KB, 19 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-27.mp3
-2026-10-28 · Elegidos tras una noche de oración
-  Montado: 2:52 min, 2015 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-28.mp3
-2026-10-29 · Como la gallina a sus pollitos
-  Montado: 2:43 min, 1908 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-29.mp3
-2026-10-30 · Curar en sábado
-  Montado: 2:38 min, 1850 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-30.mp3
-2026-10-31 · El último puesto
-  Montado: 2:39 min, 1863 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-31.mp3
-2026-11-01 · Dichosos
-  Montado: 2:55 min, 2054 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-01.mp3
-2026-11-02 · No perderé a ninguno
-  Montado: 2:47 min, 1952 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-02.mp3
-2026-11-03 · Sal a los caminos
-  Montado: 2:47 min, 1953 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-03.mp3
-2026-11-04 · Calcular el coste
-  Montado: 2:46 min, 1940 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-04.mp3
-2026-11-05 · La oveja perdida
-  Montado: 2:46 min, 1947 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-05.mp3
-2026-11-06 · La astucia del administrador
-  Montado: 2:50 min, 1991 KB, 24 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-06.mp3
-2026-11-07 · Dios o el dinero
-  Montado: 2:41 min, 1883 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-07.mp3
-2026-11-08 · Las diez muchachas
-  Montado: 2:48 min, 1966 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-08.mp3
-2026-11-09 · El templo de su cuerpo
-  Montado: 2:41 min, 1885 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-09.mp3
-2026-11-10 · Siervos sin pretensiones
-  Montado: 2:39 min, 1865 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-10.mp3
-2026-11-11 · El que volvió a dar gracias
-  Montado: 2:43 min, 1915 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-11.mp3
-2026-11-12 · Está en medio de vosotros
-  Montado: 2:43 min, 1907 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-12.mp3
-2026-11-13 · Como en tiempos de Noé
-  Montado: 2:41 min, 1884 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-13.mp3
-2026-11-14 · Orar sin desanimarse
-  Montado: 2:41 min, 1884 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-14.mp3
-2026-11-15 · Los talentos
-  Montado: 2:44 min, 1920 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-15.mp3
-2026-11-16 · Señor, que vea
-  Montado: 2:41 min, 1885 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-16.mp3
-2026-11-17 · Zaqueo, baja enseguida
-  Montado: 2:43 min, 1908 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-17.mp3
-2026-11-18 · Las diez onzas
-  Montado: 2:47 min, 1958 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-18.mp3
-2026-11-19 · Jesús llora
-  Montado: 2:42 min, 1897 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-19.mp3
-2026-11-20 · Casa de oración
-  Montado: 2:36 min, 1830 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-20.mp3
-2026-11-21 · Dios de vivos
-  Montado: 2:47 min, 1955 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-21.mp3
-2026-11-22 · Conmigo lo hicisteis
-  Montado: 2:49 min, 1984 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-22.mp3
-2026-11-23 · Las dos monedas de la viuda
-  Montado: 2:36 min, 1833 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-23.mp3
-2026-11-24 · No tengáis pánico
-  Montado: 2:43 min, 1913 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-24.mp3
-2026-11-25 · Ni un cabello
-  Montado: 2:39 min, 1866 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-25.mp3
-2026-11-26 · Levantad la cabeza
-  Montado: 2:38 min, 1853 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-26.mp3
-2026-11-27 · Mis palabras no pasarán
-  Montado: 2:38 min, 1854 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-27.mp3
-2026-11-28 · Estad despiertos
-  Montado: 2:43 min, 1910 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-28.mp3
-2026-11-29 · Velad
-  Montado: 2:44 min, 1920 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-29.mp3
-2026-11-30 · Pescadores de hombres
-  Montado: 2:40 min, 1871 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-30.mp3
-2026-12-01 · Revelado a los pequeños
-  Montado: 2:38 min, 1857 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-01.mp3
-2026-12-02 · Siete panes
-  Montado: 2:41 min, 1884 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-02.mp3
+Voy a generar 29 audios (unos 24515 caracteres de ElevenLabs).
 2026-12-03 · Edificar sobre roca
+  Historial de ElevenLabs: 381 frases ya generadas que puedo reutilizar gratis.
   Montado: 2:46 min, 1949 KB, 20 frases sincronizadas
-::error::No se ha podido subir 2026-12-03-voz.mp3 a Supabase (520): b'error code: 520\n'
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-03.mp3
+2026-12-04 · ¿Creéis que puedo hacerlo?
+  Montado: 2:38 min, 1855 KB, 25 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-04.mp3
+2026-12-05 · La mies es abundante
+  Montado: 2:33 min, 1791 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-05.mp3
+2026-12-06 · Preparad el camino
+  Montado: 2:41 min, 1887 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-06.mp3
+2026-12-07 · Por el tejado
+  Montado: 2:41 min, 1888 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-07.mp3
+2026-12-08 · Llena de gracia
+  Montado: 2:46 min, 1946 KB, 23 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-08.mp3
+2026-12-09 · Venid a mí
+  Montado: 2:39 min, 1860 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-09.mp3
+2026-12-10 · El más pequeño
+  Montado: 2:40 min, 1874 KB, 19 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-10.mp3
+2026-12-11 · Nada nos convence
+  Montado: 2:38 min, 1854 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-11.mp3
+2026-12-12 · Elías ya ha venido
+  Montado: 2:42 min, 1896 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-12.mp3
+2026-12-13 · Testigo de la luz
+  Montado: 2:42 min, 1903 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-13.mp3
+2026-12-14 · ¿Con qué autoridad?
+  Montado: 2:41 min, 1887 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-14.mp3
+2026-12-15 · Los dos hijos
+  Montado: 2:42 min, 1897 KB, 23 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-15.mp3
+2026-12-16 · ¿Eres tú el que ha de venir?
+  Montado: 2:46 min, 1945 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-16.mp3
+2026-12-17 · Una familia con historia
+  Montado: 2:41 min, 1887 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-17.mp3
+2026-12-18 · José, no temas
+  Montado: 2:42 min, 1897 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-18.mp3
+2026-12-19 · Tu oración ha sido escuchada
+  Montado: 2:39 min, 1859 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-19.mp3
+2026-12-20 · Hágase
+  Montado: 2:41 min, 1883 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-20.mp3
+2026-12-21 · María se puso en camino
+  Montado: 2:38 min, 1855 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-21.mp3
+2026-12-22 · Proclama mi alma
+  Montado: 2:45 min, 1937 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-22.mp3
+2026-12-23 · Juan es su nombre
+  Montado: 2:44 min, 1921 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-23.mp3
+2026-12-24 · Nos visitará el sol que nace de lo alto
+  Montado: 2:42 min, 1896 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-24.mp3
+2026-12-25 · El Verbo se hizo carne
+  Montado: 2:40 min, 1874 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-25.mp3
+2026-12-26 · El que persevere
+  Montado: 2:38 min, 1847 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-26.mp3
+2026-12-27 · Una familia en el templo
+  Montado: 2:43 min, 1907 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-27.mp3
+2026-12-28 · Huida a Egipto
+  Montado: 2:41 min, 1889 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-28.mp3
+2026-12-29 · Ahora puedes dejar a tu siervo
+  Montado: 2:39 min, 1864 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-29.mp3
+2026-12-30 · La profetisa Ana
+  Montado: 2:34 min, 1803 KB, 19 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-30.mp3
+2026-12-31 · Gracia tras gracia
+  Montado: 2:43 min, 1914 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-31.mp3
+Terminado. Voces reutilizadas del historial: 174 · generadas nuevas: 0.

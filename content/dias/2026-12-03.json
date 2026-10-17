@@ -14,8 +14,8 @@
   ],
   "fin": "Señor, que mi vida esté construida sobre ti.",
   "saint": "francisco-javier",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-03.mp3?v=1792245331",
-  "duracion": "2:47",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-03.mp3?v=1792250950",
+  "duracion": "2:46",
   "marcas": [
     [
       4.0,
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.84,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.64,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.31,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.27,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.22,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.11,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 7."
     ],
     [
-      38.51,
+      37.95,
       1,
       "Jesús compara a quien escucha y cumple su palabra con un hombre que construye sobre roca: cuando llegan las tormentas, la casa resiste."
     ],
     [
-      49.22,
+      48.66,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      52.6,
+      52.05,
       1,
       "El que escucha estas palabras mías y las pone en práctica se parece a aquel hombre prudente que edificó su casa sobre roca."
     ],
     [
-      73.04,
+      72.48,
       2,
       "No basta con decir «Señor, Señor»."
     ],
     [
-      76.29,
+      75.73,
       2,
       "La fe se demuestra en la vida."
     ],
     [
-      79.15,
+      78.59,
       2,
       "San Francisco Javier llevó el Evangelio hasta Japón porque lo había hecho roca de su vida."
     ],
     [
-      89.74,
+      89.19,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      97.08,
+      96.52,
       2,
       "¿Sobre qué construyo?"
     ],
     [
-      118.61,
+      118.05,
       2,
       "¿Qué palabra de Jesús tengo que poner en práctica?"
     ],
     [
-      141.77,
+      141.21,
       3,
       "Señor, que mi vida esté construida sobre ti."
     ],
     [
-      147.9,
+      147.34,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      152.48,
+      151.93,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      159.36,
+      158.8,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-03-voz.mp3?v=1792250950"
 }

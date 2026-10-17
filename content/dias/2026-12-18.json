@@ -14,8 +14,8 @@
   ],
   "fin": "San José, enséñame a fiarme de Dios en silencio.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-18.mp3?v=1792245714",
-  "duracion": "2:43",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-18.mp3?v=1792251138",
+  "duracion": "2:42",
   "marcas": [
     [
       4.0,
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      9.02,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.84,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.52,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.61,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.53,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.2,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 1."
     ],
     [
-      38.35,
+      37.7,
       1,
       "José descubre que María está embarazada y decide repudiarla en secreto."
     ],
     [
-      43.35,
+      42.7,
       1,
       "Un ángel le dice en sueños que no tema: el niño viene del Espíritu Santo."
     ],
     [
-      48.49,
+      47.84,
       1,
       "José se despierta y hace lo que le dice el ángel."
     ],
     [
-      53.94,
+      53.29,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      57.67,
+      57.02,
       1,
       "José, hijo de David, no temas acoger a María, tu mujer."
     ],
     [
-      73.5,
+      72.85,
       2,
       "José no dice ni una palabra en el Evangelio, pero actúa."
     ],
     [
-      78.5,
+      77.85,
       2,
       "Escucha a Dios en el silencio y se fía, aunque no lo entienda todo."
     ],
     [
-      86.48,
+      85.83,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      93.55,
+      92.9,
       2,
       "¿Qué decisión me da miedo?"
     ],
     [
-      115.27,
+      114.62,
       2,
       "¿Escucho a Dios en el silencio?"
     ],
     [
-      137.36,
+      136.71,
       3,
       "San José, enséñame a fiarme de Dios en silencio."
     ],
     [
-      143.78,
+      143.13,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      148.27,
+      147.62,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      155.0,
+      154.35,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-18-voz.mp3?v=1792251138"
 }

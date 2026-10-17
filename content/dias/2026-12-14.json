@@ -14,8 +14,8 @@
   ],
   "fin": "Señor, que al atardecer de mi vida me encuentres amando.",
   "saint": "juan-de-la-cruz",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-14.mp3?v=1792245612",
-  "duracion": "2:42",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-14.mp3?v=1792251088",
+  "duracion": "2:41",
   "marcas": [
     [
       4.0,
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.7,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.47,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.1,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.09,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.13,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.15,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 21."
     ],
     [
-      38.59,
+      37.99,
       1,
       "Los sumos sacerdotes cuestionan la autoridad de Jesús."
     ],
     [
-      42.69,
+      42.08,
       1,
       "Él les responde con otra pregunta sobre Juan el Bautista, y ellos no se atreven a contestar."
     ],
     [
-      51.67,
+      51.06,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      55.58,
+      54.97,
       1,
       "¿Con qué autoridad haces esto?"
     ],
     [
-      69.84,
+      69.23,
       2,
       "Jesús no entra en juegos."
     ],
     [
-      72.3,
+      71.69,
       2,
       "Su autoridad viene del amor."
     ],
     [
-      75.05,
+      74.45,
       2,
       "San Juan de la Cruz decía: «A la tarde te examinarán en el amor»."
     ],
     [
-      83.45,
+      82.85,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.9,
+      90.3,
       2,
       "¿A quién dejo que tenga autoridad en mi vida?"
     ],
     [
-      113.64,
+      113.04,
       2,
       "¿Respondo con sinceridad a Dios?"
     ],
     [
-      135.92,
+      135.31,
       3,
       "Señor, que al atardecer de mi vida me encuentres amando."
     ],
     [
-      143.03,
+      142.43,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      147.49,
+      146.88,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      154.17,
+      153.56,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-14-voz.mp3?v=1792251088"
 }

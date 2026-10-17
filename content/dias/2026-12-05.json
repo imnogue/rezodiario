@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, que dé gratis lo que gratis recibí.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-05.mp3?v=1792245381",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-05.mp3?v=1792250975",
   "duracion": "2:33",
   "marcas": [
     [
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      9.07,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.72,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.37,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.32,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.16,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.92,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 9."
     ],
     [
-      38.65,
+      38.28,
       1,
       "Jesús recorre ciudades y aldeas, y al ver a la gente cansada y abatida, siente compasión."
     ],
     [
-      45.37,
+      45.0,
       1,
       "Envía a los Doce a anunciar que el reino está cerca."
     ],
     [
-      51.3,
+      50.93,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.69,
+      54.32,
       1,
       "Gratis habéis recibido, dadlo gratis."
     ],
     [
-      69.6,
+      69.23,
       2,
       "Lo que has recibido de Dios no es para guardarlo."
     ],
     [
-      74.31,
+      73.94,
       2,
       "Es para darlo, y gratis."
     ],
     [
-      78.62,
+      78.25,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      85.98,
+      85.61,
       2,
       "¿Qué he recibido gratis?"
     ],
     [
-      107.7,
+      107.33,
       2,
       "¿A quién se lo puedo dar hoy?"
     ],
     [
-      129.42,
+      129.04,
       3,
       "Señor, que dé gratis lo que gratis recibí."
     ],
     [
-      135.08,
+      134.71,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      139.35,
+      138.97,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      145.74,
+      145.36,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-05-voz.mp3?v=1792250975"
 }

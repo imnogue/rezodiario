@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, que como Ana no me canse nunca de esperarte.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-30.mp3?v=1792246062",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-30.mp3?v=1792251286",
   "duracion": "2:34",
   "marcas": [
     [
@@ -23,94 +23,95 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.53,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.15,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.77,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.75,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.84,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.73,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 2."
     ],
     [
-      38.35,
+      38.16,
       1,
       "Ana, una viuda muy anciana que servía a Dios día y noche en el templo, reconoce al niño y habla de él a todos los que esperaban la liberación."
     ],
     [
-      50.24,
+      50.05,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.73,
+      53.55,
       1,
       "Daba gracias a Dios y hablaba del niño a todos."
     ],
     [
-      69.42,
+      69.23,
       2,
       "Ana no se jubiló de la esperanza."
     ],
     [
-      72.26,
+      72.07,
       2,
       "A cualquier edad se puede anunciar a Jesús."
     ],
     [
-      77.96,
+      77.77,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      84.86,
+      84.68,
       2,
       "¿A quién puedo hablar hoy de Jesús?"
     ],
     [
-      106.95,
+      106.77,
       2,
       "¿Doy gracias cada día?"
     ],
     [
-      128.53,
+      128.35,
       3,
       "Señor, que como Ana no me canse nunca de esperarte."
     ],
     [
-      135.26,
+      135.07,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      139.77,
+      139.59,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      146.55,
+      146.36,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-30-voz.mp3?v=1792251286"
 }

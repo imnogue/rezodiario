@@ -14,8 +14,8 @@
   ],
   "fin": "Proclama mi alma la grandeza del Señor. Gracias por todo lo que has hecho en mí.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-22.mp3?v=1792245870",
-  "duracion": "2:46",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-22.mp3?v=1792251187",
+  "duracion": "2:45",
   "marcas": [
     [
       4.0,
@@ -23,99 +23,100 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      9.03,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.75,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.38,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.5,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.58,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.48,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 1."
     ],
     [
-      39.1,
+      38.17,
       1,
       "María canta el Magníficat: Dios mira a los humildes, derriba a los poderosos y colma de bienes a los hambrientos."
     ],
     [
-      48.66,
+      47.73,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      52.15,
+      51.22,
       1,
       "Proclama mi alma la grandeza del Señor, se alegra mi espíritu en Dios, mi salvador."
     ],
     [
-      70.16,
+      69.23,
       2,
       "Es el día del sorteo de Navidad, y María canta otra suerte: la de los pequeños a los que Dios mira."
     ],
     [
-      79.19,
+      78.26,
       2,
       "Hoy puedes hacer tu propio Magníficat: ¿por qué das gracias?"
     ],
     [
-      86.66,
+      85.73,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      93.83,
+      92.9,
       2,
       "¿Qué grandes cosas ha hecho Dios conmigo este año?"
     ],
     [
-      117.26,
+      116.33,
       2,
       "¿Cómo miro a los humildes?"
     ],
     [
-      139.03,
+      138.1,
       3,
       "Proclama mi alma la grandeza del Señor."
     ],
     [
-      142.5,
+      141.57,
       3,
       "Gracias por todo lo que has hecho en mí."
     ],
     [
-      148.06,
+      147.13,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      152.35,
+      151.42,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      158.78,
+      157.85,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-22-voz.mp3?v=1792251187"
 }

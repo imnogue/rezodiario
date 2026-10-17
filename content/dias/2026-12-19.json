@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, creo que me escuchas. Ayuda mi poca fe.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-19.mp3?v=1792245739",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-19.mp3?v=1792251150",
   "duracion": "2:39",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.9,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.65,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.32,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.4,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      24.36,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      34.24,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 1."
     ],
     [
-      38.48,
+      37.78,
       1,
       "El ángel anuncia al sacerdote Zacarías que su mujer Isabel, ya mayor, tendrá un hijo."
     ],
     [
-      44.63,
+      43.93,
       1,
       "Zacarías duda y se queda mudo hasta el nacimiento."
     ],
     [
-      50.25,
+      49.55,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.05,
+      53.35,
       1,
       "No temas, Zacarías, porque tu ruego ha sido escuchado."
     ],
     [
-      69.93,
+      69.23,
       2,
       "Zacarías llevaba años pidiendo un hijo."
     ],
     [
-      73.6,
+      72.9,
       2,
       "Dios escuchó, a su tiempo."
     ],
     [
-      76.04,
+      75.35,
       2,
       "Tu oración tampoco cae en saco roto."
     ],
     [
-      81.43,
+      80.73,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      88.67,
+      87.98,
       2,
       "¿Qué oración siento que Dios no escucha?"
     ],
     [
-      111.23,
+      110.53,
       2,
       "¿Me cuesta creer en las buenas noticias?"
     ],
     [
-      133.97,
+      133.27,
       3,
       "Señor, creo que me escuchas."
     ],
     [
-      136.66,
+      135.97,
       3,
       "Ayuda mi poca fe."
     ],
     [
-      140.3,
+      139.6,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      144.89,
+      144.2,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      151.79,
+      151.09,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-19-voz.mp3?v=1792251150"
 }

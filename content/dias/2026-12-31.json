@@ -14,7 +14,7 @@
   ],
   "fin": "Gracias, Señor, por este año. En tus manos pongo el que empieza.",
   "saint": "silvestre-i",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-31.mp3?v=1792246087",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-31.mp3?v=1792251298",
   "duracion": "2:43",
   "marcas": [
     [
@@ -127,5 +127,6 @@
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-31-voz.mp3?v=1792251298"
 }

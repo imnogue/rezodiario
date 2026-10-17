@@ -14,7 +14,7 @@
   ],
   "fin": "Niño Jesús, bienvenido. Gracias por hacerte uno de nosotros.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-25.mp3?v=1792245942",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-25.mp3?v=1792251225",
   "duracion": "2:40",
   "marcas": [
     [
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.7,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.43,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      15.95,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.9,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.85,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.64,
+      33.55,
       1,
       "Evangelio según san Juan, capítulo 1."
     ],
     [
-      37.69,
+      37.6,
       1,
       "Juan contempla el misterio de la Navidad desde el principio: la Palabra de Dios, que estaba junto a Dios, se hizo hombre y puso su tienda entre nosotros."
     ],
     [
-      50.24,
+      50.15,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      53.95,
+      53.85,
       1,
       "Y el Verbo se hizo carne y habitó entre nosotros."
     ],
     [
-      69.33,
+      69.23,
       2,
       "Dios se hace niño."
     ],
     [
-      71.03,
+      70.94,
       2,
       "No viene con poder, viene pequeño y frágil para que nadie le tenga miedo."
     ],
     [
-      77.94,
+      77.84,
       2,
       "¡Feliz Navidad!"
     ],
     [
-      81.35,
+      81.26,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      88.63,
+      88.53,
       2,
       "¿Qué me dice un Dios que se hace pequeño?"
     ],
     [
-      111.27,
+      111.18,
       2,
       "¿Cómo puedo acoger hoy a Jesús?"
     ],
     [
-      133.64,
+      133.55,
       3,
       "Niño Jesús, bienvenido."
     ],
     [
-      135.81,
+      135.71,
       3,
       "Gracias por hacerte uno de nosotros."
     ],
     [
-      141.2,
+      141.11,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      145.71,
+      145.62,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      152.49,
+      152.4,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-25-voz.mp3?v=1792251225"
 }

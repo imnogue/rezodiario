@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, pongo ante ti a quien hoy no puede caminar solo.",
   "saint": "ambrosio",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-07.mp3?v=1792245431",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-07.mp3?v=1792251000",
   "duracion": "2:41",
   "marcas": [
     [
@@ -23,109 +23,110 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.84,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.45,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.02,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.99,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.99,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.78,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 5."
     ],
     [
-      37.96,
+      37.73,
       1,
       "Unos hombres traen a un paralítico en una camilla."
     ],
     [
-      41.53,
+      41.3,
       1,
       "Como no pueden entrar por la gente, suben al tejado y lo bajan delante de Jesús."
     ],
     [
-      47.24,
+      47.0,
       1,
       "Jesús perdona sus pecados y lo cura."
     ],
     [
-      51.8,
+      51.57,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      55.56,
+      55.33,
       1,
       "Hoy hemos visto maravillas."
     ],
     [
-      69.46,
+      69.23,
       2,
       "La fe de los amigos lleva al paralítico hasta Jesús."
     ],
     [
-      74.16,
+      73.93,
       2,
       "¿Por quién puedes subirte tú al tejado?"
     ],
     [
-      77.69,
+      77.46,
       2,
       "Tu oración puede llevar a alguien ante Dios."
     ],
     [
-      83.67,
+      83.43,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.76,
+      90.53,
       2,
       "¿A quién llevo yo ante Jesús?"
     ],
     [
-      112.81,
+      112.57,
       2,
       "¿Quién me ha llevado a mí?"
     ],
     [
-      134.52,
+      134.29,
       3,
       "Señor, pongo ante ti a quien hoy no puede caminar solo."
     ],
     [
-      141.91,
+      141.68,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      146.69,
+      146.46,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      153.86,
+      153.62,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-07-voz.mp3?v=1792251000"
 }
