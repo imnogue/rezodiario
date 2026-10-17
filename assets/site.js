@@ -590,7 +590,7 @@ if($("#give")){
 const nf=$("#newsForm");if(nf)nf.onsubmit=e=>{e.preventDefault();const v=$("#email").value.trim(),m=$("#newsMsg");m.hidden=false;
  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){m.textContent="Revisa el correo: falta la @ o el dominio.";$("#email").focus();return}
  const b=nf.querySelector("button");b.disabled=true;m.textContent="Un momento…";
- fetch("/api/suscribir",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({email:v,web:(nf.querySelector("[name=web]")||{}).value||""})}).then(r=>r.json().catch(()=>({ok:r.ok}))).then(j=>{if(j.ok){m.textContent="Gracias. Te hemos apuntado: pronto recibirás el rezo de cada día. Puedes darte de baja cuando quieras.";$("#email").value=""}else m.textContent=j.error||"No se ha podido apuntar. Inténtalo más tarde."}).catch(()=>{m.textContent="No hay conexión. Inténtalo de nuevo."}).finally(()=>{b.disabled=false})};
+ fetch("/api/suscribir",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({email:v,web:(nf.querySelector("[name=web]")||{}).value||""})}).then(r=>r.json().catch(()=>({ok:r.ok}))).then(j=>{if(j.ok){m.textContent="Gracias. Te hemos apuntado: pronto recibirás el rezo de cada día. Puedes darte de baja cuando quieras.";$("#email").value=""}else{m.textContent=j.error||"No se ha podido apuntar. Inténtalo más tarde.";if(j.detalle)console.warn("Boletín:",j.detalle)}}).catch(()=>{m.textContent="No hay conexión. Inténtalo de nuevo."}).finally(()=>{b.disabled=false})};
 
 /* ---------- Vidriera gótica con cruz, rayos de luz y polvo ---------- */
 const cv=$("#rose");
