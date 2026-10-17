@@ -14,6 +14,108 @@
   ],
   "fin": "San Esteban, enséñame a perdonar.",
   "saint": "esteban",
-  "audio": "",
-  "duracion": ""
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-26.mp3?v=1792245965",
+  "duracion": "2:38",
+  "marcas": [
+    [
+      4.0,
+      0,
+      "Busca un lugar tranquilo y ponte cómodo."
+    ],
+    [
+      8.79,
+      0,
+      "Respira despacio."
+    ],
+    [
+      12.52,
+      0,
+      "Inspira…"
+    ],
+    [
+      16.18,
+      0,
+      "y suelta el aire."
+    ],
+    [
+      20.27,
+      0,
+      "Estás en la presencia de Dios."
+    ],
+    [
+      24.22,
+      0,
+      "Él te mira con cariño."
+    ],
+    [
+      34.06,
+      1,
+      "Evangelio según san Mateo, capítulo 10."
+    ],
+    [
+      39.4,
+      1,
+      "Jesús advierte a sus discípulos que serán perseguidos, pero les promete que el Espíritu del Padre hablará por ellos."
+    ],
+    [
+      50.7,
+      1,
+      "Escucha estas palabras de Jesús:"
+    ],
+    [
+      54.75,
+      1,
+      "El que persevere hasta el final se salvará."
+    ],
+    [
+      69.6,
+      2,
+      "El día después de Navidad celebramos al primer mártir."
+    ],
+    [
+      74.26,
+      2,
+      "El pesebre y la cruz van juntos."
+    ],
+    [
+      77.02,
+      2,
+      "Esteban murió perdonando a quienes le apedreaban."
+    ],
+    [
+      83.52,
+      2,
+      "Ahora, en silencio, piensa en estas preguntas."
+    ],
+    [
+      90.58,
+      2,
+      "¿A quién me cuesta perdonar?"
+    ],
+    [
+      112.39,
+      2,
+      "¿Qué me pide perseverar?"
+    ],
+    [
+      133.92,
+      3,
+      "San Esteban, enséñame a perdonar."
+    ],
+    [
+      139.05,
+      3,
+      "Gloria al Padre, y al Hijo, y al Espíritu Santo."
+    ],
+    [
+      143.68,
+      3,
+      "Como era en el principio, ahora y siempre, por los siglos de los siglos."
+    ],
+    [
+      150.62,
+      3,
+      "Amén."
+    ]
+  ]
 }
