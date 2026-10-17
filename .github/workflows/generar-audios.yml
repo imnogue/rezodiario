@@ -49,6 +49,7 @@ jobs:
           if [ "${{ github.event.inputs.prueba }}" = "true" ]; then ARGS="$ARGS --prueba --sin-subir"; fi
           eval python3 scripts/generar_audios.py $ARGS
       - name: Guardar los enlaces de los audios
+        if: ${{ always() }}
         run: |
           if git diff --quiet -- content/dias; then echo "No hay audios nuevos que guardar."; exit 0; fi
           git config user.name "Rezo Diario (audios)"
