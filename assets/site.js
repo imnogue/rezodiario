@@ -537,6 +537,7 @@ if(chapel){
   catch(err){const t=String(err&&err.message||err);let m="No se ha podido enviar el enlace.";
    if(/rate|limit|429/i.test(t))m+=" Se han enviado demasiados correos en poco tiempo: espera un rato y vuelve a intentarlo.";
    else if(/not authorized|Email address not authorized/i.test(t))m+=" El servidor de correo de prueba de Supabase solo envía a direcciones autorizadas: hay que conectar un servicio de correo propio.";
+   else if(/23505|users_email_partial_key|already (been )?registered/i.test(t))m="Ese correo ya tiene una cuenta creada con Google, Apple o Facebook. Entra con ese mismo botón de arriba.";
    else if(/signups? (are )?(not allowed|disabled)/i.test(t))m+=" Los registros nuevos están desactivados en Supabase.";
    msg(m+" (Detalle: "+t.slice(0,160)+")")}};
  const back=()=>encodeURIComponent(location.origin+location.pathname);
