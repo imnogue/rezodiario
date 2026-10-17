@@ -665,6 +665,30 @@ if os.path.exists(OUT): shutil.rmtree(OUT)
 shutil.copytree(os.path.join(ROOT, "static"), OUT)
 os.makedirs(OUT + "/assets", exist_ok=True)
 css = open(ROOT + "/assets/base.css", encoding="utf-8").read() + open(ROOT + "/assets/extra.css", encoding="utf-8").read()
+def solo_raton(css):
+    """En móvil, los efectos :hover se quedan «pegados» al deslizar el dedo. Los envolvemos en @media (hover:hover)
+    para que solo existan con ratón; en el móvil un botón solo cambia al pulsarlo."""
+    out, i, depth, start = [], 0, 0, 0
+    while i < len(css):
+        ch = css[i]
+        if ch == "{":
+            if depth == 0: sel_start = start
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                block = css[start:i + 1]; sel = block.split("{", 1)[0]
+                if ":hover" in sel and not sel.strip().startswith("@"):
+                    parts = [x for x in sel.split(",")]; hov = [x for x in parts if ":hover" in x]; rest = [x for x in parts if ":hover" not in x]
+                    body = block.split("{", 1)[1]
+                    block = (",".join(rest) + "{" + body if rest else "") + "@media (hover:hover){" + ",".join(hov) + "{" + body + "}"
+                out.append(block); start = i + 1
+        elif depth == 0 and ch == ";" :
+            out.append(css[start:i + 1]); start = i + 1
+        i += 1
+    out.append(css[start:])
+    return "".join(out)
+css = solo_raton(css) + "\n*{-webkit-tap-highlight-color:transparent}\n"
 open(OUT + "/assets/site.css", "w", encoding="utf-8").write(css)
 shutil.copy(ROOT + "/assets/site.js", OUT + "/assets/site.js")
 data = {"week": [{k: w[k] for k in ("date", "wd", "n", "mes", "color", "lit", "ref", "refL", "title", "set", "ex", "sum", "refl", "qs", "fin", "audio", "duracion")} | ({"marcas": w["marcas"]} if w.get("marcas") else {}) | ({"audioVoz": w["audioVoz"]} if w.get("audioVoz") else {}) for w in DAYS], "LITC": LITC, "SETS": SETS, **O, "via": VIA, "VIA_ANT": VIAJ["antifona"],
