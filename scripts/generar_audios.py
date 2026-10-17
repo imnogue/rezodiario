@@ -56,7 +56,7 @@ def tts(text, path, a):
     key, voice = os.environ.get("ELEVENLABS_API_KEY", "").strip(), os.environ.get("ELEVENLABS_VOICE_ID", "").strip()
     model = os.environ.get("ELEVENLABS_MODEL", "").strip() or "eleven_multilingual_v2"
     body = json.dumps({"text": text, "model_id": model, "language_code": "es",
-                       "voice_settings": {"stability": 0.7, "similarity_boost": 0.75, "style": 0.1, "use_speaker_boost": True, "speed": float(os.environ.get("ELEVENLABS_SPEED", "") or 1.0)}}).encode()
+                       "voice_settings": {"stability": 0.7, "similarity_boost": 0.75, "style": 0.1, "use_speaker_boost": True, "speed": float(os.environ.get("ELEVENLABS_SPEED", "") or 1.1)}}).encode()
     req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128", data=body, method="POST",
                                  headers={"xi-api-key": key, "Content-Type": "application/json", "Accept": "audio/mpeg"})
     for intento in range(3):
