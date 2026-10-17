@@ -1,0 +1,64 @@
+# Genera los audios del rezo diario con ElevenLabs y los publica.
+# Secretos necesarios (Settings → Secrets and variables → Actions → Repository secrets):
+#   ELEVENLABS_API_KEY    · tu clave de ElevenLabs
+#   ELEVENLABS_VOICE_ID   · el identificador de la voz elegida
+#   SUPABASE_SERVICE_KEY  · la clave secreta de Supabase (para guardar los MP3)
+name: Generar audios con ElevenLabs
+on:
+  workflow_dispatch:
+    inputs:
+      desde:
+        description: "Desde (AAAA-MM-DD). Vacío = hoy"
+        required: false
+        default: ""
+      hasta:
+        description: "Hasta (AAAA-MM-DD). Vacío = dentro de 7 días"
+        required: false
+        default: ""
+      sobrescribir:
+        description: "Volver a generar días que ya tienen audio"
+        type: boolean
+        default: false
+      prueba:
+        description: "Prueba sin gastar créditos (tonos en vez de voz, no publica)"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "0 16 * * 0"   # cada domingo por la tarde: prepara los 7 días siguientes
+permissions:
+  contents: write
+concurrency:
+  group: generar-audios
+  cancel-in-progress: false
+jobs:
+  audios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Generar, montar y subir
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          ARGS="--desde '${{ github.event.inputs.desde }}' --hasta '${{ github.event.inputs.hasta }}'"
+          if [ "${{ github.event.inputs.sobrescribir }}" = "true" ]; then ARGS="$ARGS --sobrescribir"; fi
+          if [ "${{ github.event.inputs.prueba }}" = "true" ]; then ARGS="$ARGS --prueba --sin-subir"; fi
+          eval python3 scripts/generar_audios.py $ARGS
+      - name: Guardar los enlaces de los audios
+        run: |
+          if git diff --quiet -- content/dias; then echo "No hay audios nuevos que guardar."; exit 0; fi
+          git config user.name "Rezo Diario (audios)"
+          git config user.email "audios@rezodiario.com"
+          git add content/dias
+          git commit -m "Audios nuevos generados con ElevenLabs"
+          git push
+      - name: Guardar los MP3 de prueba para escucharlos
+        if: ${{ github.event.inputs.prueba == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: audios-de-prueba
+          path: audios-generados/*.mp3

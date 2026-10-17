@@ -74,19 +74,27 @@ Esta carpeta es toda la web. No necesitas instalar nada en tu ordenador: Cloudfl
 
 ---
 
-## Cada día · Cómo crear el audio con ElevenLabs
+## Audios automáticos con ElevenLabs
 
-1. Abre `guiones/AAAA-MM-DD.txt` del día que quieras grabar.
-2. Pega **cada bloque por separado** en ElevenLabs (Text to Speech) con una voz calmada en español de España. Ajustes que funcionan bien: estabilidad 60–75 %, estilo 0–15 %, velocidad 0,9.
-3. Descarga los 4 MP3.
-4. Móntalos con **música suave libre de derechos** en Audacity o CapCut (gratis). Respeta los silencios que indica el guion: son la parte más importante de la oración.
-   - Música libre: Pixabay Music o la Biblioteca de audio de YouTube.
-5. Exporta en **MP3, 128 kbps, mono**.
-6. En el panel: *Rezo de cada día* → el día → **Audio** → sube el MP3 → escribe la duración (por ejemplo `9:30`) → *Publish*.
+Los audios se generan solos: GitHub pide la voz a ElevenLabs, la monta con silencios y música suave, guarda el MP3 en Supabase y lo enlaza en la web y en el pódcast.
 
-Cuando un día tiene audio, la web lo reproduce en lugar de la voz del navegador y lo añade al pódcast automáticamente.
+**Preparación (una vez):**
+1. En ElevenLabs, contrata el plan **Creator** (incluye licencia comercial).
+2. Elige una voz calmada en español en la *Voice Library* → *Add to my voices*. En *My Voices* → los tres puntos → **Copy voice ID**.
+3. En ElevenLabs → foto de perfil → **API Keys** → *Create API key* (permiso *Text to Speech*) → cópiala.
+4. En Supabase → **Project Settings → API Keys** → copia la **Secret key** (`sb_secret_…`). Es privada: solo va en GitHub.
+5. En GitHub → **Settings → Secrets and variables → Actions → New repository secret**, crea tres:
+   - `ELEVENLABS_API_KEY`
+   - `ELEVENLABS_VOICE_ID`
+   - `SUPABASE_SERVICE_KEY`
 
-> Comprueba que tu plan de ElevenLabs permite **uso comercial** y en pódcast. Los planes gratuitos suelen tener límites.
+**Uso:**
+- **Automático:** cada domingo por la tarde se generan los audios de los 7 días siguientes.
+- **A mano:** GitHub → **Actions → Generar audios con ElevenLabs → Run workflow**. Puedes elegir fechas, volver a generar un día o hacer una **prueba sin gastar créditos**.
+- **Tu propia música:** sube un MP3 libre de derechos como `static/musica/fondo.mp3`. Si no hay, se usa un bordón suave generado.
+- **Gasto:** unos 1.000 caracteres por día, ~30.000 al mes. El plan Creator incluye 121.000.
+
+Los guiones de `guiones/` siguen ahí por si algún día prefieres grabar a mano.
 
 ## Pódcast, WhatsApp y redes
 

@@ -1,0 +1,170 @@
+# -*- coding: utf-8 -*-
+"""Genera los audios del rezo diario con ElevenLabs, los monta con silencios y música,
+los sube a Supabase Storage y los enlaza en content/dias/*.json.
+
+Lo ejecuta GitHub Actions (.github/workflows/generar-audios.yml). También funciona en tu ordenador:
+  ELEVENLABS_API_KEY=... ELEVENLABS_VOICE_ID=... SUPABASE_SERVICE_KEY=... \
+  python3 scripts/generar_audios.py --desde 2026-10-19 --hasta 2026-10-25
+
+Opciones:
+  --desde / --hasta   Fechas (por defecto: de hoy a dentro de 7 días)
+  --sobrescribir      Vuelve a generar días que ya tienen audio
+  --max N             Máximo de días por ejecución (por defecto 31), para no gastar créditos de más
+  --prueba            No llama a ElevenLabs: usa tonos en lugar de voz (para probar el montaje)
+  --sin-subir         No sube a Supabase: deja los MP3 en la carpeta audios-generados/
+"""
+import argparse, datetime, glob, json, os, re, shutil, subprocess, sys, tempfile, time, urllib.request, urllib.error
+from zoneinfo import ZoneInfo
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+C = os.path.join(ROOT, "content")
+AJ = json.load(open(os.path.join(C, "ajustes.json"), encoding="utf-8"))
+ROS = json.load(open(os.path.join(C, "rosario.json"), encoding="utf-8"))
+GL = ROS["oraciones"]["GL"]
+MUSICA = os.path.join(ROOT, "static", "musica", "fondo.mp3")
+SR = 44100
+
+def log(*a): print(*a, flush=True)
+def fail(msg): print(f"::error::{msg}", flush=True); sys.exit(1)
+def br(s): return f' <break time="{s}s" /> '
+
+def clips(d):
+    """Lista de piezas del audio: ('voz', texto) o ('silencio', segundos)."""
+    libro, cap = d["refL"].split(" ")[0], d["refL"].split(" ")[1].rstrip(",")
+    out = [("silencio", 4),
+           ("voz", "Busca un lugar tranquilo y ponte cómodo." + br(1.5) + "Respira despacio." + br(2) + "Inspira…" + br(2.5) + "y suelta el aire." + br(2.5) + "Estás en la presencia de Dios." + br(1.5) + "Él te mira con cariño."),
+           ("silencio", 8),
+           ("voz", f"Evangelio según san {libro}, capítulo {cap}." + br(1.5) + d["sum"] + br(2) + "Escucha estas palabras de Jesús:" + br(1.5) + d["ex"]),
+           ("silencio", 12),
+           ("voz", d["refl"] + br(2) + "Ahora, en silencio, piensa en estas preguntas."),
+           ("silencio", 3)]
+    for q in d["qs"]: out += [("voz", q), ("silencio", 20)]
+    out += [("voz", d["fin"] + br(2) + GL), ("silencio", 7)]
+    return out
+
+def run(cmd):
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    if r.returncode != 0: fail("ffmpeg ha fallado:\n" + r.stderr[-1500:])
+    return r
+
+def tts(text, path, a):
+    if a.prueba:  # tono en lugar de voz, con duración parecida a la real
+        secs = max(2.0, len(re.sub(r"<[^>]+>", "", text)) / 14 + text.count("<break") * 2)
+        run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", f"sine=frequency=330:sample_rate={SR}", "-t", f"{secs:.2f}", "-af", "volume=0.3", "-ac", "1", path])
+        return
+    key, voice = os.environ.get("ELEVENLABS_API_KEY", "").strip(), os.environ.get("ELEVENLABS_VOICE_ID", "").strip()
+    model = os.environ.get("ELEVENLABS_MODEL", "").strip() or "eleven_multilingual_v2"
+    body = json.dumps({"text": text, "model_id": model, "language_code": "es",
+                       "voice_settings": {"stability": 0.7, "similarity_boost": 0.75, "style": 0.1, "use_speaker_boost": True, "speed": 0.9}}).encode()
+    req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_128", data=body, method="POST",
+                                 headers={"xi-api-key": key, "Content-Type": "application/json", "Accept": "audio/mpeg"})
+    for intento in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r: open(path, "wb").write(r.read()); return
+        except urllib.error.HTTPError as e:
+            msg = e.read().decode("utf-8", "ignore")[:400]
+            if e.code in (401, 403): fail(f"ElevenLabs no acepta la clave (error {e.code}). Revisa el secreto ELEVENLABS_API_KEY. {msg}")
+            if e.code == 404: fail(f"ElevenLabs no encuentra la voz. Revisa el secreto ELEVENLABS_VOICE_ID. {msg}")
+            if "quota" in msg.lower() or e.code == 402: fail(f"Te has quedado sin créditos en ElevenLabs. {msg}")
+            if e.code == 400 and "language_code" in msg:  # algunos modelos no admiten language_code
+                d = json.loads(body); d.pop("language_code", None); body = json.dumps(d).encode(); req.data = body; continue
+            log(f"  ElevenLabs respondió {e.code}; reintento en 10 s… {msg}"); time.sleep(10)
+        except urllib.error.URLError as e:
+            log(f"  Sin conexión con ElevenLabs ({e}); reintento en 10 s…"); time.sleep(10)
+    fail("ElevenLabs no ha respondido tras 3 intentos.")
+
+def dur(path):
+    r = run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", path])
+    return float(r.stdout.strip())
+
+def montar(d, out_mp3, a):
+    with tempfile.TemporaryDirectory() as tmp:
+        partes = []
+        for i, (kind, val) in enumerate(clips(d)):
+            wav = os.path.join(tmp, f"{i:02d}.wav")
+            if kind == "silencio":
+                run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", f"anullsrc=r={SR}:cl=mono", "-t", str(val), wav])
+            else:
+                mp3 = os.path.join(tmp, f"{i:02d}.mp3"); tts(val, mp3, a)
+                run(["ffmpeg", "-y", "-loglevel", "error", "-i", mp3, "-ar", str(SR), "-ac", "1", wav])
+            partes.append(wav)
+        lista = os.path.join(tmp, "lista.txt"); open(lista, "w").write("".join(f"file '{p}'\n" for p in partes))
+        voz = os.path.join(tmp, "voz.wav"); run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lista, "-c", "copy", voz])
+        T = dur(voz)
+        fondo = os.path.join(tmp, "fondo.wav")
+        if os.path.exists(MUSICA):  # tu música (libre de derechos) en static/musica/fondo.mp3
+            run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "-1", "-i", MUSICA, "-t", f"{T:.2f}", "-ar", str(SR), "-ac", "1",
+                 "-af", f"volume=0.12,afade=t=in:d=3,afade=t=out:st={max(0, T - 6):.2f}:d=6", fondo])
+        else:  # bordón suave generado (re, la, re), como el de la web
+            src = []
+            for f, v in ((146.83, .5), (220, .26), (293.66, .2), (440, .06)): src += ["-f", "lavfi", "-i", f"sine=frequency={f}:sample_rate={SR}"]
+            mix = "".join(f"[{i}]volume={v}[s{i}];" for i, (f, v) in enumerate(((146.83, .5), (220, .26), (293.66, .2), (440, .06)))) + "".join(f"[s{i}]" for i in range(4)) + \
+                  f"amix=inputs=4:normalize=0,tremolo=f=0.12:d=0.3,lowpass=f=900,volume=0.07,afade=t=in:d=4,afade=t=out:st={max(0, T - 7):.2f}:d=7[o]"
+            run(["ffmpeg", "-y", "-loglevel", "error", *src, "-filter_complex", mix, "-map", "[o]", "-t", f"{T:.2f}", "-ac", "1", fondo])
+        run(["ffmpeg", "-y", "-loglevel", "error", "-i", voz, "-i", fondo, "-filter_complex",
+             "[0][1]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", str(SR), "-ac", "1", "-c:a", "libmp3lame", "-b:a", "96k",
+             "-metadata", f"title={d['title']} · {d['date']}", "-metadata", "artist=Rezo Diario", "-metadata", "album=Rezo Diario", out_mp3])
+    return dur(out_mp3)
+
+def sb_headers(key, extra=None):
+    h = {"apikey": key}
+    if key.startswith("eyJ"): h["Authorization"] = "Bearer " + key
+    h.update(extra or {}); return h
+
+def sb_req(url, key, method="GET", data=None, headers=None, bearer=False):
+    h = sb_headers(key, headers)
+    if bearer: h["Authorization"] = "Bearer " + key
+    req = urllib.request.Request(url, data=data, method=method, headers=h)
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r: return r.status, r.read()
+    except urllib.error.HTTPError as e:
+        if e.code in (401, 403) and not bearer and "Authorization" not in h: return sb_req(url, key, method, data, headers, True)
+        return e.code, e.read()
+
+def subir(path, nombre, a):
+    base = (os.environ.get("SUPABASE_URL") or AJ.get("supabaseUrl", "")).strip().rstrip("/")
+    key = os.environ.get("SUPABASE_SERVICE_KEY", "").strip()
+    if not base: fail("Falta la URL de Supabase en Ajustes de la web.")
+    if not key: fail("Falta el secreto SUPABASE_SERVICE_KEY (la clave secreta de Supabase).")
+    st, body = sb_req(f"{base}/storage/v1/bucket/audios", key)
+    if st != 200:
+        st, body = sb_req(f"{base}/storage/v1/bucket", key, "POST", json.dumps({"id": "audios", "name": "audios", "public": True}).encode(), {"Content-Type": "application/json"})
+        if st not in (200, 201) and b"already exists" not in body: fail(f"No se ha podido crear la carpeta «audios» en Supabase ({st}): {body[:300]}")
+        log("  Creada la carpeta pública «audios» en Supabase Storage.")
+    st, body = sb_req(f"{base}/storage/v1/object/audios/{nombre}", key, "POST", open(path, "rb").read(), {"Content-Type": "audio/mpeg", "x-upsert": "true", "Cache-Control": "max-age=31536000"})
+    if st not in (200, 201): fail(f"No se ha podido subir {nombre} a Supabase ({st}): {body[:300]}")
+    return f"{base}/storage/v1/object/public/audios/{nombre}"
+
+def main():
+    p = argparse.ArgumentParser(); p.add_argument("--desde"); p.add_argument("--hasta"); p.add_argument("--sobrescribir", action="store_true")
+    p.add_argument("--max", type=int, default=31); p.add_argument("--prueba", action="store_true"); p.add_argument("--sin-subir", action="store_true")
+    a = p.parse_args()
+    hoy = datetime.datetime.now(ZoneInfo("Europe/Madrid")).date()
+    desde = (a.desde or "").strip() or hoy.isoformat(); hasta = (a.hasta or "").strip() or (hoy + datetime.timedelta(days=7)).isoformat()
+    if not a.prueba:
+        if not os.environ.get("ELEVENLABS_API_KEY", "").strip(): fail("Falta el secreto ELEVENLABS_API_KEY.")
+        if not os.environ.get("ELEVENLABS_VOICE_ID", "").strip(): fail("Falta el secreto ELEVENLABS_VOICE_ID (el identificador de la voz elegida).")
+    files = sorted(f for f in glob.glob(os.path.join(C, "dias", "*.json")) if desde <= os.path.basename(f)[:10] <= hasta)
+    todo = []
+    for f in files:
+        d = json.load(open(f, encoding="utf-8"))
+        if d.get("audio") and not a.sobrescribir: log(f"{d['date']}: ya tiene audio, lo salto."); continue
+        todo.append((f, d))
+    if not todo: log("No hay días pendientes de audio en ese periodo."); return
+    if len(todo) > a.max: log(f"Hay {len(todo)} días pendientes; genero solo los primeros {a.max}."); todo = todo[:a.max]
+    chars = sum(len(re.sub(r"<[^>]+>", "", v)) for _, d in todo for k, v in clips(d) if k == "voz")
+    log(f"Voy a generar {len(todo)} audios (unos {chars} caracteres de ElevenLabs).")
+    outdir = os.path.join(ROOT, "audios-generados"); os.makedirs(outdir, exist_ok=True)
+    for f, d in todo:
+        log(f"{d['date']} · {d['title']}")
+        mp3 = os.path.join(outdir, f"{d['date']}.mp3"); secs = montar(d, mp3, a)
+        dd = f"{int(secs // 60)}:{int(round(secs % 60)):02d}"
+        log(f"  Montado: {dd} min, {os.path.getsize(mp3) // 1024} KB")
+        if a.sin_subir: continue
+        url = subir(mp3, f"{d['date']}.mp3", a)
+        d["audio"] = f"{url}?v={int(time.time())}"; d["duracion"] = dd
+        json.dump(d, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        log(f"  Subido y enlazado: {url}")
+    log("Terminado.")
+
+if __name__ == "__main__": main()

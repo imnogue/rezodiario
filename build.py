@@ -410,7 +410,7 @@ def gospel_main(r, w, kind):
 </div></section>
 {week_section(r, "link", "Evangelios de estos días", "Vuelve a cualquier día o adelanta los próximos.")}'''
     return m, cr
-def gld(w, path): return {"@context": "https://schema.org", "@type": "PodcastEpisode", "name": f'{w["title"]} · Rezo del {w["n"]} de {w["mes"]} de {w["date"][:4]}', "datePublished": w["date"], "inLanguage": "es", "description": w["sum"], "url": canon(path), "partOfSeries": {"@type": "PodcastSeries", "name": "Rezo Diario", "url": SITE}, **({"associatedMedia": {"@type": "MediaObject", "contentUrl": SITE + w["audio"].lstrip("/")}} if w.get("audio") else {})}
+def gld(w, path): return {"@context": "https://schema.org", "@type": "PodcastEpisode", "name": f'{w["title"]} · Rezo del {w["n"]} de {w["mes"]} de {w["date"][:4]}', "datePublished": w["date"], "inLanguage": "es", "description": w["sum"], "url": canon(path), "partOfSeries": {"@type": "PodcastSeries", "name": "Rezo Diario", "url": SITE}, **({"associatedMedia": {"@type": "MediaObject", "contentUrl": w["audio"] if w["audio"].startswith("http") else SITE + w["audio"].lstrip("/")}} if w.get("audio") else {})}
 for w in DAYS:
     m, cr = gospel_main("../", w, "dia"); path = f'evangelio/{w["date"]}.html'
     page(path, f'Evangelio del {w["n"]} de {w["mes"]} de {w["date"][:4]} ({w["ref"]}): {w["title"]} | Rezo Diario', f'Evangelio del {nice(w)}, {w["refL"]}: «{w["ex"]}» Reflexión y audio para rezar.'[:160], m, "gospel", [crumbs_ld(cr), gld(w, path)], body_attrs=f' data-day="{w["date"]}"', mini=True, og_type="article")
@@ -601,7 +601,7 @@ os.makedirs(OUT + "/api/evangelio", exist_ok=True)
 for w in DAYS:
     json.dump({"fecha": w["date"], "dia": f'{w["wd"]} {w["n"]} de {w["mes"]}', "liturgia": w["lit"], "color": w["color"], "cita": w["refL"], "titulo": w["title"], "frase": w["ex"], "url": canon(f'evangelio/{w["date"]}.html')}, open(f'{OUT}/api/evangelio/{w["date"]}.json', "w", encoding="utf-8"), ensure_ascii=False)
 # Pódcast
-items = "".join(f'''<item><title>{E(w["title"])} · {w["n"]} de {w["mes"]}</title><description>{E(w["refL"] + ". " + w["sum"])}</description><link>{canon("evangelio/" + w["date"] + ".html")}</link><guid isPermaLink="false">rezodiario-{w["date"]}</guid><pubDate>{datetime.datetime.fromisoformat(w["date"] + "T06:00:00+01:00").strftime("%a, %d %b %Y %H:%M:%S +0100")}</pubDate><enclosure url="{SITE}{w["audio"].lstrip("/")}" type="audio/mpeg" length="0"/>{f'<itunes:duration>{w["duracion"]}</itunes:duration>' if w.get("duracion") else ""}</item>\n''' for w in reversed(DAYS) if w.get("audio") and w["date"] <= TODAY)
+items = "".join(f'''<item><title>{E(w["title"])} · {w["n"]} de {w["mes"]}</title><description>{E(w["refL"] + ". " + w["sum"])}</description><link>{canon("evangelio/" + w["date"] + ".html")}</link><guid isPermaLink="false">rezodiario-{w["date"]}</guid><pubDate>{datetime.datetime.fromisoformat(w["date"] + "T06:00:00+01:00").strftime("%a, %d %b %Y %H:%M:%S +0100")}</pubDate><enclosure url="{E(w["audio"] if w["audio"].startswith("http") else SITE + w["audio"].lstrip("/"))}" type="audio/mpeg" length="0"/>{f'<itunes:duration>{w["duracion"]}</itunes:duration>' if w.get("duracion") else ""}</item>\n''' for w in reversed(DAYS) if w.get("audio") and w["date"] <= TODAY)
 pc = AJ["podcast"]
 open(OUT + "/podcast.xml", "w", encoding="utf-8").write(f'''<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"><channel>
