@@ -39,6 +39,8 @@ TOMORROW = DAYS[min(ti + 1, len(DAYS) - 1)]
 def nice(d): return f'{d["wd"].lower()} {d["n"]} de {d["mes"]} de {d["date"][:4]}'
 def fdate(iso): dt = datetime.date.fromisoformat(iso); return f"{dt.day} de {MES[dt.month-1]}"
 pages = []
+import time as _t
+VER = str(int(_t.time()))  # cambia en cada publicación: el navegador siempre carga los datos nuevos
 
 ICON = {
  "search": '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
@@ -152,7 +154,7 @@ def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="web
 <link rel="icon" href="{r}icon.svg" type="image/svg+xml"><link rel="manifest" href="{r}manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Rezo Diario (pódcast)" href="{SITE}podcast.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap">
-<link rel="stylesheet" href="{r}assets/site.css">
+<link rel="stylesheet" href="{r}assets/site.css?v={VER}">
 <script>window.RD_CONFIG={json.dumps(cfg)}</script>
 ''' + "\n".join(ld(x) for x in lds)
     minihtml = '<div class="mini" id="mini" hidden><button id="miniBtn" aria-label="Pausar"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><div><strong id="miniT"></strong><span id="miniS"></span></div></div>' if mini else ""
@@ -166,8 +168,8 @@ def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="web
 {ACCOUNT}
 {minihtml}
 <div id="toastHost"></div>
-<script src="{r}assets/data.js"></script>
-<script src="{r}assets/site.js"></script>'''
+<script src="{r}assets/data.js?v={VER}"></script>
+<script src="{r}assets/site.js?v={VER}"></script>'''
     pages.append((path, head, body, body_attrs + f' data-root="{r}"' + (" data-clean=\"1\"" if CLEAN else "")))
 
 # ---------- componentes ----------
