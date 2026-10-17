@@ -584,7 +584,11 @@ if($("#give")){
  $("#otherAmt").addEventListener("input",e=>{const v=Math.round(+e.target.value);if(v>0){amount=v;r()}});
  $$("#give .seg button").forEach(b=>b.onclick=()=>{freq=b.dataset.f;$$("#give .seg button").forEach(x=>x.classList.toggle("on",x===b));r()});
  function r(){$$("#amts .amt").forEach(b=>b.classList.toggle("on",other?b.dataset.a==="o":+b.dataset.a===amount));$("#donBtn").textContent=`${freq==="month"?"Apoyar con":"Donar"} ${amount} €${freq==="month"?" al mes":""}`;$("#thanks").hidden=true}
- $("#donBtn").onclick=()=>{const pay=$("#give").dataset.pay;if(pay){const a=document.createElement("a");a.href=pay+(pay.includes("?")?"&":"?")+"amount="+amount+"&frecuencia="+freq;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();return}const t=$("#thanks");t.hidden=false;t.innerHTML=`<strong>Gracias por querer aportar ${amount} €${freq==="month"?" al mes":""}.</strong><br>El pago seguro estará disponible muy pronto. Ahora mismo no se realiza ningún cobro.`};r();
+ $("#donBtn").onclick=async()=>{const btn=$("#donBtn"),t=$("#thanks"),txt=btn.textContent;btn.disabled=true;btn.textContent="Abriendo el pago seguro…";t.hidden=true;
+  try{const r=await fetch("/api/donar",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({amount,freq})});const j=await r.json().catch(()=>({}));
+   if(j.ok&&j.url){location.href=j.url;return}t.hidden=false;t.textContent=j.error||"No se ha podido abrir el pago. Inténtalo en unos minutos.";if(j.detalle)console.warn("Donar:",j.detalle)}
+  catch(e){t.hidden=false;t.textContent="No hay conexión. Inténtalo de nuevo."}btn.disabled=false;btn.textContent=txt};r();
+ if(new URLSearchParams(location.search).get("gracias")){const t=$("#thanks");t.hidden=false;t.innerHTML="<strong>Gracias de corazón.</strong><br>Tu apoyo hace posible que Rezo Diario siga siendo gratuito. Recibirás el justificante en tu correo.";setTimeout(()=>$("#give").scrollIntoView({behavior:"smooth",block:"center"}),300)}
 }
 
 /* ---------- Boletín ---------- */

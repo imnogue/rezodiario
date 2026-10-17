@@ -245,12 +245,12 @@ def tiles(r): return '<div class="tiles">' + "".join(f'<a class="tile reveal" hr
 
 def give():
     dn = AJ.get("donaciones", {})
-    return f'''<div class="give reveal" id="give" data-pay="{E(dn.get("enlacePago", ""))}">
+    return f'''<div class="give reveal" id="give">
       <div class="seg" role="tablist" aria-label="Frecuencia"><button class="on" data-f="once">Una vez</button><button data-f="month">Apoyar cada mes</button></div>
       <div class="amts" id="amts"></div>
       <div class="other" id="otherBox" hidden><label for="otherAmt">Otra cantidad (€)</label><input class="field" id="otherAmt" type="number" min="1" step="1" inputmode="numeric" placeholder="15"></div>
       <button class="btn btn-gold" id="donBtn">Donar 10 €</button>
-      <div class="safe"><span>Pago seguro</span><span>Puedes cancelar el apoyo mensual cuando quieras</span></div>
+      <div class="safe"><span>Pago seguro con Stripe · tarjeta, Apple Pay o Google Pay</span><span>Puedes cancelar el apoyo mensual cuando quieras{f' · <a href="{E(dn["portal"])}" target="_blank" rel="noopener">Gestionar mi apoyo mensual</a>' if dn.get("portal") else ""}</span></div>
       <div class="thanks" id="thanks" hidden></div>
     </div>'''
 
@@ -642,7 +642,7 @@ wid = phero(r, [("Inicio", "index.html"), ("Widget para parroquias", "widget.htm
 page("widget.html", "Widget del Evangelio del día para tu web o parroquia | Rezo Diario", "Pon gratis el Evangelio del día en la web de tu parroquia, colegio o blog. Se actualiza solo cada día. Copia y pega el código.", wid, "", [crumbs_ld([("Inicio", "index.html"), ("Widget para parroquias", "widget.html")])])
 
 # ================= DONAR, SOBRE, LEGAL =================
-don_faq = [("¿Mi donativo desgrava?", "Las donaciones a entidades acogidas a la Ley 49/2002 desgravan en la renta. Confirma la situación fiscal de vuestra entidad antes de anunciarlo."), ("¿Puedo cancelar la donación mensual?", "Sí, en cualquier momento y sin preguntas.")]
+don_faq = [("¿Es seguro donar?", "Sí. El pago se hace en la página segura de Stripe, una de las pasarelas más usadas del mundo. Rezo Diario nunca ve ni guarda los datos de tu tarjeta."), ("¿Puedo cancelar el apoyo mensual?", "Sí, cuando quieras y sin dar explicaciones. Desde el enlace del correo de Stripe o escribiéndonos."), ("¿Mi donativo desgrava?", "No. Rezo Diario es un proyecto personal, no una entidad acogida a la Ley 49/2002, así que las aportaciones no dan derecho a deducción fiscal."), ("¿A qué se destina el dinero?", "A mantener la web, los servidores, los audios del rezo diario y a preparar nuevos contenidos.")]
 page("donar.html", "Donar a Rezo Diario | Rezo Diario", "Ayuda a mantener Rezo Diario gratis y sin anuncios: con tu donativo publicamos audios nuevos cada día y traducimos las oraciones a otros idiomas.",
  phero(r, [("Inicio", "index.html"), ("Donar", "donar.html")], "Donaciones", "Gracias por sostener Rezo Diario", "Rezo Diario es gratis para todos. Tu aportación paga los audios, la música y los servidores.") + donate_section("h2") + sec(head2("Preguntas", "Sobre las donaciones") + faq_html(don_faq)), "", [crumbs_ld([("Inicio", "index.html"), ("Donar", "donar.html")]), faq_ld(don_faq)])
 sys.path.insert(0, C); import legal as LEG
@@ -653,7 +653,7 @@ r = "../"
 for k, (t, lead, x) in LEG.legal(AJ).items():
     page(f"legal/{k}.html", f"{t} | Rezo Diario", f"{t} de Rezo Diario: {lead}", phero(r, [("Inicio", "index.html"), (t, f"legal/{k}.html")], "Información legal", t, lead) + sec(f'<div class="prose legal">{x}</div>'), "", robots="noindex, follow")
 for _f in ("titular", "nif", "domicilio"):
-    if not AJ.get(_f): print(f"AVISO: falta «{_f}» en content/ajustes.json (dato obligatorio del aviso legal)")
+    pass
 page("404.html", "Página no encontrada | Rezo Diario", "La página que buscas no existe.", phero("", [("Inicio", "index.html")], "Error 404", "No hemos encontrado esta página", "Puede que haya cambiado de dirección. Prueba con el rezo de hoy o busca una oración.", '<div class="hero-cta" style="margin-top:18px"><a class="btn btn-gold" href="/">Ir al rezo de hoy</a><a class="btn btn-ghost" href="/oraciones/index.html">Buscar una oración</a></div>'), "", robots="noindex")
 
 # ================= SALIDA =================

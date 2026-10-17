@@ -140,4 +140,4 @@ collections:
             name: donaciones
             widget: object
             fields:
-              - {label: "Enlace de pago (Stripe, PayPal…)", name: enlacePago, widget: string, required: false}
+              - {label: "Enlace del portal de clientes de Stripe (para gestionar el apoyo mensual)", name: portal, widget: string, required: false}
