@@ -41,7 +41,7 @@ def clips(d):
     out = [("silencio", 4),
            ("voz0", "Busca un lugar tranquilo y ponte cómodo." + br(1.5) + "Respira despacio." + br(2) + "Inspira…" + br(2.5) + "y suelta el aire." + br(2.5) + "Estás en la presencia de Dios." + br(1.5) + "Él te mira con cariño."),
            ("silencio", 8),
-           ("voz1", f"Evangelio según san {libro}, capítulo {cap}." + br(1.5) + d["sum"] + br(2) + "Escucha estas palabras de Jesús:" + br(1.5) + d["ex"]),
+           ("voz1", f"Evangelio según san {libro}, capítulo {cap}." + br(1.5) + d["sum"] + br(2) + "Escucha estas palabras del Evangelio:" + br(1.5) + d["ex"]),
            ("silencio", 12),
            ("voz2", d["refl"] + br(2) + "Ahora, en silencio, piensa en estas preguntas."),
            ("silencio", 3)]
@@ -210,7 +210,7 @@ def subir(path, nombre, a):
 
 def main():
     p = argparse.ArgumentParser(); p.add_argument("--desde"); p.add_argument("--hasta"); p.add_argument("--sobrescribir", action="store_true")
-    p.add_argument("--solo-historial", action="store_true"); p.add_argument("--sin-historial", action="store_true")
+    p.add_argument("--solo-historial", action="store_true"); p.add_argument("--fechas", default=""); p.add_argument("--sin-historial", action="store_true")
     p.add_argument("--max", type=int, default=31); p.add_argument("--prueba", action="store_true"); p.add_argument("--sin-subir", action="store_true")
     a = p.parse_args(); a.reusados = 0; a.nuevos = 0
     hoy = datetime.datetime.now(ZoneInfo("Europe/Madrid")).date()
@@ -219,6 +219,8 @@ def main():
         if not os.environ.get("ELEVENLABS_API_KEY", "").strip(): fail("Falta el secreto ELEVENLABS_API_KEY.")
         if not os.environ.get("ELEVENLABS_VOICE_ID", "").strip(): fail("Falta el secreto ELEVENLABS_VOICE_ID (el identificador de la voz elegida).")
     files = sorted(f for f in glob.glob(os.path.join(C, "dias", "*.json")) if desde <= os.path.basename(f)[:10] <= hasta)
+    fx = {x.strip() for x in (a.fechas or "").split(",") if x.strip()}
+    if fx: files = sorted(f for f in glob.glob(os.path.join(C, "dias", "*.json")) if os.path.basename(f)[:10] in fx)
     todo = []
     for f in files:
         d = json.load(open(f, encoding="utf-8"))

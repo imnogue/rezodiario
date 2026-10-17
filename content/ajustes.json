@@ -19,8 +19,9 @@
     "categoria": "Religion & Spirituality"
   },
   "donaciones": {
-    "enlacePago": "",
-    "objetivoMensual": 500,
-    "donantesMes": 0
-  }
+    "enlacePago": ""
+  },
+  "titular": "Adrián Nogueira",
+  "nif": "",
+  "domicilio": ""
 }

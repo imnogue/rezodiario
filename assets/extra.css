@@ -350,3 +350,11 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media(max-width:900px){.top .menu-btn{display:none!important}}
 @media(max-width:900px){#btnSearch{display:none!important}.top-actions{gap:8px}}
 @media(max-width:480px){.brand{font-size:21px}.brand svg{width:28px;height:28px}.top-actions .icon-btn{width:38px;height:38px}.lang-btn{width:38px!important}}
+
+.news-legal{margin:10px 0 0;font-size:12.5px;opacity:.8}.news-legal a{color:inherit}
+.prose.legal table,.prose.legal th,.prose.legal td{font-size:14px}
+.prose.legal .tablewrap{overflow-x:auto;margin:14px 0}
+.prose.legal table{border-collapse:collapse;width:100%;min-width:640px}
+.prose.legal th,.prose.legal td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.prose.legal th{background:var(--surface-2)}
+.about-lead{font-family:var(--f-read);font-size:clamp(20px,2.3vw,24px);line-height:1.45}

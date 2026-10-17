@@ -163,8 +163,7 @@ def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="web
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{canon(path)}"><meta property="og:image" content="{SITE}og-rezodiario.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{r}favicon.ico?v=3" sizes="any"><link rel="icon" href="{r}icon.svg?v=3" type="image/svg+xml"><link rel="icon" href="{r}favicon-32.png?v=3" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="{r}apple-touch-icon.png?v=3"><link rel="manifest" href="{r}manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Rezo Diario (pódcast)" href="{SITE}podcast.xml">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap">
+<link rel="preload" href="{r}fuentes/manrope.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="{r}fuentes/marcellus.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="{r}assets/site.css?v={VER}">
 <script>window.RD_CONFIG={json.dumps(cfg)}</script>
 ''' + "\n".join(ld(x) for x in lds)
@@ -263,12 +262,12 @@ def donate_section(h="h2"):
     {give()}
   </div></section>'''
 
-def news():
+def news(r=""):
     wa = AJ.get("whatsappCanal")
     extra = f'<a class="btn" href="{E(wa)}" target="_blank" rel="noopener" style="background:#25D366;color:#06301A">Seguir el canal de WhatsApp</a>' if wa else ''
     return f'''<section class="news" aria-labelledby="hNews"><div class="wrap news-in">
     <div><h2 id="hNews">El rezo de cada día, en tu móvil</h2><p>Un mensaje breve a las 7:00 con el audio y el Evangelio. Por correo{" o por WhatsApp" if wa else ""}. Sin publicidad.</p>{f'<p style="margin-top:14px">{extra}</p>' if extra else ''}</div>
-    <form id="newsForm" novalidate><label class="sr" for="email">Tu correo electrónico</label><input id="email" type="email" placeholder="tu@correo.com" autocomplete="email"><button class="btn" type="submit">Apuntarme</button><p class="msg" id="newsMsg" hidden></p></form>
+    <form id="newsForm" novalidate><label class="sr" for="email">Tu correo electrónico</label><input id="email" type="email" placeholder="tu@correo.com" autocomplete="email"><input type="text" name="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><button class="btn" type="submit">Apuntarme</button><p class="msg" id="newsMsg" hidden></p><p class="news-legal">Al apuntarte aceptas recibir el rezo diario por correo. Puedes darte de baja en cualquier momento. <a href="{r}legal/privacidad.html">Privacidad</a>.</p></form>
   </div></section>'''
 
 def phero(r, crumbs, eyebrow, h1, lead, extra=""): return f'<section class="phero"><div class="wrap">{crumbs_html(r, crumbs)}<div class="eyebrow" style="margin-top:22px">{eyebrow}</div><h1>{h1}</h1><p class="lead">{lead}</p>{extra}</div></section>'
@@ -646,18 +645,15 @@ page("widget.html", "Widget del Evangelio del día para tu web o parroquia | Rez
 don_faq = [("¿Mi donativo desgrava?", "Las donaciones a entidades acogidas a la Ley 49/2002 desgravan en la renta. Confirma la situación fiscal de vuestra entidad antes de anunciarlo."), ("¿Puedo cancelar la donación mensual?", "Sí, en cualquier momento y sin preguntas.")]
 page("donar.html", "Donar a Rezo Diario | Rezo Diario", "Ayuda a mantener Rezo Diario gratis y sin anuncios: con tu donativo publicamos audios nuevos cada día y traducimos las oraciones a otros idiomas.",
  phero(r, [("Inicio", "index.html"), ("Donar", "donar.html")], "Donaciones", "Gracias por sostener Rezo Diario", "Rezo Diario es gratis para todos. Tu aportación paga los audios, la música y los servidores.") + donate_section("h2") + sec(head2("Preguntas", "Sobre las donaciones") + faq_html(don_faq)), "", [crumbs_ld([("Inicio", "index.html"), ("Donar", "donar.html")]), faq_ld(don_faq)])
-page("sobre-nosotros.html", "Quiénes somos | Rezo Diario", "Rezo Diario es un proyecto para ayudar a rezar cada día con el Evangelio, el Rosario y oraciones para todos los momentos de la vida.",
- phero(r, [("Inicio", "index.html"), ("Quiénes somos", "sobre-nosotros.html")], "El proyecto", "Quiénes somos", "Rezo Diario nace para que rezar cada día sea fácil, bonito y esté al alcance de cualquiera, en cualquier lugar.") +
- sec(f'''<div class="prose"><h2>Qué hacemos</h2><p>Cada día preparamos un rezo guiado con el Evangelio de la liturgia, una reflexión breve y unas preguntas para llevarlo a la vida. Además, reunimos oraciones para cada necesidad, el Santo Rosario, el Vía Crucis, novenas y un muro de velas donde rezar unos por otros.</p>
- <h2>Cómo elaboramos los contenidos</h2><p>Seguimos el calendario litúrgico de la Iglesia católica. Las reflexiones y oraciones nuevas son originales; las oraciones tradicionales se reproducen en su forma habitual en español. Para las lecturas completas enlazamos a fuentes oficiales. Los audios se narran con una voz sintética y se revisan antes de publicarse.</p>
- <h2>Equipo y revisión</h2><p class="hint" style="font-size:15px">Pendiente de completar: nombres del equipo, sacerdote o institución que revisa los contenidos y datos legales de la entidad.</p>
- <h2>Contacto</h2><p>{E(AJ.get("emailContacto", ""))}</p></div>'''), "", [crumbs_ld([("Inicio", "index.html"), ("Quiénes somos", "sobre-nosotros.html")])])
-LEGAL = {"aviso-legal": ("Aviso legal", "Titular del sitio: [nombre de la persona o entidad]. NIF: [número]. Domicilio: [dirección]. Correo: " + AJ.get("emailContacto", "") + ".\n\nEl contenido original de Rezo Diario (reflexiones, oraciones nuevas, diseño) es propiedad de su titular. Las oraciones tradicionales son de dominio público. Las citas bíblicas breves se usan con fines de comentario.\n\nEste texto es una plantilla: revísalo con un profesional antes de publicar."),
-         "privacidad": ("Política de privacidad", "Responsable: [nombre]. Datos que tratamos: el correo electrónico si te suscribes al boletín o creas una cuenta; el texto y el nombre de pila que escribas al encender una vela; y un identificador anónimo de tu navegador para evitar abusos en el muro.\n\nFinalidad: enviarte el rezo diario, guardar tu progreso y mostrar tu vela durante siete días. Base legal: tu consentimiento. Encargados: Supabase (base de datos), Cloudflare (alojamiento) y el proveedor de correo que elijáis.\n\nPuedes pedir acceso, rectificación o borrado escribiendo a " + AJ.get("emailContacto", "") + ".\n\nEste texto es una plantilla: revísalo con un profesional antes de publicar."),
-         "cookies": ("Política de cookies", "Rezo Diario no usa cookies publicitarias. Guardamos en tu navegador (almacenamiento local) tus preferencias: tema claro u oscuro, idioma, favoritos, racha y progreso de novenas. Si añadís herramientas de analítica, actualizad este texto y mostrad un aviso de consentimiento.\n\nEste texto es una plantilla: revísalo con un profesional antes de publicar.")}
+sys.path.insert(0, C); import legal as LEG
+page("sobre-nosotros.html", "Quiénes somos | Rezo Diario", "Rezo Diario es una web gratuita de oración católica hecha en España: el Evangelio de cada día, el Rosario, oraciones y un muro de velas. Esta es nuestra historia.",
+ phero(r, [("Inicio", "index.html"), ("Quiénes somos", "sobre-nosotros.html")], "Quiénes somos", "Un rincón tranquilo para rezar cada día", "Rezo Diario es una web gratuita de oración católica, hecha en España con mucho cariño, para que nadie tenga que rezar solo.") +
+ sec(LEG.quienes(AJ, len(PRAYERS))), "", [crumbs_ld([("Inicio", "index.html"), ("Quiénes somos", "sobre-nosotros.html")]), {"@context": "https://schema.org", "@type": "AboutPage", "name": "Quiénes somos", "url": canon("sobre-nosotros.html"), "inLanguage": "es", "publisher": ORG}])
 r = "../"
-for k, (t, x) in LEGAL.items():
-    page(f"legal/{k}.html", f"{t} | Rezo Diario", f"{t} de Rezo Diario.", phero(r, [("Inicio", "index.html"), (t, f"legal/{k}.html")], "Información legal", t, "") + sec(f'<div class="prose"><p style="white-space:pre-line">{E(x)}</p></div>'), "", robots="noindex, follow")
+for k, (t, lead, x) in LEG.legal(AJ).items():
+    page(f"legal/{k}.html", f"{t} | Rezo Diario", f"{t} de Rezo Diario: {lead}", phero(r, [("Inicio", "index.html"), (t, f"legal/{k}.html")], "Información legal", t, lead) + sec(f'<div class="prose legal">{x}</div>'), "", robots="noindex, follow")
+for _f in ("titular", "nif", "domicilio"):
+    if not AJ.get(_f): print(f"AVISO: falta «{_f}» en content/ajustes.json (dato obligatorio del aviso legal)")
 page("404.html", "Página no encontrada | Rezo Diario", "La página que buscas no existe.", phero("", [("Inicio", "index.html")], "Error 404", "No hemos encontrado esta página", "Puede que haya cambiado de dirección. Prueba con el rezo de hoy o busca una oración.", '<div class="hero-cta" style="margin-top:18px"><a class="btn btn-gold" href="/">Ir al rezo de hoy</a><a class="btn btn-ghost" href="/oraciones/index.html">Buscar una oración</a></div>'), "", robots="noindex")
 
 # ================= SALIDA =================
@@ -731,7 +727,7 @@ open(OUT + "/sitemap.xml", "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<
 def guion(w):
     def br(s): return f' <break time="{s}s" /> '
     seg1 = "Busca un lugar tranquilo y ponte cómodo." + br(1.5) + "Respira despacio." + br(2) + "Inspira…" + br(2.5) + "y suelta el aire." + br(2.5) + "Estás en la presencia de Dios." + br(1.5) + "Él te mira con cariño."
-    seg2 = f'Evangelio según san {w["refL"].split(" ")[0].replace("Lucas", "Lucas").replace("Mateo", "Mateo")}, capítulo {w["refL"].split(" ")[1].rstrip(",")}.' + br(1.5) + w["sum"] + br(2) + "Escucha estas palabras de Jesús:" + br(1.5) + w["ex"]
+    seg2 = f'Evangelio según san {w["refL"].split(" ")[0].replace("Lucas", "Lucas").replace("Mateo", "Mateo")}, capítulo {w["refL"].split(" ")[1].rstrip(",")}.' + br(1.5) + w["sum"] + br(2) + "Escucha estas palabras del Evangelio:" + br(1.5) + w["ex"]
     seg2 = seg2.replace("san Juan", "san Juan").replace("según san Marcos", "según san Marcos")
     qs = (br(3)).join(w["qs"])
     seg3 = w["refl"] + br(2.5) + "Ahora, en silencio, piensa en estas preguntas." + br(1.5) + qs

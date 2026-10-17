@@ -1,3 +1,8 @@
+/* Fuentes alojadas en rezodiario.com (sin Google Fonts: ningún dato del visitante sale a terceros). Licencia SIL OFL. */
+@font-face{font-family:"Manrope";src:url("../fuentes/manrope.woff") format("woff");font-weight:400 800;font-style:normal;font-display:swap}
+@font-face{font-family:"Marcellus";src:url("../fuentes/marcellus.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Literata";src:url("../fuentes/literata.woff") format("woff");font-weight:400 500;font-style:normal;font-display:swap}
+@font-face{font-family:"Literata";src:url("../fuentes/literata-italic.woff") format("woff");font-weight:400 500;font-style:italic;font-display:swap}
 
 /* Layout: "Breviario de bolsillo" — banda de vidriera arriba, días deslizables, secciones como horas del día; barra de pestañas en móvil */
 :root{

@@ -123,6 +123,9 @@ collections:
           - {label: "YouTube", name: youtube, widget: string, required: false}
           - {label: "Instagram", name: instagram, widget: string, required: false}
           - {label: "Correo de contacto", name: emailContacto, widget: string}
+          - {label: "Titular (nombre y apellidos, para el aviso legal)", name: titular, widget: string}
+          - {label: "NIF / DNI del titular", name: nif, widget: string, required: false}
+          - {label: "Domicilio del titular (aviso legal)", name: domicilio, widget: string, required: false}
           - label: "Pódcast"
             name: podcast
             widget: object
@@ -138,5 +141,3 @@ collections:
             widget: object
             fields:
               - {label: "Enlace de pago (Stripe, PayPal…)", name: enlacePago, widget: string, required: false}
-              - {label: "Objetivo de donantes al mes", name: objetivoMensual, widget: number}
-              - {label: "Donantes este mes", name: donantesMes, widget: number}

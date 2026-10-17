@@ -27,6 +27,10 @@ on:
         description: "Solo reutilizar voces ya generadas (no gasta créditos)"
         type: boolean
         default: false
+      fechas:
+        description: "Solo estos días, separados por comas (AAAA-MM-DD,AAAA-MM-DD). Vacío = usar desde/hasta"
+        required: false
+        default: ""
   schedule:
     - cron: "0 16 * * 0"   # cada domingo por la tarde: prepara los 7 días siguientes
 permissions:
@@ -53,6 +57,7 @@ jobs:
           if [ "${{ github.event.inputs.prueba }}" = "true" ]; then ARGS="$ARGS --prueba --sin-subir"; fi
           if [ "${{ github.event.inputs.solo_historial }}" = "true" ]; then ARGS="$ARGS --solo-historial --max 120"; fi
           set -o pipefail
+          if [ -n "${{ github.event.inputs.fechas }}" ]; then ARGS="$ARGS --fechas '${{ github.event.inputs.fechas }}' --max 120"; fi
           eval python3 -u scripts/generar_audios.py $ARGS 2>&1 | tee registro-audios.txt
       - name: Guardar los enlaces de los audios
         if: ${{ always() }}
