@@ -197,7 +197,7 @@ def player():
         <button class="play" id="pPlay" aria-label="Reproducir">{ICON["play"]}</button>
         <button class="ctl" id="pNext" aria-label="Parte siguiente"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
       </div>
-      <div class="p-foot"><button class="tog" id="tSpeed">Velocidad 1×</button><div class="mus"><button class="tog" id="tMusic" aria-haspopup="menu" aria-expanded="false">🎵 <span id="tMusicL">Calma</span> ▾</button><div class="mus-menu" id="musMenu" role="menu" hidden></div></div><button class="tog" id="tVoice" aria-pressed="true">🗣️ Voz guía</button></div>
+      <div class="p-foot"><button class="tog" id="tSpeed">Velocidad 1×</button><div class="mus"><button class="tog" id="tMusic" aria-haspopup="menu" aria-expanded="false">Música: <span id="tMusicL">Calma</span> ▾</button><div class="mus-menu" id="musMenu" role="menu" hidden></div></div><button class="tog" id="tVoice" aria-pressed="true">Voz guía</button></div>
     </article>'''
 
 def week_section(r, mode="select", title="Esta semana, día a día", sub="Desliza para volver a un rezo que te perdiste o adelantar el de mañana."):
@@ -245,25 +245,21 @@ def card(p, r):
 def tiles(r): return '<div class="tiles">' + "".join(f'<a class="tile reveal" href="{r}oraciones/tema-{k}.html" style="--tc:{c["color"]}"><i></i><b>{c["name"]}</b><span>{sum(1 for p in PRAYERS if p["cat"] == k)} oraciones</span></a>' for k, c in CATS.items()) + '</div>'
 
 def give():
-    dn = AJ.get("donaciones", {}); goal = dn.get("objetivoMensual") or 0; have = dn.get("donantesMes") or 0
-    meter = f'<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700"><span>Donantes este mes</span><span style="font-variant-numeric:tabular-nums">{have} de {goal}</span></div><div class="split" style="margin:8px 0 0;background:var(--surface-2)"><i style="width:{min(100, round(have / goal * 100)) if goal else 0}%;background:var(--gold)"></i></div></div>' if goal else ""
-    return f'''<div class="give reveal" id="give" data-pay="{E(dn.get("enlacePago", ""))}">{meter}
-      <div class="seg" role="tablist" aria-label="Frecuencia"><button class="on" data-f="once">Una vez</button><button data-f="month">Cada mes</button></div>
+    dn = AJ.get("donaciones", {})
+    return f'''<div class="give reveal" id="give" data-pay="{E(dn.get("enlacePago", ""))}">
+      <div class="seg" role="tablist" aria-label="Frecuencia"><button class="on" data-f="once">Una vez</button><button data-f="month">Apoyar cada mes</button></div>
       <div class="amts" id="amts"></div>
-      <div class="other"><label for="otherAmt">Otra cantidad (€)</label><input class="field" id="otherAmt" type="number" min="1" step="1" inputmode="numeric" placeholder="15"></div>
-      <p class="impact" id="impact"></p>
+      <div class="other" id="otherBox" hidden><label for="otherAmt">Otra cantidad (€)</label><input class="field" id="otherAmt" type="number" min="1" step="1" inputmode="numeric" placeholder="15"></div>
       <button class="btn btn-gold" id="donBtn">Donar 10 €</button>
-      <div class="safe"><span>Pago seguro</span><span>Tarjeta · Bizum · PayPal</span></div>
+      <div class="safe"><span>Pago seguro</span><span>Puedes cancelar el apoyo mensual cuando quieras</span></div>
       <div class="thanks" id="thanks" hidden></div>
     </div>'''
 
 def donate_section(h="h2"):
     return f'''<section class="sec band" id="donar" aria-labelledby="hDon"><div class="wrap don">
-    <div class="reveal"><span class="eyebrow">Donaciones</span><{h} id="hDon" style="font-family:var(--f-display);font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.08;margin:10px 0 0">Ayúdanos a que nadie rece solo</{h}>
-      <p style="color:var(--muted);max-width:34em">Rezo Diario es gratis y sin anuncios porque muchas personas aportan lo que pueden. Con tu donativo publicamos audios nuevos cada día y llevamos la oración a más idiomas.</p>
-      <div class="split" aria-hidden="true"><i style="width:45%;background:var(--accent)"></i><i style="width:25%;background:var(--gold)"></i><i style="width:20%;background:var(--c-study)"></i><i style="width:10%;background:var(--c-grief)"></i></div>
-      <div class="legend"><span><i style="background:var(--accent)"></i>Audios y música<b>45%</b></span><span><i style="background:var(--gold)"></i>Servidores y web<b>25%</b></span><span><i style="background:var(--c-study)"></i>Traducciones<b>20%</b></span><span><i style="background:var(--c-grief)"></i>Gestión<b>10%</b></span></div>
-      <p class="hint" style="margin-top:12px">Ejemplo de reparto: sustitúyelo por vuestras cuentas reales.</p></div>
+    <div class="reveal"><span class="eyebrow">Apoyo</span><{h} id="hDon" style="font-family:var(--f-display);font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.08;margin:10px 0 0">Ayuda a mantener Rezo Diario</{h}>
+      <p style="color:var(--muted);max-width:34em">Tu apoyo nos ayuda a mantener este espacio gratuito y seguir creando nuevos contenidos y audios.</p>
+      <p style="color:var(--muted);max-width:34em;font-size:14.5px">Rezo Diario no tiene anuncios ni pide registrarse. Cada aportación, grande o pequeña, sostiene la oración diaria de muchas personas.</p></div>
     {give()}
   </div></section>'''
 
@@ -294,8 +290,20 @@ def novena_now():
     if up: return up[0], f'Empieza el {fdate(up[0]["start"])}'
     return NOVENAS[0], "Para rezar en cualquier momento"
 
+def camino(r, compact=False):
+    return (f'<div class="camino{" compact" if compact else ""}" data-camino>'
+            '<div class="camino-t"><span class="eyebrow">Tu camino de oración</span><p class="camino-n" data-camino-n>Cada día que reces quedará marcado aquí.</p></div>'
+            '<ol class="camino-dots" data-camino-dots aria-label="Tus últimos siete días"></ol>'
+            f'<a class="camino-cta" data-camino-cta href="{r}index.html#player">Rezar hoy</a></div>')
+def recorrido(r, cand="otra"):
+    items = [(f"{r}index.html#momento", "¿Qué llevas hoy en el corazón?", "Cuéntanoslo y te proponemos una oración."),
+             (f"{r}muro-de-intenciones.html#{cand}", "Enciende una vela", "Deja tu intención y otras personas rezarán contigo."),
+             (f"{r}muro-de-intenciones.html#candles", "Reza por otras personas", "Acompaña las intenciones que otros han dejado hoy."),
+             (f"{r}evangelio-de-manana.html", "Vuelve mañana", "El Evangelio y el rezo de mañana ya te esperan.")]
+    li = "".join(f'<li><a href="{h}"><b>{t}</b><span>{d}</span></a></li>' for h, t, d in items)
+    return f'<nav class="recorrido reveal" aria-label="Sigue rezando"><span class="eyebrow">Sigue rezando</span><ol>{li}</ol>{camino(r, True)}</nav>'
 # ================= VERSÍCULOS =================
-MOODS = [("😔", "Triste", "versiculos-para-cuando-estas-triste"), ("😰", "Ansioso", "versiculos-para-la-ansiedad"), ("❤️", "Enamorado", "versiculos-sobre-el-amor"), ("💰", "Preocupado por dinero", "versiculos-sobre-el-dinero"), ("🙏", "Sin fe", "versiculos-para-la-fe"), ("😴", "No puedo dormir", "versiculos-para-dormir"), ("😡", "Enfadado", "versiculos-para-el-enfado"), ("😨", "Con miedo", "versiculos-para-el-miedo"), ("🙌", "Agradecido", "versiculos-para-dar-gracias")]
+MOODS = [("Triste", "versiculos-para-cuando-estas-triste"), ("Con ansiedad", "versiculos-para-la-ansiedad"), ("Enamorado", "versiculos-sobre-el-amor"), ("Preocupado por el dinero", "versiculos-sobre-el-dinero"), ("Sin fe", "versiculos-para-la-fe"), ("No puedo dormir", "versiculos-para-dormir"), ("Enfadado", "versiculos-para-el-enfado"), ("Con miedo", "versiculos-para-el-miedo"), ("Agradecido", "versiculos-para-dar-gracias")]
 _seen = set(); VALL = []
 for _t in VTOP:
     for _v in _t["versos"]:
@@ -304,7 +312,7 @@ _ord = datetime.date.fromisoformat(now).toordinal()
 VDAY_T, VDAY = VALL[(_ord * 37) % len(VALL)]
 def vacts(ref, x, path):
     wa = "https://wa.me/?text=" + E(("«" + x + "» " + ref + " · " + canon(path)).replace(" ", "%20"))
-    return f'<div class="vacts"><button class="vbtn" data-vspeak type="button">🔊 Escuchar</button><button class="vbtn gold" data-vimg type="button">📲 Crear imagen</button><a class="vbtn" href="{wa}" target="_blank" rel="noopener">WhatsApp</a><button class="vbtn" data-vcopy type="button">Copiar</button></div>'
+    return f'<div class="vacts"><button class="vbtn" data-vspeak type="button">Escuchar</button><button class="vbtn gold" data-vimg type="button">Crear imagen</button><a class="vbtn" href="{wa}" target="_blank" rel="noopener">WhatsApp</a><button class="vbtn" data-vcopy type="button">Copiar</button></div>'
 def vday_card(r):
     path = VDAY_T["slug"] + ".html"
     return (f'<article class="vday reveal" data-ref="{E(VDAY["ref"])}" data-x="{E(VDAY["x"])}" data-tag="Versículo del día">'
@@ -312,15 +320,15 @@ def vday_card(r):
             f'<blockquote>«{E(VDAY["x"])}»</blockquote><cite>{E(VDAY["ref"])}</cite><p>{E(VDAY["e"])}</p>'
             f'{vacts(VDAY["ref"], VDAY["x"], "versiculos.html")}<a class="vmore" href="{r}{path}">Más {VDAY_T["t"].lower()} →</a></article>')
 def mood_picker(r, h="h2"):
-    b = "".join(f'<button type="button" class="mood" data-m="{s}"><span>{e}</span>{m}</button>' for e, m, s in MOODS)
+    b = "".join(f'<button type="button" class="mood" data-m="{s}">{m}</button>' for m, s in MOODS)
     return (f'<div class="vnow-wrap" id="ahora"><div><span class="eyebrow">¿Cómo te sientes ahora?</span><{h} class="vnow-h">Necesito un versículo <em>ahora</em></{h}>'
             f'<p style="color:var(--muted);margin:8px 0 0">Toca cómo te sientes y te damos un versículo de la Biblia para este momento.</p>'
             f'<div class="moods" role="group" aria-label="Cómo te sientes">{b}</div></div>'
             '<article class="vnow" id="vNow" aria-live="polite" hidden><span class="eyebrow" id="vNowTag"></span><blockquote id="vNowX"></blockquote><cite id="vNowR"></cite><p id="vNowE"></p>'
-            '<div class="vacts"><button class="vbtn" id="vNowAgain" type="button">🔄 Otro versículo</button><button class="vbtn" data-vspeak type="button">🔊 Escuchar</button><button class="vbtn gold" data-vimg type="button">📲 Crear imagen</button><a class="vbtn" id="vNowWa" target="_blank" rel="noopener">WhatsApp</a></div>'
+            '<div class="vacts"><button class="vbtn" id="vNowAgain" type="button">Otro versículo</button><button class="vbtn" data-vspeak type="button">Escuchar</button><button class="vbtn gold" data-vimg type="button">Crear imagen</button><a class="vbtn" id="vNowWa" target="_blank" rel="noopener">WhatsApp</a></div>'
             '<a class="vmore" id="vNowMore" href="#">Ver los 20 versículos →</a></article></div>')
 def vtiles(r, skip=""):
-    return '<div class="vtiles">' + "".join(f'<a class="vtile reveal" href="{r}{t["slug"]}.html"><span>{t["emoji"]}</span><b>{t["t"]}</b><small>{len(t["versos"])} versículos</small></a>' for t in VTOP if t["slug"] != skip) + '</div>'
+    return '<div class="vtiles">' + "".join(f'<a class="vtile reveal" href="{r}{t["slug"]}.html"><i></i><b>{t["t"]}</b><small>{len(t["versos"])} versículos</small></a>' for t in VTOP if t["slug"] != skip) + '</div>'
 # ================= PORTADA =================
 r = ""
 home_faq = [("¿Rezo Diario es gratis?", "Sí. Todos los rezos, audios, el Rosario y el muro de velas son gratuitos y no necesitas registrarte. El proyecto se sostiene con donaciones voluntarias."),
@@ -348,13 +356,13 @@ home_main = f'''<section class="hero" aria-labelledby="h1">
 <section class="sec"><div class="wrap"><div class="vhub">{vday_card(r)}{mood_picker(r)}</div></div></section>
 <section class="sec band" id="momento" aria-labelledby="hMom"><div class="wrap assist">
   <div class="reveal"><span class="eyebrow">Para este momento</span><h2 id="hMom">¿Qué llevas hoy en el corazón?</h2>
-    <p style="color:var(--muted);margin:10px 0 0">Cuéntanos con tus palabras o toca una opción. Te proponemos las oraciones que mejor encajan.</p>
-    <div class="feel" id="feel"></div>
-    <form class="ask" id="askForm"><label class="sr" for="askIn">Describe cómo te sientes</label><input id="askIn" placeholder="Ej.: mañana tengo un examen y estoy nervioso" autocomplete="off"><button class="btn btn-accent" type="submit">Buscar</button></form>
-    <p class="note">Este buscador no sustituye el acompañamiento espiritual, médico o psicológico. Si estás pasando por un momento muy difícil, llama al <strong>024</strong> (atención a la conducta suicida, España) o al <strong>112</strong> si es una emergencia.</p></div>
+    <p style="color:var(--muted);margin:10px 0 0">Escríbelo con tus palabras, como se lo contarías a un amigo. Te acompañamos con una oración de Rezo Diario para este momento.</p>
+    <form class="ask heart" id="askForm"><label class="sr" for="askIn">Lo que llevas hoy en el corazón</label><textarea id="askIn" rows="3" maxlength="400" placeholder="Por ejemplo: estoy preocupado por mi madre y no sé qué hacer"></textarea><button class="btn btn-accent" type="submit">Rezar con esto</button></form>
+    <p class="hint" style="margin:14px 0 6px">O elige un momento:</p><div class="feel" id="feel"></div>
+    <p class="note">Lo que escribes no se guarda ni se envía a ningún sitio: se queda en tu dispositivo. No sustituye el acompañamiento espiritual, médico o psicológico. Si estás pasando por un momento muy difícil, llama al <strong>024</strong> (atención a la conducta suicida, España) o al <strong>112</strong> si es una emergencia.</p></div>
   <div class="answers" id="answers" aria-live="polite"></div>
 </div></section>
-{sec(head2("Oraciones por tema", "Un rezo para cada momento", f"{len(PRAYERS)} oraciones para estudiar, por un enfermo, por tu familia, para la ansiedad o por un ser querido difunto.", '<a class="btn btn-ghost sm" href="oraciones/index.html">Ver todas</a>') + tiles(r))}
+{sec(camino(r) + head2("Oraciones por tema", "Un rezo para cada momento", f"{len(PRAYERS)} oraciones para estudiar, por un enfermo, por tu familia, para la ansiedad o por un ser querido difunto.", '<a class="btn btn-ghost sm" href="oraciones/index.html">Ver todas</a>') + tiles(r))}
 {chapel(r)}
 {sec(head2("Devociones", "Reza a tu ritmo") + f"""<div class="duo">
   <a class="feature reveal" href="{sf[0]}" style="background:{sf[1]}"><small>{sf[2]}</small><b>{sf[3]}</b><p>{sf[4]}</p></a>
@@ -407,7 +415,7 @@ for p in PRAYERS:
 <section class="sec"><div class="wrap art">
   <div style="min-width:0">
     <article class="pray reveal"><p class="pray-text" id="prayText">{E(p["x"])}</p>
-      <div class="pray-acts"><button class="btn btn-accent sm" id="btnSpeak">Escuchar</button><button class="btn btn-ghost sm" id="btnCopy">Copiar oración</button><button class="btn btn-ghost sm" id="btnFav" aria-pressed="false">☆ Guardar</button><a class="btn btn-ghost sm" href="{wa}" target="_blank" rel="noopener">Compartir por WhatsApp</a></div>
+      <div class="pray-acts"><button class="btn btn-accent sm" id="btnSpeak">Escuchar</button><button class="btn btn-ghost sm" id="btnCopy">Copiar oración</button><button class="btn btn-ghost sm" id="btnFav" aria-pressed="false">Guardar</button><button class="btn btn-ghost sm" id="btnAmen" type="button">Amén</button><a class="btn btn-ghost sm" href="{wa}" target="_blank" rel="noopener">Compartir por WhatsApp</a></div>
     </article>
     <div class="prose">
       <h2>Cuándo rezarla</h2><p>{E(p["when"])}</p>
@@ -415,6 +423,7 @@ for p in PRAYERS:
       <p>Si rezas por otra persona, díselo: saber que alguien reza por nosotros es un gran consuelo. También puedes <a href="{r}muro-de-intenciones.html#{CANDLE_HASH[p["cat"]]}">encender una vela por esta intención</a> para que otros recen contigo.</p>
       <h2>Preguntas frecuentes</h2>{faq_html(faq)}
     </div>
+    {recorrido(r, CANDLE_HASH[p["cat"]])}
   </div>
   <aside class="side">
     <div class="box candle-cta"><h3>Enciende una vela</h3><p>Deja esta intención en el muro y otras personas rezarán por ella durante siete días.</p><a class="btn btn-flame sm" href="{r}muro-de-intenciones.html#{CANDLE_HASH[p["cat"]]}">Encender una vela</a></div>
@@ -600,13 +609,13 @@ for t in VTOP:
                     f'<blockquote>«{E(v["x"])}»</blockquote><cite>{E(v["ref"])}</cite><p>{E(v["e"])}</p>{vacts(v["ref"], v["x"], path + "#v" + str(i + 1))}</article>' for i, v in enumerate(t["versos"]))
     rel = [VBY[x] for x in t["rel"] if x in VBY]
     prbtn = f'<a class="btn btn-accent sm" href="oraciones/{pr["slug"]}.html">Rezar: {E(pr["t"])}</a> ' if pr else ""
-    rel_html = "".join(f'<li><a href="{x["slug"]}.html">{x["emoji"]} {E(x["t"])}<small>{len(x["versos"])}</small></a></li>' for x in rel)
-    m = phero(r, cr, f'{t["emoji"]} {len(t["versos"])} versículos', t["h1"], E(t["intro"]),
+    rel_html = "".join(f'<li><a href="{x["slug"]}.html">{E(x["t"])}<small>{len(x["versos"])}</small></a></li>' for x in rel)
+    m = phero(r, cr, f'{len(t["versos"])} versículos', t["h1"], E(t["intro"]),
       '<div class="hero-cta" style="margin-top:18px"><button class="btn btn-gold" id="vListen" type="button">' + ICON["play"] + '<span>Escuchar los versículos</span></button><a class="btn btn-ghost" href="versiculos.html#ahora">Necesito un versículo ahora</a></div>') + \
       ('<section class="sec"><div class="wrap art"><div style="min-width:0">'
        f'<div class="vlist">{cards}</div>'
        f'<div class="box vpray reveal"><span class="eyebrow">Oración</span><h2>Reza con estos versículos</h2><p class="pray-text">{E(t["oracion"])}</p><div class="hero-cta">{prbtn}<a class="btn btn-ghost sm" href="muro-de-intenciones.html">Encender una vela</a></div></div>'
-       f'<div class="prose" style="margin-top:34px"><h2>Preguntas frecuentes</h2>{faq_html(faq)}</div></div>'
+       f'<div class="prose" style="margin-top:34px"><h2>Preguntas frecuentes</h2>{faq_html(faq)}</div>{recorrido(r)}</div>'
        f'<aside class="side"><div class="box"><h3>Versículos relacionados</h3><ul class="links">{rel_html}</ul></div>'
        '<div class="box candle-cta"><h3>¿Rezamos contigo?</h3><p>Deja tu intención en el muro y otras personas rezarán por ti durante siete días.</p><a class="btn btn-flame sm" href="muro-de-intenciones.html">Encender una vela</a></div>'
        f'<div class="box"><h3>Rezo de hoy</h3><p style="margin:0 0 12px;color:var(--muted);font-size:14.5px">{E(TW["title"])} · {TW["ref"]}</p><a class="btn btn-accent sm" href="evangelio-de-hoy.html">Escuchar el rezo</a></div></aside>'
@@ -661,6 +670,7 @@ shutil.copy(ROOT + "/assets/site.js", OUT + "/assets/site.js")
 data = {"week": [{k: w[k] for k in ("date", "wd", "n", "mes", "color", "lit", "ref", "refL", "title", "set", "ex", "sum", "refl", "qs", "fin", "audio", "duracion")} | ({"marcas": w["marcas"]} if w.get("marcas") else {}) | ({"audioVoz": w["audioVoz"]} if w.get("audioVoz") else {}) for w in DAYS], "LITC": LITC, "SETS": SETS, **O, "via": VIA, "VIA_ANT": VIAJ["antifona"],
         "prayers": [{"slug": p["slug"], "t": p["t"], "cat": p["cat"], "min": p["min"]} for p in PRAYERS], "CATS": {k: {"name": c["name"], "color": c["color"]} for k, c in CATS.items()},
         "novenas": [{"slug": n["slug"], "t": n["t"], "start": n["start"], "end": n["end"], "open": n["open"], "close": n["close"], "days": [[d["t"], d["x"]] for d in n["days"]]} for n in NOVENAS]}
+open(OUT + "/assets/oraciones.js", "w", encoding="utf-8").write("window.RDO=" + json.dumps({p["slug"]: p["x"] for p in PRAYERS}, ensure_ascii=False) + ";")
 open(OUT + "/assets/versos.js", "w", encoding="utf-8").write("window.RDV=" + json.dumps({t["slug"]: {"t": t["t"], "v": [[v["ref"], v["x"], v["e"]] for v in t["versos"]]} for t in VTOP}, ensure_ascii=False) + ";")
 open(OUT + "/assets/data.js", "w", encoding="utf-8").write("window.RD=" + json.dumps(data, ensure_ascii=False) + ";")
 for path, head, body, battrs in pages:

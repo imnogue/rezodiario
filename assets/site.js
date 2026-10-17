@@ -100,7 +100,7 @@ function stopSpeech(){sp.token++;if(sp.on&&synth)try{synth.cancel()}catch(e){};s
 
 /* ---------- Racha ---------- */
 function doneDays(){return store.get("rd-rezado",[])}
-function markDone(dt){const s=doneDays();if(!s.includes(dt)){s.push(dt);store.set("rd-rezado",s)}renderWeek()}
+function markDone(dt){const s=doneDays();const d=new Date(),t=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");[dt,t].forEach(x=>{if(x&&!s.includes(x))s.push(x)});store.set("rd-rezado",s);renderWeek();document.dispatchEvent(new Event("rd-rezado"))}
 
 /* ---------- Reproductor del rezo diario ---------- */
 const P={items:[],segs:[],k:0,playing:false,token:0,timer:null,dog:null,rate:1,mus:store.get("rd-musica","calma"),voiceOn:store.get("rd-voz",true),done:false,day:null};
@@ -203,7 +203,7 @@ if($("#player")){
  mm.onclick=e=>{const b=e.target.closest("[data-mus]");if(!b)return;P.mus=b.dataset.mus;store.set("rd-musica",P.mus);renderMus();mm.hidden=true;tmb.setAttribute("aria-expanded","false");
   if(P.playing)amb(true);else if(P.mus!=="no"){toast("Música: "+(MUSICAS.find(m=>m[0]===P.mus)||[])[1]+". Suena al pulsar play.")}};
  document.addEventListener("click",e=>{if(!mm.hidden&&!e.target.closest(".mus")){mm.hidden=true;tmb.setAttribute("aria-expanded","false")}});
- const tvb=$("#tVoice");const paintV=()=>{tvb.setAttribute("aria-pressed",P.voiceOn);tvb.innerHTML=P.voiceOn?"🗣️ Voz guía":"🔇 Sin voz"};paintV();
+ const tvb=$("#tVoice");const paintV=()=>{tvb.setAttribute("aria-pressed",P.voiceOn);tvb.textContent=P.voiceOn?"Voz guía":"Sin voz"};paintV();
  tvb.onclick=()=>{const audioV=P.day&&P.day.audioVoz;if(!audioV&&!synth){toast("Tu navegador no tiene voz: el texto avanza solo.");return}
   P.voiceOn=!P.voiceOn;store.set("rd-voz",P.voiceOn);paintV();
   if(AU&&AU.dataset.v)AU.muted=!P.voiceOn;else if(P.playing)speakCur();
@@ -236,21 +236,87 @@ function renderWeek(){
 if($("#week")&&!$("#player")){window.__rdDay=WEEK.findIndex(d=>d.date===document.body.dataset.day);renderWeek()}
 setTimeout(()=>{const w=$("#week"),c=w&&w.querySelector(".day.sel");if(c)w.scrollLeft=Math.max(0,c.offsetLeft-w.offsetLeft-(w.clientWidth-c.offsetWidth)/2)},80);
 
-/* ---------- Para este momento ---------- */
+/* ---------- ¿Qué llevas hoy en el corazón? · acompañante de oración ----------
+   Todo se decide aquí, en el navegador, con el contenido de Rezo Diario: no se envía nada a ningún servidor
+   y no se inventa ningún texto religioso. Cada «intención» tiene sus palabras clave, una frase de acogida
+   escrita por el equipo, las oraciones que encajan, un versículo (si tiene sentido) y la categoría de la vela. */
 if($("#askForm")){
  const PR=RD.prayers;const byS=s=>PR.find(p=>p.slug===s);
- const FEEL=[["Nervios por un examen",["oracion-antes-de-un-examen","oracion-para-aprobar","oracion-a-san-jose-de-cupertino"]],["Alguien está enfermo",["oracion-por-un-enfermo","oracion-antes-de-una-operacion","oracion-por-un-enfermo-de-cancer"]],["Ansiedad",["oracion-para-la-ansiedad","nada-te-turbe","oracion-de-confianza"]],["He perdido a alguien",["oracion-por-un-difunto","oracion-para-el-duelo","oracion-por-mi-madre-fallecida"]],["Busco trabajo",["oracion-para-encontrar-trabajo","oracion-antes-de-una-entrevista"]],["Tengo que decidir",["oracion-ante-una-decision","ven-espiritu-santo"]],["Quiero dar gracias",["oracion-de-accion-de-gracias","el-angelus"]],["No puedo dormir",["oracion-para-dormir","examen-del-dia"]],["Algo urgente o imposible",["oracion-a-san-judas-tadeo","oracion-a-san-expedito","oracion-a-santa-rita"]]];
- $("#feel").innerHTML=FEEL.map((f,i)=>`<button class="chip" data-i="${i}">${f[0]}</button>`).join("");
- $$("#feel .chip").forEach(b=>b.onclick=()=>{$$("#feel .chip").forEach(x=>x.classList.toggle("on",x===b));const f=FEEL[+b.dataset.i];suggest(f[0],f[1])});
- const KEYW={"oracion-antes-de-un-examen":["examen","prueba","oposic","selectividad","ebau","evau"],"oracion-para-aprobar":["aprob","suspend","nota"],"oracion-para-estudiar":["estudi","concentr","memoria","universidad","clase"],"oracion-por-un-enfermo":["enferm","hospital","salud","medico","ingresad"],"oracion-antes-de-una-operacion":["opera","quirofano","cirug","interven"],"oracion-por-un-enfermo-de-cancer":["cancer","quimio","tumor","oncolog"],"oracion-para-la-ansiedad":["ansied","angust","agobi","estres","panico","nervio","miedo","preocup"],"oracion-en-la-tristeza":["triste","solo","sola","soledad","llor","deprim"],"oracion-para-dormir":["dormir","insomn","noche","descans"],"oracion-por-un-difunto":["muert","murio","fallec","difunt","luto"],"oracion-para-el-duelo":["perdi","duelo","echo de menos","ausencia"],"oracion-por-mi-madre-fallecida":["mi madre","mama"],"oracion-por-mi-padre-fallecido":["mi padre","papa"],"oracion-para-encontrar-trabajo":["trabajo","paro","empleo","despid"],"oracion-antes-de-una-entrevista":["entrevista"],"oracion-por-mi-negocio":["negocio","empresa","tienda","clientes","autonomo"],"oracion-ante-una-decision":["decid","decision","dudas","elegir","futuro","cambio"],"oracion-por-la-familia":["familia","herman","discut","casa"],"oracion-por-los-hijos":["hijo","hija","niño","niña","adolescen"],"oracion-por-mi-matrimonio":["pareja","matrimonio","marido","mujer","esposo","esposa","novio","novia"],"oracion-de-accion-de-gracias":["gracias","alegr","feliz","contento","celebr","logr"],"oracion-para-perdonar":["perdon","rencor","ofend","traicion"],"oracion-a-san-antonio":["perdido","perdida","encontrar"],"oracion-a-san-judas-tadeo":["imposible","desesper","dificil","urgente"],"oracion-por-una-embarazada":["embaraz","bebe","parto"],"oracion-antes-de-un-viaje":["viaje","viajar","avion","carretera"]};
- function suggest(label,slugs){const list=slugs.map(byS).filter(Boolean);const A=$("#answers");
-  if(!list.length){A.innerHTML=`<div class="empty">No hemos encontrado un rezo concreto para «${esc(label)}». Prueba con otras palabras o mira <a href="${ROOT}oraciones/${IDX}">todas las oraciones</a>.</div>`;return}
-  A.innerHTML=`<p class="hint" style="margin:0 0 4px">Para «${esc(label)}» te proponemos:</p>`+list.slice(0,4).map((p,i)=>`<a class="ans" href="${ROOT}oraciones/${p.slug}${X}" style="animation-delay:${i*.07}s;text-decoration:none;color:inherit"><span class="ic" style="background:${RD.CATS[p.cat].color}">${esc(p.t.replace(/^Oración (a |por |para |antes de |en |de )?/,"")[0].toUpperCase())}</span><div><strong>${esc(p.t)}</strong><small>${RD.CATS[p.cat].name} · ${p.min} min</small></div><span>›</span></a>`).join("")+`<a class="ans" href="${ROOT}muro-de-intenciones${X}" style="text-decoration:none;color:inherit"><span class="ic" style="background:#2A1A05;color:var(--flame)">✦</span><div><strong>Enciende una vela por esta intención</strong><small>Otras personas rezarán contigo</small></div><span>›</span></a>`}
- $("#askForm").onsubmit=e=>{e.preventDefault();const v=$("#askIn").value.trim();if(!v){$("#askIn").focus();return}const n=norm(v);
-  const sc=Object.entries(KEYW).map(([id,ks])=>[id,ks.filter(k=>n.includes(norm(k))).length]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
-  $$("#feel .chip").forEach(x=>x.classList.remove("on"));suggest(v,sc)};
- $("#answers").innerHTML=`<div class="empty">Elige una opción o escribe cómo te sientes. Por ejemplo: «mi madre está en el hospital» o «estoy agobiado con el trabajo».</div>`;
+ const INT=[
+  {k:"crisis",w:["suicid","quitarme la vida","no quiero vivir","no quiero seguir viviendo","matarme","hacerme dano","autolesi","acabar con todo","desaparecer para siempre"],p:["oracion-de-confianza","nada-te-turbe"],c:"otra"},
+  {k:"duelo",w:["murio","muerto","muerte","fallec","difunt","luto","duelo","entierro","funeral","tanatorio","lo echo de menos","la echo de menos","se fue al cielo","perdi a"],l:"El amor no termina con la muerte. Puedes poner a quien echas de menos en las manos de Dios, que lo cuida.",p:["oracion-por-un-difunto","oracion-para-el-duelo","oracion-por-mi-madre-fallecida","oracion-por-mi-padre-fallecido"],v:"versiculos-para-cuando-estas-triste",c:"difuntos"},
+  {k:"salud",w:["enferm","hospital","ingresad","urgencias","medico","diagnost","prueba medica","resultados","analisis","salud","dolor","opera","quirofano","cirug","cancer","quimio","tumor","uci","covid"],l:"Dios está junto a quien sufre y junto a quienes lo cuidan. Puedes confiarle esta enfermedad.",p:["oracion-por-un-enfermo","oracion-antes-de-una-operacion","oracion-por-un-enfermo-de-cancer","oracion-de-confianza"],v:"versiculos-sobre-la-proteccion",c:"salud"},
+  {k:"crisisvida",w:["no puedo mas","no aguanto","estoy hundid","desesper","todo me sale mal","no tiene sentido"],l:"No tienes que poder con todo tú solo. Dios está a tu lado incluso cuando no lo sientes.",p:["oracion-de-confianza","nada-te-turbe","oracion-a-san-judas-tadeo"],v:"versiculos-para-momentos-dificiles",c:"otra"},
+  {k:"estudios",w:["examen","examenes","prueba","oposic","selectividad","ebau","evau","pau","aprob","suspend","nota","estudi","universidad","instituto","clase","tfg","master","carrera"],l:"Lo que has preparado no se pierde. Pon tu esfuerzo en manos de Dios y respira.",p:["oracion-antes-de-un-examen","oracion-para-aprobar","oracion-para-estudiar","oracion-a-san-jose-de-cupertino"],v:"versiculos-para-el-miedo",c:"estudios"},
+  {k:"trabajo",w:["trabajo","paro","empleo","despid","entrevista","jefe","contrato","curriculum","negocio","empresa","clientes","autonomo"],l:"Dios conoce tu trabajo y tus necesidades. Puedes pedirle luz y confianza para el camino.",p:["oracion-para-encontrar-trabajo","oracion-antes-de-una-entrevista","oracion-por-mi-negocio"],v:"versiculos-sobre-el-dinero",c:"trabajo"},
+  {k:"dinero",w:["dinero","deuda","deudas","pagar","hipoteca","alquiler","factura","no llego a fin de mes","economic","banco","prestamo"],l:"Tu preocupación por llegar a fin de mes es real. Puedes ponerla en manos de Dios, que conoce lo que necesitas.",p:["oracion-de-confianza","oracion-para-encontrar-trabajo","nada-te-turbe"],v:"versiculos-sobre-el-dinero",c:"trabajo"},
+  {k:"ruptura",w:["ruptura","me ha dejado","me dejo","lo hemos dejado","separac","divorc","mi ex","corazon roto","infiel","engan"],l:"Un corazón roto necesita tiempo y cuidado. Dios no te deja solo mientras sana.",p:["oracion-en-la-tristeza","oracion-para-perdonar","oracion-de-confianza"],v:"versiculos-para-superar-una-ruptura",c:"otra"},
+  {k:"pareja",w:["pareja","matrimonio","marido","mujer","esposo","esposa","novio","novia","boda","casarnos"],l:"El amor también se cuida rezando. Pon vuestra relación en manos de Dios.",p:["oracion-por-mi-matrimonio","oracion-para-perdonar"],v:"versiculos-sobre-el-amor",c:"familia"},
+  {k:"hijos",w:["mi hijo","mi hija","mis hijos","hijo","hija","adolescen","bebe","nino","nina","ninos","ninas"],l:"Tus hijos también están en el corazón de Dios. Él los cuida contigo.",p:["oracion-por-los-hijos","oracion-por-la-familia"],v:"versiculos-para-la-familia",c:"familia"},
+  {k:"embarazo",w:["embaraz","parto","dar a luz","quedarme embarazada","fertilidad"],l:"La vida que esperas es un regalo. Pon este tiempo en manos de Dios y de la Virgen.",p:["oracion-por-una-embarazada","oracion-de-confianza"],v:"versiculos-sobre-la-proteccion",c:"familia"},
+  {k:"familia",w:["familia","mi madre","mi padre","su madre","su padre","mama","papa","herman","abuel","tio","tia","primo","suegr","casa","discut"],l:"Tu familia también está en el corazón de Dios. Él la cuida contigo.",p:["oracion-por-la-familia","oracion-por-los-hijos"],v:"versiculos-para-la-familia",c:"familia"},
+  {k:"enfado",w:["enfad","rabia","ira","furios","odio","me ha ofendido","me ofendio","traicion","rencor","no puedo perdonar","perdonar","perdon"],l:"Lo que sientes es comprensible. Puedes contárselo a Dios tal cual y pedirle un corazón en paz.",p:["oracion-para-perdonar","oracion-de-confianza"],v:"versiculos-para-el-enfado",c:"otra"},
+  {k:"miedo",w:["miedo","asustad","temo","terror","me da panico"],l:"«No temas, que yo estoy contigo». Puedes dejar este miedo en manos de Dios.",p:["oracion-de-confianza","nada-te-turbe","oracion-para-la-ansiedad"],v:"versiculos-para-el-miedo",c:"otra"},
+  {k:"ansiedad",w:["ansied","angust","agobi","estres","panico","nervio","preocup","inquiet","no se que hacer","agotad","bloquead","sobrepasad"],l:"Puedes poner esta preocupación en manos de Dios.",p:["oracion-para-la-ansiedad","nada-te-turbe","oracion-de-confianza"],v:"versiculos-para-la-ansiedad",c:"otra"},
+  {k:"tristeza",w:["triste","tristeza","sola","solo","soledad","llor","deprim","vacio","desanim","apagad"],l:"Dios está cerca de los que tienen el corazón herido. No estás solo en esta tristeza.",p:["oracion-en-la-tristeza","oracion-de-confianza"],v:"versiculos-para-cuando-estas-triste",c:"otra"},
+  {k:"dormir",w:["dormir","insomn","no duermo","desvel","de noche","pesadilla"],l:"Deja el día en manos de Dios. Él vela tu descanso.",p:["oracion-para-dormir","examen-del-dia"],v:"versiculos-para-dormir",c:"otra"},
+  {k:"decision",w:["decid","decision","dudas","elegir","no se si","futuro","cambio","mudarme","discernir"],l:"Para decidir bien hace falta calma y luz. Pide al Espíritu Santo que te guíe.",p:["oracion-ante-una-decision","ven-espiritu-santo"],v:"versiculos-para-la-fe",c:"otra"},
+  {k:"fe",w:["fe","no creo","dudo de dios","lejos de dios","no siento a dios","creer","volver a la iglesia","confesar","rezar no sirve"],l:"Buscar a Dios ya es una forma de rezar. Él te espera, incluso en la duda.",p:["ven-espiritu-santo","oracion-de-confianza","acordaos"],v:"versiculos-para-la-fe",c:"otra"},
+  {k:"viaje",w:["viaje","viajar","avion","carretera","conducir","vuelo"],l:"Pon tu camino en manos de Dios: que te acompañe a la ida y a la vuelta.",p:["oracion-antes-de-un-viaje"],v:"versiculos-sobre-la-proteccion",c:"otra"},
+  {k:"imposible",w:["imposible","urgente","milagro","causa perdida","ultima esperanza"],l:"Para Dios nada es imposible. Puedes pedir con confianza la intercesión de los santos de las causas difíciles.",p:["oracion-a-san-judas-tadeo","oracion-a-santa-rita","oracion-a-san-expedito"],v:"versiculos-para-momentos-dificiles",c:"otra"},
+  {k:"perdido",w:["he perdido","se me ha perdido","no encuentro","perdi el","perdi la"],l:"San Antonio acompaña a quien busca algo perdido. Pídele ayuda con calma.",p:["oracion-a-san-antonio"],c:"otra"},
+  {k:"gracias",w:["gracias","agradec","alegr","feliz","contento","celebr","logr","aprobe","me han dado","buena noticia","ha salido bien"],l:"Qué bonito empezar por dar gracias. La alegría compartida con Dios se multiplica.",p:["oracion-de-accion-de-gracias","el-angelus"],v:"versiculos-para-dar-gracias",c:"gracias"}
+ ];
+ const FEEL=[["Estoy preocupado","ansiedad"],["Alguien está enfermo","salud"],["He perdido a alguien","duelo"],["Tengo un examen","estudios"],["Busco trabajo","trabajo"],["Estoy triste","tristeza"],["Tengo que decidir","decision"],["Mi familia","familia"],["Quiero dar gracias","gracias"],["No puedo dormir","dormir"]];
+ const KI=Object.fromEntries(INT.map(i=>[i.k,i]));
+ const A=$("#answers"),inp=$("#askIn");
+ const has=(n,w)=>{const k=norm(w);return k.length<=4?new RegExp("(^|[^a-z])"+k+"([^a-z]|$)").test(n):n.includes(k)};
+ function classify(t){const n=" "+norm(t)+" ";const sc=INT.map((it,ord)=>({it,ord,s:it.w.filter(w=>has(n,w)).length})).filter(x=>x.s>0);
+  sc.sort((a,b)=>(b.it.k==="crisis")-(a.it.k==="crisis")||b.s-a.s||a.ord-b.ord);return sc.map(x=>x.it)}
+ let RDO=null;function loadPrayers(){if(window.RDO)return Promise.resolve(window.RDO);if(RDO)return RDO;const sv=(document.querySelector('script[src*="data.js"]')||{}).src||"";const v=(sv.split("v=")[1]||"");
+  RDO=new Promise(ok=>{const s=document.createElement("script");s.src=ROOT+"assets/oraciones.js?v="+v;s.onload=()=>ok(window.RDO||{});s.onerror=()=>ok({});document.head.appendChild(s)});return RDO}
+ const preview=t=>{const one=String(t||"").replace(/\s+/g," ").split(/(?<=[.;:!?])\s/).slice(0,2).join(" ");return one.length>220?one.slice(0,210).replace(/\s\S*$/,"")+"…":one};
+ const muro=(cat,txt)=>`${ROOT}muro-de-intenciones${X}${txt?"?i="+encodeURIComponent(txt.slice(0,160)):""}#${cat}`;
+ function verseFor(slug){const t=window.RDV&&RDV[slug];if(!t||!t.v.length)return null;const d=new Date();const i=(d.getFullYear()*372+d.getMonth()*31+d.getDate())%t.v.length;return{slug,t:t.t,ref:t.v[i][0],x:t.v[i][1]}}
+ async function answer(text,fromChip){
+  const its=fromChip?[KI[fromChip]]:classify(text);const main=its[0];
+  const crisis=main&&main.k==="crisis";
+  const slugs=[...new Set([...(main?main.p:["oracion-de-confianza","nada-te-turbe"]),...(its[1]&&!crisis?its[1].p.slice(0,1):[])])].filter(byS);
+  const first=byS(slugs[0]),others=slugs.slice(1,3).map(byS);
+  const line=crisis?"Gracias por contarlo. Lo que sientes importa, y no tienes que pasarlo solo.":main?main.l:"Gracias por confiarlo. Sea lo que sea, puedes ponerlo en manos de Dios con estas palabras.";
+  const cat=main?main.c:"otra";const v=!crisis&&main&&main.v?verseFor(main.v):null;
+  const said=fromChip?"":`<p class="heart-said"><span>Has escrito</span>«${esc(text)}»</p>`;
+  A.innerHTML=`${said}<div class="heart-wait" aria-hidden="true"><i></i><i></i><i></i></div>`;
+  const texts=await Promise.all([loadPrayers(),new Promise(r=>setTimeout(r,650))]).then(x=>x[0]);
+  const url=p=>`${ROOT}oraciones/${p.slug}${X}`;
+  A.innerHTML=said+(crisis?`<div class="heart-help"><strong>Si estás pensando en hacerte daño, habla ahora con alguien.</strong> Llama al <a href="tel:024">024</a> (gratuito, a cualquier hora, España) o al <a href="tel:112">112</a> si es una emergencia. También puedes hablar con un sacerdote o con alguien de confianza hoy mismo.</div>`:"")+
+   `<article class="heart-card"><span class="eyebrow">Una oración para este momento</span><p class="heart-line">${esc(line)}</p>
+    <h3>${esc(first.t)}</h3>${texts[first.slug]?`<p class="heart-pre">${esc(preview(texts[first.slug]))}</p>`:""}
+    <div class="heart-acts"><button class="btn btn-accent sm" type="button" data-hlisten>Escuchar oración</button><a class="btn btn-ghost sm" href="${url(first)}">Leer oración</a><a class="btn btn-ghost sm" href="${muro(cat)}">Encender una vela</a><a class="btn btn-ghost sm" href="${muro(cat,fromChip?"":text)}">Dejar una intención</a></div>
+    ${v?`<div class="heart-verse"><span class="eyebrow">Un versículo</span><blockquote>«${esc(v.x)}»</blockquote><cite>${esc(v.ref)}</cite><a href="${ROOT}${v.slug}${X}">Más ${esc(v.t.toLowerCase())}</a></div>`:""}
+    ${others.length?`<div class="heart-more"><span>También puede acompañarte</span>${others.map(p=>`<a href="${url(p)}">${esc(p.t)}<small>${p.min} min</small></a>`).join("")}</div>`:""}
+   </article><p class="heart-next">¿Quieres contar algo más? Puedes volver a escribir arriba.</p>`;
+  const lb=A.querySelector("[data-hlisten]");lb.onclick=()=>{if(sp.on){stopSpeech();lb.textContent="Escuchar oración";return}const t=texts[first.slug];if(!t){location.href=url(first);return}
+   if(speakText(first.t+". "+t,()=>{lb.textContent="Escuchar oración"}))lb.textContent="Detener"};
+  if(innerWidth<860)A.scrollIntoView({behavior:"smooth",block:"start"})}
+ $("#feel").innerHTML=FEEL.map(([n,k])=>`<button class="chip" type="button" data-k="${k}">${n}</button>`).join("");
+ $$("#feel .chip").forEach(b=>b.onclick=()=>{$$("#feel .chip").forEach(x=>x.classList.toggle("on",x===b));answer(b.textContent,b.dataset.k)});
+ $("#askForm").onsubmit=e=>{e.preventDefault();const t=inp.value.trim();if(!t){inp.focus();return}$$("#feel .chip").forEach(x=>x.classList.remove("on"));answer(t)};
+ inp.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();$("#askForm").requestSubmit()}});
+ A.innerHTML=`<div class="heart-empty"><span class="eyebrow">Cómo funciona</span><p>Escribe lo que te preocupa o lo que agradeces. Te proponemos una oración de Rezo Diario, un versículo de la Biblia si encaja, y la posibilidad de encender una vela para que otras personas recen contigo.</p></div>`;
 }
+
+/* ---------- Tu camino de oración (racha discreta, también sin registrarse) ---------- */
+function isoD(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function renderCamino(){const els=$$("[data-camino]");if(!els.length)return;const s=new Set(store.get("rd-rezado",[]));const now=new Date();
+ const day=k=>{const d=new Date(now);d.setDate(d.getDate()-k);return d};const today=isoD(now);
+ let n=0,k=s.has(today)?0:1;while(s.has(isoD(day(k)))){n++;k++}
+ const L=["D","L","M","X","J","V","S"];
+ const dots=Array.from({length:7},(_,i)=>{const d=day(6-i),iso=isoD(d),on=s.has(iso),t=iso===today;return `<li class="${on?"on":""}${t?" today":""}" title="${d.getDate()}/${d.getMonth()+1}${on?" · rezado":""}"><i></i><span>${L[d.getDay()]}</span></li>`}).join("");
+ const prayedToday=s.has(today);
+ const txt=n===0?"Cada día que reces quedará marcado aquí.":n===1?(prayedToday?"Hoy has rezado. Mañana seguimos.":"Ayer rezaste. Hoy puedes continuar."):(prayedToday?`${n} días de oración seguidos`:`${n} días de oración seguidos · hoy puedes continuar`);
+ els.forEach(el=>{el.querySelector("[data-camino-dots]").innerHTML=dots;el.querySelector("[data-camino-n]").textContent=txt;const c=el.querySelector("[data-camino-cta]");if(c){c.hidden=prayedToday;c.href=$("#player")?"#player":ROOT+IDX+"#player"}})}
+renderCamino();document.addEventListener("rd-rezado",renderCamino);
 
 /* ---------- Biblioteca ---------- */
 if($("#libGrid")){
@@ -273,9 +339,10 @@ if(pt){
  $("#btnCopy").onclick=()=>{const t=title+"\n\n"+pt.textContent+"\n\n"+(document.querySelector('link[rel=canonical]')||{}).href;
   const sel=()=>{const r=document.createRange();r.selectNodeContents(pt);const s=getSelection();s.removeAllRanges();s.addRange(r);toast("Texto seleccionado: cópialo con tu teclado")};
   navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t).then(()=>toast("Oración copiada"),sel):sel()};
- const fav=$("#btnFav");if(fav){const id=document.body.dataset.slug;const f=()=>store.get("rd-favs",[]);const r=()=>{const on=f().includes(id);fav.setAttribute("aria-pressed",on);fav.textContent=on?"★ En favoritos":"☆ Guardar"};r();
+ const fav=$("#btnFav");if(fav){const id=document.body.dataset.slug;const f=()=>store.get("rd-favs",[]);const r=()=>{const on=f().includes(id);fav.setAttribute("aria-pressed",on);fav.textContent=on?"Guardada":"Guardar"};r();
   fav.onclick=()=>{let a=f();a=a.includes(id)?a.filter(x=>x!==id):[...a,id];store.set("rd-favs",a);r();toast(a.includes(id)?"Guardada en favoritos":"Quitada de favoritos")}}
 }
+const amen=$("#btnAmen");if(amen){const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};const paint=()=>{const on=doneDays().includes(today());amen.textContent=on?"Has rezado hoy":"Amén";amen.setAttribute("aria-pressed",on)};paint();amen.onclick=()=>{markDone(today());paint();toast("Gracias por rezar hoy. Mañana te espera un nuevo Evangelio.")}}
 const favBox=$("#favList");if(favBox){const a=store.get("rd-favs",[]).map(s=>RD.prayers.find(p=>p.slug===s)).filter(Boolean);if(a.length){favBox.hidden=false;favBox.querySelector("ul").innerHTML=a.map(p=>`<li><a href="${ROOT}oraciones/${p.slug}${X}">${esc(p.t)}<small>${p.min} min</small></a></li>`).join("")}}
 
 /* ---------- Rosario ---------- */
@@ -379,6 +446,7 @@ if(chapel){
  $$("#vCats button").forEach(b=>b.onclick=()=>{cat=b.dataset.c;$$("#vCats button").forEach(x=>x.setAttribute("aria-checked",x===b))});
  const h=(location.hash||"").slice(1);if(VC[h]){cat=h;$$("#vCats button").forEach(x=>x.setAttribute("aria-checked",x.dataset.c===h))}
  const ta=$("#vText");ta.addEventListener("input",()=>$("#vCount").textContent=`${ta.value.length}/160`);
+ const qi=new URLSearchParams(location.search).get("i");if(qi){ta.value=qi.slice(0,160);ta.dispatchEvent(new Event("input"));setTimeout(()=>{const f=$("#vForm");if(f)f.scrollIntoView({behavior:"smooth",block:"center"});ta.focus({preventScroll:true})},500)}
  function clean(s,max){return String(s||"").replace(/https?:\/\/\S+|www\.\S+/gi,"").replace(/\S+@\S+\.\S+/g,"").replace(/(\+?\d[\d\s.-]{7,}\d)/g,"").replace(/\s+/g," ").trim().slice(0,max)}
  function ago(t){const m=Math.round((Date.now()-t)/6e4);if(m<1)return"ahora mismo";if(m<60)return`hace ${m} min`;const hh=Math.round(m/60);if(hh<24)return`hace ${hh} h`;const d=Math.round(hh/24);return d===1?"hace 1 día":`hace ${d} días`}
  function local(){candles=store.get("rd-velas-local",[]).filter(c=>c.at>cutoff);prays=new Map();store.get("rd-rezos-local",[]).forEach(p=>prays.set(p.c,(prays.get(p.c)||0)+1));render()}
@@ -459,7 +527,7 @@ if(chapel){
  function merge(a,b){if(Array.isArray(a)&&Array.isArray(b))return[...new Set([...a,...b])];return b!==undefined?b:a}
  let busy=false,timer=null;
  async function pull(){const u=await me();if(!u)return;try{const rows=await sbf(`/rest/v1/progreso?select=datos&user_id=eq.${u.id}`,{auth:true});const remote=(rows[0]||{}).datos||{};const loc=snapshot();
-  Object.keys(remote).forEach(k=>{if(SYNC_KEYS.test(k))try{localStorage.setItem(k,JSON.stringify(merge(remote[k],loc[k])))}catch(e){}});await push(true);renderWeek();toast("Tu progreso está sincronizado.")}catch(e){}}
+  Object.keys(remote).forEach(k=>{if(SYNC_KEYS.test(k))try{localStorage.setItem(k,JSON.stringify(merge(remote[k],loc[k])))}catch(e){}});await push(true);renderWeek();document.dispatchEvent(new Event("rd-rezado"));toast("Tu progreso está sincronizado.")}catch(e){}}
  async function push(now){if(!now){clearTimeout(timer);timer=setTimeout(()=>push(true),2500);return}if(busy)return;busy=true;const u=await me();if(u){try{await sbf("/rest/v1/progreso",{method:"POST",auth:true,headers:{Prefer:"resolution=merge-duplicates,return=minimal"},body:{user_id:u.id,datos:snapshot(),updated_at:new Date().toISOString()}})}catch(e){}}busy=false}
  window.__rdSync=()=>{if(store.get("rd-auth",null))push(false)};
  async function renderAcc(){const u=await me();$("#accOut").hidden=!!u;$("#accIn").hidden=!u;msg("");
@@ -509,15 +577,13 @@ if($("#wPreview")){let dark=false;const render=()=>{const w=WEEK[todayIdx];$("#w
 
 /* ---------- Donaciones ---------- */
 if($("#give")){
- const AMTS=[5,10,25,50],IMP={5:"Cubre el alojamiento de los audios durante una semana.",10:"Hace posible grabar y editar un rezo diario completo.",25:"Financia la música y la edición de una semana de audios.",50:"Ayuda a traducir un mes de rezos a otro idioma."};
- let freq="once",amount=10;
- $("#amts").innerHTML=AMTS.map(a=>`<button class="amt${a===10?" on":""}" data-a="${a}">${a} €</button>`).join("");
- $$("#amts .amt").forEach(b=>b.onclick=()=>{amount=+b.dataset.a;$("#otherAmt").value="";r()});
+ const AMTS=[5,10,25,50,100];let freq="once",amount=10,other=false;
+ $("#amts").innerHTML=AMTS.map(a=>`<button class="amt" type="button" data-a="${a}">${a} €</button>`).join("")+`<button class="amt amt-o" type="button" data-a="o">Otra cantidad</button>`;
+ $$("#amts .amt").forEach(b=>b.onclick=()=>{if(b.dataset.a==="o"){other=true;$("#otherBox").hidden=false;$("#otherAmt").focus();const v=Math.round(+$("#otherAmt").value);if(v>0)amount=v}else{other=false;$("#otherBox").hidden=true;amount=+b.dataset.a}r()});
  $("#otherAmt").addEventListener("input",e=>{const v=Math.round(+e.target.value);if(v>0){amount=v;r()}});
  $$("#give .seg button").forEach(b=>b.onclick=()=>{freq=b.dataset.f;$$("#give .seg button").forEach(x=>x.classList.toggle("on",x===b));r()});
- function r(){$$("#amts .amt").forEach(b=>b.classList.toggle("on",+b.dataset.a===amount&&!$("#otherAmt").value));const tier=[...AMTS].reverse().find(a=>amount>=a)||5;
-  $("#impact").textContent=(freq==="month"?"Cada mes: ":"")+IMP[tier];$("#donBtn").textContent=`Donar ${amount} €${freq==="month"?" al mes":""}`;$("#thanks").hidden=true}
- $("#donBtn").onclick=()=>{const pay=$("#give").dataset.pay;if(pay){const a=document.createElement("a");a.href=pay+(pay.includes("?")?"&":"?")+"amount="+amount+"&frecuencia="+freq;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();return}const t=$("#thanks");t.hidden=false;t.innerHTML=`<strong>Gracias por querer aportar ${amount} €${freq==="month"?" al mes":""}.</strong><br>Este botón abrirá la pasarela de pago segura (Stripe, PayPal o Bizum) cuando la conectéis. Ahora mismo no se realiza ningún cobro.`};r();
+ function r(){$$("#amts .amt").forEach(b=>b.classList.toggle("on",other?b.dataset.a==="o":+b.dataset.a===amount));$("#donBtn").textContent=`${freq==="month"?"Apoyar con":"Donar"} ${amount} €${freq==="month"?" al mes":""}`;$("#thanks").hidden=true}
+ $("#donBtn").onclick=()=>{const pay=$("#give").dataset.pay;if(pay){const a=document.createElement("a");a.href=pay+(pay.includes("?")?"&":"?")+"amount="+amount+"&frecuencia="+freq;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();return}const t=$("#thanks");t.hidden=false;t.innerHTML=`<strong>Gracias por querer aportar ${amount} €${freq==="month"?" al mes":""}.</strong><br>El pago seguro estará disponible muy pronto. Ahora mismo no se realiza ningún cobro.`};r();
 }
 
 /* ---------- Boletín ---------- */

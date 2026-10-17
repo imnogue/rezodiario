@@ -278,3 +278,68 @@ img,video,canvas,svg,iframe{max-width:100%}
 .mus-menu button:hover,.mus-menu button[aria-checked="true"]{background:var(--surface-2)}
 .mus-menu button[aria-checked="true"]{color:var(--accent);font-weight:800}
 #tVoice[aria-pressed="false"]{opacity:.75}
+
+/* ---------- Donaciones (sin contadores) ---------- */
+.amts{grid-template-columns:repeat(3,minmax(0,1fr))}
+.amt-o{font-size:15px}
+.give .other{margin-top:12px}
+.give #donBtn{margin-top:16px}
+
+/* ---------- ¿Qué llevas hoy en el corazón? ---------- */
+.ask.heart{flex-direction:column;align-items:stretch}
+.ask.heart textarea{resize:vertical;min-height:96px;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--f-read)}
+.ask.heart textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.ask.heart textarea::placeholder{color:var(--muted);font-style:italic}
+.ask.heart .btn{align-self:flex-start}
+.heart-empty,.heart-card{background:var(--bg);border:1px solid var(--line);border-radius:24px;padding:24px}
+.heart-empty p{margin:8px 0 0;color:var(--muted)}
+.heart-said{margin:0 0 14px;font-family:var(--f-read);font-style:italic;font-size:17px;color:var(--muted);overflow-wrap:anywhere}
+.heart-said span{display:block;font:700 11px var(--f-ui);font-style:normal;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.heart-wait{display:flex;gap:6px;padding:18px 4px}
+.heart-wait i{width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:.3;animation:hw 1.2s infinite}
+.heart-wait i:nth-child(2){animation-delay:.2s}.heart-wait i:nth-child(3){animation-delay:.4s}
+@keyframes hw{50%{opacity:1}}
+.heart-card{animation:rise .55s both}
+.heart-line{margin:10px 0 0;font-family:var(--f-read);font-size:clamp(19px,2vw,22px);line-height:1.45}
+.heart-card h3{font-family:var(--f-display);font-weight:400;font-size:24px;margin:18px 0 6px}
+.heart-pre{margin:0;color:var(--muted);font-family:var(--f-read);font-style:italic}
+.heart-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.heart-verse{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.heart-verse blockquote{margin:8px 0 4px;font-family:var(--f-read);font-style:italic;font-size:17px;line-height:1.5}
+.heart-verse cite{font-style:normal;font-weight:800;font-size:13px;color:var(--gold);margin-right:12px}
+.heart-verse a,.heart-more a{font-weight:700;font-size:14px;color:var(--accent);text-decoration:none}
+.heart-more{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.heart-more span{font:700 11px var(--f-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.heart-more a{display:flex;justify-content:space-between;gap:12px;padding:8px 0}
+.heart-more small{color:var(--muted);font-weight:600}
+.heart-help{margin-bottom:14px;padding:16px 18px;border-radius:18px;background:color-mix(in srgb,var(--lit-red) 10%,var(--bg));border:1px solid color-mix(in srgb,var(--lit-red) 35%,var(--line));font-size:15px}
+.heart-help a{font-weight:800;color:inherit}
+.heart-next{margin:12px 4px 0;color:var(--muted);font-size:14px}
+
+/* ---------- Tu camino de oración ---------- */
+.camino{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:18px 22px;margin:0 0 44px;border:1px solid var(--line);border-radius:22px;background:var(--surface)}
+.camino-t{flex:1 1 220px;min-width:0}
+.camino-n{margin:4px 0 0;font-family:var(--f-read);font-size:17px}
+.camino-dots{display:flex;gap:14px;list-style:none;margin:0;padding:0}
+.camino-dots li{display:flex;flex-direction:column;align-items:center;gap:6px}
+.camino-dots i{width:12px;height:12px;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--gold) 55%,var(--line));transition:background .4s}
+.camino-dots li.on i{background:var(--gold);border-color:var(--gold)}
+.camino-dots li.today i{box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 16%,transparent)}
+.camino-dots span{font-size:11px;font-weight:700;color:var(--muted)}
+.camino-dots li.today span{color:var(--ink)}
+.camino-cta{font-weight:800;font-size:14px;color:var(--accent);text-decoration:none;white-space:nowrap}
+.camino.compact{margin:22px 0 0;padding:14px 18px;background:transparent}
+.camino.compact .camino-n{font-size:15.5px}
+@media(max-width:560px){.camino{gap:14px;padding:16px}.camino-dots{gap:10px;width:100%;justify-content:space-between}}
+
+/* ---------- Recorrido: sigue rezando ---------- */
+.recorrido{margin-top:40px;padding:26px;border-radius:26px;background:var(--surface);border:1px solid var(--line)}
+.recorrido>ol{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.recorrido>ol li a{display:flex;flex-direction:column;gap:3px;height:100%;padding:16px 18px;border-radius:18px;background:var(--bg);border:1px solid var(--line);text-decoration:none;transition:border-color .2s,transform .2s}
+.recorrido>ol li a:hover{border-color:var(--gold);transform:translateY(-2px)}
+.recorrido b{font-family:var(--f-display);font-weight:400;font-size:19px}
+.recorrido>ol li span{color:var(--muted);font-size:14px}
+@media(max-width:560px){.recorrido{padding:20px 16px}.recorrido>ol{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Versículos: teselas sin emoticonos ---------- */
+.vtile i{width:10px;height:10px;border-radius:3px;transform:rotate(45deg);background:var(--gold);margin-bottom:6px}
