@@ -14,7 +14,7 @@
   ],
   "fin": "Señor, todo lo que soy es tuyo. Que mi vida devuelva tu imagen a quien la busque.",
   "saint": "",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-18.mp3?v=1792243723",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-18.mp3?v=1792250068",
   "duracion": "2:50",
   "marcas": [
     [
@@ -23,7 +23,7 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.52,
+      8.65,
       0,
       "Respira despacio."
     ],
@@ -33,99 +33,100 @@
       "Inspira…"
     ],
     [
-      15.87,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.91,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.99,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.87,
+      33.55,
       1,
       "Evangelio según san Mateo, capítulo 22."
     ],
     [
-      38.09,
+      37.76,
       1,
       "Le preguntan a Jesús si es lícito pagar impuestos al César."
     ],
     [
-      42.03,
+      41.7,
       1,
       "Pide una moneda, mira la imagen del emperador y responde con una frase que deja a todos sin palabras."
     ],
     [
-      50.72,
+      50.4,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      54.05,
+      53.72,
       1,
       "Dad al César lo que es del César, y a Dios lo que es de Dios."
     ],
     [
-      70.86,
+      70.53,
       2,
       "La moneda lleva la imagen del César."
     ],
     [
-      74.78,
+      74.46,
       2,
       "Tú llevas la imagen de Dios."
     ],
     [
-      77.84,
+      77.51,
       2,
       "Hoy, día de las misiones, piensa en quién necesita ver esa imagen en ti."
     ],
     [
-      87.69,
+      87.37,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      95.64,
+      95.31,
       2,
       "¿Qué parte de mi vida todavía no le he dado a Dios?"
     ],
     [
-      118.94,
+      118.61,
       2,
       "¿Dónde puedo ser hoy misionero sin salir de casa?"
     ],
     [
-      142.23,
+      141.91,
       3,
       "Señor, todo lo que soy es tuyo."
     ],
     [
-      145.06,
+      144.74,
       3,
       "Que mi vida devuelva tu imagen a quien la busque."
     ],
     [
-      151.54,
+      151.21,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      155.94,
+      155.61,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      162.53,
+      162.21,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-18-voz.mp3?v=1792250068"
 }

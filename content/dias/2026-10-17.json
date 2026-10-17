@@ -14,7 +14,7 @@
   ],
   "fin": "Espíritu Santo, pon en mis labios palabras de verdad y de paz.",
   "saint": "san-ignacio-de-antioquia",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-17.mp3?v=1792243695",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-17.mp3?v=1792250055",
   "duracion": "2:46",
   "marcas": [
     [
@@ -23,104 +23,105 @@
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.75,
+      8.65,
       0,
       "Respira despacio."
     ],
     [
-      12.42,
+      12.23,
       0,
       "Inspira…"
     ],
     [
-      16.06,
+      15.86,
       0,
       "y suelta el aire."
     ],
     [
-      20.04,
+      19.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.99,
+      23.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.87,
+      33.55,
       1,
       "Evangelio según san Lucas, capítulo 12."
     ],
     [
-      37.93,
+      37.6,
       1,
       "Jesús pide a los suyos que no se avergüencen de él."
     ],
     [
-      41.3,
+      40.97,
       1,
       "Cuando los lleven ante tribunales, no deben preocuparse: el Espíritu les dará las palabras."
     ],
     [
-      49.3,
+      48.98,
       1,
       "Escucha estas palabras de Jesús:"
     ],
     [
-      52.9,
+      52.58,
       1,
       "El Espíritu Santo os enseñará en aquel momento lo que tenéis que decir."
     ],
     [
-      69.56,
+      69.23,
       2,
       "San Ignacio de Antioquía escribió cartas valientes camino del martirio."
     ],
     [
-      75.7,
+      75.38,
       2,
       "A ti quizá te toca algo más pequeño: hablar con verdad en una conversación difícil."
     ],
     [
-      82.89,
+      82.56,
       2,
       "No estás solo."
     ],
     [
-      86.1,
+      85.78,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      93.04,
+      92.71,
       2,
       "¿Qué conversación difícil tienes pendiente?"
     ],
     [
-      115.92,
+      115.59,
       2,
       "¿Dónde necesito hoy la valentía del Espíritu?"
     ],
     [
-      138.84,
+      138.52,
       3,
       "Espíritu Santo, pon en mis labios palabras de verdad y de paz."
     ],
     [
-      146.8,
+      146.47,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      151.48,
+      151.16,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      158.51,
+      158.18,
       3,
       "Amén."
     ]
-  ]
+  ],
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-17-voz.mp3?v=1792250055"
 }

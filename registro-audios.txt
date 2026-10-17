@@ -1,8 +1,9 @@
 Voy a generar 2 audios (unos 1871 caracteres de ElevenLabs).
 2026-10-17 · Las palabras justas
-  No puedo leer el historial de ElevenLabs (error 401). Si la clave no tiene permiso de «History», actívalo. b'{"detail":{"type":"authentication_error","code":"unauthorized","message":"The API key you used is missing the permission speech_history_read to execute this operation.","status":"missing_permissions",'
-  Historial de ElevenLabs: 0 frases ya generadas que puedo reutilizar gratis.
-  Falta una voz en el historial («Busca un lugar tranquilo y ponte cómodo. <break time="1.5s" …»); salto este día para no gastar créditos.
+  Historial de ElevenLabs: 381 frases ya generadas que puedo reutilizar gratis.
+  Montado: 2:46 min, 1942 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-17.mp3
 2026-10-18 · Lo que es de Dios
-  Falta una voz en el historial («Busca un lugar tranquilo y ponte cómodo. <break time="1.5s" …»); salto este día para no gastar créditos.
-Terminado. Voces reutilizadas del historial: 0 · generadas nuevas: 0.
+  Montado: 2:50 min, 1989 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-18.mp3
+Terminado. Voces reutilizadas del historial: 12 · generadas nuevas: 0.
