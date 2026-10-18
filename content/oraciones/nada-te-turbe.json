@@ -5,5 +5,7 @@
   "min": 1,
   "k": "nada te turbe santa teresa paz confianza",
   "x": "Nada te turbe,\nnada te espante,\ntodo se pasa,\nDios no se muda;\nla paciencia\ntodo lo alcanza;\nquien a Dios tiene\nnada le falta:\nsolo Dios basta.",
-  "when": "Para memorizarla y repetirla en cualquier momento de inquietud."
+  "when": "Para memorizarla y repetirla en cualquier momento de inquietud.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/nada-te-turbe.mp3?v=1792337909",
+  "duracion": 24.3
 }

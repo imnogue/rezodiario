@@ -5,5 +5,7 @@
   "min": 1,
   "k": "viaje viajar carretera avión coche",
   "x": "Señor, emprendo este viaje contigo.\n\nCuida el camino, a quienes conducen y a quienes viajan conmigo. Que lleguemos bien y que volvamos con alegría a casa. Amén.",
-  "when": "Antes de arrancar el coche o al subir al avión."
+  "when": "Antes de arrancar el coche o al subir al avión.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-antes-de-un-viaje.mp3?v=1792337992",
+  "duracion": 22.8
 }

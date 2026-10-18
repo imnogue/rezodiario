@@ -1,90 +1,157 @@
-Voy a generar 29 audios (unos 24515 caracteres de ElevenLabs).
-2026-12-03 · Edificar sobre roca
+Rosario · SENAL
   Historial de ElevenLabs: 381 frases ya generadas que puedo reutilizar gratis.
-  Montado: 2:46 min, 1949 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-03.mp3
-2026-12-04 · ¿Creéis que puedo hacerlo?
-  Montado: 2:38 min, 1855 KB, 25 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-04.mp3
-2026-12-05 · La mies es abundante
-  Montado: 2:33 min, 1791 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-05.mp3
-2026-12-06 · Preparad el camino
-  Montado: 2:41 min, 1887 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-06.mp3
-2026-12-07 · Por el tejado
-  Montado: 2:41 min, 1888 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-07.mp3
-2026-12-08 · Llena de gracia
-  Montado: 2:46 min, 1946 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-08.mp3
-2026-12-09 · Venid a mí
-  Montado: 2:39 min, 1860 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-09.mp3
-2026-12-10 · El más pequeño
-  Montado: 2:40 min, 1874 KB, 19 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-10.mp3
-2026-12-11 · Nada nos convence
-  Montado: 2:38 min, 1854 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-11.mp3
-2026-12-12 · Elías ya ha venido
-  Montado: 2:42 min, 1896 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-12.mp3
-2026-12-13 · Testigo de la luz
-  Montado: 2:42 min, 1903 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-13.mp3
-2026-12-14 · ¿Con qué autoridad?
-  Montado: 2:41 min, 1887 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-14.mp3
-2026-12-15 · Los dos hijos
-  Montado: 2:42 min, 1897 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-15.mp3
-2026-12-16 · ¿Eres tú el que ha de venir?
-  Montado: 2:46 min, 1945 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-16.mp3
-2026-12-17 · Una familia con historia
-  Montado: 2:41 min, 1887 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-17.mp3
-2026-12-18 · José, no temas
-  Montado: 2:42 min, 1897 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-18.mp3
-2026-12-19 · Tu oración ha sido escuchada
-  Montado: 2:39 min, 1859 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-19.mp3
-2026-12-20 · Hágase
-  Montado: 2:41 min, 1883 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-20.mp3
-2026-12-21 · María se puso en camino
-  Montado: 2:38 min, 1855 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-21.mp3
-2026-12-22 · Proclama mi alma
-  Montado: 2:45 min, 1937 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-22.mp3
-2026-12-23 · Juan es su nombre
-  Montado: 2:44 min, 1921 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-23.mp3
-2026-12-24 · Nos visitará el sol que nace de lo alto
-  Montado: 2:42 min, 1896 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-24.mp3
-2026-12-25 · El Verbo se hizo carne
-  Montado: 2:40 min, 1874 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-25.mp3
-2026-12-26 · El que persevere
-  Montado: 2:38 min, 1847 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-26.mp3
-2026-12-27 · Una familia en el templo
-  Montado: 2:43 min, 1907 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-27.mp3
-2026-12-28 · Huida a Egipto
-  Montado: 2:41 min, 1889 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-28.mp3
-2026-12-29 · Ahora puedes dejar a tu siervo
-  Montado: 2:39 min, 1864 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-29.mp3
-2026-12-30 · La profetisa Ana
-  Montado: 2:34 min, 1803 KB, 19 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-30.mp3
-2026-12-31 · Gracia tras gracia
-  Montado: 2:43 min, 1914 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-31.mp3
-Terminado. Voces reutilizadas del historial: 174 · generadas nuevas: 0.
+Rosario · CREDO
+Rosario · PN
+Rosario · AM
+Rosario · GL
+Rosario · OJ
+Rosario · SALVE
+Rosario · CONTEMPLA
+Rosario · INT0
+Rosario · INT1
+Rosario · INT2
+Rosario · M-gozosos-0
+Rosario · M-gozosos-1
+Rosario · M-gozosos-2
+Rosario · M-gozosos-3
+Rosario · M-gozosos-4
+Rosario · M-dolorosos-0
+Rosario · M-dolorosos-1
+Rosario · M-dolorosos-2
+Rosario · M-dolorosos-3
+Rosario · M-dolorosos-4
+Rosario · M-gloriosos-0
+Rosario · M-gloriosos-1
+Rosario · M-gloriosos-2
+Rosario · M-gloriosos-3
+Rosario · M-gloriosos-4
+Rosario · M-luminosos-0
+Rosario · M-luminosos-1
+Rosario · M-luminosos-2
+Rosario · M-luminosos-3
+Rosario · M-luminosos-4
+Oración · Acordaos (oración de san Bernardo)
+  44 s · subido
+Oración · Alma de Cristo
+  38 s · subido
+Oración · Ángel de la guarda (para niños)
+  23 s · subido
+Oración · Bajo tu amparo
+  21 s · subido
+Oración · Bendición de la corona de Adviento
+  37 s · subido
+Oración · Bendición de la casa
+  24 s · subido
+Oración · Bendición de la mesa
+  18 s · subido
+Oración · Bendición del belén
+  29 s · subido
+Oración · El Ángelus
+  38 s · subido
+Oración · Examen del día (ignaciano)
+  32 s · subido
+Oración · Nada te turbe (santa Teresa de Jesús)
+  24 s · subido
+Oración · Oración a la Inmaculada Concepción
+  28 s · subido
+Oración · Oración a la Virgen de Guadalupe
+  27 s · subido
+Oración · Oración a san Antonio para encontrar algo perdido
+  25 s · subido
+Oración · Oración a san Expedito para causas urgentes
+  24 s · subido
+Oración · Oración a san José de Cupertino, patrón de los estudiantes
+  34 s · subido
+Oración · Oración a san Judas Tadeo para casos difíciles
+  34 s · subido
+Oración · Oración a san Martín de Porres
+  23 s · subido
+Oración · Oración a san Miguel Arcángel
+  32 s · subido
+Oración · Oración a santa Lucía por la vista
+  24 s · subido
+Oración · Oración a santa Rita para causas imposibles
+  28 s · subido
+Oración · Oración ante una decisión importante
+  26 s · subido
+Oración · Oración antes de un examen
+  39 s · subido
+Oración · Oración antes de un viaje
+  23 s · subido
+Oración · Oración antes de una entrevista de trabajo
+  26 s · subido
+Oración · Oración antes de una operación
+  27 s · subido
+Oración · Oración de acción de gracias
+  24 s · subido
+Oración · Oración de Adviento
+  26 s · subido
+Oración · Oración de Año Nuevo
+  26 s · subido
+Oración · Oración de entrega y confianza
+  26 s · subido
+Oración · Oración para terminar el año
+  32 s · subido
+Oración · Oración de la mañana
+  26 s · subido
+Oración · Oración para encender las velas de Adviento
+  43 s · subido
+Oración · Oración de Navidad
+  26 s · subido
+Oración · Oración de Nochebuena para la cena
+  34 s · subido
+Oración · Oración del peregrino del Camino de Santiago
+  32 s · subido
+Oración · Oración en la tristeza
+  26 s · subido
+Oración · Oración mientras esperas las notas
+  23 s · subido
+Oración · Oración para aprobar un examen
+  32 s · subido
+Oración · Oración para dormir en paz
+  30 s · subido
+Oración · Oración para encontrar consuelo en el duelo
+  27 s · subido
+Oración · Oración para el primer día de colegio
+  26 s · subido
+Oración · Oración para encontrar trabajo
+  29 s · subido
+Oración · Oración para estudiar con concentración
+  42 s · subido
+Oración · Oración en un momento de ansiedad
+  38 s · subido
+Oración · Oración para perdonar
+  26 s · subido
+Oración · Oración por la familia
+  26 s · subido
+Oración · Oración por los abuelos
+  26 s · subido
+Oración · Oración por los difuntos en noviembre
+  40 s · subido
+Oración · Oración por los hijos
+  26 s · subido
+Oración · Oración por los médicos y enfermeras
+  23 s · subido
+Oración · Oración por mi madre fallecida
+  31 s · subido
+Oración · Oración por mi matrimonio
+  27 s · subido
+Oración · Oración por mi negocio
+  24 s · subido
+Oración · Oración por mi padre fallecido
+  29 s · subido
+Oración · Oración por mi salud
+  26 s · subido
+Oración · Oración por un ser querido difunto
+  26 s · subido
+Oración · Oración por un enfermo de cáncer
+  31 s · subido
+Oración · Oración por un enfermo
+  33 s · subido
+Oración · Oración por una mujer embarazada
+  26 s · subido
+Oración · Rezar imaginando el Evangelio
+  28 s · subido
+Oración · Ven, Espíritu Santo
+  22 s · subido
+Terminado. Voces reutilizadas del historial: 0 · generadas nuevas: 93.

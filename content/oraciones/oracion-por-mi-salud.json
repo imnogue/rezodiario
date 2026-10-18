@@ -5,5 +5,7 @@
   "min": 1,
   "k": "mi salud curarme dolor recuperación",
   "x": "Señor, mi cuerpo está cansado y dolorido.\n\nTe pido salud, si es tu voluntad. Y mientras tanto, te pido paciencia, buen ánimo y personas que me cuiden.\n\nQue no me encierre en el dolor y sepa ofrecerlo por quienes sufren más que yo. Amén.",
-  "when": "Por la mañana al despertar o antes de una prueba médica."
+  "when": "Por la mañana al despertar o antes de una prueba médica.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-por-mi-salud.mp3?v=1792338197",
+  "duracion": 25.5
 }

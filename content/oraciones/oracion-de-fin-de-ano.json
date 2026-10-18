@@ -5,5 +5,7 @@
   "min": 2,
   "k": "fin de año nochevieja gracias año nuevo",
   "x": "Señor, se acaba el año y quiero darte gracias.\n\nPor lo bueno que he vivido, por las personas que me has regalado y por lo que he aprendido. También te entrego lo que me ha dolido y lo que no salió como esperaba.\n\nPerdona mis faltas de este año. Pongo en tus manos el que empieza: que sea un año de paz, de salud y de cercanía a ti. Amén.",
-  "when": "El 31 de diciembre, antes de las uvas o al terminar el día."
+  "when": "El 31 de diciembre, antes de las uvas o al terminar el día.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-de-fin-de-ano.mp3?v=1792338033",
+  "duracion": 31.7
 }

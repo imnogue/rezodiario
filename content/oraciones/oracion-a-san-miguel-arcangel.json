@@ -5,5 +5,7 @@
   "min": 1,
   "k": "san miguel arcángel protección mal",
   "x": "San Miguel Arcángel, defiéndenos en la lucha. Sé nuestro amparo contra la perversidad y asechanzas del demonio. Reprímale Dios, pedimos suplicantes, y tú, Príncipe de la milicia celestial, arroja al infierno con el divino poder a Satanás y a los otros espíritus malignos que andan dispersos por el mundo para la perdición de las almas. Amén.",
-  "when": "Compuesta por el papa León XIII. Se reza para pedir protección."
+  "when": "Compuesta por el papa León XIII. Se reza para pedir protección.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-a-san-miguel-arcangel.mp3?v=1792337961",
+  "duracion": 32.4
 }

@@ -5,5 +5,7 @@
   "min": 2,
   "k": "decisión discernir elegir dudas futuro cambio",
   "x": "Señor, tengo que decidir y no veo claro el camino.\n\nAyúdame a mirar con calma lo que siento y lo que pienso. Que no elija por miedo ni por prisa.\n\nDame la paz interior que me indique por dónde ir, y la valentía para dar el paso. Amén.",
-  "when": "Durante varios días antes de decidir. Fíjate en qué opción te deja más paz."
+  "when": "Durante varios días antes de decidir. Fíjate en qué opción te deja más paz.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-ante-una-decision.mp3?v=1792337980",
+  "duracion": 25.5
 }

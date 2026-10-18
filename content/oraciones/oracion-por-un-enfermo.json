@@ -5,5 +5,7 @@
   "min": 2,
   "k": "enfermo enfermedad salud hospital curación sanación",
   "x": "Señor Jesús, que pasaste por los caminos curando a los enfermos, te presento a quien hoy sufre.\n\nTú conoces su dolor, su cansancio y su miedo. Pon tu mano sobre su cuerpo y sobre su ánimo. Da sabiduría a los médicos y ternura a quienes le cuidan.\n\nSi es tu voluntad, devuélvele la salud. Y en todo momento, que sienta que no está solo. Amén.",
-  "when": "Cada día mientras dure la enfermedad, también desde lejos o junto a su cama."
+  "when": "Cada día mientras dure la enfermedad, también desde lejos o junto a su cama.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-por-un-enfermo.mp3?v=1792338219",
+  "duracion": 33.4
 }

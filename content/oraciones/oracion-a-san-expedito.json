@@ -5,5 +5,7 @@
   "min": 1,
   "k": "san expedito urgente rápido",
   "x": "San Expedito, que no dejaste para mañana tu conversión, ayúdame en esta necesidad urgente.\n\nIntercede ante Dios para que encuentre pronto una solución, y dame paciencia si la respuesta tarda. Amén.",
-  "when": "Ante un asunto urgente. Su memoria es el 19 de abril."
+  "when": "Ante un asunto urgente. Su memoria es el 19 de abril.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-a-san-expedito.mp3?v=1792337933",
+  "duracion": 23.6
 }

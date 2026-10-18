@@ -5,5 +5,7 @@
   "min": 1,
   "k": "colegio niños vuelta al cole curso nuevo",
   "x": "Jesús, hoy empieza un curso nuevo.\n\nCuida a mi hijo en este primer día. Que encuentre buenos amigos, profesores que le quieran y ganas de aprender.\n\nQue vuelva a casa contento y que sepa que tú estás con él en clase. Amén.",
-  "when": "La mañana del primer día de curso, con los niños antes de salir de casa."
+  "when": "La mañana del primer día de curso, con los niños antes de salir de casa.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-para-el-primer-dia-de-colegio.mp3?v=1792338105",
+  "duracion": 25.5
 }

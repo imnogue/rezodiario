@@ -5,5 +5,7 @@
   "min": 1,
   "k": "comida mesa bendición alimentos cena",
   "x": "Bendícenos, Señor, y bendice estos alimentos que por tu bondad vamos a recibir.\n\nDa pan a quien tiene hambre y hambre de ti a quien tiene pan. Amén.",
-  "when": "Antes de comer, en familia o solo."
+  "when": "Antes de comer, en familia o solo.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/bendicion-de-la-mesa.mp3?v=1792337881",
+  "duracion": 18.4
 }

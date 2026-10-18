@@ -5,5 +5,7 @@
   "min": 1,
   "k": "alma de cristo comunión eucaristía",
   "x": "Alma de Cristo, santifícame.\nCuerpo de Cristo, sálvame.\nSangre de Cristo, embriágame.\nAgua del costado de Cristo, lávame.\nPasión de Cristo, confórtame.\n¡Oh buen Jesús!, óyeme.\nDentro de tus llagas, escóndeme.\nNo permitas que me aparte de ti.\nDel maligno enemigo, defiéndeme.\nEn la hora de mi muerte, llámame.\nY mándame ir a ti, para que con tus santos te alabe, por los siglos de los siglos. Amén.",
-  "when": "Después de comulgar. San Ignacio de Loyola la recomendaba en sus Ejercicios."
+  "when": "Después de comulgar. San Ignacio de Loyola la recomendaba en sus Ejercicios.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/alma-de-cristo.mp3?v=1792337853",
+  "duracion": 37.7
 }

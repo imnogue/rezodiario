@@ -5,5 +5,7 @@
   "min": 2,
   "k": "difunto muerte duelo fallecido pérdida luto",
   "x": "Dale, Señor, el descanso eterno, y brille para él la luz perpetua. Descanse en paz. Amén.\n\nSeñor, me duele su ausencia. Gracias por los años compartidos y por todo lo que me dio.\n\nConsuela a quienes lo lloramos y danos la esperanza de volver a encontrarnos en tu casa.",
-  "when": "En el funeral, en el aniversario o cada vez que lo recuerdes."
+  "when": "En el funeral, en el aniversario o cada vez que lo recuerdes.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-por-un-difunto.mp3?v=1792338203",
+  "duracion": 26.2
 }

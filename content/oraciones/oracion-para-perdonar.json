@@ -5,5 +5,7 @@
   "min": 2,
   "k": "perdonar perdón rencor herida ofensa",
   "x": "Señor, me han hecho daño y todavía me duele.\n\nNo me sale perdonar. Te pido al menos querer hacerlo. Quita de mi corazón el rencor que me quita la paz.\n\nBendice a esa persona, aunque me cueste decirlo. Y sana mi herida a tu ritmo. Amén.",
-  "when": "Cuando vuelva el recuerdo de la ofensa. Puede llevar tiempo: repítela sin prisa."
+  "when": "Cuando vuelva el recuerdo de la ofensa. Puede llevar tiempo: repítela sin prisa.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-para-perdonar.mp3?v=1792338134",
+  "duracion": 25.5
 }

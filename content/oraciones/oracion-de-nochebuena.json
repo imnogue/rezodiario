@@ -5,5 +5,7 @@
   "min": 2,
   "k": "nochebuena cena navidad familia mesa",
   "x": "Señor, esta noche nos reunimos para celebrar que naces entre nosotros.\n\nGracias por esta mesa, por la familia y por los amigos. Te pedimos por los que esta noche están solos, enfermos o lejos de casa, y por los que ya no están con nosotros.\n\nQue en nuestra mesa haya siempre sitio para ti. Bendice estos alimentos y bendice nuestra casa. Amén.",
-  "when": "Antes de la cena de Nochebuena, la persona de más edad o el más pequeño de la casa."
+  "when": "Antes de la cena de Nochebuena, la persona de más edad o el más pequeño de la casa.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-de-nochebuena.mp3?v=1792338062",
+  "duracion": 34.1
 }

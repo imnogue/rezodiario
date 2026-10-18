@@ -5,5 +5,7 @@
   "min": 1,
   "k": "entrevista trabajo selección",
   "x": "Señor, voy a una entrevista y estoy nervioso.\n\nDame calma para presentarme como soy, claridad para explicar lo que sé hacer y honradez en cada respuesta. Si este trabajo es para mí, abre la puerta. Amén.",
-  "when": "Justo antes de entrar en la entrevista."
+  "when": "Justo antes de entrar en la entrevista.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-antes-de-una-entrevista.mp3?v=1792337997",
+  "duracion": 25.5
 }

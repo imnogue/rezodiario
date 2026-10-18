@@ -5,5 +5,7 @@
   "min": 1,
   "k": "adviento espera ven señor",
   "x": "Ven, Señor Jesús.\n\nVen a mi casa, a mis prisas y a mis cansancios. Ven a los que están solos, a los enfermos y a los que no esperan nada.\n\nQue este Adviento prepare en mí un lugar sencillo, como el pesebre de Belén, donde puedas nacer. Amén.",
-  "when": "Cada día de Adviento, por la mañana o ante la corona."
+  "when": "Cada día de Adviento, por la mañana o ante la corona.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-de-adviento.mp3?v=1792338014",
+  "duracion": 25.5
 }

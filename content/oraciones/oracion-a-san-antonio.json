@@ -5,5 +5,7 @@
   "min": 1,
   "k": "san antonio perdido encontrar objetos",
   "x": "San Antonio bendito, tú que ayudas a encontrar lo perdido, ayúdame a encontrar lo que busco.\n\nY sobre todo, ayúdame a no perder nunca lo más importante: la fe, la paz y el amor de los míos. Amén.",
-  "when": "Cuando has perdido algo. Su fiesta es el 13 de junio."
+  "when": "Cuando has perdido algo. Su fiesta es el 13 de junio.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-a-san-antonio.mp3?v=1792337928",
+  "duracion": 24.6
 }

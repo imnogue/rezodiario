@@ -5,5 +5,7 @@
   "min": 2,
   "k": "hijos niños adolescentes educar padres",
   "x": "Padre, tú quieres a mis hijos más que yo.\n\nProtégelos en sus caminos, en sus amistades y en sus decisiones. Dame paciencia para acompañarlos y sabiduría para saber cuándo hablar y cuándo callar.\n\nQue descubran que tú les quieres tal como son. Amén.",
-  "when": "Cada noche, cuando los hijos ya duermen o cuando salen de casa."
+  "when": "Cada noche, cuando los hijos ya duermen o cuando salen de casa.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-por-los-hijos.mp3?v=1792338160",
+  "duracion": 25.5
 }

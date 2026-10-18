@@ -5,5 +5,7 @@
   "min": 2,
   "k": "operación cirugía quirófano intervención miedo",
   "x": "Padre bueno, entro en el quirófano y pongo mi vida en tus manos.\n\nGuía las manos de los cirujanos y del equipo médico. Que actúen con precisión y serenidad.\n\nCalma mi miedo y el de mi familia. Que al despertar sienta tu paz, y que la recuperación sea pronta. Amén.",
-  "when": "La noche anterior y antes de entrar al quirófano. La familia puede rezarla durante la operación."
+  "when": "La noche anterior y antes de entrar al quirófano. La familia puede rezarla durante la operación.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-antes-de-una-operacion.mp3?v=1792338003",
+  "duracion": 26.7
 }

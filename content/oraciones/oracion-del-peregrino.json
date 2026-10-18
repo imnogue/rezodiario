@@ -5,5 +5,7 @@
   "min": 2,
   "k": "camino santiago peregrino etapa",
   "x": "Señor, que llamaste a Abrahán a ponerse en camino, acompaña hoy mis pasos.\n\nSé mi compañero en la marcha, mi sombra en el calor y mi descanso en el cansancio.\n\nQue en cada persona que encuentre descubra tu rostro, y que llegue a la meta con el corazón más libre. Santiago apóstol, ruega por nosotros. Amén.",
-  "when": "Al empezar cada etapa del Camino."
+  "when": "Al empezar cada etapa del Camino.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-del-peregrino.mp3?v=1792338068",
+  "duracion": 31.9
 }

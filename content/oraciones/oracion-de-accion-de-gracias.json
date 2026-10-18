@@ -5,5 +5,7 @@
   "min": 1,
   "k": "gracias gratitud alegría éxito celebrar logro",
   "x": "Gracias, Señor, por este regalo.\n\nNo quiero que la alegría pase de largo sin decirte que viene de ti. Gracias por las personas que me han ayudado a llegar hasta aquí.\n\nQue sepa compartir lo que recibo. Amén.",
-  "when": "Después de una buena noticia, un aprobado o un logro."
+  "when": "Después de una buena noticia, un aprobado o un logro.",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-de-accion-de-gracias.mp3?v=1792338009",
+  "duracion": 24.0
 }
