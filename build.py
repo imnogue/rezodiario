@@ -311,7 +311,7 @@ _ord = datetime.date.fromisoformat(now).toordinal()
 VDAY_T, VDAY = VALL[(_ord * 37) % len(VALL)]
 def vacts(ref, x, path):
     wa = "https://wa.me/?text=" + E(("«" + x + "» " + ref + " · " + canon(path)).replace(" ", "%20"))
-    return f'<div class="vacts"><button class="vbtn" data-vspeak type="button">Escuchar</button><button class="vbtn gold" data-vimg type="button">Crear imagen</button><a class="vbtn" href="{wa}" target="_blank" rel="noopener">WhatsApp</a><button class="vbtn" data-vcopy type="button">Copiar</button></div>'
+    return f'<div class="vacts"><button class="vbtn gold" data-vimg type="button">Crear imagen</button><a class="vbtn" href="{wa}" target="_blank" rel="noopener">WhatsApp</a><button class="vbtn" data-vcopy type="button">Copiar</button></div>'
 def vday_card(r):
     path = VDAY_T["slug"] + ".html"
     return (f'<article class="vday reveal" data-ref="{E(VDAY["ref"])}" data-x="{E(VDAY["x"])}" data-tag="Versículo del día">'
@@ -324,7 +324,7 @@ def mood_picker(r, h="h2"):
             f'<p style="color:var(--muted);margin:8px 0 0">Toca cómo te sientes y te damos un versículo de la Biblia para este momento.</p>'
             f'<div class="moods" role="group" aria-label="Cómo te sientes">{b}</div></div>'
             '<article class="vnow" id="vNow" aria-live="polite" hidden><span class="eyebrow" id="vNowTag"></span><blockquote id="vNowX"></blockquote><cite id="vNowR"></cite><p id="vNowE"></p>'
-            '<div class="vacts"><button class="vbtn" id="vNowAgain" type="button">Otro versículo</button><button class="vbtn" data-vspeak type="button">Escuchar</button><button class="vbtn gold" data-vimg type="button">Crear imagen</button><a class="vbtn" id="vNowWa" target="_blank" rel="noopener">WhatsApp</a></div>'
+            '<div class="vacts"><button class="vbtn" id="vNowAgain" type="button">Otro versículo</button><button class="vbtn gold" data-vimg type="button">Crear imagen</button><a class="vbtn" id="vNowWa" target="_blank" rel="noopener">WhatsApp</a></div>'
             '<a class="vmore" id="vNowMore" href="#">Ver los 20 versículos →</a></article></div>')
 def vtiles(r, skip=""):
     return '<div class="vtiles">' + "".join(f'<a class="vtile reveal" href="{r}{t["slug"]}.html"><i></i><b>{t["t"]}</b><small>{len(t["versos"])} versículos</small></a>' for t in VTOP if t["slug"] != skip) + '</div>'
@@ -400,6 +400,19 @@ for k, c in CATS.items():
     m = phero(r, cr, f'{len(ps)} oraciones', c["h1"], c["intro"]) + sec(f'<div class="grid">{"".join(card(p, r) for p in ps)}</div>') + sec(head2("Preguntas frecuentes", "Dudas sobre estas oraciones") + faq_html(FAQ_CAT[k]), "sec band") + sec(head2("Otros temas", "Sigue explorando") + tiles(r))
     page(path, f'{c["h1"]} | Rezo Diario', c["intro"][:158], m, "prayers", [crumbs_ld(cr), faq_ld(FAQ_CAT[k]), {"@context": "https://schema.org", "@type": "CollectionPage", "name": c["h1"], "url": canon(path), "inLanguage": "es"}])
 
+def pplayer(p, r):
+    """Reproductor de una oración con audio: anterior · play/pausa · siguiente, barra y tiempo."""
+    if not p.get("audio"): return ""
+    lst = [q for q in PRAYERS if q.get("audio")]; i = lst.index(p)
+    pv, nx = lst[i - 1], lst[(i + 1) % len(lst)]
+    ic = lambda d: f'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{d}"/></svg>'
+    return (f'<div class="pplayer" id="pplayer" data-src="{E(p["audio"])}" data-dur="{p.get("duracion", 0)}">'
+            f'<a class="pp-skip" href="{q_href(pv)}" data-next="{pv["slug"]}" aria-label="Oración anterior: {E(pv["t"])}" title="{E(pv["t"])}">{ic("M6 5h2v14H6zM20 5v14L9 12z")}</a>'
+            '<button class="pp-play" id="ppPlay" type="button" aria-label="Escuchar la oración">' + ic("M7 4.5v15l12.5-7.5z") + '</button>'
+            f'<a class="pp-skip" href="{q_href(nx)}" data-next="{nx["slug"]}" aria-label="Oración siguiente: {E(nx["t"])}" title="{E(nx["t"])}">{ic("M16 5h2v14h-2zM4 5v14l11-7z")}</a>'
+            '<div class="pp-bar"><input type="range" id="ppSeek" min="0" max="1000" value="0" step="1" aria-label="Avanzar o retroceder en la oración">'
+            f'<div class="pp-time"><span id="ppCur">0:00</span><span id="ppDur">{int(p.get("duracion", 0)) // 60}:{int(p.get("duracion", 0)) % 60:02d}</span></div></div></div>')
+def q_href(q): return f'{q["slug"]}.html'
 def desc_for(p):
     first = re.split(r"(?<=[.!?])\s", p["x"].replace("\n", " "))[0]
     d = f'{p["t"]}: «{first}» Texto completo para rezar y escuchar.'
@@ -414,7 +427,7 @@ for p in PRAYERS:
 <section class="sec"><div class="wrap art">
   <div style="min-width:0">
     <article class="pray reveal"><p class="pray-text" id="prayText">{E(p["x"])}</p>
-      <div class="pray-acts"><button class="btn btn-accent sm" id="btnSpeak">Escuchar</button><button class="btn btn-ghost sm" id="btnCopy">Copiar oración</button><button class="btn btn-ghost sm" id="btnFav" aria-pressed="false">Guardar</button><button class="btn btn-ghost sm" id="btnAmen" type="button">Amén</button><a class="btn btn-ghost sm" href="{wa}" target="_blank" rel="noopener">Compartir por WhatsApp</a></div>
+      {pplayer(p, r)}<div class="pray-acts">{"" if p.get("audio") else '<button class="btn btn-accent sm" id="btnSpeak">Escuchar</button>'}<button class="btn btn-ghost sm" id="btnCopy">Copiar oración</button><button class="btn btn-ghost sm" id="btnFav" aria-pressed="false">Guardar</button><button class="btn btn-ghost sm" id="btnAmen" type="button">Amén</button><a class="btn btn-ghost sm" href="{wa}" target="_blank" rel="noopener">Compartir por WhatsApp</a></div>
     </article>
     <div class="prose">
       <h2>Cuándo rezarla</h2><p>{E(p["when"])}</p>
@@ -497,7 +510,7 @@ for x in SAINTS:
     path = f'santos/{x["slug"]}.html'; cr = [("Inicio", "index.html"), ("Santos", "santos/index.html"), (x["name"], path)]; pr = PBY.get(x["prayer"])
     faq = [(f'¿Cuándo se celebra {x["name"]}?', f'Su fiesta o memoria es el {x["date"]}.'), (f'¿De qué es patrón {x["name"]}?', f'Se le invoca como patrón de {x["patron"]}.')]
     m = phero(r, cr, f'{x["date"]} · {E(x["short"])}', E(x["name"]), E(x["bio"][0])) + f'''<section class="sec"><div class="wrap art"><div style="min-width:0">
-  <article class="pray reveal"><span class="eyebrow">Oración</span><p class="pray-text" id="prayText" style="margin-top:12px">{E(x["oracion"])}</p><div class="pray-acts"><button class="btn btn-accent sm" id="btnSpeak">Escuchar</button><button class="btn btn-ghost sm" id="btnCopy">Copiar oración</button></div></article>
+  <article class="pray reveal"><span class="eyebrow">Oración</span><p class="pray-text" id="prayText" style="margin-top:12px">{E(x["oracion"])}</p><div class="pray-acts"><button class="btn btn-ghost sm" id="btnCopy">Copiar oración</button></div></article>
   <div class="prose"><h2>Su vida</h2>{"".join(f"<p>{E(b)}</p>" for b in x["bio"])}<h2>Patrón de</h2><p>{E(x["patron"][0].upper() + x["patron"][1:])}.</p><h2>Preguntas frecuentes</h2>{faq_html(faq)}</div></div>
   <aside class="side">{f'<div class="box"><h3>Oración relacionada</h3><ul class="links"><li><a href="../oraciones/{pr["slug"]}.html">{E(pr["t"])}<small>{pr["min"]} min</small></a></li></ul></div>' if pr else ""}
    <div class="box candle-cta"><h3>Enciende una vela</h3><p>Pide su intercesión y deja tu intención en el muro.</p><a class="btn btn-flame sm" href="../muro-de-intenciones.html">Encender una vela</a></div>
@@ -537,7 +550,7 @@ vc = phero(r, [("Inicio", "index.html"), ("Vía Crucis", "via-crucis.html")], "1
 <section class="sec"><div class="wrap" style="max-width:900px">
   <div class="vc-path" id="vcPath" aria-label="Estaciones"></div>
   <article class="vc-card" id="vc" tabindex="0" aria-live="polite"><div class="vc-num" id="vcNum">I</div><h2 id="vcT">{E(VIA[0][0])}</h2><p class="vc-ant">{E(VIAJ["antifona"])}</p><p class="pray-text" id="vcX" style="margin-top:16px">{E(VIA[0][1])}</p><p class="vc-ant">Padre Nuestro, Ave María y Gloria.</p>
-   <div class="ros-nav"><button class="btn btn-ghost sm" id="vcPrev">Anterior</button><button class="btn btn-ghost sm" id="vcSpeak">Escuchar</button><button class="btn btn-accent sm" id="vcNext" style="margin-left:auto">Siguiente estación</button></div></article>
+   <div class="ros-nav"><button class="btn btn-ghost sm" id="vcPrev">Anterior</button><button class="btn btn-accent sm" id="vcNext" style="margin-left:auto">Siguiente estación</button></div></article>
   <div class="prose" style="margin-top:40px"><h2>Las catorce estaciones</h2><ol class="qs">{"".join(f"<li>{E(v[0])}</li>" for v in VIA)}</ol><h2>Preguntas frecuentes</h2>{faq_html(via_faq)}</div>
 </div></section>'''
 page("via-crucis.html", "Vía Crucis: las 14 estaciones para rezar | Rezo Diario", "Reza el Vía Crucis guiado con las 14 estaciones, una breve meditación en cada una y audio. Para los viernes de Cuaresma, Viernes Santo o cualquier día.", vc, "", [crumbs_ld([("Inicio", "index.html"), ("Vía Crucis", "via-crucis.html")]), faq_ld(via_faq)])
@@ -557,7 +570,7 @@ for n in NOVENAS:
   <article class="pray"><span class="eyebrow">Oración inicial</span><p class="pray-text" style="margin:10px 0 22px;font-size:18px">{E(n["open"])}</p>
    <span class="eyebrow" id="novK">Día 1</span><h2 id="novT" style="margin:6px 0 10px">{E(n["days"][0]["t"])}</h2><p class="pray-text" id="novX">{E(n["days"][0]["x"])}</p>
    <span class="eyebrow" style="display:block;margin-top:22px">Oración final</span><p class="pray-text" style="margin-top:10px;font-size:18px">{E(n["close"])}</p>
-   <div class="pray-acts"><button class="btn btn-accent sm" id="novDone" aria-pressed="false">Marcar este día como rezado</button><button class="btn btn-ghost sm" id="novSpeak">Escuchar</button></div></article>
+   <div class="pray-acts"><button class="btn btn-accent sm" id="novDone" aria-pressed="false">Marcar este día como rezado</button></div></article>
   <div class="prose"><h2>Los nueve días</h2><ol class="qs">{"".join(f"<li><strong>{E(d['t'])}.</strong> {E(d['x'])}</li>" for d in n["days"])}</ol><h2>Preguntas frecuentes</h2>{faq_html(faq)}</div></div>
   <aside class="side"><div class="box candle-cta"><h3>Enciende una vela</h3><p>Acompaña tu novena con una vela en el muro de intenciones.</p><a class="btn btn-flame sm" href="../muro-de-intenciones.html{"#difuntos" if "difuntos" in n["slug"] else ""}">Encender una vela</a></div>
    <div class="box"><h3>Otras novenas</h3><ul class="links">{"".join(f'<li><a href="{o["slug"]}.html">{E(o["t"])}<small>{fdate(o["start"])}</small></a></li>' for o in NOVENAS if o is not n)}</ul></div></aside></div></section>'''
@@ -610,7 +623,7 @@ for t in VTOP:
     prbtn = f'<a class="btn btn-accent sm" href="oraciones/{pr["slug"]}.html">Rezar: {E(pr["t"])}</a> ' if pr else ""
     rel_html = "".join(f'<li><a href="{x["slug"]}.html">{E(x["t"])}<small>{len(x["versos"])}</small></a></li>' for x in rel)
     m = phero(r, cr, f'{len(t["versos"])} versículos', t["h1"], E(t["intro"]),
-      '<div class="hero-cta" style="margin-top:18px"><button class="btn btn-gold" id="vListen" type="button">' + ICON["play"] + '<span>Escuchar los versículos</span></button><a class="btn btn-ghost" href="versiculos.html#ahora">Necesito un versículo ahora</a></div>') + \
+      '<div class="hero-cta" style="margin-top:18px"><a class="btn btn-gold" href="versiculos.html#ahora">Necesito un versículo ahora</a></div>') + \
       ('<section class="sec"><div class="wrap art"><div style="min-width:0">'
        f'<div class="vlist">{cards}</div>'
        f'<div class="box vpray reveal"><span class="eyebrow">Oración</span><h2>Reza con estos versículos</h2><p class="pray-text">{E(t["oracion"])}</p><div class="hero-cta">{prbtn}<a class="btn btn-ghost sm" href="muro-de-intenciones.html">Encender una vela</a></div></div>'
@@ -688,7 +701,7 @@ css = solo_raton(css) + "\n*{-webkit-tap-highlight-color:transparent}\n"
 open(OUT + "/assets/site.css", "w", encoding="utf-8").write(css)
 shutil.copy(ROOT + "/assets/site.js", OUT + "/assets/site.js")
 data = {"week": [{k: w[k] for k in ("date", "wd", "n", "mes", "color", "lit", "ref", "refL", "title", "set", "ex", "sum", "refl", "qs", "fin", "audio", "duracion")} | ({"marcas": w["marcas"]} if w.get("marcas") else {}) | ({"audioVoz": w["audioVoz"]} if w.get("audioVoz") else {}) for w in DAYS], "LITC": LITC, "SETS": SETS, **O, "via": VIA, "VIA_ANT": VIAJ["antifona"],
-        "prayers": [{"slug": p["slug"], "t": p["t"], "cat": p["cat"], "min": p["min"]} for p in PRAYERS], "CATS": {k: {"name": c["name"], "color": c["color"]} for k, c in CATS.items()},
+        "prayers": [{"slug": p["slug"], "t": p["t"], "cat": p["cat"], "min": p["min"], **({"a": p["audio"]} if p.get("audio") else {})} for p in PRAYERS], "VOZROS": (json.load(open(os.path.join(C, "voces-rosario.json"), encoding="utf-8")) if os.path.exists(os.path.join(C, "voces-rosario.json")) else {}), "CATS": {k: {"name": c["name"], "color": c["color"]} for k, c in CATS.items()},
         "novenas": [{"slug": n["slug"], "t": n["t"], "start": n["start"], "end": n["end"], "open": n["open"], "close": n["close"], "days": [[d["t"], d["x"]] for d in n["days"]]} for n in NOVENAS]}
 open(OUT + "/assets/oraciones.js", "w", encoding="utf-8").write("window.RDO=" + json.dumps({p["slug"]: p["x"] for p in PRAYERS}, ensure_ascii=False) + ";")
 open(OUT + "/assets/versos.js", "w", encoding="utf-8").write("window.RDV=" + json.dumps({t["slug"]: {"t": t["t"], "v": [[v["ref"], v["x"], v["e"]] for v in t["versos"]]} for t in VTOP}, ensure_ascii=False) + ";")

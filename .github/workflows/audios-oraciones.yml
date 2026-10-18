@@ -1,0 +1,48 @@
+# Audios de las oraciones y del Santo Rosario con ElevenLabs (se lanza a mano).
+# Usa los mismos secretos que «Generar audios con ElevenLabs».
+name: Audios de oraciones y Rosario
+on:
+  workflow_dispatch:
+    inputs:
+      solo:
+        description: "Qué generar"
+        type: choice
+        options: [todo, oraciones, rosario]
+        default: todo
+      sobrescribir:
+        description: "Volver a generar los que ya tienen audio"
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: generar-audios
+  cancel-in-progress: false
+jobs:
+  audios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v5
+      - name: Instalar ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Grabar, montar y subir
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.solo }}" != "todo" ]; then ARGS="--solo ${{ github.event.inputs.solo }}"; fi
+          if [ "${{ github.event.inputs.sobrescribir }}" = "true" ]; then ARGS="$ARGS --sobrescribir"; fi
+          set -o pipefail
+          python3 -u scripts/audios_extra.py $ARGS 2>&1 | tee registro-audios.txt
+      - name: Guardar los enlaces de los audios
+        if: ${{ always() }}
+        run: |
+          git config user.name "Rezo Diario (audios)"
+          git config user.email "audios@rezodiario.com"
+          git add registro-audios.txt content/oraciones content/voces-rosario.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "No hay audios nuevos que guardar."; exit 0; fi
+          git commit -m "Audios de oraciones y Rosario"
+          git pull --rebase --autostash && git push

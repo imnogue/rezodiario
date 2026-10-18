@@ -13,7 +13,7 @@ def legal(AJ):
     nif = AJ.get("nif", "").strip()
     dom = AJ.get("domicilio", "").strip()
     mail = AJ.get("emailContacto", "").strip()
-    ident = "".join(f"<li><strong>{a}:</strong> {b}</li>" for a, b in (("Titular", t), ("NIF", nif), ("Domicilio", dom), ("Correo electrónico", f'<a href="mailto:{mail}">{mail}</a>' if mail else ""), ("Sitio web", "rezodiario.com")) if b)
+    ident = "".join(f"<li><strong>{a}:</strong> {b}</li>" for a, b in (("Titular", t or "Rezo Diario"), ("NIF", nif), ("Domicilio", dom), ("Correo electrónico", f'<a href="mailto:{mail}">{mail}</a>' if mail else ""), ("Sitio web", "rezodiario.com")) if b)
 
     aviso = f"""
 <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del responsable de este sitio web.</p>
@@ -107,7 +107,7 @@ def quienes(AJ, n_oraciones):
 <p>No hace falta registrarse, no hay anuncios y no vendemos datos. Puedes rezar en el autobús, en la cocina o antes de dormir.</p>
 
 <h2>Quién está detrás</h2>
-<p>Rezo Diario es un proyecto independiente y sin ánimo de lucro impulsado por <strong>{AJ.get("titular", "Adrián Nogueira")}</strong>, un laico español que quería tener a mano, en un solo sitio, la oración de cada día. No es una web oficial de la Iglesia ni de ninguna diócesis o congregación, pero quiere caminar siempre en comunión con ella: seguimos el calendario litúrgico de la Iglesia católica en España y la Biblia de la Conferencia Episcopal Española.</p>
+<p>Rezo Diario es un proyecto independiente y sin ánimo de lucro, nacido en España de la mano de laicos que queríamos tener a mano, en un solo sitio, la oración de cada día. No es una web oficial de la Iglesia ni de ninguna diócesis o congregación, pero quiere caminar siempre en comunión con ella: seguimos el calendario litúrgico de la Iglesia católica en España y la Biblia de la Conferencia Episcopal Española.</p>
 
 <h2>Cómo preparamos los contenidos</h2>
 <ul>
