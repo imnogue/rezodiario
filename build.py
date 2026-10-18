@@ -289,10 +289,21 @@ def novena_now():
     return NOVENAS[0], "Para rezar en cualquier momento"
 
 def camino(r, compact=False):
+    """Tu camino de oración: siete velas (una por día), mensaje que anima y gestos sencillos. Sin puntos ni trofeos."""
+    extra = "" if compact else (
+        '<div class="camino-int" data-camino-int>'
+        '<span class="camino-int-v" data-camino-int-v hidden></span>'
+        '<button type="button" class="camino-link" data-camino-int-btn>Añadir por quién rezo esta semana</button>'
+        '<form class="camino-int-f" data-camino-int-f hidden><label class="sr" for="caminoInt">Por quién rezas esta semana</label><input id="caminoInt" maxlength="60" placeholder="Por mi madre, por mi amiga Laura…" autocomplete="off"><button class="btn btn-ghost sm" type="submit">Guardar</button></form></div>'
+        '<div class="camino-foot"><span data-camino-stats></span><button type="button" class="camino-link" data-camino-ics>Recordármelo cada día</button></div>')
     return (f'<div class="camino{" compact" if compact else ""}" data-camino>'
-            '<div class="camino-t"><span class="eyebrow">Tu camino de oración</span><p class="camino-n" data-camino-n>Cada día que reces quedará marcado aquí.</p></div>'
-            '<ol class="camino-dots" data-camino-dots aria-label="Tus últimos siete días"></ol>'
-            f'<a class="camino-cta" data-camino-cta href="{r}index.html#player">Rezar hoy</a></div>')
+            '<div class="camino-head"><div class="camino-t"><span class="eyebrow">Tu camino de oración</span>'
+            '<p class="camino-n" data-camino-n>Cada día que reces, se enciende una vela.</p><p class="camino-q" data-camino-q></p></div>'
+            '<ol class="camino-velas" data-camino-dots aria-label="Tus últimos siete días"></ol></div>'
+            '<div class="camino-acts" data-camino-acts>'
+            f'<a class="btn btn-accent sm" data-camino-cta href="{r}index.html#player">Rezar hoy · 5 min</a>'
+            '<button type="button" class="btn btn-ghost sm" data-camino-done>Ya he rezado hoy</button></div>'
+            + extra + '</div>')
 def recorrido(r, cand="otra"):
     items = [(f"{r}index.html#momento", "¿Qué llevas hoy en el corazón?", "Cuéntanoslo y te proponemos una oración."),
              (f"{r}muro-de-intenciones.html#{cand}", "Enciende una vela", "Deja tu intención y otras personas rezarán contigo."),
@@ -429,6 +440,7 @@ for p in PRAYERS:
       {pplayer(p, r)}<div class="pray-acts">{"" if p.get("audio") else '<button class="btn btn-accent sm" id="btnSpeak">Escuchar</button>'}<button class="btn btn-ghost sm" id="btnCopy">Copiar oración</button><button class="btn btn-ghost sm" id="btnFav" aria-pressed="false">Guardar</button><button class="btn btn-ghost sm" id="btnAmen" type="button">Amén</button><a class="btn btn-ghost sm" href="{wa}" target="_blank" rel="noopener">Compartir por WhatsApp</a></div>
     </article>
     <div class="prose">
+      {"<h2>Sobre esta oración</h2>" + "".join(f"<p>{E(x)}</p>" for x in p["intro"].split(chr(10)+chr(10))) if p.get("intro") else ""}
       <h2>Cuándo rezarla</h2><p>{E(p["when"])}</p>
       <h2>Cómo rezarla</h2><p>Busca un momento de calma, respira despacio y lee la oración sin prisa, en voz baja o en silencio. Si una frase te toca, quédate en ella. Puedes pulsar «Escuchar» para que la web la lea por ti, o guardarla en favoritos para tenerla a mano.</p>
       <p>Si rezas por otra persona, díselo: saber que alguien reza por nosotros es un gran consuelo. También puedes <a href="{r}muro-de-intenciones.html#{CANDLE_HASH[p["cat"]]}">encender una vela por esta intención</a> para que otros recen contigo.</p>

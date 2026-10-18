@@ -375,3 +375,41 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media(max-width:480px){.pplayer{gap:4px;padding:10px 12px}.pp-play{width:46px;height:46px}.pp-skip{width:32px;height:32px}}
 /* Biblioteca en móvil: buscador a todo el ancho arriba y temas deslizables debajo */
 @media(max-width:700px){.tools{flex-direction:column;align-items:stretch;gap:12px}.tools .find{order:-1;flex:none;width:100%;min-width:0}.tools .chips{width:100%;flex:none}}
+
+/* ---------- Tu camino de oración (velas) ---------- */
+.camino{display:flex;flex-direction:column;gap:16px;padding:22px 24px;margin:0 0 44px;border:1px solid var(--line);border-radius:26px;background:radial-gradient(ellipse 70% 120% at 100% 0%,color-mix(in srgb,var(--gold) 10%,transparent),transparent 60%),var(--surface);position:relative;overflow:hidden}
+.camino-head{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:space-between}
+.camino-t{flex:1 1 260px;min-width:0}
+.camino-n{margin:6px 0 0;font-family:var(--f-display);font-size:clamp(21px,2.4vw,26px);line-height:1.2}
+.camino-q{margin:6px 0 0;font-family:var(--f-read);font-style:italic;color:var(--muted);font-size:15.5px}
+.camino-velas{display:flex;gap:10px;list-style:none;margin:0;padding:0}
+.camino-velas li{display:flex;flex-direction:column;align-items:center;gap:4px}
+.camino-velas span{font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.04em}
+.camino-velas li.today span{color:var(--ink)}
+.camino-velas svg .cera{fill:color-mix(in srgb,var(--ink) 10%,var(--surface));stroke:color-mix(in srgb,var(--ink) 18%,transparent);stroke-width:1}
+.camino-velas svg .mecha{stroke:color-mix(in srgb,var(--ink) 45%,transparent);stroke-width:1.4;stroke-linecap:round}
+.camino-velas svg .fl{opacity:0;transform-origin:14px 16px;transform:scale(.4)}
+.camino-velas svg .fl path:first-child{fill:#F6B44B}.camino-velas svg .fl-in{fill:#FFF1C9}
+.camino-velas li.on svg .cera{fill:#F3E6CC;stroke:#D9BE8A}
+.camino-velas li.on svg .fl{opacity:1;transform:none;animation:llama 2.6s ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(246,180,75,.7))}
+.camino-velas li.on:nth-child(2n) svg .fl{animation-delay:-.9s}.camino-velas li.on:nth-child(3n) svg .fl{animation-delay:-1.7s}
+.camino-velas li.today:not(.on) svg .cera{stroke:var(--gold);stroke-dasharray:3 2.5;fill:transparent}
+.camino-velas li.lit svg .fl{animation:prende .9s cubic-bezier(.2,.9,.3,1.3) both,llama 2.6s ease-in-out .9s infinite}
+@keyframes llama{0%,100%{transform:scale(1) rotate(0)}30%{transform:scale(1.04,.97) rotate(-2deg)}60%{transform:scale(.97,1.05) rotate(2deg)}}
+@keyframes prende{from{opacity:0;transform:scale(.2) translateY(6px)}to{opacity:1;transform:none}}
+.camino-acts{display:flex;gap:8px;flex-wrap:wrap}
+.camino.hecho .camino-acts{display:none}
+.camino-int{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:14.5px}
+.camino-int-v{color:var(--ink)}.camino-int-v b{font-weight:700;color:var(--accent)}
+.camino-int-f{display:flex;gap:8px;flex:1 1 100%}
+.camino-int-f input{flex:1;min-width:0;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:500 15px var(--f-ui)}
+.camino-link{background:none;border:0;padding:0;font-weight:800;font-size:14px;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.camino-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.camino.compact{margin:22px 0 0;padding:16px 18px;background:transparent}
+.camino.compact .camino-n{font-size:18px}
+.camino.compact .camino-velas svg{width:20px;height:31px}
+@media(max-width:560px){.camino{padding:18px 16px;gap:14px}.camino-velas{width:100%;justify-content:space-between;gap:4px}.camino-velas svg{width:24px;height:37px}}
+@media(prefers-reduced-motion:reduce){.camino-velas svg .fl{animation:none!important}}
+.camino{align-items:stretch}
+.camino-velas{align-items:flex-end}
+.camino-velas li svg{display:block}

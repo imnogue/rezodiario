@@ -78,7 +78,7 @@ def legal(AJ):
 <thead><tr><th>Nombre</th><th>Tipo</th><th>Para qué</th><th>Duración</th></tr></thead>
 <tbody>
 <tr><td>rd-tema, rd-theme, rd-lang, rd-langnote-*, rd-musica, rd-voz</td><td>Almacenamiento local · preferencias</td><td>Recordar el modo claro u oscuro, el idioma, la música de fondo y si quieres la voz guía.</td><td>Hasta que lo borres</td></tr>
-<tr><td>rd-rezado, rd-favs, rd-nov-*</td><td>Almacenamiento local · funcional</td><td>Tu camino de oración, tus oraciones guardadas y el avance de novenas y retos.</td><td>Hasta que lo borres</td></tr>
+<tr><td>rd-rezado, rd-intencion, rd-favs, rd-nov-*</td><td>Almacenamiento local · funcional</td><td>Tu camino de oración, tus oraciones guardadas y el avance de novenas y retos.</td><td>Hasta que lo borres</td></tr>
 <tr><td>rd-uid, rd-mycandles, rd-myflags, rd-myprays, rd-myprays-seen, rd-velas-local, rd-rezos-local</td><td>Almacenamiento local · funcional y de seguridad</td><td>Identificador anónimo para saber qué velas y oraciones son tuyas, evitar avisos repetidos y limitar abusos.</td><td>Hasta que lo borres</td></tr>
 <tr><td>rd-auth</td><td>Almacenamiento local · técnico</td><td>Mantener abierta tu sesión si creas una cuenta.</td><td>Hasta que cierres sesión</td></tr>
 <tr><td>Caché de la aplicación (service worker)</td><td>Técnico</td><td>Que la web cargue rápido y funcione sin conexión.</td><td>Se renueva sola</td></tr>
