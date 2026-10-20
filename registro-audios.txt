@@ -1,206 +1,78 @@
-Voy a generar 76 audios (unos 66856 caracteres de ElevenLabs).
-2026-10-17 · Las palabras justas
-  Historial de ElevenLabs: 518 frases ya generadas que puedo reutilizar gratis.
-  Montado: 2:04 min, 1450 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-17.mp3
+Voy a generar 25 audios (unos 22439 caracteres de ElevenLabs).
 2026-10-18 · Lo que es de Dios
-  Falta una voz en el historial («Evangelio según san Mateo, capítulo 22. <break time="1.5s" /…»); salto este día para no gastar créditos.
+  Historial de ElevenLabs: 518 frases ya generadas que puedo reutilizar gratis.
+  Montado: 2:07 min, 1492 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-18.mp3
 2026-10-19 · Rico ante Dios
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 12. <break time="1.5s" /…»); salto este día para no gastar créditos.
+  Montado: 2:07 min, 1487 KB, 23 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-19.mp3
 2026-10-20 · Con las lámparas encendidas
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 12. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-10-21 · A quien mucho se le dio
-  Montado: 2:00 min, 1408 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-21.mp3
-2026-10-22 · Fuego en la tierra
-  Montado: 2:04 min, 1455 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-22.mp3
+  Montado: 2:03 min, 1438 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-20.mp3
 2026-10-23 · Los signos de los tiempos
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 12. <break time="1.5s" /…»); salto este día para no gastar créditos.
+  Montado: 2:11 min, 1535 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-23.mp3
 2026-10-24 · La higuera sin fruto
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 13. <break time="1.5s" /…»); salto este día para no gastar créditos.
+  Montado: 2:05 min, 1464 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-24.mp3
 2026-10-25 · El mandamiento principal
-  Falta una voz en el historial («Evangelio según san Mateo, capítulo 22. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-10-26 · Mujer, quedas libre
-  Montado: 2:00 min, 1411 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-26.mp3
+  Montado: 2:07 min, 1492 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-25.mp3
 2026-10-27 · Un grano de mostaza
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 13. <break time="1.5s" /…»); salto este día para no gastar créditos.
+  Montado: 1:59 min, 1396 KB, 19 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-27.mp3
 2026-10-28 · Elegidos tras una noche de oración
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 6. <break time="1.5s" />…»); salto este día para no gastar créditos.
+  Montado: 2:10 min, 1528 KB, 23 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-28.mp3
 2026-10-29 · Como la gallina a sus pollitos
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 13. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-10-30 · Curar en sábado
-  Montado: 1:56 min, 1358 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-30.mp3
+  Montado: 2:01 min, 1423 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-29.mp3
 2026-10-31 · El último puesto
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 14. <break time="1.5s" /…»); salto este día para no gastar créditos.
+  Montado: 1:58 min, 1384 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-31.mp3
 2026-11-01 · Dichosos
-  Falta una voz en el historial («Evangelio según san Mateo, capítulo 5. <break time="1.5s" />…»); salto este día para no gastar créditos.
-2026-11-02 · No perderé a ninguno
-  Montado: 2:05 min, 1460 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-02.mp3
+  Montado: 2:13 min, 1554 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-01.mp3
 2026-11-03 · Sal a los caminos
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 14. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-11-04 · Calcular el coste
-  Montado: 2:04 min, 1448 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-04.mp3
-2026-11-05 · La oveja perdida
-  Montado: 2:04 min, 1455 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-05.mp3
-2026-11-06 · La astucia del administrador
-  Montado: 2:08 min, 1499 KB, 24 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-06.mp3
-2026-11-07 · Dios o el dinero
-  Montado: 1:59 min, 1390 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-07.mp3
-2026-11-08 · Las diez muchachas
-  Montado: 2:06 min, 1474 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-08.mp3
-2026-11-09 · El templo de su cuerpo
-  Montado: 1:59 min, 1392 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-09.mp3
-2026-11-10 · Siervos sin pretensiones
-  Montado: 1:57 min, 1373 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-10.mp3
+  Montado: 2:05 min, 1464 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-03.mp3
 2026-11-11 · El que volvió a dar gracias
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 17. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-11-12 · Está en medio de vosotros
-  Montado: 2:01 min, 1415 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-12.mp3
+  Montado: 2:01 min, 1423 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-11.mp3
 2026-11-13 · Como en tiempos de Noé
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 17. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-11-14 · Orar sin desanimarse
-  Montado: 1:59 min, 1392 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-14.mp3
-2026-11-15 · Los talentos
-  Montado: 2:02 min, 1428 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-15.mp3
-2026-11-16 · Señor, que vea
-  Montado: 1:59 min, 1393 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-16.mp3
-2026-11-17 · Zaqueo, baja enseguida
-  Montado: 2:01 min, 1416 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-17.mp3
+  Montado: 1:60 min, 1402 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-13.mp3
 2026-11-18 · Las diez onzas
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 19. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-11-19 · Jesús llora
-  Montado: 1:60 min, 1404 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-19.mp3
-2026-11-20 · Casa de oración
-  Montado: 1:54 min, 1338 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-20.mp3
-2026-11-21 · Dios de vivos
-  Montado: 2:05 min, 1463 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-21.mp3
-2026-11-22 · Conmigo lo hicisteis
-  Montado: 2:07 min, 1492 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-22.mp3
+  Montado: 2:06 min, 1474 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-18.mp3
 2026-11-23 · Las dos monedas de la viuda
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 21. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-11-24 · No tengáis pánico
-  Montado: 2:01 min, 1420 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-24.mp3
-2026-11-25 · Ni un cabello
-  Montado: 1:57 min, 1374 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-25.mp3
-2026-11-26 · Levantad la cabeza
-  Montado: 1:56 min, 1361 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-26.mp3
-2026-11-27 · Mis palabras no pasarán
-  Montado: 1:56 min, 1362 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-27.mp3
-2026-11-28 · Estad despiertos
-  Montado: 2:01 min, 1418 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-28.mp3
+  Montado: 1:54 min, 1341 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-23.mp3
 2026-11-29 · Velad
-  Falta una voz en el historial («Evangelio según san Marcos, capítulo 13. <break time="1.5s" …»); salto este día para no gastar créditos.
-2026-11-30 · Pescadores de hombres
-  Montado: 1:58 min, 1378 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-30.mp3
+  Montado: 2:02 min, 1428 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-29.mp3
 2026-12-01 · Revelado a los pequeños
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 10. <break time="1.5s" /…»); salto este día para no gastar créditos.
+  Montado: 1:60 min, 1406 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-01.mp3
 2026-12-02 · Siete panes
-  Falta una voz en el historial («Evangelio según san Mateo, capítulo 15. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-12-03 · Edificar sobre roca
-  Montado: 2:04 min, 1457 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-03.mp3
+  Montado: 1:58 min, 1384 KB, 22 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-02.mp3
 2026-12-04 · ¿Creéis que puedo hacerlo?
-  Falta una voz en el historial («Evangelio según san Mateo, capítulo 9. <break time="1.5s" />…»); salto este día para no gastar créditos.
+  Montado: 1:56 min, 1363 KB, 25 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-04.mp3
 2026-12-05 · La mies es abundante
-  Falta una voz en el historial («Evangelio según san Mateo, capítulo 9. <break time="1.5s" />…»); salto este día para no gastar créditos.
-2026-12-06 · Preparad el camino
-  Montado: 1:59 min, 1395 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-06.mp3
-2026-12-07 · Por el tejado
-  Montado: 1:59 min, 1396 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-07.mp3
-2026-12-08 · Llena de gracia
-  Montado: 2:04 min, 1453 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-08.mp3
-2026-12-09 · Venid a mí
-  Montado: 1:57 min, 1367 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-09.mp3
-2026-12-10 · El más pequeño
-  Montado: 1:58 min, 1382 KB, 19 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-10.mp3
+  Montado: 1:51 min, 1299 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-05.mp3
 2026-12-11 · Nada nos convence
-  Falta una voz en el historial («Evangelio según san Mateo, capítulo 11. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-12-12 · Elías ya ha venido
-  Montado: 1:60 min, 1404 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-12.mp3
-2026-12-13 · Testigo de la luz
-  Montado: 2:00 min, 1411 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-13.mp3
-2026-12-14 · ¿Con qué autoridad?
-  Montado: 1:59 min, 1395 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-14.mp3
-2026-12-15 · Los dos hijos
-  Montado: 1:60 min, 1404 KB, 23 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-15.mp3
-2026-12-16 · ¿Eres tú el que ha de venir?
-  Montado: 2:04 min, 1453 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-16.mp3
-2026-12-17 · Una familia con historia
-  Montado: 1:59 min, 1395 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-17.mp3
-2026-12-18 · José, no temas
-  Montado: 1:60 min, 1404 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-18.mp3
-2026-12-19 · Tu oración ha sido escuchada
-  Montado: 1:57 min, 1366 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-19.mp3
-2026-12-20 · Hágase
-  Montado: 1:59 min, 1390 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-20.mp3
-2026-12-21 · María se puso en camino
-  Montado: 1:56 min, 1362 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-21.mp3
-2026-12-22 · Proclama mi alma
-  Montado: 2:03 min, 1445 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-22.mp3
-2026-12-23 · Juan es su nombre
-  Montado: 2:02 min, 1429 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-23.mp3
-2026-12-24 · Nos visitará el sol que nace de lo alto
-  Montado: 1:60 min, 1404 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-24.mp3
-2026-12-25 · El Verbo se hizo carne
-  Montado: 1:58 min, 1382 KB, 21 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-25.mp3
+  Montado: 1:57 min, 1372 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-11.mp3
 2026-12-26 · El que persevere
-  Falta una voz en el historial («Evangelio según san Mateo, capítulo 10. <break time="1.5s" /…»); salto este día para no gastar créditos.
-2026-12-27 · Una familia en el templo
-  Montado: 2:01 min, 1415 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-27.mp3
+  Montado: 1:56 min, 1357 KB, 20 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-26.mp3
 2026-12-28 · Huida a Egipto
-  Falta una voz en el historial («Evangelio según san Mateo, capítulo 2. <break time="1.5s" />…»); salto este día para no gastar créditos.
-2026-12-29 · Ahora puedes dejar a tu siervo
-  Montado: 1:57 min, 1371 KB, 20 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-29.mp3
+  Montado: 1:59 min, 1397 KB, 21 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-28.mp3
 2026-12-30 · La profetisa Ana
-  Falta una voz en el historial («Evangelio según san Lucas, capítulo 2. <break time="1.5s" />…»); salto este día para no gastar créditos.
-2026-12-31 · Gracia tras gracia
-  Montado: 2:01 min, 1421 KB, 22 frases sincronizadas
-  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-31.mp3
-Terminado. Voces reutilizadas del historial: 331 · generadas nuevas: 0.
+  Montado: 1:54 min, 1337 KB, 19 frases sincronizadas
+  Subido y enlazado: https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-30.mp3
+Terminado. Voces reutilizadas del historial: 125 · generadas nuevas: 25.

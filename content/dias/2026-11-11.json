@@ -14,119 +14,114 @@
   ],
   "fin": "Gracias, Señor, por todo lo que me has dado, lo que veo y lo que no veo.",
   "saint": "martin-de-tours",
-  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-11.mp3?v=1792250512",
-  "duracion": "2:43",
+  "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-11.mp3?v=1792491802",
+  "duracion": "2:01",
   "marcas": [
     [
-      4.0,
+      2.0,
       0,
       "Busca un lugar tranquilo y ponte cómodo."
     ],
     [
-      8.65,
+      6.65,
       0,
       "Respira despacio."
     ],
     [
-      12.23,
+      10.23,
       0,
       "Inspira…"
     ],
     [
-      15.86,
+      13.86,
       0,
       "y suelta el aire."
     ],
     [
-      19.81,
+      17.81,
       0,
       "Estás en la presencia de Dios."
     ],
     [
-      23.71,
+      21.71,
       0,
       "Él te mira con cariño."
     ],
     [
-      33.55,
+      27.55,
       1,
       "Evangelio según san Lucas, capítulo 17."
     ],
     [
-      37.69,
+      32.42,
       1,
       "Diez leprosos piden a Jesús que tenga compasión."
     ],
     [
-      40.96,
+      35.5,
       1,
       "Todos quedan curados por el camino, pero solo uno, un samaritano, vuelve para darle gracias."
     ],
     [
-      49.23,
+      43.32,
       1,
-      "Escucha estas palabras de Jesús:"
+      "Escucha estas palabras del Evangelio:"
     ],
     [
-      52.9,
+      46.9,
       1,
-      "¿No han quedado limpios los diez?"
+      "¿No han quedado limpios los diez?; los otros nueve, ¿dónde están?"
     ],
     [
-      55.17,
-      1,
-      "Los otros nueve, ¿dónde están?"
-    ],
-    [
-      69.23,
+      55.23,
       2,
       "Pedimos mucho y agradecemos poco."
     ],
     [
-      72.13,
+      58.13,
       2,
       "Hoy puedes ser el que vuelve."
     ],
     [
-      74.67,
+      60.67,
       2,
       "San Martín partió su capa con un pobre: la gratitud se convierte en generosidad."
     ],
     [
-      83.69,
+      69.69,
       2,
       "Ahora, en silencio, piensa en estas preguntas."
     ],
     [
-      90.67,
+      75.67,
       2,
       "¿Qué he recibido últimamente sin dar gracias?"
     ],
     [
-      113.64,
+      86.64,
       2,
       "¿A quién podría dar las gracias hoy?"
     ],
     [
-      135.96,
+      96.96,
       3,
       "Gracias, Señor, por todo lo que me has dado, lo que veo y lo que no veo."
     ],
     [
-      144.63,
+      105.63,
       3,
       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
     ],
     [
-      149.15,
+      110.15,
       3,
       "Como era en el principio, ahora y siempre, por los siglos de los siglos."
     ],
     [
-      155.93,
+      116.93,
       3,
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-11-voz.mp3?v=1792250512"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-11-voz.mp3?v=1792491802"
 }
