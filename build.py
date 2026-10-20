@@ -73,7 +73,7 @@ ORG = {"@type": "Organization", "name": "Rezo Diario", "url": SITE, "logo": SITE
 
 def header(r, active):
     nav = "".join(f'<a href="{r}{h}"{" class=\"on\" aria-current=\"page\"" if k == active else ""} data-i18n="{k}">{t}</a>' for h, k, t in NAV)
-    return f'''<header class="top">
+    return f'''<header class="top" data-nosnippet>
   <div class="wrap top-in">
     <a class="brand" href="{r}index.html" aria-label="Rezo Diario, inicio">{ICON["logo"]}<span>rezo<b>diario</b></span></a>
     <nav class="nav" aria-label="Principal">{nav}</nav>
@@ -94,14 +94,14 @@ def drawer(r):
               ("Oraciones por tema", [(f"oraciones/tema-{k}.html", c["name"]) for k, c in CATS.items()]),
               ("Rezo Diario", [("santos/index.html", "Santoral"), ("evangelio/index.html", "Archivo del Evangelio"), ("widget.html", "Widget para parroquias"), ("donar.html", "Donar"), ("sobre-nosotros.html", "Quiénes somos")])]
     out = "".join(f'<h4>{g}</h4>' + "".join(f'<a href="{r}{h}"><i></i>{t}</a>' for h, t in items) for g, items in groups)
-    return f'<div class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Menú"><div class="drawer-bg" data-close></div><nav class="drawer-p"><button class="icon-btn" data-close aria-label="Cerrar menú" style="margin-left:auto;display:grid">✕</button>{out}</nav></div>'
+    return f'<div class="drawer" id="drawer" data-nosnippet hidden role="dialog" aria-modal="true" aria-label="Menú"><div class="drawer-bg" data-close></div><nav class="drawer-p"><button class="icon-btn" data-close aria-label="Cerrar menú" style="margin-left:auto;display:grid">✕</button>{out}</nav></div>'
 
 def tabbar(r, active):
     items = [("index.html", "today", "Hoy"), ("oraciones/index.html", "prayers", "Oraciones"), ("rosario.html", "rosary", "Rosario"), ("muro-de-intenciones.html", "candles", "Velas")]
     a = "".join(f'<a href="{r}{h}"{" class=\"on\"" if k == active else ""}>{TAB_ICONS[k]}<span data-i18n="{k}">{t}</span></a>' for h, k, t in items)
-    return f'<nav class="tabbar" aria-label="Accesos rápidos">{a}<a href="#" data-drawer>{TAB_ICONS["more"]}<span data-i18n="more">Más</span></a></nav>'
+    return f'<nav class="tabbar" data-nosnippet aria-label="Accesos rápidos">{a}<a href="#" data-drawer>{TAB_ICONS["more"]}<span data-i18n="more">Más</span></a></nav>'
 
-ACCOUNT = '''<div class="drawer" id="account" hidden role="dialog" aria-modal="true" aria-labelledby="accT"><div class="drawer-bg" data-close></div><div class="drawer-p">
+ACCOUNT = '''<div class="drawer" id="account" data-nosnippet hidden role="dialog" aria-modal="true" aria-labelledby="accT"><div class="drawer-bg" data-close></div><div class="drawer-p">
  <button class="icon-btn" data-close aria-label="Cerrar" style="margin-left:auto;display:grid">✕</button>
  <h2 id="accT" style="font-size:30px">Tu cuenta</h2>
  <div id="accOut"><p style="color:var(--muted)">Crea tu cuenta gratis para guardar tu racha, tus oraciones favoritas, tus novenas y tus velas en todos tus dispositivos.</p>
@@ -123,7 +123,7 @@ def footer(r):
     col = lambda title, items: f'<div><h4>{title}</h4><ul>' + "".join(f'<li><a href="{h if h.startswith("http") else r + h}"{" target=\"_blank\" rel=\"noopener\"" if h.startswith("http") else ""}>{t}</a></li>' for h, t in items) + '</ul></div>'
     social = [(AJ.get(k), n) for k, n in (("whatsappCanal", "Canal de WhatsApp"), ("spotify", "Spotify"), ("applePodcasts", "Apple Podcasts"), ("ivoox", "iVoox"), ("youtube", "YouTube"), ("instagram", "Instagram")) if AJ.get(k)]
     social += [("podcast.xml", "Pódcast (RSS)"), ("widget.html", "Widget para parroquias")]
-    return f'''<footer class="foot">
+    return f'''<footer class="foot" data-nosnippet>
   <div class="wrap foot-in">
     <div class="foot-brand">
       <a class="brand" href="{r}index.html">{ICON["logo"]}<span>rezo<b>diario</b></span></a>
@@ -149,9 +149,10 @@ def crumbs_html(r, items):
 def faq_ld(qs): return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qs]}
 def faq_html(qs): return '<div class="faq">' + "".join(f'<details{" open" if i == 0 else ""}><summary>{E(q)}</summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(qs)) + '</div>'
 
-def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="website", mini=False, robots="index, follow, max-image-preview:large", js=()):
+def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="website", mini=False, robots="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1", js=()):
     depth = path.count("/"); r = "../" * depth
     cfg = {"supabaseUrl": AJ.get("supabaseUrl", ""), "supabaseAnonKey": AJ.get("supabaseAnonKey", ""), "today": TODAY}
+    if len(title) > 62 and title.endswith(" | Rezo Diario"): title = title[:-len(" | Rezo Diario")]
     head = f'''<title>{E(title)}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="{E(desc)}">
@@ -162,7 +163,7 @@ def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="web
 <meta property="og:type" content="{og_type}"><meta property="og:site_name" content="Rezo Diario"><meta property="og:locale" content="es_ES">
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{canon(path)}"><meta property="og:image" content="{SITE}og-rezodiario.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="{r}favicon.ico?v=3" sizes="any"><link rel="icon" href="{r}icon.svg?v=3" type="image/svg+xml"><link rel="icon" href="{r}favicon-32.png?v=3" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="{r}apple-touch-icon.png?v=3"><link rel="manifest" href="{r}manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Rezo Diario (pódcast)" href="{SITE}podcast.xml">
+<link rel="icon" href="{r}favicon.ico?v=4" sizes="48x48"><link rel="icon" href="{r}icon.svg?v=4" type="image/svg+xml"><link rel="icon" href="{r}favicon-96.png?v=4" type="image/png" sizes="96x96"><link rel="icon" href="{r}favicon-48.png?v=4" type="image/png" sizes="48x48"><link rel="icon" href="{r}icon-192.png?v=4" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="{r}apple-touch-icon.png?v=4"><link rel="manifest" href="{r}manifest.webmanifest">
 <link rel="preload" href="{r}fuentes/manrope.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="{r}fuentes/marcellus.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="{r}assets/site.css?v={VER}">
 <script>window.RD_CONFIG={json.dumps(cfg)}</script>
@@ -391,7 +392,7 @@ home_main = f'''<section class="hero" aria-labelledby="h1">
 {donate_section()}'''
 page("index.html", "Rezo Diario · Oración diaria, Evangelio de hoy, Rosario y velas",
  f"Reza cada día con Rezo Diario: audio con el Evangelio de hoy, Santo Rosario guiado, muro de velas por tus intenciones y {len(PRAYERS)} oraciones para estudios, salud, familia y trabajo.",
- home_main, "today", [{"@context": "https://schema.org", "@type": "WebSite", "url": SITE, "name": "Rezo Diario", "inLanguage": "es", "publisher": ORG, "potentialAction": {"@type": "SearchAction", "target": SITE + "oraciones/index.html?q={search_term_string}", "query-input": "required name=search_term_string"}},
+ home_main, "today", [{"@context": "https://schema.org", "@type": "WebSite", "url": SITE, "name": "Rezo Diario", "alternateName": ["RezoDiario", "rezodiario.com"], "inLanguage": "es", "publisher": ORG, "potentialAction": {"@type": "SearchAction", "target": SITE + "oraciones/index.html?q={search_term_string}", "query-input": "required name=search_term_string"}},
  {"@context": "https://schema.org", **ORG}, faq_ld(home_faq)], mini=True, js=("versos.js",))
 
 # ================= BIBLIOTECA =================
@@ -427,8 +428,14 @@ def pplayer(p, r):
 def q_href(q): return f'{q["slug"]}.html'
 def desc_for(p):
     first = re.split(r"(?<=[.!?])\s", p["x"].replace("\n", " "))[0]
-    d = f'{p["t"]}: «{first}» Texto completo para rezar y escuchar.'
-    return d if len(d) <= 160 else (d[:150].rsplit(" ", 1)[0] + "…»")
+    if len(first) < 30 or re.match(r"^\d", first):
+        intro1 = re.split(r"(?<=[.!?])\s", (p.get("intro") or "").replace("\n", " "))[0]
+        d = f'{intro1} Texto completo para rezar y escuchar.' if intro1 else f'{p["t"]}: «{first}» Texto completo para rezar y escuchar.'
+    else: d = f'{p["t"]}: «{first}» Texto completo para rezar y escuchar.'
+    if len(d) < 120: d += " Con audio, cuándo rezarla y cómo."
+    if len(d) <= 160: return d
+    c = d[:154].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+    return c + ("»" if c.count("«") > c.count("»") else "")
 EXAM_RX = re.compile(r"perd[oó]n|perdona|pecad|convi[eé]rt|conversi|misericordia|arrepent|pródigo|publicano", re.I)
 EXAM_SLUGS = {"oracion-de-la-noche": ("Antes de dormir, mira tu día", "El examen de conciencia te ayuda a repasar el día con calma y a pedir perdón sin miedo."),
               "examen-del-dia": ("¿Quieres ir un paso más allá?", "Si hace tiempo que no te confiesas, el examen de conciencia te ayuda a prepararlo con sencillez."),
@@ -512,7 +519,7 @@ def gospel_main(r, w, kind):
 def gld(w, path): return {"@context": "https://schema.org", "@type": "PodcastEpisode", "name": f'{w["title"]} · Rezo del {w["n"]} de {w["mes"]} de {w["date"][:4]}', "datePublished": w["date"], "inLanguage": "es", "description": w["sum"], "url": canon(path), "partOfSeries": {"@type": "PodcastSeries", "name": "Rezo Diario", "url": SITE}, **({"associatedMedia": {"@type": "MediaObject", "contentUrl": w["audio"] if w["audio"].startswith("http") else SITE + w["audio"].lstrip("/")}} if w.get("audio") else {})}
 for w in DAYS:
     m, cr = gospel_main("../", w, "dia"); path = f'evangelio/{w["date"]}.html'
-    page(path, f'Evangelio del {w["n"]} de {w["mes"]} de {w["date"][:4]} ({w["ref"]}): {w["title"]} | Rezo Diario', f'Evangelio del {nice(w)}, {w["refL"]}: «{w["ex"]}» Reflexión y audio para rezar.'[:160], m, "gospel", [crumbs_ld(cr), gld(w, path)], body_attrs=f' data-day="{w["date"]}"', mini=True, og_type="article")
+    page(path, f'Evangelio del {w["n"]} de {w["mes"]} de {w["date"][:4]} ({w["ref"]}) y reflexión', f'Evangelio del {nice(w)}, {w["refL"]}: «{w["ex"]}» Reflexión y audio para rezar.'[:160], m, "gospel", [crumbs_ld(cr), gld(w, path)], body_attrs=f' data-day="{w["date"]}"', mini=True, og_type="article")
 m, cr = gospel_main("", TW, "hoy")
 page("evangelio-de-hoy.html", f'Evangelio de hoy, {nice(TW)} ({TW["ref"]}) | Rezo Diario', f'Evangelio de hoy {TW["n"]} de {TW["mes"]}, {TW["refL"]}: «{TW["ex"]}» Comentario, preguntas y audio para rezar.'[:160], m, "gospel", [crumbs_ld(cr), gld(TW, "evangelio-de-hoy.html")], body_attrs=f' data-day="{TODAY}"', mini=True)
 m, cr = gospel_main("", TOMORROW, "manana")
@@ -520,7 +527,7 @@ page("evangelio-de-manana.html", f'Evangelio de mañana, {nice(TOMORROW)} ({TOMO
 months = {}
 for w in DAYS: months.setdefault(w["date"][:7], []).append(w)
 arch = "".join(f'<h2 style="margin-top:34px">{MES[int(k[5:]) - 1].capitalize()} de {k[:4]}</h2><ul class="links" style="columns:2 300px;column-gap:40px;display:block">' + "".join(f'<li style="break-inside:avoid"><a href="{w["date"]}.html">{w["wd"]} {w["n"]}: {E(w["title"])}<small>{w["ref"]}</small></a></li>' for w in v) + '</ul>' for k, v in months.items())
-page("evangelio/index.html", "Archivo del Evangelio del día | Rezo Diario", "Todos los Evangelios del día con su comentario, preguntas para rezar y audio, ordenados por meses.",
+page("evangelio/index.html", "Archivo del Evangelio del día | Rezo Diario", "Archivo del Evangelio del día: todos los Evangelios con su comentario, preguntas para rezar y audio guiado, ordenados por meses y días.",
  phero("../", [("Inicio", "index.html"), ("Evangelio", "evangelio/index.html")], "Archivo", "El Evangelio de cada día", "Vuelve a cualquier día: cada Evangelio con su comentario, sus preguntas y su audio.") + sec(f'<div class="prose" style="max-width:none">{arch}</div>'), "gospel", [crumbs_ld([("Inicio", "index.html"), ("Evangelio", "evangelio/index.html")])])
 # ================= CALENDARIO LITÚRGICO =================
 def es_fiesta(w): return bool(re.search(r"Solemnidad|Fiesta|Domingo|Natividad|Navidad|Todos los Santos|Inmaculada|Cristo, Rey", w["lit"]))
@@ -638,6 +645,13 @@ if _sueltos:
     cal += f'<div class="cal-m"><div class="cal-mh"><h2>Otros santos del año</h2></div><div class="pagegrid">' + "".join(saint_link(r, x) for m in _sueltos for x in bym[m]) + '</div></div>'
 page("santos/index.html", "Santoral católico: vida y oración de cada santo | Rezo Diario", "Santoral con la vida breve y la oración de cada santo: san Judas Tadeo, santa Rita, san Expedito, la Inmaculada, la Virgen de Guadalupe y el santo de cada día.",
  phero(r, [("Inicio", "index.html"), ("Santos", "santos/index.html")], "Santoral", "Santoral: la vida y la oración de cada santo", "Empieza por el <a href=\"../santo-de-hoy.html\" style=\"color:var(--gold)\">santo de hoy</a> o busca por meses. Toca un día para leer la vida del santo y rezar su oración.") + sec(cal), "saints", [crumbs_ld([("Inicio", "index.html"), ("Santos", "santos/index.html")])])
+def saint_desc(x):
+    sh = x["short"][0].lower() + x["short"][1:]
+    nm = x["name"] if sh.split(" ")[0] in x["name"].lower() else f'{x["name"]}, {sh}'
+    d = f'{nm} ({x["date"]}): su vida, por qué es patrón de {x["patron"]}, qué nos enseña hoy y una oración para pedir su intercesión.'
+    if len(d) > 160: d = f'{nm} ({x["date"]}): su vida, qué nos enseña hoy y una oración para pedir su intercesión.'
+    if len(d) > 160: d = d[:157].rsplit(" ", 1)[0] + "…"
+    return d
 for x in SAINTS:
     path = f'santos/{x["slug"]}.html'; cr = [("Inicio", "index.html"), ("Santos", "santos/index.html"), (x["name"], path)]; pr = PBY.get(x["prayer"])
     faq = [(f'¿Cuándo se celebra {x["name"]}?', f'Su fiesta o memoria es el {x["date"]}.'), (f'¿De qué es patrón {x["name"]}?', f'Se le invoca como patrón de {x["patron"]}.')]
@@ -647,7 +661,7 @@ for x in SAINTS:
   <aside class="side">{f'<div class="box"><h3>Oración relacionada</h3><ul class="links"><li><a href="../oraciones/{pr["slug"]}.html">{E(pr["t"])}<small>{pr["min"]} min</small></a></li></ul></div>' if pr else ""}
    <div class="box candle-cta"><h3>Enciende una vela</h3><p>Pide su intercesión y deja tu intención en el muro.</p><a class="btn btn-flame sm" href="../muro-de-intenciones.html">Encender una vela</a></div>
    <div class="box"><h3>Otros santos</h3><ul class="links">{"".join([f'<li><a href="{o["slug"]}.html">{E(o["name"])}<small>{o["date"]}</small></a></li>' for o in SAINTS if o is not x and o["md"] > x["md"]][:6])}</ul></div></aside></div></section>'''
-    page(path, f'{x["name"]}: vida y oración ({x["date"]}) | Rezo Diario', f'{x["name"]}, {x["short"][0].lower() + x["short"][1:]}. Se celebra el {x["date"]}. Su vida en breve y una oración para pedir su intercesión.'[:160], m, "saints",
+    page(path, f'{x["name"]}: vida y oración ({x["date"]}) | Rezo Diario', saint_desc(x), m, "saints",
      [crumbs_ld(cr), faq_ld(faq), {"@context": "https://schema.org", "@type": "Article", "headline": f'{x["name"]}: vida y oración', "inLanguage": "es", "author": ORG, "publisher": ORG, "datePublished": "2026-10-17", "dateModified": TODAY, "mainEntityOfPage": canon(path), "about": {"@type": "Person", "name": x["name"]}}], og_type="article")
 
 # ================= ROSARIO =================
@@ -905,7 +919,7 @@ open(OUT + "/sw.js", "w").write("const C='rd-v2';const PRE=['/','/assets/site.cs
 open(OUT + "/robots.txt", "w").write(f"User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: {SITE}sitemap.xml\n")
 daily = ("index.html", "evangelio-de-hoy.html", "evangelio-de-manana.html", "santo-de-hoy.html", "rosario.html", "muro-de-intenciones.html", "versiculos.html")
 idx = [p for p, h, _, _ in pages if "noindex" not in h]
-open(OUT + "/sitemap.xml", "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f'  <url><loc>{canon(p)}</loc><lastmod>{TODAY}</lastmod><changefreq>{"daily" if p in daily else "monthly"}</changefreq><priority>{"1.0" if p == "index.html" else "0.9" if p in daily else "0.7"}</priority></url>\n' for p in idx) + '</urlset>\n')
+open(OUT + "/sitemap.xml", "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f'  <url><loc>{canon(p)}</loc>{f"<lastmod>{TODAY}</lastmod>" if p in daily else ""}<changefreq>{"daily" if p in daily else "monthly"}</changefreq><priority>{"1.0" if p == "index.html" else "0.9" if p in daily else "0.7"}</priority></url>\n' for p in idx) + '</urlset>\n')
 
 # ================= GUIONES ELEVENLABS =================
 def guion(w):
