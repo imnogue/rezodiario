@@ -299,6 +299,11 @@ if($("#askForm")){
  const preview=t=>{const one=String(t||"").replace(/\s+/g," ").split(/(?<=[.;:!?])\s/).slice(0,2).join(" ");return one.length>220?one.slice(0,210).replace(/\s\S*$/,"")+"…":one};
  const muro=(cat,txt)=>`${ROOT}muro-de-intenciones${X}${txt?"?i="+encodeURIComponent(txt.slice(0,160)):""}#${cat}`;
  function verseFor(slug){const t=window.RDV&&RDV[slug];if(!t||!t.v.length)return null;const d=new Date();const i=(d.getFullYear()*372+d.getMonth()*31+d.getDate())%t.v.length;return{slug,t:t.t,ref:t.v[i][0],x:t.v[i][1]}}
+ const log=A;const bot=(html,cls="")=>{const d=document.createElement("div");d.className="msg bot "+cls;d.innerHTML=`<span class="msg-av" aria-hidden="true"></span><div class="msg-b">${html}</div>`;log.appendChild(d);scrollLog();return d};
+ let anchor=null;
+ const me=t=>{const d=document.createElement("div");d.className="msg me";d.innerHTML=`<div class="msg-b">${esc(t)}</div>`;log.appendChild(d);anchor=d;scrollLog()};
+ function scrollLog(){requestAnimationFrame(()=>{log.scrollTop=anchor?Math.max(0,anchor.offsetTop-log.offsetTop-12):log.scrollHeight})}
+ let hau=null;
  async function answer(text,fromChip){
   const its=fromChip?[KI[fromChip]]:classify(text);const main=its[0];
   const crisis=main&&main.k==="crisis";
@@ -306,25 +311,25 @@ if($("#askForm")){
   const first=byS(slugs[0]),others=slugs.slice(1,3).map(byS);
   const line=crisis?"Gracias por contarlo. Lo que sientes importa, y no tienes que pasarlo solo.":main?main.l:"Gracias por confiarlo. Sea lo que sea, puedes ponerlo en manos de Dios con estas palabras.";
   const cat=main?main.c:"otra";const v=!crisis&&main&&main.v?verseFor(main.v):null;
-  const said=fromChip?"":`<p class="heart-said"><span>Has escrito</span>«${esc(text)}»</p>`;
-  A.innerHTML=`${said}<div class="heart-wait" aria-hidden="true"><i></i><i></i><i></i></div>`;
-  const texts=await Promise.all([loadPrayers(),new Promise(r=>setTimeout(r,650))]).then(x=>x[0]);
+  me(text);const ch=$(".chat");if(ch){const r=ch.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)ch.scrollIntoView({behavior:"smooth",block:innerWidth<900?"start":"center"})}const wait=bot(`<div class="heart-wait" aria-label="Escribiendo"><i></i><i></i><i></i></div>`,"is-wait");
+  const texts=await Promise.all([loadPrayers(),new Promise(r=>setTimeout(r,750))]).then(x=>x[0]);wait.remove();
   const url=p=>`${ROOT}oraciones/${p.slug}${X}`;
-  A.innerHTML=said+(crisis?`<div class="heart-help"><strong>Si estás pensando en hacerte daño, habla ahora con alguien.</strong> Llama al <a href="tel:024">024</a> (gratuito, a cualquier hora, España) o al <a href="tel:112">112</a> si es una emergencia. También puedes hablar con un sacerdote o con alguien de confianza hoy mismo.</div>`:"")+
-   `<article class="heart-card"><span class="eyebrow">Una oración para este momento</span><p class="heart-line">${esc(line)}</p>
-    <h3>${esc(first.t)}</h3>${texts[first.slug]?`<p class="heart-pre">${esc(preview(texts[first.slug]))}</p>`:""}
-    <div class="heart-acts"><button class="btn btn-accent sm" type="button" data-hlisten>Escuchar oración</button><a class="btn btn-ghost sm" href="${url(first)}">Leer oración</a><a class="btn btn-ghost sm" href="${muro(cat)}">Encender una vela</a><a class="btn btn-ghost sm" href="${muro(cat,fromChip?"":text)}">Dejar una intención</a></div>
-    ${v?`<div class="heart-verse"><span class="eyebrow">Un versículo</span><blockquote>«${esc(v.x)}»</blockquote><cite>${esc(v.ref)}</cite><a href="${ROOT}${v.slug}${X}">Más ${esc(v.t.toLowerCase())}</a></div>`:""}
-    ${others.length?`<div class="heart-more"><span>También puede acompañarte</span>${others.map(p=>`<a href="${url(p)}">${esc(p.t)}<small>${p.min} min</small></a>`).join("")}</div>`:""}
-   </article><p class="heart-next">¿Quieres contar algo más? Puedes volver a escribir arriba.</p>`;
-  const lb=A.querySelector("[data-hlisten]");let hau=null;lb.onclick=()=>{if(first.a){if(!hau){hau=new Audio(first.a);hau.onended=()=>lb.textContent="Escuchar oración"}if(hau.paused){stopSpeech();hau.play();lb.textContent="Pausar"}else{hau.pause();lb.textContent="Escuchar oración"}return}if(sp.on){stopSpeech();lb.textContent="Escuchar oración";return}const t=texts[first.slug];if(!t){location.href=url(first);return}
-   if(speakText(first.t+". "+t,()=>{lb.textContent="Escuchar oración"}))lb.textContent="Detener"};
-  if(innerWidth<860)A.scrollIntoView({behavior:"smooth",block:"start"})}
+  if(crisis)bot(`<div class="heart-help"><strong>Si estás pensando en hacerte daño, habla ahora con alguien.</strong> Llama al <a href="tel:024">024</a> (gratuito, a cualquier hora, España) o al <a href="tel:112">112</a> si es una emergencia. También puedes hablar con un sacerdote o con alguien de confianza hoy mismo.</div>`);
+  const m=bot(`<p class="heart-line">${esc(line)}</p><p class="msg-s">Te propongo esta oración:</p>
+   <article class="heart-card"><span class="eyebrow">Una oración para este momento</span><h3>${esc(first.t)}</h3>${texts[first.slug]?`<p class="heart-pre">${esc(preview(texts[first.slug]))}</p>`:""}
+    <div class="heart-acts"><button class="btn btn-accent sm" type="button" data-hlisten>${first.a?"▶ Escuchar":"Escuchar"}</button><a class="btn btn-ghost sm" href="${url(first)}">Leer completa</a></div></article>
+   ${v?`<div class="heart-verse"><span class="eyebrow">Un versículo · ${esc(v.ref)}</span><blockquote>«${esc(v.x)}»</blockquote><a href="${ROOT}${v.slug}${X}">Más ${esc(v.t.toLowerCase())} ›</a></div>`:""}`);
+  if(hau){hau.pause();hau=null}
+  const lb=m.querySelector("[data-hlisten]");const lbl=lb.textContent;lb.onclick=()=>{if(first.a){if(!hau||hau.__s!==first.slug){if(hau)hau.pause();hau=new Audio(first.a);hau.__s=first.slug;hau.onended=()=>lb.textContent=lbl}if(hau.paused){stopSpeech();hau.play();lb.textContent="❚❚ Pausar"}else{hau.pause();lb.textContent=lbl}return}if(sp.on){stopSpeech();lb.textContent=lbl;return}const t=texts[first.slug];if(!t){location.href=url(first);return}
+   if(speakText(first.t+". "+t,()=>{lb.textContent=lbl}))lb.textContent="Detener"};
+  bot(`<p>${crisis?"No estás solo. ":""}¿Quieres que otras personas recen contigo?</p><div class="msg-acts"><a class="chip" href="${muro(cat)}">Encender una vela</a><a class="chip" href="${muro(cat,fromChip?"":text)}">Dejar mi intención en el muro</a>${others.map(p=>`<a class="chip" href="${url(p)}">${esc(p.t)}</a>`).join("")}</div><p class="msg-s">Si quieres, cuéntame algo más.</p>`);
+ }
  $("#feel").innerHTML=FEEL.map(([n,k])=>`<button class="chip" type="button" data-k="${k}">${n}</button>`).join("");
- $$("#feel .chip").forEach(b=>b.onclick=()=>{$$("#feel .chip").forEach(x=>x.classList.toggle("on",x===b));answer(b.textContent,b.dataset.k)});
- $("#askForm").onsubmit=e=>{e.preventDefault();const t=inp.value.trim();if(!t){inp.focus();return}$$("#feel .chip").forEach(x=>x.classList.remove("on"));answer(t)};
+ $$("#feel .chip").forEach(b=>b.onclick=()=>answer(b.textContent,b.dataset.k));
+ const grow=()=>{inp.style.height="auto";inp.style.height=Math.min(inp.scrollHeight,140)+"px"};inp.addEventListener("input",grow);
+ $("#askForm").onsubmit=e=>{e.preventDefault();const t=inp.value.trim();if(!t){inp.focus();return}inp.value="";grow();answer(t)};
  inp.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();$("#askForm").requestSubmit()}});
- A.innerHTML=`<div class="heart-empty"><span class="eyebrow">Cómo funciona</span><p>Escribe lo que te preocupa o lo que agradeces. Te proponemos una oración de Rezo Diario, un versículo de la Biblia si encaja, y la posibilidad de encender una vela para que otras personas recen contigo.</p></div>`;
+ bot(`<p>Hola. Estoy aquí para acompañarte a rezar.</p><p>Cuéntame qué llevas hoy en el corazón (una preocupación, una persona, algo que agradeces) y te propongo una oración para este momento. También puedes tocar uno de los temas de abajo.</p>`);
 }
 
 /* ---------- Camino guiado: al terminar de rezar, una propuesta suave para seguir ---------- */

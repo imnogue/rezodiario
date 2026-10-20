@@ -378,13 +378,17 @@ home_main = f'''<section class="hero" aria-labelledby="h1">
 </section>
 {week_section(r)}
 <section class="sec"><div class="wrap"><div class="vhub">{vday_card(r)}{mood_picker(r)}</div></div></section>
-<section class="sec band" id="momento" aria-labelledby="hMom"><div class="wrap assist">
-  <div class="reveal"><span class="eyebrow">Para este momento</span><h2 id="hMom">¿Qué llevas hoy en el corazón?</h2>
-    <p style="color:var(--muted);margin:10px 0 0">Escríbelo con tus palabras, como se lo contarías a un amigo. Te acompañamos con una oración de Rezo Diario para este momento.</p>
-    <form class="ask heart" id="askForm"><label class="sr" for="askIn">Lo que llevas hoy en el corazón</label><textarea id="askIn" rows="3" maxlength="400" placeholder="Por ejemplo: estoy preocupado por mi madre y no sé qué hacer"></textarea><button class="btn btn-accent" type="submit">Rezar con esto</button></form>
-    <p class="hint" style="margin:14px 0 6px">O elige un momento:</p><div class="feel" id="feel"></div>
+<section class="sec band" id="momento" aria-labelledby="hMom"><div class="wrap assist chatwrap">
+  <div class="reveal chat-intro"><span class="eyebrow">Para este momento</span><h2 id="hMom">¿Qué llevas hoy en el corazón?</h2>
+    <p style="color:var(--muted);margin:10px 0 0">Cuéntalo con tus palabras, como se lo contarías a un amigo, y te acompañamos con una oración para este momento.</p>
+    <ol class="chat-steps"><li><b>Cuéntalo</b><span>Lo que te preocupa, lo que agradeces o lo que pides.</span></li><li><b>Recibe una oración</b><span>Elegida entre las {len(PRAYERS)} de Rezo Diario, con audio y un versículo si encaja.</span></li><li><b>No reces solo</b><span>Enciende una vela y otras personas rezarán contigo.</span></li></ol>
     <p class="note">Lo que escribes no se guarda ni se envía a ningún sitio: se queda en tu dispositivo. No sustituye el acompañamiento espiritual, médico o psicológico. Si estás pasando por un momento muy difícil, llama al <strong>024</strong> (atención a la conducta suicida, España) o al <strong>112</strong> si es una emergencia.</p></div>
-  <div class="answers" id="answers" aria-live="polite"></div>
+  <div class="chat reveal" role="region" aria-label="Acompañante de oración">
+    <div class="chat-top"><span class="chat-av" aria-hidden="true">{ICON["logo"]}</span><div><b>Acompañante de oración</b><small><i></i>Privado · se queda en tu dispositivo</small></div></div>
+    <div class="chat-log" id="answers" aria-live="polite"></div>
+    <div class="chat-sug"><div class="feel" id="feel"></div></div>
+    <form class="chat-in" id="askForm"><label class="sr" for="askIn">Lo que llevas hoy en el corazón</label><textarea id="askIn" rows="1" maxlength="400" placeholder="Escribe aquí lo que llevas en el corazón…"></textarea><button class="chat-send" type="submit" aria-label="Enviar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+  </div>
 </div></section>
 {sec(camino(r) + head2("Oraciones por tema", "Un rezo para cada momento", f"{len(PRAYERS)} oraciones para estudiar, por un enfermo, por tu familia, para la ansiedad o por un ser querido difunto.", '<a class="btn btn-ghost sm" href="oraciones/index.html">Ver todas</a>') + tiles(r))}
 {chapel(r)}
