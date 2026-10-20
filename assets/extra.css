@@ -518,3 +518,10 @@ font[style]{background:none!important;box-shadow:none!important}
 .exam-cta em{font-style:normal;font-weight:700;font-size:14px;margin-top:6px;color:#D6B266}
 article .exam-cta{margin:24px 0 0}
 @media (hover:hover){.exam-cta:hover{filter:brightness(1.08)}}
+/* Santoral con aspecto de calendario */
+.cal-mh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 14px}
+.cal-mh h2{margin:0}
+.cal-link{font-family:var(--f-ui);font-size:14px;font-weight:600;color:var(--accent);text-decoration:none}
+.cal-g li.is-santo b{color:var(--ink);font-weight:700;font-size:13px}
+.cal-sh{font-size:12px;line-height:1.3;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media(max-width:760px){.cal-g li.is-santo b{font-size:15px}.cal-sh{grid-column:2;font-size:13px}}

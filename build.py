@@ -607,9 +607,36 @@ page("santo-de-hoy.html", stitle, sdesc, st_main, "saints", [crumbs_ld([("Inicio
 r = "../"
 bym = {}
 for x in sorted(SAINTS, key=lambda x: x["md"]): bym.setdefault(int(x["md"][:2]), []).append(x)
-cal = "".join(f'<h2 style="margin-top:34px">{MES[m - 1].capitalize()}</h2><div class="pagegrid">' + "".join(saint_link(r, x) for x in v) + '</div>' for m, v in bym.items())
+def santo_color(x):
+    t = (x["name"] + " " + x["short"]).lower()
+    if "inmaculada" in t: return "blue"
+    return "red" if re.search(r"mártir|apóstol", t) else "white"
+_ty, _tm = int(TODAY[:4]), int(TODAY[5:7])
+def santoral_mes(mo, v):
+    y = _ty if mo >= _tm else _ty + 1
+    first = datetime.date(y, mo, 1); pad = first.weekday()
+    nd = (datetime.date(y + (mo == 12), mo % 12 + 1, 1) - first).days
+    by = {}
+    for x in v: by.setdefault(int(x["md"][3:]), []).append(x)
+    cells = ['<li class="cal-pad" aria-hidden="true"></li>'] * pad
+    for d in range(1, nd + 1):
+        xs = by.get(d)
+        if not xs: cells.append(f'<li class="cal-off"><span class="cal-n">{d}</span></li>'); continue
+        x = xs[0]; iso = f"{y}-{mo:02d}-{d:02d}"
+        otros = "".join(f'<em>{E(o["name"])}</em>' for o in xs[1:])
+        cls = "cal-d is-santo" + (" is-today" if iso == TODAY else "")
+        cells.append(f'<li class="{cls}"><a href="{r}santos/{x["slug"]}.html"><span class="cal-n">{d}<i class="dot" style="background:{LITC[DBY[iso]["color"] if iso in DBY else santo_color(x)][0]}"></i><small class="cal-wd">{WDN[datetime.date(y, mo, d).weekday()][:3]}</small></span>'
+                     f'<b>{E(x["name"])}</b><span class="cal-sh">{E(x["short"])}</span>{otros}</a></li>')
+    head = "".join(f"<li>{w[:3]}</li>" for w in WDN)
+    lit = f'<a class="cal-link" href="{r}calendario-liturgico.html#mes-{y}-{mo:02d}">Ver este mes en el calendario litúrgico ›</a>' if f"{y}-{mo:02d}" in months else ""
+    return f'<div class="cal-m" id="mes-{mo:02d}"><div class="cal-mh"><h2>{MES[mo - 1].capitalize()} de {y}</h2>{lit}</div><ol class="cal-h" aria-hidden="true">{head}</ol><ol class="cal-g">{"".join(cells)}</ol></div>'
+_orden = sorted(bym, key=lambda m: (m < _tm, m))
+_grandes = [m for m in _orden if len(bym[m]) >= 3]; _sueltos = [m for m in _orden if len(bym[m]) < 3]
+cal = '<div class="cal">' + "".join(santoral_mes(m, bym[m]) for m in _grandes) + '</div>'
+if _sueltos:
+    cal += f'<div class="cal-m"><div class="cal-mh"><h2>Otros santos del año</h2></div><div class="pagegrid">' + "".join(saint_link(r, x) for m in _sueltos for x in bym[m]) + '</div></div>'
 page("santos/index.html", "Santoral católico: vida y oración de cada santo | Rezo Diario", "Santoral con la vida breve y la oración de cada santo: san Judas Tadeo, santa Rita, san Expedito, la Inmaculada, la Virgen de Guadalupe y el santo de cada día.",
- phero(r, [("Inicio", "index.html"), ("Santos", "santos/index.html")], "Santoral", "Santoral: la vida y la oración de cada santo", "Empieza por el <a href=\"../santo-de-hoy.html\" style=\"color:var(--gold)\">santo de hoy</a> o busca por meses.") + sec(cal), "saints", [crumbs_ld([("Inicio", "index.html"), ("Santos", "santos/index.html")])])
+ phero(r, [("Inicio", "index.html"), ("Santos", "santos/index.html")], "Santoral", "Santoral: la vida y la oración de cada santo", "Empieza por el <a href=\"../santo-de-hoy.html\" style=\"color:var(--gold)\">santo de hoy</a> o busca por meses. Toca un día para leer la vida del santo y rezar su oración.") + sec(cal), "saints", [crumbs_ld([("Inicio", "index.html"), ("Santos", "santos/index.html")])])
 for x in SAINTS:
     path = f'santos/{x["slug"]}.html'; cr = [("Inicio", "index.html"), ("Santos", "santos/index.html"), (x["name"], path)]; pr = PBY.get(x["prayer"])
     faq = [(f'¿Cuándo se celebra {x["name"]}?', f'Su fiesta o memoria es el {x["date"]}.'), (f'¿De qué es patrón {x["name"]}?', f'Se le invoca como patrón de {x["patron"]}.')]
