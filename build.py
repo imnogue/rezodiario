@@ -37,6 +37,8 @@ now = datetime.datetime.now(ZoneInfo("Europe/Madrid")).date().isoformat()
 TODAY = min(max(now, DAYS[0]["date"]), DAYS[-1]["date"])
 TW = DBY[TODAY]
 ti = DAYS.index(TW)
+WLO, WHI = max(0, ti - 7), min(len(DAYS), ti + 9)  # días que van en data.js; el resto, en assets/dias/<fecha>.js
+WIN = {w["date"] for w in DAYS[WLO:WHI]}
 TOMORROW = DAYS[min(ti + 1, len(DAYS) - 1)]
 def nice(d): return f'{d["wd"].lower()} {d["n"]} de {d["mes"]} de {d["date"][:4]}'
 def fdate(iso): dt = datetime.date.fromisoformat(iso); return f"{dt.day} de {MES[dt.month-1]}"
@@ -149,7 +151,14 @@ def crumbs_html(r, items):
 def faq_ld(qs): return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qs]}
 def faq_html(qs): return '<div class="faq">' + "".join(f'<details{" open" if i == 0 else ""}><summary>{E(q)}</summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(qs)) + '</div>'
 
-def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="website", mini=False, robots="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1", js=()):
+OGM = {}
+OG_EYEBROW = {"prayers": "Oración", "saints": "Santoral", "gospel": "Evangelio del día", "verses": "Versículos de la Biblia", "rosary": "Santo Rosario", "candles": "Muro de intenciones", "today": "Rezo Diario"}
+def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="website", mini=False, robots="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1", js=(), og=None):
+    ogn = "inicio" if path == "index.html" else path[:-5].replace("/index", "").replace("/", "--")
+    if "noindex" not in robots and path != "404.html":
+        t0 = title[:-len(" | Rezo Diario")] if title.endswith(" | Rezo Diario") else title
+        OGM[ogn] = list(og) if og else [OG_EYEBROW.get(active, "Rezo Diario"), t0.split(" | ")[0], ""]
+    ogimg = f"{SITE}og/{ogn}.jpg" if os.path.exists(os.path.join(ROOT, "static", "og", ogn + ".jpg")) else f"{SITE}og-rezodiario.jpg"
     depth = path.count("/"); r = "../" * depth
     cfg = {"supabaseUrl": AJ.get("supabaseUrl", ""), "supabaseAnonKey": AJ.get("supabaseAnonKey", ""), "today": TODAY}
     if len(title) > 62 and title.endswith(" | Rezo Diario"): title = title[:-len(" | Rezo Diario")]
@@ -161,7 +170,7 @@ def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="web
 <link rel="canonical" href="{canon(path)}">
 <meta name="theme-color" content="#14302A">
 <meta property="og:type" content="{og_type}"><meta property="og:site_name" content="Rezo Diario"><meta property="og:locale" content="es_ES">
-<meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{canon(path)}"><meta property="og:image" content="{SITE}og-rezodiario.jpg">
+<meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{canon(path)}"><meta property="og:image" content="{ogimg}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="{ogimg}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{r}favicon.ico?v=4" sizes="48x48"><link rel="icon" href="{r}icon.svg?v=4" type="image/svg+xml"><link rel="icon" href="{r}favicon-96.png?v=4" type="image/png" sizes="96x96"><link rel="icon" href="{r}favicon-48.png?v=4" type="image/png" sizes="48x48"><link rel="icon" href="{r}icon-192.png?v=4" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="{r}apple-touch-icon.png?v=4"><link rel="manifest" href="{r}manifest.webmanifest">
 <link rel="preload" href="{r}fuentes/manrope.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="{r}fuentes/marcellus.woff" as="font" type="font/woff" crossorigin>
@@ -473,7 +482,7 @@ for p in PRAYERS:
 </div></section>'''
     page(path, f'{p["t"]} | Rezo Diario', desc_for(p), m, "prayers",
      [crumbs_ld(cr), faq_ld(faq), {"@context": "https://schema.org", "@type": "Article", "headline": p["t"], "description": desc_for(p), "inLanguage": "es", "articleSection": c["name"], "author": ORG, "publisher": ORG, "datePublished": "2026-10-17", "dateModified": TODAY, "mainEntityOfPage": canon(path), "keywords": p["k"]}],
-     body_attrs=f' data-slug="{p["slug"]}"', og_type="article")
+     body_attrs=f' data-slug="{p["slug"]}"', og_type="article", og=(f'Oración · {c["name"]}', p["t"], f'Texto completo y audio · {p["min"]} min'))
 
 # ================= EVANGELIO =================
 def cita_corta(t):
@@ -519,7 +528,7 @@ def gospel_main(r, w, kind):
 def gld(w, path): return {"@context": "https://schema.org", "@type": "PodcastEpisode", "name": f'{w["title"]} · Rezo del {w["n"]} de {w["mes"]} de {w["date"][:4]}', "datePublished": w["date"], "inLanguage": "es", "description": w["sum"], "url": canon(path), "partOfSeries": {"@type": "PodcastSeries", "name": "Rezo Diario", "url": SITE}, **({"associatedMedia": {"@type": "MediaObject", "contentUrl": w["audio"] if w["audio"].startswith("http") else SITE + w["audio"].lstrip("/")}} if w.get("audio") else {})}
 for w in DAYS:
     m, cr = gospel_main("../", w, "dia"); path = f'evangelio/{w["date"]}.html'
-    page(path, f'Evangelio del {w["n"]} de {w["mes"]} de {w["date"][:4]} ({w["ref"]}) y reflexión', f'Evangelio del {nice(w)}, {w["refL"]}: «{w["ex"]}» Reflexión y audio para rezar.'[:160], m, "gospel", [crumbs_ld(cr), gld(w, path)], body_attrs=f' data-day="{w["date"]}"', mini=True, og_type="article")
+    page(path, f'Evangelio del {w["n"]} de {w["mes"]} de {w["date"][:4]} ({w["ref"]}) y reflexión', f'Evangelio del {nice(w)}, {w["refL"]}: «{w["ex"]}» Reflexión y audio para rezar.'[:160], m, "gospel", [crumbs_ld(cr), gld(w, path)], body_attrs=f' data-day="{w["date"]}"', mini=True, og_type="article", js=() if w["date"] in WIN else (f'dias/{w["date"]}.js',), og=(f'Evangelio del {w["n"]} de {w["mes"]}', w["title"], f'{w["refL"]} · reflexión y audio para rezar'))
 m, cr = gospel_main("", TW, "hoy")
 page("evangelio-de-hoy.html", f'Evangelio de hoy, {nice(TW)} ({TW["ref"]}) | Rezo Diario', f'Evangelio de hoy {TW["n"]} de {TW["mes"]}, {TW["refL"]}: «{TW["ex"]}» Comentario, preguntas y audio para rezar.'[:160], m, "gospel", [crumbs_ld(cr), gld(TW, "evangelio-de-hoy.html")], body_attrs=f' data-day="{TODAY}"', mini=True)
 m, cr = gospel_main("", TOMORROW, "manana")
@@ -662,7 +671,7 @@ for x in SAINTS:
    <div class="box candle-cta"><h3>Enciende una vela</h3><p>Pide su intercesión y deja tu intención en el muro.</p><a class="btn btn-flame sm" href="../muro-de-intenciones.html">Encender una vela</a></div>
    <div class="box"><h3>Otros santos</h3><ul class="links">{"".join([f'<li><a href="{o["slug"]}.html">{E(o["name"])}<small>{o["date"]}</small></a></li>' for o in SAINTS if o is not x and o["md"] > x["md"]][:6])}</ul></div></aside></div></section>'''
     page(path, f'{x["name"]}: vida y oración ({x["date"]}) | Rezo Diario', saint_desc(x), m, "saints",
-     [crumbs_ld(cr), faq_ld(faq), {"@context": "https://schema.org", "@type": "Article", "headline": f'{x["name"]}: vida y oración', "inLanguage": "es", "author": ORG, "publisher": ORG, "datePublished": "2026-10-17", "dateModified": TODAY, "mainEntityOfPage": canon(path), "about": {"@type": "Person", "name": x["name"]}}], og_type="article")
+     [crumbs_ld(cr), faq_ld(faq), {"@context": "https://schema.org", "@type": "Article", "headline": f'{x["name"]}: vida y oración', "inLanguage": "es", "author": ORG, "publisher": ORG, "datePublished": "2026-10-17", "dateModified": TODAY, "mainEntityOfPage": canon(path), "about": {"@type": "Person", "name": x["name"]}}], og_type="article", og=(f'Santoral · {x["date"]}', x["name"], x["short"]))
 
 # ================= ROSARIO =================
 r = ""
@@ -848,7 +857,11 @@ def solo_raton(css):
 css = solo_raton(css) + "\n*{-webkit-tap-highlight-color:transparent}\n"
 open(OUT + "/assets/site.css", "w", encoding="utf-8").write(css)
 shutil.copy(ROOT + "/assets/site.js", OUT + "/assets/site.js")
-data = {"week": [{k: w[k] for k in ("date", "wd", "n", "mes", "color", "lit", "ref", "refL", "title", "set", "ex", "sum", "refl", "qs", "fin", "audio", "duracion")} | ({"marcas": w["marcas"]} if w.get("marcas") else {}) | ({"audioVoz": w["audioVoz"]} if w.get("audioVoz") else {}) for w in DAYS], "LITC": LITC, "SETS": SETS, **O, "via": VIA, "VIA_ANT": VIAJ["antifona"],
+def dia_js(w): return {k: w[k] for k in ("date", "wd", "n", "mes", "color", "lit", "ref", "refL", "title", "set", "ex", "sum", "refl", "qs", "fin", "audio", "duracion")} | ({"marcas": w["marcas"]} if w.get("marcas") else {}) | ({"audioVoz": w["audioVoz"]} if w.get("audioVoz") else {})
+os.makedirs(OUT + "/assets/dias", exist_ok=True)
+for w in DAYS:
+    open(f'{OUT}/assets/dias/{w["date"]}.js', "w", encoding="utf-8").write("(function(D){var W=(window.RD=window.RD||{}).week=window.RD.week||[];if(!W.some(function(x){return x.date===D.date})){W.push(D);W.sort(function(a,b){return a.date<b.date?-1:1})}})(" + json.dumps(dia_js(w), ensure_ascii=False) + ");")
+data = {"week": [dia_js(w) for w in DAYS[WLO:WHI]], "LITC": LITC, "SETS": SETS, **O, "via": VIA, "VIA_ANT": VIAJ["antifona"],
         "prayers": [{"slug": p["slug"], "t": p["t"], "cat": p["cat"], "min": p["min"], **({"a": p["audio"]} if p.get("audio") else {})} for p in PRAYERS], "VOZROS": (json.load(open(os.path.join(C, "voces-rosario.json"), encoding="utf-8")) if os.path.exists(os.path.join(C, "voces-rosario.json")) else {}), "CATS": {k: {"name": c["name"], "color": c["color"]} for k, c in CATS.items()},
         "novenas": [{"slug": n["slug"], "t": n["t"], "start": n["start"], "end": n["end"], "open": n["open"], "close": n["close"], "days": [[d["t"], d["x"]] for d in n["days"]]} for n in NOVENAS]}
 open(OUT + "/assets/oraciones.js", "w", encoding="utf-8").write("window.RDO=" + json.dumps({p["slug"]: p["x"] for p in PRAYERS}, ensure_ascii=False) + ";")
@@ -916,6 +929,7 @@ icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width=
 open(OUT + "/icon.svg", "w").write(icon)
 open(OUT + "/manifest.webmanifest", "w").write(json.dumps({"name": "Rezo Diario", "short_name": "Rezo Diario", "lang": "es", "start_url": "/", "display": "standalone", "background_color": "#14302A", "theme_color": "#14302A", "icons": [{"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}, {"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "/logo-512.png", "sizes": "512x512", "type": "image/png"}]}, ensure_ascii=False))
 open(OUT + "/sw.js", "w").write("const C='rd-v2';const PRE=['/','/assets/site.css','/assets/site.js','/assets/data.js','/rosario.html','/oraciones/index.html'];\nself.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(PRE))));\nself.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x))))));\nself.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==location.origin)return;e.respondWith(fetch(e.request).then(r=>{const cp=r.clone();caches.open(C).then(c=>c.put(e.request,cp));return r}).catch(()=>caches.match(e.request)))});\n")
+json.dump(OGM, open(OUT + "/og-paginas.json", "w", encoding="utf-8"), ensure_ascii=False)
 open(OUT + "/robots.txt", "w").write(f"User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: {SITE}sitemap.xml\n")
 daily = ("index.html", "evangelio-de-hoy.html", "evangelio-de-manana.html", "santo-de-hoy.html", "rosario.html", "muro-de-intenciones.html", "versiculos.html")
 idx = [p for p, h, _, _ in pages if "noindex" not in h]

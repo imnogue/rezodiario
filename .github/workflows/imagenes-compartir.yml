@@ -1,0 +1,26 @@
+# Crea la imagen para compartir (WhatsApp, redes) de cada página nueva o cambiada.
+name: Imágenes para compartir
+on:
+  push:
+    branches: [main]
+    paths: ["content/**", "build.py", "scripts/og.py"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: imagenes-compartir
+  cancel-in-progress: false
+jobs:
+  og:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: pip install --quiet pillow
+      - run: python3 build.py > /dev/null && python3 scripts/og.py
+      - name: Guardar
+        run: |
+          git config user.name "Rezo Diario (imágenes)"; git config user.email "audios@rezodiario.com"
+          git add static/og
+          if git diff --cached --quiet; then echo "Nada nuevo."; exit 0; fi
+          git commit -m "Imágenes para compartir"
+          git pull --rebase && git push
