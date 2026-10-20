@@ -11,5 +11,10 @@
   ],
   "patron": "las misiones y Navarra",
   "prayer": "oracion-antes-de-un-viaje",
-  "oracion": "San Francisco Javier, misionero valiente, haznos testigos del Evangelio allí donde estemos. Amén."
+  "oracion": "San Francisco Javier, misionero valiente, haznos testigos del Evangelio allí donde estemos. Amén.",
+  "mas": [
+    "Francisco de Jasso y Javier nació en el castillo de Javier, en Navarra, en 1506. Estudiando en París conoció a Ignacio de Loyola y fue uno de los primeros jesuitas.",
+    "En 1541 partió hacia la India y recorrió Goa, Malaca, las Molucas y Japón predicando el Evangelio y bautizando a miles de personas. Murió en 1552 en la isla de Sancián, a las puertas de China, adonde soñaba llegar. Es patrón de las misiones y copatrón de Navarra. La Javierada, la peregrinación a su castillo en marzo, reúne a miles de personas cada año."
+  ],
+  "ensena": "San Francisco Javier nos anima a salir de nosotros mismos y a no poner límites al deseo de que todos conozcan el amor de Dios."
 }

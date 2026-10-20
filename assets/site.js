@@ -36,14 +36,21 @@ const I18N={
  de:{today:"Heute",verses:"Bibelverse",prayers:"Gebete",rosary:"Rosenkranz",gospel:"Evangelium",saints:"Heilige",novenas:"Novenen",candles:"Kerzen",donate:"Spenden",listen:"Gebet des Tages anhören",light:"Eine Kerze anzünden",more:"Mehr",note:"Gebete auf Deutsch folgen bald. Derzeit sind die Inhalte auf Spanisch."},
  pl:{today:"Dziś",verses:"Wersety",prayers:"Modlitwy",rosary:"Różaniec",gospel:"Ewangelia",saints:"Święci",novenas:"Nowenny",candles:"Świece",donate:"Wesprzyj",listen:"Posłuchaj dzisiejszej modlitwy",light:"Zapal świecę",more:"Więcej",note:"Modlitwy po polsku już wkrótce. Na razie treści są po hiszpańsku."}
 };
-let lang=store.get("rd-lang","es");if(!I18N[lang])lang="es";
+/* Idiomas: el español es el original; para los demás, la web entera se traduce al momento con el traductor de Google */
+const TRX=/\.translate\.goog$/.test(location.hostname);const TRL=new URLSearchParams(location.search).get("_x_tr_tl");
+let lang=TRX?(TRL||"es").slice(0,2):store.get("rd-lang","es");if(!I18N[lang])lang="es";
+function irIdioma(l){const path=location.pathname+location.hash;
+ if(l==="es"){if(TRX)location.href="https://rezodiario.com"+location.pathname+"?idioma=es"+location.hash;return}
+ const u=new URL("https://rezodiario-com.translate.goog"+location.pathname);u.searchParams.set("_x_tr_sl","es");u.searchParams.set("_x_tr_tl",l);u.searchParams.set("_x_tr_hl",l);location.href=u.toString()+location.hash}
+if(!TRX&&new URLSearchParams(location.search).get("idioma")==="es"){lang="es";store.set("rd-lang","es")}
+if(!TRX&&lang!=="es"&&/rezodiario\.com$/.test(location.hostname)){try{irIdioma(lang)}catch(e){}}
 function applyLang(){
  const d=I18N[lang];root.lang=lang;
  $$("[data-i18n]").forEach(el=>{const v=d[el.dataset.i18n];if(v)el.textContent=v});
  const lb=$("#langCode");if(lb)lb.textContent=lang.toUpperCase();
  $$("#langMenu button").forEach(b=>b.setAttribute("aria-checked",b.dataset.l===lang));
  let n=$("#langNote");
- if(lang!=="es"&&!store.get("rd-langnote-"+lang,false)){
+ if(false){
   if(!n){n=document.createElement("div");n.id="langNote";n.className="lang-note";n.setAttribute("role","status");document.querySelector(".top").after(n)}
   n.innerHTML=`<div class="wrap"><span>${esc(d.note)}</span><button aria-label="Cerrar aviso">✕</button></div>`;
   n.querySelector("button").onclick=()=>{store.set("rd-langnote-"+lang,true);n.remove()};
@@ -53,7 +60,7 @@ const lm=$("#langMenu"),lbtn=$("#btnLang");
 if(lm&&lbtn){
  lm.innerHTML=LANGS.map(([c,n,code])=>`<button role="menuitemradio" data-l="${c}" aria-checked="false"><span>${n}</span><small>${code}</small></button>`).join("");
  lbtn.onclick=e=>{e.stopPropagation();lm.hidden=!lm.hidden;lbtn.setAttribute("aria-expanded",!lm.hidden)};
- lm.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;lang=b.dataset.l;store.set("rd-lang",lang);applyLang();lm.hidden=true;lbtn.setAttribute("aria-expanded","false")});
+ lm.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const nl=b.dataset.l;lm.hidden=true;lbtn.setAttribute("aria-expanded","false");if(nl===lang)return;lang=nl;store.set("rd-lang",lang);applyLang();if(/rezodiario\.com$|translate\.goog$/.test(location.hostname))irIdioma(lang)});
  document.addEventListener("click",e=>{if(!lm.hidden&&!e.target.closest(".lang"))lm.hidden=true});
  document.addEventListener("keydown",e=>{if(e.key==="Escape")lm.hidden=true});
 }
@@ -169,7 +176,7 @@ function playAudio(){stopSpeech();if(!AU||AU.dataset.d!==P.day.date){if(AU)AU.pa
  AU.playbackRate=P.rate;AU.muted=!!AU.dataset.v&&!P.voiceOn;P.playing=true;AU.play().catch(()=>{P.playing=false;renderP()});renderP()}
 function stopPlayer(){P.playing=false;P.token++;clearT();if(synth)try{synth.cancel()}catch(e){};amb(false);if(AU)AU.pause()}
 function pauseP(){stopPlayer();renderP()}
-function finishP(){P.playing=false;P.done=true;P.token++;amb(false);markDone(P.day.date);renderP();toast("Rezo completado. Que tengas un buen día.")}
+function finishP(){P.playing=false;P.done=true;P.token++;amb(false);markDone(P.day.date);renderP();setTimeout(()=>siguiente("rezo"),600)}
 function jumpSeg(si){const idx=P.items.findIndex(x=>x.si===si);if(idx<0)return;P.done=false;P.k=idx;if(AU&&P.day.audio&&AU.duration){AU.currentTime=segBounds()[si][0];tickAudio();return}if(P.playing)speakCur();else{P.token++;renderP()}}
 /* Música de fondo: bucles sin cortes con Web Audio (static/musica/*.mp3) */
 const MUSICAS=[["calma","Calma"],["piano","Piano"],["organo","Órgano"],["campanas","Campanas"],["lluvia","Lluvia"],["no","Sin música"]];
@@ -310,6 +317,23 @@ if($("#askForm")){
  A.innerHTML=`<div class="heart-empty"><span class="eyebrow">Cómo funciona</span><p>Escribe lo que te preocupa o lo que agradeces. Te proponemos una oración de Rezo Diario, un versículo de la Biblia si encaja, y la posibilidad de encender una vela para que otras personas recen contigo.</p></div>`;
 }
 
+/* ---------- Camino guiado: al terminar de rezar, una propuesta suave para seguir ---------- */
+function siguiente(ctx){
+ const L=(h,t,d)=>({h:ROOT+h,t,d});const today=(WEEK[todayIdx]||{});const out=[];
+ const pr=RD.prayers||[];const slug=document.body.dataset.slug;const cur=pr.find(p=>p.slug===slug);
+ if(ctx!=="rezo")out.push(L(IDX+"#player","Escucha el rezo de hoy",today.title?`«${today.title}» · el Evangelio con música y silencio`:"El Evangelio del día con música y silencio"));
+ if(ctx==="oracion"&&cur){const rel=pr.filter(p=>p.cat===cur.cat&&p.slug!==cur.slug);const n=rel[(rel.findIndex(p=>p.slug>cur.slug)+rel.length)%rel.length]||rel[0];if(n)out.push(L("oraciones/"+n.slug+X,"Otra oración: "+n.t,"De la misma temática, para seguir rezando"))}
+ if(ctx!=="rosario")out.push(L("rosario"+X,"Reza el Rosario de hoy",`Misterios ${(T_SET[today.set]||"del día")} · cuenta a cuenta, con voz`));
+ out.push(L("muro-de-intenciones"+X+"#candles","Reza por otras personas","Hay intenciones en el muro esperando una oración"));
+ if(ctx==="rezo"||ctx==="rosario")out.push(L("versiculos"+X,"El versículo de hoy","Una frase de la Biblia para llevar contigo"));
+ out.push(L("evangelio-de-manana"+X,"Mañana te espera","Echa un vistazo al Evangelio de mañana"));
+ const items=out.slice(0,3);
+ let m=$("#nextStep");if(!m){m=document.createElement("div");m.id="nextStep";m.className="nstep";document.body.appendChild(m)}
+ const tit={rezo:"Has terminado el rezo de hoy",oracion:"Amén. Has rezado",rosario:"Has rezado el Rosario",via:"Has terminado el Vía Crucis",novena:"Día de novena rezado"}[ctx]||"Has rezado";
+ m.innerHTML=`<div class="nstep-bg" data-nx></div><div class="nstep-p" role="dialog" aria-modal="true" aria-labelledby="nsT"><span class="eyebrow">Tu camino de oración</span><h3 id="nsT">${tit}</h3><p class="nstep-s">Gracias por este rato con Dios. Si quieres, puedes seguir un poco más:</p><ol>${items.map(i=>`<li><a href="${i.h}"><b>${esc(i.t)}</b><span>${esc(i.d)}</span></a></li>`).join("")}</ol><button type="button" class="btn btn-ghost sm" data-nx>Por hoy es suficiente</button></div>`;
+ m.hidden=false;requestAnimationFrame(()=>m.classList.add("on"));
+ m.onclick=e=>{if(e.target.closest("[data-nx]")){m.classList.remove("on");setTimeout(()=>m.hidden=true,250)}}}
+const T_SET={gozosos:"gozosos",dolorosos:"dolorosos",gloriosos:"gloriosos",luminosos:"luminosos"};
 /* ---------- Tu camino de oración (racha discreta, también sin registrarse) ---------- */
 function isoD(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
 const VELA=(on,t)=>`<svg viewBox="0 0 28 44" width="26" height="40" aria-hidden="true"><g class="fl"><path d="M14 3c3.2 4 4.6 6.6 4.6 9a4.6 4.6 0 0 1-9.2 0c0-2.4 1.4-5 4.6-9z"/><path class="fl-in" d="M14 8c1.5 2 2.2 3.3 2.2 4.4a2.2 2.2 0 0 1-4.4 0c0-1.1.7-2.4 2.2-4.4z"/></g><rect class="cera" x="8" y="19" width="12" height="22" rx="2.5"/><path class="mecha" d="M14 15v4"/></svg>`;
@@ -375,14 +399,14 @@ if(ppl){const au=new Audio();au.preload="metadata";au.src=ppl.dataset.src;const 
  const tick=()=>{const D=au.duration||+ppl.dataset.dur||0;if(!drag&&D){sk.value=Math.round(au.currentTime/D*1000);sk.style.setProperty("--p",(au.currentTime/D*100)+"%")}cu.textContent=f(au.currentTime);if(au.duration)du.textContent=f(au.duration)};
  pb.onclick=()=>{if(au.paused){if(P.playing)pauseP();stopSpeech();au.play().catch(()=>toast("No se ha podido cargar el audio."))}else au.pause()};
  au.addEventListener("play",paint);au.addEventListener("pause",paint);au.addEventListener("timeupdate",tick);au.addEventListener("loadedmetadata",tick);
- au.addEventListener("ended",()=>{paint();sk.value=1000;sk.style.setProperty("--p","100%");markDone(ISO)});
+ au.addEventListener("ended",()=>{paint();sk.value=1000;sk.style.setProperty("--p","100%");markDone(ISO);setTimeout(()=>siguiente("oracion"),700)});
  sk.addEventListener("input",()=>{drag=true;const D=au.duration||+ppl.dataset.dur||0;cu.textContent=f(sk.value/1000*D);sk.style.setProperty("--p",(sk.value/10)+"%")});
  sk.addEventListener("change",()=>{const D=au.duration||+ppl.dataset.dur||0;if(D)au.currentTime=sk.value/1000*D;drag=false});
  $$(".pp-skip").forEach(a=>a.addEventListener("click",e=>{if(!au.paused){e.preventDefault();location.href=a.getAttribute("href")+(a.getAttribute("href").includes("?")?"&":"?")+"escuchar=1"}}));
  document.addEventListener("keydown",e=>{if(e.code==="Space"&&!/INPUT|TEXTAREA|BUTTON|A/.test(document.activeElement.tagName)){e.preventDefault();pb.click()}});
  if(new URLSearchParams(location.search).get("escuchar")){au.play().catch(()=>{ppl.classList.add("hint");toast("Pulsa ▶ para seguir escuchando")})}
 }
-const amen=$("#btnAmen");if(amen){const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};const paint=()=>{const on=doneDays().includes(today());amen.textContent=on?"Has rezado hoy":"Amén";amen.setAttribute("aria-pressed",on)};paint();amen.onclick=()=>{markDone(today());paint();toast("Gracias por rezar hoy. Mañana te espera un nuevo Evangelio.")}}
+const amen=$("#btnAmen");if(amen){const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};const paint=()=>{const on=doneDays().includes(today());amen.textContent=on?"Has rezado hoy":"Amén";amen.setAttribute("aria-pressed",on)};paint();amen.onclick=()=>{markDone(today());paint();siguiente("oracion")}}
 const favBox=$("#favList");if(favBox){const a=store.get("rd-favs",[]).map(s=>RD.prayers.find(p=>p.slug===s)).filter(Boolean);if(a.length){favBox.hidden=false;favBox.querySelector("ul").innerHTML=a.map(p=>`<li><a href="${ROOT}oraciones/${p.slug}${X}">${esc(p.t)}<small>${p.min} min</small></a></li>`).join("")}}
 
 /* ---------- Rosario ---------- */
@@ -432,7 +456,7 @@ if($("#beads")){
    rau.src=VZ[rq.shift()];rau.onended=sig;rau.play().catch(()=>{R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");toast("Pulsa «Rezar en voz alta» para empezar.")})};sig()}
  function stopVoz(){rtok++;if(rau)rau.pause();stopSpeech()}
  function go(i){if(i<0||i>=R.steps.length)return;R.dir=i>=R.cur?1:-1;R.cur=i;render()}
- function next(){if(R.cur===R.steps.length-1){markDone(ISO);toast("Rosario completado. Que la Virgen te acompañe.");R.cur=0;R.dir=1;render();return}go(R.cur+1)}
+ function next(){if(R.cur===R.steps.length-1){markDone(ISO);R.voice=false;R.cur=0;R.dir=1;render();siguiente("rosario");return}go(R.cur+1)}
  $("#rNext").onclick=next;$("#rPrev").onclick=()=>go(R.cur-1);$("#rReset").onclick=()=>go(0);
  $("#rVoice").onclick=e=>{R.voice=!R.voice;e.currentTarget.setAttribute("aria-pressed",R.voice);e.currentTarget.textContent=R.voice?"Pausar la voz":"Rezar en voz alta";if(R.voice)render();else stopVoz()};
  $("#step").addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key===" "){e.preventDefault();next()}if(e.key==="ArrowLeft"){e.preventDefault();go(R.cur-1)}});
@@ -452,7 +476,7 @@ if($("#vc")){
   const on=$("#vcPath .vc-dot.on");if(on)on.scrollIntoView({block:"nearest",inline:"center",behavior:"smooth"});
   $("#vcPrev").disabled=i===0;$("#vcNext").textContent=i===V.length-1?"Terminar":"Siguiente estación"}
  function go(k){if(k<0||k>=V.length)return;dir=k>=i?1:-1;i=k;render()}
- $("#vcPrev").onclick=()=>go(i-1);$("#vcNext").onclick=()=>{if(i===V.length-1){markDone(ISO);toast("Vía Crucis completado.");return}go(i+1)};
+ $("#vcPrev").onclick=()=>go(i-1);$("#vcNext").onclick=()=>{if(i===V.length-1){markDone(ISO);siguiente("via");return}go(i+1)};
  if($("#vcSpeak"))$("#vcSpeak").onclick=e=>{const b=e.currentTarget;if(sp.on){stopSpeech();b.textContent="Escuchar";return}if(speakText(`Estación ${i+1}. ${V[i][0]}. ${RD.VIA_ANT} ${V[i][1]}`,()=>b.textContent="Escuchar"))b.textContent="Detener"};
  $("#vc").addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();go(i+1)}if(e.key==="ArrowLeft"){e.preventDefault();go(i-1)}});
  swipe($("#vc"),d=>go(i+d));render();
@@ -472,7 +496,7 @@ if(nv){
   const c=2*Math.PI*36,pct=done.length/9;$("#novRing").innerHTML=`<circle class="bg" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct)}"/><text x="42" y="48" text-anchor="middle">${done.length}/9</text>`;
   const b=$("#novDone");b.textContent=done.includes(cur)?"✓ Día rezado":"Marcar este día como rezado";b.setAttribute("aria-pressed",done.includes(cur));
   $("#novStatus").textContent=todayK>=0?`Hoy toca el día ${todayK+1}.`:(dayN<0?`Empieza el ${fmt(0)}. Puedes rezarla en cualquier momento del año.`:"La novena de este año ya ha terminado. Puedes rezarla en cualquier momento.")}
- $("#novDone").onclick=()=>{let d=store.get(key,[]);d=d.includes(cur)?d.filter(x=>x!==cur):[...d,cur];store.set(key,d);if(d.length===9)toast("¡Novena completada!");else if(d.includes(cur)&&cur<8){cur++;}render()};
+ $("#novDone").onclick=()=>{let d=store.get(key,[]);d=d.includes(cur)?d.filter(x=>x!==cur):[...d,cur];store.set(key,d);const hecho=d.includes(cur);if(d.length===9)toast("¡Novena completada!");else if(hecho&&cur<8){cur++;}render();if(hecho){markDone(ISO);siguiente("novena")}};
  if($("#novSpeak"))$("#novSpeak").onclick=e=>{const b=e.currentTarget;if(sp.on){stopSpeech();b.textContent="Escuchar";return}const d=N.days[cur];if(speakText(`${N.open} Día ${cur+1}. ${d[0]}. ${d[1]} ${N.close}`,()=>b.textContent="Escuchar"))b.textContent="Detener"};
  render();
 }

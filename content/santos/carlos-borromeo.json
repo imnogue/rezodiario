@@ -11,5 +11,10 @@
   ],
   "patron": "los seminaristas y los catequistas",
   "prayer": "oracion-por-un-enfermo",
-  "oracion": "San Carlos Borromeo, pastor entregado, ruega por nuestros sacerdotes y seminaristas. Amén."
+  "oracion": "San Carlos Borromeo, pastor entregado, ruega por nuestros sacerdotes y seminaristas. Amén.",
+  "mas": [
+    "Carlos Borromeo nació en 1538 en una familia noble de Lombardía. Su tío, el papa Pío IV, lo hizo cardenal muy joven. Lejos de aprovecharse de su posición, se tomó en serio la reforma de la Iglesia tras el Concilio de Trento.",
+    "Como arzobispo de Milán fundó seminarios para formar bien a los sacerdotes, visitó todas las parroquias de su enorme diócesis y promovió la catequesis. Durante la peste de 1576 se quedó en la ciudad cuando otros huían, cuidando personalmente a los enfermos y vendiendo sus bienes para alimentar a los pobres."
+  ],
+  "ensena": "San Carlos Borromeo nos enseña que la reforma empieza por uno mismo y que los cargos son para servir, no para servirse."
 }

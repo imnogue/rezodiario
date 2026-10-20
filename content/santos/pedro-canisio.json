@@ -11,5 +11,10 @@
   ],
   "patron": "los catequistas",
   "prayer": "oracion-para-estudiar",
-  "oracion": "San Pedro Canisio, catequista incansable, ayúdanos a transmitir la fe con sencillez. Amén."
+  "oracion": "San Pedro Canisio, catequista incansable, ayúdanos a transmitir la fe con sencillez. Amén.",
+  "mas": [
+    "Pedro Kanis nació en Nimega, en los Países Bajos, en 1521. Fue uno de los primeros jesuitas y trabajó durante décadas en Alemania, Austria y Suiza en una época de gran división entre cristianos.",
+    "Escribió catecismos sencillos que se reeditaron cientos de veces y ayudaron a formar a generaciones de católicos. Fundó colegios y fue un predicador incansable. Es doctor de la Iglesia."
+  ],
+  "ensena": "San Pedro Canisio nos enseña la importancia de explicar la fe con claridad, paciencia y respeto."
 }
