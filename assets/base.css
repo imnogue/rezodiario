@@ -16,10 +16,7 @@
   --f-read:"Literata",Georgia,"Times New Roman",serif;
   --r:22px;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0D1311; --surface:#141C19; --surface-2:#1B2622; --ink:#E4EAE3; --muted:#9BA9A0; --line:#28352F;
-  --accent:#86C2A3; --accent-ink:#0D1311; --gold:#D6B266; --gold-ink:#1B1608;
-  --hero:#091915; --hero-ink:#EEF2EC; --scrim:rgba(0,0,0,.65); color-scheme:dark }}
+/* Modo claro por defecto; el oscuro solo si la persona lo elige con el botón de la luna */
 :root[data-theme="dark"]{
   --bg:#0D1311; --surface:#141C19; --surface-2:#1B2622; --ink:#E4EAE3; --muted:#9BA9A0; --line:#28352F;
   --accent:#86C2A3; --accent-ink:#0D1311; --gold:#D6B266; --gold-ink:#1B1608;

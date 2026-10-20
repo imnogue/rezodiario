@@ -19,7 +19,7 @@ let todayIdx=WEEK.findIndex(d=>d.date===ISO);const isReal=todayIdx>=0;if(todayId
 /* ---------- Tema ---------- */
 const root=document.documentElement;
 const savedT=store.get("rd-tema",null);if(savedT)root.setAttribute("data-theme",savedT);
-function isDark(){const t=root.getAttribute("data-theme");return t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches}
+function isDark(){const t=root.getAttribute("data-theme");return t==="dark"}
 const tb=$("#btnTheme");if(tb)tb.onclick=()=>{const t=isDark()?"light":"dark";root.setAttribute("data-theme",t);store.set("rd-tema",t);document.dispatchEvent(new Event("rd-theme"))};
 
 /* ---------- Idiomas ---------- */
@@ -112,7 +112,7 @@ function segmentsFor(d){return [
  {name:"Reflexión",text:d.refl+" "+d.qs.join(" ")},
  {name:"Oración final",text:d.fin+" "+RD.GL}]}
 function totalMin(){return Math.max(1,Math.round(P.items.reduce((a,it)=>a+est(it.t)+(isQ(it.t)?25:1.6),0)/60+.6))}
-function remaining(){let s=0;for(let i=P.k;i<P.items.length;i++)s+=est(P.items[i].t)+(isQ(P.items[i].t)?25:1.6);return Math.max(1,Math.round(s/60))}
+function remaining(){let s=0;for(let i=P.k;i<P.items.length;i++)s+=est(P.items[i].t)+(isQ(P.items[i].t)?8:1.2);return Math.max(1,Math.round(s/60))}
 function loadPlayer(d){
  stopPlayer();P.day=d;P.segs=segmentsFor(d);P.items=[];P.done=false;
  if(d.audio&&d.marcas&&d.marcas.length){d.marcas.forEach(m=>P.items.push({si:m[1],t:m[2],at:m[0]}))}else P.segs.forEach((s,si)=>splitS(s.text).forEach(t=>P.items.push({si,t})));P.k=0;
@@ -147,7 +147,7 @@ function speakCur(){
  else P.timer=setTimeout(()=>advance(my),dur);
 }
 function advance(my){if(my!==P.token||!P.playing)return;clearT();const prev=P.items[P.k].si;if(P.k>=P.items.length-1){finishP();return}
- const q=isQ(P.items[P.k].t);P.k++;const gap=P.items[P.k].si!==prev?10000:(q?25000:1600);renderP();P.timer=setTimeout(()=>{if(my===P.token&&P.playing)speakCur()},gap)}
+ const q=isQ(P.items[P.k].t);P.k++;const gap=P.items[P.k].si!==prev?4000:(q?8000:1200);renderP();P.timer=setTimeout(()=>{if(my===P.token&&P.playing)speakCur()},gap)}
 let AU=null,raf=0;
 function setText(el,txt){el.textContent=txt;el.classList.remove("txtin");void el.offsetWidth;el.classList.add("txtin")}
 function segBounds(){const D=AU&&AU.duration||0;const st=[0,0,0,0];for(let i=1;i<4;i++){const f=P.items.find(x=>x.si===i&&x.at!=null);st[i]=f?Math.max(0,f.at-1.5):D*i/4}return st.map((a,i)=>[a,i<3?st[i+1]:D])}
@@ -528,7 +528,7 @@ if(chapel){
   R.innerHTML=`<span class="cat"><i style="background:${col[1]}"></i>${col[0]}${mine.has(c.id)?" · tu vela":""}</span><blockquote>${c.priv||!c.text?"Intención privada. Solo Dios la conoce.":"«"+esc(c.text)+"»"}</blockquote><span class="who">${esc(c.name||"Anónimo")} · encendida ${ago(c.at)} · arde ${Math.max(0,Math.ceil((c.at+WEEKMS-Date.now())/864e5))} días más</span><div class="row"><button class="btn btn-wax sm" id="vPray" aria-pressed="${pressed}">${pressed?"✓ Has rezado por esta intención":"He rezado por ti"}</button><span class="who" id="vPrayN">${n===1?"1 persona ha rezado":n+" personas han rezado"}</span>${mine.has(c.id)||c.priv?"":'<button class="flag" id="vFlag" aria-label="Avisar de una intención inadecuada">Avisar</button>'}</div>`;
   $("#vPray").onclick=()=>pray(c.id);const fl=$("#vFlag");if(fl)fl.onclick=()=>flag(c.id)}
  async function pray(id){if(myPrays.has(id))return;myPrays.add(id);store.set("rd-myprays",[...myPrays]);prays.set(id,(prays.get(id)||0)+1);render();sparks($(`#candles .candle[data-id="${CSS.escape(id)}"]`),8);
-  try{if(mode==="claude")await db.collection("rezos").doc(id+"--"+uid).set({c:id,at:Date.now()});else if(mode==="supabase")await sbf("/rest/v1/rezos",{method:"POST",headers:{Prefer:"return=minimal,resolution=ignore-duplicates"},body:{vela_id:id,visitante:uid}});else{const a=store.get("rd-rezos-local",[]);a.push({c:id});store.set("rd-rezos-local",a)}}catch(e){}}
+  try{if(mode==="claude")await db.collection("rezos").doc(id+"--"+uid).set({c:id,at:Date.now()});else if(mode==="supabase")await sbf("/rest/v1/rezos",{method:"POST",headers:{Prefer:"return=minimal"},body:{vela_id:id,visitante:uid}});else{const a=store.get("rd-rezos-local",[]);a.push({c:id});store.set("rd-rezos-local",a)}}catch(e){}}
  async function flag(id){if(myFlags.has(id))return;myFlags.add(id);store.set("rd-myflags",[...myFlags]);sel=null;render();toast("Gracias por avisar. Hemos ocultado esta vela para ti y la revisaremos.");
   try{if(mode==="claude")await db.collection("avisos").doc(id+"--"+uid).set({c:id,at:Date.now()});else if(mode==="supabase")await sbf("/rest/v1/rpc/reportar_vela",{method:"POST",body:{p_vela:id,p_visitante:uid}})}catch(e){}}
  function sparks(el,n){if(!el)return;const f=el.querySelector(".flame");if(!f)return;const r=f.getBoundingClientRect(),pr=chapel.getBoundingClientRect();

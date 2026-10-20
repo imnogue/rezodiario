@@ -38,15 +38,15 @@ SEGS = {0: 0, 1: 1, 2: 2, 3: 3}
 def clips(d):
     """Lista de piezas del audio: ('voz', texto, parte) o ('silencio', segundos). Parte: 0 silencio, 1 Evangelio, 2 reflexión, 3 oración final."""
     libro, cap = d["refL"].split(" ")[0], d["refL"].split(" ")[1].rstrip(",")
-    out = [("silencio", 4),
+    out = [("silencio", 2),
            ("voz0", "Busca un lugar tranquilo y ponte cómodo." + br(1.5) + "Respira despacio." + br(2) + "Inspira…" + br(2.5) + "y suelta el aire." + br(2.5) + "Estás en la presencia de Dios." + br(1.5) + "Él te mira con cariño."),
-           ("silencio", 8),
+           ("silencio", 4),
            ("voz1", f"Evangelio según san {libro}, capítulo {cap}." + br(1.5) + d["sum"] + br(2) + "Escucha estas palabras del Evangelio:" + br(1.5) + d["ex"]),
-           ("silencio", 12),
+           ("silencio", 4),
            ("voz2", d["refl"] + br(2) + "Ahora, en silencio, piensa en estas preguntas."),
-           ("silencio", 3)]
-    for q in d["qs"]: out += [("voz2", q), ("silencio", 20)]
-    out += [("voz3", d["fin"] + br(2) + GL), ("silencio", 7)]
+           ("silencio", 2)]
+    for q in d["qs"]: out += [("voz2", q), ("silencio", 8)]
+    out += [("voz3", d["fin"] + br(2) + GL), ("silencio", 4)]
     return out
 
 def run(cmd):
