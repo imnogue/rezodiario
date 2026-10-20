@@ -428,6 +428,13 @@ def desc_for(p):
     first = re.split(r"(?<=[.!?])\s", p["x"].replace("\n", " "))[0]
     d = f'{p["t"]}: «{first}» Texto completo para rezar y escuchar.'
     return d if len(d) <= 160 else (d[:150].rsplit(" ", 1)[0] + "…»")
+EXAM_RX = re.compile(r"perd[oó]n|perdona|pecad|convi[eé]rt|conversi|misericordia|arrepent|pródigo|publicano", re.I)
+EXAM_SLUGS = {"oracion-de-la-noche": ("Antes de dormir, mira tu día", "El examen de conciencia te ayuda a repasar el día con calma y a pedir perdón sin miedo."),
+              "examen-del-dia": ("¿Quieres ir un paso más allá?", "Si hace tiempo que no te confiesas, el examen de conciencia te ayuda a prepararlo con sencillez."),
+              "oracion-para-perdonar": ("El perdón también se recibe", "En la confesión Dios te perdona a ti. Prepárala con un examen de conciencia sencillo."),
+              "oracion-para-perdonarme-a-mi-mismo": ("Deja tu carga en manos de Dios", "La confesión es el lugar donde Dios te dice: «Estás perdonado». Prepárala sin miedo."),
+              "acto-de-contricion": ("Prepara tu confesión", "Antes del acto de contrición viene el examen: preguntas sencillas y los pasos para confesarte.")}
+def exam_box(r, t, d): return f'<a class="exam-cta reveal" href="{r}examen-de-conciencia.html"><small>Examen de conciencia</small><b>{E(t)}</b><span>{E(d)}</span><em>Prepararme ›</em></a>'
 for p in PRAYERS:
     c = CATS[p["cat"]]; path = f'oraciones/{p["slug"]}.html'
     cr = [("Inicio", "index.html"), ("Oraciones", "oraciones/index.html"), (c["name"], f'oraciones/tema-{p["cat"]}.html'), (p["t"], path)]
@@ -450,6 +457,7 @@ for p in PRAYERS:
     {recorrido(r, CANDLE_HASH[p["cat"]])}
   </div>
   <aside class="side">
+    {exam_box(r, *EXAM_SLUGS[p["slug"]]) if p["slug"] in EXAM_SLUGS else ""}
     <div class="box candle-cta"><h3>Enciende una vela</h3><p>Deja esta intención en el muro y otras personas rezarán por ella durante siete días.</p><a class="btn btn-flame sm" href="{r}muro-de-intenciones.html#{CANDLE_HASH[p["cat"]]}">Encender una vela</a></div>
     <div class="box"><h3>Más oraciones de {c["name"].lower()}</h3><ul class="links">{"".join(f'<li><a href="{q["slug"]}.html">{E(q["t"])}<small>{q["min"]} min</small></a></li>' for q in rel)}</ul></div>
     <div class="box"><h3>Rezo de hoy</h3><p style="margin:0 0 12px;color:var(--muted);font-size:14.5px">{E(TW["title"])} · {TW["ref"]}</p><a class="btn btn-accent sm" href="{r}evangelio-de-hoy.html">Escuchar el rezo</a></div>
@@ -494,6 +502,7 @@ def gospel_main(r, w, kind):
   <article class="panel reveal">{lecturas_html(r, w)}<span class="eyebrow">{E(w["refL"])}</span><p class="quote">{E(w["ex"])}</p><p>{E(w["sum"])}</p>
    <h3>Reflexión</h3><p>{E(w["refl"])}</p><h3>Preguntas para tu oración</h3><ol class="qs">{"".join(f"<li>{E(q)}</li>" for q in w["qs"])}</ol>
    <h3>Oración final</h3><p style="font-family:var(--f-read);font-style:italic">{E(w["fin"])}</p>
+   {exam_box(r, "Un buen día para volver a Dios", "El Evangelio de hoy invita a la conversión. Mira tu vida con calma y prepara una confesión.") if EXAM_RX.search(w["ex"] + " " + w["sum"] + " " + w["refl"]) else ""}
    <div class="hero-cta" style="margin-top:22px"><a class="btn btn-ghost sm" href="{E(w.get("lecturasUrl") or "https://www.vaticannews.va/es/evangelio-de-hoy.html")}" target="_blank" rel="noopener">Lecturas completas del día</a><a class="btn btn-ghost sm" href="{r}rosario.html">Rezar el Rosario</a></div>{pn}</article>
   {box}
 </div></section>
@@ -681,7 +690,7 @@ adv_faq = [("¿Cuándo empieza el Adviento en 2026?", "El domingo 29 de noviembr
 sundays = [w for w in adv_days if w["wd"] == "Domingo"]
 adv = phero(r, [("Inicio", "index.html"), ("Adviento 2026", "adviento.html")], "Del 29 de noviembre al 24 de diciembre", "Adviento 2026: prepara tu corazón para la Navidad", "Cuatro semanas para esperar a Jesús que viene: la corona y sus velas, el Evangelio de cada día, un reto diario y las novenas de la Inmaculada, Guadalupe y Navidad.") + \
  sec(head2("Los cuatro domingos", "La corona de Adviento, semana a semana") + '<div class="pagegrid">' + "".join(f'<a class="saintcard reveal" href="evangelio/{w["date"]}.html"><small>{w["n"]} de {w["mes"]} · vela {i + 1}</small><b>{E(w["lit"])}</b><span>{w["ref"]}: {E(w["title"])}</span></a>' for i, w in enumerate(sundays)) + '</div>') + \
- sec(head2("Para rezar", "Oraciones y devociones de Adviento") + '<div class="duo">' + f'<a class="feature reveal" href="retos/adviento.html" style="background:linear-gradient(150deg,#5B3D7A,#24163A)"><small>26 días</small><b>Reto de Adviento</b><p>Un gesto pequeño cada día para preparar la Navidad.</p></a><a class="feature reveal" href="novenas/novena-a-la-inmaculada.html" style="background:linear-gradient(150deg,#3C6FA8,#16304F)"><small>29 nov – 7 dic</small><b>Novena a la Inmaculada</b><p>Nueve días con María antes de su fiesta.</p></a><a class="feature reveal" href="novenas/novena-de-navidad.html" style="background:linear-gradient(150deg,#A8812D,#4A3510)"><small>16 – 24 dic</small><b>Novena de Navidad</b><p>Nueve días en familia antes de Nochebuena.</p></a></div>' +
+ sec(head2("Para rezar", "Oraciones y devociones de Adviento") + '<div class="duo">' + f'<a class="feature reveal" href="retos/adviento.html" style="background:linear-gradient(150deg,#5B3D7A,#24163A)"><small>26 días</small><b>Reto de Adviento</b><p>Un gesto pequeño cada día para preparar la Navidad.</p></a><a class="feature reveal" href="novenas/novena-a-la-inmaculada.html" style="background:linear-gradient(150deg,#3C6FA8,#16304F)"><small>29 nov – 7 dic</small><b>Novena a la Inmaculada</b><p>Nueve días con María antes de su fiesta.</p></a><a class="feature reveal" href="novenas/novena-de-navidad.html" style="background:linear-gradient(150deg,#A8812D,#4A3510)"><small>16 – 24 dic</small><b>Novena de Navidad</b><p>Nueve días en familia antes de Nochebuena.</p></a><a class="feature reveal" href="examen-de-conciencia.html" style="background:linear-gradient(150deg,#2C5D47,#10261D)"><small>Antes del 24 dic</small><b>Confesarse por Navidad</b><p>Examen de conciencia y cómo confesarse paso a paso.</p></a></div>' +
   '<ul class="links" style="margin-top:22px">' + "".join(f'<li><a href="oraciones/{s}.html">{E(PBY[s]["t"])}<small>{PBY[s]["min"]} min</small></a></li>' for s in ["bendicion-corona-de-adviento", "oracion-de-las-velas-de-adviento", "oracion-de-adviento", "oracion-a-la-inmaculada", "oracion-a-la-virgen-de-guadalupe", "bendicion-del-belen"]) + '</ul>', "sec band") + \
  sec(head2("Día a día", "El Evangelio de cada día de Adviento") + '<ul class="links" style="columns:2 300px;column-gap:40px;display:block">' + "".join(f'<li style="break-inside:avoid"><a href="evangelio/{w["date"]}.html">{w["wd"]} {w["n"]} de {w["mes"]}: {E(w["title"])}<small>{w["ref"]}</small></a></li>' for w in adv_days) + '</ul>') + sec(head2("Preguntas frecuentes", "Sobre el Adviento") + faq_html(adv_faq), "sec band")
 page("adviento.html", "Adviento 2026: fechas, corona, oraciones y reto diario | Rezo Diario", "El Adviento 2026 empieza el 29 de noviembre. Corona de Adviento y sus velas, Evangelio de cada día, reto diario, novena a la Inmaculada y novena de Navidad.", adv, "", [crumbs_ld([("Inicio", "index.html"), ("Adviento 2026", "adviento.html")]), faq_ld(adv_faq)])

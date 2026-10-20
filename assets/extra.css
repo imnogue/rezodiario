@@ -75,6 +75,7 @@ a.card{text-decoration:none;color:var(--ink)}
 /* Bloques de la portada */
 .duo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media(max-width:900px){.duo{grid-template-columns:1fr}}
+@media(min-width:901px){.duo:has(>:nth-child(4)){grid-template-columns:repeat(2,minmax(0,1fr))}}
 .feature{display:flex;flex-direction:column;gap:10px;border-radius:26px;padding:26px;text-decoration:none;color:#fff;min-height:230px;position:relative;overflow:hidden;transition:transform .3s}
 .feature:hover{transform:translateY(-4px)}
 .feature small{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
@@ -509,3 +510,11 @@ font[style]{background:none!important;box-shadow:none!important}
 .momento small{font-size:13px;opacity:.75}
 .momento em{margin-left:auto;font-style:normal;font-size:22px;opacity:.6}
 @media (hover:hover){.momento:hover{background:rgba(255,255,255,.14)}}
+/* Propuesta del examen de conciencia */
+.exam-cta{display:flex;flex-direction:column;gap:4px;margin:0 0 18px;padding:18px 20px;border-radius:18px;text-decoration:none;color:#EEF2EC;background:linear-gradient(150deg,#2C5D47,#10261D);font-family:var(--f-ui)}
+.exam-cta small{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#D6B266}
+.exam-cta b{font-family:var(--f-display);font-weight:400;font-size:21px;line-height:1.25}
+.exam-cta span{font-size:14.5px;line-height:1.5;opacity:.85}
+.exam-cta em{font-style:normal;font-weight:700;font-size:14px;margin-top:6px;color:#D6B266}
+article .exam-cta{margin:24px 0 0}
+@media (hover:hover){.exam-cta:hover{filter:brightness(1.08)}}
