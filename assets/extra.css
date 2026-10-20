@@ -583,3 +583,13 @@ article .exam-cta{margin:24px 0 0}
 }
 .chat{scroll-margin-top:84px}
 .chat-log{min-height:220px}
+/* Chat más limpio: sin barras de desplazamiento visibles y temas en dos líneas */
+.chat-log{scrollbar-width:none;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18px,#000 calc(100% - 10px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18px,#000 calc(100% - 10px),transparent 100%)}
+.chat-log::-webkit-scrollbar{display:none}
+.chat-sug{padding:12px 16px 2px}
+.chat-sug .feel{flex-wrap:wrap;overflow:visible;padding:0 0 6px}
+.chat-sug .feel .is-more{display:none}
+.chat-sug .feel.open .is-more{display:inline-flex}
+.chat-sug .chip-more{background:transparent;border-style:dashed;color:var(--muted)}
+.chat{max-height:min(820px,90vh)}
+.chat-in textarea{scrollbar-width:none}

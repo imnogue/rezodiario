@@ -324,8 +324,9 @@ if($("#askForm")){
    if(speakText(first.t+". "+t,()=>{lb.textContent=lbl}))lb.textContent="Detener"};
   bot(`<p>${crisis?"No estás solo. ":""}¿Quieres que otras personas recen contigo?</p><div class="msg-acts"><a class="chip" href="${muro(cat)}">Encender una vela</a><a class="chip" href="${muro(cat,fromChip?"":text)}">Dejar mi intención en el muro</a>${others.map(p=>`<a class="chip" href="${url(p)}">${esc(p.t)}</a>`).join("")}</div><p class="msg-s">Si quieres, cuéntame algo más.</p>`);
  }
- $("#feel").innerHTML=FEEL.map(([n,k])=>`<button class="chip" type="button" data-k="${k}">${n}</button>`).join("");
- $$("#feel .chip").forEach(b=>b.onclick=()=>answer(b.textContent,b.dataset.k));
+ $("#feel").innerHTML=FEEL.map(([n,k],i)=>`<button class="chip${i>3?" is-more":""}" type="button" data-k="${k}">${n}</button>`).join("")+`<button class="chip chip-more" type="button" aria-expanded="false">Más temas +</button>`;
+ $$("#feel .chip[data-k]").forEach(b=>b.onclick=()=>answer(b.textContent,b.dataset.k));
+ const mb=$("#feel .chip-more");mb.onclick=()=>{const o=$("#feel").classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=o?"Menos temas −":"Más temas +"};
  const grow=()=>{inp.style.height="auto";inp.style.height=Math.min(inp.scrollHeight,140)+"px"};inp.addEventListener("input",grow);
  $("#askForm").onsubmit=e=>{e.preventDefault();const t=inp.value.trim();if(!t){inp.focus();return}inp.value="";grow();answer(t)};
  inp.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();$("#askForm").requestSubmit()}});
