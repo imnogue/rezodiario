@@ -333,6 +333,9 @@ function siguiente(ctx){
  const pr=RD.prayers||[];const slug=document.body.dataset.slug;const cur=pr.find(p=>p.slug===slug);
  if(ctx!=="rezo")out.push(L(IDX+"#player","Escucha el rezo de hoy",today.title?`«${today.title}» · el Evangelio con música y silencio`:"El Evangelio del día con música y silencio"));
  if(ctx==="oracion"&&cur){const rel=pr.filter(p=>p.cat===cur.cat&&p.slug!==cur.slug);const n=rel[(rel.findIndex(p=>p.slug>cur.slug)+rel.length)%rel.length]||rel[0];if(n)out.push(L("oraciones/"+n.slug+X,"Otra oración: "+n.t,"De la misma temática, para seguir rezando"))}
+ const hr=new Date().getHours(),noche=hr>=20||hr<4;
+ if((noche||slug==="oracion-de-la-noche"||slug==="examen-del-dia")&&slug!=="examen-de-conciencia-guiado")out.splice(Math.min(1,out.length),0,L("examen-de-conciencia"+X,"Examen de conciencia","Antes de dormir o para preparar la confesión, sin miedo"));
+ if(slug==="examen-de-conciencia-guiado")out.unshift(L("examen-de-conciencia"+X+"#confesion","Cómo confesarse paso a paso","Y el acto de contrición para rezarlo en la confesión"));
  if(ctx!=="rosario")out.push(L("rosario"+X,"Reza el Rosario de hoy",`Misterios ${(T_SET[today.set]||"del día")} · cuenta a cuenta, con voz`));
  out.push(L("muro-de-intenciones"+X+"#candles","Reza por otras personas","Hay intenciones en el muro esperando una oración"));
  if(ctx==="rezo"||ctx==="rosario")out.push(L("versiculos"+X,"El versículo de hoy","Una frase de la Biblia para llevar contigo"));
@@ -798,3 +801,8 @@ if(vn&&window.RDV){let cur=null,last="";const show=slug=>{const t=RDV[slug];if(!
 /* ---------- Web instalable (solo en el dominio real) ---------- */
 if("serviceWorker" in navigator&&location.protocol==="https:"&&/rezodiario\.com$/.test(location.hostname)){navigator.serviceWorker.register("/sw.js").catch(()=>{})}
 })();
+
+/* ---------- Oración según la hora (portada) ---------- */
+(function(){const a=document.getElementById("momento");if(!a)return;const h=new Date().getHours();
+ const M=h>=5&&h<12?["oracion-de-la-manana","Empieza el día con Dios","Oración de la mañana · 2 min","☀"]:h>=12&&h<14?["el-angelus","Es mediodía: reza el Ángelus","Como hacen los católicos de todo el mundo · 1 min","✦"]:(h>=20||h<5)?["oracion-de-la-noche","Termina el día en paz","Oración de la noche y examen de conciencia","☾"]:null;
+ if(!M)return;const RT=document.body.dataset.root||"",XX=document.body.dataset.clean==="1"?"":".html";a.href=RT+"oraciones/"+M[0]+XX;a.querySelector("b").textContent=M[1];a.querySelector("small").textContent=M[2];a.querySelector("i").textContent=M[3];a.hidden=false})();

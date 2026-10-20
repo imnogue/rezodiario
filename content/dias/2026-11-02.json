@@ -126,20 +126,8 @@
   "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-02-voz.mp3?v=1792489965",
   "lecturas": [
     {
-      "tipo": "Primera lectura",
-      "titulo": "Lectura del libro de la Sabiduría 4, 7-15"
-    },
-    {
-      "tipo": "Salmo",
-      "titulo": "Salmo 26, 1. 4. 7. 8b. 9a. 13-14"
-    },
-    {
-      "tipo": "Segunda lectura",
-      "titulo": "Lectura de la carta del apóstol san Pablo a los Romanos 5, 5-11"
-    },
-    {
       "tipo": "Evangelio",
-      "titulo": "Lectura del santo evangelio según san Juan 14, 1-6"
+      "titulo": "Juan 6, 37-40"
     }
   ],
   "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/02-11-2026/"

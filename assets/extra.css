@@ -439,3 +439,73 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .skiptranslate iframe,iframe.skiptranslate,.goog-te-banner-frame,#goog-gt-tt,.goog-te-balloon-frame,.VIpgJd-ZVi9od-ORHb-OEVmcd,.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,.VIpgJd-yAWNEb-L7lbkb{display:none!important}
 body{top:0!important}
 font[style]{background:none!important;box-shadow:none!important}
+/* Lecturas de la misa (citas) */
+.lecturas{border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:0 0 22px;background:var(--surface-2)}
+.lec-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.lec-h b{font-family:var(--f-ui);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lec-h a{font-family:var(--f-ui);font-size:14px;color:var(--accent);font-weight:600;text-decoration:none}
+.lecturas ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.lecturas li{display:flex;align-items:baseline;gap:10px;padding:6px 0;border-top:1px dashed var(--line);font-family:var(--f-ui);font-size:15px}
+.lecturas li:first-child{border-top:0}
+.lecturas li small{flex:0 0 118px;color:var(--muted);font-size:13px}
+.lecturas li span{font-weight:600;color:var(--ink)}
+.lecturas li em{margin-left:auto;font-style:normal;font-size:12px;color:var(--muted)}
+.lecturas li.is-ev span{color:var(--accent)}
+@media(max-width:480px){.lecturas li small{flex-basis:96px}.lecturas li em{display:none}}
+/* Calendario litúrgico */
+.cal-ley{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin:18px 0 0;padding:0;font-family:var(--f-ui);font-size:14px;color:var(--muted)}
+.cal-ley li{display:flex;align-items:center;gap:7px}
+.cal .dot,.cal-ley .dot{width:10px;height:10px;border-radius:50%;display:inline-block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.cal-m{margin:0 0 44px}
+.cal-m h2{margin:0 0 14px}
+.cal-h,.cal-g{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cal-h li{font-family:var(--f-ui);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0 8px 4px}
+.cal-g>li{min-height:112px;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.cal-g>li.cal-pad{border:0;background:none}
+.cal-g>li.cal-off{opacity:.45;padding:8px}
+.cal-g a{display:flex;flex-direction:column;gap:3px;height:100%;padding:8px 9px;text-decoration:none;color:var(--ink);font-family:var(--f-ui)}
+.cal-n{display:flex;align-items:center;gap:6px;font-weight:700;font-size:15px}
+.cal-wd{display:none}
+.cal-g b{font-weight:500;font-size:12px;line-height:1.3;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cal-g em{font-style:normal;font-size:12px;line-height:1.3;color:var(--accent);font-weight:600}
+.cal-ref{margin-top:auto;font-size:11px;color:var(--muted)}
+.cal-g li.is-fiesta{background:var(--surface-2);border-color:var(--gold)}
+.cal-g li.is-fiesta b{color:var(--ink);font-weight:700}
+.cal-g li.is-today{box-shadow:0 0 0 2px var(--accent)}
+@media (hover:hover){.cal-g a:hover{background:var(--surface-2)}}
+@media(max-width:760px){
+ .cal-h{display:none}
+ .cal-g{grid-template-columns:1fr;gap:0}
+ .cal-g>li{min-height:0;border-radius:0;border:0;border-top:1px solid var(--line);background:none}
+ .cal-g>li.cal-pad,.cal-g>li.cal-off{display:none}
+ .cal-g a{display:grid;grid-template-columns:54px 1fr auto;column-gap:12px;row-gap:2px;padding:10px 4px}
+ .cal-n{grid-row:1/span 2;flex-direction:column;align-items:flex-start;gap:2px;font-size:20px}
+ .cal-n .dot{position:absolute;margin:6px 0 0 30px}
+ .cal-n{position:relative}
+ .cal-wd{display:block;font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+ .cal-g b{font-size:14px;-webkit-line-clamp:2}
+ .cal-g em{font-size:13px;grid-column:2}
+ .cal-ref{grid-column:3;grid-row:1;margin:0;font-size:12px;white-space:nowrap}
+ .cal-g li.is-fiesta{background:var(--surface-2)}
+ .cal-g li.is-today{box-shadow:inset 3px 0 0 var(--accent)}
+}
+/* Examen de conciencia */
+.ex-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.ex-c h3{margin:6px 0 12px}
+.ex-c ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.ex-c li{position:relative;padding-left:22px;font-family:var(--f-read);font-size:17px;line-height:1.5}
+.ex-c li::before{content:"";position:absolute;left:4px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.ex-pasos{list-style:none;counter-reset:p;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.ex-pasos li{counter-increment:p;position:relative;padding:18px 18px 16px 62px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.ex-pasos li::before{content:counter(p);position:absolute;left:16px;top:16px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-family:var(--f-ui);font-weight:700}
+.ex-pasos b{font-family:var(--f-ui);font-size:16px}
+.ex-pasos p{margin:6px 0 0;font-size:15px;line-height:1.55;color:var(--muted)}
+/* Oración según la hora */
+.momento{display:flex;align-items:center;gap:12px;margin-top:16px;max-width:440px;padding:11px 16px 11px 12px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:var(--hero-ink);text-decoration:none;font-family:var(--f-ui)}
+.momento[hidden]{display:none}
+.momento i{flex:0 0 36px;height:36px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:18px;background:var(--gold);color:var(--gold-ink)}
+.momento span{display:flex;flex-direction:column;gap:1px;min-width:0}
+.momento b{font-size:15px}
+.momento small{font-size:13px;opacity:.75}
+.momento em{margin-left:auto;font-style:normal;font-size:22px;opacity:.6}
+@media (hover:hover){.momento:hover{background:rgba(255,255,255,.14)}}

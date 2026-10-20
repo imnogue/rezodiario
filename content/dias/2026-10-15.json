@@ -18,16 +18,8 @@
   "duracion": "",
   "lecturas": [
     {
-      "tipo": "Primera lectura",
-      "titulo": "Lectura del libro del Eclesiástico 15, 1-6"
-    },
-    {
-      "tipo": "Salmo",
-      "titulo": "Salmo 88, 2-3. 6-7. 8-9. 16-17. 18-19"
-    },
-    {
       "tipo": "Evangelio",
-      "titulo": "Lectura del santo evangelio según san Mateo 11, 25-30"
+      "titulo": "Lucas 11, 47-54"
     }
   ],
   "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/15-10-2026/"

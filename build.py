@@ -130,7 +130,7 @@ def footer(r):
       <p>Oración guiada cada día con el Evangelio, el Santo Rosario y más de {len(PRAYERS)} oraciones para todos los momentos de la vida. Gratis y sin registro.</p>
       <p class="verse">«Venid a mí todos los que estáis cansados y agobiados, y yo os aliviaré.» Mt 11, 28</p>
     </div>
-    {col("Rezar", [("evangelio-de-hoy.html", "Evangelio de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("santo-de-hoy.html", "Santo de hoy"), ("rosario.html", "Misterios del Rosario de hoy"), ("via-crucis.html", "Vía Crucis"), ("novenas/index.html", "Novenas"), ("adviento.html", "Adviento 2026")])}
+    {col("Rezar", [("evangelio-de-hoy.html", "Evangelio de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("santo-de-hoy.html", "Santo de hoy"), ("rosario.html", "Misterios del Rosario de hoy"), ("via-crucis.html", "Vía Crucis"), ("novenas/index.html", "Novenas"), ("adviento.html", "Adviento 2026"), ("calendario-liturgico.html", "Calendario litúrgico"), ("examen-de-conciencia.html", "Examen de conciencia")])}
     {col("Oraciones", [(f"oraciones/{s}.html", l) for s, l in pop])}
     {col("Versículos", [("versiculos.html", "Versículo del día")] + [(t["slug"] + ".html", t["t"]) for t in VTOP[:6]])}
     {col("Síguenos", social)}
@@ -203,7 +203,7 @@ def week_section(r, mode="select", title="Esta semana, día a día", sub="Desliz
     links = "".join(f'<li><a href="{r}evangelio/{w["date"]}.html">{w["wd"]} {w["n"]} de {w["mes"]}: {E(w["title"])}<small>{w["ref"]}</small></a></li>' for w in DAYS[lo:hi])
     return f'''<section class="sec" aria-labelledby="hWeek"><div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">Sigue rezando</span><h2 id="hWeek">{title}</h2><p>{sub}</p></div>
-      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><span class="streak" id="streak"></span><div class="arrows"><button class="icon-btn" data-scroll="week" data-dir="-1" aria-label="Días anteriores">‹</button><button class="icon-btn" data-scroll="week" data-dir="1" aria-label="Días siguientes">›</button></div></div></div>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><span class="streak" id="streak"></span><a class="btn btn-ghost sm" href="{r}calendario-liturgico.html">Ver el mes</a><div class="arrows"><button class="icon-btn" data-scroll="week" data-dir="-1" aria-label="Días anteriores">‹</button><button class="icon-btn" data-scroll="week" data-dir="1" aria-label="Días siguientes">›</button></div></div></div>
     <div class="rail" id="week" role="list" data-mode="{mode}"></div>
     <noscript><ul class="links">{links}</ul></noscript>
   </div></section>'''
@@ -356,6 +356,7 @@ home_main = f'''<section class="hero" aria-labelledby="h1">
       <h1 id="h1">Un momento con Dios, <em>cada día.</em></h1>
       <p class="lead">Escucha el Evangelio de hoy con música y silencio, reza el Rosario cuenta a cuenta, enciende una vela por tu intención y encuentra una oración para cada momento.</p>
       <div class="hero-cta"><button class="btn btn-gold" id="ctaPlay">{ICON["play"]}<span data-i18n="listen">Escuchar el rezo de hoy</span></button><a class="btn btn-ghost" href="muro-de-intenciones.html" data-i18n="light">Enciende una vela</a></div>
+      <a class="momento" id="momento" href="oraciones/oracion-de-la-manana.html" hidden><i aria-hidden="true"></i><span><b></b><small></small></span><em aria-hidden="true">›</em></a>
       <div class="facts"><div><small>Evangelio</small><span id="fRef">{TW["ref"]}</span></div><div><small>Rosario de hoy</small><span id="fSet">Misterios {setname(TW)}</span></div><div><small>Duración</small><span id="fDur">5 min</span></div></div>
     </div>
     {player()}
@@ -459,6 +460,21 @@ for p in PRAYERS:
      body_attrs=f' data-slug="{p["slug"]}"', og_type="article")
 
 # ================= EVANGELIO =================
+def cita_corta(t):
+    """«Lectura de la primera carta del apóstol san Pablo a los Corintios 1, 3-9» → «1 Corintios 1, 3-9»."""
+    n = "1 " if re.search(r"\bprimera carta\b", t) else "2 " if re.search(r"\bsegunda carta\b", t) else "3 " if re.search(r"\btercera carta\b", t) else ""
+    if re.search(r"libro primero", t): n = "1 "
+    if re.search(r"libro segundo", t): n = "2 "
+    c = re.sub(r"^Lectura (del santo evangelio según san |de la (primera |segunda |tercera )?carta (del apóstol san Pablo |del apóstol |de san |de |)(a los |a )?|del libro (primero |segundo )?(de los |del |de la |de )?|de la profecía de |de los |del |de la |de )", "", t).strip()
+    if c.startswith("Hebreos") is False and "a los Hebreos" in t: c = "Hebreos " + c
+    c = re.sub(r"^(Salmo \d+).*", r"\1", c)
+    return n + c[:1].upper() + c[1:]
+def lecturas_html(r, w):
+    ls = w.get("lecturas")
+    if not ls: return ""
+    li = "".join(f'<li{" class=is-ev" if x["tipo"] == "Evangelio" else ""}><small>{E(x["tipo"])}</small><span title="{E(x["titulo"])}">{E(cita_corta(x["titulo"]))}</span>{"<em>aquí abajo</em>" if x["tipo"] == "Evangelio" else ""}</li>' for x in ls)
+    url = w.get("lecturasUrl") or "https://www.dominicos.org/predicacion/evangelio-del-dia/hoy/"
+    return f'<div class="lecturas reveal"><div class="lec-h"><b>Lecturas de la misa</b><a href="{E(url)}" target="_blank" rel="noopener">Leerlas completas ›</a></div><ol>{li}</ol></div>'
 def gospel_main(r, w, kind):
     s = SBY.get(w["saint"])
     title = {"hoy": "Evangelio de hoy", "manana": "Evangelio de mañana"}.get(kind, f'Evangelio del {w["wd"].lower()} {w["n"]} de {w["mes"]}')
@@ -475,10 +491,10 @@ def gospel_main(r, w, kind):
    <div class="facts"><div><small>Evangelio</small><span id="fRef">{w["ref"]}</span></div><div><small>Color litúrgico</small><span>{LITC[w["color"]][1].split(" · ")[0]}</span></div><div><small>Rosario</small><span id="fSet">Misterios {setname(w)}</span></div></div></div>
   {player()}</div></section>
 <section class="sec"><div class="wrap gos">
-  <article class="panel reveal"><span class="eyebrow">{E(w["refL"])}</span><p class="quote">{E(w["ex"])}</p><p>{E(w["sum"])}</p>
+  <article class="panel reveal">{lecturas_html(r, w)}<span class="eyebrow">{E(w["refL"])}</span><p class="quote">{E(w["ex"])}</p><p>{E(w["sum"])}</p>
    <h3>Reflexión</h3><p>{E(w["refl"])}</p><h3>Preguntas para tu oración</h3><ol class="qs">{"".join(f"<li>{E(q)}</li>" for q in w["qs"])}</ol>
    <h3>Oración final</h3><p style="font-family:var(--f-read);font-style:italic">{E(w["fin"])}</p>
-   <div class="hero-cta" style="margin-top:22px"><a class="btn btn-ghost sm" href="https://www.vaticannews.va/es/evangelio-de-hoy.html" target="_blank" rel="noopener">Lecturas completas del día</a><a class="btn btn-ghost sm" href="{r}rosario.html">Rezar el Rosario</a></div>{pn}</article>
+   <div class="hero-cta" style="margin-top:22px"><a class="btn btn-ghost sm" href="{E(w.get("lecturasUrl") or "https://www.vaticannews.va/es/evangelio-de-hoy.html")}" target="_blank" rel="noopener">Lecturas completas del día</a><a class="btn btn-ghost sm" href="{r}rosario.html">Rezar el Rosario</a></div>{pn}</article>
   {box}
 </div></section>
 {week_section(r, "link", "Evangelios de estos días", "Vuelve a cualquier día o adelanta los próximos.")}'''
@@ -496,6 +512,74 @@ for w in DAYS: months.setdefault(w["date"][:7], []).append(w)
 arch = "".join(f'<h2 style="margin-top:34px">{MES[int(k[5:]) - 1].capitalize()} de {k[:4]}</h2><ul class="links" style="columns:2 300px;column-gap:40px;display:block">' + "".join(f'<li style="break-inside:avoid"><a href="{w["date"]}.html">{w["wd"]} {w["n"]}: {E(w["title"])}<small>{w["ref"]}</small></a></li>' for w in v) + '</ul>' for k, v in months.items())
 page("evangelio/index.html", "Archivo del Evangelio del día | Rezo Diario", "Todos los Evangelios del día con su comentario, preguntas para rezar y audio, ordenados por meses.",
  phero("../", [("Inicio", "index.html"), ("Evangelio", "evangelio/index.html")], "Archivo", "El Evangelio de cada día", "Vuelve a cualquier día: cada Evangelio con su comentario, sus preguntas y su audio.") + sec(f'<div class="prose" style="max-width:none">{arch}</div>'), "gospel", [crumbs_ld([("Inicio", "index.html"), ("Evangelio", "evangelio/index.html")])])
+# ================= CALENDARIO LITÚRGICO =================
+def es_fiesta(w): return bool(re.search(r"Solemnidad|Fiesta|Domingo|Natividad|Navidad|Todos los Santos|Inmaculada|Cristo, Rey", w["lit"]))
+def cal_mes(k, ws):
+    y, mo = int(k[:4]), int(k[5:])
+    first = datetime.date(y, mo, 1); pad = first.weekday()
+    nd = (datetime.date(y + (mo == 12), mo % 12 + 1, 1) - first).days
+    by = {w["n"]: w for w in ws}
+    cells = ['<li class="cal-pad" aria-hidden="true"></li>'] * pad
+    for d in range(1, nd + 1):
+        w = by.get(d)
+        if not w:
+            cells.append(f'<li class="cal-off"><span class="cal-n">{d}</span></li>'); continue
+        s = SBY.get(w["saint"]) if w.get("saint") else None
+        sn = f"<em>{E(s['name'])}</em>" if s and not any(len(x) > 3 and x.lower() in w["lit"].lower() for x in s["name"].split(" ")[1:3]) else ""
+        cls = "cal-d" + (" is-fiesta" if es_fiesta(w) else "") + (" is-today" if w["date"] == TODAY else "")
+        cells.append(f'<li class="{cls}"><a href="evangelio/{w["date"]}.html"><span class="cal-n">{d}<i class="dot" style="background:{LITC[w["color"]][0]}" title="{E(LITC[w["color"]][1])}"></i><small class="cal-wd">{w["wd"][:3]}</small></span>'
+                     f'<b>{E(w["lit"])}</b>{sn}<span class="cal-ref">{E(w["ref"])}</span></a></li>')
+    head = "".join(f"<li>{x[:3]}</li>" for x in WDN)
+    return f'<div class="cal-m" id="mes-{k}"><h2>{MES[mo - 1].capitalize()} de {y}</h2><ol class="cal-h" aria-hidden="true">{head}</ol><ol class="cal-g">{"".join(cells)}</ol></div>'
+cal_html = "".join(cal_mes(k, v) for k, v in months.items())
+leyenda = '<ul class="cal-ley">' + "".join(f'<li><i class="dot" style="background:{v[0]}"></i>{E(v[1])}</li>' for k, v in LITC.items() if any(w["color"] == k for w in DAYS)) + '</ul>'
+adv1 = next((f"{w['n']} de {w['mes']}" for w in DAYS if "Adviento" in w["lit"] and w["wd"] == "Domingo"), "primer domingo de Adviento")
+cal_faq = [("¿Qué es el calendario litúrgico?", "Es el orden con el que la Iglesia católica celebra el año: los tiempos de Adviento, Navidad, Cuaresma, Pascua y Tiempo Ordinario, con sus domingos, solemnidades, fiestas y memorias de los santos. Cada día tiene sus lecturas y su color."),
+           ("¿Qué significan los colores litúrgicos?", "El verde se usa en el Tiempo Ordinario y habla de esperanza; el morado, en Adviento, Cuaresma y en la misa de difuntos, e invita a la conversión; el blanco, en las fiestas del Señor, de la Virgen y de los santos que no son mártires; el rojo, en las fiestas de los mártires, de los apóstoles y en Pentecostés."),
+           ("¿Cuándo empieza el año litúrgico?", f"El año litúrgico empieza el primer domingo de Adviento. En {TODAY[:4]} es el {adv1}, cuatro domingos antes de Navidad."),
+           ("¿Qué diferencia hay entre solemnidad, fiesta y memoria?", "La solemnidad es la celebración más importante (como Navidad o Todos los Santos); la fiesta es un grado menor (como la de un apóstol); y la memoria recuerda a un santo dentro de la misa del día, unas veces de forma obligatoria y otras libre.")]
+page("calendario-liturgico.html", f"Calendario litúrgico {TODAY[:4]}: fiestas, santos y colores de cada día | Rezo Diario", f"Calendario litúrgico católico día a día: tiempo litúrgico, color, fiestas, santos y Evangelio de cada día de {MES[int(TODAY[5:7]) - 1]} a diciembre de {TODAY[:4]}.",
+ phero("", [("Inicio", "index.html"), ("Calendario litúrgico", "calendario-liturgico.html")], "Calendario litúrgico", "Fiestas, santos y colores de cada día",
+       "Mira qué celebra la Iglesia cada día, de qué color se viste el altar y qué santo recordamos. Toca un día para rezar con su Evangelio.", leyenda)
+ + sec(f'<div class="cal">{cal_html}</div>') + sec(head2("Preguntas frecuentes", "Sobre el calendario litúrgico") + faq_html(cal_faq), "sec band"),
+ "gospel", [crumbs_ld([("Inicio", "index.html"), ("Calendario litúrgico", "calendario-liturgico.html")]), faq_ld(cal_faq)])
+# ================= EXAMEN DE CONCIENCIA Y CONFESIÓN =================
+EXG = PBY["examen-de-conciencia-guiado"]; ACT = PBY["acto-de-contricion"]
+_grupos, _g = [], None
+for par in [x.strip() for x in EXG["x"].split("\n\n") if x.strip()]:
+    if par.endswith(".") and len(par) < 25 and not par.startswith("¿"): _g = [par.rstrip("."), []]; _grupos.append(_g)
+    elif par.startswith("¿") and _g: _g[1].append(par)
+ex_cards = '<div class="ex-g">' + "".join(f'<div class="panel ex-c reveal"><span class="eyebrow">{i + 1} de {len(_grupos)}</span><h3>{E(t)}</h3><ul>' + "".join(f"<li>{E(q)}</li>" for q in qs) + '</ul></div>' for i, (t, qs) in enumerate(_grupos)) + '</div>'
+pasos = [("Prepárate antes", "Haz el examen con calma, arrepiéntete de corazón y propón cambiar. No hace falta que lo sientas todo con fuerza: basta con querer volver a Dios."),
+         ("Saluda al sacerdote", "En España es costumbre empezar con «Ave María Purísima», y el sacerdote responde «Sin pecado concebida». Después haz la señal de la cruz."),
+         ("Di cuándo fue tu última confesión", "Por ejemplo: «Hace dos meses» o «Hace muchos años». Si te cuesta o estás nervioso, díselo: el sacerdote te ayudará."),
+         ("Confiesa tus pecados", "Con sencillez y sin rodeos, empezando por lo que más te pesa. No hace falta dar detalles innecesarios ni justificarse."),
+         ("Escucha el consejo y la penitencia", "El sacerdote te dirá unas palabras y te pondrá una penitencia: una oración o un gesto concreto para reparar y empezar de nuevo."),
+         ("Reza el acto de contrición", "Expresa tu arrepentimiento con el «Señor mío Jesucristo» o con tus propias palabras."),
+         ("Recibe la absolución", "El sacerdote te da la absolución en nombre de Dios. Responde «Amén». Tus pecados quedan perdonados."),
+         ("Cumple la penitencia", "Hazla cuanto antes y da gracias. Sales con el corazón en paz: no tienes que volver a cargar con lo que ya has confesado.")]
+pasos_html = '<ol class="ex-pasos">' + "".join(f'<li class="reveal"><b>{E(t)}</b><p>{E(d)}</p></li>' for t, d in pasos) + '</ol>'
+ex_faq = [("¿Cada cuánto hay que confesarse?", "La Iglesia pide confesarse al menos una vez al año y siempre antes de comulgar si se tiene conciencia de un pecado grave. Pero se recomienda hacerlo con frecuencia, por ejemplo una vez al mes, porque ayuda a crecer y a vivir con más paz."),
+          ("¿Qué pasa si se me olvida un pecado?", "Si lo olvidas sin querer, queda perdonado con los demás. Si después lo recuerdas y es grave, basta con decirlo en la siguiente confesión."),
+          ("Hace muchos años que no me confieso, ¿puedo hacerlo?", "Sí, y es una gran alegría. Díselo al sacerdote al empezar: él te ayudará a hacer memoria con calma. No importa el tiempo que haya pasado."),
+          ("¿Qué es un pecado mortal o grave?", "Es una falta en materia grave, cometida sabiendo que lo es y queriéndolo de verdad. Los pecados leves o veniales también se pueden confesar y es bueno hacerlo."),
+          ("¿El sacerdote puede contar lo que le digo?", "No. El secreto de confesión es absoluto: el sacerdote no puede revelar nunca lo que ha escuchado, a nadie y bajo ninguna circunstancia."),
+          ("¿Puedo confesarme por internet o por teléfono?", "No. La confesión necesita la presencia del penitente y del sacerdote. Esta página te ayuda a prepararla; para confesarte, acércate a tu parroquia o a cualquier iglesia en horario de confesiones.")]
+ex_main = phero("", [("Inicio", "index.html"), ("Oraciones", "oraciones/index.html"), ("Examen de conciencia", "examen-de-conciencia.html")], "Confesión",
+    "Examen de conciencia para confesarse",
+    "Un repaso sencillo y sin miedo de tu relación con Dios, con los demás y contigo mismo, y una guía paso a paso para confesarte bien, aunque haga años que no lo haces.",
+    pplayer(EXG, "") if EXG.get("audio") else "") \
+ + sec(head2("Examen", "Preguntas para mirar tu vida", "Léelas despacio. Quédate en las que te remuevan por dentro y apunta, si te ayuda, lo que quieras decir.") + ex_cards) \
+ + sec('<div id="confesion"></div>' + head2("Confesión", "Cómo confesarse paso a paso", "Si estás nervioso, no te preocupes: el sacerdote está para ayudarte.") + pasos_html, "sec band") \
+ + sec(f'''<div class="gos"><article class="panel reveal"><span class="eyebrow">Oración</span><h2 style="margin-top:6px">Acto de contrición</h2>{"".join(f'<p style="font-family:var(--f-read);font-size:19px;line-height:1.6">{E(x)}</p>' for x in ACT["x"].split(chr(10) + chr(10)))}
+ <div class="hero-cta" style="margin-top:18px"><a class="btn btn-ghost sm" href="oraciones/acto-de-contricion.html">Escucharla y copiarla</a><a class="btn btn-ghost sm" href="oraciones/examen-del-dia.html">Examen del día (antes de dormir)</a></div></article>
+ <aside class="panel saint reveal"><span class="eyebrow">Si no la recuerdas</span><h3>Basta con decirlo de corazón</h3><p style="opacity:.85">«Jesús, Hijo de Dios, ten compasión de mí, que soy un pecador.» Dios mira tu corazón, no tu memoria.</p></aside></div>''') \
+ + sec(head2("Preguntas frecuentes", "Sobre la confesión") + faq_html(ex_faq))
+page("examen-de-conciencia.html", "Examen de conciencia para confesarse y cómo confesarse paso a paso | Rezo Diario",
+     "Examen de conciencia sencillo para preparar la confesión, con audio guiado, cómo confesarse paso a paso y el acto de contrición «Señor mío Jesucristo».",
+     ex_main, "prayers", [crumbs_ld([("Inicio", "index.html"), ("Oraciones", "oraciones/index.html"), ("Examen de conciencia", "examen-de-conciencia.html")]), faq_ld(ex_faq),
+     {"@context": "https://schema.org", "@type": "HowTo", "name": "Cómo confesarse paso a paso", "inLanguage": "es", "step": [{"@type": "HowToStep", "position": i + 1, "name": t, "text": d} for i, (t, d) in enumerate(pasos)]}],
+     body_attrs=f' data-slug="{EXG["slug"]}"')
 
 # ================= SANTOS =================
 r = ""

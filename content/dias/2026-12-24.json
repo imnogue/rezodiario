@@ -126,20 +126,8 @@
   "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-24-voz.mp3?v=1792490487",
   "lecturas": [
     {
-      "tipo": "Primera lectura",
-      "titulo": "Lectura del libro de Isaías 9, 1-6"
-    },
-    {
-      "tipo": "Salmo",
-      "titulo": "Salmo 95, 1-2a. 2b-3. 11-12. 13"
-    },
-    {
-      "tipo": "Segunda lectura",
-      "titulo": "Lectura de la carta del apóstol san Pablo a Tito 2, 11-14"
-    },
-    {
       "tipo": "Evangelio",
-      "titulo": "Lectura del santo evangelio según san Lucas 2, 1-14"
+      "titulo": "Lucas 1, 67-79"
     }
   ],
   "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/24-12-2026/"

@@ -34,6 +34,11 @@ def lecturas(fecha):
     if ev: out.append({"tipo": "Evangelio", "titulo": ev})
     return out, url
 
+def coincide(refL, ev):
+    if not refL: return True
+    libro, cap = refL.split(" ")[0], refL.split(" ")[1].rstrip(",")
+    return libro in ev and f" {cap}," in ev + ","
+
 def main():
     p = argparse.ArgumentParser(); p.add_argument("--todas", action="store_true"); p.add_argument("--fechas", default="")
     a = p.parse_args()
@@ -48,7 +53,10 @@ def main():
         except Exception as e: print(f"{fecha}: no he podido leerlo ({e})"); continue
         if not ls or not any(x["tipo"] == "Evangelio" for x in ls): print(f"{fecha}: sin lecturas todavía"); continue
         ev = next(x["titulo"] for x in ls if x["tipo"] == "Evangelio")
-        if j.get("refL") and j["refL"].split(",")[0].split(" ")[-1] not in ev: print(f"  Aviso: el Evangelio de la web ({j['refL']}) no coincide con «{ev}»")
+        if not coincide(j.get("refL", ""), ev):
+            # ese día hay varias misas o lecturas a elegir: dejamos solo nuestro Evangelio para no mezclar
+            print(f"  Aviso: el Evangelio de la web ({j['refL']}) no coincide con «{ev}»; dejo solo el de la web")
+            ls = [{"tipo": "Evangelio", "titulo": j["refL"]}]
         j["lecturas"] = ls; j["lecturasUrl"] = url
         json.dump(j, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         n += 1; print(f"{fecha}: " + " · ".join(x["titulo"] for x in ls)); time.sleep(1.2)
