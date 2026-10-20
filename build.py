@@ -78,7 +78,7 @@ def header(r, active):
     <a class="brand" href="{r}index.html" aria-label="Rezo Diario, inicio">{ICON["logo"]}<span>rezo<b>diario</b></span></a>
     <nav class="nav" aria-label="Principal">{nav}</nav>
     <div class="top-actions">
-      <div class="lang"><button class="icon-btn lang-btn" id="btnLang" aria-haspopup="menu" aria-expanded="false" aria-label="Idioma">{ICON["globe"]}<span id="langCode">ES</span></button><div class="lang-menu" id="langMenu" role="menu" hidden></div></div>
+      <div class="lang notranslate" translate="no"><button class="icon-btn lang-btn" id="btnLang" aria-haspopup="menu" aria-expanded="false" aria-label="Idioma">{ICON["globe"]}<span id="langCode">ES</span></button><div class="lang-menu" id="langMenu" role="menu" hidden></div></div>
       <button class="icon-btn" id="btnTheme" aria-label="Cambiar entre modo claro y oscuro">{ICON["moon"]}</button>
       <button class="icon-btn" id="btnUser" aria-label="Tu cuenta" hidden>{ICON["user"]}</button>
       <a href="{r}donar.html" class="btn btn-gold sm" data-i18n="donate">Donar</a>

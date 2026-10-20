@@ -37,13 +37,23 @@ const I18N={
  pl:{today:"Dziś",verses:"Wersety",prayers:"Modlitwy",rosary:"Różaniec",gospel:"Ewangelia",saints:"Święci",novenas:"Nowenny",candles:"Świece",donate:"Wesprzyj",listen:"Posłuchaj dzisiejszej modlitwy",light:"Zapal świecę",more:"Więcej",note:"Modlitwy po polsku już wkrótce. Na razie treści są po hiszpańsku."}
 };
 /* Idiomas: el español es el original; para los demás, la web entera se traduce al momento con el traductor de Google */
-const TRX=/\.translate\.goog$/.test(location.hostname);const TRL=new URLSearchParams(location.search).get("_x_tr_tl");
-let lang=TRX?(TRL||"es").slice(0,2):store.get("rd-lang","es");if(!I18N[lang])lang="es";
-function irIdioma(l){const path=location.pathname+location.hash;
- if(l==="es"){if(TRX)location.href="https://rezodiario.com"+location.pathname+"?idioma=es"+location.hash;return}
- const u=new URL("https://rezodiario-com.translate.goog"+location.pathname);u.searchParams.set("_x_tr_sl","es");u.searchParams.set("_x_tr_tl",l);u.searchParams.set("_x_tr_hl",l);location.href=u.toString()+location.hash}
-if(!TRX&&new URLSearchParams(location.search).get("idioma")==="es"){lang="es";store.set("rd-lang","es")}
-if(!TRX&&lang!=="es"&&/rezodiario\.com$/.test(location.hostname)){try{irIdioma(lang)}catch(e){}}
+/* Idiomas: traducción automática de Google dentro de la propia web (sin salir de rezodiario.com, así funcionan formularios y enlaces) */
+const QS=new URLSearchParams(location.search);
+if(/\.translate\.goog$/.test(location.hostname)){ /* quien llegue por el proxy antiguo vuelve a la web normal */
+ const l=(QS.get("_x_tr_tl")||"es").slice(0,2);location.replace("https://rezodiario.com"+location.pathname+"?idioma="+l+location.hash)}
+let lang=store.get("rd-lang","es");
+if(QS.get("idioma")){lang=QS.get("idioma").slice(0,2);store.set("rd-lang",lang);try{history.replaceState(null,"",location.pathname+location.hash)}catch(e){}}
+if(!I18N[lang])lang="es";
+function gtCookie(l){const v=l==="es"?"":"/es/"+l,exp=l==="es"?";expires=Thu, 01 Jan 1970 00:00:00 GMT":";max-age=31536000";
+ const h=location.hostname,base=h.replace(/^www\./,"");
+ [";path=/",";path=/;domain="+h,";path=/;domain=."+base].forEach(d=>{document.cookie="googtrans="+v+exp+d})}
+function irIdioma(l){gtCookie(l);location.reload()}
+function gtCargar(){if(lang==="es"){if(/googtrans=\/es\//.test(document.cookie))gtCookie("es");return}
+ gtCookie(lang);
+ const d=document.createElement("div");d.id="gt_el";d.style.display="none";document.body.appendChild(d);
+ window.rdGT=()=>{try{new google.translate.TranslateElement({pageLanguage:"es",autoDisplay:false},"gt_el")}catch(e){}};
+ const sc=document.createElement("script");sc.src="https://translate.google.com/translate_a/element.js?cb=rdGT";sc.async=true;document.head.appendChild(sc)}
+if(document.body)gtCargar();else document.addEventListener("DOMContentLoaded",gtCargar);
 function applyLang(){
  const d=I18N[lang];root.lang=lang;
  $$("[data-i18n]").forEach(el=>{const v=d[el.dataset.i18n];if(v)el.textContent=v});
@@ -60,7 +70,7 @@ const lm=$("#langMenu"),lbtn=$("#btnLang");
 if(lm&&lbtn){
  lm.innerHTML=LANGS.map(([c,n,code])=>`<button role="menuitemradio" data-l="${c}" aria-checked="false"><span>${n}</span><small>${code}</small></button>`).join("");
  lbtn.onclick=e=>{e.stopPropagation();lm.hidden=!lm.hidden;lbtn.setAttribute("aria-expanded",!lm.hidden)};
- lm.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const nl=b.dataset.l;lm.hidden=true;lbtn.setAttribute("aria-expanded","false");if(nl===lang)return;lang=nl;store.set("rd-lang",lang);applyLang();if(/rezodiario\.com$|translate\.goog$/.test(location.hostname))irIdioma(lang)});
+ lm.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const nl=b.dataset.l;lm.hidden=true;lbtn.setAttribute("aria-expanded","false");if(nl===lang)return;lang=nl;store.set("rd-lang",lang);applyLang();irIdioma(lang)});
  document.addEventListener("click",e=>{if(!lm.hidden&&!e.target.closest(".lang"))lm.hidden=true});
  document.addEventListener("keydown",e=>{if(e.key==="Escape")lm.hidden=true});
 }
