@@ -1,0 +1,19 @@
+{
+  "slug": "alberto-magno",
+  "name": "San Alberto Magno",
+  "date": "15 de noviembre",
+  "md": "11-15",
+  "short": "Obispo y doctor de la Iglesia",
+  "bio": [
+    "Nació en Alemania hacia 1200 y fue fraile dominico, profesor en París y Colonia y obispo de Ratisbona.",
+    "Estudió de todo: filosofía, teología, botánica, astronomía, química… Se le llamó «doctor universal»."
+  ],
+  "patron": "los científicos y los estudiantes de ciencias",
+  "prayer": "oracion-para-estudiar",
+  "oracion": "San Alberto Magno, ayúdame a estudiar con curiosidad y a descubrir a Dios en la creación. Amén.",
+  "mas": [
+    "Fue maestro de santo Tomás de Aquino y defendió que la ciencia y la fe no se oponen.",
+    "Murió en Colonia en 1280. Es patrono de los científicos."
+  ],
+  "ensena": "Nos enseña que estudiar la naturaleza es una forma de admirar a Dios."
+}

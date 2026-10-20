@@ -1,0 +1,19 @@
+{
+  "slug": "isidro-labrador",
+  "name": "San Isidro labrador",
+  "date": "15 de mayo",
+  "md": "05-15",
+  "short": "Memoria",
+  "bio": [
+    "Nació en Madrid hacia 1082 y trabajó toda su vida como jornalero del campo.",
+    "Estaba casado con santa María de la Cabeza y vivían con sencillez, compartiendo lo poco que tenían con los pobres."
+  ],
+  "patron": "Madrid, los agricultores y el campo",
+  "prayer": "oracion-para-la-jornada-de-trabajo",
+  "oracion": "San Isidro, bendice el campo y a quienes lo trabajan, y danos el pan de cada día. Amén.",
+  "mas": [
+    "Cuenta la tradición que, mientras él rezaba, los ángeles araban por él, y que hizo brotar agua en tiempo de sequía.",
+    "Es patrón de Madrid y de los agricultores, y su fiesta se celebra con romerías en muchos pueblos."
+  ],
+  "ensena": "Nos enseña que se puede ser santo trabajando con las manos y rezando en el campo."
+}

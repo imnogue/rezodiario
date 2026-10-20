@@ -1,0 +1,19 @@
+{
+  "slug": "roque",
+  "name": "San Roque",
+  "date": "16 de agosto",
+  "md": "08-16",
+  "short": "Peregrino",
+  "bio": [
+    "Nació en Montpellier (Francia) hacia 1295. Repartió sus bienes y peregrinó a Roma.",
+    "Por el camino cuidó a los enfermos de peste hasta que se contagió y se retiró a un bosque."
+  ],
+  "patron": "los perros, los enfermos contagiosos y los cirujanos",
+  "prayer": "oracion-por-un-enfermo",
+  "oracion": "San Roque, protege a los enfermos y a nuestros animales, y líbranos de las epidemias. Amén.",
+  "mas": [
+    "La tradición cuenta que un perro le llevaba cada día un pan para alimentarlo. Por eso se le representa con un perro y mostrando la llaga de la pierna.",
+    "Es patrón de muchísimos pueblos de España, que lo celebran en sus fiestas de agosto."
+  ],
+  "ensena": "Nos enseña a cuidar a los enfermos aunque nos cueste."
+}

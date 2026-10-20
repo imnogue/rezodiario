@@ -1,0 +1,19 @@
+{
+  "slug": "jenaro",
+  "name": "San Jenaro",
+  "date": "19 de septiembre",
+  "md": "09-19",
+  "short": "Obispo y mártir",
+  "bio": [
+    "Fue obispo de Benevento (Italia) y murió mártir hacia el año 305.",
+    "Es el patrón de Nápoles, donde se veneran sus reliquias."
+  ],
+  "patron": "Nápoles",
+  "prayer": "",
+  "oracion": "San Jenaro, protege a tu pueblo y fortalece nuestra fe. Amén.",
+  "mas": [
+    "En la catedral de Nápoles se guarda una ampolla con su sangre seca que, varias veces al año, se licúa ante los fieles.",
+    "Los napolitanos ven en ello un signo de su protección."
+  ],
+  "ensena": "Nos enseña a mantener la fe hasta el final."
+}

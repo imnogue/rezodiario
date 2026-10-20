@@ -1,0 +1,19 @@
+{
+  "slug": "valentin",
+  "name": "San Valentín",
+  "date": "14 de febrero",
+  "md": "02-14",
+  "short": "Mártir",
+  "bio": [
+    "Fue un sacerdote de Roma que murió mártir hacia el año 269, en tiempos del emperador Claudio II.",
+    "Una tradición cuenta que casaba en secreto a los jóvenes cristianos cuando estaba prohibido."
+  ],
+  "patron": "los enamorados y los novios",
+  "prayer": "oracion-por-mi-pareja",
+  "oracion": "San Valentín, bendice nuestro amor. Que sepamos cuidarnos, perdonarnos y crecer juntos en Dios. Amén.",
+  "mas": [
+    "Aunque se sabe poco de su vida, desde la Edad Media se le asocia con el amor de pareja, y su día se celebra en todo el mundo.",
+    "Su recuerdo está en el Martirologio romano el 14 de febrero."
+  ],
+  "ensena": "Nos recuerda que el amor verdadero se cuida, se elige cada día y viene de Dios."
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "benito",
+  "name": "San Benito",
+  "date": "11 de julio",
+  "md": "07-11",
+  "short": "Abad, patrono de Europa",
+  "bio": [
+    "Nació en Nursia (Italia) hacia el año 480 y, cansado de la vida de Roma, se retiró a vivir como ermitaño en Subiaco.",
+    "Fundó el monasterio de Montecassino y escribió una Regla para monjes resumida en el lema «Ora et labora», reza y trabaja."
+  ],
+  "patron": "Europa, los monjes y quienes piden protección",
+  "prayer": "oracion-a-san-benito",
+  "oracion": "San Benito, protégeme del mal y ayúdame a unir oración y trabajo en mi día. Amén.",
+  "mas": [
+    "Los monasterios benedictinos conservaron la cultura de Europa durante siglos. Pablo VI lo nombró patrono de Europa.",
+    "La medalla de san Benito se usa para pedir protección contra el mal."
+  ],
+  "ensena": "Nos enseña a equilibrar oración y trabajo, y a escuchar «con el oído del corazón»."
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "juan-bosco",
+  "name": "San Juan Bosco",
+  "date": "31 de enero",
+  "md": "01-31",
+  "short": "Presbítero, fundador de los Salesianos",
+  "bio": [
+    "Nació en el Piamonte (Italia) en 1815 en una familia campesina y muy pobre.",
+    "Ya sacerdote, en Turín, acogió a los chicos de la calle y les dio casa, escuela, oficio y fe: así nacieron los oratorios."
+  ],
+  "patron": "los jóvenes, los educadores y los aprendices",
+  "prayer": "oracion-por-los-hijos",
+  "oracion": "San Juan Bosco, padre y maestro de la juventud, protege a nuestros hijos y enséñanos a educar con alegría. Amén.",
+  "mas": [
+    "Fundó los Salesianos y, con santa María Mazzarello, las Hijas de María Auxiliadora. Su método educativo se basaba en la razón, la religión y el cariño.",
+    "Decía a sus muchachos: «Estad siempre alegres». Murió en 1888."
+  ],
+  "ensena": "Nos enseña que la alegría y el cariño abren el corazón de los jóvenes más que los castigos."
+}

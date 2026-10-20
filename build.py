@@ -32,6 +32,9 @@ CANDLE_HASH = {"salud": "salud", "familia": "familia", "duelo": "difuntos", "est
 for d in DAYS:
     dt = datetime.date.fromisoformat(d["date"]); d["wd"] = WDN[dt.weekday()]; d["n"] = dt.day; d["mes"] = MES[dt.month - 1]; d["set"] = SETDAY[dt.weekday()]
     if d.get("saint") and d["saint"] not in SBY: print("AVISO: santo no encontrado", d["date"], d["saint"]); d["saint"] = ""
+    if not d.get("saint") and not re.search(r"Domingo|Solemnidad|Fiesta|Conmemoración|Navidad", d["lit"]):
+        _s = next((x for x in SAINTS if x["md"] == d["date"][5:]), None)
+        if _s: d["saint"] = _s["slug"]
 
 now = datetime.datetime.now(ZoneInfo("Europe/Madrid")).date().isoformat()
 TODAY = min(max(now, DAYS[0]["date"]), DAYS[-1]["date"])
@@ -642,7 +645,7 @@ def santoral_mes(mo, v):
         x = xs[0]; iso = f"{y}-{mo:02d}-{d:02d}"
         otros = "".join(f'<em>{E(o["name"])}</em>' for o in xs[1:])
         cls = "cal-d is-santo" + (" is-today" if iso == TODAY else "")
-        cells.append(f'<li class="{cls}"><a href="{r}santos/{x["slug"]}.html"><span class="cal-n">{d}<i class="dot" style="background:{LITC[DBY[iso]["color"] if iso in DBY else santo_color(x)][0]}"></i><small class="cal-wd">{WDN[datetime.date(y, mo, d).weekday()][:3]}</small></span>'
+        cells.append(f'<li class="{cls}"><a href="{r}santos/{x["slug"]}.html"><span class="cal-n">{d}<i class="dot" style="background:{LITC[DBY[iso]["color"] if iso in DBY and DBY[iso].get("saint") == x["slug"] and DBY[iso]["color"] != "green" else santo_color(x)][0]}"></i><small class="cal-wd">{WDN[datetime.date(y, mo, d).weekday()][:3]}</small></span>'
                      f'<b>{E(x["name"])}</b><span class="cal-sh">{E(x["short"])}</span>{otros}</a></li>')
     head = "".join(f"<li>{w[:3]}</li>" for w in WDN)
     lit = f'<a class="cal-link" href="{r}calendario-liturgico.html#mes-{y}-{mo:02d}">Ver este mes en el calendario litúrgico ›</a>' if f"{y}-{mo:02d}" in months else ""
@@ -658,6 +661,7 @@ def saint_desc(x):
     sh = x["short"][0].lower() + x["short"][1:]
     nm = x["name"] if sh.split(" ")[0] in x["name"].lower() else f'{x["name"]}, {sh}'
     d = f'{nm} ({x["date"]}): su vida, por qué es patrón de {x["patron"]}, qué nos enseña hoy y una oración para pedir su intercesión.'
+    if len(d) > 160: d = f'{nm} ({x["date"]}): su vida y su oración. Patrón de {x["patron"]}.'
     if len(d) > 160: d = f'{nm} ({x["date"]}): su vida, qué nos enseña hoy y una oración para pedir su intercesión.'
     if len(d) > 160: d = d[:157].rsplit(" ", 1)[0] + "…"
     return d

@@ -1,0 +1,19 @@
+{
+  "slug": "juan-de-dios",
+  "name": "San Juan de Dios",
+  "date": "8 de marzo",
+  "md": "03-08",
+  "short": "Religioso, fundador",
+  "bio": [
+    "Nació en Portugal en 1495 y vivió muchos años sin rumbo: fue pastor, soldado y librero.",
+    "En Granada, tras oír un sermón de san Juan de Ávila, cambió de vida, y le tomaron por loco y le encerraron en el hospital."
+  ],
+  "patron": "los enfermos, los hospitales y los enfermeros",
+  "prayer": "oracion-por-los-medicos-y-enfermeras",
+  "oracion": "San Juan de Dios, cuida de los enfermos y de quienes los atienden, y dame un corazón compasivo. Amén.",
+  "mas": [
+    "Allí vio cómo se trataba a los enfermos y decidió dedicarse a ellos. Fundó un hospital en Granada donde atendía a todos sin preguntar, pidiendo limosna por las calles: «Haced bien, hermanos, a vosotros mismos».",
+    "De él nació la Orden Hospitalaria, presente hoy en todo el mundo. Murió en 1550."
+  ],
+  "ensena": "Nos enseña que en cada enfermo se encuentra a Cristo."
+}
