@@ -387,7 +387,7 @@ home_main = f'''<section class="hero" aria-labelledby="h1">
     <div class="chat-top"><span class="chat-av" aria-hidden="true">{ICON["logo"]}</span><div><b>Acompañante de oración</b><small><i></i>Privado · se queda en tu dispositivo</small></div></div>
     <div class="chat-log" id="answers" aria-live="polite"></div>
     <div class="chat-sug"><div class="feel" id="feel"></div></div>
-    <form class="chat-in" id="askForm"><label class="sr" for="askIn">Lo que llevas hoy en el corazón</label><textarea id="askIn" rows="1" maxlength="400" placeholder="Escribe aquí lo que llevas en el corazón…"></textarea><button class="chat-send" type="submit" aria-label="Enviar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+    <form class="chat-in" id="askForm"><label class="sr" for="askIn">Lo que llevas hoy en el corazón</label><textarea id="askIn" rows="1" maxlength="400" placeholder="Cuéntame qué llevas dentro…"></textarea><button class="chat-send" type="submit" aria-label="Enviar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
   </div>
 </div></section>
 {sec(camino(r) + head2("Oraciones por tema", "Un rezo para cada momento", f"{len(PRAYERS)} oraciones para estudiar, por un enfermo, por tu familia, para la ansiedad o por un ser querido difunto.", '<a class="btn btn-ghost sm" href="oraciones/index.html">Ver todas</a>') + tiles(r))}

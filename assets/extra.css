@@ -593,3 +593,6 @@ article .exam-cta{margin:24px 0 0}
 .chat-sug .chip-more{background:transparent;border-style:dashed;color:var(--muted)}
 .chat{max-height:min(820px,90vh)}
 .chat-in textarea{scrollbar-width:none}
+/* Caja de escribir: crece con el texto, sin barra de scroll */
+.chat-in textarea{max-height:none;overflow:hidden;line-height:1.45;min-height:48px}
+@media(max-width:480px){.chat-in{padding:10px 10px 12px;gap:8px}.chat-in textarea{padding:12px 14px;font-size:16px}.chat-send{flex-basis:44px;height:44px}}

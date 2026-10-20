@@ -327,7 +327,7 @@ if($("#askForm")){
  $("#feel").innerHTML=FEEL.map(([n,k],i)=>`<button class="chip${i>3?" is-more":""}" type="button" data-k="${k}">${n}</button>`).join("")+`<button class="chip chip-more" type="button" aria-expanded="false">Más temas +</button>`;
  $$("#feel .chip[data-k]").forEach(b=>b.onclick=()=>answer(b.textContent,b.dataset.k));
  const mb=$("#feel .chip-more");mb.onclick=()=>{const o=$("#feel").classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=o?"Menos temas −":"Más temas +"};
- const grow=()=>{inp.style.height="auto";inp.style.height=Math.min(inp.scrollHeight,140)+"px"};inp.addEventListener("input",grow);
+ const grow=()=>{inp.style.height="auto";inp.style.height=(inp.scrollHeight+2)+"px"};inp.addEventListener("input",grow);grow();
  $("#askForm").onsubmit=e=>{e.preventDefault();const t=inp.value.trim();if(!t){inp.focus();return}inp.value="";grow();answer(t)};
  inp.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();$("#askForm").requestSubmit()}});
  bot(`<p>Hola. Estoy aquí para acompañarte a rezar.</p><p>Cuéntame qué llevas hoy en el corazón (una preocupación, una persona, algo que agradeces) y te propongo una oración para este momento. También puedes tocar uno de los temas de abajo.</p>`);
