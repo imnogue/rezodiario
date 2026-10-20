@@ -1,0 +1,33 @@
+# Recoge las citas de las lecturas de la misa (primera lectura, salmo, segunda lectura y Evangelio) de cada día.
+name: Citas de las lecturas
+on:
+  schedule:
+    - cron: "40 3 * * 1"   # cada lunes de madrugada
+  workflow_dispatch:
+    inputs:
+      todas:
+        description: "Volver a comprobar también los días que ya tienen citas"
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: generar-audios
+  cancel-in-progress: false
+jobs:
+  lecturas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Recoger las citas
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.todas }}" = "true" ]; then ARGS="--todas"; fi
+          python3 -u scripts/lecturas.py $ARGS
+      - name: Guardar
+        run: |
+          git config user.name "Rezo Diario (lecturas)"; git config user.email "audios@rezodiario.com"
+          git add content/dias
+          if git diff --cached --quiet; then echo "Nada nuevo."; exit 0; fi
+          git commit -m "Citas de las lecturas de la misa"
+          git pull --rebase && git push
