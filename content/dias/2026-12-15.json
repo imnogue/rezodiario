@@ -133,5 +133,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-15-voz.mp3?v=1792490374"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-15-voz.mp3?v=1792490374",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la profecía de Sofonías 3,1-2.9-13"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 33,2-3.6-7.17-18.19.23"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 21,28-32"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/15-12-2026/"
 }

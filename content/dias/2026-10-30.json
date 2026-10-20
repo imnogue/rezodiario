@@ -123,5 +123,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-30-voz.mp3?v=1792489951"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-30-voz.mp3?v=1792489951",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Comienzo de la carta del apóstol san Pablo a los Filipenses 1, 1-11"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 110, 1b-2. 3-4. 5-6"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 14, 1-6"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/30-10-2026/"
 }

@@ -118,5 +118,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-21-voz.mp3?v=1792489909"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-21-voz.mp3?v=1792489909",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la carta del apóstol san Pablo a los Efesios 3, 2-12"
+    },
+    {
+      "tipo": "Segunda lectura",
+      "titulo": "Is 12, 2-3. 4bcde. 5-6"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 12, 39-48"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/21-10-2026/"
 }

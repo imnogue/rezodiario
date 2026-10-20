@@ -128,5 +128,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-24-voz.mp3?v=1792491680"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-24-voz.mp3?v=1792491680",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la carta del apóstol san Pablo a los Efesios 4, 7-16"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 121, 1bc-2. 3-4ab. 4cd-5"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 13, 1-9"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/24-10-2026/"
 }

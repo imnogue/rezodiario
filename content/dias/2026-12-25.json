@@ -123,5 +123,24 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-25-voz.mp3?v=1792490500"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-25-voz.mp3?v=1792490500",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de Isaías 52, 7-10"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 97, 1bcde. 2-3ab. 3cd-4. 5-6"
+    },
+    {
+      "tipo": "Segunda lectura",
+      "titulo": "Lectura de la carta a los Hebreos 1, 1-6"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Juan 1, 1-18"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/25-12-2026/"
 }

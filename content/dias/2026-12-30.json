@@ -113,5 +113,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-30-voz.mp3?v=1792491977"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-30-voz.mp3?v=1792491977",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la primera carta del apóstol san Juan 2, 12-17"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 95, 7-8a. 8b-9. 10"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 2, 36-40"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/30-12-2026/"
 }

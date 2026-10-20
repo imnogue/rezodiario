@@ -128,5 +128,24 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-08-voz.mp3?v=1792490031"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-08-voz.mp3?v=1792490031",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de la Sabiduría 6, 12-16"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 62, 2abc. 2d-4. 5-6. 7-8"
+    },
+    {
+      "tipo": "Segunda lectura",
+      "titulo": "Lectura de la primera carta del apóstol san Pablo a los Tesalonicenses 4, 13-18"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 25, 1-13"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/08-11-2026/"
 }

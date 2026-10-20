@@ -123,5 +123,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-14-voz.mp3?v=1792490361"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-14-voz.mp3?v=1792490361",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de los Números 24, 2-7. 15-17a"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 24, 4-5a. 6 y 7cd. 8-9"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 21, 23-27"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/14-12-2026/"
 }

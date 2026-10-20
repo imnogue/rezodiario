@@ -133,5 +133,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-04-voz.mp3?v=1792489978"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-04-voz.mp3?v=1792489978",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la carta del apóstol san Pablo a los Filipenses 2, 12-18"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 26, 1. 4. 13-14"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 14, 25-33"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/04-11-2026/"
 }

@@ -123,5 +123,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-11-voz.mp3?v=1792491934"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-11-voz.mp3?v=1792491934",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de Isaías 48, 17-19"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 1, 1-2. 3. 4 y 6"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 11, 16-19"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/11-12-2026/"
 }

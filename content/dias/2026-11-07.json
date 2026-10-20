@@ -118,5 +118,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-07-voz.mp3?v=1792490017"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-07-voz.mp3?v=1792490017",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la carta del apóstol san Pablo a los Filipenses 4, 10-19"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 111, 1b-2. 5-6. 8a y 9"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 16, 9-15"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/07-11-2026/"
 }

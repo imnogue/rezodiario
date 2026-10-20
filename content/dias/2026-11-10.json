@@ -123,5 +123,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-10-voz.mp3?v=1792490056"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-10-voz.mp3?v=1792490056",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la carta del apóstol san Pablo a Tito 2, 1-8. 11-14"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 36, 3-4. 18 y 23. 27 y 29"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 17, 7-10"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/10-11-2026/"
 }

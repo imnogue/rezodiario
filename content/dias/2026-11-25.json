@@ -118,5 +118,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-25-voz.mp3?v=1792490196"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-25-voz.mp3?v=1792490196",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro del Apocalipsis 15,1-4:"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 97,1.2-3ab.7-8.9"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 21,12-19"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/25-11-2026/"
 }

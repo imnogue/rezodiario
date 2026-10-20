@@ -118,5 +118,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-01-voz.mp3?v=1792491877"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-01-voz.mp3?v=1792491877",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de Isaías 11, 1-10"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 71, 1-2.7-8.12-13.17"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 10, 21-24"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/01-12-2026/"
 }

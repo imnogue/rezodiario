@@ -123,5 +123,24 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-01-voz.mp3?v=1792491773"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-01-voz.mp3?v=1792491773",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro del Apocalipsis 7, 2-4. 9-14"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 23, 1-2. 3-4ab. 5-6"
+    },
+    {
+      "tipo": "Segunda lectura",
+      "titulo": "Lectura de la primera carta del apóstol san Juan 3, 1-3"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 5, 1-12a"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/01-11-2026/"
 }

@@ -118,5 +118,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-12-voz.mp3?v=1792490069"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-12-voz.mp3?v=1792490069",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la carta del apóstol san Pablo a Filemón 7-20"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 145, 6c-7. 8-9a. 9bc-10"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 17, 20-25"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/12-11-2026/"
 }

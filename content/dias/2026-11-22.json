@@ -118,5 +118,24 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-22-voz.mp3?v=1792490170"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-22-voz.mp3?v=1792490170",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la profecía de Ezequiel 34, 11-12. 15-17"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 22, 1-3a. 3b-4. 5. 6"
+    },
+    {
+      "tipo": "Segunda lectura",
+      "titulo": "Lectura de la primera carta del apóstol san Pablo a los Corintios 15, 20-26. 28"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 25, 31-46"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/22-11-2026/"
 }

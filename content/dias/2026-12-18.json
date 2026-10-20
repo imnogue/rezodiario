@@ -123,5 +123,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-18-voz.mp3?v=1792490412"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-18-voz.mp3?v=1792490412",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de Jeremías 23, 5-8"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 71, 1-2. 12-13. 18-19"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 1, 18-24"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/18-12-2026/"
 }

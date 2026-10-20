@@ -15,5 +15,20 @@
   "fin": "Señor, dame un corazón que escuche como el de María. Que tu palabra no se quede en mis oídos, sino que llegue a mis manos.",
   "saint": "nuestra-senora-del-pilar",
   "audio": "",
-  "duracion": ""
+  "duracion": "",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del primer libro de las Crónicas 15, 3-4. 15-16; 16, 1-2"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 26, 1. 3. 4. 5"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 11, 27-28"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/12-10-2026/"
 }

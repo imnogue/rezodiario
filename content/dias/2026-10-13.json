@@ -15,5 +15,20 @@
   "fin": "Jesús, limpia lo que yo escondo. Haz que mi generosidad nazca del corazón.",
   "saint": "",
   "audio": "",
-  "duracion": ""
+  "duracion": "",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la carta del apóstol san Pablo a los Gálatas 5, 1-6"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 118, 41. 43. 44. 45. 47. 48"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 11, 37-41"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/13-10-2026/"
 }

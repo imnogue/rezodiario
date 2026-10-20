@@ -133,5 +133,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-17-voz.mp3?v=1792490119"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-17-voz.mp3?v=1792490119",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro del Apocalipsis 3, 1-6. 14-22"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 14, 2-3a. 3bc-4ab. 5"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 19, 1-10"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/17-11-2026/"
 }

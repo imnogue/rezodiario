@@ -128,5 +128,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-16-voz.mp3?v=1792490386"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-16-voz.mp3?v=1792490386",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de Isaías 45, 6c-8. 18. 21b-25"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 84, 9ab-10. 11-12. 13-14"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 7, 19-23"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/16-12-2026/"
 }

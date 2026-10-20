@@ -118,5 +118,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-12-voz.mp3?v=1792490337"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-12-voz.mp3?v=1792490337",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro del Eclesiástico 48, 1-4.9-11b"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 79, 2ac y 3b. 15-16. 18-19"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 17, 10-13"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/12-12-2026/"
 }

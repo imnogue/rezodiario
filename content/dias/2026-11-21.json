@@ -128,5 +128,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-21-voz.mp3?v=1792490157"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-21-voz.mp3?v=1792490157",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro del Apocalipsis 11, 4-12"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 143, 1bcd. 2. 9-10"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo Evangelio según san Lucas 20, 27-40"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/21-11-2026/"
 }

@@ -128,5 +128,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-07-voz.mp3?v=1792490287"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-07-voz.mp3?v=1792490287",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de Isaías 35, 1-10"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 84, 9abc y 10. 11-12. 13-14"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 5, 17-26"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/07-12-2026/"
 }

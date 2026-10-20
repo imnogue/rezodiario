@@ -128,5 +128,24 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-09-voz.mp3?v=1792490044"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-09-voz.mp3?v=1792490044",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la profecía de Ezequiel 47, 1-2. 8-9. 12"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 45, 2-3. 5-6. 8-9"
+    },
+    {
+      "tipo": "Segunda lectura",
+      "titulo": "Lectura de la primera carta del apóstol san Pablo a los Corintios 3, 9c-11. 16-17"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Juan 2, 13-22"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/09-11-2026/"
 }

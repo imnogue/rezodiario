@@ -128,5 +128,24 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-25-voz.mp3?v=1792491695"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-25-voz.mp3?v=1792491695",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro del Éxodo 22, 20-26"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 17, 2-3a. 3bc-4. 47 y 51ab"
+    },
+    {
+      "tipo": "Segunda lectura",
+      "titulo": "Lectura de la primera carta del apóstol san Pablo a los Tesalonicenses 1, 5c-10"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 22, 34-40"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/25-10-2026/"
 }

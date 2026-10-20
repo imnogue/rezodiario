@@ -15,5 +15,20 @@
   "fin": "Señor, que no olvide lo que de verdad importa: la justicia y tu amor. Ayúdame a llevar cargas, no a ponerlas.",
   "saint": "san-calixto-i",
   "audio": "",
-  "duracion": ""
+  "duracion": "",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la carta del apóstol san Pablo a los Gálatas 5, 18-25"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 1, 1-2. 3. 4 y 6"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 11, 42-46"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/14-10-2026/"
 }

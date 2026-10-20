@@ -128,5 +128,24 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-18-voz.mp3?v=1792491614"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-10-18-voz.mp3?v=1792491614",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de Isaías 45, 1. 4-6"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 95, 1 y 3. 4-5. 7-8a. 9-10ac"
+    },
+    {
+      "tipo": "Segunda lectura",
+      "titulo": "Lectura de la primera carta del apóstol san Pablo a los Tesalonicenses 1, 1-5b"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 22, 15-21"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/18-10-2026/"
 }

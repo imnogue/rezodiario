@@ -123,5 +123,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-28-voz.mp3?v=1792491962"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-28-voz.mp3?v=1792491962",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la primera carta del apóstol san Juan 1, 5 – 2, 2"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 123, 2-3. 4-5. 7b-8"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 2, 13-18"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/28-12-2026/"
 }

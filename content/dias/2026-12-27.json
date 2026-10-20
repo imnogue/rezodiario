@@ -128,5 +128,24 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-27-voz.mp3?v=1792490513"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-27-voz.mp3?v=1792490513",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro del Eclesiástico 3, 2-6.12-14"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 127, 1-2. 3. 4-5"
+    },
+    {
+      "tipo": "Segunda lectura",
+      "titulo": "Lectura de la carta del apóstol san Pablo a los Colosenses 3, 12-21"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 2, 22-40"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/27-12-2026/"
 }

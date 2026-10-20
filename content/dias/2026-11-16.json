@@ -128,5 +128,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-16-voz.mp3?v=1792490107"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-16-voz.mp3?v=1792490107",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Comienzo del libro del Apocalipsis 1, 1-4; 2, 1-5a"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 1, 1-2. 3. 4 y 6"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 18, 35-43"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/16-11-2026/"
 }

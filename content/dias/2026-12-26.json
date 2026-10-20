@@ -118,5 +118,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-26-voz.mp3?v=1792491949"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-26-voz.mp3?v=1792491949",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de los Hechos de los apóstoles 6, 8-10; 7, 54-59"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 30, 3cd-4. 6 y 8ab. 16bc-17"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 10, 17-22"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/26-12-2026/"
 }

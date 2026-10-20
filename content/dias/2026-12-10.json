@@ -113,5 +113,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-10-voz.mp3?v=1792490323"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-10-voz.mp3?v=1792490323",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de Isaías 41, 13-20"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 144, 1 y 9. 10-11. 12-13ab"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Mateo 11, 11-15"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/10-12-2026/"
 }

@@ -128,5 +128,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-23-voz.mp3?v=1792490475"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-23-voz.mp3?v=1792490475",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura de la profecía de Malaquías 3, 1-4. 23-24"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 24, 4-5ab. 8-9. 10 y 14"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 1, 57-66"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/23-12-2026/"
 }

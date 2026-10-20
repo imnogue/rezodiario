@@ -133,5 +133,24 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-08-voz.mp3?v=1792490300"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-08-voz.mp3?v=1792490300",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro del Génesis 3, 9-15. 20"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 97, 1-4"
+    },
+    {
+      "tipo": "Segunda lectura",
+      "titulo": "Lectura de la carta del apóstol San Pablo a los Efesios 1, 3-6. 11-12."
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo evangelio según san Lucas 1, 26-38"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/08-12-2026/"
 }

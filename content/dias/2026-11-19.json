@@ -128,5 +128,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-19-voz.mp3?v=1792490132"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-11-19-voz.mp3?v=1792490132",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro del Apocalipsis 5,1-10:"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 149, 1bc-2. 3-4. 5-6a y 9b ("
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo Evangelio según san Lucas 19,41-44"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/19-11-2026/"
 }

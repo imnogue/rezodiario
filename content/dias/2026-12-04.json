@@ -143,5 +143,20 @@
       "Amén."
     ]
   ],
-  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-04-voz.mp3?v=1792491905"
+  "audioVoz": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/2026-12-04-voz.mp3?v=1792491905",
+  "lecturas": [
+    {
+      "tipo": "Primera lectura",
+      "titulo": "Lectura del libro de Isaías 29, 17-24"
+    },
+    {
+      "tipo": "Salmo",
+      "titulo": "Salmo 26, 1. 4. 13-14"
+    },
+    {
+      "tipo": "Evangelio",
+      "titulo": "Lectura del santo Evangelio según San Mateo 9, 27-31"
+    }
+  ],
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/04-12-2026/"
 }
