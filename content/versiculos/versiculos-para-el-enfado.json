@@ -3,7 +3,7 @@
   "t": "Versículos para el enfado",
   "h1": "Versículos de la Biblia para el enfado y la ira",
   "mood": "Enfadado",
-  "intro": "Para cuando la rabia sube. Estos versículos ayudan a respirar, a no decir lo que luego lamentarías y a buscar la paz.",
+  "intro": "Para cuando la rabia sube. Estos versículos de la Biblia para el enfado y la ira ayudan a respirar, a no decir lo que luego lamentarías y a buscar la paz, en casa, en el trabajo o con uno mismo.\n\nLa Biblia no dice que enfadarse sea malo; enseña qué hacer con ese enfado. Debajo de cada versículo encontrarás una explicación sencilla.",
   "oracion": "Señor, estoy enfadado. Calma mi corazón antes de que hable. Ayúdame a ser lento para la ira y rápido para escuchar, y dame la paz que solo tú das. Amén.",
   "prayer": "oracion-para-perdonar",
   "rel": [
@@ -15,102 +15,87 @@
     {
       "ref": "Efesios 4, 26",
       "x": "Si os indignáis, no lleguéis a pecar; que el sol no se ponga sobre vuestra ira.",
-      "e": "Enfadarse no es pecado; quedarse en el enfado, sí hace daño."
+      "e": "Enfadarse es humano. Lo importante es no dejar que el enfado te haga daño ni dure días."
     },
     {
       "ref": "Santiago 1, 19-20",
       "x": "Que toda persona sea pronta para escuchar, lenta para hablar y lenta a la ira, pues la ira del hombre no produce la justicia que Dios quiere.",
-      "e": "Tres consejos para cualquier discusión."
+      "e": "Tres consejos de oro para cualquier discusión: escuchar mucho, hablar poco y no explotar."
     },
     {
       "ref": "Proverbios 15, 1",
       "x": "Respuesta amable calma la cólera, palabra áspera excita la ira.",
-      "e": "Una respuesta tranquila desarma."
+      "e": "Una respuesta tranquila desarma una discusión; una palabra hiriente la enciende."
     },
     {
       "ref": "Proverbios 16, 32",
       "x": "Más vale ser paciente que valiente, dominarse que conquistar ciudades.",
-      "e": "El autocontrol es una forma de fuerza."
-    },
-    {
-      "ref": "Salmo 37, 8",
-      "x": "Cohíbe la ira, reprime el coraje; no te exasperes, no sea que obres mal.",
-      "e": "Soltar la ira es cuidarse a uno mismo."
-    },
-    {
-      "ref": "Colosenses 3, 8",
-      "x": "Deshaceos también vosotros de todo eso: ira, coraje, maldad, calumnias y groserías.",
-      "e": "Despojarse de lo que hace daño."
+      "e": "Saber controlarse es más valiente que ganar una pelea."
     },
     {
       "ref": "Mateo 5, 9",
       "x": "Bienaventurados los que trabajan por la paz, porque ellos serán llamados hijos de Dios.",
-      "e": "Hacer la paz es cosa de hijos de Dios."
+      "e": "Los que trabajan por la paz se parecen a Dios."
     },
     {
       "ref": "Romanos 12, 18",
       "x": "En la medida de lo posible y en lo que dependa de vosotros, manteneos en paz con todo el mundo.",
-      "e": "Haz tu parte por la paz."
-    },
-    {
-      "ref": "Mateo 18, 21-22",
-      "x": "Señor, si mi hermano me ofende, ¿cuántas veces tengo que perdonarlo? ¿Hasta siete veces? Jesús le contesta: «No te digo hasta siete veces, sino hasta setenta veces siete».",
-      "e": "El perdón sin límites."
-    },
-    {
-      "ref": "Lucas 6, 27-28",
-      "x": "Amad a vuestros enemigos, haced el bien a los que os odian, bendecid a los que os maldicen, orad por los que os calumnian.",
-      "e": "La propuesta más radical de Jesús."
-    },
-    {
-      "ref": "Proverbios 19, 11",
-      "x": "Hombre sensato refrena su ira, tiene a honra olvidar las ofensas.",
-      "e": "No todo merece una respuesta."
-    },
-    {
-      "ref": "Salmo 4, 5",
-      "x": "Temblad y no pequéis, reflexionad en el silencio de vuestro lecho.",
-      "e": "Antes de actuar, silencio."
-    },
-    {
-      "ref": "Proverbios 29, 11",
-      "x": "El necio desata su pasión, el sensato sabe controlarla.",
-      "e": "La sabiduría está en calmar la ira."
-    },
-    {
-      "ref": "Mateo 5, 44",
-      "x": "Amad a vuestros enemigos y rezad por los que os persiguen.",
-      "e": "Rezar por quien te ha hecho daño cambia el corazón."
-    },
-    {
-      "ref": "Efesios 4, 31",
-      "x": "Desterrad de vosotros la amargura, la ira, los enfados e insultos y toda maldad.",
-      "e": "Soltar lo que envenena."
-    },
-    {
-      "ref": "Proverbios 14, 29",
-      "x": "Quien tiene paciencia abunda en prudencia, quien es impulsivo demuestra torpeza.",
-      "e": "La paciencia es sabiduría."
+      "e": "No siempre depende de ti, pero haz tu parte para estar en paz con los demás."
     },
     {
       "ref": "Romanos 12, 21",
       "x": "No te dejes vencer por el mal, antes bien vence al mal con el bien.",
-      "e": "Responder al mal con bien."
+      "e": "No respondas al mal con más mal: el bien es más fuerte."
+    },
+    {
+      "ref": "Mateo 18, 21-22",
+      "x": "Señor, si mi hermano me ofende, ¿cuántas veces tengo que perdonarlo? ¿Hasta siete veces? Jesús le contesta: «No te digo hasta siete veces, sino hasta setenta veces siete».",
+      "e": "Jesús invita a perdonar sin llevar la cuenta, una y otra vez."
+    },
+    {
+      "ref": "Lucas 6, 27-28",
+      "x": "Amad a vuestros enemigos, haced el bien a los que os odian, bendecid a los que os maldicen, orad por los que os calumnian.",
+      "e": "La propuesta más difícil de Jesús: responder al odio con bien y rezar por quien te hace daño."
+    },
+    {
+      "ref": "Mateo 5, 44",
+      "x": "Amad a vuestros enemigos y rezad por los que os persiguen.",
+      "e": "Rezar por quien te ha hecho daño cambia, sobre todo, tu propio corazón."
+    },
+    {
+      "ref": "Efesios 4, 31",
+      "x": "Desterrad de vosotros la amargura, la ira, los enfados e insultos y toda maldad.",
+      "e": "Soltar la amargura y el rencor es quitarse un peso de encima."
+    },
+    {
+      "ref": "Proverbios 19, 11",
+      "x": "Hombre sensato refrena su ira, tiene a honra olvidar las ofensas.",
+      "e": "No todo merece una respuesta. A veces lo más sabio es dejarlo pasar."
+    },
+    {
+      "ref": "Proverbios 14, 29",
+      "x": "Quien tiene paciencia abunda en prudencia, quien es impulsivo demuestra torpeza.",
+      "e": "La paciencia ayuda a pensar con claridad; la prisa por responder suele salir mal."
+    },
+    {
+      "ref": "Proverbios 29, 11",
+      "x": "El necio desata su pasión, el sensato sabe controlarla.",
+      "e": "Explotar es fácil; saber calmarse es de sabios."
     },
     {
       "ref": "Gálatas 5, 22-23",
       "x": "El fruto del Espíritu es: amor, alegría, paz, paciencia, afabilidad, bondad, lealtad, modestia, dominio de sí.",
-      "e": "El Espíritu Santo da el dominio de sí."
+      "e": "La paz, la paciencia y el dominio de uno mismo son regalos que Dios da a quien se los pide."
     },
     {
       "ref": "Salmo 145, 8",
       "x": "El Señor es clemente y misericordioso, lento a la cólera y rico en piedad.",
-      "e": "Dios es lento a la ira: podemos aprender de él."
+      "e": "Dios es lento para enfadarse y rápido para perdonar. Podemos aprender de Él."
     },
     {
       "ref": "Colosenses 3, 15",
       "x": "Que la paz de Cristo reine en vuestro corazón.",
-      "e": "Pedir que la paz mande en el corazón."
+      "e": "Pide que la paz de Cristo mande en tu corazón, más que el enfado."
     }
   ],
   "faq": [

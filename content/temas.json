@@ -5,56 +5,64 @@
       "name": "Estudios",
       "h1": "Oraciones para estudiantes y exámenes",
       "color": "var(--c-study)",
-      "intro": "Oraciones para antes de un examen, para estudiar con concentración, para aprobar y para esperar los resultados con calma. Para estudiantes de colegio, universidad, selectividad u oposiciones."
+      "intro": "Oraciones para antes de un examen, para estudiar con concentración, para aprobar y para esperar los resultados con calma. Para estudiantes de colegio, universidad, selectividad u oposiciones.",
+      "texto": "Estudiar con constancia, mantener la calma antes de un examen y aceptar los resultados con paz no siempre es fácil. Aquí encontrarás oraciones para cada momento del curso: antes de abrir los apuntes, la mañana del examen y mientras esperas las notas.\n\nSon oraciones pensadas para estudiantes de colegio, de bachillerato y de universidad, y también para quienes preparan la selectividad o unas oposiciones. Y si eres madre o padre, encontrarás una oración para acompañar a tu hijo el día del examen."
     },
     {
       "key": "salud",
       "name": "Salud",
       "h1": "Oraciones por la salud y por los enfermos",
       "color": "var(--c-health)",
-      "intro": "Oraciones por un enfermo, antes de una operación, por los médicos y por tu propia salud. Para rezar en el hospital, en casa o a distancia por alguien que quieres."
+      "intro": "Oraciones por un enfermo, antes de una operación, por los médicos y por tu propia salud. Para rezar en el hospital, en casa o a distancia por alguien que quieres.",
+      "texto": "Cuando la salud falla, la propia o la de alguien que queremos, la oración se convierte en refugio. Estas oraciones por los enfermos acompañan la espera de una prueba, una operación, un tratamiento o los días en el hospital.\n\nTambién encontrarás oraciones por los médicos y enfermeras, por un bebé enfermo, por un familiar con alzhéimer y a santos como san Rafael o santa Lucía. Puedes encender una vela por un enfermo en el muro de intenciones para que otras personas recen contigo."
     },
     {
       "key": "familia",
       "name": "Familia",
       "h1": "Oraciones por la familia, los hijos y el matrimonio",
       "color": "var(--c-family)",
-      "intro": "Oraciones para pedir por tu familia, tus hijos, tu matrimonio y tus abuelos, y para rezar con los niños antes de dormir."
+      "intro": "Oraciones para pedir por tu familia, tus hijos, tu matrimonio y tus abuelos, y para rezar con los niños antes de dormir.",
+      "texto": "La familia es el primer lugar donde aprendemos a amar y también donde más nos cuesta a veces. Estas oraciones piden por los hijos, por los padres, por el matrimonio, por la pareja y por la paz en casa.\n\nSon ideales para rezar juntos antes de comer, antes de dormir o en fechas especiales como Nochebuena. También hay oraciones para los momentos difíciles: un hijo que se ha alejado, el deseo de tener un hijo o una discusión familiar."
     },
     {
       "key": "paz",
       "name": "Paz interior",
       "h1": "Oraciones para la ansiedad, la tristeza y la paz interior",
       "color": "var(--c-peace)",
-      "intro": "Oraciones breves para los momentos de ansiedad, tristeza o insomnio. Para respirar, ponerse en manos de Dios y encontrar paz."
+      "intro": "Oraciones breves para los momentos de ansiedad, tristeza o insomnio. Para respirar, ponerse en manos de Dios y encontrar paz.",
+      "texto": "Hay días en que la ansiedad, la tristeza, el miedo o la soledad pesan demasiado. Estas oraciones breves ayudan a respirar, a ponerse en manos de Dios y a encontrar un poco de paz.\n\nRecuerda que rezar no sustituye la ayuda profesional cuando hace falta: si lo estás pasando muy mal, habla con alguien de confianza o con un profesional. En España puedes llamar al 024 a cualquier hora si piensas en hacerte daño."
     },
     {
       "key": "diaria",
       "name": "Vida diaria",
       "h1": "Oraciones para cada momento del día",
       "color": "var(--c-day)",
-      "intro": "Oraciones de la mañana y de la noche, bendición de la mesa, acción de gracias y oraciones para viajar. Pequeños momentos para rezar a lo largo del día."
+      "intro": "Oraciones de la mañana y de la noche, bendición de la mesa, acción de gracias y oraciones para viajar. Pequeños momentos para rezar a lo largo del día.",
+      "texto": "Rezar no es solo para momentos especiales: también se puede rezar al despertar, antes de comer, al salir de viaje o antes de dormir. Estas oraciones breves ayudan a llenar el día de pequeños encuentros con Dios.\n\nEncontrarás la oración de la mañana y de la noche, la bendición de la mesa, el ofrecimiento del día, la acción de gracias y oraciones para fechas como el cumpleaños, el fin de año o el año nuevo."
     },
     {
       "key": "devociones",
       "name": "Devociones",
       "h1": "Oraciones tradicionales y devociones católicas",
       "color": "var(--c-dev)",
-      "intro": "Las oraciones de siempre: el Ángelus, el Acordaos, Bajo tu amparo, Alma de Cristo, San Miguel Arcángel y oraciones a los santos más queridos."
+      "intro": "Las oraciones de siempre: el Ángelus, el Acordaos, Bajo tu amparo, Alma de Cristo, San Miguel Arcángel y oraciones a los santos más queridos.",
+      "texto": "Las oraciones de siempre, las que rezaban nuestros abuelos y que siguen vivas en toda la Iglesia: el Ángelus, el Acordaos, Bajo tu amparo, el Alma de Cristo y la oración a san Miguel Arcángel.\n\nTambién reunimos oraciones a la Virgen en sus advocaciones más queridas, como el Pilar, Fátima, Guadalupe o la Milagrosa, y a los santos más populares: san José, san Judas Tadeo, santa Rita, san Antonio, san Benito o san Expedito."
     },
     {
       "key": "duelo",
       "name": "Duelo",
       "h1": "Oraciones por los difuntos y para el duelo",
       "color": "var(--c-grief)",
-      "intro": "Oraciones por un ser querido que ha fallecido, por tu madre o tu padre difuntos y para encontrar consuelo en el duelo."
+      "intro": "Oraciones por un ser querido que ha fallecido, por tu madre o tu padre difuntos y para encontrar consuelo en el duelo.",
+      "texto": "La muerte de un ser querido es uno de los dolores más grandes de la vida. Estas oraciones por los difuntos acompañan el duelo con la esperanza cristiana de la resurrección y del reencuentro.\n\nEncontrarás oraciones por un padre o una madre fallecidos, por un amigo, por un bebé, para el aniversario de un fallecimiento e incluso por una mascota. Puedes encender una vela por tus difuntos en el muro de intenciones."
     },
     {
       "key": "trabajo",
       "name": "Trabajo",
       "h1": "Oraciones por el trabajo y las decisiones",
       "color": "var(--c-work)",
-      "intro": "Oraciones para encontrar trabajo, antes de una entrevista, por tu negocio y para discernir ante una decisión importante."
+      "intro": "Oraciones para encontrar trabajo, antes de una entrevista, por tu negocio y para discernir ante una decisión importante.",
+      "texto": "El trabajo ocupa gran parte de nuestra vida y también muchas de nuestras preocupaciones. Estas oraciones acompañan la búsqueda de empleo, las entrevistas, el primer día en un trabajo nuevo, los problemas laborales y las dificultades económicas.\n\nTambién hay oraciones para los que tienen un negocio propio, para vender una casa y para tomar decisiones importantes. San José obrero y san Pancracio son los santos más invocados por el trabajo."
     }
   ],
   "faq": {

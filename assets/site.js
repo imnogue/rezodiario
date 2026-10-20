@@ -229,7 +229,7 @@ function renderWeek(){
  const link=w.dataset.mode==="link";
  const lo=Math.max(0,todayIdx-6),hi=Math.min(WEEK.length,todayIdx+8);
  w.innerHTML=WEEK.map((d,i)=>{if(i<lo||i>=hi)return"";const inner=`<span class="wd">${d.wd}<i class="dot" style="background:${RD.LITC[d.color][0]}" title="${RD.LITC[d.color][1]}"></i></span><span class="num">${d.n} <small style="font-size:14px;font-family:var(--f-ui);color:var(--muted)">${d.mes.slice(0,3)}</small></span><span class="t">${esc(d.title)}</span><span class="r">${d.ref}</span><span class="tags">${i===todayIdx&&isReal?'<span class="tag today">Hoy</span>':""}${s.includes(d.date)?'<span class="tag">✓ Rezado</span>':""}</span>`;
-  return link?`<a class="day${i===sel?" sel":""}" role="listitem" href="${ROOT}evangelio/${d.date}${X}" style="text-decoration:none;color:inherit">${inner}</a>`:`<button class="day${i===sel?" sel":""}" role="listitem" data-i="${i}" aria-pressed="${i===sel}">${inner}</button>`}).join("");
+  const td=i===todayIdx&&isReal?" is-today":"";return link?`<a class="day${td}${i===sel?" sel":""}" role="listitem" href="${ROOT}evangelio/${d.date}${X}" style="text-decoration:none;color:inherit">${inner}</a>`:`<button class="day${td}${i===sel?" sel":""}" role="listitem" data-i="${i}" aria-pressed="${i===sel}">${inner}</button>`}).join("");
  if(!link)$$("#week .day").forEach(b=>b.onclick=()=>selectDay(+b.dataset.i));
  const st=$("#streak");if(st){let n=0;for(let i=todayIdx;i>=0;i--){if(s.includes(WEEK[i].date))n++;else if(i<todayIdx)break}st.innerHTML=n?`Llevas <b>${n} ${n===1?"día":"días"}</b> seguidos rezando`:"Empieza tu racha de oración hoy"}
 }
@@ -510,7 +510,7 @@ if(chapel){
    return `<button class="candle${c.id===sel?" sel":""}${c._new?" new":""}" data-id="${esc(c.id)}" style="--cc:${col}" aria-label="Vela: ${esc(c.priv?"intención privada":c.text||"sin texto")}"><span class="halo"></span><span class="cup"><span class="wax" style="--wh:${wh}px"><span class="wick"></span><span class="flame"></span></span></span>${mine.has(c.id)?'<span class="mine">Tuya</span>':""}</button>`}).join("")
    +Array.from({length:Math.max(0,slots-lit.length)},()=>`<span class="candle unlit" aria-hidden="true" style="--cc:#6b5a45"><span class="cup"><span class="wax" style="--wh:36px"><span class="wick"></span></span></span></span>`).join("");
   lit.forEach(c=>delete c._new);
-  $$("#candles .candle[data-id]").forEach(b=>{b.onclick=()=>{auto=false;select(b.dataset.id)};b.onmouseenter=()=>{if(matchMedia("(hover:hover)").matches){auto=false;select(b.dataset.id)}}});
+  $$("#candles .candle[data-id]").forEach(b=>{b.onclick=()=>{auto=false;select(b.dataset.id)}});
   let pr=0;list.forEach(c=>pr+=prays.get(c.id)||0);
   $("#vStat1").textContent=list.length;$("#vStat2").textContent=pr;
   chapel.style.setProperty("--warm",Math.min(.32,.08+list.length*.006).toFixed(3));
@@ -527,7 +527,7 @@ if(chapel){
   const n=prays.get(c.id)||0,pressed=myPrays.has(c.id),col=(VC[c.cat]||VC.otra);
   R.innerHTML=`<span class="cat"><i style="background:${col[1]}"></i>${col[0]}${mine.has(c.id)?" · tu vela":""}</span><blockquote>${c.priv||!c.text?"Intención privada. Solo Dios la conoce.":"«"+esc(c.text)+"»"}</blockquote><span class="who">${esc(c.name||"Anónimo")} · encendida ${ago(c.at)} · arde ${Math.max(0,Math.ceil((c.at+WEEKMS-Date.now())/864e5))} días más</span><div class="row"><button class="btn btn-wax sm" id="vPray" aria-pressed="${pressed}">${pressed?"✓ Has rezado por esta intención":"He rezado por ti"}</button><span class="who" id="vPrayN">${n===1?"1 persona ha rezado":n+" personas han rezado"}</span>${mine.has(c.id)||c.priv?"":'<button class="flag" id="vFlag" aria-label="Avisar de una intención inadecuada">Avisar</button>'}</div>`;
   $("#vPray").onclick=()=>pray(c.id);const fl=$("#vFlag");if(fl)fl.onclick=()=>flag(c.id)}
- async function pray(id){if(myPrays.has(id))return;myPrays.add(id);store.set("rd-myprays",[...myPrays]);prays.set(id,(prays.get(id)||0)+1);showReader();sparks($(`#candles .candle[data-id="${CSS.escape(id)}"]`),8);
+ async function pray(id){if(myPrays.has(id))return;myPrays.add(id);store.set("rd-myprays",[...myPrays]);prays.set(id,(prays.get(id)||0)+1);render();sparks($(`#candles .candle[data-id="${CSS.escape(id)}"]`),8);
   try{if(mode==="claude")await db.collection("rezos").doc(id+"--"+uid).set({c:id,at:Date.now()});else if(mode==="supabase")await sbf("/rest/v1/rezos",{method:"POST",headers:{Prefer:"return=minimal,resolution=ignore-duplicates"},body:{vela_id:id,visitante:uid}});else{const a=store.get("rd-rezos-local",[]);a.push({c:id});store.set("rd-rezos-local",a)}}catch(e){}}
  async function flag(id){if(myFlags.has(id))return;myFlags.add(id);store.set("rd-myflags",[...myFlags]);sel=null;render();toast("Gracias por avisar. Hemos ocultado esta vela para ti y la revisaremos.");
   try{if(mode==="claude")await db.collection("avisos").doc(id+"--"+uid).set({c:id,at:Date.now()});else if(mode==="supabase")await sbf("/rest/v1/rpc/reportar_vela",{method:"POST",body:{p_vela:id,p_visitante:uid}})}catch(e){}}
@@ -753,7 +753,7 @@ if(vl){let on=false;const cards=$$(".vcard");vl.addEventListener("click",()=>{
   vSay(cd.dataset.x+". "+cd.dataset.ref.replace(/,/g," "),()=>setTimeout(next,1200))};next()})}
 const vn=$("#vNow");
 if(vn&&window.RDV){let cur=null,last="";const show=slug=>{const t=RDV[slug];if(!t)return;cur=slug;let v;do{v=t.v[Math.floor(Math.random()*t.v.length)]}while(t.v.length>1&&v[0]===last);last=v[0];
-  vn.dataset.ref=v[0];vn.dataset.x=v[1];vn.dataset.tag=t.t;$("#vNowTag").textContent=t.t;$("#vNowX").textContent="«"+v[1]+"»";$("#vNowR").textContent=v[0];$("#vNowE").textContent=v[2];
+  vn.dataset.ref=v[0];vn.dataset.x=v[1];vn.dataset.tag=t.t;$("#vNowTag").textContent=t.t;$("#vNowX").textContent="«"+v[1]+"»";$("#vNowR").textContent=v[0];$("#vNowE").innerHTML="<b>Qué significa:</b> "+esc(v[2]);
   $("#vNowWa").href="https://wa.me/?text="+encodeURIComponent("«"+v[1]+"» "+v[0]+" · https://rezodiario.com/"+slug);$("#vNowMore").href=ROOT+slug+X;$("#vNowMore").textContent="Ver los "+t.v.length+" "+t.t.toLowerCase()+" →";
   vn.hidden=false;vn.classList.remove("pop");void vn.offsetWidth;vn.classList.add("pop");
   $$(".mood").forEach(b=>b.classList.toggle("on",b.dataset.m===slug))};

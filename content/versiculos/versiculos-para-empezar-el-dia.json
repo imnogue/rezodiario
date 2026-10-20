@@ -3,7 +3,7 @@
   "t": "Versículos para empezar el día",
   "h1": "Versículos de la Biblia para empezar el día",
   "mood": "Empezando el día",
-  "intro": "Un versículo por la mañana cambia el tono de todo el día. Léelo antes de mirar el móvil y ofrécele a Dios lo que viene.",
+  "intro": "Un versículo por la mañana cambia el tono de todo el día. Estos versículos de la Biblia para empezar el día son breves y transmiten confianza, alegría y propósito.\n\nLéelo antes de mirar el móvil, compártelo en tu estado de WhatsApp o ponlo como fondo de pantalla. Debajo de cada uno te contamos qué significa.",
   "oracion": "Buenos días, Señor. Te ofrezco este día: mis trabajos, mis alegrías y mis cansancios. Acompáñame en cada conversación y en cada decisión. Amén.",
   "prayer": "oracion-de-la-manana",
   "rel": [
@@ -15,12 +15,52 @@
     {
       "ref": "Lamentaciones 3, 22-23",
       "x": "Que no se agota la bondad del Señor, no se acaba su misericordia; se renuevan cada mañana, ¡qué grande es tu fidelidad!",
-      "e": "Cada mañana Dios empieza de nuevo contigo."
+      "e": "Cada mañana es un nuevo comienzo: el amor de Dios se renueva cada día, pase lo que pasara ayer."
     },
     {
       "ref": "Salmo 118, 24",
       "x": "Este es el día en que actuó el Señor: sea nuestra alegría y nuestro gozo.",
-      "e": "Hoy también es un día hecho por Dios."
+      "e": "Hoy también es un día regalado por Dios. Vívelo con alegría."
+    },
+    {
+      "ref": "Filipenses 4, 4",
+      "x": "Alegraos siempre en el Señor; os lo repito, alegraos.",
+      "e": "Empieza el día con alegría: no porque todo vaya perfecto, sino porque Dios está contigo."
+    },
+    {
+      "ref": "Mateo 5, 14",
+      "x": "Vosotros sois la luz del mundo.",
+      "e": "Hoy puedes ser luz para alguien con una palabra amable o un pequeño gesto."
+    },
+    {
+      "ref": "Juan 8, 12",
+      "x": "Yo soy la luz del mundo; el que me sigue no camina en tinieblas, sino que tendrá la luz de la vida.",
+      "e": "Si sigues a Jesús, no caminas a oscuras: Él ilumina tus decisiones de hoy."
+    },
+    {
+      "ref": "Salmo 37, 4",
+      "x": "Sea el Señor tu delicia, y él te dará lo que pide tu corazón.",
+      "e": "Pon tu alegría en Dios y Él cuidará de los deseos más profundos de tu corazón."
+    },
+    {
+      "ref": "Proverbios 16, 3",
+      "x": "Encomienda al Señor tus tareas, y tendrán éxito tus planes.",
+      "e": "Pon en manos de Dios lo que vas a hacer hoy y confía en que saldrá bien."
+    },
+    {
+      "ref": "Salmo 37, 5",
+      "x": "Encomienda tu camino al Señor, confía en él, y él actuará.",
+      "e": "Confiar es dejar que Dios actúe en lo que no depende de ti."
+    },
+    {
+      "ref": "Colosenses 3, 23",
+      "x": "Lo que hacéis, hacedlo con toda el alma, como para servir al Señor, y no a los hombres.",
+      "e": "Tu trabajo de hoy, por pequeño que sea, puede ser una forma de amar a Dios."
+    },
+    {
+      "ref": "Salmo 143, 8",
+      "x": "En la mañana hazme escuchar tu gracia, ya que confío en ti.",
+      "e": "Una oración para antes de levantarte: «Señor, que hoy sienta tu amor»."
     },
     {
       "ref": "Salmo 5, 4",
@@ -28,89 +68,39 @@
       "e": "La primera palabra del día puede ser para Dios."
     },
     {
-      "ref": "Salmo 143, 8",
-      "x": "En la mañana hazme escuchar tu gracia, ya que confío en ti.",
-      "e": "Una oración para antes de levantarse."
-    },
-    {
       "ref": "Salmo 90, 14",
       "x": "Por la mañana sácianos de tu misericordia, y toda nuestra vida será alegría y júbilo.",
-      "e": "Empezar el día lleno de Dios."
-    },
-    {
-      "ref": "Proverbios 16, 3",
-      "x": "Encomienda al Señor tus tareas, y tendrán éxito tus planes.",
-      "e": "Pon en sus manos lo que vas a hacer hoy."
-    },
-    {
-      "ref": "Colosenses 3, 23",
-      "x": "Lo que hacéis, hacedlo con toda el alma, como para servir al Señor, y no a los hombres.",
-      "e": "Tu trabajo de hoy también puede ser oración."
-    },
-    {
-      "ref": "Salmo 37, 5",
-      "x": "Encomienda tu camino al Señor, confía en él, y él actuará.",
-      "e": "Confiar es dejar que Dios actúe."
-    },
-    {
-      "ref": "Marcos 1, 35",
-      "x": "Se levantó de madrugada, cuando todavía estaba muy oscuro, se marchó a un lugar solitario y allí se puso a orar.",
-      "e": "Jesús empezaba el día rezando."
-    },
-    {
-      "ref": "Salmo 59, 17",
-      "x": "Yo cantaré tu fuerza; por la mañana aclamaré tu misericordia.",
-      "e": "Empezar el día con alabanza."
-    },
-    {
-      "ref": "2 Corintios 5, 17",
-      "x": "Si alguno está en Cristo es una criatura nueva. Lo viejo ha pasado, ha comenzado lo nuevo.",
-      "e": "Hoy puedes empezar de nuevo."
-    },
-    {
-      "ref": "Salmo 19, 15",
-      "x": "Que te agraden las palabras de mi boca, y llegue a tu presencia el meditar de mi corazón, Señor, Roca mía, Redentor mío.",
-      "e": "Una oración para que todo lo que digas hoy sea bueno."
-    },
-    {
-      "ref": "Salmo 46, 6",
-      "x": "Teniendo a Dios en medio, no vacila; Dios la socorre al despuntar la aurora.",
-      "e": "Dios ayuda desde el primer rayo de luz."
-    },
-    {
-      "ref": "Isaías 50, 4",
-      "x": "Cada mañana me espabila el oído, para que escuche como los discípulos.",
-      "e": "Empezar el día escuchando."
-    },
-    {
-      "ref": "Salmo 92, 3",
-      "x": "Proclamar por la mañana tu misericordia y de noche tu fidelidad.",
-      "e": "Por la mañana, misericordia; por la noche, fidelidad."
-    },
-    {
-      "ref": "Proverbios 3, 6",
-      "x": "Cuenta con él cuando actúes, y él te facilitará las cosas.",
-      "e": "Piensa en Dios en lo que vas a hacer hoy."
-    },
-    {
-      "ref": "Salmo 57, 9",
-      "x": "Despierta, gloria mía; despertad, cítara y arpa; despertaré a la aurora.",
-      "e": "Despertar con alegría."
-    },
-    {
-      "ref": "Romanos 12, 2",
-      "x": "No os amoldéis a este mundo, sino transformaos por la renovación de la mente.",
-      "e": "Cada día es una oportunidad de renovarse."
+      "e": "Empezar el día sintiéndote querido por Dios hace que todo lo demás se vea distinto."
     },
     {
       "ref": "Mateo 5, 16",
       "x": "Brille así vuestra luz ante los hombres, para que vean vuestras buenas obras y den gloria a vuestro Padre que está en los cielos.",
-      "e": "Hoy puedes ser luz para alguien."
+      "e": "Haz el bien hoy: tus buenas obras pueden ayudar a otros a descubrir a Dios."
+    },
+    {
+      "ref": "Romanos 12, 2",
+      "x": "No os amoldéis a este mundo, sino transformaos por la renovación de la mente.",
+      "e": "Cada día es una oportunidad para pensar y vivir de una manera nueva."
+    },
+    {
+      "ref": "2 Corintios 5, 17",
+      "x": "Si alguno está en Cristo es una criatura nueva. Lo viejo ha pasado, ha comenzado lo nuevo.",
+      "e": "Hoy puedes empezar de nuevo. Lo de ayer ya pasó."
     },
     {
       "ref": "Salmo 25, 4-5",
       "x": "Señor, enséñame tus caminos, instrúyeme en tus sendas: haz que camine con lealtad.",
-      "e": "Una oración para pedir dirección."
+      "e": "Una oración para pedir dirección: «Señor, enséñame el camino»."
+    },
+    {
+      "ref": "Marcos 1, 35",
+      "x": "Se levantó de madrugada, cuando todavía estaba muy oscuro, se marchó a un lugar solitario y allí se puso a orar.",
+      "e": "Jesús empezaba el día rezando a solas. Unos minutos de silencio por la mañana lo cambian todo."
+    },
+    {
+      "ref": "Salmo 19, 15",
+      "x": "Que te agraden las palabras de mi boca, y llegue a tu presencia el meditar de mi corazón, Señor, Roca mía, Redentor mío.",
+      "e": "Que todo lo que digas y pienses hoy sea bueno."
     }
   ],
   "faq": [

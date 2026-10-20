@@ -3,7 +3,7 @@
   "t": "Versículos para el miedo",
   "h1": "Versículos de la Biblia para vencer el miedo",
   "mood": "Con miedo",
-  "intro": "«No temas» aparece en la Biblia una y otra vez. Estos versículos son para el miedo a una prueba médica, a un cambio o a lo que vendrá.",
+  "intro": "«No temas» es una de las frases que más se repiten en la Biblia. Estos versículos para el miedo son para cuando tienes que afrontar una prueba médica, un cambio, una decisión o algo que no controlas.\n\nNo prometen que nunca vayas a tener miedo, sino algo más profundo: que no lo vas a vivir solo. Debajo de cada versículo te explicamos su sentido con palabras sencillas.",
   "oracion": "Señor, tengo miedo. Repíteme al oído que no tema, que tú estás conmigo. Cógeme de la mano y dame valor para dar el siguiente paso. Amén.",
   "prayer": "oracion-para-la-ansiedad",
   "rel": [
@@ -13,104 +13,84 @@
   ],
   "versos": [
     {
+      "ref": "Isaías 41, 10",
+      "x": "No temas, que yo estoy contigo; no te angusties, que yo soy tu Dios.",
+      "e": "Cuando tienes miedo, Dios te recuerda que está contigo, que te da fuerzas y que no te va a soltar."
+    },
+    {
       "ref": "Isaías 43, 1",
       "x": "No temas, que te he redimido, te he llamado por tu nombre, tú eres mío.",
-      "e": "Dios te llama por tu nombre: eres suyo."
+      "e": "Dios te conoce por tu nombre y le perteneces. No eres uno más: eres alguien muy querido."
     },
     {
       "ref": "Mateo 14, 27",
       "x": "¡Ánimo, soy yo, no tengáis miedo!",
-      "e": "Jesús en medio de la tormenta."
+      "e": "Jesús dijo esto a sus amigos en plena tormenta. También te lo dice a ti: «Tranquilo, estoy aquí»."
     },
     {
       "ref": "Salmo 56, 4",
       "x": "Cuando me asalta el miedo, confío en ti.",
-      "e": "Una frase para repetir cuando llega el miedo."
-    },
-    {
-      "ref": "Deuteronomio 31, 8",
-      "x": "El Señor avanzará ante ti. Él estará contigo; no te dejará ni te abandonará. No temas ni te acobardes.",
-      "e": "Dios va por delante."
-    },
-    {
-      "ref": "Lucas 12, 32",
-      "x": "No temas, pequeño rebaño, porque vuestro Padre ha tenido a bien daros el reino.",
-      "e": "Jesús habla con ternura a los suyos."
-    },
-    {
-      "ref": "Salmo 118, 6",
-      "x": "El Señor está conmigo: no temo; ¿qué podrá hacerme el hombre?",
-      "e": "Con Dios al lado, el miedo se relativiza."
-    },
-    {
-      "ref": "Marcos 5, 36",
-      "x": "No temas; basta que tengas fe.",
-      "e": "La fe es el antídoto del miedo."
-    },
-    {
-      "ref": "Salmo 34, 5",
-      "x": "Yo consulté al Señor, y me respondió, me libró de todas mis ansias.",
-      "e": "Contarle a Dios el miedo ya es empezar a vencerlo."
-    },
-    {
-      "ref": "Isaías 35, 4",
-      "x": "Decid a los inquietos: «Sed fuertes, no temáis. ¡He aquí vuestro Dios!».",
-      "e": "Un mensaje para los inquietos."
-    },
-    {
-      "ref": "Sofonías 3, 17",
-      "x": "El Señor tu Dios está en medio de ti, valiente y salvador; se alegra y goza contigo, te renueva con su amor.",
-      "e": "Dios se alegra contigo y te renueva."
-    },
-    {
-      "ref": "Lucas 1, 30",
-      "x": "No temas, María, porque has encontrado gracia ante Dios.",
-      "e": "Las palabras del ángel a María."
-    },
-    {
-      "ref": "Juan 14, 1",
-      "x": "No se turbe vuestro corazón, creed en Dios y creed también en mí.",
-      "e": "Jesús calma el corazón de sus amigos."
-    },
-    {
-      "ref": "Isaías 41, 10",
-      "x": "No temas, que yo estoy contigo; no te angusties, que yo soy tu Dios.",
-      "e": "La promesa de Dios para el miedo."
-    },
-    {
-      "ref": "Salmo 27, 1",
-      "x": "El Señor es mi luz y mi salvación, ¿a quién temeré?",
-      "e": "Con Dios como luz, el miedo se disipa."
+      "e": "Una frase para repetir cuando llega el miedo: «Cuando tengo miedo, confío en ti»."
     },
     {
       "ref": "Josué 1, 9",
       "x": "Lo que yo te mando es que tengas valor y seas valiente. No tengas miedo ni te acobardes, que contigo está el Señor, tu Dios, en cualquier cosa que emprendas.",
-      "e": "Dios va contigo a donde vayas."
+      "e": "Ser valiente no es no tener miedo: es saber que Dios va contigo a donde vayas."
     },
     {
-      "ref": "1 Juan 4, 18",
-      "x": "No hay temor en el amor, sino que el amor perfecto expulsa el temor.",
-      "e": "El amor expulsa el miedo."
+      "ref": "Salmo 27, 1",
+      "x": "El Señor es mi luz y mi salvación, ¿a quién temeré?",
+      "e": "Si Dios es tu luz, ninguna oscuridad tiene la última palabra."
     },
     {
       "ref": "Salmo 23, 4",
       "x": "Aunque camine por cañadas oscuras, nada temo, porque tú vas conmigo.",
-      "e": "En los valles oscuros, no vas solo."
+      "e": "Hay valles oscuros en la vida. La Biblia no lo niega, pero promete que en ellos no vas solo."
+    },
+    {
+      "ref": "Deuteronomio 31, 8",
+      "x": "El Señor avanzará ante ti. Él estará contigo; no te dejará ni te abandonará. No temas ni te acobardes.",
+      "e": "Dios va por delante de ti. Allí donde tienes que ir, Él ya está."
+    },
+    {
+      "ref": "Marcos 5, 36",
+      "x": "No temas; basta que tengas fe.",
+      "e": "Jesús dijo esto a un padre desesperado: no tengas miedo, solo confía."
+    },
+    {
+      "ref": "1 Juan 4, 18",
+      "x": "No hay temor en el amor, sino que el amor perfecto expulsa el temor.",
+      "e": "El amor vence al miedo. Cuanto más te sabes querido por Dios, menos poder tiene el temor."
     },
     {
       "ref": "2 Timoteo 1, 7",
       "x": "Dios no nos ha dado un espíritu de cobardía, sino de fortaleza, de amor y de templanza.",
-      "e": "El miedo no viene de Dios."
-    },
-    {
-      "ref": "Salmo 46, 3",
-      "x": "Por eso no tememos aunque tiemble la tierra, y los montes se desplomen en el mar.",
-      "e": "Aunque todo tiemble, Dios no."
+      "e": "El miedo no viene de Dios. Lo que Él te da es fuerza, amor y serenidad."
     },
     {
       "ref": "Mateo 10, 31",
       "x": "No tengáis miedo: valéis más vosotros que muchos gorriones.",
-      "e": "Vales mucho para Dios."
+      "e": "Si Dios cuida de algo tan pequeño como un gorrión, imagina cuánto te cuida a ti."
+    },
+    {
+      "ref": "Salmo 118, 6",
+      "x": "El Señor está conmigo: no temo; ¿qué podrá hacerme el hombre?",
+      "e": "Con Dios a tu lado, lo que otros puedan hacerte pierde fuerza."
+    },
+    {
+      "ref": "Salmo 34, 5",
+      "x": "Yo consulté al Señor, y me respondió, me libró de todas mis ansias.",
+      "e": "Contarle a Dios tus miedos es el primer paso para que dejen de dominarte."
+    },
+    {
+      "ref": "Juan 14, 1",
+      "x": "No se turbe vuestro corazón, creed en Dios y creed también en mí.",
+      "e": "Jesús lo dijo a sus amigos antes de un momento muy difícil: no os preocupéis, confiad en mí."
+    },
+    {
+      "ref": "Sofonías 3, 17",
+      "x": "El Señor tu Dios está en medio de ti, valiente y salvador; se alegra y goza contigo, te renueva con su amor.",
+      "e": "Dios no solo te protege: se alegra contigo y te renueva con su amor."
     }
   ],
   "faq": [

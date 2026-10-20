@@ -287,7 +287,7 @@ img,video,canvas,svg,iframe{max-width:100%}
 
 /* ---------- ¿Qué llevas hoy en el corazón? ---------- */
 .ask.heart{flex-direction:column;align-items:stretch}
-.ask.heart textarea{resize:vertical;min-height:96px;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--f-read)}
+.ask.heart textarea{resize:none;min-height:96px;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--f-read)}
 .ask.heart textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
 .ask.heart textarea::placeholder{color:var(--muted);font-style:italic}
 .ask.heart .btn{align-self:flex-start}
@@ -413,3 +413,12 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .camino{align-items:stretch}
 .camino-velas{align-items:flex-end}
 .camino-velas li svg{display:block}
+/* Semana: el día de hoy, más grande y fácil de encontrar */
+#week{align-items:center}
+.day.is-today{flex-basis:clamp(240px,27vw,270px);padding:22px 20px;border-color:var(--gold);background:linear-gradient(170deg,color-mix(in srgb,var(--gold) 12%,var(--surface)),var(--surface) 60%);box-shadow:0 18px 40px -26px color-mix(in srgb,var(--gold) 80%,transparent)}
+.day.is-today .num{font-size:50px}
+.day.is-today .t{font-size:16px}
+.day.is-today.sel{box-shadow:0 0 0 2px var(--gold),0 20px 40px -24px color-mix(in srgb,var(--gold) 80%,transparent)}
+.day.is-today .tag.today{background:var(--gold);color:var(--gold-ink)}
+.vqs b{color:var(--ink);font-weight:800}.vday .vqs b{color:#EEF2EC}
+.vintro{max-width:46em;color:var(--muted);font-size:16px;margin:0 0 22px}

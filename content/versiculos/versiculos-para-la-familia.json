@@ -3,7 +3,7 @@
   "t": "Versículos para la familia",
   "h1": "Versículos de la Biblia para la familia",
   "mood": "Pensando en mi familia",
-  "intro": "Versículos para rezar por tu familia, para los hijos, para los padres y para cuidar la paz en casa.",
+  "intro": "Versículos de la Biblia para la familia: para rezar por los hijos, por los padres, por el matrimonio y por la paz en casa. Hablan de perdón, de paciencia y de cuidarse unos a otros.\n\nSon ideales para escribir en una tarjeta, leer en una comida familiar o compartir con quienes quieres. Cada uno lleva una explicación sencilla de su significado.",
   "oracion": "Señor, bendice a mi familia. Enséñanos a perdonarnos, a escucharnos y a cuidarnos. Que en nuestra casa nadie se sienta solo. Sagrada Familia de Nazaret, ruega por nosotros. Amén.",
   "prayer": "oracion-por-la-familia",
   "rel": [
@@ -15,102 +15,87 @@
     {
       "ref": "Josué 24, 15",
       "x": "Yo y mi casa serviremos al Señor.",
-      "e": "Una decisión familiar de poner a Dios en el centro."
+      "e": "Una decisión familiar: poner a Dios en el centro de la casa."
     },
     {
       "ref": "Colosenses 3, 13",
       "x": "Sobrellevaos mutuamente y perdonaos cuando alguno tenga quejas contra otro. El Señor os ha perdonado: haced vosotros lo mismo.",
-      "e": "El perdón es el pegamento de la familia."
-    },
-    {
-      "ref": "Efesios 4, 2-3",
-      "x": "Sed siempre humildes y amables, sed comprensivos, sobrellevaos mutuamente con amor, esforzándoos en mantener la unidad del Espíritu con el vínculo de la paz.",
-      "e": "Un programa de convivencia para cualquier casa."
-    },
-    {
-      "ref": "Salmo 127, 1",
-      "x": "Si el Señor no construye la casa, en vano se cansan los albañiles.",
-      "e": "Una familia se construye con Dios."
-    },
-    {
-      "ref": "Proverbios 22, 6",
-      "x": "Educa al muchacho en el buen camino: cuando llegue a viejo seguirá por él.",
-      "e": "Lo que sembramos en los hijos queda para siempre."
-    },
-    {
-      "ref": "Éxodo 20, 12",
-      "x": "Honra a tu padre y a tu madre, para que se prolonguen tus días en la tierra, que el Señor, tu Dios, te va a dar.",
-      "e": "El único mandamiento con una promesa."
-    },
-    {
-      "ref": "Salmo 133, 1",
-      "x": "Ved qué dulzura, qué delicia, convivir los hermanos unidos.",
-      "e": "La alegría de la familia unida."
-    },
-    {
-      "ref": "Hechos 16, 31",
-      "x": "Cree en el Señor Jesús y te salvarás tú y tu familia.",
-      "e": "La fe de uno bendice a todos."
-    },
-    {
-      "ref": "Eclesiastés 4, 12",
-      "x": "Una cuerda de tres cabos no es fácil de romper.",
-      "e": "Un matrimonio con Dios en medio es más fuerte."
-    },
-    {
-      "ref": "Salmo 128, 3",
-      "x": "Tu mujer, como parra fecunda, en medio de tu casa; tus hijos, como renuevos de olivo, alrededor de tu mesa.",
-      "e": "La bendición de una familia en torno a la mesa."
-    },
-    {
-      "ref": "Efesios 6, 4",
-      "x": "Padres, no exasperéis a vuestros hijos; criadlos educándolos y corrigiéndolos según el Señor.",
-      "e": "Educar con paciencia y cariño."
-    },
-    {
-      "ref": "Lucas 2, 52",
-      "x": "Jesús iba creciendo en sabiduría, en estatura y en gracia ante Dios y ante los hombres.",
-      "e": "Jesús también creció en una familia."
-    },
-    {
-      "ref": "Salmo 103, 17",
-      "x": "La misericordia del Señor dura desde siempre y por siempre, para los que lo temen; su justicia pasa de hijos a nietos.",
-      "e": "La fe y la bendición pasan de generación en generación."
-    },
-    {
-      "ref": "Proverbios 17, 6",
-      "x": "Corona de los ancianos, sus nietos; gloria de los hijos, sus padres.",
-      "e": "Una bendición para abuelos y nietos."
-    },
-    {
-      "ref": "Rut 1, 16",
-      "x": "Iré adonde tú vayas, viviré donde tú vivas; tu pueblo será mi pueblo y tu Dios será mi Dios.",
-      "e": "La fidelidad de Rut a su familia."
-    },
-    {
-      "ref": "Salmo 127, 3",
-      "x": "La herencia que da el Señor son los hijos; una recompensa es el fruto de las entrañas.",
-      "e": "Los hijos son un regalo de Dios."
-    },
-    {
-      "ref": "1 Corintios 13, 7",
-      "x": "Todo lo excusa, todo lo cree, todo lo espera, todo lo soporta.",
-      "e": "El amor que sostiene una familia."
+      "e": "En toda familia hay roces. La clave es perdonarse, como Dios nos perdona."
     },
     {
       "ref": "Efesios 4, 32",
       "x": "Sed buenos, comprensivos, perdonándoos unos a otros como Dios os perdonó en Cristo.",
-      "e": "El perdón es el gran regalo en casa."
+      "e": "Ser amables y perdonar: dos gestos sencillos que cambian el ambiente de una casa."
+    },
+    {
+      "ref": "Efesios 4, 2-3",
+      "x": "Sed siempre humildes y amables, sed comprensivos, sobrellevaos mutuamente con amor, esforzándoos en mantener la unidad del Espíritu con el vínculo de la paz.",
+      "e": "Paciencia, humildad y cariño: un programa de convivencia para cualquier familia."
+    },
+    {
+      "ref": "Gálatas 6, 2",
+      "x": "Llevad los unos las cargas de los otros y así cumpliréis la ley de Cristo.",
+      "e": "En una familia, las cargas se llevan entre todos. Nadie tiene que sufrir solo."
+    },
+    {
+      "ref": "Romanos 12, 10",
+      "x": "Amaos cordialmente unos a otros; que cada cual estime a los otros más que a sí mismo.",
+      "e": "Quererse de corazón y valorar al otro más que a uno mismo: así se cuida una familia."
+    },
+    {
+      "ref": "Salmo 127, 1",
+      "x": "Si el Señor no construye la casa, en vano se cansan los albañiles.",
+      "e": "Una familia se construye mejor con Dios: sin Él, el esfuerzo se queda corto."
+    },
+    {
+      "ref": "Éxodo 20, 12",
+      "x": "Honra a tu padre y a tu madre, para que se prolonguen tus días en la tierra, que el Señor, tu Dios, te va a dar.",
+      "e": "Honrar a los padres es quererlos, respetarlos y cuidarlos, también cuando se hacen mayores."
+    },
+    {
+      "ref": "Proverbios 22, 6",
+      "x": "Educa al muchacho en el buen camino: cuando llegue a viejo seguirá por él.",
+      "e": "Lo que enseñas a tus hijos con cariño y ejemplo les acompaña toda la vida."
+    },
+    {
+      "ref": "Salmo 133, 1",
+      "x": "Ved qué dulzura, qué delicia, convivir los hermanos unidos.",
+      "e": "Pocas cosas hay tan bonitas como una familia que vive unida."
+    },
+    {
+      "ref": "1 Corintios 13, 7",
+      "x": "Todo lo excusa, todo lo cree, todo lo espera, todo lo soporta.",
+      "e": "El amor que sostiene a una familia lo aguanta todo y no se rinde."
+    },
+    {
+      "ref": "Eclesiastés 4, 12",
+      "x": "Una cuerda de tres cabos no es fácil de romper.",
+      "e": "Una cuerda de tres hilos no se rompe fácilmente: así es un matrimonio que pone a Dios en medio."
+    },
+    {
+      "ref": "Rut 1, 16",
+      "x": "Iré adonde tú vayas, viviré donde tú vivas; tu pueblo será mi pueblo y tu Dios será mi Dios.",
+      "e": "Una promesa de fidelidad entre familia: «Donde tú vayas, iré yo»."
+    },
+    {
+      "ref": "Salmo 127, 3",
+      "x": "La herencia que da el Señor son los hijos; una recompensa es el fruto de las entrañas.",
+      "e": "Los hijos son un regalo de Dios, no una carga."
+    },
+    {
+      "ref": "Proverbios 17, 6",
+      "x": "Corona de los ancianos, sus nietos; gloria de los hijos, sus padres.",
+      "e": "Los nietos son la alegría de los abuelos, y los padres, el orgullo de sus hijos."
+    },
+    {
+      "ref": "Efesios 6, 4",
+      "x": "Padres, no exasperéis a vuestros hijos; criadlos educándolos y corrigiéndolos según el Señor.",
+      "e": "A los padres se les pide paciencia: educar con cariño, sin desesperar a los hijos."
     },
     {
       "ref": "Isaías 66, 13",
       "x": "Como a un niño a quien su madre consuela, así os consolaré yo.",
-      "e": "Dios consuela como una madre."
-    },
-    {
-      "ref": "Juan 19, 27",
-      "x": "Luego, dijo al discípulo: «Ahí tienes a tu madre». Y desde aquella hora, el discípulo la recibió como algo propio.",
-      "e": "Jesús nos dio a María como madre de nuestra familia."
+      "e": "Dios consuela a cada uno como una madre consuela a su niño."
     }
   ],
   "faq": [

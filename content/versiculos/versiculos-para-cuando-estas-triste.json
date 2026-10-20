@@ -3,7 +3,7 @@
   "t": "Versículos para cuando estás triste",
   "h1": "Versículos de la Biblia para cuando estás triste",
   "mood": "Triste",
-  "intro": "Si hoy estás triste, no estás solo. Estos versículos no quitan el dolor de golpe, pero recuerdan que Dios está cerca de los que lloran.",
+  "intro": "Si hoy estás triste, no estás solo. Estos versículos de la Biblia para cuando estás triste no quitan el dolor de golpe, pero recuerdan algo importante: Dios está cerca de los que lloran y la tristeza no tiene la última palabra.\n\nCada versículo va acompañado de una explicación sencilla para que llegue al corazón aunque nunca hayas leído la Biblia. Si la tristeza dura semanas o te quita las ganas de todo, habla con alguien de confianza o con un profesional. En España puedes llamar al 024.",
   "oracion": "Señor, hoy estoy triste. No te pido que me quites todo de golpe, te pido que te quedes conmigo. Tú que lloraste por tu amigo, entiendes lo que siento. Consuélame. Amén.",
   "prayer": "oracion-en-la-tristeza",
   "rel": [
@@ -15,102 +15,82 @@
     {
       "ref": "Salmo 34, 19",
       "x": "El Señor está cerca de los atribulados, salva a los abatidos.",
-      "e": "Cuando más te duele, más cerca está Dios."
+      "e": "Cuando te sientes hundido, Dios no se aleja: se acerca. Está especialmente cerca de quien lo está pasando mal."
     },
     {
       "ref": "Mateo 5, 5",
       "x": "Bienaventurados los que lloran, porque ellos serán consolados.",
-      "e": "Jesús promete consuelo a los que lloran."
+      "e": "Jesús no te pide que dejes de llorar. Te promete que tu tristeza será consolada."
     },
     {
       "ref": "Salmo 147, 3",
       "x": "Él sana los corazones destrozados, venda sus heridas.",
-      "e": "Dios es médico del corazón."
+      "e": "Dios sabe curar lo que está roto por dentro. Lo hace con cuidado, como quien venda una herida."
     },
     {
-      "ref": "Apocalipsis 21, 4",
-      "x": "Y enjugará toda lágrima de sus ojos, y ya no habrá muerte, ni duelo, ni llanto ni dolor, porque lo primero ha desaparecido.",
-      "e": "La promesa final: un día no habrá más lágrimas."
+      "ref": "Juan 14, 18",
+      "x": "No os dejaré huérfanos, volveré a vosotros.",
+      "e": "Jesús promete no dejarte solo. Aunque te sientas abandonado, Él vuelve a buscarte."
     },
     {
       "ref": "Salmo 30, 6",
       "x": "Al atardecer nos visita el llanto; por la mañana, el júbilo.",
-      "e": "La tristeza no es para siempre."
-    },
-    {
-      "ref": "Salmo 42, 6",
-      "x": "¿Por qué te acongojas, alma mía, por qué gimes dentro de mí? Espera en Dios, que volverás a alabarlo.",
-      "e": "Hablarle a tu propia alma con esperanza."
+      "e": "La noche puede ser dura, pero llega la mañana. La tristeza de hoy no es para siempre."
     },
     {
       "ref": "Juan 16, 20",
       "x": "Vosotros estaréis tristes, pero vuestra tristeza se convertirá en alegría.",
-      "e": "Jesús no niega la tristeza: promete transformarla."
-    },
-    {
-      "ref": "Isaías 61, 3",
-      "x": "Para cambiar su ceniza en corona, su luto en perfume de fiesta, su abatimiento en traje de gala.",
-      "e": "Dios convierte el luto en fiesta."
-    },
-    {
-      "ref": "Salmo 56, 9",
-      "x": "Anota en tu libro mi vida errante, recoge mis lágrimas en tu odre.",
-      "e": "Ni una sola lágrima pasa desapercibida para Dios."
-    },
-    {
-      "ref": "2 Corintios 1, 3-4",
-      "x": "Bendito sea el Dios y Padre de nuestro Señor Jesucristo, Padre de las misericordias y Dios de todo consuelo, que nos consuela en cualquier tribulación nuestra.",
-      "e": "Dios es el Dios de todo consuelo."
+      "e": "Jesús no niega que haya tristeza. Promete algo mejor: que se convertirá en alegría."
     },
     {
       "ref": "Isaías 49, 15",
       "x": "¿Puede una madre olvidar al niño que amamanta? Pues, aunque ella se olvidara, yo no te olvidaré.",
-      "e": "El amor de Dios es más fiel que el de una madre."
+      "e": "Nadie te quiere tanto como Dios: ni siquiera una madre. Aunque todos te olvidaran, Él no te olvidará."
     },
     {
       "ref": "Juan 11, 35",
       "x": "Jesús se echó a llorar.",
-      "e": "El versículo más corto de la Biblia: Dios también llora contigo."
+      "e": "Es el versículo más corto de la Biblia. Jesús lloró por su amigo: Dios entiende tu pena desde dentro."
     },
     {
-      "ref": "Salmo 42, 12",
-      "x": "¿Por qué te acongojas, alma mía, por qué gimes dentro de mí? Espera en Dios, que volverás a alabarlo: «Salud de mi rostro, Dios mío».",
-      "e": "Un versículo para repetirle a tu alma."
+      "ref": "Salmo 42, 6",
+      "x": "¿Por qué te acongojas, alma mía, por qué gimes dentro de mí? Espera en Dios, que volverás a alabarlo.",
+      "e": "A veces hay que hablarle a uno mismo con esperanza: «¿Por qué estás así? Confía, que volverás a estar bien»."
     },
     {
       "ref": "Salmo 40, 2-3",
       "x": "Yo esperaba con ansia al Señor; él se inclinó y escuchó mi grito: me levantó de la fosa fatal, de la charca fangosa.",
-      "e": "Dios se inclina para levantarte."
-    },
-    {
-      "ref": "Salmo 6, 7.10",
-      "x": "Estoy agotado de gemir: de noche lloro sobre el lecho. El Señor ha escuchado mi súplica.",
-      "e": "La Biblia también conoce las noches de llanto."
-    },
-    {
-      "ref": "Isaías 41, 10",
-      "x": "No temas, que yo estoy contigo; no te angusties, que yo soy tu Dios.",
-      "e": "Dios se queda contigo en la tristeza."
+      "e": "Cuando sientes que te hundes, Dios se inclina, te escucha y te ayuda a ponerte en pie de nuevo."
     },
     {
       "ref": "Mateo 11, 28",
       "x": "Venid a mí todos los que estáis cansados y agobiados, y yo os aliviaré.",
-      "e": "Jesús te espera con los brazos abiertos."
+      "e": "Si estás cansado de estar triste, Jesús te invita a descansar en Él, sin tener que fingir que estás bien."
     },
     {
-      "ref": "Romanos 8, 18",
-      "x": "Considero que los sufrimientos de ahora no se pueden comparar con la gloria que un día se nos manifestará.",
-      "e": "Lo que viene es más grande que lo que duele."
+      "ref": "Isaías 41, 10",
+      "x": "No temas, que yo estoy contigo; no te angusties, que yo soy tu Dios.",
+      "e": "En los días grises, Dios te recuerda que está contigo y que te va a sostener."
+    },
+    {
+      "ref": "Apocalipsis 21, 4",
+      "x": "Y enjugará toda lágrima de sus ojos, y ya no habrá muerte, ni duelo, ni llanto ni dolor, porque lo primero ha desaparecido.",
+      "e": "La promesa final de la Biblia: un día Dios secará todas las lágrimas y ya no habrá dolor."
+    },
+    {
+      "ref": "2 Corintios 1, 3-4",
+      "x": "Bendito sea el Dios y Padre de nuestro Señor Jesucristo, Padre de las misericordias y Dios de todo consuelo, que nos consuela en cualquier tribulación nuestra.",
+      "e": "Dios es el Dios de todo consuelo. Y el consuelo que recibes hoy te servirá mañana para consolar a otros."
     },
     {
       "ref": "Salmo 73, 23",
       "x": "Yo siempre estaré contigo, tú agarras mi mano derecha.",
-      "e": "Dios te coge de la mano."
+      "e": "Aunque no lo sientas, Dios te tiene cogido de la mano."
     },
     {
       "ref": "Nehemías 8, 10",
       "x": "¡No os pongáis tristes; el gozo del Señor es vuestra fuerza!",
-      "e": "La alegría de Dios es tu fuerza."
+      "e": "La alegría que viene de Dios no depende de que todo vaya bien. Es una fuerza que te sostiene por dentro."
     }
   ],
   "faq": [

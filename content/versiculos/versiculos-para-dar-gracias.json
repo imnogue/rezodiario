@@ -3,7 +3,7 @@
   "t": "Versículos para dar gracias",
   "h1": "Versículos de la Biblia para dar gracias a Dios",
   "mood": "Agradecido",
-  "intro": "Versículos de acción de gracias para un logro, una buena noticia o simplemente para terminar el día agradeciendo lo recibido.",
+  "intro": "Versículos de la Biblia para dar gracias a Dios por una buena noticia, por un logro, por la familia o, sencillamente, por un día más. La gratitud es una de las formas más sencillas de rezar.\n\nPuedes usarlos para felicitar a alguien, para terminar el día o para compartir tu alegría. Cada uno trae una explicación sencilla.",
   "oracion": "Gracias, Señor, por todo lo que me das, lo que veo y lo que no veo. Que no pase la alegría sin decirte que viene de ti. Amén.",
   "prayer": "oracion-de-accion-de-gracias",
   "rel": [
@@ -15,102 +15,82 @@
     {
       "ref": "1 Tesalonicenses 5, 18",
       "x": "Dad gracias en toda ocasión: esta es la voluntad de Dios en Cristo Jesús respecto de vosotros.",
-      "e": "Agradecer siempre, también en lo pequeño."
+      "e": "Dar gracias siempre, también por lo pequeño. Es una forma de vivir con alegría."
     },
     {
       "ref": "Salmo 136, 1",
       "x": "Dad gracias al Señor porque es bueno, porque es eterna su misericordia.",
-      "e": "El estribillo de la gratitud de Israel."
+      "e": "Una frase para repetir: Dios es bueno y su amor no se acaba nunca."
     },
     {
       "ref": "Salmo 103, 2",
       "x": "Bendice, alma mía, al Señor, y no olvides sus beneficios.",
-      "e": "La gratitud empieza por no olvidar."
-    },
-    {
-      "ref": "Salmo 100, 4",
-      "x": "Entrad por sus puertas con acción de gracias, por sus atrios con himnos, dándole gracias y bendiciendo su nombre.",
-      "e": "La gratitud abre la puerta a la oración."
-    },
-    {
-      "ref": "Colosenses 3, 17",
-      "x": "Todo lo que de palabra o de obra realicéis, sea todo en nombre de Jesús, dando gracias a Dios Padre por medio de él.",
-      "e": "Toda la vida puede ser acción de gracias."
-    },
-    {
-      "ref": "Salmo 9, 2",
-      "x": "Te doy gracias, Señor, de todo corazón, proclamando todas tus maravillas.",
-      "e": "Contar lo que Dios ha hecho."
+      "e": "La gratitud empieza por no olvidar todo lo bueno que hemos recibido."
     },
     {
       "ref": "Santiago 1, 17",
       "x": "Todo buen regalo y todo don perfecto viene de arriba, procede del Padre de las luces.",
-      "e": "Todo lo bueno viene de Dios."
+      "e": "Todo lo bueno que tienes es un regalo que viene de Dios."
     },
     {
-      "ref": "Lucas 17, 15-16",
-      "x": "Uno de ellos, viendo que estaba curado, se volvió alabando a Dios a grandes gritos y se echó por tierra a los pies de Jesús, dándole gracias.",
-      "e": "El único leproso que volvió a dar gracias."
-    },
-    {
-      "ref": "Salmo 92, 2",
-      "x": "Es bueno dar gracias al Señor y tocar para tu nombre, oh Altísimo.",
-      "e": "Dar gracias hace bien."
+      "ref": "Colosenses 3, 17",
+      "x": "Todo lo que de palabra o de obra realicéis, sea todo en nombre de Jesús, dando gracias a Dios Padre por medio de él.",
+      "e": "Toda la vida, también lo cotidiano, puede convertirse en un «gracias»."
     },
     {
       "ref": "Efesios 5, 20",
       "x": "Dad siempre gracias a Dios Padre por todo, en nombre de nuestro Señor Jesucristo.",
-      "e": "Por todo, siempre."
+      "e": "Dar gracias por todo, incluso por lo que todavía no entendemos."
     },
     {
-      "ref": "Filipenses 1, 3",
-      "x": "Doy gracias a mi Dios cada vez que os recuerdo.",
-      "e": "Para dedicar a alguien por quien das gracias."
+      "ref": "Salmo 9, 2",
+      "x": "Te doy gracias, Señor, de todo corazón, proclamando todas tus maravillas.",
+      "e": "Dar gracias de todo corazón y contar a otros lo bueno que Dios ha hecho."
+    },
+    {
+      "ref": "Lucas 17, 15-16",
+      "x": "Uno de ellos, viendo que estaba curado, se volvió alabando a Dios a grandes gritos y se echó por tierra a los pies de Jesús, dándole gracias.",
+      "e": "De diez enfermos curados, solo uno volvió a dar las gracias. No olvides volver."
     },
     {
       "ref": "Salmo 126, 3",
       "x": "El Señor ha estado grande con nosotros, y estamos alegres.",
-      "e": "La alegría de reconocer lo recibido."
-    },
-    {
-      "ref": "Salmo 107, 1",
-      "x": "Dad gracias al Señor porque es bueno, porque es eterna su misericordia.",
-      "e": "La misericordia de Dios no se acaba."
+      "e": "Cuando miras atrás y ves todo lo bueno que ha pasado, sale sola la alegría."
     },
     {
       "ref": "Salmo 28, 7",
       "x": "El Señor es mi fuerza y mi escudo: en él confía mi corazón; me socorrió, y mi corazón se alegra y le canta agradecido.",
-      "e": "Un corazón que canta de gratitud."
+      "e": "Un corazón que confía en Dios acaba cantando de gratitud."
     },
     {
       "ref": "Lucas 1, 46-47",
       "x": "Proclama mi alma la grandeza del Señor, se alegra mi espíritu en Dios, mi salvador.",
-      "e": "El Magníficat, la gran acción de gracias de María."
+      "e": "El canto de alegría de la Virgen María: la gratitud más bonita de la Biblia."
     },
     {
       "ref": "Salmo 34, 2",
       "x": "Bendigo al Señor en todo momento, su alabanza está siempre en mi boca.",
-      "e": "Alabar a Dios en todo momento."
+      "e": "Bendecir a Dios en todo momento, en los buenos y en los no tan buenos."
     },
     {
-      "ref": "2 Corintios 9, 15",
-      "x": "¡Gracias sean dadas a Dios por su don inefable!",
-      "e": "Hay regalos que no caben en palabras."
+      "ref": "Filipenses 1, 3",
+      "x": "Doy gracias a mi Dios cada vez que os recuerdo.",
+      "e": "Para dedicar a alguien por quien das gracias: «Doy gracias a Dios cada vez que me acuerdo de ti»."
     },
     {
       "ref": "Salmo 116, 12",
       "x": "¿Cómo pagaré al Señor todo el bien que me ha hecho?",
-      "e": "La pregunta de un corazón agradecido."
+      "e": "La pregunta de alguien muy agradecido: ¿cómo devolver tanto bien recibido?"
     },
     {
       "ref": "Juan 11, 41",
       "x": "Jesús, levantando los ojos a lo alto, dijo: «Padre, te doy gracias porque me has escuchado».",
-      "e": "Jesús dio gracias antes de ver el milagro."
+      "e": "Jesús dio gracias antes de ver el milagro. La gratitud también es confianza."
     },
     {
-      "ref": "Salmo 118, 1",
-      "x": "Dad gracias al Señor porque es bueno, porque es eterna su misericordia.",
-      "e": "El salmo de la Pascua empieza dando gracias."
+      "ref": "Salmo 118, 24",
+      "x": "Este es el día en que actuó el Señor: sea nuestra alegría y nuestro gozo.",
+      "e": "Cada día es un regalo por el que dar gracias."
     }
   ],
   "faq": [

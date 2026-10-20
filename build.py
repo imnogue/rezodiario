@@ -326,7 +326,7 @@ def vday_card(r):
     path = VDAY_T["slug"] + ".html"
     return (f'<article class="vday reveal" data-ref="{E(VDAY["ref"])}" data-x="{E(VDAY["x"])}" data-tag="Versículo del día">'
             f'<span class="eyebrow">Versículo del día · {int(now[8:])} de {MES[int(now[5:7]) - 1]}</span>'
-            f'<blockquote>«{E(VDAY["x"])}»</blockquote><cite>{E(VDAY["ref"])}</cite><p>{E(VDAY["e"])}</p>'
+            f'<blockquote>«{E(VDAY["x"])}»</blockquote><cite>{E(VDAY["ref"])}</cite><p class="vqs"><b>Qué significa:</b> {E(VDAY["e"])}</p>'
             f'{vacts(VDAY["ref"], VDAY["x"], "versiculos.html")}<a class="vmore" href="{r}{path}">Más {VDAY_T["t"].lower()} →</a></article>')
 def mood_picker(r, h="h2"):
     b = "".join(f'<button type="button" class="mood" data-m="{s}">{m}</button>' for m, s in MOODS)
@@ -407,7 +407,7 @@ page("oraciones/index.html", "Oraciones católicas para cada momento | Rezo Diar
 for k, c in CATS.items():
     ps = [p for p in PRAYERS if p["cat"] == k]; path = f"oraciones/tema-{k}.html"
     cr = [("Inicio", "index.html"), ("Oraciones", "oraciones/index.html"), (c["name"], path)]
-    m = phero(r, cr, f'{len(ps)} oraciones', c["h1"], c["intro"]) + sec(f'<div class="grid">{"".join(card(p, r) for p in ps)}</div>') + sec(head2("Preguntas frecuentes", "Dudas sobre estas oraciones") + faq_html(FAQ_CAT[k]), "sec band") + sec(head2("Otros temas", "Sigue explorando") + tiles(r))
+    m = phero(r, cr, f'{len(ps)} oraciones', c["h1"], c["intro"]) + sec(f'<div class="grid">{"".join(card(p, r) for p in ps)}</div>') + (sec('<div class="prose" style="max-width:760px">' + "".join(f"<p>{E(x)}</p>" for x in c["texto"].split(chr(10)+chr(10))) + '</div>') if c.get("texto") else "") + sec(head2("Preguntas frecuentes", "Dudas sobre estas oraciones") + faq_html(FAQ_CAT[k]), "sec band") + sec(head2("Otros temas", "Sigue explorando") + tiles(r))
     page(path, f'{c["h1"]} | Rezo Diario', c["intro"][:158], m, "prayers", [crumbs_ld(cr), faq_ld(FAQ_CAT[k]), {"@context": "https://schema.org", "@type": "CollectionPage", "name": c["h1"], "url": canon(path), "inLanguage": "es"}])
 
 def pplayer(p, r):
@@ -629,13 +629,15 @@ for t in VTOP:
     path = t["slug"] + ".html"; cr = [("Inicio", "index.html"), ("Versículos", "versiculos.html"), (t["t"], path)]
     pr = PBY.get(t["prayer"]); faq = [(f["q"], f["a"]) for f in t["faq"]]
     cards = "".join(f'<article class="vcard reveal" id="v{i + 1}" data-ref="{E(v["ref"])}" data-x="{E(v["x"])}" data-tag="{E(t["t"])}"><span class="vnum">{i + 1}</span>'
-                    f'<blockquote>«{E(v["x"])}»</blockquote><cite>{E(v["ref"])}</cite><p>{E(v["e"])}</p>{vacts(v["ref"], v["x"], path + "#v" + str(i + 1))}</article>' for i, v in enumerate(t["versos"]))
+                    f'<blockquote>«{E(v["x"])}»</blockquote><cite>{E(v["ref"])}</cite><p class="vqs"><b>Qué significa:</b> {E(v["e"])}</p>{vacts(v["ref"], v["x"], path + "#v" + str(i + 1))}</article>' for i, v in enumerate(t["versos"]))
     rel = [VBY[x] for x in t["rel"] if x in VBY]
     prbtn = f'<a class="btn btn-accent sm" href="oraciones/{pr["slug"]}.html">Rezar: {E(pr["t"])}</a> ' if pr else ""
     rel_html = "".join(f'<li><a href="{x["slug"]}.html">{E(x["t"])}<small>{len(x["versos"])}</small></a></li>' for x in rel)
-    m = phero(r, cr, f'{len(t["versos"])} versículos', t["h1"], E(t["intro"]),
+    _ip = t["intro"].split("\n\n")
+    m = phero(r, cr, f'{len(t["versos"])} versículos', t["h1"], E(_ip[0]),
       '<div class="hero-cta" style="margin-top:18px"><a class="btn btn-gold" href="versiculos.html#ahora">Necesito un versículo ahora</a></div>') + \
       ('<section class="sec"><div class="wrap art"><div style="min-width:0">'
+       + "".join(f'<p class="vintro">{E(x)}</p>' for x in _ip[1:]) +
        f'<div class="vlist">{cards}</div>'
        f'<div class="box vpray reveal"><span class="eyebrow">Oración</span><h2>Reza con estos versículos</h2><p class="pray-text">{E(t["oracion"])}</p><div class="hero-cta">{prbtn}<a class="btn btn-ghost sm" href="muro-de-intenciones.html">Encender una vela</a></div></div>'
        f'<div class="prose" style="margin-top:34px"><h2>Preguntas frecuentes</h2>{faq_html(faq)}</div>{recorrido(r)}</div>'

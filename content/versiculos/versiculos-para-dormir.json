@@ -3,7 +3,7 @@
   "t": "Versículos para dormir",
   "h1": "Versículos de la Biblia para dormir en paz",
   "mood": "No puedo dormir",
-  "intro": "Versículos breves para leer en la cama, con la luz apagada, y dejar el día en manos de Dios antes de dormir.",
+  "intro": "Versículos de la Biblia para dormir en paz: frases breves para leer en la cama, con la luz apagada, y dejar el día en manos de Dios. Hablan de descanso, de protección y de soltar las preocupaciones.\n\nElige uno, léelo dos o tres veces despacio y deja que te acompañe mientras te duermes. Si te desvelas, vuelve a él: repetir una frase tranquila ayuda a calmar la mente.",
   "oracion": "Señor, se acaba el día y te lo entrego entero. Guarda mi descanso y el de los que quiero. En tus manos pongo mi espíritu. Amén.",
   "prayer": "oracion-para-dormir",
   "rel": [
@@ -15,47 +15,57 @@
     {
       "ref": "Salmo 4, 9",
       "x": "En paz me acuesto y enseguida me duermo, porque tú solo, Señor, me haces vivir tranquilo.",
-      "e": "El versículo clásico para la noche: la tranquilidad viene de saberse en manos de Dios."
+      "e": "El versículo clásico para la noche: puedes dormir tranquilo porque Dios cuida de ti."
     },
     {
       "ref": "Proverbios 3, 24",
       "x": "Podrás descansar sin temor, dormir con un sueño relajado.",
-      "e": "Una promesa para quien confía en Dios."
+      "e": "Una promesa sencilla para quien confía en Dios: dormir sin miedo y con un sueño tranquilo."
     },
     {
-      "ref": "Salmo 127, 2",
-      "x": "Dios lo da a sus amigos mientras duermen.",
-      "e": "Dios sigue trabajando mientras tú descansas."
+      "ref": "Mateo 11, 28",
+      "x": "Venid a mí todos los que estáis cansados y agobiados, y yo os aliviaré.",
+      "e": "Si llegas a la noche agotado, Jesús te ofrece descanso. No solo para el cuerpo, también para el corazón."
+    },
+    {
+      "ref": "1 Pedro 5, 7",
+      "x": "Descargad en él todo vuestro agobio, porque él cuida de vosotros.",
+      "e": "Antes de dormir, deja en manos de Dios lo que te preocupa. Él se queda despierto por ti."
     },
     {
       "ref": "Salmo 121, 3-4",
       "x": "No permitirá que resbale tu pie; tu guardián no duerme. No duerme ni reposa el guardián de Israel.",
-      "e": "Puedes dormir porque hay quien vela por ti."
+      "e": "Puedes cerrar los ojos tranquilo: Dios nunca se duerme y vela por ti toda la noche."
     },
     {
       "ref": "Salmo 3, 6",
       "x": "Puedo acostarme y dormir y despertar: el Señor me sostiene.",
-      "e": "Dormir y despertar son también un regalo."
+      "e": "Dormir y volver a despertar también es un regalo. Dios te sostiene mientras descansas."
+    },
+    {
+      "ref": "Salmo 23, 1-3",
+      "x": "El Señor es mi pastor, nada me falta: en verdes praderas me hace recostar; me conduce hacia fuentes tranquilas y repara mis fuerzas.",
+      "e": "Imagina un prado verde y agua tranquila: así quiere Dios que descanses, recuperando las fuerzas."
+    },
+    {
+      "ref": "Juan 14, 27",
+      "x": "La paz os dejo, mi paz os doy; no os la doy yo como la da el mundo. Que no se turbe vuestro corazón ni se acobarde.",
+      "e": "La paz que da Jesús es la mejor almohada: no depende de que todo esté resuelto."
     },
     {
       "ref": "Salmo 62, 2",
       "x": "Solo en Dios descansa mi alma, porque de él viene mi salvación.",
-      "e": "El descanso más profundo es el del alma."
+      "e": "El descanso más profundo es el del alma, cuando sabes que estás en buenas manos."
     },
     {
       "ref": "Salmo 63, 7",
       "x": "En el lecho me acuerdo de ti y velando medito en ti.",
-      "e": "Si no puedes dormir, convierte la vigilia en oración."
+      "e": "Si no puedes dormir, convierte el desvelo en una conversación tranquila con Dios."
     },
     {
       "ref": "Salmo 91, 1-2",
       "x": "Tú que habitas al amparo del Altísimo, que vives a la sombra del Omnipotente, di al Señor: «Refugio mío, alcázar mío, Dios mío, confío en ti».",
-      "e": "El salmo de completas, que la Iglesia reza cada noche."
-    },
-    {
-      "ref": "Salmo 91, 5",
-      "x": "No temerás el espanto nocturno, ni la flecha que vuela de día.",
-      "e": "Los miedos de la noche pierden fuerza ante Dios."
+      "e": "La oración de la noche de la Iglesia empieza así: Dios es tu refugio y puedes confiar en Él."
     },
     {
       "ref": "Éxodo 33, 14",
@@ -65,52 +75,22 @@
     {
       "ref": "Salmo 131, 2",
       "x": "Acallo y modero mis deseos, como un niño en brazos de su madre.",
-      "e": "Una imagen tierna para dormirse confiado."
-    },
-    {
-      "ref": "Lucas 23, 46",
-      "x": "Padre, en tus manos encomiendo mi espíritu.",
-      "e": "Las palabras de Jesús que la Iglesia repite cada noche antes de dormir."
-    },
-    {
-      "ref": "Mateo 11, 29",
-      "x": "Tomad mi yugo sobre vosotros y aprended de mí, que soy manso y humilde de corazón, y encontraréis descanso para vuestras almas.",
-      "e": "Jesús ofrece descanso para el alma, no solo para el cuerpo."
-    },
-    {
-      "ref": "Salmo 16, 7-8",
-      "x": "Bendeciré al Señor que me aconseja, hasta de noche me instruye internamente. Tengo siempre presente al Señor, con él a mi derecha no vacilaré.",
-      "e": "Incluso de noche Dios habla al corazón."
-    },
-    {
-      "ref": "Isaías 26, 9",
-      "x": "Mi alma te ansía de noche, mi espíritu en mi interior madruga por ti.",
-      "e": "Si te desvelas, convierte la noche en encuentro."
-    },
-    {
-      "ref": "Salmo 134, 2",
-      "x": "Levantad las manos hacia el santuario y bendecid al Señor por la noche.",
-      "e": "Una bendición breve antes de cerrar los ojos."
-    },
-    {
-      "ref": "Salmo 16, 9",
-      "x": "Por eso se me alegra el corazón, se gozan mis entrañas, y mi carne descansa esperanzada.",
-      "e": "Descansar con esperanza."
-    },
-    {
-      "ref": "Juan 14, 1",
-      "x": "No se turbe vuestro corazón, creed en Dios y creed también en mí.",
-      "e": "Antes de dormir, deja el corazón en paz."
+      "e": "Una imagen tierna para dormirse: estar en paz como un niño en brazos de su madre."
     },
     {
       "ref": "Salmo 139, 11-12",
       "x": "Si digo: «Que al menos la tiniebla me encubra», ni la tiniebla es oscura para ti, la noche es clara como el día.",
-      "e": "Para Dios la noche no es oscura."
+      "e": "Para Dios la noche no da miedo: hasta la oscuridad es clara para Él."
     },
     {
-      "ref": "Salmo 141, 2",
-      "x": "Suba mi oración como incienso en tu presencia, el alzar de mis manos como ofrenda de la tarde.",
-      "e": "La oración de la tarde, como un incienso que sube."
+      "ref": "Juan 14, 1",
+      "x": "No se turbe vuestro corazón, creed en Dios y creed también en mí.",
+      "e": "Antes de cerrar los ojos, Jesús te dice: no te preocupes, confía."
+    },
+    {
+      "ref": "Lucas 23, 46",
+      "x": "Padre, en tus manos encomiendo mi espíritu.",
+      "e": "Las últimas palabras de Jesús, que muchos repiten cada noche: «Padre, me pongo en tus manos»."
     }
   ],
   "faq": [

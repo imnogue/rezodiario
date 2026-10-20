@@ -7,5 +7,6 @@
   "x": "Inspirada en la oración de santo Tomás de Aquino antes del estudio.\n\nCreador de todo, fuente de la luz y de la sabiduría: ilumina mi entendimiento y aparta de mí la confusión y la pereza.\n\nDame agudeza para comprender, memoria para retener, método para aprender y facilidad para explicar lo aprendido.\n\nOrienta el comienzo de mi trabajo, dirige su desarrollo y llévalo a buen término. Por Cristo, nuestro Señor. Amén.",
   "when": "Al empezar cada sesión de estudio, antes de abrir los apuntes.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-para-estudiar.mp3?v=1792338119",
-  "duracion": 41.5
+  "duracion": 41.5,
+  "intro": "Concentrarse para estudiar no siempre es fácil, con tantas distracciones. Esta oración pide al Espíritu Santo claridad, memoria y constancia al empezar cada sesión de estudio.\n\nRézala antes de abrir los apuntes. Puede ayudar dejar el móvil lejos y empezar con unos segundos de silencio."
 }

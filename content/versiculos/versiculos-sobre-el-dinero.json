@@ -3,7 +3,7 @@
   "t": "Versículos sobre el dinero",
   "h1": "Versículos de la Biblia sobre el dinero y la provisión",
   "mood": "Preocupado por el dinero",
-  "intro": "Versículos para cuando el dinero preocupa: sobre la confianza en Dios, la generosidad y el lugar que deben ocupar los bienes en la vida.",
+  "intro": "Versículos de la Biblia sobre el dinero, las preocupaciones económicas y la confianza en Dios. La Biblia no dice que el dinero sea malo, pero sí que no debe ocupar el lugar de Dios ni robarnos la paz.\n\nSi estás pasando apuros para llegar a fin de mes, estos versículos te acompañan. Y si te va bien, te invitan a compartir. Cada uno lleva una explicación sencilla.",
   "oracion": "Señor, tú conoces mis necesidades y mis cuentas. Dame lo necesario para vivir con dignidad, líbrame del miedo y del afán de tener, y hazme generoso. Amén.",
   "prayer": "oracion-para-encontrar-trabajo",
   "rel": [
@@ -15,102 +15,92 @@
     {
       "ref": "Mateo 6, 33",
       "x": "Buscad sobre todo el reino de Dios y su justicia; y todo esto se os dará por añadidura.",
-      "e": "Jesús pone las prioridades en orden."
+      "e": "Jesús pone las prioridades en orden: primero lo importante de verdad, y lo demás llegará."
     },
     {
       "ref": "Filipenses 4, 19",
       "x": "Mi Dios proveerá a todas vuestras necesidades con magnificencia, conforme a su riqueza en Cristo Jesús.",
-      "e": "Una promesa de provisión para quien confía."
-    },
-    {
-      "ref": "Hebreos 13, 5",
-      "x": "Vivid sin ansia de dinero, contentándoos con lo que tengáis, pues él mismo dijo: «Nunca te dejaré ni te abandonaré».",
-      "e": "La verdadera seguridad no es el dinero, sino Dios."
-    },
-    {
-      "ref": "1 Timoteo 6, 10",
-      "x": "El amor al dinero es la raíz de todos los males.",
-      "e": "El problema no es el dinero, sino ponerlo en el centro."
-    },
-    {
-      "ref": "Proverbios 3, 9",
-      "x": "Honra a Dios con tus riquezas, con la primicia de todas tus cosechas.",
-      "e": "Compartir es una forma de dar gracias."
-    },
-    {
-      "ref": "Lucas 12, 15",
-      "x": "Guardaos de toda clase de codicia. Pues, aunque uno ande sobrado, su vida no depende de sus bienes.",
-      "e": "La vida vale más que lo que tienes."
-    },
-    {
-      "ref": "Mateo 6, 21",
-      "x": "Porque donde está tu tesoro, allí estará tu corazón.",
-      "e": "Lo que valoras dice mucho de ti."
-    },
-    {
-      "ref": "Proverbios 30, 8",
-      "x": "No me des riqueza ni pobreza, concédeme mi ración de pan.",
-      "e": "Una oración sencilla de quien pide solo lo necesario."
-    },
-    {
-      "ref": "Salmo 37, 25",
-      "x": "Fui joven, ya soy viejo: nunca he visto a un justo abandonado, ni a su linaje mendigando el pan.",
-      "e": "La experiencia de toda una vida confiando en Dios."
-    },
-    {
-      "ref": "2 Corintios 9, 7",
-      "x": "Cada uno dé como le dicte su corazón: no a disgusto ni a la fuerza, pues Dios ama al que da con alegría.",
-      "e": "La generosidad alegre agrada a Dios."
+      "e": "Dios conoce tus necesidades y no se olvida de ellas."
     },
     {
       "ref": "Mateo 6, 31-32",
       "x": "No andéis agobiados pensando qué vais a comer, o qué vais a beber, o con qué os vais a vestir. […] Ya sabe vuestro Padre celestial que tenéis necesidad de todo eso.",
-      "e": "Dios conoce lo que necesitas antes de que se lo pidas."
+      "e": "No vivas obsesionado con lo material: Dios ya sabe lo que necesitas."
     },
     {
-      "ref": "Salmo 23, 1",
-      "x": "El Señor es mi pastor, nada me falta.",
-      "e": "El versículo de la confianza por excelencia."
+      "ref": "Hebreos 13, 5",
+      "x": "Vivid sin ansia de dinero, contentándoos con lo que tengáis, pues él mismo dijo: «Nunca te dejaré ni te abandonaré».",
+      "e": "La verdadera seguridad no está en tener mucho, sino en saber que Dios nunca te abandona."
+    },
+    {
+      "ref": "Mateo 6, 21",
+      "x": "Porque donde está tu tesoro, allí estará tu corazón.",
+      "e": "Lo que más valoras dice mucho de quién eres. Pon tu corazón en lo que vale la pena."
     },
     {
       "ref": "Mateo 6, 24",
       "x": "Nadie puede servir a dos señores. No podéis servir a Dios y al dinero.",
-      "e": "Jesús pide que el dinero no ocupe el lugar de Dios."
+      "e": "El dinero es un buen servidor y un mal jefe. Jesús pide que no mande en tu vida."
     },
     {
-      "ref": "Proverbios 11, 25",
-      "x": "El hombre generoso prosperará, quien alivia la sed será saciado.",
-      "e": "La generosidad vuelve multiplicada."
+      "ref": "Lucas 12, 15",
+      "x": "Guardaos de toda clase de codicia. Pues, aunque uno ande sobrado, su vida no depende de sus bienes.",
+      "e": "Tu vida vale mucho más que lo que tienes."
     },
     {
-      "ref": "Filipenses 4, 11-12",
-      "x": "Yo he aprendido a bastarme con lo que tengo. Sé vivir en pobreza y abundancia.",
-      "e": "San Pablo aprendió a estar en paz con mucho y con poco."
+      "ref": "1 Timoteo 6, 10",
+      "x": "El amor al dinero es la raíz de todos los males.",
+      "e": "El problema no es el dinero, sino quererlo por encima de todo."
     },
     {
-      "ref": "Lucas 6, 38",
-      "x": "Dad, y se os dará: os verterán una medida generosa, colmada, remecida, rebosante.",
-      "e": "Dios no se deja ganar en generosidad."
-    },
-    {
-      "ref": "Eclesiastés 5, 9",
-      "x": "Quien ama el dinero nunca se sacia; quien ama la abundancia no le saca provecho.",
-      "e": "Tener más no llena el corazón."
-    },
-    {
-      "ref": "Proverbios 22, 9",
-      "x": "El hombre generoso será bendecido, pues comparte su pan con el pobre.",
-      "e": "Compartir con el pobre trae bendición."
+      "ref": "Proverbios 30, 8",
+      "x": "No me des riqueza ni pobreza, concédeme mi ración de pan.",
+      "e": "Una oración muy sensata: pedir lo necesario para vivir, ni más ni menos."
     },
     {
       "ref": "Mateo 6, 11",
       "x": "Danos hoy nuestro pan de cada día.",
-      "e": "Pedir lo de hoy, confiando para mañana."
+      "e": "Del Padre nuestro: pedir el pan de hoy y confiar en Dios para mañana."
     },
     {
-      "ref": "Salmo 34, 11",
-      "x": "Los ricos empobrecen y pasan hambre, los que buscan al Señor no carecen de nada.",
-      "e": "Lo que de verdad necesitas, Dios no lo niega."
+      "ref": "Salmo 23, 1",
+      "x": "El Señor es mi pastor, nada me falta.",
+      "e": "Con Dios como pastor, no te faltará lo que de verdad necesitas."
+    },
+    {
+      "ref": "Filipenses 4, 11-12",
+      "x": "Yo he aprendido a bastarme con lo que tengo. Sé vivir en pobreza y abundancia.",
+      "e": "San Pablo aprendió a vivir en paz con mucho y con poco. Es un aprendizaje para todos."
+    },
+    {
+      "ref": "2 Corintios 9, 7",
+      "x": "Cada uno dé como le dicte su corazón: no a disgusto ni a la fuerza, pues Dios ama al que da con alegría.",
+      "e": "Dar con alegría, sin obligación, es lo que agrada a Dios."
+    },
+    {
+      "ref": "Lucas 6, 38",
+      "x": "Dad, y se os dará: os verterán una medida generosa, colmada, remecida, rebosante.",
+      "e": "La generosidad vuelve multiplicada. Dios no se deja ganar en generosidad."
+    },
+    {
+      "ref": "Proverbios 11, 25",
+      "x": "El hombre generoso prosperará, quien alivia la sed será saciado.",
+      "e": "Quien ayuda a otros acaba siendo bendecido también."
+    },
+    {
+      "ref": "Proverbios 22, 9",
+      "x": "El hombre generoso será bendecido, pues comparte su pan con el pobre.",
+      "e": "Compartir con quien lo necesita trae bendición."
+    },
+    {
+      "ref": "Eclesiastés 5, 9",
+      "x": "Quien ama el dinero nunca se sacia; quien ama la abundancia no le saca provecho.",
+      "e": "Tener más no llena el corazón: quien vive para el dinero nunca tiene bastante."
+    },
+    {
+      "ref": "Salmo 37, 25",
+      "x": "Fui joven, ya soy viejo: nunca he visto a un justo abandonado, ni a su linaje mendigando el pan.",
+      "e": "La experiencia de toda una vida: Dios no abandona a quien confía en Él."
     }
   ],
   "faq": [

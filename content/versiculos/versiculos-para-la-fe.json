@@ -3,7 +3,7 @@
   "t": "Versículos para la fe",
   "h1": "Versículos de la Biblia para aumentar la fe",
   "mood": "Sin fe",
-  "intro": "Para los días en que cuesta creer. La duda también forma parte del camino: estos versículos acompañan a quien busca.",
+  "intro": "Para los días en que cuesta creer. Estos versículos de la Biblia para la fe acompañan a quien busca, a quien duda y a quien quiere crecer en confianza. Dudar no es malo: muchos santos lo hicieron.\n\nDebajo de cada versículo encontrarás una explicación sencilla, pensada también para quien se acerca a la Biblia por primera vez.",
   "oracion": "Señor, creo, pero ayuda mi falta de fe. Cuando no te sienta, que siga buscándote. Auméntame la fe. Amén.",
   "prayer": "ven-espiritu-santo",
   "rel": [
@@ -13,104 +13,94 @@
   ],
   "versos": [
     {
-      "ref": "Hebreos 11, 1",
-      "x": "La fe es fundamento de lo que se espera, y garantía de lo que no se ve.",
-      "e": "La definición bíblica de la fe."
-    },
-    {
       "ref": "Marcos 9, 24",
       "x": "Creo, pero ayuda mi falta de fe.",
-      "e": "La oración perfecta para los días de duda."
+      "e": "La oración perfecta para los días de duda: tener un poco de fe y pedir a Dios que la haga crecer."
+    },
+    {
+      "ref": "Hebreos 11, 1",
+      "x": "La fe es fundamento de lo que se espera, y garantía de lo que no se ve.",
+      "e": "La fe es confiar en lo que todavía no ves, como quien confía en que saldrá el sol."
+    },
+    {
+      "ref": "Mateo 7, 7",
+      "x": "Pedid y se os dará, buscad y encontraréis, llamad y se os abrirá.",
+      "e": "Dios no se esconde de quien lo busca de verdad. Pide, busca y llama: Él responde."
     },
     {
       "ref": "Mateo 17, 20",
       "x": "Si tuvierais fe como un grano de mostaza, le diríais a aquel monte: «Trasládate desde ahí hasta aquí», y se trasladaría.",
-      "e": "No hace falta mucha fe: basta una semilla."
+      "e": "No hace falta una fe enorme. Basta una semilla pequeña para que Dios haga cosas grandes."
     },
     {
-      "ref": "Romanos 10, 17",
-      "x": "La fe nace del mensaje que se escucha, y la escucha viene a través de la palabra de Cristo.",
-      "e": "La fe crece escuchando la Palabra cada día."
+      "ref": "Juan 8, 12",
+      "x": "Yo soy la luz del mundo; el que me sigue no camina en tinieblas, sino que tendrá la luz de la vida.",
+      "e": "Cuando no sabes por dónde ir, Jesús se ofrece como luz para no caminar a oscuras."
     },
     {
       "ref": "Proverbios 3, 5-6",
       "x": "Confía en el Señor con toda el alma, no te fíes de tu propia inteligencia; cuenta con él cuando actúes, y él te facilitará las cosas.",
-      "e": "Confiar más allá de lo que entiendes."
-    },
-    {
-      "ref": "Juan 20, 29",
-      "x": "Bienaventurados los que crean sin haber visto.",
-      "e": "Jesús pensaba en ti cuando dijo esto."
-    },
-    {
-      "ref": "Efesios 2, 8-9",
-      "x": "Por gracia estáis salvados, mediante la fe. Y esto no viene de vosotros: es don de Dios.",
-      "e": "La fe es un regalo que se puede pedir."
-    },
-    {
-      "ref": "Hebreos 11, 6",
-      "x": "Sin fe es imposible complacerlo.",
-      "e": "La fe es el camino para acercarse a Dios."
-    },
-    {
-      "ref": "Lucas 17, 5",
-      "x": "Los apóstoles le dijeron al Señor: «Auméntanos la fe».",
-      "e": "Hasta los apóstoles pidieron más fe."
-    },
-    {
-      "ref": "2 Corintios 5, 7",
-      "x": "Caminamos en fe y no en visión.",
-      "e": "Avanzar sin verlo todo."
-    },
-    {
-      "ref": "Juan 11, 25-26",
-      "x": "Yo soy la resurrección y la vida: el que cree en mí, aunque haya muerto, vivirá; y el que está vivo y cree en mí, no morirá para siempre. ¿Crees esto?",
-      "e": "Jesús te hace la misma pregunta que a Marta."
-    },
-    {
-      "ref": "Santiago 2, 17",
-      "x": "Así es también la fe: si no tiene obras, está muerta por dentro.",
-      "e": "La fe se demuestra en la vida."
-    },
-    {
-      "ref": "Marcos 11, 24",
-      "x": "Todo cuanto pidáis en la oración, creed que os lo han concedido y lo obtendréis.",
-      "e": "La fe confía antes de ver."
+      "e": "Confiar en Dios es apoyarte en Él más que en tus propias fuerzas, y dejar que te guíe."
     },
     {
       "ref": "Juan 14, 6",
       "x": "Yo soy el camino y la verdad y la vida.",
-      "e": "Jesús es el camino cuando no sabes por dónde ir."
+      "e": "Jesús es el camino cuando no sabes por dónde tirar, la verdad cuando todo confunde y la vida cuando te sientes vacío."
     },
     {
-      "ref": "Romanos 1, 17",
-      "x": "El justo por la fe vivirá.",
-      "e": "La fe es una forma de vivir."
-    },
-    {
-      "ref": "1 Pedro 1, 8",
-      "x": "Sin haberlo visto lo amáis y, sin contemplarlo todavía, creéis en él y así os alegráis con un gozo inefable y radiante.",
-      "e": "Se puede amar sin ver."
-    },
-    {
-      "ref": "Lucas 1, 45",
-      "x": "Bienaventurada la que ha creído, porque lo que le ha dicho el Señor se cumplirá.",
-      "e": "La fe de María, modelo para todos."
+      "ref": "Juan 20, 29",
+      "x": "Bienaventurados los que crean sin haber visto.",
+      "e": "Jesús pensaba en ti cuando dijo esto: dichosos los que creen sin haberlo visto."
     },
     {
       "ref": "Juan 6, 68",
       "x": "Señor, ¿a quién vamos a acudir? Tú tienes palabras de vida eterna.",
-      "e": "La respuesta de Pedro en un momento de crisis."
+      "e": "Pedro lo dijo en un momento de crisis: aunque cueste, ¿a quién vamos a acudir sino a Jesús?"
+    },
+    {
+      "ref": "Lucas 17, 5",
+      "x": "Los apóstoles le dijeron al Señor: «Auméntanos la fe».",
+      "e": "Hasta los apóstoles pidieron más fe. Tú también puedes pedirla."
+    },
+    {
+      "ref": "Romanos 10, 17",
+      "x": "La fe nace del mensaje que se escucha, y la escucha viene a través de la palabra de Cristo.",
+      "e": "La fe crece escuchando: leer un poco del Evangelio cada día la alimenta."
+    },
+    {
+      "ref": "Efesios 2, 8-9",
+      "x": "Por gracia estáis salvados, mediante la fe. Y esto no viene de vosotros: es don de Dios.",
+      "e": "La fe es un regalo de Dios, no un premio que haya que ganarse."
+    },
+    {
+      "ref": "2 Corintios 5, 7",
+      "x": "Caminamos en fe y no en visión.",
+      "e": "Vivir con fe es avanzar aunque no lo veas todo claro."
+    },
+    {
+      "ref": "Juan 11, 25-26",
+      "x": "Yo soy la resurrección y la vida: el que cree en mí, aunque haya muerto, vivirá; y el que está vivo y cree en mí, no morirá para siempre. ¿Crees esto?",
+      "e": "Jesús promete una vida que no termina con la muerte, y te pregunta a ti, como a Marta: «¿Crees esto?»."
+    },
+    {
+      "ref": "Marcos 11, 24",
+      "x": "Todo cuanto pidáis en la oración, creed que os lo han concedido y lo obtendréis.",
+      "e": "Cuando rezas, hazlo con confianza, como quien sabe que habla con un Padre que escucha."
+    },
+    {
+      "ref": "Santiago 2, 17",
+      "x": "Así es también la fe: si no tiene obras, está muerta por dentro.",
+      "e": "La fe no es solo pensar: se nota en cómo vives y en cómo tratas a los demás."
+    },
+    {
+      "ref": "1 Pedro 1, 8",
+      "x": "Sin haberlo visto lo amáis y, sin contemplarlo todavía, creéis en él y así os alegráis con un gozo inefable y radiante.",
+      "e": "Se puede querer a Jesús sin haberlo visto, y esa fe trae una alegría muy profunda."
     },
     {
       "ref": "Hebreos 12, 2",
       "x": "Fijos los ojos en el que inició y completa nuestra fe, Jesús.",
-      "e": "La fe empieza y termina en Jesús."
-    },
-    {
-      "ref": "Salmo 27, 13",
-      "x": "Espero gozar de la dicha del Señor en el país de la vida.",
-      "e": "Una fe llena de esperanza."
+      "e": "Cuando la fe se tambalea, mira a Jesús: Él la empezó en ti y la llevará a término."
     }
   ],
   "faq": [
