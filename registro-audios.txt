@@ -1,90 +1,155 @@
-Oración · Oración a la Virgen de la Medalla Milagrosa
-  Historial de ElevenLabs: 474 frases ya generadas que puedo reutilizar gratis.
-  64 s · subido
-Oración · Oración a la Virgen de Fátima
-  62 s · subido
-Oración · Oración a la Virgen del Pilar
-  55 s · subido
-Oración · Oración a san Benito para pedir protección
-  57 s · subido
-Oración · Oración a san José
-  61 s · subido
-Oración · Oración a san Pancracio por la salud y el trabajo
-  56 s · subido
-Oración · Oración a san Rafael arcángel
-  56 s · subido
-Oración · Oración al Sagrado Corazón de Jesús
-  63 s · subido
-Oración · Oración antes de una prueba médica o de recibir resultados
-  63 s · subido
-Oración · Oración antes del examen de conducir
-  60 s · subido
-Oración · Oración de cumpleaños
-  53 s · subido
-Oración · Oración de la noche antes de dormir
-  69 s · subido
-Oración · Ofrecimiento del día
-  56 s · subido
-Oración · Oración en el aniversario de un fallecimiento
-  58 s · subido
-Oración · Oración en la depresión
-  64 s · subido
-Oración · Oración en la soledad
-  59 s · subido
-Oración · Oración en momentos de miedo
-  59 s · subido
-Oración · Oración en problemas económicos
-  69 s · subido
-Oración · Oración para calmar la ira
-  55 s · subido
-Oración · Oración para dejar una adicción
-  63 s · subido
-Oración · Oración para empezar un nuevo trabajo
-  62 s · subido
-Oración · Oración para empezar la jornada de trabajo
-  57 s · subido
-Oración · Oración para la recuperación después de una operación
-  62 s · subido
-Oración · Oración para la selectividad (PAU)
-  61 s · subido
-Oración · Oración para aprobar unas oposiciones
-  80 s · subido
-Oración · Oración para perdonarme a mí mismo
-  57 s · subido
-Oración · Oración para tener un hijo
-  66 s · subido
-Oración · Oración para vender una casa
-  62 s · subido
-Oración · Oración por la paz del mundo
-  66 s · subido
-Oración · Oración por la paz en la familia
-  62 s · subido
-Oración · Oración por la salud de mi madre
-  65 s · subido
-Oración · Oración por mi esposa
-  61 s · subido
-Oración · Oración por mi esposo
-  63 s · subido
-Oración · Oración por mi pareja
-  61 s · subido
-Oración · Oración por mis padres
-  66 s · subido
-Oración · Oración por problemas en el trabajo
-  63 s · subido
-Oración · Oración por un amigo fallecido
-  62 s · subido
-Oración · Oración por un bebé enfermo
-  65 s · subido
-Oración · Oración por un bebé fallecido
-  59 s · subido
-Oración · Oración por un enfermo grave
-  76 s · subido
-Oración · Oración por un familiar con alzhéimer
-  61 s · subido
-Oración · Oración por un hijo alejado
-  67 s · subido
-Oración · Oración de una madre o un padre por un hijo que tiene un examen
-  65 s · subido
-Oración · Oración por una mascota fallecida
-  62 s · subido
-Terminado. Voces reutilizadas del historial: 0 · generadas nuevas: 44.
+Voy a generar 76 audios (unos 66856 caracteres de ElevenLabs).
+2026-10-17 · Las palabras justas
+  Historial de ElevenLabs: 518 frases ya generadas que puedo reutilizar gratis.
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 12. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-18 · Lo que es de Dios
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 22. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-19 · Rico ante Dios
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 12. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-20 · Con las lámparas encendidas
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 12. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-21 · A quien mucho se le dio
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 12. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-22 · Fuego en la tierra
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 12. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-23 · Los signos de los tiempos
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 12. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-24 · La higuera sin fruto
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 13. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-25 · El mandamiento principal
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 22. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-26 · Mujer, quedas libre
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 13. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-27 · Un grano de mostaza
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 13. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-28 · Elegidos tras una noche de oración
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 6. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-10-29 · Como la gallina a sus pollitos
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 13. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-30 · Curar en sábado
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 14. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-10-31 · El último puesto
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 14. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-01 · Dichosos
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 5. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-11-02 · No perderé a ninguno
+  Falta una voz en el historial («Evangelio según san Juan, capítulo 6. <break time="1.5s" /> …»); salto este día para no gastar créditos.
+2026-11-03 · Sal a los caminos
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 14. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-04 · Calcular el coste
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 14. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-05 · La oveja perdida
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 15. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-06 · La astucia del administrador
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 16. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-07 · Dios o el dinero
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 16. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-08 · Las diez muchachas
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 25. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-09 · El templo de su cuerpo
+  Falta una voz en el historial («Evangelio según san Juan, capítulo 2. <break time="1.5s" /> …»); salto este día para no gastar créditos.
+2026-11-10 · Siervos sin pretensiones
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 17. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-11 · El que volvió a dar gracias
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 17. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-12 · Está en medio de vosotros
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 17. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-13 · Como en tiempos de Noé
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 17. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-14 · Orar sin desanimarse
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 18. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-15 · Los talentos
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 25. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-16 · Señor, que vea
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 18. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-17 · Zaqueo, baja enseguida
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 19. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-18 · Las diez onzas
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 19. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-19 · Jesús llora
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 19. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-20 · Casa de oración
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 19. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-21 · Dios de vivos
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 20. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-22 · Conmigo lo hicisteis
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 25. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-23 · Las dos monedas de la viuda
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 21. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-24 · No tengáis pánico
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 21. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-25 · Ni un cabello
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 21. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-26 · Levantad la cabeza
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 21. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-27 · Mis palabras no pasarán
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 21. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-28 · Estad despiertos
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 21. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-11-29 · Velad
+  Falta una voz en el historial («Evangelio según san Marcos, capítulo 13. <break time="1.5s" …»); salto este día para no gastar créditos.
+2026-11-30 · Pescadores de hombres
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 4. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-01 · Revelado a los pequeños
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 10. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-12-02 · Siete panes
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 15. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-12-03 · Edificar sobre roca
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 7. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-04 · ¿Creéis que puedo hacerlo?
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 9. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-05 · La mies es abundante
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 9. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-06 · Preparad el camino
+  Falta una voz en el historial («Evangelio según san Marcos, capítulo 1. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-12-07 · Por el tejado
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 5. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-08 · Llena de gracia
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 1. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-09 · Venid a mí
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 11. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-12-10 · El más pequeño
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 11. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-12-11 · Nada nos convence
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 11. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-12-12 · Elías ya ha venido
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 17. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-12-13 · Testigo de la luz
+  Falta una voz en el historial («Evangelio según san Juan, capítulo 1. <break time="1.5s" /> …»); salto este día para no gastar créditos.
+2026-12-14 · ¿Con qué autoridad?
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 21. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-12-15 · Los dos hijos
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 21. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-12-16 · ¿Eres tú el que ha de venir?
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 7. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-17 · Una familia con historia
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 1. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-18 · José, no temas
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 1. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-19 · Tu oración ha sido escuchada
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 1. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-20 · Hágase
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 1. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-21 · María se puso en camino
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 1. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-22 · Proclama mi alma
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 1. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-23 · Juan es su nombre
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 1. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-24 · Nos visitará el sol que nace de lo alto
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 1. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-25 · El Verbo se hizo carne
+  Falta una voz en el historial («Evangelio según san Juan, capítulo 1. <break time="1.5s" /> …»); salto este día para no gastar créditos.
+2026-12-26 · El que persevere
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 10. <break time="1.5s" /…»); salto este día para no gastar créditos.
+2026-12-27 · Una familia en el templo
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 2. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-28 · Huida a Egipto
+  Falta una voz en el historial («Evangelio según san Mateo, capítulo 2. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-29 · Ahora puedes dejar a tu siervo
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 2. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-30 · La profetisa Ana
+  Falta una voz en el historial («Evangelio según san Lucas, capítulo 2. <break time="1.5s" />…»); salto este día para no gastar créditos.
+2026-12-31 · Gracia tras gracia
+  Falta una voz en el historial («Evangelio según san Juan, capítulo 1. <break time="1.5s" /> …»); salto este día para no gastar créditos.
+Terminado. Voces reutilizadas del historial: 76 · generadas nuevas: 0.
