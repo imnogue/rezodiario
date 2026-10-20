@@ -156,6 +156,7 @@ def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="web
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="{E(desc)}">
 <meta name="robots" content="{robots}">
+<script>if(location.hostname.indexOf("www.")===0)location.replace("https://rezodiario.com"+location.pathname+location.search+location.hash)</script>
 <link rel="canonical" href="{canon(path)}">
 <meta name="theme-color" content="#14302A">
 <meta property="og:type" content="{og_type}"><meta property="og:site_name" content="Rezo Diario"><meta property="og:locale" content="es_ES">
