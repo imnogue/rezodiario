@@ -1,0 +1,15 @@
+# Cada mañana envía el correo con el rezo del día a los apuntados al boletín.
+name: Correo diario del boletín
+on:
+  schedule:
+    - cron: "15 5 * * *"   # 6:15 en invierno y 7:15 en verano (hora de Madrid)
+  workflow_dispatch:
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar el correo de hoy
+        run: |
+          R=$(curl -sS --max-time 120 -X POST https://rezodiario.com/api/enviar-diario)
+          echo "$R"
+          echo "$R" | grep -q '"ok":true' || { echo "::error::No se ha podido enviar el correo de hoy"; exit 1; }

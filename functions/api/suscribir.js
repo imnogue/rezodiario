@@ -2,6 +2,7 @@
 // Variables en Cloudflare Pages (Settings → Variables and Secrets):
 //   RESEND_API_KEY     (obligatoria, tipo Secret)
 //   RESEND_SEGMENT_ID  (opcional: el segmento «Boletín» donde guardar los contactos)
+import { segmento } from "./_resend.js";
 const J = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
 export async function onRequest({ request, env }) {
   try {
@@ -23,10 +24,16 @@ export async function onRequest({ request, env }) {
     const key = String(env.RESEND_API_KEY || "").trim();
     if (!key) return J({ ok: false, error: "El boletín aún no está conectado." }, 503);
     const payload = { email, unsubscribed: false };
-    const seg = String(env.RESEND_SEGMENT_ID || "").trim(); if (seg) payload.segments = [seg];
+    try { const sg = await segmento(key, env); payload.segments = [{ id: sg.id }]; } catch (e) {}
     const r = await fetch("https://api.resend.com/contacts", { method: "POST", headers: { authorization: "Bearer " + key, "content-type": "application/json" }, body: JSON.stringify(payload) });
     const t = await r.text();
-    if (r.ok || r.status === 409 || /already exist/i.test(t)) return J({ ok: true });
+    if (r.ok) return J({ ok: true });
+    if (r.status === 409 || /already exist/i.test(t)) {
+      // ya estaba: lo reactivamos y lo metemos en el boletín
+      await fetch(`https://api.resend.com/contacts/${encodeURIComponent(email)}`, { method: "PATCH", headers: { authorization: "Bearer " + key, "content-type": "application/json" }, body: JSON.stringify({ unsubscribed: false }) });
+      if (payload.segments) await fetch(`https://api.resend.com/contacts/${encodeURIComponent(email)}/segments/${payload.segments[0].id}`, { method: "POST", headers: { authorization: "Bearer " + key } });
+      return J({ ok: true });
+    }
     let msg = ""; try { msg = JSON.parse(t).message || ""; } catch (e) { msg = t.slice(0, 160); }
     return J({ ok: false, error: "No se ha podido apuntar ahora. Inténtalo más tarde.", detalle: `Resend ${r.status}: ${msg}` }, 502);
   } catch (e) {

@@ -731,6 +731,43 @@ for path, head, body, battrs in pages:
 os.makedirs(OUT + "/api/evangelio", exist_ok=True)
 for w in DAYS:
     json.dump({"fecha": w["date"], "dia": f'{w["wd"]} {w["n"]} de {w["mes"]}', "liturgia": w["lit"], "color": w["color"], "cita": w["refL"], "titulo": w["title"], "frase": w["ex"], "url": canon(f'evangelio/{w["date"]}.html')}, open(f'{OUT}/api/evangelio/{w["date"]}.json', "w", encoding="utf-8"), ensure_ascii=False)
+# Correo diario (boletín): un HTML por día que envía /api/enviar-diario
+def correo_html(w):
+    st = SBY.get(w["saint"]) if w.get("saint") else None
+    url = canon(f'evangelio/{w["date"]}.html') + "?utm_source=boletin&utm_medium=email"
+    qs = "".join(f'<li style="margin:0 0 6px">{E(q)}</li>' for q in w["qs"])
+    santo = ""
+    if st:
+        santo = (f'<tr><td style="padding:6px 32px 22px"><div style="border-top:1px solid #DCE3DA;padding-top:18px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#7B8A80">Santo del día</div>'
+                 f'<p style="margin:6px 0 0;font-size:16px;line-height:1.55;color:#17211C"><a href="{canon("santos/" + st["slug"] + ".html")}" style="color:#1F5A47;font-weight:bold;text-decoration:none">{E(st["name"])}</a> · {E(st["short"])}</p></td></tr>')
+    dur = f' · {w["duracion"]}' if w.get("duracion") else ""
+    fecha = f'{w["wd"][:1].upper()}{w["wd"][1:]} {w["n"]} de {w["mes"]}'
+    return f'''<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light only"><title>{E(w["title"])}</title></head>
+<body style="margin:0;padding:0;background:#ECEFEA;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#17211C">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0">«{E(w["ex"])}»</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ECEFEA;padding:28px 12px"><tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#FAFBF8;border-radius:22px;overflow:hidden;border:1px solid #CDD6CB">
+<tr><td style="background:#14302A;padding:20px 28px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td><img src="https://rezodiario.com/logo-512.png" width="34" height="34" alt="" style="display:inline-block;vertical-align:middle;border:0;border-radius:9px"> <span style="vertical-align:middle;font-size:20px;letter-spacing:-.5px;color:#EEF2EC"><b style="font-weight:800">rezo</b><span style="color:#D6B266">diario</span></span></td>
+<td align="right" style="font-size:13px;color:#B9C7BE">{E(fecha)}</td></tr></table></td></tr>
+<tr><td style="padding:30px 32px 6px"><div style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#7B8A80">{E(w["lit"])}</div>
+<h1 style="margin:8px 0 14px;font-family:Georgia,'Times New Roman',serif;font-weight:normal;font-size:28px;line-height:1.2;color:#17211C">{E(w["title"])}</h1>
+<p style="margin:0 0 18px;font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.5;color:#1F5A47;font-style:italic">«{E(w["ex"])}»<br><span style="font-size:14px;font-style:normal;color:#7B8A80">{E(w["refL"])}</span></p>
+<p style="margin:0 0 14px;font-size:16px;line-height:1.65;color:#3E4C43">{E(w["sum"])}</p>
+<p style="margin:0 0 22px;font-size:16px;line-height:1.65;color:#3E4C43">{E(w["refl"])}</p>
+<table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:#1F5A47;border-radius:999px"><a href="{url}" style="display:inline-block;padding:14px 26px;font-size:16px;font-weight:bold;color:#FFFFFF;text-decoration:none">&#9654; Escuchar el rezo de hoy{dur}</a></td></tr></table>
+</td></tr>
+<tr><td style="padding:24px 32px 10px"><div style="background:#EEF2EC;border-radius:16px;padding:18px 20px"><div style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#7B8A80;margin-bottom:8px">Para tu oración</div>
+<ol style="margin:0;padding-left:20px;font-size:16px;line-height:1.55;color:#17211C">{qs}</ol>
+<p style="margin:12px 0 0;font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.55;color:#3E4C43;font-style:italic">{E(w["fin"])}</p></div></td></tr>
+{santo}
+<tr><td style="padding:4px 32px 28px;font-size:14px;line-height:1.6;color:#56645B">También hoy: <a href="https://rezodiario.com/rosario?utm_source=boletin" style="color:#1F5A47">rezar el Rosario</a> · <a href="https://rezodiario.com/muro-de-intenciones?utm_source=boletin#candles" style="color:#1F5A47">encender una vela por alguien</a></td></tr>
+</table>
+<p style="max-width:520px;margin:18px auto 0;font-size:12px;line-height:1.6;color:#7B8A80;text-align:center">Recibes este correo porque te apuntaste al rezo diario en rezodiario.com.<br><a href="{{{{{{RESEND_UNSUBSCRIBE_URL}}}}}}" style="color:#56645B">Darme de baja</a></p>
+</td></tr></table></body></html>'''
+os.makedirs(OUT + "/api/correo", exist_ok=True)
+for w in DAYS:
+    json.dump({"fecha": w["date"], "asunto": f'{w["title"]} · Evangelio del {w["n"]} de {w["mes"]}', "html": correo_html(w)}, open(f'{OUT}/api/correo/{w["date"]}.json', "w", encoding="utf-8"), ensure_ascii=False)
 # Pódcast
 items = "".join(f'''<item><title>{E(w["title"])} · {w["n"]} de {w["mes"]}</title><description>{E(w["refL"] + ". " + w["sum"])}</description><link>{canon("evangelio/" + w["date"] + ".html")}</link><guid isPermaLink="false">rezodiario-{w["date"]}</guid><pubDate>{datetime.datetime.fromisoformat(w["date"] + "T06:00:00+01:00").strftime("%a, %d %b %Y %H:%M:%S +0100")}</pubDate><enclosure url="{E(w["audio"] if w["audio"].startswith("http") else SITE + w["audio"].lstrip("/"))}" type="audio/mpeg" length="0"/>{f'<itunes:duration>{w["duracion"]}</itunes:duration>' if w.get("duracion") else ""}</item>\n''' for w in reversed(DAYS) if w.get("audio") and w["date"] <= TODAY)
 pc = AJ["podcast"]
