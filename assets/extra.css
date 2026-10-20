@@ -596,3 +596,6 @@ article .exam-cta{margin:24px 0 0}
 /* Caja de escribir: crece con el texto, sin barra de scroll */
 .chat-in textarea{max-height:none;overflow:hidden;line-height:1.45;min-height:48px}
 @media(max-width:480px){.chat-in{padding:10px 10px 12px;gap:8px}.chat-in textarea{padding:12px 14px;font-size:16px}.chat-send{flex-basis:44px;height:44px}}
+/* Móvil: el chat no tiene desplazamiento propio; se desliza con la página */
+.chat-log{overscroll-behavior:auto}
+@media(max-width:900px){.chat{max-height:none;overflow:visible}.chat-log{overflow:visible;-webkit-mask-image:none;mask-image:none;min-height:0}}

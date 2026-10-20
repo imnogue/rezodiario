@@ -302,7 +302,7 @@ if($("#askForm")){
  const log=A;const bot=(html,cls="")=>{const d=document.createElement("div");d.className="msg bot "+cls;d.innerHTML=`<span class="msg-av" aria-hidden="true"></span><div class="msg-b">${html}</div>`;log.appendChild(d);scrollLog();return d};
  let anchor=null;
  const me=t=>{const d=document.createElement("div");d.className="msg me";d.innerHTML=`<div class="msg-b">${esc(t)}</div>`;log.appendChild(d);anchor=d;scrollLog()};
- function scrollLog(){requestAnimationFrame(()=>{log.scrollTop=anchor?Math.max(0,anchor.offsetTop-log.offsetTop-12):log.scrollHeight})}
+ function scrollLog(){requestAnimationFrame(()=>{if(innerWidth<900){if(anchor){const y=anchor.getBoundingClientRect().top+scrollY-90;if(Math.abs(y-scrollY)>40)scrollTo({top:y,behavior:"smooth"})}return}log.scrollTop=anchor?Math.max(0,anchor.offsetTop-log.offsetTop-12):log.scrollHeight})}
  let hau=null;
  async function answer(text,fromChip){
   const its=fromChip?[KI[fromChip]]:classify(text);const main=its[0];
@@ -311,7 +311,7 @@ if($("#askForm")){
   const first=byS(slugs[0]),others=slugs.slice(1,3).map(byS);
   const line=crisis?"Gracias por contarlo. Lo que sientes importa, y no tienes que pasarlo solo.":main?main.l:"Gracias por confiarlo. Sea lo que sea, puedes ponerlo en manos de Dios con estas palabras.";
   const cat=main?main.c:"otra";const v=!crisis&&main&&main.v?verseFor(main.v):null;
-  me(text);const ch=$(".chat");if(ch){const r=ch.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)ch.scrollIntoView({behavior:"smooth",block:innerWidth<900?"start":"center"})}const wait=bot(`<div class="heart-wait" aria-label="Escribiendo"><i></i><i></i><i></i></div>`,"is-wait");
+  me(text);const ch=$(".chat");if(ch&&innerWidth>=900){const r=ch.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)ch.scrollIntoView({behavior:"smooth",block:"center"})}const wait=bot(`<div class="heart-wait" aria-label="Escribiendo"><i></i><i></i><i></i></div>`,"is-wait");
   const texts=await Promise.all([loadPrayers(),new Promise(r=>setTimeout(r,750))]).then(x=>x[0]);wait.remove();
   const url=p=>`${ROOT}oraciones/${p.slug}${X}`;
   if(crisis)bot(`<div class="heart-help"><strong>Si estás pensando en hacerte daño, habla ahora con alguien.</strong> Llama al <a href="tel:024">024</a> (gratuito, a cualquier hora, España) o al <a href="tel:112">112</a> si es una emergencia. También puedes hablar con un sacerdote o con alguien de confianza hoy mismo.</div>`);
