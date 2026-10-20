@@ -11,5 +11,5 @@ jobs:
       - name: Enviar el correo de hoy
         run: |
           R=$(curl -sS --max-time 120 -X POST https://rezodiario.com/api/enviar-diario)
-          echo "$R"
+          echo "$R"; echo "::notice::$R"
           echo "$R" | grep -q '"ok":true' || { echo "::error::No se ha podido enviar el correo de hoy"; exit 1; }
