@@ -86,6 +86,8 @@ def tts(text, path, a):
         return
     key, voice = os.environ.get("ELEVENLABS_API_KEY", "").strip(), os.environ.get("ELEVENLABS_VOICE_ID", "").strip()
     h = historial().get(norm(text))
+    if not h:  # los audios antiguos decían «palabras de Jesús»; esa voz sirve igual
+        h = historial().get(norm(text.replace("Escucha estas palabras del Evangelio:", "Escucha estas palabras de Jesús:")))
     if h and not a.sin_historial:
         try:
             with urllib.request.urlopen(urllib.request.Request(f"https://api.elevenlabs.io/v1/history/{h[0]}/audio", headers={"xi-api-key": key}), timeout=120) as r:
