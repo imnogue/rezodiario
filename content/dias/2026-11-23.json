@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 21,1-4"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/23-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/23-11-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén, junto al cepillo de las ofrendas",
+    "quien": "A sus discípulos",
+    "palabra": "Cepillo",
+    "significa": "Era la caja del templo donde se echaban los donativos. Tenía forma de trompeta y sonaba al caer las monedas."
+  },
+  "proposito": "Da hoy algo que te cueste, no solo lo que te sobra.",
+  "familia": {
+    "x": "Una mujer pobre da dos monedas pequeñas. Jesús dice que ha dado más que todos porque dio todo lo que tenía.",
+    "q": "¿Qué podemos dar que nos cueste un poquito?"
+  }
 }

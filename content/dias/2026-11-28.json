@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 21,34-36"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/28-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/28-11-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A sus discípulos",
+    "palabra": "Embotarse",
+    "significa": "Es cuando el corazón se vuelve pesado y torpe por los excesos o las preocupaciones, y ya no ve lo importante."
+  },
+  "proposito": "Renuncia hoy a algo que te «embota»: una pantalla, un exceso, una queja.",
+  "familia": {
+    "x": "Jesús nos pide estar despiertos y no dejar que las preocupaciones nos hagan olvidar a Dios.",
+    "q": "¿Qué cosas nos distraen de lo importante?"
+  }
 }

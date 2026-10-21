@@ -128,5 +128,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 2, 36-40"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/30-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/30-12-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A todos los que esperaban la liberación",
+    "palabra": "Profetisa",
+    "significa": "Mujer que habla en nombre de Dios. Ana llevaba toda la vida rezando en el templo."
+  },
+  "proposito": "Llama hoy a una persona mayor de tu familia.",
+  "familia": {
+    "x": "Ana es una señora muy mayor que reza siempre. Cuando ve a Jesús, se lo cuenta a todo el mundo.",
+    "q": "¿Qué podemos aprender de los abuelos?"
+  }
 }

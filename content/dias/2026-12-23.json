@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 1, 57-66"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/23-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/23-12-2026/",
+  "ctx": {
+    "donde": "En casa de Zacarías e Isabel",
+    "quien": "A los vecinos y familiares",
+    "palabra": "Juan",
+    "significa": "Significa «Dios es misericordioso». El nombre lo eligió Dios, no la tradición de la familia."
+  },
+  "proposito": "Obedece hoy a Dios en algo aunque otros esperen lo contrario.",
+  "familia": {
+    "x": "Nace el bebé de Isabel y le ponen el nombre que dijo el ángel: Juan. Zacarías vuelve a hablar.",
+    "q": "¿Sabemos qué significa nuestro nombre?"
+  }
 }

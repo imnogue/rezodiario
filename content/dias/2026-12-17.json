@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 1, 1-17"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/17-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/17-12-2026/",
+  "ctx": {
+    "donde": "Al comienzo del Evangelio de Mateo",
+    "quien": "A todos los lectores",
+    "palabra": "Genealogía",
+    "significa": "Es la lista de antepasados. La de Jesús incluye reyes, extranjeros y pecadores: Dios entra en una familia real."
+  },
+  "proposito": "Reza hoy por tus antepasados y por tu familia.",
+  "familia": {
+    "x": "San Mateo cuenta los nombres de los abuelos de los abuelos de Jesús. Jesús tiene una familia, como nosotros.",
+    "q": "¿Qué sabemos de nuestros abuelos y bisabuelos?"
+  }
 }

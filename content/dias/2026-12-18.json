@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 1, 18-24"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/18-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/18-12-2026/",
+  "ctx": {
+    "donde": "En Nazaret",
+    "quien": "A José, en sueños",
+    "palabra": "Desposados",
+    "significa": "María y José estaban comprometidos: legalmente casados, pero aún no vivían juntos."
+  },
+  "proposito": "Ante una duda, haz hoy lo que sabes que Dios te pide, como José.",
+  "familia": {
+    "x": "José tiene miedo y no entiende, pero un ángel le dice que no tema y él confía en Dios.",
+    "q": "¿Qué hacemos cuando no entendemos algo?"
+  }
 }

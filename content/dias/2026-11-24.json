@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 21,5-11"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/24-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/24-11-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A los que admiran el templo",
+    "palabra": "Apocalíptico",
+    "significa": "Es un lenguaje con imágenes fuertes sobre el final. No busca asustar, sino animar a confiar en Dios."
+  },
+  "proposito": "Ante una mala noticia hoy, reza en vez de agobiarte.",
+  "familia": {
+    "x": "Jesús dice que aunque pasen cosas que dan miedo, no debemos tener pánico porque Dios cuida de nosotros.",
+    "q": "¿Qué hacemos cuando tenemos miedo?"
+  }
 }

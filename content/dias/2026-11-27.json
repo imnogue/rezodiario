@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 21, 29-33"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/27-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/27-11-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A sus discípulos",
+    "palabra": "Higuera",
+    "significa": "Es uno de los pocos árboles de Israel que pierde las hojas en invierno. Cuando brota, anuncia el verano."
+  },
+  "proposito": "Lee hoy una página del Evangelio con calma.",
+  "familia": {
+    "x": "Igual que las hojas nuevas nos avisan de que llega el verano, hay señales que nos dicen que Dios está cerca.",
+    "q": "¿Qué señales de Dios vemos a nuestro alrededor?"
+  }
 }

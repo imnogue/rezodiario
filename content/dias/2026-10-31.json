@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 14, 1. 7-11"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/31-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/31-10-2026/",
+  "ctx": {
+    "donde": "En casa de un jefe de los fariseos",
+    "quien": "A los invitados del banquete",
+    "palabra": "Humildad",
+    "significa": "No es pensar mal de uno mismo, sino no necesitar ser el centro ni estar por encima de los demás."
+  },
+  "proposito": "Cede hoy el primer puesto a alguien: en la cola, en la conversación, en el sofá.",
+  "familia": {
+    "x": "Jesús aconseja no buscar el mejor sitio en una fiesta, sino dejar que nos inviten a subir.",
+    "q": "¿Cuándo nos cuesta no ser los primeros?"
+  }
 }

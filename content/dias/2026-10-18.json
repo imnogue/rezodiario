@@ -147,5 +147,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 22, 15-21"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/18-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/18-10-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén, en los últimos días de Jesús",
+    "quien": "A fariseos y herodianos que quieren tenderle una trampa",
+    "palabra": "Denario",
+    "significa": "Era la moneda de plata romana. Llevaba grabada la cara del emperador, que se consideraba casi un dios."
+  },
+  "proposito": "Dedica hoy a Dios un rato que normalmente das a otra cosa.",
+  "familia": {
+    "x": "Unos quieren pillar a Jesús preguntándole por los impuestos. Él les dice que den a cada uno lo suyo, y a Dios lo que es de Dios.",
+    "q": "¿Qué cosas nuestras son de Dios?"
+  }
 }

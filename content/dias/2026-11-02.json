@@ -130,5 +130,16 @@
       "titulo": "Juan 6, 37-40"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/02-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/02-11-2026/",
+  "ctx": {
+    "donde": "En Cafarnaún, después de multiplicar los panes",
+    "quien": "A la gente que lo busca",
+    "palabra": "Vida eterna",
+    "significa": "No es solo vivir para siempre después de morir: es la vida con Dios, que empieza ya."
+  },
+  "proposito": "Reza hoy por un difunto de tu familia por su nombre.",
+  "familia": {
+    "x": "Jesús promete que no perderá a nadie de los que el Padre le da y que nos resucitará.",
+    "q": "¿Por qué familiares que ya están en el cielo rezamos hoy?"
+  }
 }

@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 18, 35-43"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/16-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/16-11-2026/",
+  "ctx": {
+    "donde": "A la entrada de Jericó, camino de Jerusalén",
+    "quien": "A un ciego que pide limosna",
+    "palabra": "Hijo de David",
+    "significa": "Era un título del Mesías esperado, descendiente del rey David."
+  },
+  "proposito": "Pide hoy a Jesús, con tus palabras, lo que más necesitas.",
+  "familia": {
+    "x": "Un ciego grita para que Jesús le escuche aunque todos le mandan callar. Jesús se para y le cura.",
+    "q": "Si Jesús nos preguntara «¿qué quieres?», ¿qué le diríamos?"
+  }
 }

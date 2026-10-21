@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 12, 8-12"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/17-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/17-10-2026/",
+  "ctx": {
+    "donde": "Camino de Jerusalén, con la multitud",
+    "quien": "A sus discípulos",
+    "palabra": "Espíritu Santo",
+    "significa": "Es Dios mismo que actúa dentro de nosotros: da fuerza, luz y las palabras justas cuando no sabemos qué decir."
+  },
+  "proposito": "Antes de una conversación difícil hoy, pide en silencio: «Espíritu Santo, ayúdame».",
+  "familia": {
+    "x": "Jesús promete a sus amigos que, cuando tengan miedo de hablar, el Espíritu Santo les ayudará.",
+    "q": "¿Cuándo nos da vergüenza decir que somos cristianos?"
+  }
 }

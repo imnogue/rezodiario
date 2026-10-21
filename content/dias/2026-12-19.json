@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 1, 5-25"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/19-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/19-12-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A Zacarías, que ofrece el incienso",
+    "palabra": "Incienso",
+    "significa": "Resina que se quemaba en el templo. Su humo que sube al cielo simboliza la oración."
+  },
+  "proposito": "Vuelve hoy a pedir algo que llevas mucho tiempo esperando.",
+  "familia": {
+    "x": "Un ángel le dice a Zacarías que, aunque son mayores, él e Isabel tendrán un bebé: Juan.",
+    "q": "¿Qué cosa llevamos mucho tiempo pidiendo a Dios?"
+  }
 }

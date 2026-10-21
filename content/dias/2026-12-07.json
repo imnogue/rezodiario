@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 5, 17-26"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/07-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/07-12-2026/",
+  "ctx": {
+    "donde": "En una casa de Cafarnaún, llena de gente",
+    "quien": "A un paralítico, a sus amigos y a los fariseos",
+    "palabra": "Perdonar pecados",
+    "significa": "Los fariseos se escandalizan porque solo Dios puede perdonar pecados. Jesús demuestra que tiene ese poder."
+  },
+  "proposito": "Ayuda hoy a un amigo a acercarse a Dios.",
+  "familia": {
+    "x": "Unos amigos suben a su amigo enfermo al tejado y lo bajan para que Jesús lo cure. ¡Qué buenos amigos!",
+    "q": "¿Cómo podemos ayudar a nuestros amigos a acercarse a Jesús?"
+  }
 }

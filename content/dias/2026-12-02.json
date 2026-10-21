@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 15, 29-37"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/02-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/02-12-2026/",
+  "ctx": {
+    "donde": "En un monte junto al lago de Galilea",
+    "quien": "A una gran multitud",
+    "palabra": "Compasión",
+    "significa": "Es sentir el dolor del otro en las propias entrañas y hacer algo para aliviarlo."
+  },
+  "proposito": "Comparte hoy algo de comida con alguien.",
+  "familia": {
+    "x": "Jesús ve que la gente tiene hambre y con siete panes da de comer a todos, y aún sobra.",
+    "q": "¿Con quién podemos compartir lo que tenemos?"
+  }
 }

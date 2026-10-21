@@ -30,5 +30,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 11, 27-28"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/12-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/12-10-2026/",
+  "ctx": {
+    "donde": "Galilea, entre la multitud que sigue a Jesús",
+    "quien": "A la gente y a una mujer que alaba a su madre",
+    "palabra": "Dichoso",
+    "significa": "En la Biblia, «dichoso» o «bienaventurado» no es tener suerte: es estar de verdad bien, en paz con Dios."
+  },
+  "proposito": "Elige una frase del Evangelio de hoy y ponla en práctica antes de acostarte.",
+  "familia": {
+    "x": "Una mujer dice que la mamá de Jesús es muy afortunada. Jesús responde que todavía es más feliz quien escucha a Dios y le hace caso.",
+    "q": "¿Qué cosa buena nos ha pedido Dios que podemos hacer hoy en casa?"
+  }
 }

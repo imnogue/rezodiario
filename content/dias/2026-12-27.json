@@ -147,5 +147,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 2, 22-40"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/27-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/27-12-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén y después en Nazaret",
+    "quien": "A María y José, Simeón y Ana",
+    "palabra": "Sagrada Familia",
+    "significa": "Es la familia de Jesús, María y José. Hoy la Iglesia la celebra como modelo de toda familia."
+  },
+  "proposito": "Haced hoy algo juntos en familia: una comida, un paseo, una oración.",
+  "familia": {
+    "x": "La familia de Jesús va al templo y luego vuelve a casa, donde Jesús crece en sabiduría.",
+    "q": "¿Qué es lo que más nos gusta de nuestra familia?"
+  }
 }

@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 13, 1-9"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/24-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/24-10-2026/",
+  "ctx": {
+    "donde": "Camino de Jerusalén",
+    "quien": "A unos que le cuentan desgracias recientes",
+    "palabra": "Higuera",
+    "significa": "Árbol muy común en Israel. En la Biblia simboliza al pueblo de Dios, que debe dar fruto."
+  },
+  "proposito": "Elige una cosa que quieres mejorar y da hoy el primer paso.",
+  "familia": {
+    "x": "Un árbol no da fruto y el dueño quiere cortarlo, pero el jardinero pide un año más para cuidarlo. Dios es ese jardinero paciente.",
+    "q": "¿Qué frutos buenos podemos dar esta semana?"
+  }
 }

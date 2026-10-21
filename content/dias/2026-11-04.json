@@ -148,5 +148,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 14, 25-33"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/04-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/04-11-2026/",
+  "ctx": {
+    "donde": "Camino de Jerusalén, con mucha gente",
+    "quien": "A la multitud que le sigue",
+    "palabra": "Discípulo",
+    "significa": "Es quien sigue a un maestro y aprende a vivir como él, no solo quien escucha."
+  },
+  "proposito": "Revisa qué pones hoy por delante de Dios y cámbialo un rato.",
+  "familia": {
+    "x": "Jesús dice que seguirle es como construir una torre: hay que pensarlo bien y no rendirse a mitad.",
+    "q": "¿Qué nos cuesta más para seguir a Jesús?"
+  }
 }

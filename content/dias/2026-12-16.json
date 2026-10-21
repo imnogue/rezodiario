@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 7, 19-23"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/16-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/16-12-2026/",
+  "ctx": {
+    "donde": "En Galilea",
+    "quien": "A los discípulos de Juan el Bautista",
+    "palabra": "Mesías",
+    "significa": "Significa «ungido». Era el salvador prometido que Israel esperaba."
+  },
+  "proposito": "Haz hoy un gesto que sea «buena noticia» para un pobre o un enfermo.",
+  "familia": {
+    "x": "Juan pregunta si Jesús es el que esperaban. Jesús responde: mira lo que hago, curo a los enfermos y ayudo a los pobres.",
+    "q": "¿Cómo se nota que somos amigos de Jesús?"
+  }
 }

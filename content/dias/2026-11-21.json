@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo Evangelio según san Lucas 20, 27-40"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/21-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/21-11-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A unos saduceos",
+    "palabra": "Saduceos",
+    "significa": "Grupo de sacerdotes y familias ricas que no creían en la resurrección ni en los ángeles."
+  },
+  "proposito": "Reza hoy por alguien que haya muerto y da gracias por su vida.",
+  "familia": {
+    "x": "Unos señores que no creen en la vida después de la muerte hacen una pregunta difícil. Jesús responde que Dios es un Dios de vivos.",
+    "q": "¿Cómo imaginamos el cielo?"
+  }
 }

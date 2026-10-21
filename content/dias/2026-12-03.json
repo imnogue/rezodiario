@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 7, 21. 24-27"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/03-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/03-12-2026/",
+  "ctx": {
+    "donde": "En el monte, al final del sermón de la montaña",
+    "quien": "A sus discípulos y a la gente",
+    "palabra": "Roca",
+    "significa": "En la Biblia, la roca es imagen de Dios: firme y segura cuando todo se mueve."
+  },
+  "proposito": "Pon en práctica hoy una frase de Jesús que conozcas bien.",
+  "familia": {
+    "x": "Jesús cuenta que quien construye su casa sobre roca no se cae con la tormenta. Su palabra es esa roca.",
+    "q": "¿Sobre qué construimos nuestra vida?"
+  }
 }

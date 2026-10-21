@@ -152,5 +152,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 1, 26-38"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/08-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/08-12-2026/",
+  "ctx": {
+    "donde": "En Nazaret, un pequeño pueblo de Galilea",
+    "quien": "A María",
+    "palabra": "Inmaculada",
+    "significa": "La Iglesia celebra que María fue preservada de todo pecado desde el primer instante de su vida."
+  },
+  "proposito": "Reza hoy un Ave María con calma.",
+  "familia": {
+    "x": "El ángel visita a María y le dice que Dios la ha elegido para ser la madre de Jesús. María dice que sí.",
+    "q": "¿Qué le diríamos hoy a la Virgen?"
+  }
 }

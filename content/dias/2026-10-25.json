@@ -147,5 +147,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 22, 34-40"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/25-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/25-10-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A un experto en la ley de los fariseos",
+    "palabra": "Mandamiento",
+    "significa": "La Ley judía tenía 613 mandamientos. Jesús los resume todos en dos: amar a Dios y amar al prójimo."
+  },
+  "proposito": "Hoy, haz algo concreto por Dios y algo concreto por un prójimo.",
+  "familia": {
+    "x": "Le preguntan a Jesús qué es lo más importante. Él responde: querer a Dios con todo el corazón y a los demás como a uno mismo.",
+    "q": "¿Cómo podemos querer más a Dios y a los demás hoy?"
+  }
 }

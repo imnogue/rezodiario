@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 21,20-28"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/26-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/26-11-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A sus discípulos",
+    "palabra": "Liberación",
+    "significa": "Jesús anuncia que al final Dios vendrá a liberarnos de todo mal. Por eso podemos levantar la cabeza."
+  },
+  "proposito": "Anima hoy a alguien que esté desanimado.",
+  "familia": {
+    "x": "Jesús dice que cuando pasen cosas difíciles, levantemos la cabeza porque Dios viene a salvarnos.",
+    "q": "¿Qué nos da esperanza?"
+  }
 }

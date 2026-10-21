@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 12, 54-59"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/23-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/23-10-2026/",
+  "ctx": {
+    "donde": "Camino de Jerusalén, con la multitud",
+    "quien": "A la gente",
+    "palabra": "Signos de los tiempos",
+    "significa": "Son las señales de lo que Dios está haciendo en nuestra época. Hay que mirar con atención para descubrirlas."
+  },
+  "proposito": "Haz las paces hoy con alguien con quien estás mal.",
+  "familia": {
+    "x": "Jesús dice que la gente sabe si va a llover mirando las nubes, pero no se da cuenta de que Dios está cerca.",
+    "q": "¿Dónde hemos visto hoy a Dios?"
+  }
 }

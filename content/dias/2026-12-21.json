@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 1, 39-45"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/21-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/21-12-2026/",
+  "ctx": {
+    "donde": "En un pueblo de la montaña de Judea",
+    "quien": "A Isabel",
+    "palabra": "Visitación",
+    "significa": "Es el encuentro de María e Isabel, embarazadas de Jesús y de Juan. Dos madres y dos niños que se alegran."
+  },
+  "proposito": "Visita o llama hoy a alguien de tu familia.",
+  "familia": {
+    "x": "María va corriendo a ayudar a su prima Isabel, y el bebé de Isabel salta de alegría.",
+    "q": "¿A quién podemos visitar antes de Navidad?"
+  }
 }

@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 17, 26-37"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/13-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/13-11-2026/",
+  "ctx": {
+    "donde": "Camino de Jerusalén",
+    "quien": "A sus discípulos",
+    "palabra": "Noé",
+    "significa": "El patriarca que construyó el arca mientras los demás seguían su vida sin darse cuenta de nada."
+  },
+  "proposito": "Haz hoy una pausa para preguntarte hacia dónde va tu vida.",
+  "familia": {
+    "x": "Jesús recuerda que en tiempos de Noé la gente estaba tan distraída que no se dio cuenta de lo que llegaba.",
+    "q": "¿Qué nos distrae de Dios?"
+  }
 }

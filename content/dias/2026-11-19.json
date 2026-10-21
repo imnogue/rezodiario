@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo Evangelio según san Lucas 19,41-44"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/19-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/19-11-2026/",
+  "ctx": {
+    "donde": "Ante Jerusalén, desde el monte de los Olivos",
+    "quien": "A la ciudad de Jerusalén",
+    "palabra": "Visita de Dios",
+    "significa": "Es el momento en que Dios se acerca a alguien. Jesús llora porque Jerusalén no lo reconoce."
+  },
+  "proposito": "Reza hoy por la paz de una ciudad o un país en guerra.",
+  "familia": {
+    "x": "Jesús llora al ver Jerusalén, porque la quiere mucho y la gente no le ha querido escuchar.",
+    "q": "¿Por qué personas o lugares lloraría Jesús hoy?"
+  }
 }

@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 17, 7-10"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/10-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/10-11-2026/",
+  "ctx": {
+    "donde": "Camino de Jerusalén",
+    "quien": "A sus apóstoles",
+    "palabra": "Siervo",
+    "significa": "El criado de la época trabajaba sin horario ni recompensa. Jesús pide servir así, por amor, sin llevar cuentas."
+  },
+  "proposito": "Haz hoy una tarea de casa sin que te la pidan y sin decirlo.",
+  "familia": {
+    "x": "Jesús nos enseña a ayudar sin esperar que nos den las gracias o un premio.",
+    "q": "¿Qué podemos hacer hoy por los demás sin esperar nada?"
+  }
 }

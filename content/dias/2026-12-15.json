@@ -148,5 +148,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 21,28-32"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/15-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/15-12-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A los sumos sacerdotes y ancianos",
+    "palabra": "Viña",
+    "significa": "En la Biblia, la viña es el pueblo de Dios. Trabajar en ella es hacer su voluntad."
+  },
+  "proposito": "Cumple hoy algo que prometiste y no hiciste.",
+  "familia": {
+    "x": "Un padre pide ayuda a sus dos hijos. Uno dice que no pero luego va, y el otro dice que sí pero no va.",
+    "q": "¿Hacemos lo que decimos?"
+  }
 }

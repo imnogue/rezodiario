@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 2,22-35"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/29-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/29-12-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A Dios, con Jesús en brazos",
+    "palabra": "Nunc dimittis",
+    "significa": "Es el canto de Simeón, «Ahora puedes dejar a tu siervo». La Iglesia lo reza cada noche antes de dormir."
+  },
+  "proposito": "Rezad esta noche antes de dormir dando gracias por el día.",
+  "familia": {
+    "x": "El anciano Simeón coge en brazos al niño Jesús y se pone muy feliz porque ya ha visto al Salvador.",
+    "q": "¿Qué podemos decirle a Dios esta noche?"
+  }
 }

@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 19, 45-48"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/20-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/20-11-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A los vendedores y al pueblo",
+    "palabra": "Cueva de bandidos",
+    "significa": "Jesús cita al profeta Jeremías: el templo se había convertido en lugar de negocio en vez de oración."
+  },
+  "proposito": "Cuida hoy un rato de oración en un sitio tranquilo.",
+  "familia": {
+    "x": "Jesús quiere que la casa de Dios sea un lugar para hablar con él, no para hacer negocios.",
+    "q": "¿Dónde nos gusta rezar en casa?"
+  }
 }

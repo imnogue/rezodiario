@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 16, 9-15"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/07-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/07-11-2026/",
+  "ctx": {
+    "donde": "Camino de Jerusalén",
+    "quien": "A sus discípulos, mientras los fariseos escuchan",
+    "palabra": "Mammón",
+    "significa": "Palabra aramea para el dinero cuando se convierte en un ídolo que manda en nuestra vida."
+  },
+  "proposito": "Haz hoy una compra menos y da ese dinero a quien lo necesite.",
+  "familia": {
+    "x": "Jesús dice que no podemos tener dos jefes: o Dios o el dinero.",
+    "q": "¿Cuándo el dinero nos importa demasiado?"
+  }
 }

@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 12, 39-48"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/21-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/21-10-2026/",
+  "ctx": {
+    "donde": "Camino de Jerusalén",
+    "quien": "A Pedro y a los discípulos",
+    "palabra": "Administrador",
+    "significa": "Era el criado de confianza que cuidaba la casa y a la gente del dueño mientras este estaba fuera."
+  },
+  "proposito": "Cuida hoy con especial cariño algo que se te ha confiado: una persona, una tarea, un objeto.",
+  "familia": {
+    "x": "Jesús cuenta que un señor deja su casa a un criado. El buen criado cuida bien de todo, aunque el señor no lo vea.",
+    "q": "¿Qué cosas nos ha confiado Dios para que las cuidemos?"
+  }
 }

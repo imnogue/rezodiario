@@ -148,5 +148,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 6, 12-19"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/28-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/28-10-2026/",
+  "ctx": {
+    "donde": "En un monte de Galilea y después en la llanura",
+    "quien": "A sus discípulos y a una gran multitud",
+    "palabra": "Apóstol",
+    "significa": "Significa «enviado». Jesús elige a doce para estar con él y enviarlos a anunciar el Evangelio."
+  },
+  "proposito": "Antes de una decisión importante, reza un rato como Jesús.",
+  "familia": {
+    "x": "Jesús pasa toda la noche rezando antes de elegir a sus doce amigos más cercanos.",
+    "q": "¿Rezamos antes de decidir cosas importantes?"
+  }
 }

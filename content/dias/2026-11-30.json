@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 4, 18-22"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/30-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/30-11-2026/",
+  "ctx": {
+    "donde": "Junto al lago de Galilea",
+    "quien": "A Simón y Andrés, y después a Santiago y Juan",
+    "palabra": "Pescadores de hombres",
+    "significa": "Jesús usa el oficio de sus amigos para explicar su misión: acercar a las personas a Dios."
+  },
+  "proposito": "Deja hoy algo a un lado para dedicar tiempo a Jesús.",
+  "familia": {
+    "x": "Jesús llama a unos pescadores para que le sigan, y ellos dejan sus redes enseguida.",
+    "q": "¿Qué nos pide Jesús que dejemos para seguirle?"
+  }
 }

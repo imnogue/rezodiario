@@ -137,5 +137,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 25, 31-46"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/22-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/22-11-2026/",
+  "ctx": {
+    "donde": "En el monte de los Olivos",
+    "quien": "A sus discípulos",
+    "palabra": "Cristo Rey",
+    "significa": "Este domingo, el último del año litúrgico, celebra a Jesús como Rey del universo. Su trono es el servicio."
+  },
+  "proposito": "Visita, llama o ayuda hoy a alguien enfermo, solo o necesitado.",
+  "familia": {
+    "x": "Jesús dice que todo lo que hacemos por los que pasan hambre o están solos, se lo hacemos a él.",
+    "q": "¿A quién podemos ayudar esta semana como si fuera Jesús?"
+  }
 }

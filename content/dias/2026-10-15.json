@@ -22,5 +22,16 @@
       "titulo": "Lucas 11, 47-54"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/15-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/15-10-2026/",
+  "ctx": {
+    "donde": "En la misma comida con fariseos",
+    "quien": "A los maestros de la ley",
+    "palabra": "Maestro de la ley",
+    "significa": "Eran los expertos que estudiaban y explicaban las Escrituras. Por eso tenían «la llave» del conocimiento."
+  },
+  "proposito": "Explica a alguien, con sencillez, algo bonito de tu fe.",
+  "familia": {
+    "x": "Jesús se enfada con quienes saben mucho de Dios pero no ayudan a los demás a conocerlo.",
+    "q": "¿Quién nos enseñó a rezar? ¿A quién podemos enseñar nosotros?"
+  }
 }

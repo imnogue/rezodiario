@@ -4,7 +4,7 @@
 const RD=window.RD||{};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const ROOT=document.body.dataset.root||"";const X=document.body.dataset.clean==="1"?"":".html";const IDX=X?"index.html":"";
-const SYNC_KEYS=/^rd-(rezado|favs|nov-|reto-|mycandles|intencion)/;
+const SYNC_KEYS=/^rd-(rezado|favs|nov-|reto-|mycandles|intencion|diario|prop)/;
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}if(SYNC_KEYS.test(k)&&window.__rdSync)window.__rdSync()}};
 function toast(t){let h=$("#toastHost");if(!h){h=document.createElement("div");h.id="toastHost";document.body.appendChild(h)}h.innerHTML="";const d=document.createElement("div");d.className="toast";d.setAttribute("role","status");d.textContent=t;h.appendChild(d);setTimeout(()=>d.remove(),3000)}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
@@ -506,6 +506,24 @@ if($("#beads")){
  draw();setSet(todaySet);
  $$(".mis-go[data-set]").forEach(a=>a.onclick=e=>{e.preventDefault();stopVoz();setSet(a.dataset.set);$("#rosario").scrollIntoView({behavior:"smooth",block:"start"})});
 }
+
+/* ---------- Evangelio: propósito, Lectio Divina y diario ---------- */
+$$("[data-prop]").forEach(b=>{const d=b.dataset.prop,P=store.get("rd-prop",{}),btn=b.querySelector("[data-prop-btn]"),ok=b.querySelector(".ev-prop-ok");
+ const show=()=>{const on=!!store.get("rd-prop",{})[d];btn.hidden=on;ok.hidden=!on};show();
+ btn.onclick=()=>{const Q=store.get("rd-prop",{});Q[d]=Date.now();store.set("rd-prop",Q);show();toast("Propósito guardado")}});
+if($("#lec")){
+ const L=$("#lec"),day=L.dataset.day,tabs=$$("#lec [role=tab]"),panes=$$("#lec .lec-p"),prev=L.querySelector("[data-lprev]"),nxt=L.querySelector("[data-lnext]");let li=0,tm=null;
+ const MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+ function stopT(){if(tm){clearInterval(tm);tm=null}$$("#lec .lec-timer").forEach(t=>{t.querySelector(".lec-t").textContent="";t.querySelector("[data-timer]").disabled=false});L.classList.remove("breathing")}
+ function show(i){stopT();li=i;tabs.forEach((t,k)=>{t.setAttribute("aria-selected",k===i);t.closest("li").classList.toggle("done",k<i)});panes.forEach((p,k)=>p.hidden=k!==i);prev.disabled=i===0;nxt.textContent=i===3?"Amén, he terminado":"Siguiente paso";if(i===2)setTimeout(()=>$("#lecNote").focus(),50)}
+ tabs.forEach(t=>t.onclick=()=>show(+t.dataset.i));prev.onclick=()=>show(Math.max(0,li-1));
+ nxt.onclick=()=>{if(li<3){show(li+1);L.scrollIntoView({behavior:"smooth",block:"start"});return}stopT();markDone(day);toast("Has terminado tu Lectio Divina");if(typeof siguiente==="function")siguiente("rezo")};
+ $$("#lec [data-timer]").forEach(b=>b.onclick=()=>{const box=b.closest(".lec-timer"),out=box.querySelector(".lec-t");let n=+box.dataset.secs;stopT();b.disabled=true;if(box.closest('[data-p="3"]'))L.classList.add("breathing");
+  const f=()=>{out.textContent=n>0?Math.floor(n/60)+":"+String(n%60).padStart(2,"0"):"Amén";if(n<=0){clearInterval(tm);tm=null;b.disabled=false;L.classList.remove("breathing");try{navigator.vibrate&&navigator.vibrate(120)}catch(e){}}n--};f();tm=setInterval(f,1000)});
+ const note=$("#lecNote"),saved=$("#lecSaved");const D=store.get("rd-diario",{});if(D[day])note.value=D[day].t||"";
+ let to=null;note.addEventListener("input",()=>{clearTimeout(to);saved.textContent="Guardando…";to=setTimeout(()=>{const Q=store.get("rd-diario",{});const t=note.value.trim();if(t)Q[day]={t,at:Date.now(),title:L.dataset.title,ref:L.dataset.ref};else delete Q[day];store.set("rd-diario",Q);saved.textContent=t?"Guardado en tu diario ✓":"";renderD()},600)});
+ function renderD(){const Q=store.get("rd-diario",{}),ks=Object.keys(Q).sort().reverse().slice(0,6),ul=$("#diarioList");ul.innerHTML=ks.map(k=>{const [y,m,dd]=k.split("-");return`<li><a href="${ROOT}evangelio/${k}${X}"><small>${+dd} de ${MESES[+m-1]}${Q[k].title?" · "+esc(Q[k].title):""}</small><span>${esc(Q[k].t.length>140?Q[k].t.slice(0,137)+"…":Q[k].t)}</span></a></li>`}).join("");$("#diarioEmpty").hidden=ks.length>0;$("#diario").classList.toggle("is-empty",!ks.length)}
+ renderD();show(0)}
 
 /* ---------- Vía Crucis ---------- */
 if($("#vc")){

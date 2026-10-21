@@ -30,5 +30,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 12, 1-7"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/16-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/16-10-2026/",
+  "ctx": {
+    "donde": "Ante una multitud de miles de personas",
+    "quien": "A sus discípulos, delante de la gente",
+    "palabra": "Levadura de los fariseos",
+    "significa": "La levadura hace crecer la masa sin que se vea. Jesús la usa para hablar de la hipocresía, que lo contagia todo."
+  },
+  "proposito": "Hoy, di una verdad que te cueste en lugar de quedar bien.",
+  "familia": {
+    "x": "Jesús dice que Dios cuida hasta de los pajaritos, y que nosotros valemos para él muchísimo más.",
+    "q": "¿Qué nos dice que Dios cuide de cada pajarito?"
+  }
 }

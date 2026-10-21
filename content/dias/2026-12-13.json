@@ -147,5 +147,16 @@
       "titulo": "Lectura del santo evangelio según san Juan 1, 6-8. 19-28"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/13-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/13-12-2026/",
+  "ctx": {
+    "donde": "En Betania, al otro lado del Jordán",
+    "quien": "A sacerdotes y levitas enviados desde Jerusalén",
+    "palabra": "Testigo",
+    "significa": "Es quien cuenta lo que ha visto. Juan no habla de sí mismo, sino que señala a Jesús."
+  },
+  "proposito": "Habla hoy a alguien de algo bueno que Dios ha hecho en tu vida.",
+  "familia": {
+    "x": "Juan el Bautista dice que él no es el importante: viene para señalar a Jesús, que es la luz.",
+    "q": "¿Cómo podemos ser luz para los demás?"
+  }
 }

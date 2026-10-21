@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 11, 28-30"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/09-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/09-12-2026/",
+  "ctx": {
+    "donde": "En Galilea",
+    "quien": "A todos los que están cansados",
+    "palabra": "Yugo",
+    "significa": "Era la pieza de madera que unía a dos bueyes para arar. Jesús nos invita a llevar la vida unidos a él."
+  },
+  "proposito": "Deja hoy en manos de Jesús algo que te agobia.",
+  "familia": {
+    "x": "Jesús dice: «Venid a mí los que estáis cansados». Con él todo pesa menos.",
+    "q": "¿Qué nos cansa y podemos contarle a Jesús?"
+  }
 }

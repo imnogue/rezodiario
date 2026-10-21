@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 21,12-19"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/25-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/25-11-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A sus discípulos",
+    "palabra": "Perseverancia",
+    "significa": "Es seguir adelante cuando cuesta. Jesús promete que así salvaremos la vida."
+  },
+  "proposito": "Termina hoy algo que tenías a medias.",
+  "familia": {
+    "x": "Jesús promete a sus amigos que, aunque lo pasen mal, él estará con ellos y no se perderá ni un pelo de su cabeza.",
+    "q": "¿Qué nos cuesta terminar?"
+  }
 }

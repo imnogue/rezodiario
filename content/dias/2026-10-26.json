@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 13, 10-17"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/26-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/26-10-2026/",
+  "ctx": {
+    "donde": "En una sinagoga, un sábado",
+    "quien": "A una mujer encorvada y al jefe de la sinagoga",
+    "palabra": "Sábado",
+    "significa": "Era el día de descanso sagrado para los judíos. Jesús enseña que es el mejor día para hacer el bien."
+  },
+  "proposito": "Ayuda hoy a alguien que vaya «encorvado» por el cansancio o la tristeza.",
+  "familia": {
+    "x": "Jesús cura a una mujer que llevaba muchos años sin poder ponerse derecha. Ella se endereza y da gracias a Dios.",
+    "q": "¿Qué cosas nos «encorvan» por dentro?"
+  }
 }

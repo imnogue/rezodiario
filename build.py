@@ -536,14 +536,47 @@ def gospel_main(r, w, kind):
   {player()}</div></section>
 <section class="sec"><div class="wrap gos">
   <article class="panel reveal">{lecturas_html(r, w)}<span class="eyebrow">{E(w["refL"])}</span><p class="quote">{E(w["ex"])}</p><p>{E(w["sum"])}</p>
+   {ctx_html(w)}
    <h3>Reflexión</h3><p>{E(w["refl"])}</p><h3>Preguntas para tu oración</h3><ol class="qs">{"".join(f"<li>{E(q)}</li>" for q in w["qs"])}</ol>
    <h3>Oración final</h3><p style="font-family:var(--f-read);font-style:italic">{E(w["fin"])}</p>
+   {prop_html(w)}
+   {fam_html(w)}
+   <div class="ev-share" data-ref="{E(w["refL"])}" data-x="{E(w["ex"])}" data-tag="Evangelio del {w["n"]} de {w["mes"]}"><button class="btn btn-gold sm" type="button" data-vimg>Crear imagen para compartir</button><span>Para WhatsApp o tus estados</span></div>
    {exam_box(r, "Un buen día para volver a Dios", "El Evangelio de hoy invita a la conversión. Mira tu vida con calma y prepara una confesión.") if EXAM_RX.search(w["ex"] + " " + w["sum"] + " " + w["refl"]) else ""}
    <div class="hero-cta" style="margin-top:22px"><a class="btn btn-ghost sm" href="{E(w.get("lecturasUrl") or "https://www.vaticannews.va/es/evangelio-de-hoy.html")}" target="_blank" rel="noopener">Lecturas completas del día</a><a class="btn btn-ghost sm" href="{r}rosario.html">Rezar el Rosario</a></div>{pn}</article>
   {box}
 </div></section>
+{lectio_html(r, w)}
 {week_section(r, "link", "Evangelios de estos días", "Vuelve a cualquier día o adelanta los próximos.")}'''
     return m, cr
+def ctx_html(w):
+    c = w.get("ctx")
+    if not c: return ""
+    return (f'<div class="ev-ctx"><span class="eyebrow">Para entenderlo</span><dl>'
+            f'<div><dt>Dónde</dt><dd>{E(c["donde"])}</dd></div><div><dt>A quién habla</dt><dd>{E(c["quien"])}</dd></div>'
+            f'<div class="ev-kw"><dt>Palabra clave</dt><dd><b>{E(c["palabra"])}</b> {E(c["significa"])}</dd></div></dl></div>')
+def prop_html(w):
+    if not w.get("proposito"): return ""
+    return (f'<div class="ev-prop" data-prop="{w["date"]}"><span class="eyebrow">El propósito de hoy</span><p>{E(w["proposito"])}</p>'
+            f'<button class="btn btn-accent sm" type="button" data-prop-btn>Me lo propongo</button><span class="ev-prop-ok" hidden>✓ Te lo has propuesto. Esta noche, en el examen del día, mira cómo te ha ido.</span></div>')
+def fam_html(w):
+    f = w.get("familia")
+    if not f: return ""
+    return f'<div class="ev-fam"><span class="eyebrow">En familia</span><p>{E(f["x"])}</p><p class="ev-q"><b>Para hablar en la mesa:</b> {E(f["q"])}</p></div>'
+def lectio_html(r, w):
+    qs = "".join(f"<li>{E(q)}</li>" for q in w["qs"])
+    return f'''<section class="sec band" id="lectio" aria-labelledby="hLec"><div class="wrap lec-wrap">
+  <div class="lec-intro"><span class="eyebrow">Lectio Divina</span><h2 id="hLec">Reza este Evangelio en cuatro pasos</h2>
+   <p>La forma más antigua de rezar con la Biblia. Unos diez minutos: lees, meditas, le hablas a Dios y te quedas en silencio con él.</p>
+   <div class="diario" id="diario"><span class="eyebrow">Mi diario del Evangelio</span><ul id="diarioList"></ul><p class="diario-empty" id="diarioEmpty">Lo que escribas en el paso «Orar» se guardará aquí, junto a su Evangelio. Solo lo ves tú.</p></div></div>
+  <div class="lec" id="lec" data-day="{w["date"]}" data-title="{E(w["title"])}" data-ref="{E(w["refL"])}">
+   <ol class="lec-tabs" role="tablist"><li><button role="tab" data-i="0" aria-selected="true"><b>1</b>Leer</button></li><li><button role="tab" data-i="1"><b>2</b>Meditar</button></li><li><button role="tab" data-i="2"><b>3</b>Orar</button></li><li><button role="tab" data-i="3"><b>4</b>Contemplar</button></li></ol>
+   <div class="lec-p" data-p="0"><h3>Lee despacio</h3><p class="lec-help">Léelo dos veces, sin prisa. Fíjate en la palabra o la frase que más te llame la atención.</p><blockquote>«{E(w["ex"])}»<cite>{E(w["refL"])}</cite></blockquote><p>{E(w["sum"])}</p></div>
+   <div class="lec-p" data-p="1" hidden><h3>Medita</h3><p class="lec-help">¿Qué te dice a ti este Evangelio hoy? Deja que estas preguntas te acompañen.</p><ol class="qs">{qs}</ol><div class="lec-timer" data-secs="120"><button class="btn btn-ghost sm" type="button" data-timer>Dos minutos de silencio</button><span class="lec-t" aria-live="polite"></span></div></div>
+   <div class="lec-p" data-p="2" hidden><h3>Ora</h3><p class="lec-help">Háblale a Dios con tus palabras. Da gracias, pide, cuéntale lo que has descubierto.</p><label class="sr" for="lecNote">Lo que le dices a Dios</label><textarea id="lecNote" rows="4" placeholder="Señor, hoy…"></textarea><p class="lec-saved" id="lecSaved" aria-live="polite"></p></div>
+   <div class="lec-p" data-p="3" hidden><h3>Contempla</h3><p class="lec-help">Quédate un minuto en silencio, sin decir nada. Solo estar con Dios, que te mira con cariño.</p><div class="lec-breath" aria-hidden="true"><i></i></div><div class="lec-timer" data-secs="60"><button class="btn btn-accent sm" type="button" data-timer>Empezar el minuto de silencio</button><span class="lec-t" aria-live="polite"></span></div></div>
+   <div class="lec-nav"><button class="btn btn-ghost sm" type="button" data-lprev disabled>Anterior</button><button class="btn btn-accent sm" type="button" data-lnext>Siguiente paso</button></div>
+  </div></div></section>'''
 def gld(w, path): return {"@context": "https://schema.org", "@type": "PodcastEpisode", "name": f'{w["title"]} · Rezo del {w["n"]} de {w["mes"]} de {w["date"][:4]}', "datePublished": w["date"], "inLanguage": "es", "description": w["sum"], "url": canon(path), "partOfSeries": {"@type": "PodcastSeries", "name": "Rezo Diario", "url": SITE}, **({"associatedMedia": {"@type": "MediaObject", "contentUrl": w["audio"] if w["audio"].startswith("http") else SITE + w["audio"].lstrip("/")}} if w.get("audio") else {})}
 for w in DAYS:
     m, cr = gospel_main("../", w, "dia"); path = f'evangelio/{w["date"]}.html'

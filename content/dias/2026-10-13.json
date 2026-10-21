@@ -30,5 +30,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 11, 37-41"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/13-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/13-10-2026/",
+  "ctx": {
+    "donde": "En casa de un fariseo que invita a Jesús a comer",
+    "quien": "A su anfitrión fariseo",
+    "palabra": "Fariseo",
+    "significa": "Los fariseos eran judíos muy cumplidores de la Ley. Jesús no critica que cumplan, sino que olviden el amor y la misericordia."
+  },
+  "proposito": "Haz hoy un gesto de bondad que nadie vea.",
+  "familia": {
+    "x": "Jesús explica que lo importante no es estar limpio por fuera, sino tener el corazón bueno por dentro.",
+    "q": "¿Qué podemos limpiar hoy de nuestro corazón: un enfado, una mentira, una envidia?"
+  }
 }

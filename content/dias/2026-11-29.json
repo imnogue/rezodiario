@@ -147,5 +147,16 @@
       "titulo": "Lectura del santo evangelio según san Marcos 13, 33-37"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/29-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/29-11-2026/",
+  "ctx": {
+    "donde": "En el monte de los Olivos, frente al templo",
+    "quien": "A sus discípulos",
+    "palabra": "Adviento",
+    "significa": "Significa «venida». Son las cuatro semanas en que nos preparamos para la Navidad y para la venida de Jesús."
+  },
+  "proposito": "Pon hoy la corona de Adviento o una vela en casa y reza juntos.",
+  "familia": {
+    "x": "Hoy empieza el Adviento. Jesús nos pide estar atentos, como el portero que espera a su señor.",
+    "q": "¿Cómo vamos a prepararnos para la Navidad?"
+  }
 }

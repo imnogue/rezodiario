@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 14, 1-6"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/30-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/30-10-2026/",
+  "ctx": {
+    "donde": "En casa de un jefe de los fariseos, un sábado",
+    "quien": "A los maestros de la ley y fariseos",
+    "palabra": "Hidropesía",
+    "significa": "Una enfermedad que hinchaba el cuerpo por acumulación de líquidos."
+  },
+  "proposito": "Hoy, que una norma o la prisa no te impidan ayudar a alguien.",
+  "familia": {
+    "x": "Jesús cura a un enfermo aunque sea sábado, porque hacer el bien siempre está permitido.",
+    "q": "¿Hay momentos en que nos cuesta ayudar?"
+  }
 }

@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 9, 35 — 10, 1. 5a. 6-8"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/05-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/05-12-2026/",
+  "ctx": {
+    "donde": "Por las ciudades y aldeas de Galilea",
+    "quien": "A los Doce",
+    "palabra": "Mies",
+    "significa": "Es el campo de trigo listo para cosechar. Jesús lo usa para hablar de la gente que espera a Dios."
+  },
+  "proposito": "Reza hoy por los sacerdotes y misioneros.",
+  "familia": {
+    "x": "Jesús ve a la gente cansada y triste, y envía a sus amigos a ayudarles y a anunciarles a Dios.",
+    "q": "¿Cómo podemos ayudar a quien está cansado?"
+  }
 }

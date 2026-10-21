@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 12, 35-38"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/20-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/20-10-2026/",
+  "ctx": {
+    "donde": "Camino de Jerusalén",
+    "quien": "A sus discípulos",
+    "palabra": "Velar",
+    "significa": "Es estar despierto y atento, como quien espera a alguien querido. No por miedo, sino por amor."
+  },
+  "proposito": "Hoy, apaga el móvil diez minutos y haz silencio con Dios.",
+  "familia": {
+    "x": "Jesús pide estar atentos como quien espera a un amigo en casa con la luz encendida.",
+    "q": "¿Cómo podemos tener «la lámpara encendida» para Jesús?"
+  }
 }

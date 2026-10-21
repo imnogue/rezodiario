@@ -158,5 +158,16 @@
       "titulo": "Lectura del santo Evangelio según San Mateo 9, 27-31"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/04-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/04-12-2026/",
+  "ctx": {
+    "donde": "En Cafarnaún",
+    "quien": "A dos ciegos que le siguen",
+    "palabra": "Fe",
+    "significa": "No es solo creer cosas sobre Dios: es fiarse de Jesús y ponerse en sus manos."
+  },
+  "proposito": "Confía hoy a Dios algo que te parece imposible.",
+  "familia": {
+    "x": "Dos ciegos piden ayuda a Jesús. Él les pregunta si creen que puede curarlos, y como dicen que sí, los cura.",
+    "q": "¿En qué necesitamos confiar más en Jesús?"
+  }
 }

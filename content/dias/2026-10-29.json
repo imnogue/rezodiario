@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 13, 31-35"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/29-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/29-10-2026/",
+  "ctx": {
+    "donde": "Camino de Jerusalén",
+    "quien": "A unos fariseos que le avisan de Herodes",
+    "palabra": "Herodes",
+    "significa": "Herodes Antipas gobernaba Galilea. Había mandado matar a Juan el Bautista."
+  },
+  "proposito": "Reza hoy por una ciudad o un lugar que esté sufriendo.",
+  "familia": {
+    "x": "Jesús dice que quiere proteger a la gente como una gallina protege a sus pollitos bajo sus alas.",
+    "q": "¿Cómo nos protege Dios?"
+  }
 }

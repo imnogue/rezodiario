@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 10, 21-24"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/01-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/01-12-2026/",
+  "ctx": {
+    "donde": "Al volver los setenta y dos discípulos de su misión",
+    "quien": "Al Padre y a sus discípulos",
+    "palabra": "Pequeños",
+    "significa": "Son los sencillos, los que no se creen sabios. A ellos Dios les muestra sus secretos."
+  },
+  "proposito": "Da gracias hoy a Dios por algo pequeño y sencillo.",
+  "familia": {
+    "x": "Jesús está muy contento y da gracias porque Dios se deja conocer por los sencillos.",
+    "q": "¿Qué cosas sencillas nos hacen felices?"
+  }
 }

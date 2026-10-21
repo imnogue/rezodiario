@@ -147,5 +147,16 @@
       "titulo": "Lectura del santo evangelio según san Juan 2, 13-22"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/09-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/09-11-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén, en la Pascua",
+    "quien": "A los vendedores y a los judíos que le piden una señal",
+    "palabra": "Templo",
+    "significa": "Era el lugar santo donde Dios habitaba en medio de su pueblo. Jesús dice que el verdadero templo es él."
+  },
+  "proposito": "Visita hoy una iglesia, aunque sea un momento.",
+  "familia": {
+    "x": "Jesús echa a los que hacían negocios en el templo porque es la casa de su Padre, un lugar para rezar.",
+    "q": "¿Cómo nos comportamos en la iglesia?"
+  }
 }

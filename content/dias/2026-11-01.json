@@ -142,5 +142,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 5, 1-12a"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/01-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/01-11-2026/",
+  "ctx": {
+    "donde": "En un monte junto al lago de Galilea",
+    "quien": "A sus discípulos y a la multitud",
+    "palabra": "Bienaventuranzas",
+    "significa": "Son el retrato de Jesús y el camino de los santos: la felicidad que Dios promete a los sencillos."
+  },
+  "proposito": "Elige una bienaventuranza y vívela hoy.",
+  "familia": {
+    "x": "Jesús dice quiénes son felices de verdad: los sencillos, los que perdonan, los que buscan la paz.",
+    "q": "¿Qué santo conocemos que vivió las bienaventuranzas?"
+  }
 }

@@ -143,5 +143,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 15, 1-10"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/05-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/05-11-2026/",
+  "ctx": {
+    "donde": "Rodeado de publicanos y pecadores",
+    "quien": "A fariseos y maestros de la ley que murmuran",
+    "palabra": "Publicano",
+    "significa": "Recaudador de impuestos para Roma. Eran despreciados por colaborar con el invasor y por quedarse dinero."
+  },
+  "proposito": "Busca hoy a alguien que se ha alejado y hazle saber que le esperas.",
+  "familia": {
+    "x": "Un pastor deja sus ovejas para buscar a una que se ha perdido, y cuando la encuentra hace fiesta.",
+    "q": "¿Alguna vez nos hemos sentido como la oveja perdida?"
+  }
 }

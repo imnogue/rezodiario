@@ -147,5 +147,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 1, 26-38"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/20-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/20-12-2026/",
+  "ctx": {
+    "donde": "En Nazaret",
+    "quien": "A María",
+    "palabra": "Hágase",
+    "significa": "Es el «sí» de María a Dios. En latín, «fiat». Con esa palabra cambió la historia."
+  },
+  "proposito": "Di hoy «sí» a algo que Dios te pide y te cuesta.",
+  "familia": {
+    "x": "El ángel anuncia a María que será la mamá de Jesús, y ella responde: «Hágase».",
+    "q": "¿A qué podemos decir «sí» esta semana?"
+  }
 }

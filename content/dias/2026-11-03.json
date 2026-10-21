@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 14, 15-24"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/03-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/03-11-2026/",
+  "ctx": {
+    "donde": "En casa de un fariseo, durante una comida",
+    "quien": "A un comensal",
+    "palabra": "Banquete",
+    "significa": "En la Biblia es la imagen de la alegría del reino de Dios, donde todos están invitados."
+  },
+  "proposito": "Invita hoy a alguien que suele quedarse fuera.",
+  "familia": {
+    "x": "Un hombre hace una gran fiesta, pero los invitados no quieren ir. Entonces invita a los pobres y a los enfermos.",
+    "q": "¿A quién podemos invitar a nuestra mesa?"
+  }
 }

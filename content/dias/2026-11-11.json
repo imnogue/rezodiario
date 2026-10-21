@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 17, 11-19"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/11-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/11-11-2026/",
+  "ctx": {
+    "donde": "Entre Samaría y Galilea, a la entrada de un pueblo",
+    "quien": "A diez leprosos",
+    "palabra": "Lepra",
+    "significa": "Enfermedad de la piel que obligaba a vivir apartado de todos. Los leprosos no podían acercarse a nadie."
+  },
+  "proposito": "Da gracias hoy a tres personas por algo concreto.",
+  "familia": {
+    "x": "Jesús cura a diez enfermos, pero solo uno vuelve a darle las gracias.",
+    "q": "¿Por qué cosas damos gracias hoy?"
+  }
 }

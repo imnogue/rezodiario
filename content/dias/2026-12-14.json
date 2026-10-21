@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 21, 23-27"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/14-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/14-12-2026/",
+  "ctx": {
+    "donde": "En el templo de Jerusalén",
+    "quien": "A los sumos sacerdotes y ancianos",
+    "palabra": "Autoridad",
+    "significa": "Es el derecho a enseñar y actuar. Los jefes del templo no reconocen que la de Jesús viene de Dios."
+  },
+  "proposito": "Reconoce hoy un error sin buscar excusas.",
+  "familia": {
+    "x": "Los jefes preguntan a Jesús quién le ha dado permiso para enseñar, y él les responde con otra pregunta.",
+    "q": "¿Por qué nos cuesta reconocer cuando nos equivocamos?"
+  }
 }

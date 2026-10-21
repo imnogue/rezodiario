@@ -142,5 +142,16 @@
       "titulo": "Lectura del santo evangelio según san Juan 1, 1-18"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/25-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/25-12-2026/",
+  "ctx": {
+    "donde": "El prólogo del Evangelio de Juan",
+    "quien": "A todos los que creen",
+    "palabra": "Verbo",
+    "significa": "Significa «Palabra». Jesús es la Palabra de Dios que se hace persona y viene a vivir con nosotros."
+  },
+  "proposito": "Da hoy un abrazo y una palabra buena a cada persona de tu casa.",
+  "familia": {
+    "x": "Hoy es Navidad: Dios se hace un bebé para estar cerca de nosotros.",
+    "q": "¿Qué es lo más bonito de la Navidad para cada uno?"
+  }
 }

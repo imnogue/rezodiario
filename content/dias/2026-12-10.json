@@ -128,5 +128,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 11, 11-15"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/10-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/10-12-2026/",
+  "ctx": {
+    "donde": "En Galilea",
+    "quien": "A la gente",
+    "palabra": "Profeta",
+    "significa": "Es quien habla en nombre de Dios. Juan el Bautista es el último y el más grande de ellos."
+  },
+  "proposito": "Sé hoy «pequeño»: haz un servicio humilde.",
+  "familia": {
+    "x": "Jesús dice que Juan el Bautista es muy grande, pero que el más pequeño en el reino de Dios es aún mayor.",
+    "q": "¿Por qué los pequeños son tan importantes para Dios?"
+  }
 }

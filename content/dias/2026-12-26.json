@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 10, 17-22"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/26-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/26-12-2026/",
+  "ctx": {
+    "donde": "En la misión de los Doce",
+    "quien": "A sus apóstoles",
+    "palabra": "Mártir",
+    "significa": "Significa «testigo». Esteban, que se celebra hoy, fue el primer mártir: dio la vida por Jesús."
+  },
+  "proposito": "Reza hoy por los cristianos perseguidos.",
+  "familia": {
+    "x": "Jesús avisa a sus amigos de que habrá dificultades, pero promete que el Espíritu Santo les ayudará.",
+    "q": "¿Conocemos a alguien que sea valiente por su fe?"
+  }
 }

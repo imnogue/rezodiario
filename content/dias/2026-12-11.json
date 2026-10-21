@@ -138,5 +138,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 11, 16-19"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/11-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/11-12-2026/",
+  "ctx": {
+    "donde": "En Galilea",
+    "quien": "A la gente",
+    "palabra": "Generación",
+    "significa": "Jesús se refiere a la gente de su tiempo, que no aceptaba ni la austeridad de Juan ni la cercanía de Jesús."
+  },
+  "proposito": "Escucha hoy a alguien sin juzgarle.",
+  "familia": {
+    "x": "Jesús compara a la gente con niños que nunca están contentos con nada.",
+    "q": "¿Cuándo nos quejamos de todo?"
+  }
 }

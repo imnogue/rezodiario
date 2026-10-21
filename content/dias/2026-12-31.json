@@ -143,5 +143,16 @@
       "titulo": "Comienzo del santo evangelio según san Juan 1, 1-18"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/31-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/31-12-2026/",
+  "ctx": {
+    "donde": "El prólogo del Evangelio de Juan",
+    "quien": "A todos los que reciben la luz",
+    "palabra": "Gracia",
+    "significa": "Es el regalo gratuito del amor de Dios. «Gracia tras gracia» quiere decir regalo tras regalo."
+  },
+  "proposito": "Haz hoy una lista de las gracias del año y dáselas a Dios.",
+  "familia": {
+    "x": "Último día del año: damos gracias a Dios por todo lo bueno que nos ha regalado.",
+    "q": "¿Qué ha sido lo mejor de este año para cada uno?"
+  }
 }

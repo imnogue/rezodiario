@@ -128,5 +128,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 13, 18-21"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/27-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/27-10-2026/",
+  "ctx": {
+    "donde": "En una sinagoga, camino de Jerusalén",
+    "quien": "A la gente",
+    "palabra": "Reino de Dios",
+    "significa": "Es Dios reinando con su amor en el mundo y en los corazones. Empieza muy pequeño, pero crece."
+  },
+  "proposito": "Haz hoy un gesto pequeño de bien: también cuenta.",
+  "familia": {
+    "x": "El reino de Dios es como una semilla muy pequeña que se hace un árbol enorme donde anidan los pájaros.",
+    "q": "¿Qué cosas pequeñas podemos hacer para que crezca el amor?"
+  }
 }

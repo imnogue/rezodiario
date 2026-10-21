@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 17, 10-13"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/12-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/12-12-2026/",
+  "ctx": {
+    "donde": "Bajando del monte de la Transfiguración",
+    "quien": "A Pedro, Santiago y Juan",
+    "palabra": "Elías",
+    "significa": "Gran profeta del Antiguo Testamento. Se esperaba que volviera antes del Mesías."
+  },
+  "proposito": "Fíjate hoy en alguien que te acerca a Dios y dale las gracias.",
+  "familia": {
+    "x": "Los discípulos preguntan por el profeta Elías, y Jesús les explica que Juan el Bautista vino como él.",
+    "q": "¿Quién nos ha ayudado a conocer a Jesús?"
+  }
 }

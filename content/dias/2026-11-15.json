@@ -152,5 +152,16 @@
       "titulo": "Lectura del santo evangelio según san Mateo 25, 14-30"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/15-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/15-11-2026/",
+  "ctx": {
+    "donde": "En el monte de los Olivos",
+    "quien": "A sus discípulos",
+    "palabra": "Talento",
+    "significa": "Era una cantidad enorme de dinero, el salario de muchos años. De aquí viene nuestra palabra «talento»."
+  },
+  "proposito": "Usa hoy un talento tuyo para servir a alguien.",
+  "familia": {
+    "x": "Un señor deja dinero a sus criados. Dos lo hacen crecer y uno lo esconde por miedo. Dios nos da dones para usarlos.",
+    "q": "¿Qué talento tiene cada uno de nosotros?"
+  }
 }

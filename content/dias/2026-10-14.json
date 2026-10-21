@@ -30,5 +30,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 11, 42-46"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/14-10-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/14-10-2026/",
+  "ctx": {
+    "donde": "Durante una comida con fariseos y maestros de la ley",
+    "quien": "A fariseos y maestros de la ley",
+    "palabra": "Diezmo",
+    "significa": "Era dar a Dios la décima parte de lo que se cosechaba. Algunos lo calculaban hasta con las hierbas de cocina."
+  },
+  "proposito": "Revisa una norma que exiges a otros y que tú no cumples.",
+  "familia": {
+    "x": "Jesús dice que no sirve de nada cumplir muchas normas pequeñas si nos olvidamos de ser justos y de querer a Dios.",
+    "q": "¿Hay algo que pedimos a los demás y nosotros no hacemos?"
+  }
 }

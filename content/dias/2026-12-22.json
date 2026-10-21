@@ -133,5 +133,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 1,46-56"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/22-12-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/22-12-2026/",
+  "ctx": {
+    "donde": "En casa de Isabel",
+    "quien": "A Dios, en presencia de Isabel",
+    "palabra": "Magníficat",
+    "significa": "Es el canto de alegría de María. Su nombre viene de la primera palabra en latín: «proclama»."
+  },
+  "proposito": "Haz hoy una lista de tres cosas por las que dar gracias.",
+  "familia": {
+    "x": "María canta de alegría porque Dios se ha fijado en ella y ayuda a los pequeños.",
+    "q": "¿Por qué cosas damos gracias a Dios este año?"
+  }
 }

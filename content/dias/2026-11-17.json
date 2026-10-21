@@ -148,5 +148,16 @@
       "titulo": "Lectura del santo evangelio según san Lucas 19, 1-10"
     }
   ],
-  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/17-11-2026/"
+  "lecturasUrl": "https://www.dominicos.org/predicacion/evangelio-del-dia/17-11-2026/",
+  "ctx": {
+    "donde": "En Jericó",
+    "quien": "A Zaqueo y a la gente que murmura",
+    "palabra": "Jefe de publicanos",
+    "significa": "Zaqueo controlaba a otros recaudadores. Era rico y despreciado por todos."
+  },
+  "proposito": "Repara hoy un daño que hayas hecho, aunque sea pequeño.",
+  "familia": {
+    "x": "Zaqueo era bajito y se sube a un árbol para ver a Jesús. Jesús lo llama y va a su casa, y Zaqueo cambia.",
+    "q": "¿Qué haría Jesús si viniera hoy a nuestra casa?"
+  }
 }
