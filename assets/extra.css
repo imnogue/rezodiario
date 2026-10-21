@@ -701,3 +701,28 @@ article .exam-cta{margin:24px 0 0}
 .mis-c li small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
 .mis-go{margin-top:auto;align-self:flex-start}
 @media(max-width:760px){.mis-g{grid-template-columns:1fr}.mis-c{padding:18px 16px 16px}.mis-c h3{font-size:23px}.mis-c li{padding-left:38px}}
+/* Evangelio: columna lateral útil */
+.gos{align-items:start}
+.gos-side{position:sticky;top:84px;display:grid;gap:14px}
+.gs-box{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:18px 20px;font-family:var(--f-ui)}
+.gs-box h3{margin:6px 0 6px;font-family:var(--f-display);font-weight:400;font-size:21px;line-height:1.25}
+.gs-box p{margin:0;font-size:14.5px;line-height:1.55;color:var(--muted)}
+.gs-box p+p{margin-top:8px}
+.gs-box a:not(.btn){font-weight:700;font-size:14px;color:var(--accent);text-decoration:none}
+.gs-listen{background:linear-gradient(150deg,#1D4A3C,#10261D);border:0;color:#EEF2EC}
+.gs-listen .eyebrow{color:#D6B266}.gs-listen p{color:#B9C7BE}.gs-listen h3{color:#fff}
+.gs-listen .btn{margin-top:14px;display:inline-flex;align-items:center;gap:8px}
+.gs-listen .btn svg{width:16px;height:16px}
+.gs-color{display:flex;align-items:center;gap:8px;color:var(--ink)!important;font-weight:600}
+.gs-color .dot{width:11px;height:11px;border-radius:50%;background:var(--lc);box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.gs-saint a{display:inline-block;margin-top:8px}
+.gs-days{list-style:none;margin:8px 0 10px;padding:0}
+.gs-days li a{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line);color:var(--ink)!important;font-weight:400!important}
+.gs-days li:first-child a{border-top:0}
+.gs-days .dot{flex:0 0 auto;width:9px;height:9px;border-radius:50%;margin-top:6px}
+.gs-days b{display:block;font-size:13px;text-transform:capitalize}
+.gs-days small{display:block;font-size:13.5px;color:var(--muted);line-height:1.35}
+@media (hover:hover){.gs-days li a:hover small{color:var(--accent)}}
+.gs-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+@media(max-width:860px){.gos-side{position:static;grid-template-columns:1fr 1fr}.gs-listen,.gs-share{grid-column:1/-1}}
+@media(max-width:520px){.gos-side{grid-template-columns:1fr}}

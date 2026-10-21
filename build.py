@@ -512,7 +512,19 @@ def gospel_main(r, w, kind):
     title = {"hoy": "Evangelio de hoy", "manana": "Evangelio de mañana"}.get(kind, f'Evangelio del {w["wd"].lower()} {w["n"]} de {w["mes"]}')
     cr = [("Inicio", "index.html"), ("Evangelio", "evangelio/index.html")] + ([("Hoy", "evangelio-de-hoy.html")] if kind == "hoy" else [("Mañana", "evangelio-de-manana.html")] if kind == "manana" else [(f'{w["n"]} de {w["mes"]}', f'evangelio/{w["date"]}.html')])
     ex = EXTRA.get(w["date"])
-    box = f'<aside class="panel saint reveal"><span class="eyebrow">Santo del día</span><h3>{E(s["name"])}</h3><p style="opacity:.85">{E(s["bio"][0])}</p><a class="btn btn-ghost sm" href="{r}santos/{s["slug"]}.html">Vida y oración</a></aside>' if s else f'<aside class="panel saint reveal"><span class="eyebrow">Liturgia</span><h3>{E(ex["t"] if ex else w["lit"])}</h3><p style="opacity:.85">{E(ex["x"] if ex else "Rezo Diario sigue el calendario litúrgico de la Iglesia católica.")}</p></aside>'
+    lit_t = E(ex["t"] if ex else w["lit"]); lit_x = E(ex["x"] if ex else "")
+    santo = (f'<div class="gs-box gs-saint"><span class="eyebrow">Santo del día</span><h3>{E(s["name"])}</h3><p>{E(s["short"])}</p><a href="{r}santos/{s["slug"]}.html">Su vida y su oración ›</a></div>') if s else ""
+    i0 = DAYS.index(w); near = [x for x in DAYS[max(0, i0 - 2):i0 + 4] if x is not w][:5]
+    semana = '<div class="gs-box"><span class="eyebrow">Otros días</span><ul class="gs-days">' + "".join(f'<li><a href="{r}evangelio/{x["date"]}.html"><i class="dot" style="background:{LITC[x["color"]][0]}"></i><span><b>{x["wd"][:3]} {x["n"]} {x["mes"][:3]}</b><small>{E(x["title"])}</small></span></a></li>' for x in near) + f'</ul><a class="gs-more" href="{r}calendario-liturgico.html">Ver el calendario ›</a></div>'
+    share_url = canon(f'evangelio/{w["date"]}.html'); wa = "https://wa.me/?text=" + html.escape((f'Evangelio del {w["n"]} de {w["mes"]}: «{w["ex"]}» ' + share_url).replace(" ", "%20"))
+    box = f'''<aside class="gos-side">
+   <div class="gs-box gs-listen"><span class="eyebrow">Reza este Evangelio</span><h3>{E(w["title"])}</h3><p>Evangelio, reflexión y silencio guiado{(" · " + w["duracion"] + " min") if w.get("duracion") else ""}</p>
+    <a class="btn btn-gold sm" href="#player" data-gs-play>{ICON["play"]}<span>Escuchar ahora</span></a></div>
+   <div class="gs-box gs-lit" style="--lc:{LITC[w["color"]][0]}"><span class="eyebrow">Liturgia del día</span><h3>{lit_t}</h3><p class="gs-color"><i class="dot"></i>{E(LITC[w["color"]][1])}</p>{f"<p>{lit_x}</p>" if lit_x else ""}</div>
+   {santo}
+   {semana}
+   <div class="gs-box gs-share"><span class="eyebrow">Compártelo</span><p>Envía el Evangelio de hoy a alguien que lo necesite.</p><div class="gs-acts"><a class="btn btn-ghost sm" href="{wa}" target="_blank" rel="noopener">WhatsApp</a><button class="btn btn-ghost sm" type="button" data-copy="{E(share_url)}">Copiar enlace</button></div></div>
+  </aside>'''
     i = DAYS.index(w); prv = DAYS[i - 1] if i else None; nxt = DAYS[i + 1] if i < len(DAYS) - 1 else None
     pn = f'<div class="hero-cta" style="margin-top:18px">' + (f'<a class="btn btn-ghost sm" href="{r}evangelio/{prv["date"]}.html">‹ {prv["n"]} de {prv["mes"]}</a>' if prv else "") + (f'<a class="btn btn-ghost sm" href="{r}evangelio/{nxt["date"]}.html">{nxt["n"]} de {nxt["mes"]} ›</a>' if nxt else "") + '</div>'
     m = f'''<section class="hero" aria-labelledby="h1"><canvas id="rose" aria-hidden="true"></canvas><div class="wrap hero-in">
