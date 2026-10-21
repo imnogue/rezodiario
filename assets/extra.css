@@ -684,3 +684,20 @@ article .exam-cta{margin:24px 0 0}
 .ros-center{width:40%}
 .ros-center b{font-size:clamp(30px,3.4vw,42px)}
 .ros-center small{white-space:nowrap;font-size:10.5px;letter-spacing:.14em}
+/* Misterios de cada día: tarjetas */
+.mis-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.mis-c{position:relative;display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:22px 22px 20px;overflow:hidden}
+.mis-c::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--mc)}
+.mis-c.is-hoy{border-color:color-mix(in srgb,var(--mc) 60%,var(--line));box-shadow:0 18px 44px -30px color-mix(in srgb,var(--mc) 80%,transparent)}
+.mis-c header{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px}
+.mis-c h3{flex-basis:100%;margin:4px 0 0;font-family:var(--f-display);font-weight:400;font-size:26px}
+.mis-days{font:700 11.5px var(--f-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--mc)}
+.mis-hoy{font:800 11px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--mc);color:#fff}
+.mis-c ol{list-style:none;counter-reset:mi;margin:0 0 18px;padding:0;display:grid;gap:2px}
+.mis-c li{counter-increment:mi;position:relative;padding:9px 0 9px 42px;border-top:1px solid var(--line);font-family:var(--f-ui)}
+.mis-c li:first-child{border-top:0}
+.mis-c li::before{content:counter(mi);position:absolute;left:0;top:9px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 13px var(--f-ui);color:var(--mc);background:color-mix(in srgb,var(--mc) 14%,transparent)}
+.mis-c li b{display:block;font-size:15px;font-weight:600;line-height:1.35}
+.mis-c li small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.mis-go{margin-top:auto;align-self:flex-start}
+@media(max-width:760px){.mis-g{grid-template-columns:1fr}.mis-c{padding:18px 16px 16px}.mis-c h3{font-size:23px}.mis-c li{padding-left:38px}}

@@ -688,6 +688,13 @@ ros_faq = [("¿Qué misterios se rezan hoy?", f'Hoy, {TW["wd"].lower()}, se reza
  ("¿Cómo se reza el Rosario paso a paso?", "Se empieza con la señal de la cruz y el Credo, un Padre Nuestro, tres Avemarías y un Gloria. Después, en cada uno de los cinco misterios, se anuncia el misterio y se reza un Padre Nuestro, diez Avemarías y un Gloria. Se termina con la Salve."),
  ("¿Quién añadió los misterios luminosos?", "San Juan Pablo II, en la carta Rosarium Virginis Mariae, en el año 2002.")]
 rows = "".join(f'<tr><th scope="row">{S["name"]}</th><td>{S["days"]}</td><td>{"<br>".join(E(m[0]) for m in S["list"])}</td></tr>' for S in SETS.values())
+SET_STYLE = {"gozosos": ("#A8812D", "Alegría"), "dolorosos": ("#7A4E8C", "Pasión"), "gloriosos": ("#C08A1E", "Gloria"), "luminosos": ("#4F86B5", "Luz")}
+mis_cards = '<div class="mis-g">' + "".join(
+    f'<article class="mis-c reveal{" is-hoy" if k == TW["set"] else ""}" style="--mc:{SET_STYLE.get(k, ("#2C5D47", ""))[0]}">'
+    f'<header><span class="mis-days">{E(S["days"])}</span>{"<span class=mis-hoy>Hoy</span>" if k == TW["set"] else ""}<h3>Misterios {E(S["name"].lower())}</h3></header>'
+    '<ol>' + "".join(f'<li><b>{E(m[0])}</b><small>{E(m[1])} · Fruto: {E(m[2][0].lower() + m[2][1:])}</small></li>' for m in S["list"]) + '</ol>'
+    f'<a class="btn {"btn-accent" if k == TW["set"] else "btn-ghost"} sm mis-go" href="#rosario" data-set="{k}">Rezar los misterios {E(S["name"].lower())}</a></article>'
+    for k, S in SETS.items()) + '</div>'
 ros = f'''<section class="phero"><div class="wrap">{crumbs_html(r, [("Inicio", "index.html"), ("Santo Rosario", "rosario.html")])}<div class="eyebrow" style="margin-top:22px">Santo Rosario guiado</div><h1>Misterios del Rosario de hoy: {setname(TW)}</h1><p class="lead">Reza el Rosario cuenta a cuenta. Cada misterio con su cita del Evangelio y su fruto. Pulsa una cuenta, desliza la tarjeta o usa las flechas del teclado.</p></div></section>
 <section class="sec band" id="rosario"><div class="wrap"><div class="ros ros2">
   <aside class="ros-side">
@@ -705,10 +712,10 @@ ros = f'''<section class="phero"><div class="wrap">{crumbs_html(r, [("Inicio", "
       <div class="rp-ctl"><button class="rp-ic" id="rPrev" aria-label="Paso anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button><button class="rp-ic rp-next" id="rNext" aria-label="Paso siguiente"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button><button class="rp-ic" id="rReset" aria-label="Empezar de nuevo" title="Empezar de nuevo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button></div>
     </div>
   </div></div></div></section>
+{sec(head2("Cada día de la semana", "Qué misterios se rezan cada día", "Cuatro grupos de cinco misterios que recorren la vida de Jesús y de María. Toca uno para rezarlo ahora.") + mis_cards)}
 {sec(head2("Guía", "Cómo rezar el Rosario paso a paso") + f"""<div class="art"><div class="prose">
  <p>El Rosario es una oración sencilla que recorre la vida de Jesús de la mano de María. Se reza con un rosario de 59 cuentas, aunque basta con los dedos.</p>
  <ol class="qs"><li>Haz la señal de la cruz y reza el Credo con el crucifijo.</li><li>En la primera cuenta grande, reza un Padre Nuestro.</li><li>En las tres cuentas pequeñas, tres Avemarías: por la fe, la esperanza y la caridad. Después, un Gloria.</li><li>Anuncia el primer misterio y reza un Padre Nuestro en la cuenta grande.</li><li>Reza diez Avemarías mientras contemplas el misterio, y termina con el Gloria y el «Oh Jesús mío».</li><li>Repite con los cinco misterios y termina con la Salve.</li></ol>
- <h2>Qué misterios se rezan cada día</h2><div class="tablewrap"><table class="mt"><thead><tr><th>Misterios</th><th>Días</th><th>Los cinco misterios</th></tr></thead><tbody>{rows}</tbody></table></div>
  <h2>Preguntas frecuentes</h2>{faq_html(ros_faq)}</div>
  <aside class="side"><div class="box"><h3>Oraciones a la Virgen</h3><ul class="links"><li><a href="oraciones/acordaos.html">Acordaos<small>1 min</small></a></li><li><a href="oraciones/bajo-tu-amparo.html">Bajo tu amparo<small>1 min</small></a></li><li><a href="oraciones/el-angelus.html">El Ángelus<small>3 min</small></a></li></ul></div>
  <div class="box candle-cta"><h3>Ofrece tu Rosario</h3><p>Enciende una vela por la intención por la que rezas hoy.</p><a class="btn btn-flame sm" href="muro-de-intenciones.html">Encender una vela</a></div></aside></div>""")}'''

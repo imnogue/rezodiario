@@ -504,6 +504,7 @@ if($("#beads")){
  $("#step").addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key===" "){e.preventDefault();next()}if(e.key==="ArrowLeft"){e.preventDefault();go(R.cur-1)}});
  swipe($("#step"),d=>d>0?next():go(R.cur-1));
  draw();setSet(todaySet);
+ $$(".mis-go[data-set]").forEach(a=>a.onclick=e=>{e.preventDefault();stopVoz();setSet(a.dataset.set);$("#rosario").scrollIntoView({behavior:"smooth",block:"start"})});
 }
 
 /* ---------- Vía Crucis ---------- */
