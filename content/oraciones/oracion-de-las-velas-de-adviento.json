@@ -8,5 +8,22 @@
   "when": "Cada domingo de Adviento, al encender la vela que corresponde.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-de-las-velas-de-adviento.mp3?v=1792338048",
   "duracion": 43.4,
-  "intro": "Cada domingo de Adviento se enciende una vela de la corona: la de la esperanza, la de la paz, la de la alegría y la del amor. Esta oración acompaña ese gesto con unas palabras sencillas.\n\nEs ideal para rezarla en familia, encendiendo la vela que corresponde a cada semana. Los niños pueden ser los encargados de encenderla."
+  "intro": "Cada domingo de Adviento se enciende una vela de la corona: la de la esperanza, la de la paz, la de la alegría y la del amor. Esta oración acompaña ese gesto con unas palabras sencillas.\n\nEs ideal para rezarla en familia, encendiendo la vela que corresponde a cada semana. Los niños pueden ser los encargados de encenderla.",
+  "seoT": "Oración para encender las velas de Adviento 2026 (cada domingo)",
+  "seoD": "Oración para encender cada vela de la corona de Adviento: esperanza, paz, alegría y amor. Fechas 2026: 29 de noviembre, 6, 13 y 20 de diciembre.",
+  "dato": {
+    "k": "Velas de Adviento 2026",
+    "t": "1.ª vela: 29 nov · 2.ª: 6 dic · 3.ª (rosa): 13 dic · 4.ª: 20 dic",
+    "x": "Cada domingo se enciende una vela más, hasta que las cuatro arden juntas la última semana antes de Navidad."
+  },
+  "faq": [
+    {
+      "q": "¿Qué día se enciende cada vela de Adviento en 2026?",
+      "a": "Primera vela: domingo 29 de noviembre. Segunda: domingo 6 de diciembre. Tercera, la rosa: domingo 13 de diciembre. Cuarta: domingo 20 de diciembre."
+    },
+    {
+      "q": "¿Qué significa cada vela de la corona?",
+      "a": "Tradicionalmente, la esperanza, la paz, la alegría (la vela rosa) y el amor. En algunos lugares se dedican también a los profetas, Belén, los pastores y los ángeles."
+    }
+  ]
 }

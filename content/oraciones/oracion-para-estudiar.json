@@ -8,5 +8,17 @@
   "when": "Al empezar cada sesión de estudio, antes de abrir los apuntes.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-para-estudiar.mp3?v=1792338119",
   "duracion": 41.5,
-  "intro": "Concentrarse para estudiar no siempre es fácil, con tantas distracciones. Esta oración pide al Espíritu Santo claridad, memoria y constancia al empezar cada sesión de estudio.\n\nRézala antes de abrir los apuntes. Puede ayudar dejar el móvil lejos y empezar con unos segundos de silencio."
+  "intro": "Concentrarse para estudiar no siempre es fácil, con tantas distracciones. Esta oración pide al Espíritu Santo claridad, memoria y constancia al empezar cada sesión de estudio.\n\nRézala antes de abrir los apuntes. Puede ayudar dejar el móvil lejos y empezar con unos segundos de silencio.",
+  "seoT": "Oración para estudiar y concentrarse (de santo Tomás de Aquino)",
+  "seoD": "Oración para estudiar con concentración, inspirada en santo Tomás de Aquino: pide claridad, memoria y constancia. Con audio, para antes de estudiar o de un examen.",
+  "faq": [
+    {
+      "q": "¿Qué oración rezar antes de estudiar?",
+      "a": "La oración de santo Tomás de Aquino antes del estudio es la más conocida. Esta versión sencilla pide al Señor luz para entender, memoria y constancia. Rézala al empezar cada sesión."
+    },
+    {
+      "q": "¿A qué santo se reza para estudiar?",
+      "a": "A santo Tomás de Aquino, patrón de los estudiantes, y también a san José de Cupertino, al que se encomiendan muchos antes de los exámenes."
+    }
+  ]
 }

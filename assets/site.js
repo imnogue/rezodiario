@@ -563,9 +563,9 @@ if($("#vc")){
 const nv=$("#novena");
 if(nv){
  const N=RD.novenas.find(x=>x.slug===nv.dataset.slug);const key="rd-nov-"+N.slug;
- const start=new Date(N.start+"T00:00:00");const dayN=Math.floor((new Date(ISO+"T00:00:00")-start)/864e5);
+ const start=new Date(N.start+"T00:00:00");const dayN=Math.round((new Date(ISO+"T00:00:00")-start)/864e5);
  const todayK=dayN>=0&&dayN<9?dayN:-1;let cur=todayK>=0?todayK:0;
- const fmt=k=>{const d=new Date(start.getTime()+k*864e5);return d.getDate()+" "+["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"][d.getMonth()]};
+ const fmt=k=>{const d=new Date(start);d.setDate(d.getDate()+k);return d.getDate()+" "+["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"][d.getMonth()]};
  function render(){const done=store.get(key,[]);
   $("#novDays").innerHTML=N.days.map((d,k)=>`<button class="nov-day${k===cur?" on":""}${done.includes(k)?" done":""}${k===todayK?" today":""}" data-k="${k}" aria-label="Día ${k+1}"><small>Día</small><b>${k+1}</b><small>${k===todayK?"hoy":fmt(k)}</small></button>`).join("");
   $$("#novDays .nov-day").forEach(b=>b.onclick=()=>{cur=+b.dataset.k;render()});

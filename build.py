@@ -428,7 +428,7 @@ for k, c in CATS.items():
     ps = [p for p in PRAYERS if p["cat"] == k]; path = f"oraciones/tema-{k}.html"
     cr = [("Inicio", "index.html"), ("Oraciones", "oraciones/index.html"), (c["name"], path)]
     m = phero(r, cr, f'{len(ps)} oraciones', c["h1"], c["intro"]) + sec(f'<div class="grid">{"".join(card(p, r) for p in ps)}</div>') + (sec('<div class="prose" style="max-width:760px">' + "".join(f"<p>{E(x)}</p>" for x in c["texto"].split(chr(10)+chr(10))) + '</div>') if c.get("texto") else "") + sec(head2("Preguntas frecuentes", "Dudas sobre estas oraciones") + faq_html(FAQ_CAT[k]), "sec band") + sec(head2("Otros temas", "Sigue explorando") + tiles(r))
-    page(path, f'{c["h1"]} | Rezo Diario', c["intro"][:158], m, "prayers", [crumbs_ld(cr), faq_ld(FAQ_CAT[k]), {"@context": "https://schema.org", "@type": "CollectionPage", "name": c["h1"], "url": canon(path), "inLanguage": "es"}])
+    page(path, f'{c.get("seoT") or c["h1"]} | Rezo Diario', c.get("seoD") or c["intro"][:158], m, "prayers", [crumbs_ld(cr), faq_ld(FAQ_CAT[k]), {"@context": "https://schema.org", "@type": "CollectionPage", "name": c["h1"], "url": canon(path), "inLanguage": "es"}])
 
 def pplayer(p, r):
     """Reproductor de una oración con audio: anterior · play/pausa · siguiente, barra y tiempo."""
@@ -459,6 +459,11 @@ EXAM_SLUGS = {"oracion-de-la-noche": ("Antes de dormir, mira tu día", "El exame
               "oracion-para-perdonar": ("El perdón también se recibe", "En la confesión Dios te perdona a ti. Prepárala con un examen de conciencia sencillo."),
               "oracion-para-perdonarme-a-mi-mismo": ("Deja tu carga en manos de Dios", "La confesión es el lugar donde Dios te dice: «Estás perdonado». Prepárala sin miedo."),
               "acto-de-contricion": ("Prepara tu confesión", "Antes del acto de contrición viene el examen: preguntas sencillas y los pasos para confesarte.")}
+def dato_box(d):
+    """Respuesta directa arriba de la página (la pregunta exacta que busca la gente)."""
+    if not d: return ""
+    return f'<div class="dato reveal"><small>{E(d["k"])}</small><b>{E(d["t"])}</b>{"<span>" + E(d["x"]) + "</span>" if d.get("x") else ""}</div>'
+def extra_faq(o): return [(f["q"], f["a"]) for f in o.get("faq", [])]
 def exam_box(r, t, d): return f'<a class="exam-cta reveal" href="{r}examen-de-conciencia.html"><small>Examen de conciencia</small><b>{E(t)}</b><span>{E(d)}</span><em>Prepararme ›</em></a>'
 for p in PRAYERS:
     c = CATS[p["cat"]]; path = f'oraciones/{p["slug"]}.html'
@@ -466,6 +471,7 @@ for p in PRAYERS:
     rel = [q for q in PRAYERS if q["cat"] == p["cat"] and q["slug"] != p["slug"]][:5]
     wa = "https://wa.me/?text=" + html.escape((p["t"] + " " + canon(path)).replace(" ", "%20"))
     faq = [(f'¿Cuándo rezar la {p["t"][0].lower() + p["t"][1:]}?' if p["t"].startswith("Oración") else f'¿Cuándo rezar «{p["t"]}»?', p["when"])] + FAQ_CAT[p["cat"]]
+    faq = extra_faq(p) + faq
     m = phero(r, cr, f'<span style="display:inline-flex;align-items:center;gap:8px"><i class="dot" style="background:{c["color"]}"></i>{c["name"]} · {p["min"]} min</span>', E(p["t"]), E(p["when"])) + f'''
 <section class="sec"><div class="wrap art">
   <div style="min-width:0">
@@ -473,6 +479,7 @@ for p in PRAYERS:
       {pplayer(p, r)}<div class="pray-acts">{"" if p.get("audio") else '<button class="btn btn-accent sm" id="btnSpeak">Escuchar</button>'}<button class="btn btn-ghost sm" id="btnCopy">Copiar oración</button><button class="btn btn-ghost sm" id="btnFav" aria-pressed="false">Guardar</button><button class="btn btn-ghost sm" id="btnAmen" type="button">Amén</button><a class="btn btn-ghost sm" href="{wa}" target="_blank" rel="noopener">Compartir por WhatsApp</a></div>
     </article>
     <div class="prose">
+      {dato_box(p.get("dato"))}
       {"<h2>Sobre esta oración</h2>" + "".join(f"<p>{E(x)}</p>" for x in p["intro"].split(chr(10)+chr(10))) if p.get("intro") else ""}
       <h2>Cuándo rezarla</h2><p>{E(p["when"])}</p>
       <h2>Cómo rezarla</h2><p>Busca un momento de calma, respira despacio y lee la oración sin prisa, en voz baja o en silencio. Si una frase te toca, quédate en ella. Puedes pulsar «Escuchar» para que la web la lea por ti, o guardarla en favoritos para tenerla a mano.</p>
@@ -488,8 +495,8 @@ for p in PRAYERS:
     <div class="box"><h3>Rezo de hoy</h3><p style="margin:0 0 12px;color:var(--muted);font-size:14.5px">{E(TW["title"])} · {TW["ref"]}</p><a class="btn btn-accent sm" href="{r}evangelio-de-hoy.html">Escuchar el rezo</a></div>
   </aside>
 </div></section>'''
-    page(path, f'{p["t"]} | Rezo Diario', desc_for(p), m, "prayers",
-     [crumbs_ld(cr), faq_ld(faq), {"@context": "https://schema.org", "@type": "Article", "headline": p["t"], "description": desc_for(p), "inLanguage": "es", "articleSection": c["name"], "author": ORG, "publisher": ORG, "datePublished": "2026-10-17", "dateModified": TODAY, "mainEntityOfPage": canon(path), "keywords": p["k"]}],
+    page(path, f'{p.get("seoT") or p["t"]} | Rezo Diario', p.get("seoD") or desc_for(p), m, "prayers",
+     [crumbs_ld(cr), faq_ld(faq), {"@context": "https://schema.org", "@type": "Article", "headline": p["t"], "description": p.get("seoD") or desc_for(p), "inLanguage": "es", "articleSection": c["name"], "author": ORG, "publisher": ORG, "datePublished": "2026-10-17", "dateModified": TODAY, "mainEntityOfPage": canon(path), "keywords": p["k"]}],
      body_attrs=f' data-slug="{p["slug"]}"', og_type="article", og=(f'Oración · {c["name"]}', p["t"], f'Texto completo y audio · {p["min"]} min'))
 
 # ================= EVANGELIO =================
@@ -790,7 +797,8 @@ page("novenas/index.html", "Novenas católicas para rezar día a día | Rezo Dia
 for n in NOVENAS:
     path = f'novenas/{n["slug"]}.html'; cr = [("Inicio", "index.html"), ("Novenas", "novenas/index.html"), (n["t"], path)]
     faq = [(f'¿Cuándo empieza la {n["t"][0].lower() + n["t"][1:]}?', n["intro"]), ("¿Qué pasa si me salto un día?", "No pasa nada. Retómala donde la dejaste. Lo importante es la constancia y la confianza, no la perfección.")]
-    m = phero(r, cr, f'Fiesta: {n["feast"]}', E(n["t"]), E(n["intro"])) + f'''<section class="sec"><div class="wrap art"><div style="min-width:0" id="novena" data-slug="{n["slug"]}">
+    faq = extra_faq(n) + faq
+    m = phero(r, cr, f'Fiesta: {n["feast"]}', E(n["t"]), E(n["intro"])) + f'''<section class="sec"><div class="wrap art"><div style="min-width:0" id="novena" data-slug="{n["slug"]}">{dato_box(n.get("dato"))}
   <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap"><svg class="ring" id="novRing" viewBox="0 0 84 84" aria-hidden="true"></svg><div><b style="font-size:17px" id="novStatus"></b><p class="hint" style="margin:4px 0 0">Tu progreso se guarda en este dispositivo y en tu cuenta.</p></div></div>
   <div class="nov-days" id="novDays"></div>
   <article class="pray"><span class="eyebrow">Oración inicial</span><p class="pray-text" style="margin:10px 0 22px;font-size:18px">{E(n["open"])}</p>
@@ -800,22 +808,26 @@ for n in NOVENAS:
   <div class="prose"><h2>Los nueve días</h2><ol class="qs">{"".join(f"<li><strong>{E(d['t'])}.</strong> {E(d['x'])}</li>" for d in n["days"])}</ol><h2>Preguntas frecuentes</h2>{faq_html(faq)}</div></div>
   <aside class="side"><div class="box candle-cta"><h3>Enciende una vela</h3><p>Acompaña tu novena con una vela en el muro de intenciones.</p><a class="btn btn-flame sm" href="../muro-de-intenciones.html{"#difuntos" if "difuntos" in n["slug"] else ""}">Encender una vela</a></div>
    <div class="box"><h3>Otras novenas</h3><ul class="links">{"".join(f'<li><a href="{o["slug"]}.html">{E(o["t"])}<small>{fdate(o["start"])}</small></a></li>' for o in NOVENAS if o is not n)}</ul></div></aside></div></section>'''
-    page(path, f'{n["t"]}: los 9 días para rezar | Rezo Diario', f'{n["t"]} completa: oración inicial, meditación de cada día y oración final. {n["intro"]}'[:160], m, "novenas", [crumbs_ld(cr), faq_ld(faq)])
+    page(path, f'{n.get("seoT") or n["t"] + ": los 9 días para rezar"} | Rezo Diario', n.get("seoD") or f'{n["t"]} completa: oración inicial, meditación de cada día y oración final. {n["intro"]}'[:160], m, "novenas", [crumbs_ld(cr), faq_ld(faq)])
 
 # ================= ADVIENTO, RETO Y NAVIDAD =================
 r = ""
 adv_days = [w for w in DAYS if "2026-11-29" <= w["date"] <= "2026-12-24"]
 adv_faq = [("¿Cuándo empieza el Adviento en 2026?", "El domingo 29 de noviembre de 2026. Dura cuatro semanas, hasta la Nochebuena del 24 de diciembre."),
+ ("¿Cuándo empieza la corona de Adviento en 2026?", "La corona de Adviento se empieza a encender el domingo 29 de noviembre de 2026, primer domingo de Adviento. Ese día se bendice y se enciende la primera vela."),
+ ("¿Cuándo se bendice la corona de Adviento en 2026?", "El domingo 29 de noviembre de 2026, o la tarde del sábado 28. Se bendice en la misa de ese domingo o en casa, en familia, antes de encender la primera vela."),
+ ("¿Qué día se enciende cada vela en 2026?", "Primera vela: domingo 29 de noviembre. Segunda: domingo 6 de diciembre. Tercera (la rosa): domingo 13 de diciembre. Cuarta: domingo 20 de diciembre."),
  ("¿Qué significan las velas de la corona de Adviento?", "Cada domingo se enciende una vela más. Tradicionalmente representan la esperanza, la paz, la alegría (la vela rosa del tercer domingo) y el amor."),
  ("¿Qué color se usa en Adviento?", "El morado, color de la espera y la conversión. El tercer domingo, llamado Gaudete, puede usarse el rosa."),
  ("¿Cuándo es la Inmaculada?", "El 8 de diciembre. En España es fiesta de precepto y patrona del país.")]
 sundays = [w for w in adv_days if w["wd"] == "Domingo"]
 adv = phero(r, [("Inicio", "index.html"), ("Adviento 2026", "adviento.html")], "Del 29 de noviembre al 24 de diciembre", "Adviento 2026: prepara tu corazón para la Navidad", "Cuatro semanas para esperar a Jesús que viene: la corona y sus velas, el Evangelio de cada día, un reto diario y las novenas de la Inmaculada, Guadalupe y Navidad.") + \
+ sec('<div class="dato reveal" style="margin:0"><small>Corona de Adviento 2026</small><b>Se bendice y se enciende la primera vela el domingo 29 de noviembre de 2026.</b><span>2.ª vela: 6 de diciembre · 3.ª vela (rosa): 13 de diciembre · 4.ª vela: 20 de diciembre. <a href="oraciones/bendicion-corona-de-adviento.html">Bendición de la corona</a> · <a href="oraciones/oracion-de-las-velas-de-adviento.html">Oración de las velas</a></span></div>') + \
  sec(head2("Los cuatro domingos", "La corona de Adviento, semana a semana") + '<div class="pagegrid">' + "".join(f'<a class="saintcard reveal" href="evangelio/{w["date"]}.html"><small>{w["n"]} de {w["mes"]} · vela {i + 1}</small><b>{E(w["lit"])}</b><span>{w["ref"]}: {E(w["title"])}</span></a>' for i, w in enumerate(sundays)) + '</div>') + \
  sec(head2("Para rezar", "Oraciones y devociones de Adviento") + '<div class="duo">' + f'<a class="feature reveal" href="retos/adviento.html" style="background:linear-gradient(150deg,#5B3D7A,#24163A)"><small>26 días</small><b>Reto de Adviento</b><p>Un gesto pequeño cada día para preparar la Navidad.</p></a><a class="feature reveal" href="novenas/novena-a-la-inmaculada.html" style="background:linear-gradient(150deg,#3C6FA8,#16304F)"><small>29 nov – 7 dic</small><b>Novena a la Inmaculada</b><p>Nueve días con María antes de su fiesta.</p></a><a class="feature reveal" href="novenas/novena-de-navidad.html" style="background:linear-gradient(150deg,#A8812D,#4A3510)"><small>16 – 24 dic</small><b>Novena de Navidad</b><p>Nueve días en familia antes de Nochebuena.</p></a><a class="feature reveal" href="examen-de-conciencia.html" style="background:linear-gradient(150deg,#2C5D47,#10261D)"><small>Antes del 24 dic</small><b>Confesarse por Navidad</b><p>Examen de conciencia y cómo confesarse paso a paso.</p></a></div>' +
   '<ul class="links" style="margin-top:22px">' + "".join(f'<li><a href="oraciones/{s}.html">{E(PBY[s]["t"])}<small>{PBY[s]["min"]} min</small></a></li>' for s in ["bendicion-corona-de-adviento", "oracion-de-las-velas-de-adviento", "oracion-de-adviento", "oracion-a-la-inmaculada", "oracion-a-la-virgen-de-guadalupe", "bendicion-del-belen"]) + '</ul>', "sec band") + \
  sec(head2("Día a día", "El Evangelio de cada día de Adviento") + '<ul class="links" style="columns:2 300px;column-gap:40px;display:block">' + "".join(f'<li style="break-inside:avoid"><a href="evangelio/{w["date"]}.html">{w["wd"]} {w["n"]} de {w["mes"]}: {E(w["title"])}<small>{w["ref"]}</small></a></li>' for w in adv_days) + '</ul>') + sec(head2("Preguntas frecuentes", "Sobre el Adviento") + faq_html(adv_faq), "sec band")
-page("adviento.html", "Adviento 2026: fechas, corona, oraciones y reto diario | Rezo Diario", "El Adviento 2026 empieza el 29 de noviembre. Corona de Adviento y sus velas, Evangelio de cada día, reto diario, novena a la Inmaculada y novena de Navidad.", adv, "", [crumbs_ld([("Inicio", "index.html"), ("Adviento 2026", "adviento.html")]), faq_ld(adv_faq)])
+page("adviento.html", "Adviento 2026: cuándo empieza, corona y oraciones | Rezo Diario", "El Adviento y la corona de Adviento 2026 empiezan el domingo 29 de noviembre. Fechas de cada vela, bendición de la corona, oraciones, Evangelio diario y reto.", adv, "", [crumbs_ld([("Inicio", "index.html"), ("Adviento 2026", "adviento.html")]), faq_ld(adv_faq)])
 
 nav_faq = [("¿Cuándo termina el tiempo de Navidad?", "Con la fiesta del Bautismo del Señor, el domingo siguiente a la Epifanía (6 de enero)."), ("¿Qué se celebra el 28 de diciembre?", "Los Santos Inocentes, los niños de Belén que Herodes mandó matar para acabar con Jesús."), ("¿Qué se celebra el 1 de enero?", "La solemnidad de Santa María, Madre de Dios, y la Jornada Mundial de la Paz.")]
 xmas = [w for w in DAYS if w["date"] >= "2026-12-24"]

@@ -804,3 +804,10 @@ article .exam-cta{margin:24px 0 0}
 .don-cta p{font-size:14px;color:var(--muted);margin:0 0 14px}
 .don-ic{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent);font-size:18px;margin-bottom:10px}
 .don-nota{display:block;margin-top:10px;font-size:12px}
+
+/* Respuesta directa (la pregunta que busca la gente) */
+.dato{display:grid;gap:6px;padding:18px 20px;border-radius:18px;background:color-mix(in srgb,var(--accent) 8%,var(--surface));border:1px solid color-mix(in srgb,var(--accent) 28%,var(--line));border-left:4px solid var(--accent);margin:0 0 26px}
+.dato small{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.dato b{font-size:18px;line-height:1.35;color:var(--ink)}
+.dato span{font-size:14.5px;color:var(--muted);line-height:1.55}
+.dato a{color:var(--accent);font-weight:700}

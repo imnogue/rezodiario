@@ -8,5 +8,30 @@
   "when": "El primer domingo de Adviento, en familia, antes de encender la primera vela.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/bendicion-corona-de-adviento.mp3?v=1792337872",
   "duracion": 37.0,
-  "intro": "La corona de Adviento, con sus cuatro velas, ayuda a vivir en casa la espera de la Navidad. Cada domingo se enciende una vela más, hasta que las cuatro iluminan la última semana antes de Nochebuena.\n\nEsta bendición se reza el primer domingo de Adviento, antes de encender la primera vela. Puede dirigirla el padre o la madre, o uno de los niños, y es un bonito momento familiar para empezar este tiempo con sentido."
+  "intro": "La corona de Adviento, con sus cuatro velas, ayuda a vivir en casa la espera de la Navidad. Cada domingo se enciende una vela más, hasta que las cuatro iluminan la última semana antes de Nochebuena.\n\nEsta bendición se reza el primer domingo de Adviento, antes de encender la primera vela. Puede dirigirla el padre o la madre, o uno de los niños, y es un bonito momento familiar para empezar este tiempo con sentido.",
+  "seoT": "Bendición de la corona de Adviento 2026: cuándo y cómo",
+  "seoD": "La corona de Adviento 2026 se bendice el domingo 29 de noviembre. Oración de bendición con audio, fechas de cada vela y cómo hacerlo en familia.",
+  "dato": {
+    "k": "Adviento 2026",
+    "t": "La corona de Adviento se bendice el domingo 29 de noviembre de 2026.",
+    "x": "Puede bendecirse en la misa de ese domingo (o la del sábado 28 por la tarde) o en casa, en familia, justo antes de encender la primera vela."
+  },
+  "faq": [
+    {
+      "q": "¿Cuándo se bendice la corona de Adviento en 2026?",
+      "a": "El domingo 29 de noviembre de 2026, primer domingo de Adviento. También puede hacerse la tarde del sábado 28, en la misa de vísperas."
+    },
+    {
+      "q": "¿Cuándo empieza la corona de Adviento en 2026?",
+      "a": "El domingo 29 de noviembre de 2026 se enciende la primera vela. Después se enciende una vela más cada domingo: 6, 13 y 20 de diciembre."
+    },
+    {
+      "q": "¿Quién puede bendecir la corona de Adviento?",
+      "a": "El sacerdote en la misa, o en casa el padre, la madre o cualquier miembro de la familia. No hace falta ser sacerdote para rezar esta bendición en familia."
+    },
+    {
+      "q": "¿Qué vela se enciende primero?",
+      "a": "Una vela morada el primer domingo. El tercer domingo (Gaudete, 13 de diciembre de 2026) se enciende la vela rosa, que simboliza la alegría porque la Navidad está cerca."
+    }
+  ]
 }
