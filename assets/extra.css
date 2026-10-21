@@ -776,3 +776,9 @@ article .exam-cta{margin:24px 0 0}
 .diario-empty{margin:8px 0 0;font-size:14px;color:var(--muted)}
 @media(max-width:900px){.lec-wrap{grid-template-columns:1fr}.lec-intro{display:contents}.lec-intro>*:not(.diario){order:0}.lec{order:1}.lec-wrap .diario{order:2;margin-top:0}.lec-wrap .diario.is-empty{display:none}}
 @media(max-width:520px){.lec{padding:16px}.lec-tabs{gap:5px}.lec-tabs button{flex-direction:column;gap:4px;padding:8px 2px;font-size:12.5px}}
+.momento+.momento{margin-top:10px}
+.momento-ev i{background:color-mix(in srgb,var(--gold) 22%,transparent);color:var(--gold)}
+.momento-ev small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.momento-ev span{min-width:0}
+.momento{box-sizing:border-box;width:100%;min-width:0}
+@media(max-width:600px){.momento-ev small{white-space:normal}}

@@ -371,6 +371,7 @@ home_main = f'''<section class="hero" aria-labelledby="h1">
       <p class="lead">Escucha el Evangelio de hoy con música y silencio, reza el Rosario cuenta a cuenta, enciende una vela por tu intención y encuentra una oración para cada momento.</p>
       <div class="hero-cta"><button class="btn btn-gold" id="ctaPlay">{ICON["play"]}<span data-i18n="listen">Escuchar el rezo de hoy</span></button><a class="btn btn-ghost" href="muro-de-intenciones.html" data-i18n="light">Enciende una vela</a></div>
       <a class="momento" id="momento" href="oraciones/oracion-de-la-manana.html" hidden><i aria-hidden="true"></i><span><b></b><small></small></span><em aria-hidden="true">›</em></a>
+      <a class="momento momento-ev" href="evangelio-de-hoy.html#lectio"><i aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C10 5 7 4.5 4 5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5c-3-.5-6 0-8 1.5z"/><path d="M12 6.5V19"/></svg></i><span><b>Profundiza en el Evangelio de hoy</b><small>«{E(TW["title"])}» · Lectio Divina, propósito y tu diario</small></span><em aria-hidden="true">›</em></a>
       <div class="facts"><div><small>Evangelio</small><span id="fRef">{TW["ref"]}</span></div><div><small>Rosario de hoy</small><span id="fSet">Misterios {setname(TW)}</span></div><div><small>Duración</small><span id="fDur">5 min</span></div></div>
     </div>
     {player()}
