@@ -628,7 +628,7 @@ article .exam-cta{margin:24px 0 0}
 .rp-top b{font:700 15px var(--f-ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rp-top .hint{font-variant-numeric:tabular-nums;font-size:13px;flex:0 0 auto}
 .rp-bar{position:relative;height:8px;border-radius:8px;background:var(--surface-2);margin:9px 0 7px;cursor:pointer;overflow:hidden}
-.rp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 70%,var(--gold)));border-radius:8px;transition:width .4s}
+.rp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 70%,var(--gold)));border-radius:8px;transition:width .25s linear}
 .rp-bar:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .rp-sub{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rp-ctl{display:flex;gap:6px;flex:0 0 auto}
@@ -664,3 +664,23 @@ article .exam-cta{margin:24px 0 0}
  .ros-ring .ros-svg{max-width:140px}
  #rosario{padding-bottom:110px}
 }
+/* Rosario: diseño de cuentas con volumen */
+.ros-svg .cord{stroke:color-mix(in srgb,var(--gold) 45%,var(--line));stroke-width:1.1;stroke-dasharray:1.4 2.6;stroke-linecap:round}
+.ros-svg .bead.s{fill:url(#rgS);stroke:color-mix(in srgb,var(--ink) 18%,transparent);stroke-width:.6}
+.ros-svg .bead.b{fill:url(#rgB);stroke:none}
+.ros-svg .bead.done{fill:url(#rgD)}
+.ros-svg .bead.act{fill:url(#rgA);stroke:none;filter:url(#rgGlow);animation:none}
+.ros-svg circle.bead.act{r:7.6}
+.ros-svg circle.bead.b.act{r:9.5}
+.ros-svg .medal .medal-o{fill:url(#rgX)}
+.ros-svg .medal .medal-i{fill:none;stroke:color-mix(in srgb,var(--gold) 40%,#000);stroke-width:.8;opacity:.6}
+.ros-svg .medal-t{font:700 10px var(--f-display);fill:color-mix(in srgb,var(--gold) 30%,#000)}
+.ros-svg .medal.act .medal-o{filter:url(#rgGlow)}
+.ros-svg .medal.done .medal-o{fill:url(#rgD)}
+.ros-svg .cross{fill:url(#rgX);stroke:none}
+.ros-svg .cross.done{fill:url(#rgD)}
+.ros-svg .cross.act{fill:url(#rgA);filter:url(#rgGlow)}
+.ros-svg .bead{transition:r .25s,fill .3s}
+.ros-center{width:40%}
+.ros-center b{font-size:clamp(30px,3.4vw,42px)}
+.ros-center small{white-space:nowrap;font-size:10.5px;letter-spacing:.14em}

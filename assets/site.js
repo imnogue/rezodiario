@@ -441,14 +441,24 @@ if($("#beads")){
    st.push({b:m<4?"b"+m:"medal",k:`Misterio ${m+1} de 5`,t:"Gloria y Oh Jesús mío",x:T.GL+"\n\n"+T.OJ})});
   st.push({b:"medal",k:"Final",t:"Salve",x:T.SALVE+"\n\n"+T.SENAL});return st}
  function draw(){const svg=$("#beads"),NS="http://www.w3.org/2000/svg",cx=160,cy=150,Rr=126;svg.innerHTML="";
-  const add=(tag,at)=>{const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);svg.appendChild(e);return e};
-  add("circle",{cx,cy,r:Rr,class:"cord"});add("path",{d:`M${cx} ${cy+Rr} V ${cy+Rr+150}`,class:"cord"});
+  const add=(tag,at,par=svg)=>{const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);par.appendChild(e);return e};
+  const defs=add("defs",{});
+  const grad=(id,stops)=>{const g=add("radialGradient",{id,cx:"35%",cy:"30%",r:"75%"},defs);stops.forEach(([o,c])=>add("stop",{offset:o,style:"stop-color:"+c},g))};
+  grad("rgS",[["0","color-mix(in srgb,var(--ink) 22%,var(--bg))"],["1","color-mix(in srgb,var(--ink) 6%,var(--bg))"]]);
+  grad("rgB",[["0","color-mix(in srgb,var(--gold) 55%,#fff)"],["1","color-mix(in srgb,var(--gold) 85%,#000)"]]);
+  grad("rgD",[["0","color-mix(in srgb,var(--accent) 60%,#fff)"],["1","var(--accent)"]]);
+  grad("rgA",[["0","#FFF3CF"],["1","var(--gold)"]]);
+  const lg=add("linearGradient",{id:"rgX",x1:"0",y1:"0",x2:"1",y2:"1"},defs);add("stop",{offset:"0",style:"stop-color:color-mix(in srgb,var(--gold) 60%,#fff)"},lg);add("stop",{offset:"1",style:"stop-color:color-mix(in srgb,var(--gold) 80%,#000)"},lg);
+  const f=add("filter",{id:"rgGlow",x:"-1",y:"-1",width:"3",height:"3"},defs);add("feGaussianBlur",{stdDeviation:"3.2",result:"b"},f);const mg=add("feMerge",{},f);add("feMergeNode",{in:"b"},mg);add("feMergeNode",{in:"SourceGraphic"},mg);
+  add("circle",{cx,cy,r:Rr,class:"cord"});add("path",{d:`M${cx} ${cy+Rr+10} V ${cy+Rr+140}`,class:"cord"});
   const seq=[];for(let m=0;m<5;m++){for(let j=0;j<10;j++)seq.push({t:"s",id:`d${m}-${j}`});if(m<4)seq.push({t:"b",id:"b"+m})}
-  const w=s=>s.t==="b"?1.8:1;let pos=[0];for(let i=1;i<seq.length;i++)pos.push(pos[i-1]+(w(seq[i-1])+w(seq[i]))/2);const tot=pos[pos.length-1],a0=101,a1=439;
-  seq.forEach((s,i)=>{const a=(a0+(a1-a0)*pos[i]/tot)*Math.PI/180;add("circle",{cx:(cx+Rr*Math.cos(a)).toFixed(1),cy:(cy+Rr*Math.sin(a)).toFixed(1),r:s.t==="b"?8:5.3,class:"bead "+s.t,"data-b":s.id})});
-  add("path",{d:`M${cx} ${cy+Rr-9} l9 9 -9 11 -9 -11z`,class:"bead b","data-b":"medal"});
-  [["p4",cy+Rr+40,"b"],["p3",cy+Rr+60,"s"],["p2",cy+Rr+77,"s"],["p1",cy+Rr+94,"s"],["p0",cy+Rr+120,"b"]].forEach(([id,y,t])=>add("circle",{cx,cy:y,r:t==="b"?8:5.3,class:"bead "+t,"data-b":id}));
-  const y=cy+Rr+142;add("path",{d:`M${cx-4} ${y} h8 v14 h12 v8 h-12 v26 h-8 v-26 h-12 v-8 h12z`,class:"cross bead","data-b":"cross",style:"stroke:none"});
+  const w=s=>s.t==="b"?1.9:1;let pos=[0];for(let i=1;i<seq.length;i++)pos.push(pos[i-1]+(w(seq[i-1])+w(seq[i]))/2);const tot=pos[pos.length-1],a0=102,a1=438;
+  seq.forEach((s,i)=>{const a=(a0+(a1-a0)*pos[i]/tot)*Math.PI/180;add("circle",{cx:(cx+Rr*Math.cos(a)).toFixed(1),cy:(cy+Rr*Math.sin(a)).toFixed(1),r:s.t==="b"?7.6:5,class:"bead "+s.t,"data-b":s.id})});
+  /* medalla central (ovalada, con una M) */
+  const md=add("g",{class:"bead medal","data-b":"medal"});add("ellipse",{cx,cy:cy+Rr+2,rx:11,ry:14,class:"medal-o"},md);add("ellipse",{cx,cy:cy+Rr+2,rx:7.5,ry:10.5,class:"medal-i"},md);
+  add("text",{x:cx,y:cy+Rr+6.5,"text-anchor":"middle",class:"medal-t"},md).textContent="M";
+  [["p4",cy+Rr+40,"b"],["p3",cy+Rr+58,"s"],["p2",cy+Rr+73,"s"],["p1",cy+Rr+88,"s"],["p0",cy+Rr+110,"b"]].forEach(([id,y,t])=>add("circle",{cx,cy:y,r:t==="b"?7.6:5,class:"bead "+t,"data-b":id}));
+  const y=cy+Rr+128;add("path",{d:`M${cx-3.2} ${y} h6.4 v13 h11 v6.4 h-11 v29 h-6.4 v-29 h-11 v-6.4 h11z`,class:"cross bead","data-b":"cross"});
   svg.querySelectorAll("[data-b]").forEach(el=>el.addEventListener("click",()=>{const i=R.steps.findIndex(s=>s.b===el.dataset.b);if(i>=0)go(i)}))}
  const todaySet=(WEEK[todayIdx]||{}).set||"gozosos";
  function setSet(set){R.set=set;R.steps=build(set);R.cur=0;
@@ -462,11 +472,11 @@ if($("#beads")){
   $("#tens").innerHTML=s.dec?Array.from({length:10},(_,j)=>`<i class="${j<s.dec[1]?"done":j===s.dec[1]?"act":""}"></i>`).join(""):"";
   el.classList.remove("in-r","in-l");void el.offsetWidth;el.classList.add(R.dir>0?"in-r":"in-l");
   const doneB=new Set(R.steps.slice(0,R.cur).map(x=>x.b));$$("#beads [data-b]").forEach(b=>{const id=b.dataset.b;b.classList.toggle("act",id===s.b);b.classList.toggle("done",doneB.has(id)&&id!==s.b)});
-  $("#rBar").style.width=(R.cur/(R.steps.length-1)*100)+"%";$("#rCount").textContent=`${R.cur+1} / ${R.steps.length}`;
+  setBar(0);$("#rCount").textContent=`${R.cur+1} / ${R.steps.length}`;
   $("#rpBar").setAttribute("aria-valuenow",R.cur+1);$("#rpBar").setAttribute("aria-valuemax",R.steps.length);
   $("#rpNow").textContent=s.dec?`Ave María ${s.dec[1]+1} de 10`:s.t;
   $("#rPrev").disabled=R.cur===0;$("#rNext").setAttribute("aria-label",R.cur===R.steps.length-1?"Terminar el Rosario":"Paso siguiente");
-  const cn=$("#rcN"),cl=$("#rcL");if(cn){if(s.dec){cn.textContent=s.dec[1]+1;cl.textContent="de 10 · misterio "+(s.dec[0]+1)}else if(s.mi!=null){cn.textContent=(s.mi+1)+"º";cl.textContent="misterio"}else if(s.int!=null){cn.textContent=s.int+1;cl.textContent="de 3 · inicio"}else{cn.textContent=s.k==="Final"?"Salve":"✝";cl.textContent=s.k==="Final"?"final":s.t}}
+  const cn=$("#rcN"),cl=$("#rcL");if(cn){if(s.dec){cn.textContent=s.dec[1]+1;cl.textContent="de 10"}else if(s.mi!=null){cn.textContent=(s.mi+1)+"º";cl.textContent="misterio"}else if(s.int!=null){cn.textContent=s.int+1;cl.textContent="de 3"}else{const SH={"Señal de la cruz y Credo":["✝","Credo"],"Padre Nuestro":["PN","Padre nuestro"],"Gloria":["G","Gloria"],"Gloria y Oh Jesús mío":["G","Gloria"],"Salve":["✦","Salve"]}[s.t]||["✝",""];cn.textContent=SH[0];cl.textContent=SH[1]}}
   const gi=R.steps[R.cur].mi!=null?R.steps[R.cur].mi:(R.steps[R.cur].dec?R.steps[R.cur].dec[0]:null);
   $$("#rChap li").forEach(li=>{const a=+li.dataset.a,b=+li.dataset.b;li.classList.toggle("act",R.cur>=a&&R.cur<=b);li.classList.toggle("done",R.cur>b);const pr=li.querySelector("i");if(pr)pr.style.width=(R.cur<a?0:R.cur>b?100:((R.cur-a+1)/(b-a+1)*100))+"%"});
   if(R.voice)voz(s)}
@@ -474,11 +484,13 @@ if($("#beads")){
  const VZ=RD.VOZROS||{};let rau=null,rq=[],rtok=0;
  function clipsDe(s){const set=R.set,c=[];
   if(s.b==="cross")c.push("SENAL","CREDO");else if(s.mi!=null)c.push("M-"+set+"-"+s.mi,"CONTEMPLA","PN");
-  else if(s.t==="Padre Nuestro")c.push("PN");else if(s.t==="Ave María"){if(s.int!=null)c.push("INT"+s.int);c.push("AM")}
+  else if(s.dec)c.push("AM");else if(s.t==="Padre Nuestro")c.push("PN");else if(s.t==="Ave María"){if(s.int!=null)c.push("INT"+s.int);c.push("AM")}
   else if(s.t==="Gloria")c.push("GL");else if(s.t==="Gloria y Oh Jesús mío")c.push("GL","OJ");else if(s.t==="Salve")c.push("SALVE","SENAL");
   return c}
+ function setBar(frac){const b=$("#rBar");if(b)b.style.width=(Math.min(R.steps.length,R.cur+frac)/R.steps.length*100)+"%"}
  function voz(s){stopVoz();const c=clipsDe(s);if(!c.length||c.some(k=>!VZ[k])){speakText((s.ann?s.ann+" ":"")+s.x);return}
-  const my=++rtok;rq=c.slice();if(!rau)rau=new Audio();
+  const my=++rtok;rq=c.slice();if(!rau)rau=new Audio();const nC=c.length;
+  rau.ontimeupdate=()=>{if(my!==rtok||!rau.duration)return;const done=nC-rq.length-1;setBar((done+rau.currentTime/rau.duration)/nC)};
   const sig=()=>{if(my!==rtok)return;if(!rq.length){setTimeout(()=>{if(my===rtok&&R.voice){if(R.cur<R.steps.length-1)next();else{R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");$("#rVoice").setAttribute("aria-label","Rezar en voz alta");next()}}},900);return}
    rau.src=VZ[rq.shift()];rau.onended=sig;rau.play().catch(()=>{R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");toast("Pulsa ▶ para empezar a rezar con voz.")})};sig()}
  function stopVoz(){rtok++;if(rau)rau.pause();stopSpeech()}
