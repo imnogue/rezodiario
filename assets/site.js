@@ -110,7 +110,7 @@ function speakText(text,onEnd){
  if(!synth){toast("Tu navegador no puede leer en voz alta.");return false}
  if(P.playing)pauseP();
  const my=++sp.token;synth.cancel();const parts=splitS(text.replace(/\n+/g," "));let i=0;
- const next=()=>{if(my!==sp.token)return;if(i>=parts.length){sp.on=false;onEnd&&onEnd();return}const u=new SpeechSynthesisUtterance(parts[i++]);u.lang="es-ES";if(voice)u.voice=voice;u.rate=.92;u.onend=next;u.onerror=()=>{sp.on=false;onEnd&&onEnd()};synth.speak(u)};
+ const next=()=>{if(my!==sp.token)return;if(i>=parts.length){sp.on=false;onEnd&&onEnd();return}const u=new SpeechSynthesisUtterance(parts[i++]);u.lang="es-ES";if(voice)u.voice=voice;u.rate=.92*(sp.rate||1);u.onend=next;u.onerror=()=>{sp.on=false;onEnd&&onEnd()};synth.speak(u)};
  sp.on=true;next();return true;
 }
 function stopSpeech(){sp.token++;if(sp.on&&synth)try{synth.cancel()}catch(e){};sp.on=false}
@@ -488,17 +488,33 @@ if($("#beads")){
   else if(s.t==="Gloria")c.push("GL");else if(s.t==="Gloria y Oh Jesús mío")c.push("GL","OJ");else if(s.t==="Salve")c.push("SALVE","SENAL");
   return c}
  function setBar(frac){const b=$("#rBar");if(b)b.style.width=(Math.min(R.steps.length,R.cur+frac)/R.steps.length*100)+"%"}
- function voz(s){stopVoz();const c=clipsDe(s);if(!c.length||c.some(k=>!VZ[k])){speakText((s.ann?s.ann+" ":"")+s.x);return}
+ function voz(s){stopVoz();const c=clipsDe(s);if(!c.length||c.some(k=>!VZ[k])){sp.rate=RV;speakText((s.ann?s.ann+" ":"")+s.x);return}
   const my=++rtok;rq=c.slice();if(!rau)rau=new Audio();const nC=c.length;
   rau.ontimeupdate=()=>{if(my!==rtok||!rau.duration)return;const done=nC-rq.length-1;setBar((done+rau.currentTime/rau.duration)/nC)};
-  const sig=()=>{if(my!==rtok)return;if(!rq.length){setTimeout(()=>{if(my===rtok&&R.voice){if(R.cur<R.steps.length-1)next();else{R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");$("#rVoice").setAttribute("aria-label","Rezar en voz alta");next()}}},900);return}
-   rau.src=VZ[rq.shift()];rau.onended=sig;rau.play().catch(()=>{R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");toast("Pulsa ▶ para empezar a rezar con voz.")})};sig()}
- function stopVoz(){rtok++;if(rau)rau.pause();stopSpeech()}
+  const sig=()=>{if(my!==rtok)return;if(!rq.length){setTimeout(()=>{if(my===rtok&&R.voice){if(R.cur<R.steps.length-1)next();else{setV(false);ambR(false);next()}}},900);return}
+   rau.src=VZ[rq.shift()];rau.playbackRate=RV;rau.onended=sig;rau.play().catch(()=>{setV(false);ambR(false);toast("Pulsa ▶ para empezar a rezar con voz.")})};sig()}
+ function stopVoz(){rtok++;if(rau)rau.pause();stopSpeech();sp.rate=1}
+ /* Velocidad de la voz y música de fondo (la misma del Evangelio) */
+ const RVS=[1,1.15,1.3,1.5,.85];let RV=+store.get("rd-rvel",1)||1;
+ const rsb=$("#rSpeed");const pintaV=()=>{if(rsb)rsb.textContent=(RV===1?"1":String(RV).replace(".",","))+"×"};pintaV();
+ if(rsb)rsb.onclick=()=>{RV=RVS[(RVS.indexOf(RV)+1)%RVS.length];store.set("rd-rvel",RV);pintaV();if(rau)rau.playbackRate=RV;if(sp.on&&R.voice)render()};
+ async function ambR(on){try{if(P.mus==="no")on=false;if(on)acInit();if(!ac)return;const now=ac.currentTime;master.gain.cancelScheduledValues(now);master.gain.setValueAtTime(master.gain.value,now);
+  if(!on){master.gain.setTargetAtTime(0,now,.4);return}
+  ac.resume();const k=P.mus;
+  if(mcur!==k||!msrc){const buf=await musBuf(k);if(P.mus!==k||!R.voice)return;
+   const old=msrc;if(old){old.__g.gain.setTargetAtTime(0,ac.currentTime,.5);setTimeout(()=>{try{old.stop()}catch(e){}},2500)}
+   const g=ac.createGain();g.gain.value=0;g.connect(master);const so=ac.createBufferSource();so.buffer=buf;so.loop=true;so.connect(g);so.__g=g;so.start(0,Math.random()*buf.duration*.8);g.gain.setTargetAtTime(1,ac.currentTime,.8);msrc=so;mcur=k}
+  master.gain.setTargetAtTime(.7,ac.currentTime,1.2)}catch(e){}}
+ const rmb=$("#rMusic"),rmm=$("#rMusMenu");
+ const pintaM=()=>{const l=$("#rMusicL");if(l)l.textContent=(MUSICAS.find(m=>m[0]===P.mus)||MUSICAS[0])[1];if(rmm)rmm.innerHTML=MUSICAS.map(([k,n])=>`<button role="menuitemradio" aria-checked="${k===P.mus}" data-mus="${k}">${k===P.mus?"✓ ":""}${n}</button>`).join("")};pintaM();
+ if(rmb&&rmm){rmb.onclick=e=>{e.stopPropagation();rmm.hidden=!rmm.hidden;rmb.setAttribute("aria-expanded",String(!rmm.hidden))};
+  rmm.onclick=e=>{const b=e.target.closest("[data-mus]");if(!b)return;P.mus=b.dataset.mus;store.set("rd-musica",P.mus);pintaM();rmm.hidden=true;rmb.setAttribute("aria-expanded","false");if(R.voice)ambR(true)};
+  document.addEventListener("click",e=>{if(!rmm.hidden&&!e.target.closest("#rMusWrap")){rmm.hidden=true;rmb.setAttribute("aria-expanded","false")}})}
  function go(i){if(i<0||i>=R.steps.length)return;R.dir=i>=R.cur?1:-1;R.cur=i;render()}
- function next(){if(R.cur===R.steps.length-1){markDone(ISO);R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");R.cur=0;R.dir=1;render();siguiente("rosario");return}go(R.cur+1)}
+ function next(){if(R.cur===R.steps.length-1){markDone(ISO);setV(false);ambR(false);R.cur=0;R.dir=1;render();siguiente("rosario");return}go(R.cur+1)}
  $("#rNext").onclick=next;$("#rPrev").onclick=()=>go(R.cur-1);$("#rReset").onclick=()=>go(0);
  const vb=$("#rVoice");const setV=v=>{R.voice=v;vb.setAttribute("aria-pressed",v);vb.setAttribute("aria-label",v?"Pausar la voz":"Rezar en voz alta");$("#rpVoz").textContent=v?"Rezando en voz alta · pasa solo a la siguiente oración":"Pulsa ▶ para rezarlo con voz, o avanza a tu ritmo"};
- vb.onclick=()=>{setV(!R.voice);if(R.voice)render();else stopVoz()};
+ vb.onclick=()=>{setV(!R.voice);ambR(R.voice);if(R.voice)render();else stopVoz()};
  const pb=$("#rpBar");const seek=x=>{const r=pb.getBoundingClientRect();go(Math.round(Math.min(1,Math.max(0,(x-r.left)/r.width))*(R.steps.length-1)))};
  pb.addEventListener("click",e=>seek(e.clientX));pb.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();next()}if(e.key==="ArrowLeft"){e.preventDefault();go(R.cur-1)}});
  $("#step").addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key===" "){e.preventDefault();next()}if(e.key==="ArrowLeft"){e.preventDefault();go(R.cur-1)}});
