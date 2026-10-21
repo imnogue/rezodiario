@@ -453,14 +453,22 @@ if($("#beads")){
  const todaySet=(WEEK[todayIdx]||{}).set||"gozosos";
  function setSet(set){R.set=set;R.steps=build(set);R.cur=0;
   $("#sets").innerHTML=Object.entries(T.SETS).map(([k,s])=>`<button class="set${k===set?" on":""}" data-s="${k}"><b>${s.name}${k===todaySet?" · hoy":""}</b><small>${s.days}</small></button>`).join("");
-  $$("#sets .set").forEach(b=>b.onclick=()=>setSet(b.dataset.s));render()}
+  $$("#sets .set").forEach(b=>b.onclick=()=>setSet(b.dataset.s));
+  const S=T.SETS[set],G=[["Inicio","Credo, Padre Nuestro, 3 Ave Marías y Gloria",0,5]];S.list.forEach((my,m)=>{const a=R.steps.findIndex(x=>x.mi===m);G.push([`${m+1}. ${my[0]}`,"Fruto: "+my[2],a,a+11])});G.push(["Final","Salve",R.steps.length-1,R.steps.length-1]);
+  const ch=$("#rChap");if(ch){ch.innerHTML=G.map(([t,d,a,b])=>`<li data-a="${a}" data-b="${b}"><button type="button" data-go="${a}"><b>${esc(t)}</b><small>${esc(d)}</small><span class="rc-bar"><i></i></span></button></li>`).join("");$$("#rChap [data-go]").forEach(x=>x.onclick=()=>go(+x.dataset.go))}
+  render()}
  function render(){const s=R.steps[R.cur],el=$("#step");
   $("#stK").textContent=s.k;$("#stT").textContent=s.t;$("#stX").textContent=s.x;$("#stM").innerHTML=(s.m||[]).map(x=>`<span>${esc(x)}</span>`).join("");
   $("#tens").innerHTML=s.dec?Array.from({length:10},(_,j)=>`<i class="${j<s.dec[1]?"done":j===s.dec[1]?"act":""}"></i>`).join(""):"";
   el.classList.remove("in-r","in-l");void el.offsetWidth;el.classList.add(R.dir>0?"in-r":"in-l");
   const doneB=new Set(R.steps.slice(0,R.cur).map(x=>x.b));$$("#beads [data-b]").forEach(b=>{const id=b.dataset.b;b.classList.toggle("act",id===s.b);b.classList.toggle("done",doneB.has(id)&&id!==s.b)});
-  $("#rBar").style.width=(R.cur/(R.steps.length-1)*100)+"%";$("#rCount").textContent=`Paso ${R.cur+1} de ${R.steps.length}`;
-  $("#rPrev").disabled=R.cur===0;$("#rNext").textContent=R.cur===R.steps.length-1?"Terminar":"Siguiente";
+  $("#rBar").style.width=(R.cur/(R.steps.length-1)*100)+"%";$("#rCount").textContent=`${R.cur+1} / ${R.steps.length}`;
+  $("#rpBar").setAttribute("aria-valuenow",R.cur+1);$("#rpBar").setAttribute("aria-valuemax",R.steps.length);
+  $("#rpNow").textContent=s.dec?`Ave María ${s.dec[1]+1} de 10`:s.t;
+  $("#rPrev").disabled=R.cur===0;$("#rNext").setAttribute("aria-label",R.cur===R.steps.length-1?"Terminar el Rosario":"Paso siguiente");
+  const cn=$("#rcN"),cl=$("#rcL");if(cn){if(s.dec){cn.textContent=s.dec[1]+1;cl.textContent="de 10 · misterio "+(s.dec[0]+1)}else if(s.mi!=null){cn.textContent=(s.mi+1)+"º";cl.textContent="misterio"}else if(s.int!=null){cn.textContent=s.int+1;cl.textContent="de 3 · inicio"}else{cn.textContent=s.k==="Final"?"Salve":"✝";cl.textContent=s.k==="Final"?"final":s.t}}
+  const gi=R.steps[R.cur].mi!=null?R.steps[R.cur].mi:(R.steps[R.cur].dec?R.steps[R.cur].dec[0]:null);
+  $$("#rChap li").forEach(li=>{const a=+li.dataset.a,b=+li.dataset.b;li.classList.toggle("act",R.cur>=a&&R.cur<=b);li.classList.toggle("done",R.cur>b);const pr=li.querySelector("i");if(pr)pr.style.width=(R.cur<a?0:R.cur>b?100:((R.cur-a+1)/(b-a+1)*100))+"%"});
   if(R.voice)voz(s)}
  /* Voz del Rosario: cada oración grabada una sola vez (RD.VOZROS) y encadenada; al terminar pasa sola al siguiente paso */
  const VZ=RD.VOZROS||{};let rau=null,rq=[],rtok=0;
@@ -471,13 +479,16 @@ if($("#beads")){
   return c}
  function voz(s){stopVoz();const c=clipsDe(s);if(!c.length||c.some(k=>!VZ[k])){speakText((s.ann?s.ann+" ":"")+s.x);return}
   const my=++rtok;rq=c.slice();if(!rau)rau=new Audio();
-  const sig=()=>{if(my!==rtok)return;if(!rq.length){setTimeout(()=>{if(my===rtok&&R.voice){if(R.cur<R.steps.length-1)next();else{R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");next()}}},900);return}
-   rau.src=VZ[rq.shift()];rau.onended=sig;rau.play().catch(()=>{R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");toast("Pulsa «Rezar en voz alta» para empezar.")})};sig()}
+  const sig=()=>{if(my!==rtok)return;if(!rq.length){setTimeout(()=>{if(my===rtok&&R.voice){if(R.cur<R.steps.length-1)next();else{R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");$("#rVoice").setAttribute("aria-label","Rezar en voz alta");next()}}},900);return}
+   rau.src=VZ[rq.shift()];rau.onended=sig;rau.play().catch(()=>{R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");toast("Pulsa ▶ para empezar a rezar con voz.")})};sig()}
  function stopVoz(){rtok++;if(rau)rau.pause();stopSpeech()}
  function go(i){if(i<0||i>=R.steps.length)return;R.dir=i>=R.cur?1:-1;R.cur=i;render()}
- function next(){if(R.cur===R.steps.length-1){markDone(ISO);R.voice=false;R.cur=0;R.dir=1;render();siguiente("rosario");return}go(R.cur+1)}
+ function next(){if(R.cur===R.steps.length-1){markDone(ISO);R.voice=false;$("#rVoice").setAttribute("aria-pressed","false");R.cur=0;R.dir=1;render();siguiente("rosario");return}go(R.cur+1)}
  $("#rNext").onclick=next;$("#rPrev").onclick=()=>go(R.cur-1);$("#rReset").onclick=()=>go(0);
- $("#rVoice").onclick=e=>{R.voice=!R.voice;e.currentTarget.setAttribute("aria-pressed",R.voice);e.currentTarget.textContent=R.voice?"Pausar la voz":"Rezar en voz alta";if(R.voice)render();else stopVoz()};
+ const vb=$("#rVoice");const setV=v=>{R.voice=v;vb.setAttribute("aria-pressed",v);vb.setAttribute("aria-label",v?"Pausar la voz":"Rezar en voz alta");$("#rpVoz").textContent=v?"Rezando en voz alta · pasa solo a la siguiente oración":"Pulsa ▶ para rezarlo con voz, o avanza a tu ritmo"};
+ vb.onclick=()=>{setV(!R.voice);if(R.voice)render();else stopVoz()};
+ const pb=$("#rpBar");const seek=x=>{const r=pb.getBoundingClientRect();go(Math.round(Math.min(1,Math.max(0,(x-r.left)/r.width))*(R.steps.length-1)))};
+ pb.addEventListener("click",e=>seek(e.clientX));pb.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();next()}if(e.key==="ArrowLeft"){e.preventDefault();go(R.cur-1)}});
  $("#step").addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key===" "){e.preventDefault();next()}if(e.key==="ArrowLeft"){e.preventDefault();go(R.cur-1)}});
  swipe($("#step"),d=>d>0?next():go(R.cur-1));
  draw();setSet(todaySet);

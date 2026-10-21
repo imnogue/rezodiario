@@ -689,12 +689,21 @@ ros_faq = [("¿Qué misterios se rezan hoy?", f'Hoy, {TW["wd"].lower()}, se reza
  ("¿Quién añadió los misterios luminosos?", "San Juan Pablo II, en la carta Rosarium Virginis Mariae, en el año 2002.")]
 rows = "".join(f'<tr><th scope="row">{S["name"]}</th><td>{S["days"]}</td><td>{"<br>".join(E(m[0]) for m in S["list"])}</td></tr>' for S in SETS.values())
 ros = f'''<section class="phero"><div class="wrap">{crumbs_html(r, [("Inicio", "index.html"), ("Santo Rosario", "rosario.html")])}<div class="eyebrow" style="margin-top:22px">Santo Rosario guiado</div><h1>Misterios del Rosario de hoy: {setname(TW)}</h1><p class="lead">Reza el Rosario cuenta a cuenta. Cada misterio con su cita del Evangelio y su fruto. Pulsa una cuenta, desliza la tarjeta o usa las flechas del teclado.</p></div></section>
-<section class="sec band" id="rosario"><div class="wrap"><div class="ros">
-  <svg class="ros-svg" id="beads" viewBox="0 0 320 470" role="img" aria-label="Rosario con la cuenta actual resaltada"></svg>
+<section class="sec band" id="rosario"><div class="wrap"><div class="ros ros2">
+  <aside class="ros-side">
+    <div class="ros-ring"><svg class="ros-svg" id="beads" viewBox="0 0 320 470" role="img" aria-label="Rosario con la cuenta actual resaltada"></svg>
+      <div class="ros-center" aria-hidden="true"><b id="rcN">✝</b><small id="rcL">Inicio</small></div></div>
+    <ol class="ros-chap" id="rChap" aria-label="Partes del Rosario"></ol>
+  </aside>
   <div style="min-width:0"><div class="sets" id="sets"></div>
     <div class="step" id="step" tabindex="0" aria-live="polite"><span class="eyebrow" id="stK">Inicio</span><h2 class="step-t" id="stT">Señal de la cruz y Credo</h2><div class="step-meta" id="stM"></div><p class="step-x" id="stX">{E(O["SENAL"])}</p><div class="tens" id="tens" aria-hidden="true"></div></div>
-    <div class="ros-nav"><button class="btn btn-ghost sm" id="rPrev">Anterior</button><div class="bar" aria-hidden="true"><i id="rBar"></i></div><button class="btn btn-accent sm" id="rNext">Siguiente</button></div>
-    <div class="ros-nav" style="margin-top:10px"><button class="tog" id="rVoice" aria-pressed="false" style="color:var(--ink);border-color:var(--line)">Rezar en voz alta</button><button class="tog" id="rReset" style="color:var(--ink);border-color:var(--line)">Empezar de nuevo</button><span class="hint" id="rCount"></span></div>
+    <div class="rplayer" role="group" aria-label="Controles del Rosario">
+      <button class="rp-play" id="rVoice" aria-pressed="false" aria-label="Rezar en voz alta"><svg class="i-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg><svg class="i-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+      <div class="rp-mid"><div class="rp-top"><b id="rpNow">Señal de la cruz y Credo</b><span class="hint" id="rCount"></span></div>
+        <div class="rp-bar" id="rpBar" role="slider" tabindex="0" aria-label="Avanzar por el Rosario" aria-valuemin="1"><i id="rBar"></i><span class="rp-ticks" id="rpTicks"></span></div>
+        <div class="rp-sub"><span id="rpVoz">Pulsa ▶ para rezarlo con voz, o avanza a tu ritmo</span></div></div>
+      <div class="rp-ctl"><button class="rp-ic" id="rPrev" aria-label="Paso anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button><button class="rp-ic rp-next" id="rNext" aria-label="Paso siguiente"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button><button class="rp-ic" id="rReset" aria-label="Empezar de nuevo" title="Empezar de nuevo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button></div>
+    </div>
   </div></div></div></section>
 {sec(head2("Guía", "Cómo rezar el Rosario paso a paso") + f"""<div class="art"><div class="prose">
  <p>El Rosario es una oración sencilla que recorre la vida de Jesús de la mano de María. Se reza con un rosario de 59 cuentas, aunque basta con los dedos.</p>
