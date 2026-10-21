@@ -22,9 +22,10 @@ def lecturas(fecha):
     items = [limpia(x) for x in re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(1))]
     lec, sal, ev = [], None, None
     for t in items:
+        es_salmo = "R/" in t  # el salmo responsorial lleva respuesta (R/), aunque sea un cántico como Is 12 o Lc 1
         t = re.split(r"\s*R/\.?", t)[0].strip()  # sin la respuesta del salmo (es texto litúrgico)
         if not t: continue
-        if t.lower().startswith("salmo") or t.lower().startswith("sal "): sal = sal or t
+        if es_salmo or t.lower().startswith("salmo") or t.lower().startswith("sal "): sal = sal or t
         elif "evangelio" in t.lower(): ev = ev or t
         else: lec.append(t)
     out = []
