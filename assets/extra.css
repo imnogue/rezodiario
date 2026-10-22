@@ -811,3 +811,8 @@ article .exam-cta{margin:24px 0 0}
 .dato b{font-size:18px;line-height:1.35;color:var(--ink)}
 .dato span{font-size:14.5px;color:var(--muted);line-height:1.55}
 .dato a{color:var(--accent);font-weight:700}
+
+.mas-or{padding:18px 22px;border-radius:18px;background:var(--surface);border:1px solid var(--line);margin:0 0 14px}
+.mas-or h3{margin:0 0 8px;font-size:18px}
+.mas-or p{font-family:var(--serif,Georgia,serif);font-size:17px;line-height:1.6;margin:0 0 10px}
+.mas-or p:last-child{margin:0}

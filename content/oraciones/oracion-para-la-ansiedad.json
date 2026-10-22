@@ -1,12 +1,52 @@
 {
   "slug": "oracion-para-la-ansiedad",
   "cat": "paz",
-  "t": "Oración en un momento de ansiedad",
+  "t": "Oración para la ansiedad",
   "min": 3,
   "k": "ansiedad angustia nervios estrés agobio miedo pánico",
   "x": "Señor, ahora mismo me cuesta respirar con calma. Mi cabeza va demasiado rápido.\n\nInspiro despacio: «Jesús, en ti confío».\nSuelto el aire: «Tú estás aquí».\n\nNo tengo que resolverlo todo hoy. Solo este momento, contigo.\n\nTú dijiste: «La paz os dejo, mi paz os doy». Recíbela ahora en tu interior. Amén.\n\nSi la ansiedad no te deja vivir, pide ayuda también a un profesional: rezar y cuidarse van juntos.",
   "when": "Cuando notes la ansiedad subir. Repite las dos frases al ritmo de la respiración varias veces.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-para-la-ansiedad.mp3?v=1792338128",
   "duracion": 38.0,
-  "intro": "La ansiedad puede aparecer de golpe, con el corazón acelerado y la cabeza llena de pensamientos. Esta oración breve combina la respiración con dos frases muy sencillas para calmarse en presencia de Dios.\n\nRepítelas varias veces, despacio. Rezar ayuda, pero si la ansiedad es frecuente o muy intensa, busca también ayuda médica o psicológica: cuidarse y rezar van juntos."
+  "intro": "La ansiedad puede aparecer de golpe, con el corazón acelerado y la cabeza llena de pensamientos. Esta oración breve combina la respiración con dos frases muy sencillas para calmarse en presencia de Dios.\n\nRepítelas varias veces, despacio. Rezar ayuda, pero si la ansiedad es frecuente o muy intensa, busca también ayuda médica o psicológica: cuidarse y rezar van juntos.",
+  "seoT": "Oración para la ansiedad: calma tu mente en Dios (con audio)",
+  "seoD": "Oración para la ansiedad y la angustia con audio: respira y cálmate en Dios. Además, oraciones para dormir, a la Virgen y para un ataque de nervios.",
+  "dato": {
+    "k": "Para rezar ahora",
+    "t": "Inspira: «Jesús, en ti confío». Suelta el aire: «Tú estás aquí».",
+    "x": "Repite estas dos frases despacio, al ritmo de tu respiración, durante uno o dos minutos. Después reza la oración completa o escúchala con el audio."
+  },
+  "masT": "Más oraciones para la ansiedad",
+  "mas": [
+    {
+      "t": "Oración para la ansiedad y la angustia",
+      "x": "Señor Jesús, tú conoces este nudo que tengo dentro. No sé muy bien qué me pasa, pero tú sí lo sabes.\n\nPongo en tus manos lo que me preocupa y lo que no puedo controlar. Dame tu paz, la que el mundo no puede dar, y ayúdame a vivir solo el día de hoy. Amén."
+    },
+    {
+      "t": "Oración para dormir cuando hay ansiedad",
+      "x": "Señor, la noche ha llegado y mi cabeza no para. Te entrego todo lo que ha pasado hoy y todo lo que me preocupa de mañana.\n\nEn paz me acuesto y en seguida me duermo, porque solo tú, Señor, me haces vivir tranquilo (Sal 4, 9). Cuida mi descanso. Amén."
+    },
+    {
+      "t": "Oración a la Virgen María en la ansiedad",
+      "x": "Madre mía, cuando el miedo me aprieta, me acerco a ti como un niño. Tú guardabas todo en tu corazón y confiabas.\n\nTómame de la mano, calma mi corazón y llévame a Jesús. Bajo tu amparo me acojo, santa Madre de Dios. Amén."
+    },
+    {
+      "t": "Oración breve para un ataque de nervios",
+      "x": "Jesús, estoy aquí. Tú estás aquí. Respira conmigo.\n\nNo me dejes solo en este momento. Jesús, en ti confío."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué oración rezar cuando tengo ansiedad?",
+      "a": "Una oración breve y repetida al ritmo de la respiración ayuda mucho: inspira diciendo «Jesús, en ti confío» y suelta el aire diciendo «Tú estás aquí». En esta página tienes además oraciones para la angustia, para dormir y a la Virgen."
+    },
+    {
+      "q": "¿Qué dice la Biblia sobre la ansiedad?",
+      "a": "San Pablo escribe: «Nada os preocupe; en toda ocasión presentad a Dios vuestras peticiones» (Flp 4, 6). Y Jesús dice: «No os agobiéis por el mañana» (Mt 6, 34). Tienes más en nuestros versículos para la ansiedad."
+    },
+    {
+      "q": "¿Rezar sustituye a la ayuda profesional?",
+      "a": "No. Rezar da paz y sentido, pero si la ansiedad es frecuente o muy intensa, busca también ayuda médica o psicológica. Cuidarse y rezar van juntos."
+    }
+  ]
 }

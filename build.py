@@ -463,6 +463,10 @@ def dato_box(d):
     """Respuesta directa arriba de la página (la pregunta exacta que busca la gente)."""
     if not d: return ""
     return f'<div class="dato reveal"><small>{E(d["k"])}</small><b>{E(d["t"])}</b>{"<span>" + E(d["x"]) + "</span>" if d.get("x") else ""}</div>'
+def mas_html(p):
+    """Otras oraciones cortas para la misma necesidad, en la misma página (más contenido útil para quien busca)."""
+    if not p.get("mas"): return ""
+    return f'<h2>{E(p.get("masT", "Más oraciones"))}</h2>' + "".join(f'<div class="mas-or"><h3>{E(o["t"])}</h3>' + "".join(f"<p>{E(x)}</p>" for x in o["x"].split(chr(10)+chr(10))) + '</div>' for o in p["mas"])
 def extra_faq(o): return [(f["q"], f["a"]) for f in o.get("faq", [])]
 def exam_box(r, t, d): return f'<a class="exam-cta reveal" href="{r}examen-de-conciencia.html"><small>Examen de conciencia</small><b>{E(t)}</b><span>{E(d)}</span><em>Prepararme ›</em></a>'
 for p in PRAYERS:
@@ -481,6 +485,7 @@ for p in PRAYERS:
     <div class="prose">
       {dato_box(p.get("dato"))}
       {"<h2>Sobre esta oración</h2>" + "".join(f"<p>{E(x)}</p>" for x in p["intro"].split(chr(10)+chr(10))) if p.get("intro") else ""}
+      {mas_html(p)}
       <h2>Cuándo rezarla</h2><p>{E(p["when"])}</p>
       <h2>Cómo rezarla</h2><p>Busca un momento de calma, respira despacio y lee la oración sin prisa, en voz baja o en silencio. Si una frase te toca, quédate en ella. Puedes pulsar «Escuchar» para que la web la lea por ti, o guardarla en favoritos para tenerla a mano.</p>
       <p>Si rezas por otra persona, díselo: saber que alguien reza por nosotros es un gran consuelo. También puedes <a href="{r}muro-de-intenciones.html#{CANDLE_HASH[p["cat"]]}">encender una vela por esta intención</a> para que otros recen contigo.</p>
