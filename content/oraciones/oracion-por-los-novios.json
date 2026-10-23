@@ -6,5 +6,28 @@
   "k": "oración por los novios boda matrimonio prepararse para casarse",
   "x": "Señor, te damos gracias por el amor que nos has regalado.\nNos preparamos para casarnos y queremos hacerlo contigo.\n\nQue nuestro amor sea paciente y generoso,\nque sepamos escucharnos, perdonarnos y cuidarnos.\nBendice nuestro futuro hogar\ny a los hijos que puedas darnos.\n\nQue el día de la boda no sea solo una fiesta,\nsino el comienzo de una vida juntos y contigo.\n\nAmén.",
   "when": "Antes de la boda, en la preparación al matrimonio o el día de la celebración.",
-  "intro": "Prepararse para el matrimonio es un tiempo bonito y lleno de ilusión, pero también de nervios y decisiones. Esta oración pide que el amor de los novios crezca y se apoye en Dios.\n\nPueden rezarla los propios novios o su familia."
+  "intro": "Prepararse para el matrimonio es un tiempo bonito y lleno de ilusión, pero también de nervios y decisiones. Esta oración pide que el amor de los novios crezca y se apoye en Dios.\n\nPueden rezarla los propios novios o su familia.",
+  "seoT": "Oración por los novios que se van a casar (y para la boda)",
+  "seoD": "Oración por los novios que se van a casar: para la preparación al matrimonio y el día de la boda. Con audio, oración de los padres por sus hijos novios y una para leer en la boda.",
+  "masT": "Más oraciones por los novios",
+  "mas": [
+    {
+      "t": "Oración de los padres por sus hijos que se casan",
+      "x": "Señor, te damos gracias por nuestro hijo (nuestra hija) y por la persona que ha elegido para compartir su vida.\n\nBendice su amor, acompaña su nuevo hogar y danos a nosotros sabiduría para quererles sin agobiarles. Amén."
+    },
+    {
+      "t": "Oración corta para el día de la boda",
+      "x": "Señor, hoy nos entregamos el uno al otro delante de ti. Sé tú el tercero en nuestro matrimonio.\n\nQue nunca nos falte tu gracia, la paciencia y la alegría. Amén."
+    },
+    {
+      "t": "Oración de los padrinos y amigos por los novios",
+      "x": "Señor, bendice a [nombres] en este día. Que su casa sea un lugar de paz, de perdón y de vida.\n\nY que nosotros sepamos acompañarles en los momentos buenos y en los difíciles. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué santo es patrón de los novios?",
+      "a": "San Valentín es el más conocido. También se encomiendan a san Rafael arcángel, que acompañó a Tobías en su camino hasta su esposa Sara."
+    }
+  ]
 }

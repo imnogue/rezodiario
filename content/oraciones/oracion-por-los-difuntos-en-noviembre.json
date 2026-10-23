@@ -8,5 +8,33 @@
   "when": "Durante todo noviembre, y al visitar el cementerio.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-por-los-difuntos-en-noviembre.mp3?v=1792338154",
   "duracion": 39.8,
-  "intro": "Noviembre es el mes que la Iglesia dedica a rezar por los difuntos, empezando por la fiesta de Todos los Santos el día 1 y la Conmemoración de los Fieles Difuntos el día 2.\n\nEn España es tradición visitar el cementerio y llevar flores a los seres queridos. Esta oración acompaña ese recuerdo con la esperanza cristiana en la resurrección."
+  "intro": "Noviembre es el mes que la Iglesia dedica a rezar por los difuntos, empezando por la fiesta de Todos los Santos el día 1 y la Conmemoración de los Fieles Difuntos el día 2.\n\nEn España es tradición visitar el cementerio y llevar flores a los seres queridos. Esta oración acompaña ese recuerdo con la esperanza cristiana en la resurrección.",
+  "seoT": "Oración por los difuntos: Día de Difuntos 2 de noviembre de 2026",
+  "seoD": "Oración por los difuntos para el Día de Difuntos (2 de noviembre de 2026) y todo noviembre. Con audio, oración corta para el cementerio y el Dales, Señor, el descanso eterno.",
+  "dato": {
+    "k": "Día de Difuntos 2026",
+    "t": "Lunes 2 de noviembre de 2026",
+    "x": "El día antes, el domingo 1 de noviembre, es Todos los Santos. Durante todo noviembre la Iglesia reza especialmente por los difuntos."
+  },
+  "masT": "Más oraciones por los difuntos",
+  "mas": [
+    {
+      "t": "Dales, Señor, el descanso eterno",
+      "x": "Dales, Señor, el descanso eterno,\ny brille para ellos la luz perpetua.\nDescansen en paz. Amén."
+    },
+    {
+      "t": "Oración corta para el cementerio",
+      "x": "Señor, ante esta tumba te presento a [nombre]. Gracias por su vida.\n\nQue esté contigo en tu luz y en tu paz. Y a nosotros danos la esperanza de la resurrección. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es el Día de Difuntos en 2026?",
+      "a": "El lunes 2 de noviembre de 2026, el día después de Todos los Santos. Todo el mes de noviembre la Iglesia reza especialmente por los difuntos."
+    },
+    {
+      "q": "¿Qué diferencia hay entre Todos los Santos y Difuntos?",
+      "a": "El 1 de noviembre, Todos los Santos, celebramos a todos los que ya están en el cielo. El 2 de noviembre, Difuntos, rezamos por todos los que han muerto, para que Dios los purifique y los reciba en su casa."
+    }
+  ]
 }

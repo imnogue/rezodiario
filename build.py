@@ -427,7 +427,9 @@ page("oraciones/index.html", "Oraciones católicas para cada momento | Rezo Diar
 for k, c in CATS.items():
     ps = [p for p in PRAYERS if p["cat"] == k]; path = f"oraciones/tema-{k}.html"
     cr = [("Inicio", "index.html"), ("Oraciones", "oraciones/index.html"), (c["name"], path)]
-    m = phero(r, cr, f'{len(ps)} oraciones', c["h1"], c["intro"]) + sec(f'<div class="grid">{"".join(card(p, r) for p in ps)}</div>') + (sec('<div class="prose" style="max-width:760px">' + "".join(f"<p>{E(x)}</p>" for x in c["texto"].split(chr(10)+chr(10))) + '</div>') if c.get("texto") else "") + sec(head2("Preguntas frecuentes", "Dudas sobre estas oraciones") + faq_html(FAQ_CAT[k]), "sec band") + sec(head2("Otros temas", "Sigue explorando") + tiles(r))
+    top = [PBY[x] for x in c.get("top", []) if x in PBY]
+    top_html = sec(head2(c.get("topK", "Las más rezadas"), c.get("topT", f"Las {len(top)} oraciones más rezadas")) + '<ol class="top-or">' + "".join(f'<li><a href="{q["slug"]}.html"><b>{E(q["t"])}</b><span>{E(re.split(r"(?<=[.!?])[ \n]", q["x"].replace(chr(10), " "))[0][:140])}</span></a></li>' for q in top) + '</ol>') if top else ""
+    m = phero(r, cr, f'{len(ps)} oraciones', c["h1"], c["intro"]) + top_html + sec(f'<div class="grid">{"".join(card(p, r) for p in ps)}</div>') + (sec('<div class="prose" style="max-width:760px">' + "".join(f"<p>{E(x)}</p>" for x in c["texto"].split(chr(10)+chr(10))) + '</div>') if c.get("texto") else "") + sec(head2("Preguntas frecuentes", "Dudas sobre estas oraciones") + faq_html(FAQ_CAT[k]), "sec band") + sec(head2("Otros temas", "Sigue explorando") + tiles(r))
     page(path, f'{c.get("seoT") or c["h1"]} | Rezo Diario', c.get("seoD") or c["intro"][:158], m, "prayers", [crumbs_ld(cr), faq_ld(FAQ_CAT[k]), {"@context": "https://schema.org", "@type": "CollectionPage", "name": c["h1"], "url": canon(path), "inLanguage": "es"}])
 
 def pplayer(p, r):

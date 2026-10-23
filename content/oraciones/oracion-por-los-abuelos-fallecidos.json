@@ -6,5 +6,32 @@
   "k": "oración por mis abuelos fallecidos abuelo abuela difuntos",
   "x": "Señor, gracias por mis abuelos.\nPor su cariño, sus historias, su paciencia\ny por la fe que me enseñaron.\n\nYa están contigo.\nRecíbelos en tu casa\ny dales el descanso que merecen\ndespués de tanto trabajo y tanto amor.\n\nQue su ejemplo siga vivo en nuestra familia.\nY que un día volvamos a abrazarlos.\n\nDales, Señor, el descanso eterno.\nAmén.",
   "when": "En el aniversario, en noviembre o cuando los eches de menos.",
-  "intro": "Los abuelos dejan una huella especial: su cariño, su paciencia y muchas veces la fe que nos transmitieron. Esta oración da gracias por ellos y los confía a Dios.\n\nPuedes rezarla con tus hijos, contándoles cómo eran."
+  "intro": "Los abuelos dejan una huella especial: su cariño, su paciencia y muchas veces la fe que nos transmitieron. Esta oración da gracias por ellos y los confía a Dios.\n\nPuedes rezarla con tus hijos, contándoles cómo eran.",
+  "seoT": "Oración por los abuelos difuntos (fallecidos): descanso y gratitud",
+  "seoD": "Oración por los abuelos difuntos para pedir por su descanso eterno y dar gracias por su cariño y su fe. Con audio, más oraciones cortas y para el Día de Difuntos.",
+  "masT": "Más oraciones por los abuelos difuntos",
+  "mas": [
+    {
+      "t": "Oración corta por el abuelo fallecido",
+      "x": "Señor, recibe a mi abuelo en tu casa. Gracias por sus manos trabajadoras, sus consejos y su cariño callado.\n\nDale el descanso eterno y que brille para él la luz perpetua. Descanse en paz. Amén."
+    },
+    {
+      "t": "Oración corta por la abuela fallecida",
+      "x": "Virgen María, cuida a mi abuela que ya está con Dios. Ella me enseñó a rezar y a quererte.\n\nPresenta su alma a tu Hijo y abrázala como ella nos abrazó a nosotros. Descanse en paz. Amén."
+    },
+    {
+      "t": "Para rezar en familia ante su foto o en el cementerio",
+      "x": "Abuelos, gracias por todo lo que nos disteis. Seguís vivos en nuestra familia y en nuestro corazón.\n\nPadre Nuestro, Ave María y Gloria.\n\nDales, Señor, el descanso eterno. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es el Día de Difuntos en 2026?",
+      "a": "El lunes 2 de noviembre de 2026, el día después de Todos los Santos. Todo el mes de noviembre la Iglesia reza especialmente por los difuntos."
+    },
+    {
+      "q": "¿Qué oración se reza por los abuelos difuntos?",
+      "a": "Puedes rezar esta oración, un Padre Nuestro y un Ave María, y terminar con «Dales, Señor, el descanso eterno, y brille para ellos la luz perpetua». También puedes encargar una misa por ellos en tu parroquia."
+    }
+  ]
 }

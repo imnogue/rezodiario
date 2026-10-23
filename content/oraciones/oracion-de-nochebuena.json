@@ -8,5 +8,28 @@
   "when": "Antes de la cena de Nochebuena, la persona de más edad o el más pequeño de la casa.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-de-nochebuena.mp3?v=1792338062",
   "duracion": 34.1,
-  "intro": "La cena de Nochebuena es uno de los momentos familiares más importantes del año. Esta oración ayuda a que, entre tanta preparación, no se olvide lo esencial: que celebramos el nacimiento de Jesús.\n\nPuede rezarla la persona de más edad de la casa o el más pequeño antes de empezar a cenar. Es un buen momento para recordar también a los familiares que ya no están."
+  "intro": "La cena de Nochebuena es uno de los momentos familiares más importantes del año. Esta oración ayuda a que, entre tanta preparación, no se olvide lo esencial: que celebramos el nacimiento de Jesús.\n\nPuede rezarla la persona de más edad de la casa o el más pequeño antes de empezar a cenar. Es un buen momento para recordar también a los familiares que ya no están.",
+  "seoT": "Oración de Nochebuena para la cena en familia (corta)",
+  "seoD": "Oración de Nochebuena corta para bendecir la mesa antes de la cena en familia. Con audio, una versión para niños y una oración por los que ya no están.",
+  "masT": "Más oraciones para Nochebuena",
+  "mas": [
+    {
+      "t": "Bendición de la mesa de Nochebuena (muy corta)",
+      "x": "Niño Jesús, que esta noche naces entre nosotros: bendice esta mesa, esta familia y a los que no tienen con quién cenar. Amén."
+    },
+    {
+      "t": "Oración de Nochebuena para niños",
+      "x": "Jesús, esta noche vienes al mundo pequeñito, como yo. Gracias por mi familia y por esta cena.\n\nQue no falte comida ni cariño a ningún niño. ¡Feliz cumpleaños, Jesús! Amén."
+    },
+    {
+      "t": "Por los que ya no están en nuestra mesa",
+      "x": "Señor, esta noche echamos de menos a [nombres]. Ellos celebran ya la Navidad contigo.\n\nQue su recuerdo nos una y nos llene de esperanza. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Quién debe rezar la oración de Nochebuena?",
+      "a": "Cualquiera: la persona de más edad, el padre o la madre, o el más pequeño de la casa. Lo importante es hacerlo juntos, antes de empezar a cenar."
+    }
+  ]
 }

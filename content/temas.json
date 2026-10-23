@@ -24,8 +24,22 @@
       "color": "var(--c-family)",
       "intro": "Oraciones para pedir por tu familia, tus hijos, tu matrimonio y tus abuelos, y para rezar con los niños antes de dormir.",
       "texto": "La familia es el primer lugar donde aprendemos a amar y también donde más nos cuesta a veces. Estas oraciones piden por los hijos, por los padres, por el matrimonio, por la pareja y por la paz en casa.\n\nSon ideales para rezar juntos antes de comer, antes de dormir o en fechas especiales como Nochebuena. También hay oraciones para los momentos difíciles: un hijo que se ha alejado, el deseo de tener un hijo o una discusión familiar.",
-      "seoT": "Oraciones por la familia: 34 oraciones para rezar en casa",
-      "seoD": "34 oraciones por la familia: por los hijos, los padres, la unión y la paz en casa, la pareja y los abuelos. Con texto completo y audio."
+      "seoT": "10 oraciones para la familia (y 24 más) para rezar en casa",
+      "seoD": "10 oraciones para la familia: por la unión y la paz en casa, los hijos, el matrimonio, los padres y los abuelos. Y 24 oraciones más, con texto completo y audio.",
+      "top": [
+        "oracion-por-la-familia",
+        "oracion-por-la-paz-en-la-familia",
+        "oracion-por-los-hijos",
+        "oracion-por-mi-matrimonio",
+        "oracion-por-mis-padres",
+        "bendicion-de-la-casa",
+        "oracion-por-los-abuelos",
+        "oracion-por-mis-hermanos",
+        "oracion-por-un-matrimonio-en-crisis",
+        "angel-de-la-guarda"
+      ],
+      "topK": "Para rezar en casa",
+      "topT": "10 oraciones para la familia"
     },
     {
       "key": "paz",
@@ -57,7 +71,8 @@
       "h1": "Oraciones por los difuntos y para el duelo",
       "color": "var(--c-grief)",
       "intro": "Oraciones por un ser querido que ha fallecido, por tu madre o tu padre difuntos y para encontrar consuelo en el duelo.",
-      "texto": "La muerte de un ser querido es uno de los dolores más grandes de la vida. Estas oraciones por los difuntos acompañan el duelo con la esperanza cristiana de la resurrección y del reencuentro.\n\nEncontrarás oraciones por un padre o una madre fallecidos, por un amigo, por un bebé, para el aniversario de un fallecimiento e incluso por una mascota. Puedes encender una vela por tus difuntos en el muro de intenciones."
+      "texto": "La muerte de un ser querido es uno de los dolores más grandes de la vida. Estas oraciones por los difuntos acompañan el duelo con la esperanza cristiana de la resurrección y del reencuentro.\n\nEncontrarás oraciones por un padre o una madre fallecidos, por un amigo, por un bebé, para el aniversario de un fallecimiento e incluso por una mascota. Puedes encender una vela por tus difuntos en el muro de intenciones.",
+      "seoT": "Oraciones por los difuntos y el duelo (Día de Difuntos 2026)"
     },
     {
       "key": "trabajo",

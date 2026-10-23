@@ -6,5 +6,28 @@
   "k": "oración por mi esposa fallecida mujer difunta viudo",
   "x": "Señor, te pido por mi esposa [nombre].\nGracias por su amor, su ternura\ny por todo lo que me dio cada día.\n\nRecíbela en tu casa.\nQue esté en tu luz y en tu paz,\nlibre de todo dolor.\n\nAyúdame a seguir viviendo con su recuerdo,\na cuidar de lo que ella cuidaba\ny a esperar el día del reencuentro.\n\nDale, Señor, el descanso eterno.\nAmén.",
   "when": "En el duelo, en el aniversario de boda o en cualquier momento de soledad.",
-  "intro": "La muerte de la esposa deja la casa y el corazón en silencio. Esta oración da gracias por su vida y por el amor compartido, y la confía a Dios.\n\nTambién pide consuelo para quien se queda."
+  "intro": "La muerte de la esposa deja la casa y el corazón en silencio. Esta oración da gracias por su vida y por el amor compartido, y la confía a Dios.\n\nTambién pide consuelo para quien se queda.",
+  "seoT": "Oración para mi esposa fallecida: consuelo y descanso eterno",
+  "seoD": "Oración para mi esposa fallecida: por su descanso eterno y para encontrar fuerza y consuelo. Con audio y oraciones cortas para el aniversario y el Día de Difuntos.",
+  "masT": "Más oraciones por mi esposa fallecida",
+  "mas": [
+    {
+      "t": "Oración corta cuando la echo de menos",
+      "x": "Señor, la echo de menos en cada rincón de la casa. Tú que la amas más que yo, cuídala en tu cielo.\n\nDame fuerza para seguir adelante y para cuidar de lo que ella cuidaba. Amén."
+    },
+    {
+      "t": "Oración en el aniversario de su muerte",
+      "x": "Señor, hoy recuerdo de forma especial a mi esposa. Gracias por su amor y por la vida que compartimos.\n\nDale el descanso eterno, que brille para ella la luz perpetua, y guárdanos hasta el día del reencuentro. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es el Día de Difuntos en 2026?",
+      "a": "El lunes 2 de noviembre de 2026, el día después de Todos los Santos. Todo el mes de noviembre la Iglesia reza especialmente por los difuntos."
+    },
+    {
+      "q": "¿Cómo rezar por mi esposa que ha fallecido?",
+      "a": "Di su nombre, da gracias a Dios por ella y pídele que la reciba en su paz. Puedes rezar un Padre Nuestro y encargar una misa por su alma. Si el duelo pesa demasiado, apóyate también en otras personas: un sacerdote, un grupo de duelo o un profesional."
+    }
+  ]
 }
