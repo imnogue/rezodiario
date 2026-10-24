@@ -169,6 +169,7 @@ def page(path, title, desc, main, active="", lds=(), body_attrs="", og_type="web
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="{E(desc)}">
 <meta name="robots" content="{robots}">
+<script>try{{var t=JSON.parse(localStorage.getItem("rd-tema"));if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}}catch(e){{}}</script>
 <script>if(location.hostname.indexOf("www.")===0)location.replace("https://rezodiario.com"+location.pathname+location.search+location.hash)</script>
 <link rel="canonical" href="{canon(path)}">
 <meta name="theme-color" content="#14302A">
@@ -958,7 +959,7 @@ open(OUT + "/assets/oraciones.js", "w", encoding="utf-8").write("window.RDO=" + 
 open(OUT + "/assets/versos.js", "w", encoding="utf-8").write("window.RDV=" + json.dumps({t["slug"]: {"t": t["t"], "v": [[v["ref"], v["x"], v["e"]] for v in t["versos"]]} for t in VTOP}, ensure_ascii=False) + ";")
 open(OUT + "/assets/data.js", "w", encoding="utf-8").write("window.RD=" + json.dumps(data, ensure_ascii=False) + ";")
 for path, head, body, battrs in pages:
-    full = f'<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n{head}\n</head>\n<body{battrs}>\n{body}\n</body>\n</html>\n'
+    full = f'<!doctype html>\n<html lang="es" data-theme="dark">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n{head}\n</head>\n<body{battrs}>\n{body}\n</body>\n</html>\n'
     if CLEAN:
         full = re.sub(r'href="([^"#:?]*?)index\.html', lambda m: f'href="{m.group(1) or "./"}', full)
         full = re.sub(r'href="([^"#:?]+?)\.html', r'href="\1', full)
