@@ -6,5 +6,24 @@
   "k": "oración por un enfermo terminal moribundo agonizante buena muerte cuidados paliativos",
   "x": "Señor Jesús, que en la cruz pusiste tu vida en manos del Padre,\nte encomiendo a [nombre] en estos días.\n\nQue no sufra,\nque sienta el cariño de los que le rodeamos\ny tu presencia a su lado.\n\nPerdona sus pecados,\nquítale todo miedo\ny dale tu paz.\n\nCuando llegue la hora,\nrecíbele en tus brazos\ny llévale a la casa del Padre.\n\nSanta María, ruega por él ahora y en la hora de su muerte.\nAmén.",
   "when": "Junto a una persona al final de su vida, en cuidados paliativos o en sus últimos días.",
-  "intro": "Acompañar a alguien en el final de su vida es una de las experiencias más difíciles y más sagradas. La Iglesia siempre ha rezado por los moribundos, pidiendo una muerte serena y en paz con Dios.\n\nSi la persona lo desea, es un buen momento para llamar a un sacerdote para la unción de enfermos."
+  "intro": "Acompañar a alguien en el final de su vida es una de las experiencias más difíciles y más sagradas. La Iglesia siempre ha rezado por los moribundos, pidiendo una muerte serena y en paz con Dios.\n\nSi la persona lo desea, es un buen momento para llamar a un sacerdote para la unción de enfermos.",
+  "seoT": "Oración por un enfermo terminal para que descanse en paz",
+  "seoD": "Oración por un enfermo terminal: para que no sufra, descanse en paz y se vaya con Dios cuando llegue la hora. Con audio y una oración para cuando ya quiere partir.",
+  "masT": "Más oraciones por un enfermo terminal",
+  "mas": [
+    {
+      "t": "Cuando el enfermo ya quiere partir",
+      "x": "Señor, [nombre] está cansado y ya quiere irse contigo. Nos cuesta dejarle marchar, pero no queremos que sufra más.\n\nTe lo entregamos con amor. Cuando sea su hora, llévale en paz. Y a nosotros danos fuerza para acompañarle hasta el final. Amén."
+    },
+    {
+      "t": "Oración corta junto a la cama",
+      "x": "Jesús, María y José, os doy el corazón y el alma mía. Asistidle en su última agonía. Que descanse en paz en vuestra compañía. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué hacer cuando un familiar está a punto de morir?",
+      "a": "Acompañarle, hablarle con cariño (aunque no responda, puede oír), rezar a su lado y avisar a un sacerdote para que reciba la unción de los enfermos y, si puede, la confesión y la comunión."
+    }
+  ]
 }

@@ -6,5 +6,28 @@
   "k": "oración por mi hermano fallecido hermana fallecida",
   "x": "Señor, te pido por mi hermano [nombre].\nGracias por todo lo que vivimos juntos:\nla infancia, las risas, incluso las peleas.\n\nRecíbelo en tu casa.\nPerdona lo que necesite perdón\ny dale el descanso eterno.\n\nConsuela a nuestros padres y a toda la familia.\nY ayúdame a seguir adelante con su recuerdo en el corazón.\n\nDale, Señor, el descanso eterno,\ny brille para él la luz perpetua.\nAmén.",
   "when": "En el duelo, en su aniversario o en su cumpleaños.",
-  "intro": "Perder a un hermano es perder a alguien que ha estado con nosotros desde siempre. Esta oración da gracias por su vida y pide que descanse en la paz de Dios.\n\nPuedes decir su nombre en voz alta al rezarla."
+  "intro": "Perder a un hermano es perder a alguien que ha estado con nosotros desde siempre. Esta oración da gracias por su vida y pide que descanse en la paz de Dios.\n\nPuedes decir su nombre en voz alta al rezarla.",
+  "seoT": "Oración para un hermano fallecido: descanso eterno y consuelo",
+  "seoD": "Oración para un hermano fallecido o difunto: por su descanso eterno y para consolar a la familia. Con audio, oración corta para su cumpleaños y el Día de Difuntos.",
+  "masT": "Más oraciones por un hermano difunto",
+  "mas": [
+    {
+      "t": "Oración corta por mi hermano difunto",
+      "x": "Señor, cuida de mi hermano. Ya no puedo abrazarlo, pero tú sí. Dale el descanso eterno y que brille para él la luz perpetua. Amén."
+    },
+    {
+      "t": "Oración en el cumpleaños de mi hermano fallecido",
+      "x": "Señor, hoy sería el cumpleaños de mi hermano. Lo celebro contigo, que le diste la vida y ahora la tienes en tus manos.\n\nGracias por cada año que lo tuvimos. Dile que le seguimos queriendo. Amén."
+    },
+    {
+      "t": "Por una hermana fallecida",
+      "x": "Señor, recibe a mi hermana en tu casa. Gracias por su cariño, sus consejos y todo lo que compartimos. Dale tu paz y consuela a toda la familia. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es el Día de Difuntos en 2026?",
+      "a": "El lunes 2 de noviembre de 2026, el día después de Todos los Santos. Todo noviembre la Iglesia reza especialmente por los difuntos."
+    }
+  ]
 }

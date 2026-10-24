@@ -6,5 +6,28 @@
   "k": "san roque oración enfermos epidemias perro",
   "x": "San Roque, que cuidaste a los enfermos\nsin miedo al contagio,\nprotege a mi familia y a mi pueblo.\n\nIntercede por los enfermos,\npor los que los cuidan\ny por todos los que sufren una epidemia.\n\nDame un corazón compasivo\nque no pase de largo ante el que sufre.\n\nSan Roque, ruega por nosotros.\nAmén.",
   "when": "El 16 de agosto o en tiempo de epidemia.",
-  "intro": "San Roque fue un peregrino francés del siglo XIV que cuidó a los enfermos de peste hasta contagiarse. La tradición cuenta que un perro le llevaba pan cada día.\n\nEs patrón de muchísimos pueblos de España y se le invoca en las epidemias."
+  "intro": "San Roque fue un peregrino francés del siglo XIV que cuidó a los enfermos de peste hasta contagiarse. La tradición cuenta que un perro le llevaba pan cada día.\n\nEs patrón de muchísimos pueblos de España y se le invoca en las epidemias.",
+  "seoT": "Oración a san Roque por la salud y por los enfermos",
+  "seoD": "Oración a san Roque por la salud, los enfermos y la protección de la familia. Con audio, una oración corta, su historia y por qué se le representa con un perro.",
+  "masT": "Más oraciones a san Roque",
+  "mas": [
+    {
+      "t": "Oración corta a san Roque por la salud",
+      "x": "Glorioso san Roque, que curaste a tantos enfermos: pide a Dios por la salud de [nombre]. Dale fuerza, alivio y confianza. San Roque, ruega por nosotros. Amén."
+    },
+    {
+      "t": "Oración a san Roque por nuestros animales",
+      "x": "San Roque, al que un perro fiel alimentó cuando estabas enfermo y solo: protege también a los animales que nos acompañan y cuídalos de la enfermedad. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿De qué es patrón san Roque?",
+      "a": "De los enfermos, especialmente en epidemias, de los peregrinos, de los cirujanos y de los perros. Es patrón de muchos pueblos de España, que celebran su fiesta el 16 de agosto."
+    },
+    {
+      "q": "¿Por qué san Roque sale con un perro?",
+      "a": "Según la tradición, cuando enfermó de peste se retiró a un bosque para no contagiar a nadie, y un perro le llevaba cada día un pan hasta que se curó."
+    }
+  ]
 }

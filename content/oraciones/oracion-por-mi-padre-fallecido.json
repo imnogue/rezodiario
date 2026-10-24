@@ -8,5 +8,23 @@
   "when": "En su aniversario, en el Día del Padre o cuando le eches de menos.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-por-mi-padre-fallecido.mp3?v=1792338191",
   "duracion": 29.1,
-  "intro": "La muerte de un padre marca para siempre. Esta oración da gracias por su vida, por lo que enseñó y por su cariño, y lo encomienda a Dios con esperanza.\n\nPuedes rezarla en el aniversario de su muerte, el Día del Padre, el 19 de marzo en España, o cada vez que lo recuerdes."
+  "intro": "La muerte de un padre marca para siempre. Esta oración da gracias por su vida, por lo que enseñó y por su cariño, y lo encomienda a Dios con esperanza.\n\nPuedes rezarla en el aniversario de su muerte, el Día del Padre, el 19 de marzo en España, o cada vez que lo recuerdes.",
+  "seoT": "Oración para mi padre fallecido: descanso eterno y gratitud",
+  "masT": "Más oraciones por mi padre fallecido",
+  "mas": [
+    {
+      "t": "Oración corta por mi padre difunto",
+      "x": "Papá, gracias por todo. Señor, dale el descanso eterno y que brille para él la luz perpetua. Descanse en paz. Amén."
+    },
+    {
+      "t": "En el aniversario de su muerte",
+      "x": "Señor, hoy hace un año más que mi padre se fue contigo. Todavía me falta. Guárdalo en tu paz y ayúdame a vivir como él me enseñó. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es el Día de Difuntos en 2026?",
+      "a": "El lunes 2 de noviembre de 2026, el día después de Todos los Santos. Todo noviembre la Iglesia reza especialmente por los difuntos."
+    }
+  ]
 }

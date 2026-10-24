@@ -8,5 +8,13 @@
   "when": "Al despertar, antes de empezar las tareas del día.",
   "intro": "El ofrecimiento del día es una costumbre muy antigua, difundida por el Apostolado de la Oración: ofrecer a Dios, nada más levantarse, todo lo que se va a vivir. Así la jornada entera se convierte en oración.\n\nEs una oración breve que se puede aprender de memoria y rezar incluso antes de salir de la cama.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-de-ofrecimiento-del-dia.mp3?v=1792354369",
-  "duracion": 55.6
+  "duracion": 55.6,
+  "seoT": "Ofrecimiento de obras del día (y Ven, Espíritu Santo)",
+  "masT": "Otra oración para empezar el día",
+  "mas": [
+    {
+      "t": "Ven, Espíritu Santo",
+      "x": "Ven, Espíritu Santo, llena los corazones de tus fieles y enciende en ellos el fuego de tu amor.\n\nEnvía, Señor, tu Espíritu, y todo será creado. Y renovarás la faz de la tierra. Amén."
+    }
+  ]
 }

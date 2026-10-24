@@ -8,5 +8,27 @@
   "when": "En su aniversario, en el Día de la Madre o cuando la eches de menos.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-por-mi-madre-fallecida.mp3?v=1792338172",
   "duracion": 30.6,
-  "intro": "Perder a una madre deja un vacío que nada llena. Esta oración da gracias por su vida y por su amor, y la pone en manos de Dios con la esperanza de volver a encontrarse.\n\nPuedes rezarla en el aniversario de su muerte, en el Día de la Madre, el primer domingo de mayo en España, o cada vez que la eches de menos."
+  "intro": "Perder a una madre deja un vacío que nada llena. Esta oración da gracias por su vida y por su amor, y la pone en manos de Dios con la esperanza de volver a encontrarse.\n\nPuedes rezarla en el aniversario de su muerte, en el Día de la Madre, el primer domingo de mayo en España, o cada vez que la eches de menos.",
+  "seoT": "Oración para mi madre fallecida: descanso eterno y consuelo",
+  "masT": "Más oraciones por mi madre fallecida",
+  "mas": [
+    {
+      "t": "Oración corta por mi madre difunta",
+      "x": "Mamá, gracias por todo. Virgen María, cuídala como ella me cuidó a mí. Dale, Señor, el descanso eterno. Amén."
+    },
+    {
+      "t": "Para rezar el Rosario por mi madre fallecida",
+      "x": "Antes de empezar el Rosario, di: «Ofrezco este Rosario por el alma de mi madre [nombre]». Al final de cada misterio puedes añadir: «Dale, Señor, el descanso eterno, y brille para ella la luz perpetua»."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es el Día de Difuntos en 2026?",
+      "a": "El lunes 2 de noviembre de 2026, el día después de Todos los Santos. Todo noviembre la Iglesia reza especialmente por los difuntos."
+    },
+    {
+      "q": "¿Se puede rezar el Rosario por una madre fallecida?",
+      "a": "Sí. Es una de las oraciones más bonitas por los difuntos. Ofrécelo al empezar por su alma y añade al final de cada misterio «Dale, Señor, el descanso eterno». En Rezo Diario tienes el Rosario guiado con voz."
+    }
+  ]
 }

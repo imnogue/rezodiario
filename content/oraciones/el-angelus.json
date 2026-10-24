@@ -8,5 +8,22 @@
   "when": "Tradicionalmente a las 12:00 del mediodía. En Pascua se reza el Regina Coeli.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/el-angelus.mp3?v=1792337897",
   "duracion": 38.2,
-  "intro": "El Ángelus recuerda el momento en que el ángel anunció a María que sería la madre de Jesús. Se reza tradicionalmente tres veces al día, a las seis de la mañana, a las doce del mediodía y a las seis de la tarde, cuando en muchos pueblos todavía suenan las campanas.\n\nCada domingo, el Papa reza el Ángelus con los fieles en la plaza de San Pedro. Durante el tiempo de Pascua se sustituye por el Regina Coeli, una oración de alegría por la Resurrección."
+  "intro": "El Ángelus recuerda el momento en que el ángel anunció a María que sería la madre de Jesús. Se reza tradicionalmente tres veces al día, a las seis de la mañana, a las doce del mediodía y a las seis de la tarde, cuando en muchos pueblos todavía suenan las campanas.\n\nCada domingo, el Papa reza el Ángelus con los fieles en la plaza de San Pedro. Durante el tiempo de Pascua se sustituye por el Regina Coeli, una oración de alegría por la Resurrección.",
+  "seoT": "El Ángelus: oración completa, cuándo y cómo rezarlo",
+  "seoD": "Rezo del Ángelus completo: «El ángel del Señor anunció a María…». Cuándo se reza (a las 12), cómo rezarlo paso a paso y el Regina Coeli de Pascua. Con audio.",
+  "dato": {
+    "k": "Cuándo se reza",
+    "t": "El Ángelus se reza a las 12 del mediodía. Tradicionalmente también a las 6 de la mañana y a las 6 de la tarde.",
+    "x": "Son tres versículos con un Avemaría después de cada uno y una oración final. Dura unos tres minutos. En tiempo de Pascua se reza el Regina Coeli."
+  },
+  "faq": [
+    {
+      "q": "¿Cómo se reza el Ángelus paso a paso?",
+      "a": "Uno dice «El ángel del Señor anunció a María» y los demás responden «Y concibió por obra del Espíritu Santo»; se reza un Avemaría. Igual con «He aquí la esclava del Señor» y «Y el Verbo se hizo carne». Después: «Ruega por nosotros, santa Madre de Dios», la oración final y un Gloria."
+    },
+    {
+      "q": "¿Por qué se reza el Ángelus a mediodía?",
+      "a": "Desde la Edad Media las campanas tocaban por la mañana, a mediodía y por la tarde para invitar a recordar que Dios se hizo hombre en María. El Papa lo reza cada domingo a las 12 con los fieles en la plaza de San Pedro."
+    }
+  ]
 }

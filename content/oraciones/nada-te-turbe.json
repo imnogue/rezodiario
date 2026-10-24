@@ -8,5 +8,26 @@
   "when": "Para memorizarla y repetirla en cualquier momento de inquietud.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/nada-te-turbe.mp3?v=1792337909",
   "duracion": 24.3,
-  "intro": "«Nada te turbe» es una breve poesía de santa Teresa de Jesús, doctora de la Iglesia, que se encontró escrita en su breviario. En pocas líneas resume una confianza total en Dios: «Quien a Dios tiene nada le falta. Solo Dios basta».\n\nEs ideal para aprender de memoria y repetirla en los momentos de nervios, de miedo o de prisa. También se canta mucho, sobre todo en la versión de la comunidad de Taizé."
+  "intro": "«Nada te turbe» es una breve poesía de santa Teresa de Jesús, doctora de la Iglesia, que se encontró escrita en su breviario. En pocas líneas resume una confianza total en Dios: «Quien a Dios tiene nada le falta. Solo Dios basta».\n\nEs ideal para aprender de memoria y repetirla en los momentos de nervios, de miedo o de prisa. También se canta mucho, sobre todo en la versión de la comunidad de Taizé.",
+  "seoT": "Nada te turbe, nada te espante: oración de santa Teresa de Jesús",
+  "seoD": "«Nada te turbe, nada te espante, todo se pasa, Dios no se muda…» Oración completa de santa Teresa de Jesús con audio, su significado y cuándo rezarla.",
+  "dato": {
+    "k": "Santa Teresa de Jesús",
+    "t": "Nada te turbe, nada te espante, todo se pasa, Dios no se muda. La paciencia todo lo alcanza. Quien a Dios tiene nada le falta: solo Dios basta.",
+    "x": "Santa Teresa la llevaba escrita en su breviario. Se reza despacio, frase a frase, cuando algo te inquieta."
+  },
+  "faq": [
+    {
+      "q": "¿Qué significa «Nada te turbe»?",
+      "a": "Que no dejes que nada te quite la paz. Todo lo de este mundo pasa, pero Dios no cambia: si lo tienes a él, lo tienes todo. Por eso termina diciendo «solo Dios basta»."
+    },
+    {
+      "q": "¿Dónde escribió santa Teresa «Nada te turbe»?",
+      "a": "Se encontró escrita en un papel que santa Teresa de Jesús guardaba en su breviario, el libro con el que rezaba cada día. No se sabe con certeza la fecha exacta."
+    },
+    {
+      "q": "¿Cuándo es la fiesta de santa Teresa de Jesús?",
+      "a": "El 15 de octubre. Fue monja carmelita en Ávila en el siglo XVI, reformadora del Carmelo y la primera mujer declarada Doctora de la Iglesia."
+    }
+  ]
 }

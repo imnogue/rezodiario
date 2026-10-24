@@ -6,5 +6,17 @@
   "k": "oración por un matrimonio en crisis restaurar matrimonio separación",
   "x": "Señor, nuestro matrimonio está pasando un momento difícil.\nNos hemos hecho daño y nos cuesta entendernos.\n\nTú que bendijiste nuestro amor,\nrenuévalo ahora.\nCura las heridas, quita el orgullo,\nayúdanos a escucharnos de verdad.\n\nDanos paciencia, humildad y ganas de luchar.\nY pon en nuestro camino a quien pueda ayudarnos.\n\nSagrada Familia de Nazaret, cuida de nuestro hogar.\nAmén.",
   "when": "Cuando tu matrimonio atraviese un momento difícil.",
-  "intro": "Todos los matrimonios pasan por crisis. A veces el cansancio, las heridas o la falta de comunicación hacen pensar que ya no hay salida. Esta oración pide a Dios que renueve el amor.\n\nRezar no sustituye hablar o buscar ayuda, pero abre el corazón para hacerlo."
+  "intro": "Todos los matrimonios pasan por crisis. A veces el cansancio, las heridas o la falta de comunicación hacen pensar que ya no hay salida. Esta oración pide a Dios que renueve el amor.\n\nRezar no sustituye hablar o buscar ayuda, pero abre el corazón para hacerlo.",
+  "seoT": "Oración por un matrimonio en crisis: restaurar el amor",
+  "masT": "Más oraciones por el matrimonio",
+  "mas": [
+    {
+      "t": "Oración corta para rezar juntos",
+      "x": "Señor, aquí estamos los dos, cansados y heridos. No sabemos cómo arreglarlo, pero queremos intentarlo contigo. Danos paciencia y un corazón nuevo. Amén."
+    },
+    {
+      "t": "Si rezas tú solo por tu matrimonio",
+      "x": "Señor, te pido por mi esposo (mi esposa) y por mí. Empieza por cambiar mi corazón: quítame el rencor y dame humildad para dar el primer paso. Amén."
+    }
+  ]
 }

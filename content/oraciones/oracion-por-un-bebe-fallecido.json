@@ -8,5 +8,12 @@
   "when": "Tras la pérdida de un bebé durante el embarazo, en el parto o en sus primeros días de vida.",
   "intro": "La muerte de un bebé, también durante el embarazo, es un duelo profundo que a menudo se vive en silencio. Esta oración da voz a ese dolor y confía al pequeño en las manos de Dios.\n\nExisten asociaciones de apoyo al duelo perinatal que acompañan a las familias. Hablar de ello y poner nombre al bebé puede ayudar a sanar.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-por-un-bebe-fallecido.mp3?v=1792354738",
-  "duracion": 59.1
+  "duracion": 59.1,
+  "seoT": "Oración por un bebé fallecido o difunto",
+  "faq": [
+    {
+      "q": "¿Se le reza a un bebé difunto?",
+      "a": "Muchas familias rezan por su bebé y también le hablan y le encomiendan sus intenciones, con la confianza de que está en las manos de Dios. La Iglesia confía a los niños que mueren sin bautismo a la misericordia de Dios."
+    }
+  ]
 }
