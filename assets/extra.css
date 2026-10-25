@@ -1001,3 +1001,7 @@ article .exam-cta{margin:24px 0 0}
 .pf-bar i{overflow:visible!important;position:relative}
 .pf-bar i b{position:absolute;left:0;right:0;bottom:0;border-radius:10px}
 .pf-bar.max i b{background:var(--gold)!important}
+/* anillo de meta: brillo redondo (sin el filtro que dejaba un recuadro) */
+.pf-mring.ok .fg{filter:none!important}
+.pf-mring svg{overflow:visible}
+.pf-mring.ok::before{content:"";position:absolute;inset:4px;border-radius:50%;box-shadow:0 0 18px 2px color-mix(in srgb,var(--gold) 45%,transparent),inset 0 0 14px color-mix(in srgb,var(--gold) 30%,transparent);pointer-events:none}
