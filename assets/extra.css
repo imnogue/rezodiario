@@ -940,3 +940,48 @@ article .exam-cta{margin:24px 0 0}
 }
 @media(max-width:760px){.pf-go{grid-column:1/-1}}
 .pf-m span{white-space:nowrap;overflow:hidden}
+/* perfil: compartir, meta, mes, intenciones */
+.pf-share{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:8px 14px;border-radius:999px;border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);background:color-mix(in srgb,var(--gold) 12%,transparent);color:var(--gold);font-weight:700;font-size:13.5px;cursor:pointer}
+.pf-share:hover{background:color-mix(in srgb,var(--gold) 22%,transparent)}
+.pf-meta{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.pf-mring{position:relative;width:130px;height:130px;flex:none}
+.pf-mring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.pf-mring circle{fill:none;stroke-width:10;stroke-linecap:round}
+.pf-mring .bg{stroke:var(--surface-2)}.pf-mring .fg{stroke:var(--accent);transition:stroke-dashoffset .8s}
+.pf-mring.ok .fg{stroke:var(--gold);filter:drop-shadow(0 0 6px color-mix(in srgb,var(--gold) 60%,transparent))}
+.pf-mring>div{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.pf-mring b{font-size:34px;line-height:1}.pf-mring b small{font-size:16px;color:var(--muted)}.pf-mring span{font-size:11.5px;color:var(--muted)}
+.pf-mside{flex:1;min-width:200px}
+.pf-dots{display:flex;gap:6px;justify-content:space-between}
+.pf-dots span{display:grid;justify-items:center;gap:4px;font-size:11px;color:var(--muted)}
+.pf-dots i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);font-style:normal;font-weight:800;font-size:13px}
+.pf-dots .on i{background:var(--accent);color:var(--accent-ink)}
+.pf-dots .hoy i{box-shadow:inset 0 0 0 2px var(--gold)}.pf-dots .hoy small{color:var(--gold);font-weight:800}
+.pf-dots .fut i{opacity:.45}
+.pf-chips{display:flex;gap:6px}
+.pf-chips button{border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;cursor:pointer;color:var(--muted)}
+.pf-chips button[aria-checked="true"]{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.pf-mes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.pf-mes div{padding:14px;border-radius:16px;background:var(--surface-2)}
+.pf-mes b{display:block;font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}.pf-mes small{color:var(--muted);font-size:12.5px}
+.pf-mes div:first-child{background:linear-gradient(150deg,color-mix(in srgb,var(--gold) 20%,var(--surface-2)),var(--surface-2))}.pf-mes div:first-child b{color:var(--gold)}
+.pf-intf{display:flex;gap:8px;margin-bottom:14px}
+.pf-intf input{flex:1;min-width:0;background:var(--surface-2);border:1px solid var(--line);color:var(--ink);border-radius:14px;padding:12px 14px;font:inherit;font-size:15px}
+.pf-intf input:focus{outline:none;border-color:var(--accent)}
+.pf-tabs{display:flex;gap:6px;margin-bottom:8px;border-bottom:1px solid var(--line)}
+.pf-tabs button{background:none;border:0;padding:10px 4px;margin-right:14px;font-weight:700;font-size:14px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.pf-tabs button.on{color:var(--ink);border-color:var(--accent)}
+.pf-ints{list-style:none;padding:0;margin:0}
+.pf-ints li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.pf-ints li:last-child{border:0}
+.pf-ints li>div{flex:1;min-width:0}.pf-ints b{display:block;font-size:15px;overflow-wrap:anywhere}.pf-ints small{color:var(--muted);font-size:12.5px}
+.pf-ib{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);flex:none}
+.pf-ints li.done .pf-ib{background:color-mix(in srgb,var(--gold) 22%,var(--surface-2));color:var(--gold);font-weight:800}
+.pf-ints li.done small{color:var(--gold)}
+.pf-iact{display:flex;gap:6px;flex:none}
+.pf-iact button{border:1px solid var(--line);background:transparent;border-radius:999px;min-width:34px;height:34px;padding:0 10px;font-size:13px;font-weight:700;cursor:pointer;color:var(--muted)}
+.pf-iact .pf-yes{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+.pf-iact .pf-yes:hover{background:var(--accent);color:var(--accent-ink)}
+.pf-iact .arm{color:#E58B7B;border-color:#E58B7B}
+.pf-iempty{color:var(--muted);font-size:14px;justify-content:center;text-align:center}
+@media(max-width:760px){.pf-mring{width:110px;height:110px}.pf-dots i{width:28px;height:28px}.pf-iact .pf-yes{padding:0 8px;font-size:12px}}

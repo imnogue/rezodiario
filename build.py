@@ -911,13 +911,20 @@ page("widget.html", "Widget del Evangelio del día para tu web o parroquia | Rez
 r = ""
 pf = f'''<section class="pf-hero"><div class="wrap"><div class="pf-top" id="perfil">
   <span class="pf-av" id="pfAv"><i>✝</i></span>
-  <div class="pf-id"><span class="eyebrow" id="pfEye">Tu camino de oración</span><h1 id="pfName">Mi perfil</h1><p id="pfSub">Tus estadísticas se guardan en este dispositivo.</p></div>
+  <div class="pf-id"><span class="eyebrow" id="pfEye">Tu camino de oración</span><h1 id="pfName">Mi perfil</h1><p id="pfSub">Tus estadísticas se guardan en este dispositivo.</p><button class="pf-share" id="pfShare" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>Compartir mi racha</button></div>
   <div class="pf-cta" id="pfCta"><button class="btn btn-gold" id="pfJoin" type="button">Crear cuenta gratis</button><small>Para no perder tu racha y verla en todos tus dispositivos</small></div>
  </div>
  <div class="pf-tiles" id="pfTiles"></div></div></section>
 <section class="sec pf"><div class="wrap">
  <div class="pf-grid">
   <div class="pf-card pf-wide"><div class="pf-h"><h2>Tu año de oración</h2><span class="hint" id="pfHeatN"></span></div><div class="pf-heat" id="pfHeat"></div><div class="pf-leg"><span>Menos</span><i></i><i class="l1"></i><i class="l2"></i><span>Más</span></div></div>
+  <div class="pf-card"><div class="pf-h"><h2>Meta semanal</h2><span class="hint" id="pfMetaN"></span></div><div class="pf-meta" id="pfMeta"></div></div>
+  <div class="pf-card" id="pfMesCard"><div class="pf-h"><h2 id="pfMesT">Tu mes</h2></div><div id="pfMes"></div></div>
+  <div class="pf-card pf-wide" id="pfInt"><div class="pf-h"><h2>Mis intenciones</h2><span class="hint" id="pfIntN"></span></div>
+   <p class="pf-empty" style="margin-top:-6px">Apunta por qué o por quién rezas. Cuando sientas que Dios te ha respondido, márcala como respondida y quedará guardada con su fecha.</p>
+   <form class="pf-intf" id="pfIntF"><input id="pfIntIn" maxlength="140" placeholder="Por ejemplo: por la salud de mi madre" autocomplete="off"><button class="btn btn-accent sm" type="submit">Añadir</button></form>
+   <div class="pf-tabs" role="tablist"><button type="button" class="on" data-int="abiertas">Rezando por ellas</button><button type="button" data-int="respondidas">Respondidas</button></div>
+   <ul class="pf-ints" id="pfInts"></ul></div>
   <div class="pf-card"><div class="pf-h"><h2>Cuándo rezas</h2></div><div class="pf-wd" id="pfWd"></div></div>
   <div class="pf-card"><div class="pf-h"><h2>Cómo rezas</h2></div><div class="pf-act" id="pfAct"></div></div>
   <div class="pf-card pf-wide"><div class="pf-h"><h2>Logros</h2><span class="hint" id="pfBadgeN"></span></div><div class="pf-badges" id="pfBadges"></div></div>

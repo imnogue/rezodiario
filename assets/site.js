@@ -783,12 +783,65 @@ if(PF){
   // diario
   const ks=Object.keys(S.diario).sort().reverse().slice(0,6);
   $("#pfDiario").innerHTML=ks.length?'<div class="pf-notes">'+ks.map(k=>{const e=S.diario[k];return`<a class="pf-n" href="${ROOT}evangelio/${k}${X}"><small>${+k.slice(8)} de ${MES3[+k.slice(5,7)-1]}${e.ref?" · "+esc(e.ref):""}</small><b>${esc(e.title||"Evangelio")}</b><p>${esc((e.t||"").slice(0,160))}${(e.t||"").length>160?"…":""}</p></a>`}).join("")+"</div>":`<p class="pf-empty">En cada Evangelio puedes hacer la Lectio Divina y escribir lo que te dice Dios. Tus notas aparecerán aquí.</p>`;
+  pfExtra(S);
   // ajustes
   const ni=$("#pfNameIn");if(document.activeElement!==ni)ni.value=n;
   $("#pfOutRow").hidden=!U;$("#pfMailMe").textContent=U?(U.email||U.phone||""):"";
   const sub=store.get("rd-boletin",null);const mb=$("#pfMail");
   if(sub){mb.textContent="Apuntado ✓";mb.disabled=true;$("#pfMailTxt").textContent="Recibes el Evangelio cada mañana en "+sub}
  }
+ /* meta semanal, resumen del mes, intenciones y compartir racha */
+ const MESL=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+ let intTab="abiertas";
+ function pfExtra(S){
+  // meta semanal
+  const meta=+(store.get("rd-perfil",{}).meta||5),now=new Date(),t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());const mon=new Date(t0);mon.setDate(t0.getDate()-((t0.getDay()+6)%7));
+  let hechos=0,dots="";for(let k=0;k<7;k++){const d=new Date(mon);d.setDate(mon.getDate()+k);const on=S.set.has(isoOf(d));if(on)hechos++;dots+=`<span class="${on?"on":""}${isoOf(d)===isoOf(t0)?" hoy":""}${d>t0?" fut":""}"><i>${on?"✓":""}</i><small>${WD[k]}</small></span>`}
+  const pct=Math.min(1,hechos/meta),C=2*Math.PI*52,ok=hechos>=meta;
+  $("#pfMetaN").textContent=ok?"¡Conseguida!":`${hechos} de ${meta}`;
+  $("#pfMeta").innerHTML=`<div class="pf-mring${ok?" ok":""}"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="bg"/><circle cx="60" cy="60" r="52" class="fg" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-pct)}"/></svg><div><b>${hechos}<small>/${meta}</small></b><span>${ok?"meta cumplida":"días esta semana"}</span></div></div>
+   <div class="pf-mside"><div class="pf-dots">${dots}</div><p class="pf-note" style="margin:10px 0 8px">${ok?"Has cumplido tu meta. Todo lo que reces ahora es un regalo extra.":`Te ${meta-hechos===1?"falta 1 día":"faltan "+(meta-hechos)+" días"} para cumplir tu meta. Sin agobios: lo importante es volver.`}</p>
+   <div class="pf-chips" role="radiogroup" aria-label="Días a la semana">${[3,5,7].map(n=>`<button type="button" role="radio" aria-checked="${n===meta}" data-meta="${n}">${n} días</button>`).join("")}</div></div>`;
+  $$("#pfMeta [data-meta]").forEach(b=>b.onclick=()=>{const P=store.get("rd-perfil",{});P.meta=+b.dataset.meta;store.set("rd-perfil",P);render()});
+  // resumen del mes: el anterior en los primeros 7 días, si no el actual
+  const useLast=now.getDate()<=7,ref=new Date(now.getFullYear(),now.getMonth()-(useLast?1:0),1),pre=isoOf(ref).slice(0,7),A=store.get("rd-act",{});
+  const md=S.days.filter(x=>x.startsWith(pre)),mc={};Object.keys(A).filter(k=>k.startsWith(pre)).forEach(k=>(A[k]||[]).forEach(x=>mc[x]=(mc[x]||0)+1));
+  let mb=0,run=0,pv=null;md.forEach(x=>{const t=new Date(x+"T12:00:00");run=pv&&Math.round((t-pv)/864e5)===1?run+1:1;mb=Math.max(mb,run);pv=t});
+  $("#pfMesT").textContent=`${useLast?"Tu":"Tu"} ${MESL[ref.getMonth()]}${useLast?" en resumen":" hasta hoy"}`;
+  $("#pfMes").innerHTML=md.length?`<div class="pf-mes"><div><b>${md.length}</b><small>${fl(md.length)} rezados</small></div><div><b>${mb}</b><small>mejor racha</small></div><div><b>${mc.rosario||0}</b><small>Rosarios</small></div><div><b>${(mc.oracion||0)+(mc.lectio||0)+(mc.novena||0)}</b><small>oraciones y novenas</small></div></div><p class="pf-note">${md.length>=20?"¡Un mes de los grandes! Dios no se deja ganar en generosidad.":md.length>=10?"Vas construyendo un hábito precioso. Sigue así.":"Cada día que rezas cuenta. El mes que viene, un poco más."}</p>`:`<p class="pf-empty">Este mes aún no has rezado. Empieza hoy y aquí verás tu resumen.</p><a class="btn btn-ghost sm" href="${ROOT}evangelio-de-hoy${X}">Rezar ahora</a>`;
+  renderInts()}
+ function ints(){return store.get("rd-intenciones",{})}
+ function renderInts(){const I=ints(),all=Object.entries(I).filter(([,v])=>v&&!v.del),ab=all.filter(([,v])=>!v.done).sort((a,b)=>b[1].at-a[1].at),re=all.filter(([,v])=>v.done).sort((a,b)=>b[1].doneAt-a[1].doneAt);
+  $("#pfIntN").textContent=re.length?`${re.length} ${re.length===1?"respondida":"respondidas"} 🙏`:(ab.length?`${ab.length} ${ab.length===1?"intención":"intenciones"}`:"");
+  $$(".pf-tabs [data-int]").forEach(b=>{b.classList.toggle("on",b.dataset.int===intTab);const n=b.dataset.int==="abiertas"?ab.length:re.length;b.textContent=(b.dataset.int==="abiertas"?"Rezando por ellas":"Respondidas")+(n?` · ${n}`:"")});
+  const L=intTab==="abiertas"?ab:re,f=ts=>{const d=new Date(ts);return`${d.getDate()} de ${MESL[d.getMonth()]}${d.getFullYear()!==new Date().getFullYear()?" de "+d.getFullYear():""}`};
+  $("#pfInts").innerHTML=L.length?L.map(([id,v])=>{const dd=Math.max(0,Math.round(((v.done?v.doneAt:Date.now())-v.at)/864e5));return`<li class="${v.done?"done":""}"><span class="pf-ib">${v.done?"✓":"🕯"}</span><div><b>${esc(v.t)}</b><small>${v.done?`Respondida el ${f(v.doneAt)} · tras ${dd} ${fl(dd)} de oración`:`Desde el ${f(v.at)}${dd?` · ${dd} ${fl(dd)} rezando`:""}`}</small></div><span class="pf-iact">${v.done?`<button type="button" data-undo="${id}" aria-label="Volver a rezar por ella">↺</button>`:`<button type="button" class="pf-yes" data-ok="${id}">Respondida</button>`}<button type="button" data-del="${id}" aria-label="Borrar">✕</button></span></li>`}).join(""):`<li class="pf-iempty">${intTab==="abiertas"?"Aún no has apuntado ninguna intención.":"Cuando marques una intención como respondida aparecerá aquí, para que recuerdes todo lo que Dios ha hecho en tu vida."}</li>`;
+  const upd=(id,fn)=>{const I=ints();if(I[id]){fn(I[id]);store.set("rd-intenciones",I);renderInts()}};
+  $$("#pfInts [data-ok]").forEach(b=>b.onclick=()=>{upd(b.dataset.ok,v=>{v.done=true;v.doneAt=Date.now()});toast("¡Gracias, Señor! 🙏 Guardada en «Respondidas».")});
+  $$("#pfInts [data-undo]").forEach(b=>b.onclick=()=>upd(b.dataset.undo,v=>{v.done=false;delete v.doneAt}));
+  let armed=null;$$("#pfInts [data-del]").forEach(b=>b.onclick=()=>{if(armed!==b){armed=b;b.textContent="¿Borrar?";b.classList.add("arm");setTimeout(()=>{if(armed===b){armed=null;b.textContent="✕";b.classList.remove("arm")}},3000);return}upd(b.dataset.del,v=>{v.del=1;v.t=""})})}
+ $("#pfIntF").onsubmit=e=>{e.preventDefault();const t=$("#pfIntIn").value.trim();if(!t)return;const I=ints();I["i"+Date.now().toString(36)]={t:t.slice(0,140),at:Date.now()};store.set("rd-intenciones",I);$("#pfIntIn").value="";intTab="abiertas";renderInts();toast("Intención guardada. Rezamos contigo.")};
+ $$(".pf-tabs [data-int]").forEach(b=>b.onclick=()=>{intTab=b.dataset.int;renderInts()});
+ // imagen para compartir la racha
+ async function shareImg(){const S=rdStats(),c=document.createElement("canvas");c.width=1080;c.height=1350;const g=c.getContext("2d");
+  try{await document.fonts.ready}catch(e){}
+  const cs=getComputedStyle(document.body),FD=(cs.getPropertyValue("--f-display")||"Georgia").trim()||"Georgia",FU=(cs.getPropertyValue("--f-ui")||"sans-serif").trim()||"sans-serif";
+  let bg=g.createLinearGradient(0,0,0,1350);bg.addColorStop(0,"#0E2620");bg.addColorStop(1,"#070F0C");g.fillStyle=bg;g.fillRect(0,0,1080,1350);
+  let gl=g.createRadialGradient(540,520,10,540,520,560);gl.addColorStop(0,"rgba(214,178,102,.42)");gl.addColorStop(1,"rgba(214,178,102,0)");g.fillStyle=gl;g.fillRect(0,0,1080,1350);
+  g.textAlign="center";g.fillStyle="#D6B266";g.font=`700 34px ${FU}`;g.fillText("MI CAMINO DE ORACIÓN",540,150);
+  g.font=`170px ${FU}`;g.fillText("🔥",540,420);
+  const big=S.racha||S.total;g.fillStyle="#F3EFE4";g.font=`400 300px ${FD}`;g.fillText(String(big),540,730);
+  g.font=`600 56px ${FU}`;g.fillStyle="#EEF2EC";g.fillText(S.racha?(S.racha===1?"día seguido rezando":"días seguidos rezando"):(S.total===1?"día rezado":"días rezados"),540,850);
+  const now=new Date();for(let k=6;k>=0;k--){const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()-k),on=S.set.has(isoOf(d)),x=540+(3-k)*110,y=975;
+   g.beginPath();g.arc(x,y,40,0,7);g.fillStyle=on?"#86C2A3":"rgba(255,255,255,.08)";g.fill();g.fillStyle=on?"#0D1311":"rgba(255,255,255,.45)";g.font=`800 34px ${FU}`;g.fillText(on?"✓":WD[(d.getDay()+6)%7],x,y+12)}
+  g.fillStyle="rgba(238,242,236,.7)";g.font=`500 36px ${FU}`;g.fillText(`${S.total} ${fl(S.total)} rezados · mejor racha: ${S.best}`,540,1090);
+  g.fillStyle="#D6B266";g.font=`italic 400 40px ${FD}`;g.fillText("«Orad sin cesar» (1 Tes 5, 17)",540,1170);
+  g.fillStyle="#EEF2EC";g.font=`800 44px ${FU}`;g.fillText("rezodiario.com",540,1270);
+  const blob=await new Promise(r=>c.toBlob(r,"image/png"));const file=new File([blob],"mi-racha-rezo-diario.png",{type:"image/png"});
+  const txt=S.racha?`Llevo ${S.racha} ${fl(S.racha)} seguidos rezando con Rezo Diario 🙏 Reza conmigo: https://rezodiario.com`:`Rezo cada día con Rezo Diario 🙏 https://rezodiario.com`;
+  if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],text:txt});return}catch(e){if(e&&e.name==="AbortError")return}}
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=file.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);toast("Imagen descargada. ¡Compártela en WhatsApp o Instagram!")}
+ $("#pfShare").onclick=()=>shareImg().catch(()=>toast("No se ha podido crear la imagen."));
  $("#pfJoin").onclick=()=>{if(window.__rdOpenAcc)window.__rdOpenAcc();else toast("Las cuentas no están disponibles ahora mismo.")};
  let nt=null;$("#pfNameIn").addEventListener("input",e=>{clearTimeout(nt);nt=setTimeout(()=>{const P=store.get("rd-perfil",{});P.nombre=e.target.value.trim().slice(0,40);store.set("rd-perfil",P);render()},500)});
  $("#pfTheme").onclick=()=>{const b=$("#btnTheme");if(b)b.click()};
