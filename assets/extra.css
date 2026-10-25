@@ -994,3 +994,7 @@ article .exam-cta{margin:24px 0 0}
 .pf-dots{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
 .pf-dots i{width:100%!important;max-width:30px;height:auto!important;aspect-ratio:1}
 @media(max-width:420px){.pf-meta{flex-wrap:wrap;justify-content:center}.pf-mside{flex-basis:100%}}
+/* iPhone: evita que las barras se queden «pegadas» por encima de la cabecera al hacer scroll */
+.pf-card{isolation:isolate;contain:paint;position:relative;z-index:0}
+.pf-bar i b,.pf-mring .fg{transition:none!important}
+.pf-bar i{-webkit-mask-image:-webkit-radial-gradient(white,black);transform:translateZ(0)}
