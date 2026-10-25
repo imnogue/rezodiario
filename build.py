@@ -97,7 +97,7 @@ def drawer(r):
               ("Versículos", [("versiculos.html", "Versículo del día")] + [(t["slug"] + ".html", t["t"]) for t in VTOP]),
               ("Tiempos litúrgicos", [("adviento.html", "Adviento 2026"), ("retos/adviento.html", "Reto de Adviento"), ("navidad.html", "Navidad 2026")]),
               ("Oraciones por tema", [(f"oraciones/tema-{k}.html", c["name"]) for k, c in CATS.items()]),
-              ("Rezo Diario", [("santos/index.html", "Santoral"), ("evangelio/index.html", "Archivo del Evangelio"), ("widget.html", "Widget para parroquias"), ("donar.html", "Donar"), ("sobre-nosotros.html", "Quiénes somos")])]
+              ("Rezo Diario", [("santos/index.html", "Santoral"), ("evangelio/index.html", "Archivo del Evangelio"), ("widget.html", "Widget para parroquias"), ("perfil.html", "Mi perfil"), ("donar.html", "Donar"), ("sobre-nosotros.html", "Quiénes somos")])]
     out = "".join(f'<h4>{g}</h4>' + "".join(f'<a href="{r}{h}"><i></i>{t}</a>' for h, t in items) for g, items in groups)
     return f'<div class="drawer" id="drawer" data-nosnippet hidden role="dialog" aria-modal="true" aria-label="Menú"><div class="drawer-bg" data-close></div><nav class="drawer-p"><button class="icon-btn" data-close aria-label="Cerrar menú" style="margin-left:auto;display:grid">✕</button>{out}</nav></div>'
 
@@ -109,7 +109,8 @@ def tabbar(r, active):
 ACCOUNT = '''<div class="drawer" id="account" data-nosnippet hidden role="dialog" aria-modal="true" aria-labelledby="accT"><div class="drawer-bg" data-close></div><div class="drawer-p">
  <button class="icon-btn" data-close aria-label="Cerrar" style="margin-left:auto;display:grid">✕</button>
  <h2 id="accT" style="font-size:30px">Tu cuenta</h2>
- <div id="accOut"><p style="color:var(--muted)">Crea tu cuenta gratis para guardar tu racha, tus oraciones favoritas, tus novenas y tus velas en todos tus dispositivos.</p>
+ <div id="accOut"><p style="color:var(--muted);margin-top:0">Crea tu cuenta gratis y lleva tu camino de oración contigo, en el móvil y en el ordenador.</p>
+  <ul class="acc-ben"><li><b>🔥</b>Tu racha de días rezados y tus estadísticas</li><li><b>♥</b>Tus oraciones guardadas y tu diario del Evangelio</li><li><b>✓</b>Tus novenas y retos, sincronizados</li></ul>
   <button class="btn btn-ghost acc-prov" id="accGoogle" type="button" hidden style="width:100%;margin:0 0 10px;gap:12px"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Continuar con Google</button>
   <button class="btn btn-ghost acc-prov" id="accApple" type="button" hidden style="width:100%;margin:0 0 10px;gap:12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Continuar con Apple</button>
   <button class="btn btn-ghost acc-prov" id="accFacebook" type="button" hidden style="width:100%;margin:0 0 10px;gap:12px"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1877F2" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg>Continuar con Facebook</button>
@@ -118,8 +119,12 @@ ACCOUNT = '''<div class="drawer" id="account" data-nosnippet hidden role="dialog
   <form id="accCode" class="ask" hidden style="flex-direction:column;margin:0 0 10px"><label class="sr" for="accOtp">Código de 6 cifras</label><input id="accOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Código de 6 cifras"><button class="btn btn-accent" type="submit">Entrar</button></form>
   <p class="note" id="accOr" style="text-align:center;margin:4px 0 10px" hidden>o con tu correo</p>
   <form id="accForm" class="ask" style="flex-direction:column"><label class="sr" for="accEmail">Correo electrónico</label><input id="accEmail" type="email" placeholder="tu@correo.com" autocomplete="email"><button class="btn btn-accent" type="submit">Enviarme el enlace de acceso</button></form>
-  <p class="note">Te enviaremos un enlace para entrar sin contraseña. No compartimos tu correo con nadie.</p></div>
- <div id="accIn" hidden><p>Has entrado como <strong id="accWho"></strong>.</p><ul class="links" id="accStats"></ul><button class="btn btn-ghost sm" id="accLogout" style="margin-top:16px">Cerrar sesión</button></div>
+  <p class="note">Te enviaremos un enlace para entrar sin contraseña. No compartimos tu correo con nadie.</p>
+  <a class="acc-local" href="/perfil">Ver mis estadísticas en este dispositivo ›</a></div>
+ <div id="accIn" hidden><div class="acc-me"><span class="acc-av" id="accAv"></span><div><b id="accWho"></b><small id="accMail"></small></div></div>
+  <div class="acc-chips" id="accChips"></div>
+  <a class="btn btn-accent" href="/perfil" style="width:100%;margin-top:14px">Ver mi perfil y estadísticas</a>
+  <button class="btn btn-ghost sm" id="accLogout" style="margin-top:12px;width:100%">Cerrar sesión</button></div>
  <p class="note" id="accMsg" role="status"></p>
 </div></div>'''
 
@@ -901,6 +906,33 @@ wid = phero(r, [("Inicio", "index.html"), ("Widget para parroquias", "widget.htm
  <div class="hero-cta"><button class="btn btn-accent sm" id="wCopy">Copiar código</button><button class="btn btn-ghost sm" id="wDark" aria-pressed="false">Versión oscura</button></div></div>
  <aside class="side"><div class="box"><h3>Qué incluye</h3><ul class="links"><li><a>Evangelio y frase del día</a></li><li><a>Color litúrgico</a></li><li><a>Enlace al audio y la reflexión</a></li><li><a>Se adapta al ancho de tu web</a></li></ul></div></aside></div>''')
 page("widget.html", "Widget del Evangelio del día para tu web o parroquia | Rezo Diario", "Pon gratis el Evangelio del día en la web de tu parroquia, colegio o blog. Se actualiza solo cada día. Copia y pega el código.", wid, "", [crumbs_ld([("Inicio", "index.html"), ("Widget para parroquias", "widget.html")])])
+
+# ================= PERFIL Y ESTADÍSTICAS =================
+r = ""
+pf = f'''<section class="pf-hero"><div class="wrap"><div class="pf-top" id="perfil">
+  <span class="pf-av" id="pfAv"><i>✝</i></span>
+  <div class="pf-id"><span class="eyebrow" id="pfEye">Tu camino de oración</span><h1 id="pfName">Mi perfil</h1><p id="pfSub">Tus estadísticas se guardan en este dispositivo.</p></div>
+  <div class="pf-cta" id="pfCta"><button class="btn btn-gold" id="pfJoin" type="button">Crear cuenta gratis</button><small>Para no perder tu racha y verla en todos tus dispositivos</small></div>
+ </div>
+ <div class="pf-tiles" id="pfTiles"></div></div></section>
+<section class="sec pf"><div class="wrap">
+ <div class="pf-grid">
+  <div class="pf-card pf-wide"><div class="pf-h"><h2>Tu año de oración</h2><span class="hint" id="pfHeatN"></span></div><div class="pf-heat" id="pfHeat"></div><div class="pf-leg"><span>Menos</span><i></i><i class="l1"></i><i class="l2"></i><span>Más</span></div></div>
+  <div class="pf-card"><div class="pf-h"><h2>Cuándo rezas</h2></div><div class="pf-wd" id="pfWd"></div></div>
+  <div class="pf-card"><div class="pf-h"><h2>Cómo rezas</h2></div><div class="pf-act" id="pfAct"></div></div>
+  <div class="pf-card pf-wide"><div class="pf-h"><h2>Logros</h2><span class="hint" id="pfBadgeN"></span></div><div class="pf-badges" id="pfBadges"></div></div>
+  <div class="pf-card"><div class="pf-h"><h2>Tus novenas</h2></div><div id="pfNov"></div></div>
+  <div class="pf-card"><div class="pf-h"><h2>Oraciones guardadas</h2></div><div id="pfFavs"></div></div>
+  <div class="pf-card pf-wide"><div class="pf-h"><h2>Tu diario del Evangelio</h2><a class="hint" href="evangelio-de-hoy.html">Escribir hoy ›</a></div><div id="pfDiario"></div></div>
+  <div class="pf-card pf-wide" id="pfSet"><div class="pf-h"><h2>Ajustes</h2></div>
+   <div class="pf-rows">
+    <label class="pf-row"><span><b>¿Cómo quieres que te llamemos?</b><small>Solo se muestra en tu perfil</small></span><input id="pfNameIn" maxlength="40" placeholder="Tu nombre" autocomplete="given-name"></label>
+    <div class="pf-row" id="pfMailRow"><span><b>El Evangelio cada mañana en tu correo</b><small id="pfMailTxt">Gratis. Puedes darte de baja cuando quieras.</small></span><button class="btn btn-ghost sm" id="pfMail" type="button">Apuntarme</button></div>
+    <div class="pf-row"><span><b>Tema de la web</b><small>Oscuro o claro</small></span><button class="btn btn-ghost sm" id="pfTheme" type="button">Cambiar</button></div>
+    <div class="pf-row" id="pfOutRow" hidden><span><b>Sesión</b><small id="pfMailMe"></small></span><button class="btn btn-ghost sm" id="pfOut" type="button">Cerrar sesión</button></div>
+   </div></div>
+ </div></div></section>'''
+page("perfil.html", "Mi perfil y estadísticas de oración | Rezo Diario", "Tu racha de oración, tus días rezados, logros, novenas, oraciones guardadas y tu diario del Evangelio.", pf, "", robots="noindex, follow")
 
 # ================= DONAR, SOBRE, LEGAL =================
 don_faq = [("¿Es seguro donar?", "Sí. El pago se hace en la página segura de Stripe, una de las pasarelas más usadas del mundo. Rezo Diario nunca ve ni guarda los datos de tu tarjeta."), ("¿Puedo cancelar el apoyo mensual?", "Sí, cuando quieras y sin dar explicaciones. Desde el enlace del correo de Stripe o escribiéndonos."), ("¿Mi donativo desgrava?", "No. Rezo Diario es un proyecto personal, no una entidad acogida a la Ley 49/2002, así que las aportaciones no dan derecho a deducción fiscal."), ("¿A qué se destina el dinero?", "A mantener la web, los servidores, los audios del rezo diario y a preparar nuevos contenidos.")]

@@ -4,7 +4,7 @@
 const RD=window.RD||{};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const ROOT=document.body.dataset.root||"";const X=document.body.dataset.clean==="1"?"":".html";const IDX=X?"index.html":"";
-const SYNC_KEYS=/^rd-(rezado|favs|nov-|reto-|mycandles|intencion|diario|prop)/;
+const SYNC_KEYS=/^rd-(rezado|favs|nov-|reto-|mycandles|intencion|diario|prop|act|oras|perfil)/;
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}if(SYNC_KEYS.test(k)&&window.__rdSync)window.__rdSync()}};
 function toast(t){let h=$("#toastHost");if(!h){h=document.createElement("div");h.id="toastHost";document.body.appendChild(h)}h.innerHTML="";const d=document.createElement("div");d.className="toast";d.setAttribute("role","status");d.textContent=t;h.appendChild(d);setTimeout(()=>d.remove(),3000)}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
@@ -117,7 +117,7 @@ function stopSpeech(){sp.token++;if(sp.on&&synth)try{synth.cancel()}catch(e){};s
 
 /* ---------- Racha ---------- */
 function doneDays(){return store.get("rd-rezado",[])}
-function markDone(dt){const s=doneDays();const d=new Date(),t=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");[dt,t].forEach(x=>{if(x&&!s.includes(x))s.push(x)});store.set("rd-rezado",s);renderWeek();document.dispatchEvent(new Event("rd-rezado"))}
+function markDone(dt,kind){const s=doneDays();const d=new Date(),t=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");[dt,t].forEach(x=>{if(x&&!s.includes(x))s.push(x)});store.set("rd-rezado",s);if(kind){const A=store.get("rd-act",{});A[t]=A[t]||[];if(!A[t].includes(kind))A[t].push(kind);store.set("rd-act",A);const sl=document.body.dataset.slug;if(kind==="oracion"&&sl){const o=store.get("rd-oras",[]);if(!o.includes(sl)){o.push(sl);store.set("rd-oras",o)}}}renderWeek();document.dispatchEvent(new Event("rd-rezado"))}
 
 /* ---------- Reproductor del rezo diario ---------- */
 const P={items:[],segs:[],k:0,playing:false,token:0,timer:null,dog:null,rate:1,mus:store.get("rd-musica","calma"),voiceOn:store.get("rd-voz",true),done:false,day:null};
@@ -186,7 +186,7 @@ function playAudio(){stopSpeech();if(!AU||AU.dataset.d!==P.day.date){if(AU)AU.pa
  AU.playbackRate=P.rate;AU.muted=!!AU.dataset.v&&!P.voiceOn;P.playing=true;AU.play().catch(()=>{P.playing=false;renderP()});renderP()}
 function stopPlayer(){P.playing=false;P.token++;clearT();if(synth)try{synth.cancel()}catch(e){};amb(false);if(AU)AU.pause()}
 function pauseP(){stopPlayer();renderP()}
-function finishP(){P.playing=false;P.done=true;P.token++;amb(false);markDone(P.day.date);renderP();setTimeout(()=>siguiente("rezo"),600)}
+function finishP(){P.playing=false;P.done=true;P.token++;amb(false);markDone(P.day.date,"rezo");renderP();setTimeout(()=>siguiente("rezo"),600)}
 function jumpSeg(si){const idx=P.items.findIndex(x=>x.si===si);if(idx<0)return;P.done=false;P.k=idx;if(AU&&P.day.audio&&AU.duration){AU.currentTime=segBounds()[si][0];tickAudio();return}if(P.playing)speakCur();else{P.token++;renderP()}}
 /* Música de fondo: bucles sin cortes con Web Audio (static/musica/*.mp3) */
 const MUSICAS=[["calma","Calma"],["piano","Piano"],["organo","Órgano"],["campanas","Campanas"],["lluvia","Lluvia"],["no","Sin música"]];
@@ -378,7 +378,7 @@ function renderCamino(lit){const els=$$("[data-camino]");if(!els.length)return;c
   const iv=el.querySelector("[data-camino-int-v]"),ib=el.querySelector("[data-camino-int-btn]");if(iv){iv.hidden=!intOk;iv.innerHTML=intOk?`Esta semana rezas por <b>${esc(intv.t)}</b>`:"";ib.textContent=intOk?"Cambiar":"Añadir por quién rezo esta semana"}})}
 renderCamino();document.addEventListener("rd-rezado",()=>renderCamino(true));
 document.addEventListener("click",e=>{const el=e.target.closest("[data-camino]");if(!el)return;
- if(e.target.closest("[data-camino-done]")){markDone(isoD(new Date()));toast("Se ha encendido la vela de hoy. Gracias por rezar.");return}
+ if(e.target.closest("[data-camino-done]")){markDone(isoD(new Date()),"vela");toast("Se ha encendido la vela de hoy. Gracias por rezar.");return}
  if(e.target.closest("[data-camino-int-btn]")){const f=el.querySelector("[data-camino-int-f]");f.hidden=!f.hidden;if(!f.hidden){const i=f.querySelector("input");const v=store.get("rd-intencion",null);i.value=v&&v.t||"";i.focus()}return}
  if(e.target.closest("[data-camino-ics]")){const d=new Date();d.setDate(d.getDate()+1);const ymd=isoD(d).replace(/-/g,"");const url=location.origin+"/";
   const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Rezo Diario//ES","BEGIN:VEVENT","UID:rezodiario-"+Date.now()+"@rezodiario.com","DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z","DTSTART:"+ymd+"T080000","DURATION:PT10M","RRULE:FREQ=DAILY","SUMMARY:Un momento con Dios · Rezo Diario","DESCRIPTION:El Evangelio de hoy y el rezo del día: "+url,"URL:"+url,"BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:Hora de rezar","TRIGGER:PT0M","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
@@ -418,14 +418,14 @@ if(ppl){const au=new Audio();au.preload="metadata";au.src=ppl.dataset.src;const 
  const tick=()=>{const D=au.duration||+ppl.dataset.dur||0;if(!drag&&D){sk.value=Math.round(au.currentTime/D*1000);sk.style.setProperty("--p",(au.currentTime/D*100)+"%")}cu.textContent=f(au.currentTime);if(au.duration)du.textContent=f(au.duration)};
  pb.onclick=()=>{if(au.paused){if(P.playing)pauseP();stopSpeech();au.play().catch(()=>toast("No se ha podido cargar el audio."))}else au.pause()};
  au.addEventListener("play",paint);au.addEventListener("pause",paint);au.addEventListener("timeupdate",tick);au.addEventListener("loadedmetadata",tick);
- au.addEventListener("ended",()=>{paint();sk.value=1000;sk.style.setProperty("--p","100%");markDone(ISO);setTimeout(()=>siguiente("oracion"),700)});
+ au.addEventListener("ended",()=>{paint();sk.value=1000;sk.style.setProperty("--p","100%");markDone(ISO,"oracion");setTimeout(()=>siguiente("oracion"),700)});
  sk.addEventListener("input",()=>{drag=true;const D=au.duration||+ppl.dataset.dur||0;cu.textContent=f(sk.value/1000*D);sk.style.setProperty("--p",(sk.value/10)+"%")});
  sk.addEventListener("change",()=>{const D=au.duration||+ppl.dataset.dur||0;if(D)au.currentTime=sk.value/1000*D;drag=false});
  $$(".pp-skip").forEach(a=>a.addEventListener("click",e=>{if(!au.paused){e.preventDefault();location.href=a.getAttribute("href")+(a.getAttribute("href").includes("?")?"&":"?")+"escuchar=1"}}));
  document.addEventListener("keydown",e=>{if(e.code==="Space"&&!/INPUT|TEXTAREA|BUTTON|A/.test(document.activeElement.tagName)){e.preventDefault();pb.click()}});
  if(new URLSearchParams(location.search).get("escuchar")){au.play().catch(()=>{ppl.classList.add("hint");toast("Pulsa ▶ para seguir escuchando")})}
 }
-const amen=$("#btnAmen");if(amen){const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};const paint=()=>{const on=doneDays().includes(today());amen.textContent=on?"Has rezado hoy":"Amén";amen.setAttribute("aria-pressed",on)};paint();amen.onclick=()=>{markDone(today());paint();siguiente("oracion")}}
+const amen=$("#btnAmen");if(amen){const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};const paint=()=>{const on=doneDays().includes(today());amen.textContent=on?"Has rezado hoy":"Amén";amen.setAttribute("aria-pressed",on)};paint();amen.onclick=()=>{markDone(today(),"oracion");paint();siguiente("oracion")}}
 const favBox=$("#favList");if(favBox){const a=store.get("rd-favs",[]).map(s=>RD.prayers.find(p=>p.slug===s)).filter(Boolean);if(a.length){favBox.hidden=false;favBox.querySelector("ul").innerHTML=a.map(p=>`<li><a href="${ROOT}oraciones/${p.slug}${X}">${esc(p.t)}<small>${p.min} min</small></a></li>`).join("")}}
 
 /* ---------- Rosario ---------- */
@@ -511,7 +511,7 @@ if($("#beads")){
   rmm.onclick=e=>{const b=e.target.closest("[data-mus]");if(!b)return;P.mus=b.dataset.mus;store.set("rd-musica",P.mus);pintaM();rmm.hidden=true;rmb.setAttribute("aria-expanded","false");if(R.voice)ambR(true)};
   document.addEventListener("click",e=>{if(!rmm.hidden&&!e.target.closest("#rMusWrap")){rmm.hidden=true;rmb.setAttribute("aria-expanded","false")}})}
  function go(i){if(i<0||i>=R.steps.length)return;R.dir=i>=R.cur?1:-1;R.cur=i;render()}
- function next(){if(R.cur===R.steps.length-1){markDone(ISO);setV(false);ambR(false);R.cur=0;R.dir=1;render();siguiente("rosario");return}go(R.cur+1)}
+ function next(){if(R.cur===R.steps.length-1){markDone(ISO,"rosario");setV(false);ambR(false);R.cur=0;R.dir=1;render();siguiente("rosario");return}go(R.cur+1)}
  $("#rNext").onclick=next;$("#rPrev").onclick=()=>go(R.cur-1);$("#rReset").onclick=()=>go(0);
  const vb=$("#rVoice");const setV=v=>{R.voice=v;vb.setAttribute("aria-pressed",v);vb.setAttribute("aria-label",v?"Pausar la voz":"Rezar en voz alta");$("#rpVoz").textContent=v?"Rezando en voz alta · pasa solo a la siguiente oración":"Pulsa ▶ para rezarlo con voz, o avanza a tu ritmo"};
  vb.onclick=()=>{setV(!R.voice);ambR(R.voice);if(R.voice)render();else stopVoz()};
@@ -533,7 +533,7 @@ if($("#lec")){
  function stopT(){if(tm){clearInterval(tm);tm=null}$$("#lec .lec-timer").forEach(t=>{t.querySelector(".lec-t").textContent="";t.querySelector("[data-timer]").disabled=false});L.classList.remove("breathing")}
  function show(i){stopT();li=i;tabs.forEach((t,k)=>{t.setAttribute("aria-selected",k===i);t.closest("li").classList.toggle("done",k<i)});panes.forEach((p,k)=>p.hidden=k!==i);prev.disabled=i===0;nxt.textContent=i===3?"Amén, he terminado":"Siguiente paso";if(i===2)setTimeout(()=>$("#lecNote").focus(),50)}
  tabs.forEach(t=>t.onclick=()=>show(+t.dataset.i));prev.onclick=()=>show(Math.max(0,li-1));
- nxt.onclick=()=>{if(li<3){show(li+1);L.scrollIntoView({behavior:"smooth",block:"start"});return}stopT();markDone(day);toast("Has terminado tu Lectio Divina");if(typeof siguiente==="function")siguiente("rezo")};
+ nxt.onclick=()=>{if(li<3){show(li+1);L.scrollIntoView({behavior:"smooth",block:"start"});return}stopT();markDone(day,"lectio");toast("Has terminado tu Lectio Divina");if(typeof siguiente==="function")siguiente("rezo")};
  $$("#lec [data-timer]").forEach(b=>b.onclick=()=>{const box=b.closest(".lec-timer"),out=box.querySelector(".lec-t");let n=+box.dataset.secs;stopT();b.disabled=true;if(box.closest('[data-p="3"]'))L.classList.add("breathing");
   const f=()=>{out.textContent=n>0?Math.floor(n/60)+":"+String(n%60).padStart(2,"0"):"Amén";if(n<=0){clearInterval(tm);tm=null;b.disabled=false;L.classList.remove("breathing");try{navigator.vibrate&&navigator.vibrate(120)}catch(e){}}n--};f();tm=setInterval(f,1000)});
  const note=$("#lecNote"),saved=$("#lecSaved");const D=store.get("rd-diario",{});if(D[day])note.value=D[day].t||"";
@@ -573,7 +573,7 @@ if(nv){
   const c=2*Math.PI*36,pct=done.length/9;$("#novRing").innerHTML=`<circle class="bg" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct)}"/><text x="42" y="48" text-anchor="middle">${done.length}/9</text>`;
   const b=$("#novDone");b.textContent=done.includes(cur)?"✓ Día rezado":"Marcar este día como rezado";b.setAttribute("aria-pressed",done.includes(cur));
   $("#novStatus").textContent=todayK>=0?`Hoy toca el día ${todayK+1}.`:(dayN<0?`Empieza el ${fmt(0)}. Puedes rezarla en cualquier momento del año.`:"La novena de este año ya ha terminado. Puedes rezarla en cualquier momento.")}
- $("#novDone").onclick=()=>{let d=store.get(key,[]);d=d.includes(cur)?d.filter(x=>x!==cur):[...d,cur];store.set(key,d);const hecho=d.includes(cur);if(d.length===9)toast("¡Novena completada!");else if(hecho&&cur<8){cur++;}render();if(hecho){markDone(ISO);siguiente("novena")}};
+ $("#novDone").onclick=()=>{let d=store.get(key,[]);d=d.includes(cur)?d.filter(x=>x!==cur):[...d,cur];store.set(key,d);const hecho=d.includes(cur);if(d.length===9)toast("¡Novena completada!");else if(hecho&&cur<8){cur++;}render();if(hecho){markDone(ISO,"novena");siguiente("novena")}};
  if($("#novSpeak"))$("#novSpeak").onclick=e=>{const b=e.currentTarget;if(sp.on){stopSpeech();b.textContent="Escuchar";return}const d=N.days[cur];if(speakText(`${N.open} Día ${cur+1}. ${d[0]}. ${d[1]} ${N.close}`,()=>b.textContent="Escuchar"))b.textContent="Detener"};
  render();
 }
@@ -665,6 +665,20 @@ if(chapel){
  })();
 }
 
+/* ---------- Estadísticas de oración (perfil) ---------- */
+function isoOf(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function rdStats(){const days=[...new Set(store.get("rd-rezado",[]))].filter(x=>/^\d{4}-\d\d-\d\d$/.test(x)).sort();const set=new Set(days);
+ const now=new Date();let d=new Date(now.getFullYear(),now.getMonth(),now.getDate());if(!set.has(isoOf(d)))d.setDate(d.getDate()-1);let racha=0;while(set.has(isoOf(d))){racha++;d.setDate(d.getDate()-1)}
+ let best=0,run=0,prev=null;days.forEach(x=>{const t=new Date(x+"T12:00:00");run=prev&&Math.round((t-prev)/864e5)===1?run+1:1;best=Math.max(best,run);prev=t});
+ const mes=isoOf(now).slice(0,7),esteMes=days.filter(x=>x.startsWith(mes)).length;
+ const wd=[0,0,0,0,0,0,0];days.forEach(x=>{wd[(new Date(x+"T12:00:00").getDay()+6)%7]++});
+ const A=store.get("rd-act",{}),cnt={};Object.values(A).forEach(a=>(a||[]).forEach(k=>cnt[k]=(cnt[k]||0)+1));
+ const nov=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(/^rd-nov-/.test(k)){const v=JSON.parse(localStorage.getItem(k))||[];nov.push({slug:k.slice(7),n:v.length})}}}catch(e){}
+ const diario=store.get("rd-diario",{}),prop=store.get("rd-prop",{});
+ return{days,set,racha,best,total:days.length,esteMes,diasMes:new Date(now.getFullYear(),now.getMonth()+1,0).getDate(),hoy:set.has(isoOf(now)),wd,cnt,nov,favs:store.get("rd-favs",[]).length,velas:store.get("rd-mycandles",[]).length,oras:store.get("rd-oras",[]).length,diario,nDiario:Object.keys(diario).length,nProp:Object.keys(prop).length,first:days[0]||null}}
+function rdName(u){const p=store.get("rd-perfil",{});const m=(u&&u.user_metadata)||{};return(p.nombre||m.full_name||m.name||"").trim()}
+function rdAvatar(u){const m=(u&&u.user_metadata)||{};const url=m.avatar_url||m.picture;if(url&&/^https:\/\//.test(url))return`<img src="${esc(url)}" alt="" referrerpolicy="no-referrer">`;const n=rdName(u)||(u&&u.email)||"?";return`<i>${esc(n.trim()[0].toUpperCase())}</i>`}
+
 /* ---------- Cuenta y sincronización ---------- */
 (function(){
  const btn=$("#btnUser"),acc=$("#account");if(!SB||!btn||!acc)return;btn.hidden=false;
@@ -677,14 +691,17 @@ if(chapel){
   try{const r=await sbf("/auth/v1/token?grant_type=refresh_token",{method:"POST",body:{refresh_token:a.refresh_token}});const n={access_token:r.access_token,refresh_token:r.refresh_token,exp:Date.now()+r.expires_in*1000,email:r.user&&r.user.email};store.set("rd-auth",n);return n}catch(e){store.set("rd-auth",null);return null}}
  async function me(){const a=await refresh();if(!a)return null;try{const u=await sbf("/auth/v1/user",{auth:true});return u}catch(e){return null}}
  function snapshot(){const o={};try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(SYNC_KEYS.test(k))o[k]=JSON.parse(localStorage.getItem(k))}}catch(e){}return o}
- function merge(a,b){if(Array.isArray(a)&&Array.isArray(b))return[...new Set([...a,...b])];return b!==undefined?b:a}
+ function merge(a,b){if(Array.isArray(a)&&Array.isArray(b))return[...new Set([...a,...b])];const po=x=>x&&typeof x==="object"&&!Array.isArray(x);if(po(a)&&po(b)){const o={...a};Object.keys(b).forEach(k=>{o[k]=k in a?merge(a[k],b[k]):b[k]});return o}return b!==undefined?b:a}
  let busy=false,timer=null;
  async function pull(){const u=await me();if(!u)return;try{const rows=await sbf(`/rest/v1/progreso?select=datos&user_id=eq.${u.id}`,{auth:true});const remote=(rows[0]||{}).datos||{};const loc=snapshot();
   Object.keys(remote).forEach(k=>{if(SYNC_KEYS.test(k))try{localStorage.setItem(k,JSON.stringify(merge(remote[k],loc[k])))}catch(e){}});await push(true);renderWeek();document.dispatchEvent(new Event("rd-rezado"));toast("Tu progreso está sincronizado.")}catch(e){}}
  async function push(now){if(!now){clearTimeout(timer);timer=setTimeout(()=>push(true),2500);return}if(busy)return;busy=true;const u=await me();if(u){try{await sbf("/rest/v1/progreso",{method:"POST",auth:true,headers:{Prefer:"resolution=merge-duplicates,return=minimal"},body:{user_id:u.id,datos:snapshot(),updated_at:new Date().toISOString()}})}catch(e){}}busy=false}
- window.__rdSync=()=>{if(store.get("rd-auth",null))push(false)};
- async function renderAcc(){const u=await me();$("#accOut").hidden=!!u;$("#accIn").hidden=!u;msg("");
-  if(u){$("#accWho").textContent=u.email||u.phone||"tu cuenta";const s=store.get("rd-rezado",[]).length,f=store.get("rd-favs",[]).length;$("#accStats").innerHTML=`<li><a>Días rezados<small>${s}</small></a></li><li><a>Oraciones guardadas<small>${f}</small></a></li>`}}
+ window.__rdSync=()=>{if(store.get("rd-auth",null))push(false)};window.__rdMe=me;window.__rdOpenAcc=open;window.__rdLogout=()=>{store.set("rd-auth",null);renderAcc();paintBtn(null);document.dispatchEvent(new Event("rd-auth"))};
+ async function renderAcc(){const u=await me();$("#accOut").hidden=!!u;$("#accIn").hidden=!u;msg("");paintBtn(u);
+  const S=rdStats(),ch=$("#accChips");if(ch)ch.innerHTML=`<div><b>${S.racha}</b><small>${S.racha===1?"día seguido":"días seguidos"}</small></div><div><b>${S.total}</b><small>días rezados</small></div><div><b>${S.favs}</b><small>guardadas</small></div>`;
+  if(u){const n=rdName(u);$("#accWho").textContent=n||u.email||u.phone||"tu cuenta";$("#accMail").textContent=n?(u.email||u.phone||""):"";const av=$("#accAv");if(av)av.innerHTML=rdAvatar(u)}}
+ function paintBtn(u){const b=$("#btnUser");if(!b)return;b.classList.toggle("in",!!u);const i=b.querySelector(".u-ini");if(i)i.remove();if(u){const s=document.createElement("span");s.className="u-ini";s.innerHTML=rdAvatar(u);b.appendChild(s)}}
+ if(store.get("rd-auth",null))me().then(paintBtn);
  $("#accForm").onsubmit=async e=>{e.preventDefault();const em=$("#accEmail").value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg("Revisa el correo: falta la @ o el dominio.");return}
   try{await sbf("/auth/v1/otp?redirect_to="+encodeURIComponent(location.origin+location.pathname),{method:"POST",body:{email:em,create_user:true}});msg("Te hemos enviado un enlace. Ábrelo desde este dispositivo para entrar.")}
   catch(err){const t=String(err&&err.message||err);let m="No se ha podido enviar el enlace.";
@@ -711,9 +728,79 @@ if(chapel){
    store.set("rd-auth",{access_token:r.access_token,refresh_token:r.refresh_token,exp:Date.now()+(r.expires_in||3600)*1000});$("#accCode").hidden=true;toast("Has entrado en tu cuenta. Sincronizando…");pull();renderAcc()}
   catch(err){msg("El código no es correcto o ha caducado. Pide uno nuevo.")}};
  const he=new URLSearchParams(location.hash.slice(1));if(he.get("error_description")){setTimeout(()=>{open();msg("No se ha podido entrar: "+he.get("error_description"))},300);history.replaceState(null,"",location.pathname+location.search)}
- $("#accLogout").onclick=()=>{store.set("rd-auth",null);renderAcc();toast("Has cerrado sesión. Tu progreso sigue guardado en tu cuenta.")};
+ $("#accLogout").onclick=()=>{store.set("rd-auth",null);renderAcc();document.dispatchEvent(new Event("rd-auth"));toast("Has cerrado sesión. Tu progreso sigue guardado en tu cuenta.")};
  if(store.get("rd-auth",null))refresh();
 })();
+
+/* ---------- Perfil: estadísticas de oración ---------- */
+const PF=$("#perfil");
+if(PF){
+ const MES3=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],WD=["L","M","X","J","V","S","D"],WDL=["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+ const KIND=[["rezo","Rezo del día","☀"],["rosario","Santo Rosario","✿"],["oracion","Oraciones","♱"],["lectio","Lectio Divina","✎"],["novena","Novenas","⑨"],["vela","Velas encendidas","✦"]];
+ let U=null;
+ const fl=n=>n===1?"día":"días";
+ function badges(S){const novOk=S.nov.some(x=>x.n>=9);return[
+  ["Primer paso","Reza por primera vez",S.total,1,"🌱"],["Tres días seguidos","Reza 3 días seguidos",S.best,3,"🔥"],["Una semana con Dios","Reza 7 días seguidos",S.best,7,"⭐"],["Un mes de oración","Reza 30 días seguidos",S.best,30,"👑"],
+  ["10 días rezados","Suma 10 días de oración",S.total,10,"🕯"],["50 días rezados","Suma 50 días de oración",S.total,50,"🌿"],["100 días rezados","Suma 100 días de oración",S.total,100,"🏆"],
+  ["Rosario completo","Reza el Rosario entero",S.cnt.rosario||0,1,"📿"],["Novena terminada","Reza los 9 días de una novena",novOk?1:0,1,"🙏"],["Lectio Divina","Termina una Lectio Divina",S.cnt.lectio||0,1,"📖"],
+  ["Luz encendida","Enciende una vela en el muro",S.velas,1,"✨"],["Tesoro de oraciones","Guarda 5 oraciones",S.favs,5,"♥"],["Diario del alma","Escribe 3 días en tu diario",S.nDiario,3,"✍"]]}
+ function render(){const S=rdStats();
+  // cabecera
+  const n=U?rdName(U):(store.get("rd-perfil",{}).nombre||"");
+  $("#pfName").textContent=n?`Hola, ${n}`:"Mi perfil";
+  $("#pfAv").innerHTML=U?rdAvatar(U):(n?`<i>${esc(n[0].toUpperCase())}</i>`:"<i>✝</i>");
+  const since=U&&U.created_at?new Date(U.created_at):null;
+  $("#pfEye").textContent=since?`Miembro desde ${MES3[since.getMonth()]} ${since.getFullYear()}`:"Tu camino de oración";
+  $("#pfSub").textContent=S.hoy?"Hoy ya has rezado. ¡Gracias por dedicarle este rato a Dios!":(S.racha?`Llevas ${S.racha} ${fl(S.racha)} seguidos. Reza hoy para no perder tu racha.`:"Hoy es un buen día para empezar. Un rato con Dios cambia el día entero.");
+  $("#pfCta").hidden=!!U;
+  // fichas
+  $("#pfTiles").innerHTML=[["🔥",S.racha,`${fl(S.racha)} seguidos`,"Racha actual",S.hoy?"Hoy ya rezado":"Reza hoy para seguir"],["⭐",S.best,fl(S.best),"Mejor racha",""],["📅",S.total,fl(S.total),"Días rezados",S.first?`Desde el ${+S.first.slice(8)} de ${MES3[+S.first.slice(5,7)-1]}`:""],["🗓",S.esteMes,`de ${S.diasMes}`,"Este mes",`${Math.round(S.esteMes/S.diasMes*100)} % del mes`]]
+   .map(([ic,v,u,l,h])=>`<div class="pf-tile"><span class="pf-ic">${ic}</span><b>${v}<small> ${u}</small></b><span>${l}</span>${h?`<em>${h}</em>`:""}</div>`).join("")+
+   (S.hoy?"":`<a class="pf-tile pf-go" href="${ROOT}evangelio-de-hoy${X}"><span class="pf-ic">▶</span><b>Rezar hoy</b><span>Rezo del día · 5 min</span></a>`);
+  // calendario de 26 semanas
+  const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());const st=new Date(today);st.setDate(st.getDate()-((today.getDay()+6)%7)-25*7);
+  const A=store.get("rd-act",{});let cells="",months="",lastM=-1,lastW=-9,cnt=0;
+  for(let w=0;w<26;w++){const d0=new Date(st);d0.setDate(st.getDate()+w*7);if(d0.getMonth()!==lastM){if(w-lastW>=3&&w<=22){months+=`<span style="grid-column:${w+1}/span 3">${MES3[d0.getMonth()]}</span>`;lastW=w}lastM=d0.getMonth()}
+   for(let k=0;k<7;k++){const d=new Date(d0);d.setDate(d0.getDate()+k);const iso=isoOf(d),fut=d>today,on=S.set.has(iso),lv=on?((A[iso]||[]).length>1?"l2":"l1"):"";if(on&&!fut)cnt++;
+    cells+=`<i class="${lv}${iso===isoOf(today)?" hoy":""}${fut?" fut":""}" style="grid-column:${w+1};grid-row:${k+1}" title="${d.getDate()} ${MES3[d.getMonth()]}${on?" · rezado":""}"></i>`}}
+  $("#pfHeat").innerHTML=`<div class="pf-m">${months}</div><div class="pf-cal"><div class="pf-wdl">${WD.map((x,i)=>`<span>${i%2?"":x}</span>`).join("")}</div><div class="pf-cells">${cells}</div></div>`;
+  $("#pfHeatN").textContent=`${cnt} ${fl(cnt)} en 6 meses`;
+  // días de la semana
+  const mx=Math.max(1,...S.wd),top=S.wd.indexOf(Math.max(...S.wd));
+  $("#pfWd").innerHTML=S.total?S.wd.map((v,i)=>`<div class="pf-bar${i===top&&v?" top":""}"><span>${WD[i]}</span><i><b style="height:${Math.round(v/mx*100)}%"></b></i><small>${v}</small></div>`).join("")+`<p class="pf-note">${S.wd[top]?`El día que más rezas es el <b>${WDL[top].toLowerCase()}</b>.`:""}</p>`:`<p class="pf-empty">Cuando empieces a rezar verás aquí qué días rezas más.</p>`;
+  // tipos
+  const tot=KIND.reduce((a,[k])=>a+(S.cnt[k]||0),0),mk=Math.max(1,...KIND.map(([k])=>S.cnt[k]||0));
+  $("#pfAct").innerHTML=tot?KIND.map(([k,l,ic])=>`<div class="pf-arow"><span class="pf-aic">${ic}</span><span class="pf-al">${l}</span><i><b style="width:${Math.round((S.cnt[k]||0)/mk*100)}%"></b></i><small>${S.cnt[k]||0}</small></div>`).join("")+(S.oras?`<p class="pf-note">${S.oras} ${S.oras===1?"oración distinta rezada":"oraciones distintas rezadas"}.</p>`:""):`<p class="pf-empty">Escucha el rezo del día, reza el Rosario o pulsa «Amén» al terminar una oración y aquí verás cómo rezas.</p>`;
+  // logros
+  const B=badges(S),ok=B.filter(b=>b[2]>=b[3]).length;$("#pfBadgeN").textContent=`${ok} de ${B.length}`;
+  $("#pfBadges").innerHTML=B.map(([t,d,v,g,ic])=>{const on=v>=g;return`<div class="pf-badge${on?" on":""}"><span class="pf-bic">${ic}</span><b>${t}</b><small>${on?"Conseguido":d}</small>${on?"":`<i><b style="width:${Math.min(100,Math.round(v/g*100))}%"></b></i><em>${Math.min(v,g)}/${g}</em>`}</div>`}).join("");
+  // novenas
+  const NV=(RD.novenas||[]),mine=S.nov.filter(x=>x.n>0);
+  $("#pfNov").innerHTML=mine.length?'<ul class="pf-list">'+mine.map(x=>{const N=NV.find(z=>z.slug===x.slug);if(!N)return"";return`<li><a href="${ROOT}novenas/${x.slug}${X}"><span>${esc(N.t)}<small>${x.n>=9?"Completada ✓":`Día ${x.n} de 9`}</small></span><i class="pf-ring" style="--p:${x.n/9*100}%">${x.n}/9</i></a></li>`}).join("")+"</ul>":`<p class="pf-empty">Aún no has empezado ninguna novena.</p><a class="btn btn-ghost sm" href="${ROOT}novenas/${X?"index.html":""}">Ver novenas</a>`;
+  // favoritas
+  const fv=store.get("rd-favs",[]).map(sl=>(RD.prayers||[]).find(p=>p.slug===sl)).filter(Boolean);
+  $("#pfFavs").innerHTML=fv.length?'<ul class="pf-list">'+fv.slice(0,8).map(p=>`<li><a href="${ROOT}oraciones/${p.slug}${X}"><span>${esc(p.t)}<small>${p.min} min</small></span><em>›</em></a></li>`).join("")+"</ul>":`<p class="pf-empty">Pulsa «Guardar» en cualquier oración y la tendrás aquí siempre a mano.</p><a class="btn btn-ghost sm" href="${ROOT}oraciones/${X?"index.html":""}">Explorar oraciones</a>`;
+  // diario
+  const ks=Object.keys(S.diario).sort().reverse().slice(0,6);
+  $("#pfDiario").innerHTML=ks.length?'<div class="pf-notes">'+ks.map(k=>{const e=S.diario[k];return`<a class="pf-n" href="${ROOT}evangelio/${k}${X}"><small>${+k.slice(8)} de ${MES3[+k.slice(5,7)-1]}${e.ref?" · "+esc(e.ref):""}</small><b>${esc(e.title||"Evangelio")}</b><p>${esc((e.t||"").slice(0,160))}${(e.t||"").length>160?"…":""}</p></a>`}).join("")+"</div>":`<p class="pf-empty">En cada Evangelio puedes hacer la Lectio Divina y escribir lo que te dice Dios. Tus notas aparecerán aquí.</p>`;
+  // ajustes
+  const ni=$("#pfNameIn");if(document.activeElement!==ni)ni.value=n;
+  $("#pfOutRow").hidden=!U;$("#pfMailMe").textContent=U?(U.email||U.phone||""):"";
+  const sub=store.get("rd-boletin",null);const mb=$("#pfMail");
+  if(sub){mb.textContent="Apuntado ✓";mb.disabled=true;$("#pfMailTxt").textContent="Recibes el Evangelio cada mañana en "+sub}
+ }
+ $("#pfJoin").onclick=()=>{if(window.__rdOpenAcc)window.__rdOpenAcc();else toast("Las cuentas no están disponibles ahora mismo.")};
+ let nt=null;$("#pfNameIn").addEventListener("input",e=>{clearTimeout(nt);nt=setTimeout(()=>{const P=store.get("rd-perfil",{});P.nombre=e.target.value.trim().slice(0,40);store.set("rd-perfil",P);render()},500)});
+ $("#pfTheme").onclick=()=>{const b=$("#btnTheme");if(b)b.click()};
+ $("#pfOut").onclick=()=>{if(window.__rdLogout)window.__rdLogout();U=null;render();toast("Has cerrado sesión. Tu progreso sigue guardado en tu cuenta.")};
+ $("#pfMail").onclick=async()=>{let em=U&&U.email;
+  if(!em){const row=$("#pfMailRow");if(!row.querySelector("form")){row.insertAdjacentHTML("beforeend",`<form class="pf-mailf"><input type="email" required placeholder="tu@correo.com" autocomplete="email"><button class="btn btn-accent sm">Apuntarme</button></form>`);$("#pfMail").hidden=true;
+    row.querySelector("form").onsubmit=ev=>{ev.preventDefault();sendMail(row.querySelector("input").value.trim())};row.querySelector("input").focus()}return}
+  sendMail(em)};
+ async function sendMail(em){try{const r=await fetch("/api/suscribir",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({email:em})});const j=await r.json();if(!j.ok)throw new Error(j.error||"");store.set("rd-boletin",em);const f=$("#pfMailRow form");if(f)f.remove();$("#pfMail").hidden=false;toast("¡Apuntado! Mañana recibirás el Evangelio.");render()}catch(e){toast(e.message||"No se ha podido apuntar ahora. Inténtalo más tarde.")}}
+ document.addEventListener("rd-rezado",render);document.addEventListener("rd-auth",async()=>{U=window.__rdMe?await window.__rdMe():null;render()});
+ render();(async()=>{if(window.__rdMe&&store.get("rd-auth",null)){U=await window.__rdMe();render()}})();
+}
 
 /* ---------- Reto de Adviento ---------- */
 const reto=$("#reto");
