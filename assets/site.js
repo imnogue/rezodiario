@@ -768,7 +768,7 @@ if(PF){
   const nm=Math.round(NW/4.35);$("#pfHeatN").textContent=`${cnt} ${fl(cnt)} en ${NW>=52?"el último año":nm+" meses"}`;
   // días de la semana
   const mx=Math.max(1,...S.wd),top=S.wd.indexOf(Math.max(...S.wd));
-  $("#pfWd").innerHTML=S.total?S.wd.map((v,i)=>`<div class="pf-bar${i===top&&v?" top":""}"><span>${WD[i]}</span><i><b style="height:${Math.round(v/mx*100)}%"></b></i><small>${v}</small></div>`).join("")+`<p class="pf-note">${S.wd[top]?`El día que más rezas es el <b>${WDL[top].toLowerCase()}</b>.`:""}</p>`:`<p class="pf-empty">Cuando empieces a rezar verás aquí qué días rezas más.</p>`;
+  $("#pfWd").innerHTML=S.total?S.wd.map((v,i)=>`<div class="pf-bar${i===top&&v?" max":""}"><span>${WD[i]}</span><i><b style="height:${Math.round(v/mx*100)}%"></b></i><small>${v}</small></div>`).join("")+`<p class="pf-note">${S.wd[top]?`El día que más rezas es el <b>${WDL[top].toLowerCase()}</b>.`:""}</p>`:`<p class="pf-empty">Cuando empieces a rezar verás aquí qué días rezas más.</p>`;
   // tipos
   const tot=KIND.reduce((a,[k])=>a+(S.cnt[k]||0),0),mk=Math.max(1,...KIND.map(([k])=>S.cnt[k]||0));
   $("#pfAct").innerHTML=tot?KIND.map(([k,l,ic])=>`<div class="pf-arow"><span class="pf-aic">${ic}</span><span class="pf-al">${l}</span><i><b style="width:${Math.round((S.cnt[k]||0)/mk*100)}%"></b></i><small>${S.cnt[k]||0}</small></div>`).join("")+(S.oras?`<p class="pf-note">${S.oras} ${S.oras===1?"oración distinta rezada":"oraciones distintas rezadas"}.</p>`:""):`<p class="pf-empty">Escucha el rezo del día, reza el Rosario o pulsa «Amén» al terminar una oración y aquí verás cómo rezas.</p>`;
