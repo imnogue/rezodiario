@@ -85,7 +85,7 @@ def header(r, active):
     mas_on = active in ("verses", "saints", "candles")
     nav += f'''<div class="mas-nav"><button type="button" class="mas-btn{" on" if mas_on else ""}" id="btnMas" aria-haspopup="true" aria-expanded="false" aria-controls="masPanel">Más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
       <div class="mas-panel" id="masPanel" hidden>{"".join(f'<div class="mas-col"><span>{t}</span>' + "".join(f'<a href="{r}{h}">{n}</a>' for h, n in ls) + '</div>' for t, ls in cols)}
-       <div class="mas-col mas-aj"><span>Ajustes</span><a href="{r}perfil.html">Mi perfil</a><button type="button" id="masTheme">{ICON["moon"]}<b>Cambiar tema</b></button><div class="mas-lang notranslate" translate="no" id="masLang"></div></div></div></div>'''
+       <div class="mas-col mas-aj"><span>Rezo Diario</span><a href="{r}perfil.html">Mi perfil</a><a href="{r}donar.html">Donar</a><a href="{r}sobre-nosotros.html">Quiénes somos</a></div></div></div>'''
     return f'''<header class="top" data-nosnippet>
   <div class="wrap top-in">
     <a class="brand" href="{r}index.html" aria-label="Rezo Diario, inicio">{ICON["logo"]}<span>rezo<b>diario</b></span></a>
