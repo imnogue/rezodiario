@@ -711,7 +711,7 @@ function rdAvatar(u){const m=(u&&u.user_metadata)||{};const url=m.avatar_url||m.
    else if(/signups? (are )?(not allowed|disabled)/i.test(t))m+=" Los registros nuevos están desactivados en Supabase.";
    msg(m+" (Detalle: "+t.slice(0,160)+")")}};
  const back=()=>encodeURIComponent(location.origin+location.pathname);
- [["accGoogle","google"],["accApple","apple"],["accFacebook","facebook"]].forEach(([id,pv])=>{const b=$("#"+id);if(b)b.onclick=()=>{location.href=SB.u+"/auth/v1/authorize?provider="+pv+"&redirect_to="+back()}});
+ [["accGoogle","google"],["accApple","apple"],["accFacebook","facebook"]].forEach(([id,pv])=>{const b=$("#"+id);if(b)b.onclick=()=>{location.href=pv==="google"&&/rezodiario\.com$/.test(location.hostname)?"/api/google?volver="+encodeURIComponent(location.pathname+location.search):SB.u+"/auth/v1/authorize?provider="+pv+"&redirect_to="+back()}});
  // Solo mostramos los métodos que están activados en Supabase
  sbf("/auth/v1/settings").then(st=>{const ex=st.external||{};let any=false;
   [["accGoogle","google"],["accApple","apple"],["accFacebook","facebook"]].forEach(([id,pv])=>{const b=$("#"+id);if(b&&ex[pv]){b.hidden=false;any=true}});
