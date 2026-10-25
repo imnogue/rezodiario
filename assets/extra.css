@@ -1045,3 +1045,64 @@ article .exam-cta{margin:24px 0 0}
 @media(min-width:1101px){.top-actions .menu-btn{display:none!important}}
 @media(max-width:1100px){.mas-nav{display:none}}
 .top-in{position:relative}.mas-nav{position:static}.mas-panel{right:max(16px,env(safe-area-inset-right,0px));top:calc(100% + 6px);width:min(760px,calc(100vw - 32px))}
+/* ===== Cuenta atrás en cajitas ===== */
+.cdb{display:flex;gap:8px}
+.cdb span{display:grid;justify-items:center;min-width:66px;padding:10px 8px 8px;border-radius:14px;background:color-mix(in srgb,var(--hero-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--gold) 35%,transparent)}
+.cdb b{font-size:30px;line-height:1;font-variant-numeric:tabular-nums;color:var(--gold)}
+.cdb small{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.75;margin-top:4px}
+.cdb-done{font-weight:800;color:var(--gold);font-size:18px}
+.cam-cd{flex-wrap:wrap;max-width:700px}
+.cam-cd .cdb{margin-left:auto}
+@media(max-width:760px){.cdb span{min-width:0;flex:1;padding:8px 4px 6px}.cdb b{font-size:24px}.cam-cd .cdb{margin-left:0;width:100%}}
+/* ===== Reto de Adviento ===== */
+.reto-cd{margin-top:24px;display:grid;gap:8px;justify-items:start}
+.reto-cd>small{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.reto-how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.reto-how>div{padding:18px;border-radius:20px;background:var(--surface);border:1px solid var(--line)}
+.reto-how span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#7E5BB0;color:#fff;font-weight:800;margin-bottom:10px}
+.reto-how b{display:block;font-size:17px}.reto-how p{margin:4px 0 0;color:var(--muted);font-size:14.5px}
+.reto-top{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:26px}
+.reto-today{padding:22px 24px;border-radius:24px;background:linear-gradient(150deg,#5B3D7A,#24163A);color:#F3EEF8;border:1px solid rgba(214,178,102,.35)}
+.reto-today small{color:#D6B266;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.reto-today b{display:block;font-family:var(--f-display);font-weight:400;font-size:clamp(22px,3vw,30px);line-height:1.25;margin:8px 0 14px}
+.reto-today p{margin:0 0 14px;opacity:.8;font-size:15px}
+.reto-today .btn-ghost{color:#F3EEF8;border-color:rgba(255,255,255,.3)}
+.reto-acts{display:flex;gap:8px;flex-wrap:wrap}
+.reto-prog{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:24px;background:var(--surface);border:1px solid var(--line)}
+.reto-prog>div:last-child{flex:1;min-width:0}
+.reto-prog b#retoN{display:block;font-size:28px;line-height:1.1}
+.reto-prog small{color:var(--muted);font-size:13.5px}
+.reto-bar{display:block;height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden;margin-top:10px}
+.reto-bar b{display:block;height:100%;width:0;background:linear-gradient(90deg,#8B63C4,#D6B266);border-radius:99px}
+.reto-crown{width:120px;flex:none}.reto-crown svg{width:100%;height:auto;display:block}
+.reto-crown .flame{filter:drop-shadow(0 0 4px #F7C66B)}
+.reto-w{margin-bottom:22px}
+.reto-w header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.reto-w header b{display:block;font-size:17px}.reto-w header small{color:var(--muted);font-size:13px}
+.reto-w header em{margin-left:auto;font-style:normal;font-weight:800;color:var(--muted);font-size:14px}
+.reto-candle{width:16px;height:34px;border-radius:4px;background:var(--wc);position:relative;flex:none;opacity:.55}
+.reto-candle i{position:absolute;left:50%;top:-11px;width:8px;height:12px;margin-left:-4px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:#F7C66B;opacity:0}
+.reto-w.encendida .reto-candle{opacity:1}.reto-w.encendida .reto-candle i{opacity:1;box-shadow:0 0 10px #F7C66B}
+.reto{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))!important;gap:10px!important;list-style:none;margin:0;padding:0}
+.reto-d{display:flex!important;align-items:flex-start!important;gap:12px!important;padding:14px!important;border-radius:18px!important;background:var(--surface);border:1px solid var(--line)}
+.reto-d>div{flex:1;min-width:0}
+.reto-d small{display:block;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.reto-d span{display:block;font-weight:600;font-size:15px;line-height:1.38}
+.reto-d a{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:700;color:var(--accent);text-decoration:none}
+.reto-chk{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:var(--surface-2);color:var(--muted);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}
+.reto-chk i{font-style:normal;font-weight:800;font-size:15px}
+.reto-chk:hover:not(:disabled){border-color:#8B63C4;color:var(--ink)}
+.reto-d.done{background:color-mix(in srgb,#8B63C4 12%,var(--surface))!important;border-color:color-mix(in srgb,#8B63C4 40%,var(--line))}
+.reto-d.done .reto-chk{background:#8B63C4;border-color:#8B63C4;color:#fff}
+.reto-d.done span{color:var(--muted)}
+.reto-d.today{border-color:var(--gold)!important;box-shadow:0 0 0 1.5px var(--gold)!important}
+.reto-d.today small{color:var(--gold)}
+.reto-d.fut{opacity:.62}.reto-d.fut .reto-chk{cursor:not-allowed;border-style:dashed}
+@media(max-width:760px){.reto-how{grid-template-columns:1fr}.reto-how>div{display:grid;grid-template-columns:34px 1fr;column-gap:12px}.reto-how span{grid-row:span 2;margin:0}.reto-top{grid-template-columns:1fr}.reto-crown{width:96px}}
+.cam-cd .cdb span{background:color-mix(in srgb,var(--hero-ink) 6%,transparent)}@media(min-width:761px){.cam-cd{flex-wrap:nowrap}}
+/* Oraciones: buscador arriba y temas sin cortar */
+.tools{flex-direction:column!important;align-items:stretch!important;gap:14px!important}
+.tools .find{order:-1;flex:none!important;width:100%;max-width:560px;min-width:0}
+@media(min-width:701px){.tools .chips{flex-wrap:wrap;overflow:visible;flex:none!important}}
+@media(max-width:700px){.tools .chips{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent);padding-right:30px}}
+.reto-cd:has(.over)>small{display:none}

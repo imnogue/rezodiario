@@ -81,7 +81,7 @@ def header(r, active):
     nav = "".join(f'<a href="{r}{h}"{" class=\"on\" aria-current=\"page\"" if k == active else ""} data-i18n="{k}">{t}</a>' for h, k, t in MAIN)
     cols = [("Rezar", [("santo-de-hoy.html", "Santo de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("versiculos.html", "Versículos"), ("muro-de-intenciones.html", "Muro de velas"), ("santos/index.html", "Santoral")]),
             ("Devociones", [("novenas/index.html", "Novenas"), ("via-crucis.html", "Vía Crucis"), ("examen-de-conciencia.html", "Examen de conciencia"), ("calendario-liturgico.html", "Calendario litúrgico")]),
-            ("Tiempos", [("adviento.html", "Adviento 2026"), ("retos/adviento.html", "Reto de Adviento"), ("navidad.html", "Navidad 2026"), ("camino-de-santiago.html", "Año Santo 2027")])]
+            ("Tiempos", [("adviento.html", "Adviento 2026"), ("retos/adviento.html", "Reto de Adviento"), ("navidad.html", "Navidad 2026"), ("camino-de-santiago.html", "Camino de Santiago 2027")])]
     mas_on = active in ("verses", "saints", "candles")
     nav += f'''<div class="mas-nav"><button type="button" class="mas-btn{" on" if mas_on else ""}" id="btnMas" aria-haspopup="true" aria-expanded="false" aria-controls="masPanel">Más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
       <div class="mas-panel" id="masPanel" hidden>{"".join(f'<div class="mas-col"><span>{t}</span>' + "".join(f'<a href="{r}{h}">{n}</a>' for h, n in ls) + '</div>' for t, ls in cols)}
@@ -149,7 +149,7 @@ def footer(r):
       <p>Oración guiada cada día con el Evangelio, el Santo Rosario y más de {len(PRAYERS)} oraciones para todos los momentos de la vida. Gratis y sin registro.</p>
       <p class="verse">«Venid a mí todos los que estáis cansados y agobiados, y yo os aliviaré.» Mt 11, 28</p>
     </div>
-    {col("Rezar", [("evangelio-de-hoy.html", "Evangelio de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("santo-de-hoy.html", "Santo de hoy"), ("rosario.html", "Misterios del Rosario de hoy"), ("via-crucis.html", "Vía Crucis"), ("novenas/index.html", "Novenas"), ("adviento.html", "Adviento 2026"), ("camino-de-santiago.html", "Año Santo 2027"), ("calendario-liturgico.html", "Calendario litúrgico"), ("examen-de-conciencia.html", "Examen de conciencia")])}
+    {col("Rezar", [("evangelio-de-hoy.html", "Evangelio de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("santo-de-hoy.html", "Santo de hoy"), ("rosario.html", "Misterios del Rosario de hoy"), ("via-crucis.html", "Vía Crucis"), ("novenas/index.html", "Novenas"), ("adviento.html", "Adviento 2026"), ("camino-de-santiago.html", "Camino de Santiago 2027"), ("calendario-liturgico.html", "Calendario litúrgico"), ("examen-de-conciencia.html", "Examen de conciencia")])}
     {col("Oraciones", [(f"oraciones/{s}.html", l) for s, l in pop])}
     {col("Versículos", [("versiculos.html", "Versículo del día")] + [(t["slug"] + ".html", t["t"]) for t in VTOP[:6]])}
     {col("Síguenos", social)}
@@ -412,7 +412,7 @@ home_main = f'''<section class="hero" aria-labelledby="h1">
   <a class="feature reveal" href="{sf[0]}" style="background:{sf[1]}"><small>{sf[2]}</small><b>{sf[3]}</b><p>{sf[4]}</p></a>
   <a class="feature reveal" href="novenas/{nv["slug"]}.html" style="background:linear-gradient(150deg,#6E64A8,#2A2350)"><small>{nvs}</small><b>{E(nv["t"])}</b><p>Nueve días de oración con recordatorio de qué día toca.</p></a>
   <a class="feature reveal" href="rosario.html" style="background:linear-gradient(150deg,#2C5D47,#14302A)"><small>Hoy · Misterios {setname(TW)}</small><b>Santo Rosario guiado</b><p>Cuenta a cuenta, con la cita del Evangelio y el fruto de cada misterio.</p></a>
-  <a class="feature reveal" href="camino-de-santiago.html" style="background:linear-gradient(150deg,#2E5C8A,#132A42)"><small data-countdown-mini="2026-12-31T17:00:00+01:00">Puerta Santa · 31 de diciembre</small><b>Año Santo 2027</b><p>Camino de Santiago: cómo ganar el Jubileo y oraciones del peregrino.</p></a>
+  <a class="feature reveal" href="camino-de-santiago.html" style="background:linear-gradient(150deg,#2E5C8A,#132A42)"><small data-countdown-mini="2026-12-31T17:00:00+01:00">Año Santo · 31 de diciembre</small><b>Camino de Santiago 2027</b><p>Año Santo Xacobeo: cómo ganar el Jubileo y oraciones del peregrino.</p></a>
 </div>""")}
 {sec(f"""<div class="gos">
   <article class="panel reveal"><span class="eyebrow">Evangelio de hoy · <span id="gRefL">{TW["refL"]}</span></span><h2 id="gTitle" style="margin-top:8px">{E(TW["title"])}</h2><p class="quote" id="gQuote">{E(TW["ex"])}</p>
@@ -861,9 +861,23 @@ page("navidad.html", "Navidad 2026: oraciones de Nochebuena, Navidad y fin de a�
 
 r = "../"
 start = datetime.date.fromisoformat(RETO["inicio"])
-reto_items = "".join(f'<li class="reto-d" data-k="{i}" data-date="{(start + datetime.timedelta(days=i)).isoformat()}"><label><input type="checkbox" data-k="{i}"><span><small>{fdate((start + datetime.timedelta(days=i)).isoformat())}</small>{E(g)}</span></label><a href="../evangelio/{(start + datetime.timedelta(days=i)).isoformat()}.html">Evangelio</a></li>' for i, g in enumerate(RETO["gestos"]))
-reto = phero(r, [("Inicio", "index.html"), ("Adviento", "adviento.html"), ("Reto de Adviento", "retos/adviento.html")], "26 días · 29 nov – 24 dic", "Reto de Adviento: un gesto cada día", "Pequeños gestos para preparar la Navidad. Marca cada día cuando lo hagas: tu progreso se guarda.",
- '<div style="display:flex;align-items:center;gap:16px;margin-top:22px"><svg class="ring" id="retoRing" viewBox="0 0 84 84" aria-hidden="true"></svg><b id="retoStatus" style="font-size:17px"></b></div>') + sec(f'<ol class="reto" id="reto" data-key="rd-reto-adviento">{reto_items}</ol>')
+def cd_boxes(target, done_txt): return f'<div class="cdb" data-cd2="{target}" data-cd-done="{E(done_txt)}" aria-live="off"><span><b>--</b><small>días</small></span><span><b>--</b><small>horas</small></span><span><b>--</b><small>min</small></span></div>'
+SEMANAS = [("Semana 1", "Vela de la esperanza", "#7E5BB0"), ("Semana 2", "Vela de la paz", "#6A57A8"), ("Semana 3", "Vela de la alegría (rosa)", "#C9739B"), ("Semana 4", "Vela del amor", "#8A4FA0")]
+reto_days = [(i, (start + datetime.timedelta(days=i)), g) for i, g in enumerate(RETO["gestos"])]
+def reto_li(i, d, g): return f'<li class="reto-d" data-k="{i}" data-date="{d.isoformat()}"><button type="button" class="reto-chk" data-k="{i}" aria-label="Marcar el día {i + 1} como hecho"><i>{i + 1}</i></button><div><small>{["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"][d.weekday()]} {fdate(d.isoformat())}</small><span>{E(g)}</span><a href="../evangelio/{d.isoformat()}.html">Evangelio del día ›</a></div></li>'
+weeks_html = ""
+for wi, (wt, wv, wc) in enumerate(SEMANAS):
+    ds = [x for x in reto_days if x[0] // 7 == wi]
+    if not ds: continue
+    weeks_html += f'<section class="reto-w" style="--wc:{wc}"><header><span class="reto-candle" aria-hidden="true"><i></i></span><div><b>{wt} · {wv}</b><small>{fdate(ds[0][1].isoformat())} – {fdate(ds[-1][1].isoformat())}</small></div><em data-wk="{wi}"></em></header><ol class="reto">' + "".join(reto_li(*x) for x in ds) + '</ol></section>'
+pasos_reto = [("1", "Cada día, un gesto", "Del 29 de noviembre al 24 de diciembre se abre un gesto pequeño: rezar, perdonar, ayudar, agradecer."), ("2", "Hazlo durante el día", "Son cosas sencillas, de unos minutos. Si quieres, acompáñalo con el Evangelio de ese día."), ("3", "Márcalo como hecho", "Pulsa el círculo del día. Verás crecer tu progreso y se irán encendiendo las velas de tu corona.")]
+reto = phero(r, [("Inicio", "index.html"), ("Adviento", "adviento.html"), ("Reto de Adviento", "retos/adviento.html")], "26 días · del 29 de noviembre al 24 de diciembre", "Reto de Adviento: un gesto cada día", "Un pequeño gesto diario para preparar el corazón a la Navidad. Cada día se abre uno nuevo: hazlo y márcalo. Tu progreso se guarda en tu perfil.",
+ f'<div class="reto-cd" id="retoCd"><small>El reto empieza en</small>{cd_boxes("2026-11-29T00:00:00+01:00", "¡El reto ya ha empezado!")}</div>') + \
+ sec('<div class="reto-how">' + "".join(f'<div class="reveal"><span>{n}</span><b>{E(t)}</b><p>{E(x)}</p></div>' for n, t, x in pasos_reto) + '</div>') + \
+ sec('''<div class="reto-top">
+  <div class="reto-today" id="retoToday"></div>
+  <div class="reto-prog"><div class="reto-crown" id="retoCrown" aria-hidden="true"></div><div><b id="retoN">0 de 26</b><small id="retoMsg">gestos hechos</small><i class="reto-bar"><b id="retoBar"></b></i></div></div>
+ </div>''' + f'<div id="reto" data-key="rd-reto-adviento" data-n="{len(reto_days)}">{weeks_html}</div>')
 page("retos/adviento.html", "Reto de Adviento 2026: un gesto cada día | Rezo Diario", "Reto de Adviento 2026: 26 gestos sencillos, uno para cada día del 29 de noviembre al 24 de diciembre, con el Evangelio del día. Guarda tu progreso.", reto, "", [crumbs_ld([("Inicio", "index.html"), ("Adviento", "adviento.html"), ("Reto de Adviento", "retos/adviento.html")])])
 
 r = ""
@@ -903,7 +917,7 @@ for t in VTOP:
 
 # ================= CAMINO DE SANTIAGO Y AÑO SANTO 2027 =================
 CAM_PR = ["bendicion-del-peregrino", "oracion-del-peregrino", "oracion-al-llegar-a-santiago", "oracion-al-apostol-santiago"]
-def cam_count(r): return f'<div class="cam-cd reveal" data-countdown="2026-12-31T17:00:00+01:00"><div class="cam-shell" aria-hidden="true">{CONCHA}</div><div><small>Apertura de la Puerta Santa · 31 de diciembre de 2026</small><b data-cd-txt>Faltan pocos días</b><span data-cd-sub>Comienza el Año Santo Compostelano 2027</span></div><div class="cam-cdn" data-cd-n aria-hidden="true"></div></div>'
+def cam_count(r): return f'<div class="cam-cd reveal" data-countdown="2026-12-31T17:00:00+01:00"><div class="cam-shell" aria-hidden="true">{CONCHA}</div><div><small>Apertura de la Puerta Santa · 31 de diciembre de 2026</small><b data-cd-txt>Cuenta atrás para la Puerta Santa</b><span data-cd-sub>Comienza el Año Santo Compostelano 2027</span></div>{cd_boxes("2026-12-31T17:00:00+01:00", "¡La Puerta Santa está abierta!")}</div>'
 CONCHA = '<svg viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 56 8 26c4-10 13-16 24-16s20 6 24 16Z"/><path d="M32 56 20 13M32 56l-4-45M32 56l4-45M32 56l12-43M32 56 12 19M32 56l20-37"/><path d="M26 56h12"/></svg>'
 r = ""
 cam_faq = [("¿Cuándo es el próximo Año Santo Xacobeo?", "En 2027. Hay Año Santo Compostelano cada vez que el 25 de julio, fiesta de Santiago Apóstol, cae en domingo. Empieza con la apertura de la Puerta Santa el 31 de diciembre de 2026 y dura todo 2027."),
@@ -914,7 +928,7 @@ cam_faq = [("¿Cuándo es el próximo Año Santo Xacobeo?", "En 2027. Hay Año S
 fechas = [("31 dic 2026", "Apertura de la Puerta Santa", "Comienza el Año Santo"), ("21–28 mar 2027", "Semana Santa", "En pleno Año Santo"), ("15–18 jul 2027", "Peregrinación Europea de Jóvenes", "Miles de jóvenes en Santiago"), ("25 jul 2027", "Santiago Apóstol", "La gran fiesta del Año Santo"), ("31 dic 2027", "Cierre de la Puerta Santa", "Termina el Año Santo")]
 fechas_html = '<ol class="cam-dates">' + "".join(f'<li class="reveal"><small>{d}</small><b>{E(t)}</b><span>{E(x)}</span></li>' for d, t, x in fechas) + '</ol>'
 cam_or = '<div class="grid">' + "".join(card(PBY[s], r) for s in CAM_PR if s in PBY) + '</div>'
-cam = phero(r, [("Inicio", "index.html"), ("Camino de Santiago", "camino-de-santiago.html")], "Xacobeo · Año Santo Compostelano 2027", "Camino de Santiago y Año Santo 2027", "Reza el Camino: el Jubileo explicado paso a paso, las oraciones del peregrino y todo lo que necesitas para vivir el Año Santo con fe, peregrines a Compostela o lo acompañes desde casa.", cam_count(r)) + \
+cam = phero(r, [("Inicio", "index.html"), ("Camino de Santiago", "camino-de-santiago.html")], "Año Santo Compostelano 2027", "Camino de Santiago y Xacobeo 2027", "Reza el Camino: el Jubileo explicado paso a paso, las oraciones del peregrino y todo lo que necesitas para vivir el Año Santo con fe, peregrines a Compostela o lo acompañes desde casa.", cam_count(r)) + \
  sec(head2("Año Santo 2027", "Un año de gracia en Compostela", "Cuando el 25 de julio cae en domingo, la Iglesia celebra en Santiago un Año Santo: un año jubilar en el que todo el que visita la tumba del Apóstol puede ganar el Jubileo.") +
   '<div class="duo">' + f'<a class="feature reveal" href="camino-de-santiago/ano-santo-2027.html" style="background:linear-gradient(150deg,#A8812D,#4A3510)"><small>Paso a paso</small><b>Cómo ganar el Jubileo</b><p>Qué es la indulgencia plenaria del Año Santo y qué hace falta: visita, oración, confesión y comunión.</p></a><a class="feature reveal" href="santos/santiago-apostol.html" style="background:linear-gradient(150deg,#2E5C8A,#132A42)"><small>25 de julio</small><b>Santiago Apóstol</b><p>Quién fue el «hijo del trueno», por qué sus restos están en Compostela y por qué es patrón de España.</p></a></div>') + \
  sec(head2("Fechas clave", "El Año Santo en el calendario") + fechas_html, "sec band") + \

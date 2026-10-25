@@ -751,7 +751,7 @@ function rdAvatar(u){const m=(u&&u.user_metadata)||{};const url=m.avatar_url||m.
 const PF=$("#perfil");
 if(PF){
  const MES3=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],WD=["L","M","X","J","V","S","D"],WDL=["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
- const KIND=[["rezo","Rezo del día","☀"],["rosario","Santo Rosario","✿"],["oracion","Oraciones","♱"],["lectio","Lectio Divina","✎"],["novena","Novenas","⑨"],["vela","Velas encendidas","✦"]];
+ const KIND=[["rezo","Rezo del día","☀"],["rosario","Santo Rosario","✿"],["oracion","Oraciones","♱"],["lectio","Lectio Divina","✎"],["novena","Novenas","⑨"],["vela","Velas encendidas","✦"],["reto","Reto de Adviento","❄"]];
  let U=null;
  const fl=n=>n===1?"día":"días";
  function badges(S){const novOk=S.nov.some(x=>x.n>=9);return[
@@ -871,21 +871,36 @@ if(PF){
 }
 
 /* ---------- Cuenta atrás (Año Santo) ---------- */
-$$("[data-countdown-mini]").forEach(el=>{const d=Math.floor((new Date(el.dataset.countdownMini)-Date.now())/864e5);if(d>=1)el.textContent=`Puerta Santa · faltan ${d} días`;else if(d<=0&&Date.now()<new Date("2028-01-01"))el.textContent="La Puerta Santa está abierta"});
+$$("[data-countdown-mini]").forEach(el=>{const d=Math.floor((new Date(el.dataset.countdownMini)-Date.now())/864e5);if(d>=1)el.textContent=`Año Santo · faltan ${d} días`;else if(d<=0&&Date.now()<new Date("2028-01-01"))el.textContent="La Puerta Santa está abierta"});
 $$("[data-countdown]").forEach(el=>{const t=new Date(el.dataset.countdown),fin=new Date("2028-01-01T00:00:00+01:00");
- const paint=()=>{const ms=t-Date.now(),tx=el.querySelector("[data-cd-txt]"),sb=el.querySelector("[data-cd-sub]"),n=el.querySelector("[data-cd-n]");
-  if(ms>0){const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5);tx.textContent=d>=1?`Faltan ${d} ${d===1?"día":"días"}`:`Faltan ${h} ${h===1?"hora":"horas"}`;n.innerHTML=d>=1?`<b>${d}</b><small>${d===1?"día":"días"}</small>`:`<b>${h}</b><small>h</small>`}
-  else if(Date.now()<fin){tx.textContent="¡La Puerta Santa está abierta!";sb.textContent="Estamos en el Año Santo Compostelano 2027";n.innerHTML="<b>2027</b><small>Año Santo</small>"}
-  else{tx.textContent="El Año Santo 2027 ha terminado";sb.textContent="Gracias a todos los peregrinos";n.innerHTML=""}};paint();setInterval(paint,6e4)});
+ const paint=()=>{const ms=t-Date.now(),tx=el.querySelector("[data-cd-txt]"),sb=el.querySelector("[data-cd-sub]"),n=null;
+  if(ms>0){}
+  else if(Date.now()<fin){tx.textContent="¡La Puerta Santa está abierta!";sb.textContent="Estamos en el Año Santo Compostelano 2027"}
+  else{tx.textContent="El Año Santo 2027 ha terminado";sb.textContent="Gracias a todos los peregrinos"}};paint();setInterval(paint,6e4)});
 
 /* ---------- Reto de Adviento ---------- */
 const reto=$("#reto");
-if(reto){const key=reto.dataset.key;const items=$$("#reto .reto-d");
- function r(){const done=store.get(key,[]);items.forEach(li=>{const k=+li.dataset.k,cb=li.querySelector("input");cb.checked=done.includes(k);li.classList.toggle("done",cb.checked);li.classList.toggle("today",li.dataset.date===ISO)});
-  const c=2*Math.PI*36,pct=done.length/items.length;$("#retoRing").innerHTML=`<circle class="bg" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct)}"/><text x="42" y="48" text-anchor="middle">${done.length}</text>`;
-  const t=items.find(li=>li.dataset.date===ISO);$("#retoStatus").textContent=t?`Hoy: ${t.querySelector("span").lastChild.textContent}`:(ISO<items[0].dataset.date?`Empieza el 29 de noviembre. Llevas ${done.length} de ${items.length}.`:`Llevas ${done.length} de ${items.length} gestos.`)}
- reto.addEventListener("change",e=>{const k=+e.target.dataset.k;let d=store.get(key,[]);d=e.target.checked?[...new Set([...d,k])]:d.filter(x=>x!==k);store.set(key,d);r();if(e.target.checked)toast(d.length===items.length?"¡Reto completado! Feliz Navidad.":"Gesto marcado. ¡Sigue así!")});
- r();const t=items.find(li=>li.dataset.date===ISO);if(t)setTimeout(()=>t.scrollIntoView({block:"center",behavior:"smooth"}),400)}
+if(reto&&reto.dataset.key){const key=reto.dataset.key,N=+reto.dataset.n,items=$$("#reto .reto-d");
+ const T=items.find(li=>li.dataset.date===ISO),first=items[0].dataset.date,last=items[items.length-1].dataset.date;
+ function r(){const done=store.get(key,[]);
+  items.forEach(li=>{const k=+li.dataset.k,on=done.includes(k),fut=li.dataset.date>ISO;li.classList.toggle("done",on);li.classList.toggle("today",li.dataset.date===ISO);li.classList.toggle("fut",fut);const b=li.querySelector(".reto-chk");b.disabled=fut;b.setAttribute("aria-pressed",on);b.querySelector("i").textContent=on?"✓":k+1});
+  $$("#reto [data-wk]").forEach(em=>{const w=+em.dataset.wk,ks=items.filter(li=>Math.floor(+li.dataset.k/7)===w),n=ks.filter(li=>done.includes(+li.dataset.k)).length;em.textContent=`${n}/${ks.length}`;em.closest(".reto-w").classList.toggle("encendida",ISO>=ks[0].dataset.date)});
+  $("#retoN").textContent=`${done.length} de ${N}`;$("#retoBar").style.width=(done.length/N*100)+"%";
+  $("#retoMsg").textContent=done.length===N?"¡Reto completado! Feliz Navidad":done.length?"gestos hechos. ¡Sigue así!":"gestos hechos";
+  const lit=[0,1,2,3].map(w=>ISO>=(items[w*7]||items[items.length-1]).dataset.date);
+  $("#retoCrown").innerHTML=`<svg viewBox="0 0 120 80"><ellipse cx="60" cy="62" rx="52" ry="12" fill="none" stroke="#3E7A5A" stroke-width="9" stroke-dasharray="3 3"/>${[22,46,74,98].map((x,w)=>`<rect x="${x-6}" y="${w===2?26:22}" width="12" height="${w===2?34:38}" rx="3" fill="${w===2?"#D98FB0":"#8B63C4"}"/>${lit[w]?`<ellipse cx="${x}" cy="${w===2?18:14}" rx="4.5" ry="7.5" fill="#F7C66B" class="flame"/>`:""}`).join("")}</svg>`;
+  const tb=$("#retoToday");
+  if(T){const k=+T.dataset.k,on=done.includes(k);tb.innerHTML=`<small>Gesto de hoy · día ${k+1} de ${N}</small><b>${esc(T.querySelector("span").textContent)}</b><div class="reto-acts"><button type="button" class="btn ${on?"btn-ghost":"btn-gold"}" id="retoHoy">${on?"✓ Hecho hoy":"¡Lo he hecho!"}</button><a class="btn btn-ghost sm" href="${T.querySelector("a").getAttribute("href")}">Leer el Evangelio de hoy</a></div>`;
+   $("#retoHoy").onclick=()=>toggle(k)}
+  else if(ISO<first){tb.innerHTML=`<small>Primer gesto · domingo 29 de noviembre</small><b>${esc(items[0].querySelector("span").textContent)}</b><p>El reto aún no ha empezado. Mientras tanto, puedes ver todos los gestos aquí abajo y preparar tu corona de Adviento.</p><a class="btn btn-ghost sm" href="${ROOT}oraciones/bendicion-corona-de-adviento${X}">Bendición de la corona</a>`}
+  else{tb.innerHTML=`<small>El reto ha terminado</small><b>Hiciste ${done.length} de ${N} gestos. ¡Feliz Navidad!</b><p>Puedes seguir marcando los días que te quedaron pendientes.</p>`}}
+ function toggle(k){const li=items.find(x=>+x.dataset.k===k);if(li&&li.dataset.date>ISO){toast("Este gesto se abre el "+li.querySelector("small").textContent.toLowerCase());return}let d=store.get(key,[]);const on=!d.includes(k);d=on?[...new Set([...d,k])]:d.filter(x=>x!==k);store.set(key,d);r();if(on){markDone(ISO,"reto");toast(d.length===N?"¡Reto completado! Feliz Navidad.":"Gesto hecho. ¡Sigue así!")}}
+ reto.addEventListener("click",e=>{const b=e.target.closest(".reto-chk");if(b)toggle(+b.dataset.k)});
+ r();if(T)setTimeout(()=>T.scrollIntoView({block:"center",behavior:"smooth"}),600)}
+
+/* ---------- Cuenta atrás en cajitas (días, horas, minutos) ---------- */
+$$("[data-cd2]").forEach(el=>{const t=new Date(el.dataset.cd2);let iv=null;const paint=()=>{const ms=t-Date.now();if(ms<=0){el.innerHTML=`<div class="cdb-done">${esc(el.dataset.cdDone||"")}</div>`;el.classList.add("over");if(iv)clearInterval(iv);return}
+ const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);el.innerHTML=[[d,d===1?"día":"días"],[h,h===1?"hora":"horas"],[m,"min"]].map(([v,l])=>`<span><b>${String(v).padStart(2,"0")}</b><small>${l}</small></span>`).join("")};paint();iv=setInterval(paint,15e3)});
 
 /* ---------- Página del widget ---------- */
 if($("#wPreview")){let dark=false;const render=()=>{const w=WEEK[todayIdx];$("#wPreview").innerHTML=`<div style="max-width:420px;border-radius:18px;padding:20px;font-family:Georgia,serif;${dark?"background:#14302A;color:#EEF2EC":"background:#fff;color:#17211C;border:1px solid #CDD6CB"}"><div style="font:700 11px/1.3 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:${dark?"#D6B266":"#2C5D47"}">Evangelio de hoy · ${esc(w.wd)} ${w.n} de ${esc(w.mes)}</div><div style="font-size:20px;margin:8px 0">${esc(w.title)}</div><div style="font-style:italic;font-size:16px;line-height:1.5;opacity:.9">«${esc(w.ex)}»</div><div style="font:13px system-ui,sans-serif;margin-top:12px;opacity:.75">${esc(w.refL)} · Escuchar en Rezo Diario ›</div></div>`};render();
