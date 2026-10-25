@@ -1005,3 +1005,23 @@ article .exam-cta{margin:24px 0 0}
 .pf-mring.ok .fg{filter:none!important}
 .pf-mring svg{overflow:visible}
 .pf-mring.ok::before{content:"";position:absolute;inset:4px;border-radius:50%;box-shadow:0 0 18px 2px color-mix(in srgb,var(--gold) 45%,transparent),inset 0 0 14px color-mix(in srgb,var(--gold) 30%,transparent);pointer-events:none}
+/* ===== Camino de Santiago ===== */
+.cam-cd{display:flex;align-items:center;gap:16px;margin-top:24px;padding:16px 18px;border-radius:20px;background:color-mix(in srgb,var(--gold) 12%,transparent);border:1px solid color-mix(in srgb,var(--gold) 40%,transparent);max-width:620px}
+.cam-cd small{display:block;color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.cam-cd b{display:block;font-size:22px;line-height:1.25}
+.cam-cd span{font-size:14px;opacity:.75}
+.cam-cd>div:nth-child(2){flex:1;min-width:0}
+.cam-shell{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--gold) 20%,transparent);color:var(--gold);flex:none}
+.cam-cdn{text-align:center;flex:none;min-width:70px}
+.cam-cdn b{font-size:38px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}.cam-cdn small{display:block;font-size:12px;opacity:.7}
+.cam-dates{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;counter-reset:c}
+.cam-dates li{padding:18px;border-radius:20px;background:var(--surface);border:1px solid var(--line);position:relative}
+.cam-dates li::before{content:"";position:absolute;left:18px;top:0;width:34px;height:4px;border-radius:0 0 4px 4px;background:var(--gold)}
+.cam-dates small{color:var(--gold);font-weight:800;font-size:13px}.cam-dates b{display:block;font-size:17px;margin:4px 0}.cam-dates span{color:var(--muted);font-size:14px}
+.cam-soon{display:flex;gap:22px;align-items:center;padding:26px;border-radius:26px;background:linear-gradient(150deg,color-mix(in srgb,var(--gold) 14%,var(--surface)),var(--surface));border:1px solid color-mix(in srgb,var(--gold) 35%,var(--line))}
+.cam-soon h2{margin:4px 0 8px}.cam-soon p{color:var(--muted);margin:0 0 14px;max-width:640px}
+.cam-steps{list-style:none;padding:0;margin:0 0 10px;display:grid;gap:12px}
+.cam-steps li{display:flex;gap:16px;padding:18px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.cam-steps li>span{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--gold-ink);font-weight:800;font-size:18px;flex:none}
+.cam-steps b{display:block;font-size:17px}.cam-steps p{margin:4px 0 0;color:var(--muted);font-size:15px}
+@media(max-width:760px){.cam-cd{gap:12px;padding:14px}.cam-shell{width:46px;height:46px}.cam-shell svg{width:32px;height:32px}.cam-cd b{font-size:18px}.cam-cdn{min-width:54px}.cam-cdn b{font-size:30px}.cam-soon{flex-direction:column;align-items:flex-start;padding:20px}}

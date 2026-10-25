@@ -860,6 +860,13 @@ if(PF){
  render();let rz=null,lw=innerWidth;addEventListener("resize",()=>{if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rz);rz=setTimeout(render,200)});(async()=>{if(window.__rdMe&&store.get("rd-auth",null)){U=await window.__rdMe();render()}})();
 }
 
+/* ---------- Cuenta atrás (Año Santo) ---------- */
+$$("[data-countdown]").forEach(el=>{const t=new Date(el.dataset.countdown),fin=new Date("2028-01-01T00:00:00+01:00");
+ const paint=()=>{const ms=t-Date.now(),tx=el.querySelector("[data-cd-txt]"),sb=el.querySelector("[data-cd-sub]"),n=el.querySelector("[data-cd-n]");
+  if(ms>0){const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5);tx.textContent=d>=1?`Faltan ${d} ${d===1?"día":"días"}`:`Faltan ${h} ${h===1?"hora":"horas"}`;n.innerHTML=d>=1?`<b>${d}</b><small>${d===1?"día":"días"}</small>`:`<b>${h}</b><small>h</small>`}
+  else if(Date.now()<fin){tx.textContent="¡La Puerta Santa está abierta!";sb.textContent="Estamos en el Año Santo Compostelano 2027";n.innerHTML="<b>2027</b><small>Año Santo</small>"}
+  else{tx.textContent="El Año Santo 2027 ha terminado";sb.textContent="Gracias a todos los peregrinos";n.innerHTML=""}};paint();setInterval(paint,6e4)});
+
 /* ---------- Reto de Adviento ---------- */
 const reto=$("#reto");
 if(reto){const key=reto.dataset.key;const items=$$("#reto .reto-d");

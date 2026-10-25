@@ -95,7 +95,7 @@ def header(r, active):
 def drawer(r):
     groups = [("Rezar", [("index.html", "Rezo de hoy"), ("evangelio-de-hoy.html", "Evangelio de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("santo-de-hoy.html", "Santo de hoy"), ("rosario.html", "Santo Rosario"), ("via-crucis.html", "Vía Crucis"), ("novenas/index.html", "Novenas"), ("muro-de-intenciones.html", "Muro de velas")]),
               ("Versículos", [("versiculos.html", "Versículo del día")] + [(t["slug"] + ".html", t["t"]) for t in VTOP]),
-              ("Tiempos litúrgicos", [("adviento.html", "Adviento 2026"), ("retos/adviento.html", "Reto de Adviento"), ("navidad.html", "Navidad 2026")]),
+              ("Tiempos litúrgicos", [("adviento.html", "Adviento 2026"), ("retos/adviento.html", "Reto de Adviento"), ("navidad.html", "Navidad 2026"), ("camino-de-santiago.html", "Camino de Santiago 2027")]),
               ("Oraciones por tema", [(f"oraciones/tema-{k}.html", c["name"]) for k, c in CATS.items()]),
               ("Rezo Diario", [("santos/index.html", "Santoral"), ("evangelio/index.html", "Archivo del Evangelio"), ("widget.html", "Widget para parroquias"), ("perfil.html", "Mi perfil"), ("donar.html", "Donar"), ("sobre-nosotros.html", "Quiénes somos")])]
     out = "".join(f'<h4>{g}</h4>' + "".join(f'<a href="{r}{h}"><i></i>{t}</a>' for h, t in items) for g, items in groups)
@@ -141,7 +141,7 @@ def footer(r):
       <p>Oración guiada cada día con el Evangelio, el Santo Rosario y más de {len(PRAYERS)} oraciones para todos los momentos de la vida. Gratis y sin registro.</p>
       <p class="verse">«Venid a mí todos los que estáis cansados y agobiados, y yo os aliviaré.» Mt 11, 28</p>
     </div>
-    {col("Rezar", [("evangelio-de-hoy.html", "Evangelio de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("santo-de-hoy.html", "Santo de hoy"), ("rosario.html", "Misterios del Rosario de hoy"), ("via-crucis.html", "Vía Crucis"), ("novenas/index.html", "Novenas"), ("adviento.html", "Adviento 2026"), ("calendario-liturgico.html", "Calendario litúrgico"), ("examen-de-conciencia.html", "Examen de conciencia")])}
+    {col("Rezar", [("evangelio-de-hoy.html", "Evangelio de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("santo-de-hoy.html", "Santo de hoy"), ("rosario.html", "Misterios del Rosario de hoy"), ("via-crucis.html", "Vía Crucis"), ("novenas/index.html", "Novenas"), ("adviento.html", "Adviento 2026"), ("camino-de-santiago.html", "Año Santo 2027"), ("calendario-liturgico.html", "Calendario litúrgico"), ("examen-de-conciencia.html", "Examen de conciencia")])}
     {col("Oraciones", [(f"oraciones/{s}.html", l) for s, l in pop])}
     {col("Versículos", [("versiculos.html", "Versículo del día")] + [(t["slug"] + ".html", t["t"]) for t in VTOP[:6]])}
     {col("Síguenos", social)}
@@ -891,6 +891,62 @@ for t in VTOP:
      [crumbs_ld(cr), faq_ld(faq), {"@context": "https://schema.org", "@type": "Article", "headline": t["h1"], "description": d[:160], "inLanguage": "es", "author": ORG, "publisher": ORG, "datePublished": "2026-10-17", "dateModified": TODAY, "mainEntityOfPage": canon(path), "image": SITE + "og-rezodiario.jpg"},
       {"@context": "https://schema.org", "@type": "ItemList", "name": t["h1"], "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": v["ref"], "url": canon(path) + f"#v{i + 1}"} for i, v in enumerate(t["versos"])]}],
      body_attrs=f' data-vtopic="{t["slug"]}"', og_type="article")
+
+# ================= CAMINO DE SANTIAGO Y AÑO SANTO 2027 =================
+CAM_PR = ["bendicion-del-peregrino", "oracion-del-peregrino", "oracion-al-llegar-a-santiago", "oracion-al-apostol-santiago"]
+def cam_count(r): return f'<div class="cam-cd reveal" data-countdown="2026-12-31T17:00:00+01:00"><div class="cam-shell" aria-hidden="true">{CONCHA}</div><div><small>Apertura de la Puerta Santa · 31 de diciembre de 2026</small><b data-cd-txt>Faltan pocos días</b><span data-cd-sub>Comienza el Año Santo Compostelano 2027</span></div><div class="cam-cdn" data-cd-n aria-hidden="true"></div></div>'
+CONCHA = '<svg viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 56 8 26c4-10 13-16 24-16s20 6 24 16Z"/><path d="M32 56 20 13M32 56l-4-45M32 56l4-45M32 56l12-43M32 56 12 19M32 56l20-37"/><path d="M26 56h12"/></svg>'
+r = ""
+cam_faq = [("¿Cuándo es el próximo Año Santo Xacobeo?", "En 2027. Hay Año Santo Compostelano cada vez que el 25 de julio, fiesta de Santiago Apóstol, cae en domingo. Empieza con la apertura de la Puerta Santa el 31 de diciembre de 2026 y dura todo 2027."),
+ ("¿Cuándo se abre la Puerta Santa de Santiago?", "El 31 de diciembre de 2026, por la tarde, en una celebración solemne en la Catedral de Santiago. La hora exacta la confirma la Catedral; se ha anunciado a las 17:00."),
+ ("¿Hay que hacer el Camino para ganar el Jubileo?", "No. Para ganar el Jubileo basta con visitar la Catedral de Santiago durante el Año Santo, rezar, confesarse y comulgar. Hacer el Camino a pie no es obligatorio, aunque es la forma tradicional de peregrinar."),
+ ("¿Cuántos kilómetros hay que hacer para la Compostela?", "Al menos los últimos 100 km a pie o a caballo, o 200 km en bicicleta, con dos sellos al día en la credencial durante ese tramo. La Compostela se recoge en la Oficina del Peregrino, en Santiago."),
+ ("¿Y si no puedo peregrinar?", "Puedes acompañar el Año Santo desde casa: reza cada día por los peregrinos, ofrece tus oraciones por alguien que haga el Camino y reza al apóstol Santiago. Pronto podrás hacer en Rezo Diario un Camino virtual que avanza con cada día que rezas.")]
+fechas = [("31 dic 2026", "Apertura de la Puerta Santa", "Comienza el Año Santo"), ("21–28 mar 2027", "Semana Santa", "En pleno Año Santo"), ("15–18 jul 2027", "Peregrinación Europea de Jóvenes", "Miles de jóvenes en Santiago"), ("25 jul 2027", "Santiago Apóstol", "La gran fiesta del Año Santo"), ("31 dic 2027", "Cierre de la Puerta Santa", "Termina el Año Santo")]
+fechas_html = '<ol class="cam-dates">' + "".join(f'<li class="reveal"><small>{d}</small><b>{E(t)}</b><span>{E(x)}</span></li>' for d, t, x in fechas) + '</ol>'
+cam_or = '<div class="grid">' + "".join(card(PBY[s], r) for s in CAM_PR if s in PBY) + '</div>'
+cam = phero(r, [("Inicio", "index.html"), ("Camino de Santiago", "camino-de-santiago.html")], "Xacobeo · Año Santo Compostelano 2027", "Camino de Santiago y Año Santo 2027", "Reza el Camino: el Jubileo explicado paso a paso, las oraciones del peregrino y todo lo que necesitas para vivir el Año Santo con fe, peregrines a Compostela o lo acompañes desde casa.", cam_count(r)) + \
+ sec(head2("Año Santo 2027", "Un año de gracia en Compostela", "Cuando el 25 de julio cae en domingo, la Iglesia celebra en Santiago un Año Santo: un año jubilar en el que todo el que visita la tumba del Apóstol puede ganar el Jubileo.") +
+  '<div class="duo">' + f'<a class="feature reveal" href="camino-de-santiago/ano-santo-2027.html" style="background:linear-gradient(150deg,#A8812D,#4A3510)"><small>Paso a paso</small><b>Cómo ganar el Jubileo</b><p>Qué es la indulgencia plenaria del Año Santo y qué hace falta: visita, oración, confesión y comunión.</p></a><a class="feature reveal" href="santos/santiago-apostol.html" style="background:linear-gradient(150deg,#2E5C8A,#132A42)"><small>25 de julio</small><b>Santiago Apóstol</b><p>Quién fue el «hijo del trueno», por qué sus restos están en Compostela y por qué es patrón de España.</p></a></div>') + \
+ sec(head2("Fechas clave", "El Año Santo en el calendario") + fechas_html, "sec band") + \
+ sec(head2("Para rezar", "Oraciones del peregrino", "Para antes de salir, para cada etapa y para el momento de llegar ante el Apóstol.") + cam_or) + \
+ sec('<div class="cam-soon reveal"><div class="cam-shell" aria-hidden="true">' + CONCHA + '</div><div><span class="eyebrow">Muy pronto</span><h2>Tu Camino virtual a Santiago</h2><p>Cada día que reces avanzarás kilómetros en el Camino desde Sarria. Llega a Santiago rezando, desbloquea cada etapa y consigue tu recuerdo de peregrinación. Perfecto si este año no puedes caminar.</p><a class="btn btn-gold sm" href="perfil.html">Ver mi perfil</a></div></div>', "sec band") + \
+ sec(head2("Preguntas frecuentes", "Sobre el Año Santo y el Camino") + faq_html(cam_faq) + '<p class="hint" style="margin-top:22px">Información práctica oficial: <a href="https://catedraldesantiago.es/" rel="noopener" target="_blank">Catedral de Santiago</a> · Oficina del Peregrino (rúa Carretas, 33, Santiago).</p>')
+page("camino-de-santiago.html", "Camino de Santiago y Año Santo 2027: Jubileo y oraciones | Rezo Diario", "Año Santo Xacobeo 2027: la Puerta Santa se abre el 31 de diciembre de 2026. Cómo ganar el Jubileo, fechas clave y oraciones del peregrino del Camino de Santiago.", cam, "", [crumbs_ld([("Inicio", "index.html"), ("Camino de Santiago", "camino-de-santiago.html")]), faq_ld(cam_faq)], og=("Año Santo 2027", "Camino de Santiago y Año Santo", "Jubileo · oraciones del peregrino"))
+
+r = "../"
+jub_faq = [("¿Qué es el Jubileo del Año Santo Compostelano?", "Es la gracia de la indulgencia plenaria que la Iglesia concede durante el Año Santo a quienes visitan la tumba del apóstol Santiago con las debidas disposiciones. La indulgencia perdona la pena que queda por los pecados ya perdonados en la confesión."),
+ ("¿Qué hay que hacer para ganar el Jubileo en 2027?", "Visitar la Catedral de Santiago durante el Año Santo; rezar allí, por ejemplo el Credo y el Padre Nuestro, y pedir por las intenciones del Papa; confesarse y comulgar. La confesión y la comunión pueden hacerse unos días antes o después de la visita: habitualmente se indican hasta 15 días."),
+ ("¿Es obligatorio pasar por la Puerta Santa?", "No es imprescindible, aunque es un gesto muy significativo y lo hacen casi todos los peregrinos. Lo necesario es la visita a la Catedral con oración, confesión y comunión."),
+ ("¿Hay que llegar caminando?", "No. El Jubileo puede ganarse visitando la Catedral aunque se llegue en coche, en tren o en avión. Caminar es la forma tradicional de peregrinar y la que da derecho a la Compostela, pero no es una condición del Jubileo."),
+ ("¿Puedo ganar el Jubileo por un difunto?", "Sí. La Iglesia permite ofrecer la indulgencia plenaria por un difunto. Muchas personas peregrinan a Santiago ofreciendo el Jubileo por un ser querido que ha fallecido."),
+ ("¿Cuántas veces se puede ganar?", "La indulgencia plenaria se puede ganar una vez al día, cumpliendo cada vez las condiciones. Una misma confesión puede servir para varias indulgencias en esos días."),
+ ("¿Qué diferencia hay entre el Jubileo y la Compostela?", "El Jubileo es una gracia espiritual que se recibe con la visita, la oración y los sacramentos. La Compostela es el documento que entrega la Oficina del Peregrino a quien ha hecho al menos los últimos 100 km a pie (o 200 km en bicicleta) por motivos religiosos o espirituales.")]
+pasos = [("1", "Visita la Catedral", "Durante el Año Santo, del 31 de diciembre de 2026 al 31 de diciembre de 2027. Es tradición entrar por la Puerta Santa, abrazar la imagen del Apóstol y rezar ante su sepulcro."),
+ ("2", "Reza", "Allí, reza con calma: el Credo, el Padre Nuestro y una oración por las intenciones del Papa. Si puedes, participa en la Misa del Peregrino."),
+ ("3", "Confiésate", "Unos días antes o después de la visita. Si hace tiempo que no te confiesas, prepárate con un examen de conciencia sencillo."),
+ ("4", "Comulga", "En la misa, el mismo día de la visita o en los días cercanos, con el deseo sincero de cambiar de vida.")]
+pasos_html = '<ol class="cam-steps">' + "".join(f'<li class="reveal"><span>{n}</span><div><b>{E(t)}</b><p>{E(x)}</p></div></li>' for n, t, x in pasos) + '</ol>'
+jub = phero(r, [("Inicio", "index.html"), ("Camino de Santiago", "camino-de-santiago.html"), ("Año Santo 2027", "camino-de-santiago/ano-santo-2027.html")], "31 de diciembre de 2026 – 31 de diciembre de 2027", "Año Santo 2027: cómo ganar el Jubileo paso a paso", "Qué es el Año Santo Compostelano, cuándo empieza y qué hace falta para ganar la indulgencia plenaria al visitar la tumba del apóstol Santiago.", cam_count(r)) + \
+ f'''<section class="sec"><div class="wrap art"><div style="min-width:0"><div class="prose">
+  <div class="dato reveal"><small>Lo esencial</small><b>Para ganar el Jubileo: visita la Catedral de Santiago en 2027, reza por las intenciones del Papa, confiésate y comulga.</b><span>No es obligatorio llegar caminando ni pasar por la Puerta Santa, aunque son gestos tradicionales del peregrino.</span></div>
+  <h2>Los cuatro pasos del Jubileo</h2>{pasos_html}
+  <h2>¿Qué es el Año Santo Compostelano?</h2>
+  <p>Es un año de gracia que la Iglesia celebra en Santiago de Compostela cada vez que el 25 de julio, fiesta del apóstol Santiago, cae en domingo. Eso ocurre con un ritmo de 6, 5, 6 y 11 años; el de 2027 es el primero desde el Año Santo 2021-2022, que se alargó dos años por la pandemia.</p>
+  <p>La tradición sitúa su origen en el siglo XII, cuando los papas concedieron a la Iglesia de Compostela el privilegio del jubileo, equiparando la peregrinación a Santiago con las de Roma y Jerusalén. Desde entonces, millones de peregrinos han llegado a la tumba del Apóstol buscando perdón, sentido y un nuevo comienzo.</p>
+  <h2>La Puerta Santa</h2>
+  <p>La Puerta Santa de la Catedral, en la plaza de la Quintana, solo se abre en los Años Santos. El arzobispo la abre el 31 de diciembre anterior, la tarde del último día del año, y se cierra el 31 de diciembre siguiente. Pasar por ella simboliza dejar atrás el pecado y entrar en la misericordia de Dios a través de Cristo, que dijo: «Yo soy la puerta».</p>
+  <h2>Si no puedes ir a Santiago</h2>
+  <p>El Jubileo compostelano está unido a la visita a la Catedral. Pero el Año Santo también se vive desde casa: rezando por los peregrinos, ofreciendo tus oraciones por alguien que haga el Camino o preparándote para ir más adelante. Lo importante es el corazón que se pone en camino.</p>
+  <h2>Preguntas frecuentes</h2>{faq_html(jub_faq)}
+  <p class="hint">Las condiciones concretas y los horarios los publica la Archidiócesis de Santiago al comenzar el Año Santo. Información oficial: <a href="https://catedraldesantiago.es/" rel="noopener" target="_blank">Catedral de Santiago</a> · Oficina del Peregrino (rúa Carretas, 33, Santiago).</p>
+ </div></div>
+ <aside class="side">
+  {exam_box(r, "Prepara tu confesión", "El Jubileo pide confesarse. Prepárala con un examen de conciencia sencillo y sin miedo.")}
+  <div class="box"><h3>Oraciones del peregrino</h3><ul class="links">{"".join(f'<li><a href="../oraciones/{s}.html">{E(PBY[s]["t"])}<small>{PBY[s]["min"]} min</small></a></li>' for s in CAM_PR if s in PBY)}</ul></div>
+  <div class="box"><h3>Camino de Santiago</h3><p style="margin:0 0 12px;color:var(--muted);font-size:14.5px">Fechas clave del Año Santo, oraciones y tu Camino virtual.</p><a class="btn btn-accent sm" href="../camino-de-santiago.html">Ver todo</a></div>
+ </aside></div></section>'''
+page("camino-de-santiago/ano-santo-2027.html", "Año Santo 2027: cómo ganar el Jubileo paso a paso | Rezo Diario", "Año Santo Compostelano 2027: qué es, cuándo se abre la Puerta Santa (31 de diciembre de 2026) y cómo ganar el Jubileo: visita, oración, confesión y comunión.", jub, "", [crumbs_ld([("Inicio", "index.html"), ("Camino de Santiago", "camino-de-santiago.html"), ("Año Santo 2027", "camino-de-santiago/ano-santo-2027.html")]), faq_ld(jub_faq), {"@context": "https://schema.org", "@type": "Article", "headline": "Año Santo 2027: cómo ganar el Jubileo paso a paso", "inLanguage": "es", "author": ORG, "publisher": ORG, "datePublished": "2026-10-25", "dateModified": TODAY, "mainEntityOfPage": canon("camino-de-santiago/ano-santo-2027.html")}], og_type="article", og=("Año Santo 2027", "Cómo ganar el Jubileo", "Paso a paso"))
 
 # ================= MURO DE VELAS =================
 r = ""
