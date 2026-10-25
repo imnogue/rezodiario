@@ -1025,3 +1025,23 @@ article .exam-cta{margin:24px 0 0}
 .cam-steps li>span{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--gold-ink);font-weight:800;font-size:18px;flex:none}
 .cam-steps b{display:block;font-size:17px}.cam-steps p{margin:4px 0 0;color:var(--muted);font-size:15px}
 @media(max-width:760px){.cam-cd{gap:12px;padding:14px}.cam-shell{width:46px;height:46px}.cam-shell svg{width:32px;height:32px}.cam-cd b{font-size:18px}.cam-cdn{min-width:54px}.cam-cdn b{font-size:30px}.cam-soon{flex-direction:column;align-items:flex-start;padding:20px}}
+
+/* ===== Cabecera en ordenador: 4 enlaces + «Más» ===== */
+.mas-nav{position:relative;display:flex}
+.mas-btn{display:inline-flex;align-items:center;gap:5px;padding:8px 12px;border-radius:999px;border:0;background:transparent;color:var(--muted);font-weight:600;font-size:14px;cursor:pointer}
+.mas-btn:hover,.mas-btn.on,.mas-btn[aria-expanded="true"]{color:var(--ink);background:var(--surface-2)}
+.mas-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.mas-btn svg{transition:transform .2s}
+.mas-panel{position:absolute;top:calc(100% + 14px);right:-180px;width:760px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:20px;border-radius:22px;background:var(--surface);border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.35);z-index:60}
+.mas-col{display:grid;align-content:start;gap:2px}
+.mas-col>span{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding:0 10px 6px}
+.mas-col a,.mas-aj button{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;text-decoration:none;color:var(--ink);font-size:14.5px;font-weight:600;background:none;border:0;cursor:pointer;text-align:left}
+.mas-col a:hover,.mas-aj button:hover{background:var(--surface-2)}
+.mas-aj button b{font-weight:600}
+.mas-aj button svg{width:16px;height:16px}
+.mas-lang{display:flex;flex-wrap:wrap;gap:4px;padding:6px 10px 0}
+.mas-lang button{padding:4px 7px!important;font-size:11.5px!important;font-weight:800!important;border:1px solid var(--line)!important;border-radius:8px!important;color:var(--muted)!important}
+.mas-lang button.on{background:var(--accent)!important;color:var(--accent-ink)!important;border-color:transparent!important}
+@media(min-width:1101px){.top-actions .lang,.top-actions #btnTheme,.top-actions .menu-btn{display:none!important}}
+@media(max-width:1100px){.mas-nav{display:none}}
+.top-in{position:relative}.mas-nav{position:static}.mas-panel{right:max(16px,env(safe-area-inset-right,0px));top:calc(100% + 6px);width:min(760px,calc(100vw - 32px))}

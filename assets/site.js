@@ -76,6 +76,16 @@ if(lm&&lbtn){
 }
 applyLang();
 
+/* ---------- «Más» en ordenador ---------- */
+(function(){const b=$("#btnMas"),pn=$("#masPanel");if(!b||!pn)return;
+ const ml=$("#masLang");if(ml){ml.innerHTML=LANGS.map(([c,n,code])=>`<button type="button" data-l="${c}" class="${c===lang?"on":""}" title="${n}">${code}</button>`).join("");ml.onclick=e=>{const x=e.target.closest("[data-l]");if(!x||x.dataset.l===lang)return;lang=x.dataset.l;store.set("rd-lang",lang);applyLang();irIdioma(lang)}}
+ const set=o=>{pn.hidden=!o;b.setAttribute("aria-expanded",String(o))};
+ b.onclick=e=>{e.stopPropagation();set(pn.hidden)};
+ document.addEventListener("click",e=>{if(!pn.hidden&&!e.target.closest(".mas-nav"))set(false)});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")set(false)});
+ const mt=$("#masTheme");if(mt)mt.onclick=()=>{const t=$("#btnTheme");if(t)t.click()};
+})();
+
 /* ---------- Menú lateral ---------- */
 const dr=$("#drawer");
 function openDrawer(){dr.hidden=false;document.body.style.overflow="hidden";setTimeout(()=>{const a=dr.querySelector("a");a&&a.focus({preventScroll:true})},60)}
