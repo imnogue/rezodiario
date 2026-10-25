@@ -861,6 +861,7 @@ if(PF){
 }
 
 /* ---------- Cuenta atrás (Año Santo) ---------- */
+$$("[data-countdown-mini]").forEach(el=>{const d=Math.floor((new Date(el.dataset.countdownMini)-Date.now())/864e5);if(d>=1)el.textContent=`Puerta Santa · faltan ${d} días`;else if(d<=0&&Date.now()<new Date("2028-01-01"))el.textContent="La Puerta Santa está abierta"});
 $$("[data-countdown]").forEach(el=>{const t=new Date(el.dataset.countdown),fin=new Date("2028-01-01T00:00:00+01:00");
  const paint=()=>{const ms=t-Date.now(),tx=el.querySelector("[data-cd-txt]"),sb=el.querySelector("[data-cd-sub]"),n=el.querySelector("[data-cd-n]");
   if(ms>0){const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5);tx.textContent=d>=1?`Faltan ${d} ${d===1?"día":"días"}`:`Faltan ${h} ${h===1?"hora":"horas"}`;n.innerHTML=d>=1?`<b>${d}</b><small>${d===1?"día":"días"}</small>`:`<b>${h}</b><small>h</small>`}

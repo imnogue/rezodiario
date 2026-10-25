@@ -404,6 +404,7 @@ home_main = f'''<section class="hero" aria-labelledby="h1">
   <a class="feature reveal" href="{sf[0]}" style="background:{sf[1]}"><small>{sf[2]}</small><b>{sf[3]}</b><p>{sf[4]}</p></a>
   <a class="feature reveal" href="novenas/{nv["slug"]}.html" style="background:linear-gradient(150deg,#6E64A8,#2A2350)"><small>{nvs}</small><b>{E(nv["t"])}</b><p>Nueve días de oración con recordatorio de qué día toca.</p></a>
   <a class="feature reveal" href="rosario.html" style="background:linear-gradient(150deg,#2C5D47,#14302A)"><small>Hoy · Misterios {setname(TW)}</small><b>Santo Rosario guiado</b><p>Cuenta a cuenta, con la cita del Evangelio y el fruto de cada misterio.</p></a>
+  <a class="feature reveal" href="camino-de-santiago.html" style="background:linear-gradient(150deg,#2E5C8A,#132A42)"><small data-countdown-mini="2026-12-31T17:00:00+01:00">Puerta Santa · 31 de diciembre</small><b>Año Santo 2027</b><p>Camino de Santiago: cómo ganar el Jubileo y oraciones del peregrino.</p></a>
 </div>""")}
 {sec(f"""<div class="gos">
   <article class="panel reveal"><span class="eyebrow">Evangelio de hoy · <span id="gRefL">{TW["refL"]}</span></span><h2 id="gTitle" style="margin-top:8px">{E(TW["title"])}</h2><p class="quote" id="gQuote">{E(TW["ex"])}</p>
