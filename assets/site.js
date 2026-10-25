@@ -758,7 +758,7 @@ if(PF){
    .map(([ic,v,u,l,h])=>`<div class="pf-tile"><span class="pf-ic">${ic}</span><b>${v}<small> ${u}</small></b><span>${l}</span>${h?`<em>${h}</em>`:""}</div>`).join("")+
    (S.hoy?"":`<a class="pf-tile pf-go" href="${ROOT}evangelio-de-hoy${X}"><span class="pf-ic">▶</span><b>Rezar hoy</b><span>Rezo del día · 5 min</span></a>`);
   // calendario de 26 semanas
-  const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());const st=new Date(today);const hw=$("#pfHeat").clientWidth||330,NW=Math.max(16,Math.min(53,Math.floor((hw-24)/21)));st.setDate(st.getDate()-((today.getDay()+6)%7)-(NW-1)*7);
+  const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());const st=new Date(today);const hw=$("#pfHeat").clientWidth||330,NW=Math.max(14,Math.min(53,Math.floor((hw-30)/22)));st.setDate(st.getDate()-((today.getDay()+6)%7)-(NW-1)*7);
   const A=store.get("rd-act",{});let cells="",months="",lastM=-1,lastW=-9,cnt=0;
   for(let w=0;w<NW;w++){const d0=new Date(st);d0.setDate(st.getDate()+w*7);if(d0.getMonth()!==lastM){if(w-lastW>=3&&w<=NW-2){months+=`<span style="grid-column:${w+1}/span ${Math.min(3,NW-w)}">${MES3[d0.getMonth()]}</span>`;lastW=w}lastM=d0.getMonth()}
    for(let k=0;k<7;k++){const d=new Date(d0);d.setDate(d0.getDate()+k);const iso=isoOf(d),fut=d>today,on=S.set.has(iso),lv=on?((A[iso]||[]).length>1?"l2":"l1"):"";if(on&&!fut)cnt++;

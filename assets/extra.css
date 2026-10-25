@@ -985,3 +985,7 @@ article .exam-cta{margin:24px 0 0}
 .pf-iact .arm{color:#E58B7B;border-color:#E58B7B}
 .pf-iempty{color:var(--muted);font-size:14px;justify-content:center;text-align:center}
 @media(max-width:760px){.pf-mring{width:110px;height:110px}.pf-dots i{width:28px;height:28px}.pf-iact .pf-yes{padding:0 8px;font-size:12px}}
+.pf-mring>div{padding:0 22px}
+.pf-mring span{display:block;max-width:74px;margin:4px auto 0;font-size:10.5px;line-height:1.2}
+@media(max-width:760px){.pf-mring b{font-size:30px}}
+.pf-m,.pf-cal{min-width:0!important}
