@@ -758,13 +758,13 @@ if(PF){
    .map(([ic,v,u,l,h])=>`<div class="pf-tile"><span class="pf-ic">${ic}</span><b>${v}<small> ${u}</small></b><span>${l}</span>${h?`<em>${h}</em>`:""}</div>`).join("")+
    (S.hoy?"":`<a class="pf-tile pf-go" href="${ROOT}evangelio-de-hoy${X}"><span class="pf-ic">▶</span><b>Rezar hoy</b><span>Rezo del día · 5 min</span></a>`);
   // calendario de 26 semanas
-  const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());const st=new Date(today);st.setDate(st.getDate()-((today.getDay()+6)%7)-25*7);
+  const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());const st=new Date(today);const hw=$("#pfHeat").clientWidth||330,NW=Math.max(16,Math.min(53,Math.floor((hw-24)/21)));st.setDate(st.getDate()-((today.getDay()+6)%7)-(NW-1)*7);
   const A=store.get("rd-act",{});let cells="",months="",lastM=-1,lastW=-9,cnt=0;
-  for(let w=0;w<26;w++){const d0=new Date(st);d0.setDate(st.getDate()+w*7);if(d0.getMonth()!==lastM){if(w-lastW>=3&&w<=22){months+=`<span style="grid-column:${w+1}/span 3">${MES3[d0.getMonth()]}</span>`;lastW=w}lastM=d0.getMonth()}
+  for(let w=0;w<NW;w++){const d0=new Date(st);d0.setDate(st.getDate()+w*7);if(d0.getMonth()!==lastM){if(w-lastW>=3&&w<=NW-2){months+=`<span style="grid-column:${w+1}/span ${Math.min(3,NW-w)}">${MES3[d0.getMonth()]}</span>`;lastW=w}lastM=d0.getMonth()}
    for(let k=0;k<7;k++){const d=new Date(d0);d.setDate(d0.getDate()+k);const iso=isoOf(d),fut=d>today,on=S.set.has(iso),lv=on?((A[iso]||[]).length>1?"l2":"l1"):"";if(on&&!fut)cnt++;
     cells+=`<i class="${lv}${iso===isoOf(today)?" hoy":""}${fut?" fut":""}" style="grid-column:${w+1};grid-row:${k+1}" title="${d.getDate()} ${MES3[d.getMonth()]}${on?" · rezado":""}"></i>`}}
-  $("#pfHeat").innerHTML=`<div class="pf-m">${months}</div><div class="pf-cal"><div class="pf-wdl">${WD.map((x,i)=>`<span>${i%2?"":x}</span>`).join("")}</div><div class="pf-cells">${cells}</div></div>`;
-  $("#pfHeatN").textContent=`${cnt} ${fl(cnt)} en 6 meses`;
+  $("#pfHeat").innerHTML=`<div class="pf-m" style="grid-template-columns:repeat(${NW},1fr)">${months}</div><div class="pf-cal"><div class="pf-wdl">${WD.map((x,i)=>`<span>${i%2?"":x}</span>`).join("")}</div><div class="pf-cells" style="grid-template-columns:repeat(${NW},1fr)">${cells}</div></div>`;
+  const nm=Math.round(NW/4.35);$("#pfHeatN").textContent=`${cnt} ${fl(cnt)} en ${NW>=52?"el último año":nm+" meses"}`;
   // días de la semana
   const mx=Math.max(1,...S.wd),top=S.wd.indexOf(Math.max(...S.wd));
   $("#pfWd").innerHTML=S.total?S.wd.map((v,i)=>`<div class="pf-bar${i===top&&v?" top":""}"><span>${WD[i]}</span><i><b style="height:${Math.round(v/mx*100)}%"></b></i><small>${v}</small></div>`).join("")+`<p class="pf-note">${S.wd[top]?`El día que más rezas es el <b>${WDL[top].toLowerCase()}</b>.`:""}</p>`:`<p class="pf-empty">Cuando empieces a rezar verás aquí qué días rezas más.</p>`;
@@ -799,7 +799,7 @@ if(PF){
   sendMail(em)};
  async function sendMail(em){try{const r=await fetch("/api/suscribir",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({email:em})});const j=await r.json();if(!j.ok)throw new Error(j.error||"");store.set("rd-boletin",em);const f=$("#pfMailRow form");if(f)f.remove();$("#pfMail").hidden=false;toast("¡Apuntado! Mañana recibirás el Evangelio.");render()}catch(e){toast(e.message||"No se ha podido apuntar ahora. Inténtalo más tarde.")}}
  document.addEventListener("rd-rezado",render);document.addEventListener("rd-auth",async()=>{U=window.__rdMe?await window.__rdMe():null;render()});
- render();(async()=>{if(window.__rdMe&&store.get("rd-auth",null)){U=await window.__rdMe();render()}})();
+ render();let rz=null,lw=innerWidth;addEventListener("resize",()=>{if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rz);rz=setTimeout(render,200)});(async()=>{if(window.__rdMe&&store.get("rd-auth",null)){U=await window.__rdMe();render()}})();
 }
 
 /* ---------- Reto de Adviento ---------- */
