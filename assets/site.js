@@ -703,8 +703,12 @@ function rdAvatar(u){const m=(u&&u.user_metadata)||{};const url=m.avatar_url||m.
   if(u){const n=rdName(u);$("#accWho").textContent=n||u.email||u.phone||"tu cuenta";$("#accMail").textContent=n?(u.email||u.phone||""):"";const av=$("#accAv");if(av)av.innerHTML=rdAvatar(u)}}
  function paintBtn(u){window.__rdUser=u||null;document.dispatchEvent(new CustomEvent("rd-user",{detail:u||null}));const b=$("#btnUser");if(!b)return;b.classList.toggle("in",!!u);const i=b.querySelector(".u-ini");if(i)i.remove();if(u){const s=document.createElement("span");s.className="u-ini";s.innerHTML=rdAvatar(u);b.appendChild(s)}}
  if(store.get("rd-auth",null))me().then(paintBtn);
+ let eMail="";$("#accECode").onsubmit=async e=>{e.preventDefault();const code=$("#accEOtp").value.replace(/\D/g,"");if(code.length<6){msg("Escribe el código completo del correo.");return}
+  try{let r;try{r=await sbf("/auth/v1/verify",{method:"POST",body:{type:"email",email:eMail,token:code}})}catch(x){r=await sbf("/auth/v1/verify",{method:"POST",body:{type:"magiclink",email:eMail,token:code}})}
+   store.set("rd-auth",{access_token:r.access_token,refresh_token:r.refresh_token,exp:Date.now()+(r.expires_in||3600)*1000});meP=null;$("#accECode").hidden=true;toast("Has entrado en tu cuenta. Guardando lo que ya habías rezado…");await pull();renderAcc();document.dispatchEvent(new Event("rd-auth"))}
+  catch(err){msg("El código no es correcto o ha caducado. Pide uno nuevo.")}};
  $("#accForm").onsubmit=async e=>{e.preventDefault();const em=$("#accEmail").value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg("Revisa el correo: falta la @ o el dominio.");return}
-  try{await sbf("/auth/v1/otp?redirect_to="+encodeURIComponent(location.origin+location.pathname),{method:"POST",body:{email:em,create_user:true}});msg("Te hemos enviado un enlace. Ábrelo desde este dispositivo para entrar.")}
+  try{await sbf("/auth/v1/otp?redirect_to="+encodeURIComponent(location.origin+location.pathname),{method:"POST",body:{email:em,create_user:true}});eMail=em;$("#accECode").hidden=false;msg("Te hemos enviado un correo. Escribe aquí el código que trae, o pulsa el enlace desde este mismo navegador. Así no pierdes lo que ya has rezado aquí.")}
   catch(err){const t=String(err&&err.message||err);let m="No se ha podido enviar el enlace.";
    if(/rate|limit|429/i.test(t))m+=" Se han enviado demasiados correos en poco tiempo: espera un rato y vuelve a intentarlo.";
    else if(/not authorized|Email address not authorized/i.test(t))m+=" El servidor de correo de prueba de Supabase solo envía a direcciones autorizadas: hay que conectar un servicio de correo propio.";

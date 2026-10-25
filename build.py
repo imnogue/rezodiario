@@ -119,6 +119,7 @@ ACCOUNT = '''<div class="drawer" id="account" data-nosnippet hidden role="dialog
   <form id="accCode" class="ask" hidden style="flex-direction:column;margin:0 0 10px"><label class="sr" for="accOtp">Código de 6 cifras</label><input id="accOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Código de 6 cifras"><button class="btn btn-accent" type="submit">Entrar</button></form>
   <p class="note" id="accOr" style="text-align:center;margin:4px 0 10px" hidden>o con tu correo</p>
   <form id="accForm" class="ask" style="flex-direction:column"><label class="sr" for="accEmail">Correo electrónico</label><input id="accEmail" type="email" placeholder="tu@correo.com" autocomplete="email"><button class="btn btn-accent" type="submit">Enviarme el enlace de acceso</button></form>
+  <form id="accECode" class="ask" hidden style="flex-direction:column;margin-top:10px"><label class="sr" for="accEOtp">Código del correo</label><input id="accEOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="Código del correo"><button class="btn btn-accent" type="submit">Entrar con el código</button></form>
   <p class="note">Te enviaremos un enlace para entrar sin contraseña. No compartimos tu correo con nadie.</p>
   <a class="acc-local" href="/perfil">Ver mis estadísticas en este dispositivo ›</a></div>
  <div id="accIn" hidden><div class="acc-me"><span class="acc-av" id="accAv"></span><div><b id="accWho"></b><small id="accMail"></small></div></div>
