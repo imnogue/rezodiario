@@ -989,3 +989,8 @@ article .exam-cta{margin:24px 0 0}
 .pf-mring span{display:block;max-width:74px;margin:4px auto 0;font-size:10.5px;line-height:1.2}
 @media(max-width:760px){.pf-mring b{font-size:30px}}
 .pf-m,.pf-cal{min-width:0!important}
+.pf-meta{flex-wrap:nowrap}
+.pf-mside{min-width:0}
+.pf-dots{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.pf-dots i{width:100%!important;max-width:30px;height:auto!important;aspect-ratio:1}
+@media(max-width:420px){.pf-meta{flex-wrap:wrap;justify-content:center}.pf-mside{flex-basis:100%}}
