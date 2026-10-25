@@ -687,20 +687,21 @@ function rdAvatar(u){const m=(u&&u.user_metadata)||{};const url=m.avatar_url||m.
  // vuelta desde el enlace mágico: #access_token=...&refresh_token=...
  const hp=new URLSearchParams(location.hash.slice(1));
  if(hp.get("access_token")){store.set("rd-auth",{access_token:hp.get("access_token"),refresh_token:hp.get("refresh_token"),exp:Date.now()+(+hp.get("expires_in")||3600)*1000});history.replaceState(null,"",location.pathname+location.search);setTimeout(()=>{toast("Has entrado en tu cuenta. Sincronizando…");pull()},300)}
- async function refresh(){const a=store.get("rd-auth",null);if(!a||!a.refresh_token)return null;if(a.exp>Date.now()+60000)return a;
+ let refP=null;function refresh(){if(!refP)refP=refresh0().finally(()=>{setTimeout(()=>{refP=null},0)});return refP}
+ async function refresh0(){const a=store.get("rd-auth",null);if(!a||!a.refresh_token)return null;if(a.exp>Date.now()+60000)return a;
   try{const r=await sbf("/auth/v1/token?grant_type=refresh_token",{method:"POST",body:{refresh_token:a.refresh_token}});const n={access_token:r.access_token,refresh_token:r.refresh_token,exp:Date.now()+r.expires_in*1000,email:r.user&&r.user.email};store.set("rd-auth",n);return n}catch(e){store.set("rd-auth",null);return null}}
- async function me(){const a=await refresh();if(!a)return null;try{const u=await sbf("/auth/v1/user",{auth:true});return u}catch(e){return null}}
+ let meP=null,meAt=0;function me(){if(meP&&Date.now()-meAt<30000)return meP;meAt=Date.now();meP=(async()=>{const a=await refresh();if(!a)return null;try{return await sbf("/auth/v1/user",{auth:true})}catch(e){return null}})();meP.then(u=>{if(!u)meP=null});return meP}
  function snapshot(){const o={};try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(SYNC_KEYS.test(k))o[k]=JSON.parse(localStorage.getItem(k))}}catch(e){}return o}
  function merge(a,b){if(Array.isArray(a)&&Array.isArray(b))return[...new Set([...a,...b])];const po=x=>x&&typeof x==="object"&&!Array.isArray(x);if(po(a)&&po(b)){const o={...a};Object.keys(b).forEach(k=>{o[k]=k in a?merge(a[k],b[k]):b[k]});return o}return b!==undefined?b:a}
  let busy=false,timer=null;
  async function pull(){const u=await me();if(!u)return;try{const rows=await sbf(`/rest/v1/progreso?select=datos&user_id=eq.${u.id}`,{auth:true});const remote=(rows[0]||{}).datos||{};const loc=snapshot();
   Object.keys(remote).forEach(k=>{if(SYNC_KEYS.test(k))try{localStorage.setItem(k,JSON.stringify(merge(remote[k],loc[k])))}catch(e){}});await push(true);renderWeek();document.dispatchEvent(new Event("rd-rezado"));toast("Tu progreso está sincronizado.")}catch(e){}}
  async function push(now){if(!now){clearTimeout(timer);timer=setTimeout(()=>push(true),2500);return}if(busy)return;busy=true;const u=await me();if(u){try{await sbf("/rest/v1/progreso",{method:"POST",auth:true,headers:{Prefer:"resolution=merge-duplicates,return=minimal"},body:{user_id:u.id,datos:snapshot(),updated_at:new Date().toISOString()}})}catch(e){}}busy=false}
- window.__rdSync=()=>{if(store.get("rd-auth",null))push(false)};window.__rdMe=me;window.__rdOpenAcc=open;window.__rdLogout=()=>{store.set("rd-auth",null);renderAcc();paintBtn(null);document.dispatchEvent(new Event("rd-auth"))};
+ window.__rdSync=()=>{if(store.get("rd-auth",null))push(false)};window.__rdMe=me;window.__rdOpenAcc=open;window.__rdLogout=()=>{store.set("rd-auth",null);meP=null;renderAcc();paintBtn(null);document.dispatchEvent(new Event("rd-auth"))};
  async function renderAcc(){const u=await me();$("#accOut").hidden=!!u;$("#accIn").hidden=!u;msg("");paintBtn(u);
   const S=rdStats(),ch=$("#accChips");if(ch)ch.innerHTML=`<div><b>${S.racha}</b><small>${S.racha===1?"día seguido":"días seguidos"}</small></div><div><b>${S.total}</b><small>días rezados</small></div><div><b>${S.favs}</b><small>guardadas</small></div>`;
   if(u){const n=rdName(u);$("#accWho").textContent=n||u.email||u.phone||"tu cuenta";$("#accMail").textContent=n?(u.email||u.phone||""):"";const av=$("#accAv");if(av)av.innerHTML=rdAvatar(u)}}
- function paintBtn(u){const b=$("#btnUser");if(!b)return;b.classList.toggle("in",!!u);const i=b.querySelector(".u-ini");if(i)i.remove();if(u){const s=document.createElement("span");s.className="u-ini";s.innerHTML=rdAvatar(u);b.appendChild(s)}}
+ function paintBtn(u){window.__rdUser=u||null;document.dispatchEvent(new CustomEvent("rd-user",{detail:u||null}));const b=$("#btnUser");if(!b)return;b.classList.toggle("in",!!u);const i=b.querySelector(".u-ini");if(i)i.remove();if(u){const s=document.createElement("span");s.className="u-ini";s.innerHTML=rdAvatar(u);b.appendChild(s)}}
  if(store.get("rd-auth",null))me().then(paintBtn);
  $("#accForm").onsubmit=async e=>{e.preventDefault();const em=$("#accEmail").value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg("Revisa el correo: falta la @ o el dominio.");return}
   try{await sbf("/auth/v1/otp?redirect_to="+encodeURIComponent(location.origin+location.pathname),{method:"POST",body:{email:em,create_user:true}});msg("Te hemos enviado un enlace. Ábrelo desde este dispositivo para entrar.")}
@@ -728,7 +729,7 @@ function rdAvatar(u){const m=(u&&u.user_metadata)||{};const url=m.avatar_url||m.
    store.set("rd-auth",{access_token:r.access_token,refresh_token:r.refresh_token,exp:Date.now()+(r.expires_in||3600)*1000});$("#accCode").hidden=true;toast("Has entrado en tu cuenta. Sincronizando…");pull();renderAcc()}
   catch(err){msg("El código no es correcto o ha caducado. Pide uno nuevo.")}};
  const he=new URLSearchParams(location.hash.slice(1));if(he.get("error_description")){setTimeout(()=>{open();msg("No se ha podido entrar: "+he.get("error_description"))},300);history.replaceState(null,"",location.pathname+location.search)}
- $("#accLogout").onclick=()=>{store.set("rd-auth",null);renderAcc();document.dispatchEvent(new Event("rd-auth"));toast("Has cerrado sesión. Tu progreso sigue guardado en tu cuenta.")};
+ $("#accLogout").onclick=()=>{store.set("rd-auth",null);meP=null;renderAcc();document.dispatchEvent(new Event("rd-auth"));toast("Has cerrado sesión. Tu progreso sigue guardado en tu cuenta.")};
  if(store.get("rd-auth",null))refresh();
 })();
 
@@ -752,7 +753,7 @@ if(PF){
   const since=U&&U.created_at?new Date(U.created_at):null;
   $("#pfEye").textContent=since?`Miembro desde ${MES3[since.getMonth()]} ${since.getFullYear()}`:"Tu camino de oración";
   $("#pfSub").textContent=S.hoy?"Hoy ya has rezado. ¡Gracias por dedicarle este rato a Dios!":(S.racha?`Llevas ${S.racha} ${fl(S.racha)} seguidos. Reza hoy para no perder tu racha.`:"Hoy es un buen día para empezar. Un rato con Dios cambia el día entero.");
-  $("#pfCta").hidden=!!U;
+  $("#pfCta").hidden=!!U||!!store.get("rd-auth",null);
   // fichas
   $("#pfTiles").innerHTML=[["🔥",S.racha,`${fl(S.racha)} seguidos`,"Racha actual",S.hoy?"Hoy ya rezado":"Reza hoy para seguir"],["⭐",S.best,fl(S.best),"Mejor racha",""],["📅",S.total,fl(S.total),"Días rezados",S.first?`Desde el ${+S.first.slice(8)} de ${MES3[+S.first.slice(5,7)-1]}`:""],["🗓",S.esteMes,`de ${S.diasMes}`,"Este mes",`${Math.round(S.esteMes/S.diasMes*100)} % del mes`]]
    .map(([ic,v,u,l,h])=>`<div class="pf-tile"><span class="pf-ic">${ic}</span><b>${v}<small> ${u}</small></b><span>${l}</span>${h?`<em>${h}</em>`:""}</div>`).join("")+
@@ -851,7 +852,7 @@ if(PF){
     row.querySelector("form").onsubmit=ev=>{ev.preventDefault();sendMail(row.querySelector("input").value.trim())};row.querySelector("input").focus()}return}
   sendMail(em)};
  async function sendMail(em){try{const r=await fetch("/api/suscribir",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({email:em})});const j=await r.json();if(!j.ok)throw new Error(j.error||"");store.set("rd-boletin",em);const f=$("#pfMailRow form");if(f)f.remove();$("#pfMail").hidden=false;toast("¡Apuntado! Mañana recibirás el Evangelio.");render()}catch(e){toast(e.message||"No se ha podido apuntar ahora. Inténtalo más tarde.")}}
- document.addEventListener("rd-rezado",render);document.addEventListener("rd-auth",async()=>{U=window.__rdMe?await window.__rdMe():null;render()});
+ document.addEventListener("rd-user",e=>{if(e.detail&&(!U||U.id!==e.detail.id)){U=e.detail;render()}});document.addEventListener("rd-rezado",render);document.addEventListener("rd-auth",async()=>{U=window.__rdMe?await window.__rdMe():null;render()});
  render();let rz=null,lw=innerWidth;addEventListener("resize",()=>{if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rz);rz=setTimeout(render,200)});(async()=>{if(window.__rdMe&&store.get("rd-auth",null)){U=await window.__rdMe();render()}})();
 }
 

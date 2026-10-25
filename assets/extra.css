@@ -997,4 +997,7 @@ article .exam-cta{margin:24px 0 0}
 /* iPhone: evita que las barras se queden «pegadas» por encima de la cabecera al hacer scroll */
 .pf-card{isolation:isolate;contain:paint;position:relative;z-index:0}
 .pf-bar i b,.pf-mring .fg{transition:none!important}
-.pf-bar i{-webkit-mask-image:-webkit-radial-gradient(white,black);transform:translateZ(0)}
+/* barras simples (sin recortes ni degradados) para iPhone */
+.pf-bar i{overflow:visible!important;position:relative}
+.pf-bar i b{position:absolute;left:0;right:0;bottom:0;border-radius:10px}
+.pf-bar.top i b{background:var(--gold)!important}
