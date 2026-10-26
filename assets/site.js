@@ -918,21 +918,36 @@ function cvKm(st){if(!st||!st.start)return{km:0,days:0,today:0};const A=store.ge
 const CV=$("#cv");
 if(CV){const TOT=115,PU=JSON.parse(CV.dataset.pueblos),ETK=JSON.parse(CV.dataset.etapas);let demo=null;
  const map=$("#cvMap");let base,prog,L,at,vert;
- function build(){vert=map.clientWidth<620;const D=vert?"M200,40 C60,100 60,190 200,230 S350,350 200,400 S50,520 200,570 S330,680 260,740":"M40,230 C140,90 230,260 330,170 S520,70 610,170 S800,250 870,140 S940,60 965,70";
-  map.innerHTML=`<svg viewBox="${vert?"0 0 400 790":"0 0 1000 300"}" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="cvG" x1="0" x2="${vert?0:1}" y1="0" y2="${vert?1:0}"><stop offset="0" stop-color="#86C2A3"/><stop offset="1" stop-color="#D6B266"/></linearGradient></defs>
+ let place=()=>{};
+ function build(){vert=map.clientWidth<620;
+  if(vert){buildMobile();return}
+  const D="M40,230 C140,90 230,260 330,170 S520,70 610,170 S800,250 870,140 S940,60 965,70";
+  map.innerHTML=`<svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="cvG" x1="0" x2="1"><stop offset="0" stop-color="#86C2A3"/><stop offset="1" stop-color="#D6B266"/></linearGradient></defs>
   <path id="cvBase" d="${D}" fill="none" stroke="var(--surface-2)" stroke-width="14" stroke-linecap="round"/>
   <path d="${D}" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/>
   <path id="cvProg" d="${D}" fill="none" stroke="url(#cvG)" stroke-width="14" stroke-linecap="round"/>
-  <g id="cvTowns"></g><g id="cvWalker"><circle r="20" fill="#D6B266" opacity=".25" class="cv-pulse"/><circle r="13" fill="#D6B266" stroke="#0D1311" stroke-width="3"/><path d="M-5 5 0-6 5 5Z" fill="#0D1311" transform="translate(0,-1)"/></g></svg>`;
+  <g id="cvTowns"></g>${WALK}</svg>`;
   base=$("#cvBase");prog=$("#cvProg");L=base.getTotalLength();at=km=>base.getPointAtLength(Math.max(0,Math.min(1,km/TOT))*L);prog.style.strokeDasharray=L;
-  let up=true;$("#cvTowns").innerHTML=PU.map(([n,k,maj],i)=>{const p=at(k),last=k===TOT;let x=p.x,y,anc="middle";
-   if(vert){const a=at(Math.max(0,k-1.5)),c=at(Math.min(TOT,k+1.5));let nx=-(c.y-a.y),ny=c.x-a.x;const l=Math.hypot(nx,ny)||1;nx/=l;ny/=l;const want=Math.abs(p.x-200)<25?1:Math.sign(p.x-200);if(Math.sign(nx)!==want){nx=-nx;ny=-ny}
-    anc=nx>=0?"start":"end";x=p.x+nx*24;y=p.y+ny*20+2;if(k===0){anc="start";x=p.x+22;y=p.y+6}const w=n.length*10.5;if(anc==="start"&&x+w>396){anc="end";x=p.x-22;y=p.y+6}else if(anc==="end"&&x-w<4){anc="start";x=p.x+22;y=p.y+6}}
-   else{up=!up;y=last?p.y-34:up?p.y-30:p.y+44;anc=i===0?"start":last?"end":"middle";if(last)x=p.x+4}
-   return`<g class="cv-town${maj?" maj":""}" data-km="${k}"><circle cx="${p.x}" cy="${p.y}" r="${last?11:maj?8:4.5}"/>${maj?`<text x="${x}" y="${y}" text-anchor="${anc}">${esc(n)}</text><text class="kmt" x="${x}" y="${y+17}" text-anchor="${anc}">km ${k}</text>`:`<title>${esc(n)} · km ${k}</title>`}</g>`}).join("")}
+  let up=true;$("#cvTowns").innerHTML=PU.map(([n,k,maj],i)=>{const p=at(k),last=k===TOT;up=!up;const y=last?p.y-34:up?p.y-30:p.y+44,anc=i===0?"start":last?"end":"middle",x=last?p.x+4:p.x;
+   return`<g class="cv-town${maj?" maj":""}" data-km="${k}"><circle cx="${p.x}" cy="${p.y}" r="${last?11:maj?8:4.5}"/>${maj?`<text x="${x}" y="${y}" text-anchor="${anc}">${esc(n)}</text><text class="kmt" x="${x}" y="${y+17}" text-anchor="${anc}">km ${k}</text>`:`<title>${esc(n)} · km ${k}</title>`}</g>`}).join("");
+  place=km=>{prog.style.strokeDashoffset=L*(1-km/TOT);const p=at(km);$("#cvWalker").setAttribute("transform",`translate(${p.x},${p.y})`);$$("#cvTowns .cv-town").forEach(g=>g.classList.toggle("ok",+g.dataset.km<=km))}}
+ const WALK='<g id="cvWalker"><circle r="20" fill="#D6B266" opacity=".25" class="cv-pulse"/><circle r="13" fill="#D6B266" stroke="#0D1311" stroke-width="3"/><path d="M-5 5 0-6 5 5Z" fill="#0D1311" transform="translate(0,-1)"/></g>';
+ function buildMobile(){let curStage=-1;const X0=24,X1=376,gx=km=>X0+(X1-X0)*km/TOT;const ends=[0];ETK.forEach(k=>ends.push(ends[ends.length-1]+k));
+  map.innerHTML=`<div class="cvm-all"><svg viewBox="0 0 400 54"><line x1="${X0}" y1="20" x2="${X1}" y2="20" stroke="var(--surface-2)" stroke-width="8" stroke-linecap="round"/><line id="cvmAll" x1="${X0}" y1="20" x2="${X0}" y2="20" stroke="#86C2A3" stroke-width="8" stroke-linecap="round"/>${ends.map((k,i)=>`<circle cx="${gx(k)}" cy="20" r="${i===0||i===ends.length-1?6:4}" class="cvm-dot" data-km="${k}"/>`).join("")}<circle id="cvmMe" cx="${X0}" cy="20" r="7" fill="#D6B266" stroke="#0D1311" stroke-width="2.5"/><text x="${X0}" y="46" class="cvm-l">Sarria</text><text x="${X1}" y="46" text-anchor="end" class="cvm-l">Santiago</text><text id="cvmPct" x="200" y="46" text-anchor="middle" class="cvm-l"></text></svg></div><div class="cvm-zoom" id="cvmZoom"></div>`;
+  const zoom=$("#cvmZoom");
+  function drawStage(si){curStage=si;const a=ends[si],b=ends[si+1],D="M30,110 C110,60 170,150 230,100 S330,70 370,105";
+   const towns=PU.filter(x=>x[1]>=a&&x[1]<=b);
+   zoom.innerHTML=`<div class="cvm-h"><small>Etapa ${si+1} de 5 · ${b-a} km</small><b>${esc(towns[0][0].split(" · ")[0])} → ${esc(towns[towns.length-1][0].split(" · ")[0])}</b></div><svg viewBox="0 0 400 190"><defs><linearGradient id="cvG" x1="0" x2="1"><stop offset="0" stop-color="#86C2A3"/><stop offset="1" stop-color="#D6B266"/></linearGradient></defs><path id="cvBase" d="${D}" fill="none" stroke="var(--surface-2)" stroke-width="12" stroke-linecap="round"/><path d="${D}" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/><path id="cvProg" d="${D}" fill="none" stroke="url(#cvG)" stroke-width="12" stroke-linecap="round"/><g id="cvTowns"></g>${WALK}</svg>`;
+   base=$("#cvBase");prog=$("#cvProg");L=base.getTotalLength();prog.style.strokeDasharray=L;const atS=km=>base.getPointAtLength(Math.max(0,Math.min(1,(km-a)/(b-a)))*L);
+   $("#cvTowns").innerHTML=towns.map(([n,k,maj],i)=>{const first=i===0,last=i===towns.length-1,p=atS(k),up=!first&&!last;const anc=first?"start":last?"end":"middle",x=first?p.x-6:last?p.x+6:p.x,y=up?p.y-24:p.y+34;
+    return`<g class="cv-town${maj?" maj":""}" data-km="${k}"><circle cx="${p.x}" cy="${p.y}" r="${maj?8:5}"/><text x="${x}" y="${y}" text-anchor="${anc}">${esc(n.split(" · ")[0])}</text><text class="kmt" x="${x}" y="${y+15}" text-anchor="${anc}">km ${k}</text></g>`}).join("");
+   place._at=atS;place._a=a;place._b=b}
+  place=km=>{let si=0;for(let i=0;i<ETK.length;i++)if(km>=ends[i])si=i;if(km>=TOT)si=ETK.length-1;if(si!==curStage)drawStage(si);
+   $("#cvmAll").setAttribute("x2",gx(km));$("#cvmMe").setAttribute("cx",gx(km));$$(".cvm-dot").forEach(c=>c.classList.toggle("ok",+c.dataset.km<=km));$("#cvmPct").textContent=Math.round(km/TOT*100)+" % del Camino";
+   const a=place._a,b=place._b;prog.style.strokeDashoffset=L*(1-Math.max(0,Math.min(1,(km-a)/(b-a))));const p=place._at(km);$("#cvWalker").setAttribute("transform",`translate(${p.x},${p.y})`);$$("#cvTowns .cv-town").forEach(g=>g.classList.toggle("ok",+g.dataset.km<=km))}}
  build();let lastV=vert;addEventListener("resize",()=>{const v=map.clientWidth<620;if(v!==lastV){lastV=v;build();real()}});
- function paint(km,st,info){prog.style.strokeDashoffset=L*(1-km/TOT);const p=at(km);$("#cvWalker").setAttribute("transform",`translate(${p.x},${p.y})`);
-  $$("#cvTowns .cv-town").forEach(g=>g.classList.toggle("ok",+g.dataset.km<=km));
+ function paint(km,st,info){place(km);
+
   let ini=0,cur=0;ETK.forEach((k,i)=>{if(km>=ini)cur=i;ini+=k});
   $("#cvKm").textContent=Math.round(km);$("#cvLeft").textContent=Math.max(0,TOT-Math.round(km));$("#cvDays").textContent=info?info.days:0;$("#cvStage").textContent=`${Math.min(5,cur+1)}/5`;
   $$("#cvEts .cv-et").forEach((li,i)=>{const a=+li.dataset.ini,b=a+(+li.dataset.km),state=km>=b?"done":km>=a&&(st||demo!=null)?"now":"lock";li.dataset.st=state;li.querySelector(".cv-est").textContent=state==="done"?"✓ Completada":state==="now"?"Estás aquí":`Se abre en el km ${a}`;li.classList.toggle("open",state==="now"||(state==="done"&&li.classList.contains("open")));const am=li.querySelector(".cv-amen");am.hidden=state!=="now"||demo!=null;if(info&&info.today){am.textContent="✓ Hoy ya has avanzado "+info.today+" km";am.classList.replace("btn-gold","btn-ghost")}else{am.textContent=st?"Amén · he rezado esta etapa (+4 km)":"Amén · empezar mi Camino rezando";am.classList.replace("btn-ghost","btn-gold")}});

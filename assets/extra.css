@@ -1159,7 +1159,7 @@ article .exam-cta{margin:24px 0 0}
 .cv-acts{display:flex;gap:8px;flex-wrap:wrap}
 @media(max-width:860px){.cv-cols{grid-template-columns:1fr}.cv-side{position:static}}
 @media(max-width:760px){.cv-panel{padding:16px;border-radius:22px}.cv-stats{grid-template-columns:repeat(2,1fr)}.cv-stats b{font-size:24px}.cv-map{margin:10px -6px 0}.cv-town.maj text{font-size:22px}.cv-town.maj text.kmt{font-size:16px}.cv-eb{padding:0 16px 14px}.cv-today{flex-wrap:wrap}.cv-today .btn{width:100%}.cv-done{flex-direction:column;align-items:flex-start;padding:20px}}
-.cv-map{max-width:100%}@media(max-width:620px){.cv-map{max-width:420px;margin:10px auto 0}.cv-town.maj text{font-size:19px!important}.cv-town.maj text.kmt{font-size:14px!important}}
+
 .cv-steps{list-style:none;padding:0;margin:0 0 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .cv-steps li{display:flex;gap:12px;padding:14px 16px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
 .cv-steps span{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--gold-ink);font-weight:800;flex:none}
@@ -1176,3 +1176,13 @@ article .exam-cta{margin:24px 0 0}
 @media(min-width:901px){.cvp{bottom:28px}}
 .ns-cv{display:flex;align-items:center;gap:12px;margin:0 0 12px;padding:12px 14px;border-radius:16px;background:color-mix(in srgb,var(--gold) 14%,transparent);border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);text-decoration:none;color:inherit}
 .ns-cv>span{font-size:22px}.ns-cv>div{flex:1;min-width:0}.ns-cv b{display:block;font-size:14.5px;line-height:1.3}.ns-cv small{color:var(--muted);font-size:12.5px}.ns-cv em{font-style:normal;color:var(--gold);font-size:20px}
+
+/* Camino virtual en móvil: barra del Camino entero + zoom de la etapa */
+.cvm-all svg,.cvm-zoom svg{width:100%;height:auto;display:block;overflow:visible}
+.cvm-dot{fill:var(--surface-2);stroke:var(--line);stroke-width:2}.cvm-dot.ok{fill:#86C2A3;stroke:#86C2A3}
+.cvm-l{fill:var(--muted);font:700 12px var(--f-ui)}
+.cvm-zoom{margin-top:8px;padding:12px 4px 0;border-top:1px solid var(--line)}
+.cvm-h{padding:0 8px}.cvm-h small{color:var(--gold);font-weight:800;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}.cvm-h b{display:block;font-size:17px}
+.cvm-zoom .cv-town text{fill:var(--ink);font:700 14px var(--f-ui)}
+.cvm-zoom .cv-town text.kmt{fill:var(--muted);font:600 11px var(--f-ui)}
+.cvm-zoom .cv-town:not(.maj) text{fill:var(--muted);font-weight:600}
