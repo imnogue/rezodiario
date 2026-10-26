@@ -4,7 +4,7 @@
 const RD=window.RD||{};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const ROOT=document.body.dataset.root||"";const X=document.body.dataset.clean==="1"?"":".html";const IDX=X?"index.html":"";
-const SYNC_KEYS=/^rd-(rezado|favs|nov-|reto-|mycandles|intencion|diario|prop|act|oras|perfil)/;
+const SYNC_KEYS=/^rd-(rezado|favs|nov-|reto-|mycandles|intencion|diario|prop|act|oras|perfil|camino)/;
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}if(SYNC_KEYS.test(k)&&window.__rdSync)window.__rdSync()}};
 function toast(t){let h=$("#toastHost");if(!h){h=document.createElement("div");h.id="toastHost";document.body.appendChild(h)}h.innerHTML="";const d=document.createElement("div");d.className="toast";d.setAttribute("role","status");d.textContent=t;h.appendChild(d);setTimeout(()=>d.remove(),3000)}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
@@ -758,7 +758,7 @@ if(PF){
   ["Primer paso","Reza por primera vez",S.total,1,"🌱"],["Tres días seguidos","Reza 3 días seguidos",S.best,3,"🔥"],["Una semana con Dios","Reza 7 días seguidos",S.best,7,"⭐"],["Un mes de oración","Reza 30 días seguidos",S.best,30,"👑"],
   ["10 días rezados","Suma 10 días de oración",S.total,10,"🕯"],["50 días rezados","Suma 50 días de oración",S.total,50,"🌿"],["100 días rezados","Suma 100 días de oración",S.total,100,"🏆"],
   ["Rosario completo","Reza el Rosario entero",S.cnt.rosario||0,1,"📿"],["Novena terminada","Reza los 9 días de una novena",novOk?1:0,1,"🙏"],["Lectio Divina","Termina una Lectio Divina",S.cnt.lectio||0,1,"📖"],
-  ["Luz encendida","Enciende una vela en el muro",S.velas,1,"✨"],["Tesoro de oraciones","Guarda 5 oraciones",S.favs,5,"♥"],["Diario del alma","Escribe 3 días en tu diario",S.nDiario,3,"✍"]]}
+  ["Luz encendida","Enciende una vela en el muro",S.velas,1,"✨"],["Tesoro de oraciones","Guarda 5 oraciones",S.favs,5,"♥"],["Diario del alma","Escribe 3 días en tu diario",S.nDiario,3,"✍"],["Peregrino de oración","Llega a Santiago en el Camino virtual",Math.round(cvKm(cvState()).km),115,"🐚"]]}
  function render(){const S=rdStats();
   // cabecera
   const n=U?rdName(U):(store.get("rd-perfil",{}).nombre||"");
@@ -901,6 +901,67 @@ if(reto&&reto.dataset.key){const key=reto.dataset.key,N=+reto.dataset.n,items=$$
 /* ---------- Cuenta atrás en cajitas (días, horas, minutos) ---------- */
 $$("[data-cd2]").forEach(el=>{const t=new Date(el.dataset.cd2);let iv=null;const paint=()=>{const ms=t-Date.now();if(ms<=0){el.innerHTML=`<div class="cdb-done">${esc(el.dataset.cdDone||"")}</div>`;el.classList.add("over");if(iv)clearInterval(iv);return}
  const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);el.innerHTML=[[d,d===1?"día":"días"],[h,h===1?"hora":"horas"],[m,"min"]].map(([v,l])=>`<span><b>${String(v).padStart(2,"0")}</b><small>${l}</small></span>`).join("")};paint();iv=setInterval(paint,15e3)});
+
+/* ---------- Camino virtual a Santiago ---------- */
+function cvState(){return store.get("rd-camino",null)}
+function cvKm(st){if(!st||!st.start)return{km:0,days:0,today:0};const A=store.get("rd-act",{}),ds=[...new Set(store.get("rd-rezado",[]))].filter(d=>d>=st.start).sort();let km=0,today=0;const hoy=isoOf(new Date());
+ ds.forEach(d=>{const ex=(A[d]||[]).filter(k=>["rosario","lectio","novena","reto"].includes(k)).length;const k=Math.min(7,4+ex);km+=k;if(d===hoy)today=k});return{km:Math.min(115,km),days:ds.length,today,raw:km}}
+const CV=$("#cv");
+if(CV){const TOT=115,PU=JSON.parse(CV.dataset.pueblos),ETK=JSON.parse(CV.dataset.etapas);let demo=null;
+ const map=$("#cvMap");let base,prog,L,at,vert;
+ function build(){vert=map.clientWidth<620;const D=vert?"M200,40 C60,100 60,190 200,230 S350,350 200,400 S50,520 200,570 S330,680 260,740":"M40,230 C140,90 230,260 330,170 S520,70 610,170 S800,250 870,140 S940,60 965,70";
+  map.innerHTML=`<svg viewBox="${vert?"0 0 400 790":"0 0 1000 300"}" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="cvG" x1="0" x2="${vert?0:1}" y1="0" y2="${vert?1:0}"><stop offset="0" stop-color="#86C2A3"/><stop offset="1" stop-color="#D6B266"/></linearGradient></defs>
+  <path id="cvBase" d="${D}" fill="none" stroke="var(--surface-2)" stroke-width="14" stroke-linecap="round"/>
+  <path d="${D}" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/>
+  <path id="cvProg" d="${D}" fill="none" stroke="url(#cvG)" stroke-width="14" stroke-linecap="round"/>
+  <g id="cvTowns"></g><g id="cvWalker"><circle r="20" fill="#D6B266" opacity=".25" class="cv-pulse"/><circle r="13" fill="#D6B266" stroke="#0D1311" stroke-width="3"/><path d="M-5 5 0-6 5 5Z" fill="#0D1311" transform="translate(0,-1)"/></g></svg>`;
+  base=$("#cvBase");prog=$("#cvProg");L=base.getTotalLength();at=km=>base.getPointAtLength(Math.max(0,Math.min(1,km/TOT))*L);prog.style.strokeDasharray=L;
+  let up=true;$("#cvTowns").innerHTML=PU.map(([n,k,maj],i)=>{const p=at(k),last=k===TOT;let x=p.x,y,anc="middle";
+   if(vert){const a=at(Math.max(0,k-1.5)),c=at(Math.min(TOT,k+1.5));let nx=-(c.y-a.y),ny=c.x-a.x;const l=Math.hypot(nx,ny)||1;nx/=l;ny/=l;const want=Math.abs(p.x-200)<25?1:Math.sign(p.x-200);if(Math.sign(nx)!==want){nx=-nx;ny=-ny}
+    anc=nx>=0?"start":"end";x=p.x+nx*24;y=p.y+ny*20+2;if(k===0){anc="start";x=p.x+22;y=p.y+6}const w=n.length*10.5;if(anc==="start"&&x+w>396){anc="end";x=p.x-22;y=p.y+6}else if(anc==="end"&&x-w<4){anc="start";x=p.x+22;y=p.y+6}}
+   else{up=!up;y=last?p.y-34:up?p.y-30:p.y+44;anc=i===0?"start":last?"end":"middle";if(last)x=p.x+4}
+   return`<g class="cv-town${maj?" maj":""}" data-km="${k}"><circle cx="${p.x}" cy="${p.y}" r="${last?11:maj?8:4.5}"/>${maj?`<text x="${x}" y="${y}" text-anchor="${anc}">${esc(n)}</text><text class="kmt" x="${x}" y="${y+17}" text-anchor="${anc}">km ${k}</text>`:`<title>${esc(n)} · km ${k}</title>`}</g>`}).join("")}
+ build();let lastV=vert;addEventListener("resize",()=>{const v=map.clientWidth<620;if(v!==lastV){lastV=v;build();real()}});
+ function paint(km,st,info){prog.style.strokeDashoffset=L*(1-km/TOT);const p=at(km);$("#cvWalker").setAttribute("transform",`translate(${p.x},${p.y})`);
+  $$("#cvTowns .cv-town").forEach(g=>g.classList.toggle("ok",+g.dataset.km<=km));
+  let ini=0,cur=0;ETK.forEach((k,i)=>{if(km>=ini)cur=i;ini+=k});
+  $("#cvKm").textContent=Math.round(km);$("#cvLeft").textContent=Math.max(0,TOT-Math.round(km));$("#cvDays").textContent=info?info.days:0;$("#cvStage").textContent=`${Math.min(5,cur+1)}/5`;
+  $$("#cvEts .cv-et").forEach((li,i)=>{const a=+li.dataset.ini,b=a+(+li.dataset.km),state=km>=b?"done":km>=a&&(st||demo!=null)?"now":"lock";li.dataset.st=state;li.querySelector(".cv-est").textContent=state==="done"?"✓ Completada":state==="now"?"Estás aquí":`Se abre en el km ${a}`;li.classList.toggle("open",state==="now"||(state==="done"&&li.classList.contains("open")))});
+  const near=PU.filter(x=>x[1]<=km).pop();
+  $("#cvMsg").innerHTML=demo!=null?`<b>Demostración:</b> así avanzarías rezando cada día. Vas por <b>${esc(near[0])}</b>.`:!st?"Pulsa <b>«Empezar mi Camino»</b> y cada día que reces avanzarás por el Camino desde Sarria.":km>=TOT?"<b>¡Has llegado a Santiago!</b> Gloria a Dios por cada paso.":`Estás en <b>${esc(near[0])}</b>. ${PU.find(x=>x[1]>km)?`Siguiente parada: <b>${esc(PU.find(x=>x[1]>km)[0])}</b>, a ${PU.find(x=>x[1]>km)[1]-Math.round(km)} km.`:""}`;
+  const td=$("#cvToday");
+  if(demo!=null||!st)td.innerHTML="";
+  else if(km>=TOT)td.innerHTML="";
+  else if(info.today)td.innerHTML=`<span class="cv-ok">✓</span><div><b>Hoy ya has avanzado ${info.today} km</b><small>${info.today<7?"Reza el Rosario o haz la Lectio Divina para sumar 1 km más.":"Has hecho la etapa máxima de hoy. ¡Buen Camino!"}</small></div><a class="btn btn-ghost sm" href="${ROOT}rosario${X}">Rezar el Rosario</a>`;
+  else td.innerHTML=`<span class="cv-ok no">4</span><div><b>Reza hoy y avanza 4 km</b><small>Escucha el rezo del día o pulsa «Amén» al terminar cualquier oración.</small></div><a class="btn btn-gold sm" href="${ROOT}evangelio-de-hoy${X}">Rezar ahora</a>`;
+  $("#cvDone").hidden=!(st&&km>=TOT&&demo==null);
+  $("#cvStart").hidden=!!st;$("#cvDemo").textContent=demo!=null?"Parar demostración":"Ver cómo funciona"}
+ function real(){const st=cvState(),info=cvKm(st);paint(st?info.km:0,st,info)}
+ $("#cvStart").onclick=()=>{store.set("rd-camino",{start:ISO,n:1});toast("¡Buen Camino! Cada día que reces avanzarás hacia Santiago.");real();$("#cvMap").scrollIntoView({behavior:"smooth",block:"center"})};
+ $("#cvDemo").onclick=()=>{if(demo!=null){cancelAnimationFrame(demo);demo=null;real();return}const t0=performance.now();const step=t=>{const k=Math.min(TOT,(t-t0)/9000*TOT);paint(k,cvState(),{days:Math.ceil(k/5)});if(k<TOT)demo=requestAnimationFrame(step);else setTimeout(()=>{demo=null;real()},1600)};demo=requestAnimationFrame(step);$("#cvMap").scrollIntoView({behavior:"smooth",block:"center"})};
+ $$("#cvEts .cv-eh").forEach(h=>h.onclick=()=>{const li=h.parentElement;if(li.dataset.st==="lock"){toast(li.querySelector(".cv-est").textContent);return}li.classList.toggle("open")});
+ $("#cvAgain").onclick=()=>{const st=cvState()||{};store.set("rd-camino",{start:isoOf(new Date(Date.now()+864e5)),n:(st.n||1)+1});toast("Nuevo Camino: empieza mañana desde Sarria.");real()};
+ const nm=$("#cvName");nm.value=store.get("rd-perfil",{}).nombre||"";
+ $("#cvCert").onclick=async()=>{const name=nm.value.trim();if(name){const P=store.get("rd-perfil",{});P.nombre=name;store.set("rd-perfil",P)}const st=cvState(),info=cvKm(st);
+  const c=document.createElement("canvas");c.width=1600;c.height=1130;const g=c.getContext("2d");try{await document.fonts.ready}catch(e){}
+  const cs=getComputedStyle(document.body),FD=(cs.getPropertyValue("--f-display")||"Georgia").trim()||"Georgia",FU=(cs.getPropertyValue("--f-ui")||"sans-serif").trim()||"sans-serif";
+  g.fillStyle="#F6F0E2";g.fillRect(0,0,1600,1130);const gr=g.createRadialGradient(800,520,100,800,520,900);gr.addColorStop(0,"rgba(255,255,255,0)");gr.addColorStop(1,"rgba(150,110,40,.18)");g.fillStyle=gr;g.fillRect(0,0,1600,1130);
+  g.strokeStyle="#A8812D";g.lineWidth=6;g.strokeRect(50,50,1500,1030);g.lineWidth=2;g.strokeRect(70,70,1460,990);
+  g.textAlign="center";g.fillStyle="#A8812D";g.font=`800 30px ${FU}`;g.fillText("REZO DIARIO · AÑO SANTO COMPOSTELANO 2027",800,170);
+  g.fillStyle="#2A2216";g.font=`400 76px ${FD}`;g.fillText("Recuerdo de peregrinación rezada",800,280);
+  g.font=`400 34px ${FD}`;g.fillStyle="#5A4A30";g.fillText("Con alegría damos gracias a Dios porque",800,380);
+  g.fillStyle="#2C5D47";g.font=`italic 400 84px ${FD}`;g.fillText(name||"un peregrino de oración",800,490);
+  g.fillStyle="#5A4A30";g.font=`400 34px ${FD}`;g.fillText("ha recorrido rezando los 115 km del Camino de Santiago,",800,580);g.fillText("de Sarria a la tumba del apóstol Santiago,",800,630);
+  const f=d=>{const x=new Date(d+"T12:00:00");return`${x.getDate()} de ${["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"][x.getMonth()]} de ${x.getFullYear()}`};
+  g.fillText(`en ${info.days} días de oración, del ${f(st.start)} al ${f(isoOf(new Date()))}.`,800,680);
+  g.strokeStyle="#A8812D";g.lineWidth=3;g.beginPath();g.moveTo(560,760);g.lineTo(1040,760);g.stroke();
+  g.fillStyle="#A8812D";g.font=`italic 400 38px ${FD}`;g.fillText("«Ultreia et suseia» · ¡Buen Camino!",800,840);
+  g.fillStyle="#5A4A30";g.font=`500 24px ${FU}`;g.fillText("Recuerdo personal de oración. No sustituye a la Compostela ni al Jubileo.",800,960);
+  g.fillStyle="#2A2216";g.font=`800 32px ${FU}`;g.fillText("rezodiario.com",800,1010);
+  const blob=await new Promise(r=>c.toBlob(r,"image/png")),file=new File([blob],"recuerdo-camino-rezo-diario.png",{type:"image/png"});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],text:"¡He llegado a Santiago rezando con el Camino virtual de Rezo Diario! 🐚 https://rezodiario.com/camino-de-santiago/camino-virtual"});return}catch(e){if(e&&e.name==="AbortError")return}}
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=file.name;document.body.appendChild(a);a.click();a.remove();toast("Recuerdo descargado. ¡Buen Camino!")};
+ document.addEventListener("rd-rezado",real);real()}
 
 /* ---------- Página del widget ---------- */
 if($("#wPreview")){let dark=false;const render=()=>{const w=WEEK[todayIdx];$("#wPreview").innerHTML=`<div style="max-width:420px;border-radius:18px;padding:20px;font-family:Georgia,serif;${dark?"background:#14302A;color:#EEF2EC":"background:#fff;color:#17211C;border:1px solid #CDD6CB"}"><div style="font:700 11px/1.3 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:${dark?"#D6B266":"#2C5D47"}">Evangelio de hoy · ${esc(w.wd)} ${w.n} de ${esc(w.mes)}</div><div style="font-size:20px;margin:8px 0">${esc(w.title)}</div><div style="font-style:italic;font-size:16px;line-height:1.5;opacity:.9">«${esc(w.ex)}»</div><div style="font:13px system-ui,sans-serif;margin-top:12px;opacity:.75">${esc(w.refL)} · Escuchar en Rezo Diario ›</div></div>`};render();
