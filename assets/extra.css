@@ -1122,7 +1122,7 @@ article .exam-cta{margin:24px 0 0}
 .cv-town.maj text{fill:var(--ink);font:700 17px var(--f-ui)}
 .cv-town.maj text.kmt{fill:var(--muted);font:600 12.5px var(--f-ui)}
 .cv-town:last-child circle{fill:var(--gold);stroke:var(--gold)}
-#cvProg{transition:stroke-dashoffset .25s linear}
+
 .cv-pulse{animation:cvp 2s ease-out infinite;transform-origin:center;transform-box:fill-box}
 @keyframes cvp{0%{transform:scale(.6);opacity:.55}100%{transform:scale(1.9);opacity:0}}
 .cv-msg{margin:4px 0 0;font-size:15.5px;position:relative}
@@ -1217,3 +1217,4 @@ article .exam-cta{margin:24px 0 0}
 .cve-dot{position:absolute;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border-radius:50%;background:var(--gold);border:3px solid var(--bg);box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 40%,transparent)}
 .cve-x span:first-child{transform:none}.cve-x span:last-child{transform:translateX(-100%)}
 @media(max-width:620px){.cve-x span:nth-child(2){display:none}.cve-x span:nth-child(5){display:none}}
+.cv-town.ok circle{fill:#D6B266!important;stroke:#D6B266!important}.cve-l{stroke:#D6B266!important}

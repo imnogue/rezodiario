@@ -932,7 +932,7 @@ if(CV){const TOT=115,PU=JSON.parse(CV.dataset.pueblos),ETK=JSON.parse(CV.dataset
   let hills="";for(let i=0;i<GEO.length;i+=2){const [x,y]=pts[i];hills+=`<ellipse cx="${x+((i*37)%60-30)}" cy="${y+((i*53)%80-40)}" rx="${90+(i*13)%60}" ry="${46+(i*7)%30}"/>`}
   const scaleKm=10*sc*0.0124;// aprox: 1º lon*cos ≈ 81.6 km → 10 km
   map.innerHTML=`<div class="cvg"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa del Camino de Santiago de Sarria a Santiago">
-   <defs><linearGradient id="cvG" x1="1" x2="0"><stop offset="0" stop-color="#86C2A3"/><stop offset="1" stop-color="#D6B266"/></linearGradient>
+   <defs><linearGradient id="cvG" x1="1" x2="0"><stop offset="0" stop-color="#B8933F"/><stop offset="1" stop-color="#F0D08A"/></linearGradient>
     <pattern id="cvGrid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0H0V50" fill="none" stroke="var(--line)" stroke-width="1" opacity=".45"/></pattern>
     <filter id="cvBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter></defs>
    <rect width="${W}" height="${H}" fill="url(#cvGrid)"/>
@@ -957,7 +957,7 @@ if(CV){const TOT=115,PU=JSON.parse(CV.dataset.pueblos),ETK=JSON.parse(CV.dataset
   // perfil de altitud
   const EH=mob?260:150,emin=200,emax=760,ex=k=>1000-k/115*1000,ey=e=>EH-8-(e-emin)/(emax-emin)*(EH-24);
   const ep=ELE.map(([k,e])=>[ex(k),ey(e)]),line=cr(ep),area=line+` L0,${EH} L1000,${EH} Z`;
-  $("#cveSvg").innerHTML=`<defs><linearGradient id="cveA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86C2A3" stop-opacity=".55"/><stop offset="1" stop-color="#86C2A3" stop-opacity="0"/></linearGradient><clipPath id="cveC"><rect id="cveR" x="1000" y="0" width="0" height="${EH}"/></clipPath></defs>
+  $("#cveSvg").innerHTML=`<defs><linearGradient id="cveA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D6B266" stop-opacity=".5"/><stop offset="1" stop-color="#D6B266" stop-opacity="0"/></linearGradient><clipPath id="cveC"><rect id="cveR" x="1000" y="0" width="0" height="${EH}"/></clipPath></defs>
    ${[300,500,700].map(e=>`<line x1="0" x2="1000" y1="${ey(e)}" y2="${ey(e)}" class="cve-g"/>`).join("")}
    <path d="${area}" class="cve-bg"/><path d="${line}" class="cve-l0"/><g clip-path="url(#cveC)"><path d="${area}" fill="url(#cveA)"/><path d="${line}" class="cve-l"/></g>
    ${GEO.filter(g=>g[2]).map(g=>`<line x1="${ex(g[1])}" x2="${ex(g[1])}" y1="0" y2="${EH}" class="cve-t"/>`).join("")}
@@ -966,7 +966,7 @@ if(CV){const TOT=115,PU=JSON.parse(CV.dataset.pueblos),ETK=JSON.parse(CV.dataset
   const eAt=km=>{for(let i=1;i<ELE.length;i++)if(km<=ELE[i][0]){const [a,ea]=ELE[i-1],[b,eb]=ELE[i];return ea+(eb-ea)*((km-a)/(b-a))}return 260};
   place=km=>{prog.style.strokeDashoffset=L-k2l(km);const p=at(km);$("#cvWalker").setAttribute("transform",`translate(${p.x},${p.y}) scale(${mob?1.1:1})`);$$("#cvTowns .cv-town").forEach(g=>g.classList.toggle("ok",+g.dataset.km<=km));
    const x=ex(km),e=eAt(km);$("#cveR").setAttribute("x",x);$("#cveR").setAttribute("width",1000-x);$("#cveM").setAttribute("x1",x);$("#cveM").setAttribute("x2",x);const dt=$("#cveDot");dt.style.left=(x/10)+"%";dt.style.top=(ey(e)/EH*100)+"%";$("#cveNow").textContent=`km ${Math.round(km)} · ${Math.round(e)} m de altitud`}}
- const WALK='<g id="cvWalker"><circle r="20" fill="#D6B266" opacity=".25" class="cv-pulse"/><circle r="12" fill="#D6B266" stroke="#0D1311" stroke-width="3"/><path d="M-4.5 4.5 0-5.5 4.5 4.5Z" fill="#0D1311" transform="translate(0,-.5)"/></g>';
+ const WALK='<g id="cvWalker"><circle r="22" fill="#D6B266" opacity=".25" class="cv-pulse"/><circle r="15" fill="#D6B266" stroke="#0D1311" stroke-width="3"/><g transform="translate(0,1)" fill="none" stroke="#0D1311" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M0 7.5-8.2-2.2C-6.8-6.6-3.6-8.6 0-8.6S6.8-6.6 8.2-2.2Z" fill="#F3DFA6"/><path d="M0 7.5-5.4-6.4M0 7.5-2-8.3M0 7.5 2-8.3M0 7.5 5.4-6.4"/><path d="M-2.6 7.5H2.6"/></g></g>';
  build();let lastV=vert;addEventListener("resize",()=>{const v=map.clientWidth<620;if(v!==lastV){lastV=v;build();real()}});
  function paint(km,st,info){place(km);
 
