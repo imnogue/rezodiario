@@ -919,32 +919,54 @@ const CV=$("#cv");
 if(CV){const TOT=115,PU=JSON.parse(CV.dataset.pueblos),ETK=JSON.parse(CV.dataset.etapas);let demo=null;
  const map=$("#cvMap");let base,prog,L,at,vert;
  let place=()=>{};
- function build(){vert=map.clientWidth<620;
-  if(vert){buildMobile();return}
-  const D="M40,230 C140,90 230,260 330,170 S520,70 610,170 S800,250 870,140 S940,60 965,70";
-  map.innerHTML=`<svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="cvG" x1="0" x2="1"><stop offset="0" stop-color="#86C2A3"/><stop offset="1" stop-color="#D6B266"/></linearGradient></defs>
-  <path id="cvBase" d="${D}" fill="none" stroke="var(--surface-2)" stroke-width="14" stroke-linecap="round"/>
-  <path d="${D}" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/>
-  <path id="cvProg" d="${D}" fill="none" stroke="url(#cvG)" stroke-width="14" stroke-linecap="round"/>
-  <g id="cvTowns"></g>${WALK}</svg>`;
-  base=$("#cvBase");prog=$("#cvProg");L=base.getTotalLength();at=km=>base.getPointAtLength(Math.max(0,Math.min(1,km/TOT))*L);prog.style.strokeDasharray=L;
-  let up=true;$("#cvTowns").innerHTML=PU.map(([n,k,maj],i)=>{const p=at(k),last=k===TOT;up=!up;const y=last?p.y-34:up?p.y-30:p.y+44,anc=i===0?"start":last?"end":"middle",x=last?p.x+4:p.x;
-   return`<g class="cv-town${maj?" maj":""}" data-km="${k}"><circle cx="${p.x}" cy="${p.y}" r="${last?11:maj?8:4.5}"/>${maj?`<text x="${x}" y="${y}" text-anchor="${anc}">${esc(n)}</text><text class="kmt" x="${x}" y="${y+17}" text-anchor="${anc}">km ${k}</text>`:`<title>${esc(n)} · km ${k}</title>`}</g>`}).join("");
-  place=km=>{prog.style.strokeDashoffset=L*(1-km/TOT);const p=at(km);$("#cvWalker").setAttribute("transform",`translate(${p.x},${p.y})`);$$("#cvTowns .cv-town").forEach(g=>g.classList.toggle("ok",+g.dataset.km<=km))}}
- const WALK='<g id="cvWalker"><circle r="20" fill="#D6B266" opacity=".25" class="cv-pulse"/><circle r="13" fill="#D6B266" stroke="#0D1311" stroke-width="3"/><path d="M-5 5 0-6 5 5Z" fill="#0D1311" transform="translate(0,-1)"/></g>';
- function buildMobile(){let curStage=-1;const X0=24,X1=376,gx=km=>X0+(X1-X0)*km/TOT;const ends=[0];ETK.forEach(k=>ends.push(ends[ends.length-1]+k));
-  map.innerHTML=`<div class="cvm-all"><svg viewBox="0 0 400 54"><line x1="${X0}" y1="20" x2="${X1}" y2="20" stroke="var(--surface-2)" stroke-width="8" stroke-linecap="round"/><line id="cvmAll" x1="${X0}" y1="20" x2="${X0}" y2="20" stroke="#86C2A3" stroke-width="8" stroke-linecap="round"/>${ends.map((k,i)=>`<circle cx="${gx(k)}" cy="20" r="${i===0||i===ends.length-1?6:4}" class="cvm-dot" data-km="${k}"/>`).join("")}<circle id="cvmMe" cx="${X0}" cy="20" r="7" fill="#D6B266" stroke="#0D1311" stroke-width="2.5"/><text x="${X0}" y="46" class="cvm-l">Sarria</text><text x="${X1}" y="46" text-anchor="end" class="cvm-l">Santiago</text><text id="cvmPct" x="200" y="46" text-anchor="middle" class="cvm-l"></text></svg></div><div class="cvm-zoom" id="cvmZoom"></div>`;
-  const zoom=$("#cvmZoom");
-  function drawStage(si){curStage=si;const a=ends[si],b=ends[si+1],D="M30,110 C110,60 170,150 230,100 S330,70 370,105";
-   const towns=PU.filter(x=>x[1]>=a&&x[1]<=b);
-   zoom.innerHTML=`<div class="cvm-h"><small>Etapa ${si+1} de 5 · ${b-a} km</small><b>${esc(towns[0][0].split(" · ")[0])} → ${esc(towns[towns.length-1][0].split(" · ")[0])}</b></div><svg viewBox="0 0 400 190"><defs><linearGradient id="cvG" x1="0" x2="1"><stop offset="0" stop-color="#86C2A3"/><stop offset="1" stop-color="#D6B266"/></linearGradient></defs><path id="cvBase" d="${D}" fill="none" stroke="var(--surface-2)" stroke-width="12" stroke-linecap="round"/><path d="${D}" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/><path id="cvProg" d="${D}" fill="none" stroke="url(#cvG)" stroke-width="12" stroke-linecap="round"/><g id="cvTowns"></g>${WALK}</svg>`;
-   base=$("#cvBase");prog=$("#cvProg");L=base.getTotalLength();prog.style.strokeDasharray=L;const atS=km=>base.getPointAtLength(Math.max(0,Math.min(1,(km-a)/(b-a)))*L);
-   $("#cvTowns").innerHTML=towns.map(([n,k,maj],i)=>{const first=i===0,last=i===towns.length-1,p=atS(k),up=!first&&!last;const anc=first?"start":last?"end":"middle",x=first?p.x-6:last?p.x+6:p.x,y=up?p.y-24:p.y+34;
-    return`<g class="cv-town${maj?" maj":""}" data-km="${k}"><circle cx="${p.x}" cy="${p.y}" r="${maj?8:5}"/><text x="${x}" y="${y}" text-anchor="${anc}">${esc(n.split(" · ")[0])}</text><text class="kmt" x="${x}" y="${y+15}" text-anchor="${anc}">km ${k}</text></g>`}).join("");
-   place._at=atS;place._a=a;place._b=b}
-  place=km=>{let si=0;for(let i=0;i<ETK.length;i++)if(km>=ends[i])si=i;if(km>=TOT)si=ETK.length-1;if(si!==curStage)drawStage(si);
-   $("#cvmAll").setAttribute("x2",gx(km));$("#cvmMe").setAttribute("cx",gx(km));$$(".cvm-dot").forEach(c=>c.classList.toggle("ok",+c.dataset.km<=km));$("#cvmPct").textContent=Math.round(km/TOT*100)+" % del Camino";
-   const a=place._a,b=place._b;prog.style.strokeDashoffset=L*(1-Math.max(0,Math.min(1,(km-a)/(b-a))));const p=place._at(km);$("#cvWalker").setAttribute("transform",`translate(${p.x},${p.y})`);$$("#cvTowns .cv-town").forEach(g=>g.classList.toggle("ok",+g.dataset.km<=km))}}
+ // Coordenadas aproximadas de cada pueblo (lat, lon) y altitud en metros
+ const GEO=[["Sarria",0,1,42.7808,-7.4142],["Barbadelo",4,0,42.7700,-7.4500],["Ferreiros",13,0,42.7960,-7.5450],["Portomarín",22,1,42.8075,-7.6158],["Gonzar",30,0,42.8270,-7.6950],["Ligonde",39,0,42.8610,-7.7760],["Palas de Rei",47,1,42.8733,-7.8686],["Melide",62,0,42.9140,-8.0150],["Ribadiso",73,0,42.9300,-8.1300],["Arzúa",76,1,42.9265,-8.1645],["Salceda",87,0,42.9230,-8.2600],["O Pedrouzo",95,1,42.9050,-8.3640],["Lavacolla",105,0,42.9000,-8.4400],["Monte do Gozo",110,0,42.8870,-8.4950],["Santiago",115,1,42.8805,-8.5446]];
+ const ELE=[[0,440],[4,560],[9,620],[13,640],[18,660],[22,390],[26,520],[30,550],[35,710],[39,620],[47,560],[55,520],[62,450],[68,420],[73,300],[76,390],[82,410],[87,380],[95,290],[100,350],[105,300],[110,370],[115,260]];
+ function build(){const mob=map.clientWidth<620;vert=mob;const W=mob?560:1000,H=mob?300:330,P=mob?{l:66,r:58,t:54,b:44}:{l:60,r:60,t:56,b:56};
+  const cl=Math.cos(42.85*Math.PI/180),lons=GEO.map(g=>g[4]),lats=GEO.map(g=>g[3]),mnx=Math.min(...lons)*cl,mxx=Math.max(...lons)*cl,mny=Math.min(...lats),mxy=Math.max(...lats);
+  const sc=Math.min((W-P.l-P.r)/(mxx-mnx),(H-P.t-P.b)/(mxy-mny)),ox=(W-(mxx-mnx)*sc)/2,oy=(H-(mxy-mny)*sc)/2;
+  const pr=g=>[ox+(g[4]*cl-mnx)*sc,oy+(mxy-g[3])*sc],pts=GEO.map(pr);
+  const cr=ps=>{let d=`M${ps[0][0].toFixed(1)},${ps[0][1].toFixed(1)}`;for(let i=0;i<ps.length-1;i++){const p0=ps[i-1]||ps[i],p1=ps[i],p2=ps[i+1],p3=ps[i+2]||p2;d+=` C${(p1[0]+(p2[0]-p0[0])/6).toFixed(1)},${(p1[1]+(p2[1]-p0[1])/6).toFixed(1)} ${(p2[0]-(p3[0]-p1[0])/6).toFixed(1)},${(p2[1]-(p3[1]-p1[1])/6).toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`}return d};
+  const D=cr(pts),fs=mob?21:17,fk=mob?15:12.5;
+  // relieve decorativo
+  let hills="";for(let i=0;i<GEO.length;i+=2){const [x,y]=pts[i];hills+=`<ellipse cx="${x+((i*37)%60-30)}" cy="${y+((i*53)%80-40)}" rx="${90+(i*13)%60}" ry="${46+(i*7)%30}"/>`}
+  const scaleKm=10*sc*0.0124;// aprox: 1º lon*cos ≈ 81.6 km → 10 km
+  map.innerHTML=`<div class="cvg"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa del Camino de Santiago de Sarria a Santiago">
+   <defs><linearGradient id="cvG" x1="1" x2="0"><stop offset="0" stop-color="#86C2A3"/><stop offset="1" stop-color="#D6B266"/></linearGradient>
+    <pattern id="cvGrid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0H0V50" fill="none" stroke="var(--line)" stroke-width="1" opacity=".45"/></pattern>
+    <filter id="cvBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter></defs>
+   <rect width="${W}" height="${H}" fill="url(#cvGrid)"/>
+   <g class="cv-hills" filter="url(#cvBlur)">${hills}</g>
+   <path class="cv-river" d="M${pts[3][0]+18},${oy-30} C${pts[3][0]+8},${pts[3][1]-40} ${pts[3][0]-14},${pts[3][1]+30} ${pts[3][0]-4},${H}"/>
+   <text class="cv-rl" x="${pts[3][0]+26}" y="${oy-8}">río Miño</text>
+   <path d="${D}" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="${mob?13:12}" stroke-linecap="round" transform="translate(0,3)"/>
+   <path id="cvBase" d="${D}" fill="none" stroke="var(--surface-2)" stroke-width="${mob?11:10}" stroke-linecap="round"/>
+   <path d="${D}" fill="none" stroke="var(--muted)" stroke-opacity=".5" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round"/>
+   <path id="cvProg" d="${D}" fill="none" stroke="url(#cvG)" stroke-width="${mob?11:10}" stroke-linecap="round"/>
+   <g id="cvTowns"></g>${WALK}
+   <g class="cv-compass" transform="translate(${W-34},${mob?36:30})"><circle r="16"/><path d="M0-11 4 2H-4Z"/><text y="-21" text-anchor="middle">N</text></g>
+   <g class="cv-scale" transform="translate(${P.l-10},${H-18})"><path d="M0 0H${scaleKm.toFixed(0)}M0-5V5M${scaleKm.toFixed(0)}-5V5"/><text x="${(scaleKm/2).toFixed(0)}" y="-9" text-anchor="middle">10 km</text></g>
+  </svg></div><div class="cve"><div class="cve-h"><b>Perfil del Camino</b><small id="cveNow"></small></div><div class="cve-w"><svg viewBox="0 0 1000 ${mob?260:150}" preserveAspectRatio="none" id="cveSvg"></svg><i id="cveDot" class="cve-dot"></i></div><div class="cve-x" id="cveX"></div></div>`;
+  base=$("#cvBase");prog=$("#cvProg");L=base.getTotalLength();prog.style.strokeDasharray=L;
+  // km → longitud sobre el trazado (por tramos entre pueblos)
+  const segL=[0];for(let i=1;i<pts.length;i++){const tmp=document.createElementNS("http://www.w3.org/2000/svg","path");tmp.setAttribute("d",cr(pts.slice(0,i+1)));map.querySelector("svg").appendChild(tmp);segL.push(tmp.getTotalLength());tmp.remove()}
+  const k2l=km=>{km=Math.max(0,Math.min(115,km));for(let i=1;i<GEO.length;i++)if(km<=GEO[i][1]){const a=GEO[i-1][1],b=GEO[i][1];return segL[i-1]+(segL[i]-segL[i-1])*((km-a)/(b-a||1))}return L};
+  at=km=>base.getPointAtLength(k2l(km));
+  $("#cvTowns").innerHTML=GEO.map(([n,k,maj],i)=>{const [x,y]=pts[i],last=k===TOT,first=k===0;let up=i%4<2;if(mob&&(first||last))up=true;const ty=up?y-(mob?24:22):y+(mob?38:34);let anc=first?"start":last?"end":"middle",tx=first?x-14:last?x+14:x;if(mob&&first){anc="end";tx=x+10}if(mob&&last){anc="start";tx=x-10}if(mob&&n==="O Pedrouzo")maj=0;
+   return`<g class="cv-town${maj?" maj":""}${last?" end":""}" data-km="${k}"><circle cx="${x}" cy="${y}" r="${last?(mob?12:11):maj?(mob?9:8):(mob?5:4.5)}"/>${maj?`<text x="${tx}" y="${ty}" text-anchor="${anc}" style="font-size:${fs}px">${esc(n)}</text><text class="kmt" x="${tx}" y="${ty+(mob?17:15)}" text-anchor="${anc}" style="font-size:${fk}px">km ${k}</text>`:`<title>${esc(n)} · km ${k}</title>`}</g>`}).join("");
+  // perfil de altitud
+  const EH=mob?260:150,emin=200,emax=760,ex=k=>1000-k/115*1000,ey=e=>EH-8-(e-emin)/(emax-emin)*(EH-24);
+  const ep=ELE.map(([k,e])=>[ex(k),ey(e)]),line=cr(ep),area=line+` L0,${EH} L1000,${EH} Z`;
+  $("#cveSvg").innerHTML=`<defs><linearGradient id="cveA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86C2A3" stop-opacity=".55"/><stop offset="1" stop-color="#86C2A3" stop-opacity="0"/></linearGradient><clipPath id="cveC"><rect id="cveR" x="1000" y="0" width="0" height="${EH}"/></clipPath></defs>
+   ${[300,500,700].map(e=>`<line x1="0" x2="1000" y1="${ey(e)}" y2="${ey(e)}" class="cve-g"/>`).join("")}
+   <path d="${area}" class="cve-bg"/><path d="${line}" class="cve-l0"/><g clip-path="url(#cveC)"><path d="${area}" fill="url(#cveA)"/><path d="${line}" class="cve-l"/></g>
+   ${GEO.filter(g=>g[2]).map(g=>`<line x1="${ex(g[1])}" x2="${ex(g[1])}" y1="0" y2="${EH}" class="cve-t"/>`).join("")}
+   <line id="cveM" x1="0" x2="0" y1="0" y2="${EH}" class="cve-m"/>`;$("#cveDot").dataset.h=EH;
+  $("#cveX").innerHTML=GEO.filter(g=>g[2]).reverse().map(g=>`<span style="left:${100-g[1]/115*100}%">${esc(g[0].replace("Palas de Rei","Palas").replace("O Pedrouzo","Pedrouzo"))}</span>`).join("");
+  const eAt=km=>{for(let i=1;i<ELE.length;i++)if(km<=ELE[i][0]){const [a,ea]=ELE[i-1],[b,eb]=ELE[i];return ea+(eb-ea)*((km-a)/(b-a))}return 260};
+  place=km=>{prog.style.strokeDashoffset=L-k2l(km);const p=at(km);$("#cvWalker").setAttribute("transform",`translate(${p.x},${p.y}) scale(${mob?1.1:1})`);$$("#cvTowns .cv-town").forEach(g=>g.classList.toggle("ok",+g.dataset.km<=km));
+   const x=ex(km),e=eAt(km);$("#cveR").setAttribute("x",x);$("#cveR").setAttribute("width",1000-x);$("#cveM").setAttribute("x1",x);$("#cveM").setAttribute("x2",x);const dt=$("#cveDot");dt.style.left=(x/10)+"%";dt.style.top=(ey(e)/EH*100)+"%";$("#cveNow").textContent=`km ${Math.round(km)} · ${Math.round(e)} m de altitud`}}
+ const WALK='<g id="cvWalker"><circle r="20" fill="#D6B266" opacity=".25" class="cv-pulse"/><circle r="12" fill="#D6B266" stroke="#0D1311" stroke-width="3"/><path d="M-4.5 4.5 0-5.5 4.5 4.5Z" fill="#0D1311" transform="translate(0,-.5)"/></g>';
  build();let lastV=vert;addEventListener("resize",()=>{const v=map.clientWidth<620;if(v!==lastV){lastV=v;build();real()}});
  function paint(km,st,info){place(km);
 

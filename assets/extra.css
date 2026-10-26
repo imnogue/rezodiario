@@ -1186,3 +1186,34 @@ article .exam-cta{margin:24px 0 0}
 .cvm-zoom .cv-town text{fill:var(--ink);font:700 14px var(--f-ui)}
 .cvm-zoom .cv-town text.kmt{fill:var(--muted);font:600 11px var(--f-ui)}
 .cvm-zoom .cv-town:not(.maj) text{fill:var(--muted);font-weight:600}
+/* ===== Camino virtual: mapa real + perfil ===== */
+.cvg{border-radius:20px;background:radial-gradient(120% 140% at 70% 30%,color-mix(in srgb,var(--accent) 7%,var(--bg)),var(--bg));border:1px solid var(--line);overflow:hidden}
+.cvg svg{display:block;width:100%;height:auto}
+.cv-hills ellipse{fill:color-mix(in srgb,var(--accent) 22%,transparent);opacity:.35}
+.cv-river{fill:none;stroke:#4C8DB8;stroke-width:4;stroke-opacity:.45;stroke-linecap:round}
+.cv-rl{fill:#6FA6CC;font:italic 600 13px var(--f-ui);opacity:.8}
+.cv-town circle{fill:var(--bg);stroke:var(--muted);stroke-width:2.5}
+.cv-town.maj circle{stroke-width:3}
+.cv-town.ok circle{fill:#86C2A3;stroke:#86C2A3}
+.cv-town.end circle{fill:var(--gold);stroke:var(--gold)}
+.cv-town.maj text{fill:var(--ink);font-family:var(--f-ui);font-weight:800;paint-order:stroke;stroke:var(--bg);stroke-width:5px;stroke-linejoin:round}
+.cv-town.maj text.kmt{fill:var(--muted);font-weight:700}
+.cv-compass circle{fill:var(--surface);stroke:var(--line)}.cv-compass path{fill:var(--gold)}.cv-compass text{fill:var(--muted);font:800 11px var(--f-ui)}
+.cv-scale path{stroke:var(--muted);stroke-width:2;fill:none}.cv-scale text{fill:var(--muted);font:700 11px var(--f-ui)}
+.cve{margin-top:12px;padding:12px 14px 8px;border-radius:18px;background:var(--surface-2)}
+.cve-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}.cve-h b{font-size:14px}.cve-h small{color:var(--gold);font-weight:800;font-size:12.5px}
+.cve svg{display:block;width:100%;height:110px;overflow:visible}
+.cve-g{stroke:var(--line);stroke-width:1;stroke-dasharray:3 5}
+.cve-bg{fill:color-mix(in srgb,var(--muted) 12%,transparent)}.cve-l0{fill:none;stroke:var(--muted);stroke-opacity:.5;stroke-width:2;vector-effect:non-scaling-stroke}.cve-l{fill:none;stroke:#86C2A3;stroke-width:3;vector-effect:non-scaling-stroke}
+.cve-t{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.cve-m{stroke:var(--gold);stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:4 4}
+.cve-d{fill:var(--gold);stroke:var(--bg);stroke-width:3;vector-effect:non-scaling-stroke}
+.cve-x{position:relative;height:18px;margin-top:4px}
+.cve-x span{position:absolute;transform:translateX(-50%);font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap}
+.cve-x span:first-child{transform:none}.cve-x span:last-child{transform:translateX(-100%)}
+.cv-map{margin:16px 0 6px}
+@media(max-width:620px){.cve svg{height:84px}.cve-x span{font-size:10px}.cve-x span:nth-child(3){display:none}.cv-rl{font-size:20px}.cv-compass{transform-box:fill-box}}
+.cve-w{position:relative}
+.cve-dot{position:absolute;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border-radius:50%;background:var(--gold);border:3px solid var(--bg);box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 40%,transparent)}
+.cve-x span:first-child{transform:none}.cve-x span:last-child{transform:translateX(-100%)}
+@media(max-width:620px){.cve-x span:nth-child(2){display:none}.cve-x span:nth-child(5){display:none}}
