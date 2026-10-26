@@ -127,7 +127,7 @@ function stopSpeech(){sp.token++;if(sp.on&&synth)try{synth.cancel()}catch(e){};s
 
 /* ---------- Racha ---------- */
 function doneDays(){return store.get("rd-rezado",[])}
-function markDone(dt,kind){const s=doneDays();const d=new Date(),t=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");[dt,t].forEach(x=>{if(x&&!s.includes(x))s.push(x)});store.set("rd-rezado",s);if(kind){const A=store.get("rd-act",{});A[t]=A[t]||[];if(!A[t].includes(kind))A[t].push(kind);store.set("rd-act",A);const sl=document.body.dataset.slug;if(kind==="oracion"&&sl){const o=store.get("rd-oras",[]);if(!o.includes(sl)){o.push(sl);store.set("rd-oras",o)}}}renderWeek();document.dispatchEvent(new Event("rd-rezado"))}
+function markDone(dt,kind){const s=doneDays();const _tk=isoOf(new Date()),_was=s.includes(_tk),_kmBefore=cvState()?cvKm(cvState()).km:0;const d=new Date(),t=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");[dt,t].forEach(x=>{if(x&&!s.includes(x))s.push(x)});store.set("rd-rezado",s);if(kind){const A=store.get("rd-act",{});A[t]=A[t]||[];if(!A[t].includes(kind))A[t].push(kind);store.set("rd-act",A);const sl=document.body.dataset.slug;if(kind==="oracion"&&sl){const o=store.get("rd-oras",[]);if(!o.includes(sl)){o.push(sl);store.set("rd-oras",o)}}}renderWeek();document.dispatchEvent(new Event("rd-rezado"));setTimeout(()=>cvPop(_was,_kmBefore),900)}
 
 /* ---------- Reproductor del rezo diario ---------- */
 const P={items:[],segs:[],k:0,playing:false,token:0,timer:null,dog:null,rate:1,mus:store.get("rd-musica","calma"),voiceOn:store.get("rd-voz",true),done:false,day:null};
@@ -141,7 +141,7 @@ function segmentsFor(d){return [
 function totalMin(){return Math.max(1,Math.round(P.items.reduce((a,it)=>a+est(it.t)+(isQ(it.t)?25:1.6),0)/60+.6))}
 function remaining(){let s=0;for(let i=P.k;i<P.items.length;i++)s+=est(P.items[i].t)+(isQ(P.items[i].t)?8:1.2);return Math.max(1,Math.round(s/60))}
 function loadPlayer(d){
- stopPlayer();P.day=d;P.segs=segmentsFor(d);P.items=[];P.done=false;
+ stopPlayer();P.day=d;P.segs=segmentsFor(d);P.items=[];P.done=false;P.heard=0;P.__lt=null;P.__ok80=false;
  if(d.audio&&d.marcas&&d.marcas.length){d.marcas.forEach(m=>P.items.push({si:m[1],t:m[2],at:m[0]}))}else P.segs.forEach((s,si)=>splitS(s.text).forEach(t=>P.items.push({si,t})));P.k=0;
  if(AU&&AU.dataset.d!==d.date){AU.pause();AU=null}const pl=$("#player");if(pl)pl.classList.toggle("live",!!d.audio);
  $("#pills").innerHTML=P.segs.map((s,i)=>`<button class="pill" data-seg="${i}"><b></b><span>${s.name.split(" · ")[0]}</span></button>`).join("");
@@ -174,11 +174,11 @@ function speakCur(){
  else P.timer=setTimeout(()=>advance(my),dur);
 }
 function advance(my){if(my!==P.token||!P.playing)return;clearT();const prev=P.items[P.k].si;if(P.k>=P.items.length-1){finishP();return}
- const q=isQ(P.items[P.k].t);P.k++;const gap=P.items[P.k].si!==prev?4000:(q?8000:1200);renderP();P.timer=setTimeout(()=>{if(my===P.token&&P.playing)speakCur()},gap)}
+ const q=isQ(P.items[P.k].t);P.k++;if(!P.__ok80&&P.day&&P.k>=P.items.length*.8){P.__ok80=true;markDone(P.day.date,"rezo")}const gap=P.items[P.k].si!==prev?4000:(q?8000:1200);renderP();P.timer=setTimeout(()=>{if(my===P.token&&P.playing)speakCur()},gap)}
 let AU=null,raf=0;
 function setText(el,txt){el.textContent=txt;el.classList.remove("txtin");void el.offsetWidth;el.classList.add("txtin")}
 function segBounds(){const D=AU&&AU.duration||0;const st=[0,0,0,0];for(let i=1;i<4;i++){const f=P.items.find(x=>x.si===i&&x.at!=null);st[i]=f?Math.max(0,f.at-1.5):D*i/4}return st.map((a,i)=>[a,i<3?st[i+1]:D])}
-function tickAudio(){if(!AU||!AU.duration)return;const t=AU.currentTime,D=AU.duration;const hasM=P.items.length&&P.items[0].at!=null;
+function tickAudio(){if(!AU||!AU.duration)return;const t=AU.currentTime,D=AU.duration;if(!AU.paused){const dt=t-(P.__lt==null?t:P.__lt);if(dt>0&&dt<1.5)P.heard=(P.heard||0)+dt}P.__lt=t;if(!P.__ok80&&P.heard>=D*.8&&P.day){P.__ok80=true;markDone(P.day.date,"rezo")}const hasM=P.items.length&&P.items[0].at!=null;
  let k=0;if(hasM){for(let i=0;i<P.items.length;i++){if(P.items[i].at<=t+0.15)k=i;else break}}else k=Math.min(P.items.length-1,Math.floor(t/D*P.items.length));
  const B=segBounds();let curSeg=0;$$("#pills .pill").forEach((b,i)=>{const[a,e]=B[i];const w=Math.max(0,Math.min(1,(t-a)/Math.max(.1,e-a)));b.style.setProperty("--w",(w*100).toFixed(2)+"%");if(t>=a)curSeg=i});
  $$("#pills .pill").forEach((b,i)=>b.classList.toggle("on",i===curSeg));
@@ -344,6 +344,8 @@ if($("#askForm")){
 }
 
 /* ---------- Camino guiado: al terminar de rezar, una propuesta suave para seguir ---------- */
+function cvLine(){try{const st=cvState(),R2=ROOT+"camino-de-santiago/camino-virtual"+X;if(st){const k=cvKm(st);if(!k.today)return"";return`<a class="ns-cv" href="${R2}"><span>🐚</span><div><b>+${k.today} km en tu Camino a Santiago</b><small>${k.km>=115?"¡Has llegado a Santiago!":`Vas por ${esc(cvWhere(k.km))} · te faltan ${115-Math.round(k.km)} km`}</small></div><em>›</em></a>`}
+ return`<a class="ns-cv" href="${R2}"><span>🐚</span><div><b>Convierte tu oración en el Camino de Santiago</b><small>Cada día que reces avanzarás 4 km hacia Santiago</small></div><em>›</em></a>`}catch(e){return""}}
 function siguiente(ctx){
  const L=(h,t,d)=>({h:ROOT+h,t,d});const today=(WEEK[todayIdx]||{});const out=[];
  const pr=RD.prayers||[];const slug=document.body.dataset.slug;const cur=pr.find(p=>p.slug===slug);
@@ -359,7 +361,7 @@ function siguiente(ctx){
  const items=out.slice(0,3);
  let m=$("#nextStep");if(!m){m=document.createElement("div");m.id="nextStep";m.className="nstep";document.body.appendChild(m)}
  const tit={rezo:"Has terminado el rezo de hoy",oracion:"Amén. Has rezado",rosario:"Has rezado el Rosario",via:"Has terminado el Vía Crucis",novena:"Día de novena rezado"}[ctx]||"Has rezado";
- m.innerHTML=`<div class="nstep-bg" data-nx></div><div class="nstep-p" role="dialog" aria-modal="true" aria-labelledby="nsT"><span class="eyebrow">Tu camino de oración</span><h3 id="nsT">${tit}</h3><p class="nstep-s">Gracias por este rato con Dios. Si quieres, puedes seguir un poco más:</p><ol>${items.map(i=>`<li><a href="${i.h}"><b>${esc(i.t)}</b><span>${esc(i.d)}</span></a></li>`).join("")}</ol><button type="button" class="btn btn-ghost sm" data-nx>Por hoy es suficiente</button></div>`;
+ m.innerHTML=`<div class="nstep-bg" data-nx></div><div class="nstep-p" role="dialog" aria-modal="true" aria-labelledby="nsT"><span class="eyebrow">Tu camino de oración</span><h3 id="nsT">${tit}</h3><p class="nstep-s">Gracias por este rato con Dios. Si quieres, puedes seguir un poco más:</p>${cvLine()}<ol>${items.map(i=>`<li><a href="${i.h}"><b>${esc(i.t)}</b><span>${esc(i.d)}</span></a></li>`).join("")}</ol><button type="button" class="btn btn-ghost sm" data-nx>Por hoy es suficiente</button></div>`;
  m.hidden=false;requestAnimationFrame(()=>m.classList.add("on"));
  m.onclick=e=>{if(e.target.closest("[data-nx]")){m.classList.remove("on");setTimeout(()=>m.hidden=true,250)}}}
 const T_SET={gozosos:"gozosos",dolorosos:"dolorosos",gloriosos:"gloriosos",luminosos:"luminosos"};
@@ -425,7 +427,7 @@ if(ppl){const au=new Audio();au.preload="metadata";au.src=ppl.dataset.src;const 
  const PLAY='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>',PAUSE='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
  const f=t=>{t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0")};let drag=false;
  const paint=()=>{const on=!au.paused;pb.innerHTML=on?PAUSE:PLAY;pb.setAttribute("aria-label",on?"Pausar":"Escuchar la oración");ppl.classList.toggle("on",on);if(txt)txt.classList.toggle("speaking",on)};
- const tick=()=>{const D=au.duration||+ppl.dataset.dur||0;if(!drag&&D){sk.value=Math.round(au.currentTime/D*1000);sk.style.setProperty("--p",(au.currentTime/D*100)+"%")}cu.textContent=f(au.currentTime);if(au.duration)du.textContent=f(au.duration)};
+ let hd=0,lt=null,ok80=false;const tick=()=>{const D=au.duration||+ppl.dataset.dur||0;if(!au.paused){const dt=au.currentTime-(lt==null?au.currentTime:lt);if(dt>0&&dt<1.5)hd+=dt}lt=au.currentTime;if(!ok80&&D&&hd>=D*.8){ok80=true;markDone(ISO,"oracion")}if(!drag&&D){sk.value=Math.round(au.currentTime/D*1000);sk.style.setProperty("--p",(au.currentTime/D*100)+"%")}cu.textContent=f(au.currentTime);if(au.duration)du.textContent=f(au.duration)};
  pb.onclick=()=>{if(au.paused){if(P.playing)pauseP();stopSpeech();au.play().catch(()=>toast("No se ha podido cargar el audio."))}else au.pause()};
  au.addEventListener("play",paint);au.addEventListener("pause",paint);au.addEventListener("timeupdate",tick);au.addEventListener("loadedmetadata",tick);
  au.addEventListener("ended",()=>{paint();sk.value=1000;sk.style.setProperty("--p","100%");markDone(ISO,"oracion");setTimeout(()=>siguiente("oracion"),700)});
@@ -520,7 +522,7 @@ if($("#beads")){
  if(rmb&&rmm){rmb.onclick=e=>{e.stopPropagation();rmm.hidden=!rmm.hidden;rmb.setAttribute("aria-expanded",String(!rmm.hidden))};
   rmm.onclick=e=>{const b=e.target.closest("[data-mus]");if(!b)return;P.mus=b.dataset.mus;store.set("rd-musica",P.mus);pintaM();rmm.hidden=true;rmb.setAttribute("aria-expanded","false");if(R.voice)ambR(true)};
   document.addEventListener("click",e=>{if(!rmm.hidden&&!e.target.closest("#rMusWrap")){rmm.hidden=true;rmb.setAttribute("aria-expanded","false")}})}
- function go(i){if(i<0||i>=R.steps.length)return;R.dir=i>=R.cur?1:-1;R.cur=i;render()}
+ let ros80=false;function go(i){if(i<0||i>=R.steps.length)return;R.dir=i>=R.cur?1:-1;R.cur=i;render();if(!ros80&&R.cur>=R.steps.length*.8){ros80=true;markDone(ISO,"rosario")}}
  function next(){if(R.cur===R.steps.length-1){markDone(ISO,"rosario");setV(false);ambR(false);R.cur=0;R.dir=1;render();siguiente("rosario");return}go(R.cur+1)}
  $("#rNext").onclick=next;$("#rPrev").onclick=()=>go(R.cur-1);$("#rReset").onclick=()=>go(0);
  const vb=$("#rVoice");const setV=v=>{R.voice=v;vb.setAttribute("aria-pressed",v);vb.setAttribute("aria-label",v?"Pausar la voz":"Rezar en voz alta");$("#rpVoz").textContent=v?"Rezando en voz alta · pasa solo a la siguiente oración":"Pulsa ▶ para rezarlo con voz, o avanza a tu ritmo"};
@@ -903,6 +905,13 @@ $$("[data-cd2]").forEach(el=>{const t=new Date(el.dataset.cd2);let iv=null;const
  const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);el.innerHTML=[[d,d===1?"día":"días"],[h,h===1?"hora":"horas"],[m,"min"]].map(([v,l])=>`<span><b>${String(v).padStart(2,"0")}</b><small>${l}</small></span>`).join("")};paint();iv=setInterval(paint,15e3)});
 
 /* ---------- Camino virtual a Santiago ---------- */
+const CV_PU=["Sarria",0,"Barbadelo",4,"Ferreiros",13,"Portomarín",22,"Gonzar",30,"Ligonde",39,"Palas de Rei",47,"Melide",62,"Ribadiso",73,"Arzúa",76,"Salceda",87,"O Pedrouzo",95,"Lavacolla",105,"Monte do Gozo",110,"Santiago",115];
+function cvWhere(km){let n="Sarria";for(let i=0;i<CV_PU.length;i+=2)if(CV_PU[i+1]<=km)n=CV_PU[i];return n}
+function cvPop(was,kmBefore){try{if($("#cv")||$("#nextStep.on"))return;const st=cvState(),R2=ROOT+"camino-de-santiago/camino-virtual"+X;let html="";
+ if(st){const k=cvKm(st).km,d=Math.round(k-kmBefore);if(d<=0)return;html=`<span class="cvp-ic">🐚</span><div><b>+${d} km en tu Camino a Santiago</b><small>${k>=115?"¡Has llegado a Santiago!":`Vas por ${esc(cvWhere(k))} · te faltan ${115-Math.round(k)} km`}</small></div><a href="${R2}">Ver mi Camino</a>`}
+ else{if(was)return;const last=store.get("rd-cvpop",0);if(Date.now()-last<3*864e5)return;store.set("rd-cvpop",Date.now());html=`<span class="cvp-ic">🐚</span><div><b>¿Convertimos tu oración en un paso del Camino de Santiago?</b><small>Cada día que reces avanzarás 4 km hacia Santiago.</small></div><a href="${R2}">Empezar</a>`}
+ let el=$("#cvPop");if(!el){el=document.createElement("div");el.id="cvPop";el.className="cvp";el.setAttribute("role","status");document.body.appendChild(el)}
+ el.innerHTML=html+'<button type="button" aria-label="Cerrar">✕</button>';el.querySelector("button").onclick=()=>el.classList.remove("on");requestAnimationFrame(()=>el.classList.add("on"));clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("on"),9000)}catch(e){}}
 function cvState(){return store.get("rd-camino",null)}
 function cvKm(st){if(!st||!st.start)return{km:0,days:0,today:0};const A=store.get("rd-act",{}),ds=[...new Set(store.get("rd-rezado",[]))].filter(d=>d>=st.start).sort();let km=0,today=0;const hoy=isoOf(new Date());
  ds.forEach(d=>{const ex=(A[d]||[]).filter(k=>["rosario","lectio","novena","reto"].includes(k)).length;const k=Math.min(7,4+ex);km+=k;if(d===hoy)today=k});return{km:Math.min(115,km),days:ds.length,today,raw:km}}
@@ -926,7 +935,7 @@ if(CV){const TOT=115,PU=JSON.parse(CV.dataset.pueblos),ETK=JSON.parse(CV.dataset
   $$("#cvTowns .cv-town").forEach(g=>g.classList.toggle("ok",+g.dataset.km<=km));
   let ini=0,cur=0;ETK.forEach((k,i)=>{if(km>=ini)cur=i;ini+=k});
   $("#cvKm").textContent=Math.round(km);$("#cvLeft").textContent=Math.max(0,TOT-Math.round(km));$("#cvDays").textContent=info?info.days:0;$("#cvStage").textContent=`${Math.min(5,cur+1)}/5`;
-  $$("#cvEts .cv-et").forEach((li,i)=>{const a=+li.dataset.ini,b=a+(+li.dataset.km),state=km>=b?"done":km>=a&&(st||demo!=null)?"now":"lock";li.dataset.st=state;li.querySelector(".cv-est").textContent=state==="done"?"✓ Completada":state==="now"?"Estás aquí":`Se abre en el km ${a}`;li.classList.toggle("open",state==="now"||(state==="done"&&li.classList.contains("open")))});
+  $$("#cvEts .cv-et").forEach((li,i)=>{const a=+li.dataset.ini,b=a+(+li.dataset.km),state=km>=b?"done":km>=a&&(st||demo!=null)?"now":"lock";li.dataset.st=state;li.querySelector(".cv-est").textContent=state==="done"?"✓ Completada":state==="now"?"Estás aquí":`Se abre en el km ${a}`;li.classList.toggle("open",state==="now"||(state==="done"&&li.classList.contains("open")));const am=li.querySelector(".cv-amen");am.hidden=state!=="now"||demo!=null;if(info&&info.today){am.textContent="✓ Hoy ya has avanzado "+info.today+" km";am.classList.replace("btn-gold","btn-ghost")}else{am.textContent=st?"Amén · he rezado esta etapa (+4 km)":"Amén · empezar mi Camino rezando";am.classList.replace("btn-ghost","btn-gold")}});
   const near=PU.filter(x=>x[1]<=km).pop();
   $("#cvMsg").innerHTML=demo!=null?`<b>Demostración:</b> así avanzarías rezando cada día. Vas por <b>${esc(near[0])}</b>.`:!st?"Pulsa <b>«Empezar mi Camino»</b> y cada día que reces avanzarás por el Camino desde Sarria.":km>=TOT?"<b>¡Has llegado a Santiago!</b> Gloria a Dios por cada paso.":`Estás en <b>${esc(near[0])}</b>. ${PU.find(x=>x[1]>km)?`Siguiente parada: <b>${esc(PU.find(x=>x[1]>km)[0])}</b>, a ${PU.find(x=>x[1]>km)[1]-Math.round(km)} km.`:""}`;
   const td=$("#cvToday");
@@ -937,8 +946,9 @@ if(CV){const TOT=115,PU=JSON.parse(CV.dataset.pueblos),ETK=JSON.parse(CV.dataset
   $("#cvDone").hidden=!(st&&km>=TOT&&demo==null);
   $("#cvStart").hidden=!!st;$("#cvDemo").textContent=demo!=null?"Parar demostración":"Ver cómo funciona"}
  function real(){const st=cvState(),info=cvKm(st);paint(st?info.km:0,st,info)}
- $("#cvStart").onclick=()=>{store.set("rd-camino",{start:ISO,n:1});toast("¡Buen Camino! Cada día que reces avanzarás hacia Santiago.");real();$("#cvMap").scrollIntoView({behavior:"smooth",block:"center"})};
+ $("#cvStart").onclick=()=>{store.set("rd-camino",{start:ISO,n:1});toast("¡Buen Camino! Reza la primera etapa para dar tus primeros pasos.");real();const n=$('#cvEts .cv-et[data-st="now"]');(n||$("#cvMap")).scrollIntoView({behavior:"smooth",block:"center"})};
  $("#cvDemo").onclick=()=>{if(demo!=null){cancelAnimationFrame(demo);demo=null;real();return}const t0=performance.now();const step=t=>{const k=Math.min(TOT,(t-t0)/9000*TOT);paint(k,cvState(),{days:Math.ceil(k/5)});if(k<TOT)demo=requestAnimationFrame(step);else setTimeout(()=>{demo=null;real()},1600)};demo=requestAnimationFrame(step);$("#cvMap").scrollIntoView({behavior:"smooth",block:"center"})};
+ $$("#cvEts .cv-amen").forEach(b=>b.onclick=e=>{e.stopPropagation();if(!cvState())store.set("rd-camino",{start:ISO,n:1});const before=cvKm(cvState());if(before.today){toast("Hoy ya has avanzado "+before.today+" km. ¡Vuelve mañana para seguir!");return}markDone(ISO,"oracion");const k=cvKm(cvState());toast(`🐚 +${k.km-before.km} km. ¡Buen Camino! Vas por ${cvWhere(k.km)}.`);real()});
  $$("#cvEts .cv-eh").forEach(h=>h.onclick=()=>{const li=h.parentElement;if(li.dataset.st==="lock"){toast(li.querySelector(".cv-est").textContent);return}li.classList.toggle("open")});
  $("#cvAgain").onclick=()=>{const st=cvState()||{};store.set("rd-camino",{start:isoOf(new Date(Date.now()+864e5)),n:(st.n||1)+1});toast("Nuevo Camino: empieza mañana desde Sarria.");real()};
  const nm=$("#cvName");nm.value=store.get("rd-perfil",{}).nombre||"";
