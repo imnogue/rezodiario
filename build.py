@@ -305,6 +305,8 @@ def saint_link(r, s): return f'<a class="saintcard reveal" href="{r}santos/{s["s
 def setname(d): return SETS[d["set"]]["name"].lower()
 
 def season_feature(r):
+    if "2026-10-20" <= TODAY <= "2026-11-08":
+        return (f"{r}oraciones/tema-duelo.html", "linear-gradient(150deg,#4A4F5C,#16181D)", "1 y 2 de noviembre", "Todos los Santos y Difuntos", "Oraciones por tus seres queridos: padres, abuelos, esposos, hermanos y el Dales, Señor, el descanso eterno.")
     if TODAY < "2026-11-29":
         return (f"{r}adviento.html", "linear-gradient(150deg,#5B3D7A,#24163A)", f"Empieza el 29 de noviembre", "Adviento 2026", "Corona, reto diario, novena a la Inmaculada y la espera de la Navidad.")
     if TODAY <= "2026-12-24":

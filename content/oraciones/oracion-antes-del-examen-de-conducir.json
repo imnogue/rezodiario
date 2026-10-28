@@ -8,5 +8,28 @@
   "when": "Antes del examen teórico o práctico del carnet de conducir, y cada vez que empieces un viaje largo.",
   "intro": "El examen de conducir pone nerviosa a casi todo el mundo. Esta oración breve pide serenidad para el momento de la prueba y, sobre todo, prudencia para toda la vida al volante.\n\nSan Cristóbal es el patrón tradicional de los conductores y viajeros. Puedes rezarla en el coche antes de entrar al examen o pedir a tu familia que rece por ti a esa hora.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-antes-del-examen-de-conducir.mp3?v=1792354330",
-  "duracion": 59.7
+  "duracion": 59.7,
+  "seoT": "Oración antes del examen de conducir (teórico y práctico)",
+  "seoD": "Oración para el examen de conducir: para calmar los nervios antes del teórico o el práctico del carnet. Con audio, una oración muy corta para el coche y a quién encomendarse.",
+  "masT": "Más oraciones para el examen de conducir",
+  "mas": [
+    {
+      "t": "Oración muy corta para rezar en el coche",
+      "x": "Señor, respiro hondo y te dejo el volante del corazón. Dame calma, atención y buen juicio. San Cristóbal, ruega por mí. Amén."
+    },
+    {
+      "t": "Antes del examen teórico",
+      "x": "Señor, ayúdame a leer cada pregunta con calma y a recordar lo que he estudiado. Quita de mí los nervios y la prisa. Amén."
+    },
+    {
+      "t": "Si no lo he aprobado",
+      "x": "Señor, hoy no ha salido como esperaba. Dame paciencia para volver a intentarlo y no desanimarme. Sé que con práctica lo conseguiré. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿A qué santo se reza antes del examen de conducir?",
+      "a": "A san Cristóbal, patrón de los conductores y de los viajeros. Muchos llevan su medalla en el coche. También se puede rezar al ángel de la guarda."
+    }
+  ]
 }

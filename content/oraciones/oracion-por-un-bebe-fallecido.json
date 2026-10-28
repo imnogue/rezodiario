@@ -12,8 +12,32 @@
   "seoT": "Oración por un bebé fallecido o difunto",
   "faq": [
     {
+      "q": "¿Cuándo es el Día de Difuntos en 2026?",
+      "a": "El lunes 2 de noviembre de 2026, el día después de Todos los Santos. Todo noviembre la Iglesia reza especialmente por los difuntos."
+    },
+    {
+      "q": "¿Dónde está un bebé que muere sin bautizar?",
+      "a": "La Iglesia confía a los niños que mueren sin bautismo a la misericordia de Dios, que quiere que todos se salven. Por eso los padres pueden rezar con esperanza por su hijo."
+    },
+    {
       "q": "¿Se le reza a un bebé difunto?",
-      "a": "Muchas familias rezan por su bebé y también le hablan y le encomiendan sus intenciones, con la confianza de que está en las manos de Dios. La Iglesia confía a los niños que mueren sin bautismo a la misericordia de Dios."
+      "a": "Muchas familias rezan por su bebé y también le hablan y le encomiendan sus intenciones, con la confianza de que está en las manos de Dios."
+    }
+  ],
+  "seoD": "Oración por un bebé fallecido en el embarazo, el parto o sus primeros días: para encomendarlo a Dios y pedir consuelo para los padres. Con audio y oraciones cortas para el Día de Difuntos.",
+  "masT": "Más oraciones por un bebé fallecido",
+  "mas": [
+    {
+      "t": "Oración corta de los padres",
+      "x": "Señor, te entregamos a nuestro bebé, [nombre]. Tú lo conoces y lo amas más que nadie. Cuídalo en tu luz hasta que volvamos a abrazarlo. Amén."
+    },
+    {
+      "t": "Por una pérdida en el embarazo",
+      "x": "Señor, apenas pudimos conocerle, pero ya le queríamos con toda el alma. Lo ponemos en tus manos y en el corazón de la Virgen María. Consuela nuestro dolor. Amén."
+    },
+    {
+      "t": "Para unos abuelos, tíos o amigos",
+      "x": "Señor, acompaña a [nombres] en la pérdida de su bebé. Que no se sientan solos y que sepamos estar a su lado con cariño y respeto. Amén."
     }
   ]
 }

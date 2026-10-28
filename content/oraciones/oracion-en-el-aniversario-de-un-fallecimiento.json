@@ -8,5 +8,32 @@
   "when": "En el aniversario de la muerte de un ser querido, o en su cumpleaños.",
   "intro": "El aniversario de un fallecimiento es un día de recuerdo y oración. Muchas familias encargan una misa por el difunto en esa fecha, una costumbre muy arraigada en España, a veces llamada «cabo de año».\n\nEsta oración une la gratitud por su vida con la esperanza del reencuentro.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-en-el-aniversario-de-un-fallecimiento.mp3?v=1792354379",
-  "duracion": 57.8
+  "duracion": 57.8,
+  "seoT": "Oración en el aniversario de un fallecimiento (o de un ser querido)",
+  "seoD": "Oración para el aniversario de la muerte de un ser querido: gratitud, consuelo y descanso eterno. Con audio y oraciones cortas para su cumpleaños o para una misa de aniversario.",
+  "masT": "Más oraciones para el aniversario",
+  "mas": [
+    {
+      "t": "Oración corta para el aniversario",
+      "x": "Señor, hoy hace un año más que [nombre] está contigo. Gracias por su vida. Dale el descanso eterno y a nosotros, paz en el recuerdo. Amén."
+    },
+    {
+      "t": "En el cumpleaños de un ser querido fallecido",
+      "x": "Señor, hoy [nombre] cumpliría años. Celebramos su vida contigo, que se la diste y ahora la guardas. Dile que le seguimos queriendo y que nunca le olvidamos. Amén."
+    },
+    {
+      "t": "Intención para una misa de aniversario",
+      "x": "Te pedimos, Señor, por [nombre], en el aniversario de su muerte. Que goce ya de tu presencia y que su ejemplo siga vivo en nosotros. Roguemos al Señor."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es el Día de Difuntos en 2026?",
+      "a": "El lunes 2 de noviembre de 2026, el día después de Todos los Santos. Todo noviembre la Iglesia reza especialmente por los difuntos."
+    },
+    {
+      "q": "¿Se puede encargar una misa por el aniversario de un difunto?",
+      "a": "Sí. En cualquier parroquia puedes pedir que se celebre una misa por su alma en el aniversario. Se suele dejar un donativo voluntario. Es una de las formas más bonitas de recordarle."
+    }
+  ]
 }
