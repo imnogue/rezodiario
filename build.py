@@ -77,12 +77,12 @@ def canon(path): return SITE + ("" if path == "index.html" else cleanp(path))
 ORG = {"@type": "Organization", "name": "Rezo Diario", "url": SITE, "logo": SITE + "logo-512.png"}
 
 def header(r, active):
-    MAIN = [("index.html", "today", "Hoy"), ("evangelio-de-hoy.html", "gospel", "Evangelio"), ("rosario.html", "rosary", "Rosario"), ("oraciones/index.html", "prayers", "Oraciones")]
+    MAIN = [("index.html", "today", "Hoy"), ("evangelio-de-hoy.html", "gospel", "Evangelio"), ("rosario.html", "rosary", "Rosario"), ("oraciones/index.html", "prayers", "Oraciones"), ("muro-de-intenciones.html", "candles", "Velas")]
     nav = "".join(f'<a href="{r}{h}"{" class=\"on\" aria-current=\"page\"" if k == active else ""} data-i18n="{k}">{t}</a>' for h, k, t in MAIN)
-    cols = [("Rezar", [("santo-de-hoy.html", "Santo de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("versiculos.html", "Versículos"), ("muro-de-intenciones.html", "Muro de velas"), ("santos/index.html", "Santoral")]),
+    cols = [("Rezar", [("santo-de-hoy.html", "Santo de hoy"), ("evangelio-de-manana.html", "Evangelio de mañana"), ("versiculos.html", "Versículos"), ("santos/index.html", "Santoral")]),
             ("Devociones", [("novenas/index.html", "Novenas"), ("via-crucis.html", "Vía Crucis"), ("examen-de-conciencia.html", "Examen de conciencia"), ("calendario-liturgico.html", "Calendario litúrgico")]),
             ("Tiempos", [("adviento.html", "Adviento 2026"), ("retos/adviento.html", "Reto de Adviento"), ("navidad.html", "Navidad 2026"), ("camino-de-santiago.html", "Camino de Santiago 2027")])]
-    mas_on = active in ("verses", "saints", "candles")
+    mas_on = active in ("verses", "saints")
     nav += f'''<div class="mas-nav"><button type="button" class="mas-btn{" on" if mas_on else ""}" id="btnMas" aria-haspopup="true" aria-expanded="false" aria-controls="masPanel">Más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
       <div class="mas-panel" id="masPanel" hidden>{"".join(f'<div class="mas-col"><span>{t}</span>' + "".join(f'<a href="{r}{h}">{n}</a>' for h, n in ls) + '</div>' for t, ls in cols)}
        <div class="mas-col mas-aj"><span>Rezo Diario</span><a href="{r}perfil.html">Mi perfil</a><a href="{r}donar.html">Donar</a><a href="{r}sobre-nosotros.html">Quiénes somos</a></div></div></div>'''
