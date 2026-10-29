@@ -8,5 +8,24 @@
   "when": "El 1 de enero, solemnidad de Santa María, Madre de Dios.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-de-ano-nuevo.mp3?v=1792338020",
   "duracion": 25.5,
-  "intro": "El 1 de enero la Iglesia celebra la solemnidad de Santa María, Madre de Dios, y la Jornada Mundial de la Paz. Es un buen día para empezar el año poniéndolo en manos de Dios.\n\nEsta oración ofrece el año nuevo con sus proyectos y sus incertidumbres, y pide paz para el mundo y para la propia familia. Puedes rezarla después de las campanadas o en la comida del día 1."
+  "intro": "El 1 de enero la Iglesia celebra la solemnidad de Santa María, Madre de Dios, y la Jornada Mundial de la Paz. Es un buen día para empezar el año poniéndolo en manos de Dios.\n\nEsta oración ofrece el año nuevo con sus proyectos y sus incertidumbres, y pide paz para el mundo y para la propia familia. Puedes rezarla después de las campanadas o en la comida del día 1.",
+  "seoT": "Oración de Año Nuevo 2027 para empezar el año con Dios",
+  "seoD": "Oración de Año Nuevo para empezar 2027 con Dios: pedir salud, trabajo, paz y fuerza para cumplir los propósitos. Con audio y una bendición corta para la familia.",
+  "masT": "Más oraciones de Año Nuevo",
+  "mas": [
+    {
+      "t": "Bendición corta de Año Nuevo",
+      "x": "El Señor te bendiga y te proteja, ilumine su rostro sobre ti y te conceda la paz (Nm 6, 24-26). Feliz Año Nuevo."
+    },
+    {
+      "t": "Por los propósitos del año",
+      "x": "Señor, estos son mis propósitos para este año: [propósitos]. No quiero hacerlo solo. Dame constancia y ayúdame a levantarme cuando falle. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué se celebra el 1 de enero en la Iglesia?",
+      "a": "La solemnidad de Santa María, Madre de Dios, y la Jornada Mundial de la Paz. Es fiesta de precepto."
+    }
+  ]
 }

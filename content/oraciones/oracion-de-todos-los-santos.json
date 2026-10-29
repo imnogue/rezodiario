@@ -1,0 +1,38 @@
+{
+  "cat": "devociones",
+  "t": "Oración de Todos los Santos",
+  "min": 2,
+  "k": "todos los santos 1 noviembre santos cielo",
+  "x": "Señor, Dios nuestro, hoy celebramos a todos los santos: a los que conocemos por su nombre y a tantos que vivieron en silencio una vida entregada.\n\nGracias por las madres y los padres, los abuelos, los amigos y los vecinos que ya gozan de tu presencia. Ellos nos enseñan que la santidad es posible en lo de cada día.\n\nTodos los santos de Dios, rogad por nosotros. Ayudadnos a vivir como vosotros, con fe, con esperanza y con amor, hasta que un día nos encontremos en el cielo. Amén.",
+  "when": "El 1 de noviembre, en la fiesta de Todos los Santos, o cualquier día para pedir la intercesión de los santos.",
+  "intro": "El 1 de noviembre la Iglesia celebra la solemnidad de Todos los Santos: no solo los canonizados, sino todos los que ya están con Dios, muchos de ellos personas sencillas que quizá conocimos.\n\nEn 2026 cae en domingo. Al día siguiente, el 2 de noviembre, es el Día de Difuntos, en el que rezamos por todos los que han muerto.",
+  "seoT": "Oración de Todos los Santos (1 de noviembre de 2026)",
+  "seoD": "Oración para el día de Todos los Santos, domingo 1 de noviembre de 2026. Con oraciones cortas, la letanía de los santos y la diferencia con el Día de Difuntos.",
+  "dato": {
+    "k": "Todos los Santos 2026",
+    "t": "Domingo 1 de noviembre · Día de Difuntos: lunes 2 de noviembre",
+    "x": "El 1 celebramos a los que ya están en el cielo; el 2 rezamos por todos los difuntos."
+  },
+  "masT": "Más oraciones para Todos los Santos",
+  "mas": [
+    {
+      "t": "Letanía breve de los santos",
+      "x": "Santa María, Madre de Dios, ruega por nosotros.\nSan José, ruega por nosotros.\nSan Pedro y san Pablo, rogad por nosotros.\nSantiago apóstol, ruega por nosotros.\nSanta Teresa de Jesús, ruega por nosotros.\nTodos los santos y santas de Dios, rogad por nosotros."
+    },
+    {
+      "t": "Por nuestros seres queridos que ya están con Dios",
+      "x": "Señor, hoy pensamos en [nombres]. Creemos que viven en ti. Que su ejemplo nos ayude a ser mejores y que un día volvamos a abrazarlos. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué se celebra el 1 de noviembre?",
+      "a": "La solemnidad de Todos los Santos: todos los que ya están en el cielo, canonizados o no. Es fiesta de precepto."
+    },
+    {
+      "q": "¿Qué diferencia hay con el Día de Difuntos?",
+      "a": "El 1 de noviembre celebramos a los santos del cielo; el 2 de noviembre rezamos por todos los difuntos, para que Dios los reciba en su casa."
+    }
+  ],
+  "slug": "oracion-de-todos-los-santos"
+}

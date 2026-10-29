@@ -8,5 +8,28 @@
   "when": "Especialmente el 3 de noviembre, su fiesta.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-a-san-martin-de-porres.mp3?v=1792337954",
   "duracion": 23.2,
-  "intro": "San Martín de Porres (1579-1639) fue un fraile dominico de Lima, hijo de un noble español y de una mujer liberta. Dedicó su vida a cuidar de los enfermos y de los pobres, y es conocido como el santo de la escoba por su humildad.\n\nEs patrón de la justicia social y de las personas que trabajan en la limpieza. Su fiesta se celebra el 3 de noviembre."
+  "intro": "San Martín de Porres (1579-1639) fue un fraile dominico de Lima, hijo de un noble español y de una mujer liberta. Dedicó su vida a cuidar de los enfermos y de los pobres, y es conocido como el santo de la escoba por su humildad.\n\nEs patrón de la justicia social y de las personas que trabajan en la limpieza. Su fiesta se celebra el 3 de noviembre.",
+  "seoT": "Oración a san Martín de Porres para casos difíciles y por la salud",
+  "seoD": "Oración a san Martín de Porres (fiesta el 3 de noviembre) para pedir su ayuda en una necesidad, por la salud o por un enfermo. Con audio y oraciones cortas.",
+  "masT": "Más oraciones a san Martín de Porres",
+  "mas": [
+    {
+      "t": "Oración corta por un enfermo",
+      "x": "San Martín de Porres, que cuidabas a los enfermos con tanto cariño, pide a Dios por la salud de [nombre]. Alivia su dolor y dale paciencia. Amén."
+    },
+    {
+      "t": "Para un caso difícil",
+      "x": "San Martín de Porres, humilde y bueno, pongo en tus manos esta necesidad que me preocupa. Preséntala al Señor y alcánzame lo que más me convenga. Amén."
+    },
+    {
+      "t": "Por nuestros animales",
+      "x": "San Martín, amigo de los animales, protege a los que nos acompañan en casa y cuídalos de la enfermedad. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es la fiesta de san Martín de Porres?",
+      "a": "El 3 de noviembre. En 2026 cae en martes."
+    }
+  ]
 }

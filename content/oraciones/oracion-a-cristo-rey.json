@@ -1,0 +1,34 @@
+{
+  "cat": "devociones",
+  "t": "Oración a Cristo Rey",
+  "min": 2,
+  "k": "cristo rey solemnidad noviembre reinado",
+  "x": "Señor Jesucristo, Rey del universo, reina en mi corazón.\n\nTu reino no es de poder ni de violencia, sino de verdad y de vida, de justicia, de amor y de paz. Reina en mi familia, en mi trabajo y en mis decisiones.\n\nQue no busque otros reyes que me esclavizan: el dinero, el orgullo, el miedo. Tú eres mi Señor y en ti confío.\n\n¡Viva Cristo Rey! Amén.",
+  "when": "En la solemnidad de Cristo Rey, el último domingo antes de Adviento, y siempre que quieras consagrar tu vida a Jesús.",
+  "intro": "La solemnidad de Jesucristo, Rey del universo, cierra el año litúrgico el último domingo antes de Adviento. En 2026 se celebra el domingo 22 de noviembre.\n\nLa instituyó el papa Pío XI en 1925 para recordar que Cristo es el centro de la historia y de cada vida.",
+  "seoT": "Oración a Cristo Rey (solemnidad, 22 de noviembre de 2026)",
+  "seoD": "Oración a Cristo Rey del universo para la solemnidad del domingo 22 de noviembre de 2026. Con audio, consagración corta y qué se celebra.",
+  "dato": {
+    "k": "Cristo Rey 2026",
+    "t": "Domingo 22 de noviembre de 2026",
+    "x": "Es el último domingo del año litúrgico. El domingo siguiente, 29 de noviembre, empieza el Adviento."
+  },
+  "masT": "Más oraciones a Cristo Rey",
+  "mas": [
+    {
+      "t": "Consagración breve a Cristo Rey",
+      "x": "Jesús, Rey de mi vida, me consagro a ti con todo lo que soy y lo que tengo. Haz de mí lo que quieras. Venga a nosotros tu reino. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es Cristo Rey en 2026?",
+      "a": "El domingo 22 de noviembre de 2026, el último domingo antes del Adviento."
+    },
+    {
+      "q": "¿Quién instituyó la fiesta de Cristo Rey?",
+      "a": "El papa Pío XI, en 1925, con la encíclica Quas primas."
+    }
+  ],
+  "slug": "oracion-a-cristo-rey"
+}

@@ -1,0 +1,34 @@
+{
+  "cat": "familia",
+  "t": "Oración de Reyes (Epifanía del Señor)",
+  "min": 2,
+  "k": "reyes magos epifania 6 enero",
+  "x": "Señor Jesús, como los Magos de Oriente, hoy quiero ponerme en camino para encontrarte.\n\nTe ofrezco mi oro: lo que tengo y lo que soy. Mi incienso: mi oración y mi deseo de ti. Mi mirra: también mis dolores y cansancios.\n\nQue la estrella de tu luz guíe a mi familia todo este año. Y que, como los Magos, volvamos a casa por otro camino: con el corazón cambiado. Amén.",
+  "when": "El 6 de enero, día de la Epifanía del Señor, o la noche de Reyes, en familia y con los niños.",
+  "intro": "El 6 de enero la Iglesia celebra la Epifanía del Señor: Jesús se manifiesta a todos los pueblos, representados por los Magos que siguen la estrella hasta Belén.\n\nEn España es el día de los Reyes Magos, muy querido por los niños. Es fiesta de precepto.",
+  "seoT": "Oración de Reyes Magos para el 6 de enero (Epifanía)",
+  "seoD": "Oración del día de Reyes, 6 de enero de 2027: Epifanía del Señor. Oración para rezar en familia con los niños y el significado del oro, el incienso y la mirra.",
+  "dato": {
+    "k": "Reyes 2027",
+    "t": "Miércoles 6 de enero de 2027 · Epifanía del Señor",
+    "x": "Es fiesta de precepto. La noche del 5 al 6 es la noche de Reyes."
+  },
+  "masT": "Más oraciones para el día de Reyes",
+  "mas": [
+    {
+      "t": "Oración de Reyes para niños",
+      "x": "Niño Jesús, los Reyes Magos te trajeron regalos. Yo te regalo mi corazón y mi sonrisa. Gracias por todo lo que tengo, y acuérdate de los niños que no tienen nada. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué significan el oro, el incienso y la mirra?",
+      "a": "El oro reconoce a Jesús como rey, el incienso como Dios y la mirra como hombre que sufrirá y morirá por nosotros."
+    },
+    {
+      "q": "¿El día de Reyes es fiesta de precepto?",
+      "a": "Sí, la Epifanía del Señor, el 6 de enero, es fiesta de precepto en España."
+    }
+  ],
+  "slug": "oracion-de-reyes-magos"
+}

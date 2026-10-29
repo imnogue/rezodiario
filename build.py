@@ -750,13 +750,14 @@ def saint_desc(x):
 for x in SAINTS:
     path = f'santos/{x["slug"]}.html'; cr = [("Inicio", "index.html"), ("Santos", "santos/index.html"), (x["name"], path)]; pr = PBY.get(x["prayer"])
     faq = [(f'¿Cuándo se celebra {x["name"]}?', f'Su fiesta o memoria es el {x["date"]}.'), (f'¿De qué es patrón {x["name"]}?', f'Se le invoca como patrón de {x["patron"]}.')]
+    faq = extra_faq(x) + faq
     m = phero(r, cr, f'{x["date"]} · {E(x["short"])}', E(x["name"]), E(x["bio"][0])) + f'''<section class="sec"><div class="wrap art"><div style="min-width:0">
   <article class="pray reveal"><span class="eyebrow">Oración</span><p class="pray-text" id="prayText" style="margin-top:12px">{E(x["oracion"])}</p><div class="pray-acts"><button class="btn btn-ghost sm" id="btnCopy">Copiar oración</button></div></article>
-  <div class="prose"><h2>Su vida</h2>{"".join(f"<p>{E(b)}</p>" for b in x["bio"] + x.get("mas", []))}{f'<h2>Qué nos enseña hoy</h2><p>{E(x["ensena"])}</p>' if x.get("ensena") else ""}<h2>Patrón de</h2><p>{E(x["patron"][0].upper() + x["patron"][1:])}.</p><h2>Preguntas frecuentes</h2>{faq_html(faq)}</div></div>
+  <div class="prose">{dato_box(x.get("dato"))}{mas_html({"mas": x.get("ors"), "masT": x.get("orsT", "Más oraciones")}) if x.get("ors") else ""}<h2>Su vida</h2>{"".join(f"<p>{E(b)}</p>" for b in x["bio"] + x.get("mas", []))}{f'<h2>Qué nos enseña hoy</h2><p>{E(x["ensena"])}</p>' if x.get("ensena") else ""}<h2>Patrón de</h2><p>{E(x["patron"][0].upper() + x["patron"][1:])}.</p><h2>Preguntas frecuentes</h2>{faq_html(faq)}</div></div>
   <aside class="side">{f'<div class="box"><h3>Oración relacionada</h3><ul class="links"><li><a href="../oraciones/{pr["slug"]}.html">{E(pr["t"])}<small>{pr["min"]} min</small></a></li></ul></div>' if pr else ""}
    <div class="box candle-cta"><h3>Enciende una vela</h3><p>Pide su intercesión y deja tu intención en el muro.</p><a class="btn btn-flame sm" href="../muro-de-intenciones.html">Encender una vela</a></div>
    <div class="box"><h3>Otros santos</h3><ul class="links">{"".join([f'<li><a href="{o["slug"]}.html">{E(o["name"])}<small>{o["date"]}</small></a></li>' for o in SAINTS if o is not x and o["md"] > x["md"]][:6])}</ul></div></aside></div></section>'''
-    page(path, f'{x["name"]}: vida y oración ({x["date"]}) | Rezo Diario', saint_desc(x), m, "saints",
+    page(path, f'{x.get("seoT") or x["name"] + ": vida y oración (" + x["date"] + ")"} | Rezo Diario', x.get("seoD") or saint_desc(x), m, "saints",
      [crumbs_ld(cr), faq_ld(faq), {"@context": "https://schema.org", "@type": "Article", "headline": f'{x["name"]}: vida y oración', "inLanguage": "es", "author": ORG, "publisher": ORG, "datePublished": "2026-10-17", "dateModified": TODAY, "mainEntityOfPage": canon(path), "about": {"@type": "Person", "name": x["name"]}}], og_type="article", og=(f'Santoral · {x["date"]}', x["name"], x["short"]))
 
 # ================= ROSARIO =================

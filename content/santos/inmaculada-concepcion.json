@@ -10,11 +10,28 @@
     "Por un privilegio concedido a España, los sacerdotes pueden vestir de azul celeste en esta solemnidad."
   ],
   "patron": "España",
-  "prayer": "acordaos",
+  "prayer": "oracion-a-la-inmaculada",
   "oracion": "Virgen Inmaculada, llena de gracia, ruega por nosotros que recurrimos a ti. Amén.",
   "mas": [
     "La Inmaculada Concepción es el dogma según el cual la Virgen María fue preservada de todo pecado, también del original, desde el primer instante de su vida, por los méritos de Cristo. El papa Pío IX lo proclamó solemnemente en 1854, aunque el pueblo cristiano lo creía desde mucho antes.",
     "España tuvo un papel muy importante en esta devoción: universidades, órdenes religiosas y reyes juraron defenderla durante siglos. La Inmaculada es patrona de España, y por un privilegio especial los sacerdotes españoles celebran ese día la misa con ornamentos de color azul."
   ],
-  "ensena": "La Inmaculada nos recuerda que la gracia de Dios es más fuerte que el pecado y que todos estamos llamados a la santidad."
+  "ensena": "La Inmaculada nos recuerda que la gracia de Dios es más fuerte que el pecado y que todos estamos llamados a la santidad.",
+  "seoT": "Inmaculada Concepción 2026 (8 de diciembre): qué se celebra y oración",
+  "seoD": "La Inmaculada Concepción se celebra el martes 8 de diciembre de 2026. Qué significa, si es festivo y fiesta de precepto en España, novena y oración a la Purísima.",
+  "dato": {
+    "k": "Inmaculada 2026",
+    "t": "Martes 8 de diciembre de 2026",
+    "x": "Es festivo en toda España y fiesta de precepto. La novena se reza del 29 de noviembre al 7 de diciembre."
+  },
+  "faq": [
+    {
+      "q": "¿Qué significa la Inmaculada Concepción?",
+      "a": "Que la Virgen María fue concebida sin pecado original, desde el primer instante de su vida, porque iba a ser la Madre de Dios. No es lo mismo que el nacimiento virginal de Jesús."
+    },
+    {
+      "q": "¿Es festivo el 8 de diciembre?",
+      "a": "Sí, es festivo nacional en España y fiesta de precepto para los católicos. La Inmaculada es patrona de España."
+    }
+  ]
 }

@@ -8,5 +8,24 @@
   "when": "El 8 de diciembre y durante su novena, del 29 de noviembre al 7 de diciembre.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-a-la-inmaculada.mp3?v=1792337915",
   "duracion": 28.4,
-  "intro": "La Inmaculada Concepción celebra que la Virgen María fue preservada del pecado desde el primer momento de su vida. Es la patrona de España, y su fiesta, el 8 de diciembre, es un día de gran devoción en todo el país.\n\nEsta oración se puede rezar en su fiesta, durante la novena previa o en cualquier momento en que quieras pedir a María un corazón limpio y la fuerza para empezar de nuevo."
+  "intro": "La Inmaculada Concepción celebra que la Virgen María fue preservada del pecado desde el primer momento de su vida. Es la patrona de España, y su fiesta, el 8 de diciembre, es un día de gran devoción en todo el país.\n\nEsta oración se puede rezar en su fiesta, durante la novena previa o en cualquier momento en que quieras pedir a María un corazón limpio y la fuerza para empezar de nuevo.",
+  "seoT": "Oración a la Inmaculada Concepción (8 de diciembre)",
+  "seoD": "Oración a la Inmaculada Concepción, la Purísima, para el 8 de diciembre de 2026. Con audio, oraciones cortas y la novena del 29 de noviembre al 7 de diciembre.",
+  "masT": "Más oraciones a la Inmaculada",
+  "mas": [
+    {
+      "t": "Oración corta a la Purísima",
+      "x": "Oh María, sin pecado concebida, ruega por nosotros que recurrimos a ti."
+    },
+    {
+      "t": "Consagración breve a la Inmaculada",
+      "x": "Virgen Inmaculada, Madre mía, me pongo bajo tu manto. Guarda mi corazón limpio y llévame siempre a Jesús. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es la Inmaculada en 2026?",
+      "a": "El martes 8 de diciembre de 2026. La novena se reza del 29 de noviembre al 7 de diciembre."
+    }
+  ]
 }

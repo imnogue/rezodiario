@@ -8,5 +8,28 @@
   "when": "El 12 de diciembre y durante su novena.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-a-la-virgen-de-guadalupe.mp3?v=1792337922",
   "duracion": 27.4,
-  "intro": "La Virgen de Guadalupe se apareció en 1531 a san Juan Diego en el cerro del Tepeyac, en México, y dejó su imagen en su tilma. Es patrona de México y de toda América, y una de las advocaciones marianas más queridas del mundo.\n\nSu fiesta se celebra el 12 de diciembre. Esta oración pide su protección maternal, especialmente para las familias, los enfermos y los que viven lejos de su tierra."
+  "intro": "La Virgen de Guadalupe se apareció en 1531 a san Juan Diego en el cerro del Tepeyac, en México, y dejó su imagen en su tilma. Es patrona de México y de toda América, y una de las advocaciones marianas más queridas del mundo.\n\nSu fiesta se celebra el 12 de diciembre. Esta oración pide su protección maternal, especialmente para las familias, los enfermos y los que viven lejos de su tierra.",
+  "seoT": "Oración a la Virgen de Guadalupe (12 de diciembre)",
+  "seoD": "Oración a la Virgen de Guadalupe para pedir su protección, por la familia y en momentos difíciles. Con audio, oraciones cortas y la novena del 3 al 11 de diciembre.",
+  "masT": "Más oraciones a la Virgen de Guadalupe",
+  "mas": [
+    {
+      "t": "Oración corta: «¿No estoy yo aquí?»",
+      "x": "Madre de Guadalupe, tú le dijiste a Juan Diego: «¿No estoy yo aquí, que soy tu madre?». Hoy te lo pido a ti: quédate conmigo y no me sueltes. Amén."
+    },
+    {
+      "t": "Por la familia",
+      "x": "Virgen de Guadalupe, cubre con tu manto a mi familia. Cuida a los que están lejos, sana a los enfermos y danos unión y paz en casa. Amén."
+    },
+    {
+      "t": "En un momento difícil",
+      "x": "Morenita del Tepeyac, estoy pasando por algo que me supera. Pongo mi carga en tus manos. Llévala tú a tu Hijo Jesús. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo es el día de la Virgen de Guadalupe?",
+      "a": "El 12 de diciembre. En 2026 cae en sábado. La novena se reza del 3 al 11 de diciembre."
+    }
+  ]
 }

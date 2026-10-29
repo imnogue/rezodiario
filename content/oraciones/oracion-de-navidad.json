@@ -8,5 +8,28 @@
   "when": "El día de Navidad, ante el belén.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/oracion-de-navidad.mp3?v=1792338054",
   "duracion": 25.5,
-  "intro": "La Navidad celebra que Dios se ha hecho niño para estar cerca de nosotros. Esta oración, para rezar ante el belén, da gracias por el nacimiento de Jesús y pide que su paz llegue a todas las familias.\n\nPuedes rezarla el día de Navidad, en la misa del gallo o en cualquier momento de las fiestas. Acuérdate especialmente de quienes viven estos días solos o con tristeza."
+  "intro": "La Navidad celebra que Dios se ha hecho niño para estar cerca de nosotros. Esta oración, para rezar ante el belén, da gracias por el nacimiento de Jesús y pide que su paz llegue a todas las familias.\n\nPuedes rezarla el día de Navidad, en la misa del gallo o en cualquier momento de las fiestas. Acuérdate especialmente de quienes viven estos días solos o con tristeza.",
+  "seoT": "Oración de Navidad para rezar en familia (corta)",
+  "seoD": "Oración de Navidad corta para rezar en familia el 25 de diciembre: ante el belén, antes de la comida o con los niños. Con audio y oraciones para dar gracias.",
+  "masT": "Más oraciones de Navidad",
+  "mas": [
+    {
+      "t": "Oración de Navidad para niños",
+      "x": "Niño Jesús, hoy es tu cumpleaños. Gracias por venir a estar con nosotros. Te regalo mi corazón y mi cariño. ¡Feliz Navidad, Jesús! Amén."
+    },
+    {
+      "t": "Bendición de la mesa del día de Navidad",
+      "x": "Señor, que naciste en Belén, la casa del pan: bendice esta comida y a quienes la compartimos, y no olvides a los que hoy no tienen nada. Amén."
+    },
+    {
+      "t": "Por los que pasan la Navidad solos o tristes",
+      "x": "Niño Jesús, acompaña a los que esta Navidad están solos, enfermos, lejos de casa o echan de menos a alguien. Que sientan tu cercanía. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo termina la Navidad?",
+      "a": "El tiempo de Navidad termina con la fiesta del Bautismo del Señor, el domingo después de la Epifanía. En 2027, el 10 de enero."
+    }
+  ]
 }

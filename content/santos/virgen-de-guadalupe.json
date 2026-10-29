@@ -10,11 +10,28 @@
     "Es patrona de México y de toda América."
   ],
   "patron": "México, América y los no nacidos",
-  "prayer": "acordaos",
+  "prayer": "oracion-a-la-virgen-de-guadalupe",
   "oracion": "Virgen de Guadalupe, que dijiste a Juan Diego «¿No estoy yo aquí, que soy tu madre?», acógeme bajo tu manto. Amén.",
   "mas": [
     "Entre el 9 y el 12 de diciembre de 1531, la Virgen María se apareció en el cerro del Tepeyac, cerca de la actual Ciudad de México, al indígena Juan Diego. Le habló en su lengua, el náhuatl, y le pidió que el obispo construyera allí un templo.",
     "Como señal, le dio rosas en pleno invierno; al abrir su tilma ante el obispo, apareció la imagen de la Virgen, con rasgos mestizos, que hoy se venera en la basílica de Guadalupe, uno de los santuarios más visitados del mundo. Es patrona de México y de toda América. En España se venera también la Virgen de Guadalupe de Extremadura, patrona de esa región."
   ],
-  "ensena": "La Virgen de Guadalupe nos recuerda que Dios habla el idioma de cada pueblo y que María es madre de todos sin excepción."
+  "ensena": "La Virgen de Guadalupe nos recuerda que Dios habla el idioma de cada pueblo y que María es madre de todos sin excepción.",
+  "seoT": "Virgen de Guadalupe (12 de diciembre): historia, apariciones y oración",
+  "seoD": "La Virgen de Guadalupe se celebra el 12 de diciembre. Historia de las apariciones a san Juan Diego en 1531, la tilma, la novena del 3 al 11 de diciembre y oración.",
+  "dato": {
+    "k": "Fiesta 2026",
+    "t": "Sábado 12 de diciembre de 2026",
+    "x": "La novena se reza del 3 al 11 de diciembre. Es patrona de México y de toda América."
+  },
+  "faq": [
+    {
+      "q": "¿Qué pasó en las apariciones de Guadalupe?",
+      "a": "En diciembre de 1531, en el cerro del Tepeyac (México), la Virgen se apareció a san Juan Diego. Le pidió que se construyera allí un templo, y como señal su imagen quedó impresa en la tilma (el manto) de Juan Diego, que se conserva en la Basílica."
+    },
+    {
+      "q": "¿Cuándo empieza la novena a la Virgen de Guadalupe?",
+      "a": "El 3 de diciembre, para terminar el 11, víspera de la fiesta del 12 de diciembre."
+    }
+  ]
 }

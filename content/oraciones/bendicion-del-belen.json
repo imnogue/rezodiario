@@ -8,5 +8,20 @@
   "when": "Cuando terminéis de montar el belén, en familia.",
   "audio": "https://xohzqfttpeulvxoqozgw.supabase.co/storage/v1/object/public/audios/oraciones/bendicion-del-belen.mp3?v=1792337888",
   "duracion": 28.6,
-  "intro": "Montar el belén en casa es una tradición muy española, que se remonta a san Francisco de Asís y su primer belén viviente en 1223. Bendecirlo ayuda a que no sea solo un adorno, sino un lugar donde rezar durante la Navidad.\n\nReza esta bendición en familia cuando terminéis de montarlo. Muchos niños disfrutan colocando la figura del Niño Jesús en el pesebre la noche del 24 de diciembre."
+  "intro": "Montar el belén en casa es una tradición muy española, que se remonta a san Francisco de Asís y su primer belén viviente en 1223. Bendecirlo ayuda a que no sea solo un adorno, sino un lugar donde rezar durante la Navidad.\n\nReza esta bendición en familia cuando terminéis de montarlo. Muchos niños disfrutan colocando la figura del Niño Jesús en el pesebre la noche del 24 de diciembre.",
+  "seoT": "Bendición del belén en casa (oración para el nacimiento)",
+  "seoD": "Bendición del belén o nacimiento en casa, para rezar en familia al montarlo o en Nochebuena al poner al Niño Jesús. Con audio y una oración corta para niños.",
+  "masT": "Más oraciones para el belén",
+  "mas": [
+    {
+      "t": "Al poner al Niño Jesús en Nochebuena",
+      "x": "Niño Jesús, ya estás aquí. Te ponemos en el pesebre con todo nuestro cariño. Nace también en esta casa y en cada uno de nosotros. Amén."
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Cuándo se pone el belén?",
+      "a": "Muchas familias lo montan al empezar el Adviento (en 2026, el 29 de noviembre) o el 8 de diciembre, día de la Inmaculada. Al Niño Jesús se le pone en Nochebuena."
+    }
+  ]
 }

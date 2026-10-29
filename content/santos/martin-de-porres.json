@@ -10,11 +10,28 @@
     "Murió en 1639 y fue canonizado en 1962. Es muy querido en Perú y en toda América."
   ],
   "patron": "los barberos, los enfermeros y la justicia social",
-  "prayer": "oracion-por-un-enfermo",
+  "prayer": "oracion-a-san-martin-de-porres",
   "oracion": "San Martín de Porres, humilde servidor de los pobres, enséñanos a servir sin hacer ruido. Amén.",
   "mas": [
     "Martín nació en Lima en 1579, hijo de un noble español y de una mujer afrodescendiente liberada. Por su origen sufrió desprecio desde niño. Aprendió el oficio de barbero y algo de medicina, y entró en el convento dominico del Rosario como hermano.",
     "Allí se dedicó a cuidar a los enfermos, a los pobres y a los esclavos, sin distinguir a nadie. Se cuentan de él muchos prodigios y una gran ternura con los animales. Murió en 1639 y fue el primer santo mulato de América. Es patrón de la justicia social."
   ],
-  "ensena": "San Martín de Porres nos enseña que la humildad y el servicio convierten cualquier trabajo, por sencillo que sea, en santidad."
+  "ensena": "San Martín de Porres nos enseña que la humildad y el servicio convierten cualquier trabajo, por sencillo que sea, en santidad.",
+  "seoT": "San Martín de Porres (3 de noviembre): vida, milagros y oración",
+  "seoD": "San Martín de Porres se celebra el 3 de noviembre. Su vida en Lima, sus milagros, por qué se le representa con una escoba y oración para pedir su ayuda.",
+  "dato": {
+    "k": "Fiesta",
+    "t": "San Martín de Porres se celebra el 3 de noviembre",
+    "x": "En 2026 cae en martes. Es el santo de los enfermos, de los pobres y de los que sufren discriminación."
+  },
+  "faq": [
+    {
+      "q": "¿Por qué san Martín de Porres lleva una escoba?",
+      "a": "Porque en el convento dominico de Lima hacía los trabajos más humildes, como barrer, y los vivía con alegría. La escoba es símbolo de su humildad y su servicio."
+    },
+    {
+      "q": "¿Qué se le pide a san Martín de Porres?",
+      "a": "Se le pide por la salud y por los enfermos, por los pobres, por la paz en la familia y por quienes sufren desprecio o discriminación. También se le encomiendan los animales, a los que cuidaba con cariño."
+    }
+  ]
 }
