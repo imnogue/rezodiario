@@ -1218,3 +1218,9 @@ article .exam-cta{margin:24px 0 0}
 .cve-x span:first-child{transform:none}.cve-x span:last-child{transform:translateX(-100%)}
 @media(max-width:620px){.cve-x span:nth-child(2){display:none}.cve-x span:nth-child(5){display:none}}
 .cv-town.ok circle{fill:#D6B266!important;stroke:#D6B266!important}.cve-l{stroke:#D6B266!important}
+.cor-velas{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cor-v{display:flex;gap:14px;padding:18px;border-radius:20px;background:var(--surface);border:1px solid var(--line)}
+.cor-v small{color:var(--gold);font-weight:800;font-size:12px}.cor-v b{display:block;font-size:17px;margin:3px 0}.cor-v p{margin:0;color:var(--muted);font-size:14px}
+.cor-vela{position:relative;width:16px;height:52px;border-radius:4px;background:var(--vc);flex:none;margin-top:14px}
+.cor-vela i{position:absolute;left:50%;top:-14px;width:9px;height:13px;margin-left:-4.5px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:#F7C66B;box-shadow:0 0 10px #F7C66B}
+@media(max-width:900px){.cor-velas{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.cor-velas{grid-template-columns:1fr}}

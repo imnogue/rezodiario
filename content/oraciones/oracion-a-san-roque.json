@@ -7,7 +7,7 @@
   "x": "San Roque, que cuidaste a los enfermos\nsin miedo al contagio,\nprotege a mi familia y a mi pueblo.\n\nIntercede por los enfermos,\npor los que los cuidan\ny por todos los que sufren una epidemia.\n\nDame un corazón compasivo\nque no pase de largo ante el que sufre.\n\nSan Roque, ruega por nosotros.\nAmén.",
   "when": "El 16 de agosto o en tiempo de epidemia.",
   "intro": "San Roque fue un peregrino francés del siglo XIV que cuidó a los enfermos de peste hasta contagiarse. La tradición cuenta que un perro le llevaba pan cada día.\n\nEs patrón de muchísimos pueblos de España y se le invoca en las epidemias.",
-  "seoT": "Oración a san Roque por la salud y por los enfermos",
+  "seoT": "Oración a san Roque por la salud, los enfermos y la familia",
   "seoD": "Oración a san Roque por la salud, los enfermos y la protección de la familia. Con audio, una oración corta, su historia y por qué se le representa con un perro.",
   "masT": "Más oraciones a san Roque",
   "mas": [
@@ -29,5 +29,10 @@
       "q": "¿Por qué san Roque sale con un perro?",
       "a": "Según la tradición, cuando enfermó de peste se retiró a un bosque para no contagiar a nadie, y un perro le llevaba cada día un pan hasta que se curó."
     }
-  ]
+  ],
+  "dato": {
+    "k": "Oración corta",
+    "t": "«Glorioso san Roque, que curaste a tantos enfermos: pide a Dios por nuestra salud y protege a mi familia. Amén.»",
+    "x": "San Roque es el santo de los enfermos y de los peregrinos. Su fiesta es el 16 de agosto y es patrón de muchos pueblos de España."
+  }
 }
